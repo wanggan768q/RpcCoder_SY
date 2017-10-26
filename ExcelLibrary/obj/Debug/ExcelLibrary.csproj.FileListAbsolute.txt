@@ -1,0 +1,5 @@
+F:\Work\RpcCoder\ExcelLibrary\bin\Debug\ExcelLibrary.dll
+F:\Work\RpcCoder\ExcelLibrary\bin\Debug\ExcelLibrary.pdb
+F:\Work\RpcCoder\ExcelLibrary\obj\Debug\ExcelLibrary.csproj.CoreCompileInputs.cache
+F:\Work\RpcCoder\ExcelLibrary\obj\Debug\ExcelLibrary.dll
+F:\Work\RpcCoder\ExcelLibrary\obj\Debug\ExcelLibrary.pdb

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<Root Module="Config" CName="Config" MsgNumStart="1" SyncDataVersion="1" Comment="">
+    <ConfigFile Name="BaoShi" CName="宝石" Comment="">
+        <Field IsDes="False" IsSvr="False" IsPri="True" CheckIndex="" MaxValue="2147483647" MinValue="-1" DefaultValue="-1" ValueSet="" FieldType="int" Name="ID" CName="编号" Comment="宝石ID" />
+        <Field IsDes="False" IsSvr="False" IsPri="False" CheckIndex="" MaxValue="2147483647" MinValue="-1" DefaultValue="" ValueSet="" FieldType="int" Name="Type" CName="宝石类别" Comment="宝石类别" />
+        <Field IsDes="False" IsSvr="False" IsPri="False" CheckIndex="" MaxValue="2147483647" MinValue="-1" DefaultValue="" ValueSet="" FieldType="int" Name="Lv" CName="宝石等级" Comment="宝石等级" />
+        <Field IsDes="False" IsSvr="False" IsPri="False" CheckIndex="" MaxValue="2147483647" MinValue="-1" DefaultValue="" ValueSet="" FieldType="int" Name="Limit" CName="镶嵌限制" Comment="镶嵌限制" />
+        <Field IsDes="False" IsSvr="False" IsPri="False" CheckIndex="" MaxValue="2147483647" MinValue="-1" DefaultValue="" ValueSet="" FieldType="ls" Name="AttrWuQi" CName="属性类别-武器" Comment="属性类别-武器" />
+        <Field IsDes="False" IsSvr="False" IsPri="False" CheckIndex="" MaxValue="2147483647" MinValue="-1" DefaultValue="" ValueSet="" FieldType="li" Name="NumWuQi" CName="属性参数1" Comment="属性参数1" />
+        <Field IsDes="False" IsSvr="False" IsPri="False" CheckIndex="" MaxValue="2147483647" MinValue="-1" DefaultValue="" ValueSet="" FieldType="lf" Name="AttrOther" CName="属性类别-其他" Comment="属性类别-其他" />
+        <Field IsDes="False" IsSvr="False" IsPri="False" CheckIndex="" MaxValue="2147483647" MinValue="-1" DefaultValue="" ValueSet="" FieldType="string" Name="NumOther" CName="属性参数2" Comment="属性参数2" />
+        <Field IsDes="False" IsSvr="False" IsPri="False" CheckIndex="" MaxValue="2147483647" MinValue="-1" DefaultValue="" ValueSet="" FieldType="int" Name="HeCheng" CName="合成后的宝石" Comment="合成后的宝石" />
+    </ConfigFile>
+</Root>

@@ -1,0 +1,15 @@
+F:\Work\RpcCoder\bin\Release\RpcCoder.exe.config
+F:\Work\RpcCoder\bin\Release\RpcCoder.exe
+F:\Work\RpcCoder\bin\Release\RpcCoder.pdb
+F:\Work\RpcCoder\bin\Release\ICSharpCode.SharpZipLib.dll
+F:\Work\RpcCoder\bin\Release\NPOI.dll
+F:\Work\RpcCoder\bin\Release\NPOI.OOXML.dll
+F:\Work\RpcCoder\bin\Release\NPOI.OpenXml4Net.dll
+F:\Work\RpcCoder\bin\Release\NPOI.OpenXmlFormats.dll
+F:\Work\RpcCoder\obj\x86\Release\RpcCoder.Resources.resources
+F:\Work\RpcCoder\obj\x86\Release\Editor.Form1.resources
+F:\Work\RpcCoder\obj\x86\Release\RpcCoder.csproj.GenerateResource.Cache
+F:\Work\RpcCoder\obj\x86\Release\RpcCoder.csproj.CoreCompileInputs.cache
+F:\Work\RpcCoder\obj\x86\Release\RpcCoder.exe
+F:\Work\RpcCoder\obj\x86\Release\RpcCoder.pdb
+F:\Work\RpcCoder\obj\x86\Release\RpcCoder.csprojResolveAssemblyReference.cache

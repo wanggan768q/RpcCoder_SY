@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<xml>
+    <module>
+        <sub_module name="Config" cname="Config" fileName="Config.xml" />
+        <sub_module name="Login" cname="登录模块" fileName="Login.xml" />
+    </module>
+</xml>

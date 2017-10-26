@@ -1,0 +1,1 @@
+F:\Work\commbat\cscommon\build\tools\python\python.exe "%~dp0protoc-gen-lua"

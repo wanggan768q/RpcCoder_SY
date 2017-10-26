@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<xml>
+    <module>
+        <sub_module name="Test" cname="test" fileName="Test.xml" />
+    </module>
+</xml>

@@ -1,0 +1,15 @@
+LoginRpcConnectAsk↑ 连接验证请求
+	Type:int32 = -1	;连接类型
+
+LoginRpcConnectReply↓ 连接验证回应
+	Result:int32 = -9999	;返回结果
+	Type:int32 = -1	;类型
+
+LoginRpcLoginAsk↑ 登录请求
+	Username:string	;用户名
+	Passwd:string	;密码
+
+LoginRpcLoginReply↓ 登录回应
+	Result:int32 = -9999	;返回结果
+	RoleId:sint64 = -1	;用户ID
+

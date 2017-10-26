@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<Root Module="Login" CName="登录模块" MsgNumStart="2" SyncDataVersion="1" Comment="">
+    <Operate Name="Connect" CName="连接验证" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="2" DataStruct="RpcConnectAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="3" DataStruct="RpcConnectReply" Comment="" />
+    </Operate>
+    <Operate Name="Login" CName="登录" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="4" DataStruct="RpcLoginAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="5" DataStruct="RpcLoginReply" Comment="" />
+    </Operate>
+    <Struct Name="RpcConnectAsk" CName="连接验证请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="sint32" FieldId="1" Name="Type" CName="连接类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcConnectReply" CName="连接验证回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="sint32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="sint32" FieldId="2" Name="Type" CName="类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcLoginAsk" CName="登录请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="string" FieldId="1" Name="Username" CName="用户名" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+        <Field PreDefine="optional" FieldType="string" FieldId="2" Name="Passwd" CName="密码" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+    </Struct>
+    <Struct Name="RpcLoginReply" CName="登录回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="sint32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="sint64" FieldId="2" Name="RoleId" CName="用户ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+</Root>
