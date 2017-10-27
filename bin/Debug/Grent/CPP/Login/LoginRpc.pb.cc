@@ -150,9 +150,9 @@ void protobuf_AddDesc_LoginRpc_2eproto() {
     "LoginRpcConnectAsk\022\020\n\004Type\030\001 \001(\021:\002-1\"\?\n\024"
     "LoginRpcConnectReply\022\025\n\006Result\030\001 \001(\021:\005-9"
     "999\022\020\n\004Type\030\002 \001(\021:\002-1\"4\n\020LoginRpcLoginAs"
-    "k\022\020\n\010Username\030\001 \001(\t\022\016\n\006Passwd\030\002 \001(\t\"\?\n\022L"
+    "k\022\020\n\010Username\030\001 \001(\t\022\016\n\006Passwd\030\002 \001(\t\">\n\022L"
     "oginRpcLoginReply\022\025\n\006Result\030\001 \001(\021:\005-9999"
-    "\022\022\n\006RoleId\030\002 \001(\022:\002-1", 260);
+    "\022\021\n\006RoleId\030\002 \001(\004:\0010", 259);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "LoginRpc.proto", &protobuf_RegisterTypes);
   LoginRpcConnectAsk::default_instance_ = new LoginRpcConnectAsk();
@@ -935,7 +935,7 @@ LoginRpcLoginReply::LoginRpcLoginReply(const LoginRpcLoginReply& from)
 void LoginRpcLoginReply::SharedCtor() {
   _cached_size_ = 0;
   result_ = -9999;
-  roleid_ = GOOGLE_LONGLONG(-1);
+  roleid_ = GOOGLE_ULONGLONG(0);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -972,7 +972,7 @@ LoginRpcLoginReply* LoginRpcLoginReply::New() const {
 void LoginRpcLoginReply::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     result_ = -9999;
-    roleid_ = GOOGLE_LONGLONG(-1);
+    roleid_ = GOOGLE_ULONGLONG(0);
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -999,13 +999,13 @@ bool LoginRpcLoginReply::MergePartialFromCodedStream(
         break;
       }
 
-      // optional sint64 RoleId = 2 [default = -1];
+      // optional uint64 RoleId = 2 [default = 0];
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_RoleId:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_SINT64>(
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
                  input, &roleid_)));
           set_has_roleid();
         } else {
@@ -1038,9 +1038,9 @@ void LoginRpcLoginReply::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteSInt32(1, this->result(), output);
   }
 
-  // optional sint64 RoleId = 2 [default = -1];
+  // optional uint64 RoleId = 2 [default = 0];
   if (has_roleid()) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt64(2, this->roleid(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->roleid(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -1056,9 +1056,9 @@ void LoginRpcLoginReply::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(1, this->result(), target);
   }
 
-  // optional sint64 RoleId = 2 [default = -1];
+  // optional uint64 RoleId = 2 [default = 0];
   if (has_roleid()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt64ToArray(2, this->roleid(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->roleid(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -1079,10 +1079,10 @@ int LoginRpcLoginReply::ByteSize() const {
           this->result());
     }
 
-    // optional sint64 RoleId = 2 [default = -1];
+    // optional uint64 RoleId = 2 [default = 0];
     if (has_roleid()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::SInt64Size(
+        ::google::protobuf::internal::WireFormatLite::UInt64Size(
           this->roleid());
     }
 

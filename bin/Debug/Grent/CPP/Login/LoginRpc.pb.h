@@ -376,12 +376,12 @@ class LoginRpcLoginReply : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 result() const;
   inline void set_result(::google::protobuf::int32 value);
 
-  // optional sint64 RoleId = 2 [default = -1];
+  // optional uint64 RoleId = 2 [default = 0];
   inline bool has_roleid() const;
   inline void clear_roleid();
   static const int kRoleIdFieldNumber = 2;
-  inline ::google::protobuf::int64 roleid() const;
-  inline void set_roleid(::google::protobuf::int64 value);
+  inline ::google::protobuf::uint64 roleid() const;
+  inline void set_roleid(::google::protobuf::uint64 value);
 
   // @@protoc_insertion_point(class_scope:LoginRpcLoginReply)
  private:
@@ -392,7 +392,7 @@ class LoginRpcLoginReply : public ::google::protobuf::Message {
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::int64 roleid_;
+  ::google::protobuf::uint64 roleid_;
   ::google::protobuf::int32 result_;
 
   mutable int _cached_size_;
@@ -652,7 +652,7 @@ inline void LoginRpcLoginReply::set_result(::google::protobuf::int32 value) {
   result_ = value;
 }
 
-// optional sint64 RoleId = 2 [default = -1];
+// optional uint64 RoleId = 2 [default = 0];
 inline bool LoginRpcLoginReply::has_roleid() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -663,13 +663,13 @@ inline void LoginRpcLoginReply::clear_has_roleid() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline void LoginRpcLoginReply::clear_roleid() {
-  roleid_ = GOOGLE_LONGLONG(-1);
+  roleid_ = GOOGLE_ULONGLONG(0);
   clear_has_roleid();
 }
-inline ::google::protobuf::int64 LoginRpcLoginReply::roleid() const {
+inline ::google::protobuf::uint64 LoginRpcLoginReply::roleid() const {
   return roleid_;
 }
-inline void LoginRpcLoginReply::set_roleid(::google::protobuf::int64 value) {
+inline void LoginRpcLoginReply::set_roleid(::google::protobuf::uint64 value) {
   set_has_roleid();
   roleid_ = value;
 }

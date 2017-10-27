@@ -94,10 +94,10 @@ namespace GenPB
       get { return _Result; }
       set { _Result = value; }
     }
-    private long _RoleId = (long)-1;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"RoleId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((long)-1)]
-    public long RoleId
+    private ulong _RoleId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"RoleId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong RoleId
     {
       get { return _RoleId; }
       set { _RoleId = value; }

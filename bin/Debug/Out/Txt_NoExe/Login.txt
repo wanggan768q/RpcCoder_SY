@@ -11,5 +11,5 @@ LoginRpcLoginAsk↑ 登录请求
 
 LoginRpcLoginReply↓ 登录回应
 	Result:int32 = -9999	;返回结果
-	RoleId:sint64 = -1	;用户ID
+	RoleId:uint64 = 0	;用户ID
 

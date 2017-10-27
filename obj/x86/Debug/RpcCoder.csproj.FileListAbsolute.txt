@@ -12,9 +12,8 @@ F:\Work\RpcCoder\bin\Debug\NPOI.dll
 F:\Work\RpcCoder\bin\Debug\NPOI.OOXML.dll
 F:\Work\RpcCoder\bin\Debug\NPOI.OpenXml4Net.dll
 F:\Work\RpcCoder\bin\Debug\NPOI.OpenXmlFormats.dll
-F:\Github\RpcCoder_SY\bin\Debug\RpcCoder.exe.config
 F:\Github\RpcCoder_SY\bin\Debug\RpcCoder.exe
-F:\Github\RpcCoder_SY\bin\Debug\RpcCoder.pdb
+F:\Github\RpcCoder_SY\bin\Debug\RpcCoder.exe.config
 F:\Github\RpcCoder_SY\bin\Debug\ICSharpCode.SharpZipLib.dll
 F:\Github\RpcCoder_SY\bin\Debug\NPOI.dll
 F:\Github\RpcCoder_SY\bin\Debug\NPOI.OOXML.dll
@@ -26,3 +25,7 @@ F:\Github\RpcCoder_SY\obj\x86\Debug\RpcCoder.csproj.GenerateResource.Cache
 F:\Github\RpcCoder_SY\obj\x86\Debug\RpcCoder.csproj.CoreCompileInputs.cache
 F:\Github\RpcCoder_SY\obj\x86\Debug\RpcCoder.exe
 F:\Github\RpcCoder_SY\obj\x86\Debug\RpcCoder.pdb
+F:\Github\RpcCoder_SY\bin\Debug\RpcCoder.pdb
+F:\Github\RpcCoder_SY\bin\Debug\RpcCoder.exe.CodeAnalysisLog.xml
+F:\Github\RpcCoder_SY\bin\Debug\RpcCoder.exe.lastcodeanalysissucceeded
+F:\Github\RpcCoder_SY\obj\x86\Debug\RpcCoder.csprojResolveAssemblyReference.cache

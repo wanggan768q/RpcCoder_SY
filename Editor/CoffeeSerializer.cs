@@ -28,18 +28,18 @@
                 {
                     str = str + "        " + ((descriptor.PreDefine == DataStruct.FieldDescriptor.PreDefineType.repeated) ? "repeated" : "optional");
                     str = str + " " + descriptor.FieldType;
-                    if (("sint32" != descriptor.FieldType) && ("sint64" != descriptor.FieldType))
+                    if (("sint32" != descriptor.FieldType) && ("sint64" != descriptor.FieldType) || ("uint64" != descriptor.FieldType))
                     {
                         bool flag1 = "string" == descriptor.FieldType;
                     }
                     object obj2 = str;
                     str = string.Concat(new object[] { obj2, " ", descriptor.FieldName, " = ", descriptor.FieldId });
-                    if ((("sint32" == descriptor.FieldType) || ("sint64" == descriptor.FieldType)) && (descriptor.PreDefine != DataStruct.FieldDescriptor.PreDefineType.repeated))
+                    if ((("sint32" == descriptor.FieldType) || ("sint64" == descriptor.FieldType) || ("uint64" == descriptor.FieldType)) && (descriptor.PreDefine != DataStruct.FieldDescriptor.PreDefineType.repeated))
                     {
                         str = str + "[default=" + descriptor.defaultValue + "]";
                     }
                     str = str + ";\r\n";
-                    if ((("sint32" != descriptor.FieldType) && ("sint64" != descriptor.FieldType)) && ("string" != descriptor.FieldType))
+                    if ((("sint32" != descriptor.FieldType) && ("sint64" != descriptor.FieldType) || ("uint64" == descriptor.FieldType)) && ("string" != descriptor.FieldType))
                     {
                         DiGui(ref m, ref RpcValues, descriptor.FieldType, isSave);
                     }
@@ -459,7 +459,7 @@
                         }
                     }
                 }
-                else if (descriptor2.FieldType == "sint64")
+                else if (descriptor2.FieldType == "sint64" || descriptor2.FieldType == "uint64")
                 {
                     if ((ds.DataType == DataStruct.SyncType.UserData) || ((ds.DataType == DataStruct.SyncType.CacheData) && ds.syncToClient))
                     {

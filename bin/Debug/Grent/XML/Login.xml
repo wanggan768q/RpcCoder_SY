@@ -21,6 +21,6 @@
     </Struct>
     <Struct Name="RpcLoginReply" CName="登录回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
         <Field PreDefine="optional" FieldType="sint32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
-        <Field PreDefine="optional" FieldType="sint64" FieldId="2" Name="RoleId" CName="用户ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="2" Name="RoleId" CName="用户ID" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="0" Comment="" />
     </Struct>
 </Root>

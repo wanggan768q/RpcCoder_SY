@@ -153,7 +153,7 @@ public:
 	{
 		
 		m_Result = -9999;
-		m_RoleId = -1;
+		m_RoleId = 0;
 
 	}
 	//赋值构造函数
@@ -242,17 +242,17 @@ public:
 	}
 private:
 	//用户ID
-	INT64 m_RoleId;
+	uint64_t m_RoleId;
 public:
-	void SetRoleId( INT64 v)
+	void SetRoleId( uint64_t v)
 	{
 		m_RoleId=v;
 	}
-	INT64 GetRoleId()
+	uint64_t GetRoleId()
 	{
 		return m_RoleId;
 	}
-	INT64 GetRoleId() const
+	uint64_t GetRoleId() const
 	{
 		return m_RoleId;
 	}

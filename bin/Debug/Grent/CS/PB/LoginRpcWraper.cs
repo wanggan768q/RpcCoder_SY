@@ -237,7 +237,7 @@ public class LoginRpcLoginReplyWraper
 	public LoginRpcLoginReplyWraper()
 	{
 		 m_Result = -9999;
-		 m_RoleId = -1;
+		 m_RoleId = 0;
 
 	}
 
@@ -245,7 +245,7 @@ public class LoginRpcLoginReplyWraper
 	public void ResetWraper()
 	{
 		 m_Result = -9999;
-		 m_RoleId = -1;
+		 m_RoleId = 0;
 
 	}
 
@@ -293,8 +293,8 @@ public class LoginRpcLoginReplyWraper
 		set { m_Result = value; }
 	}
 	//用户ID
-	public long m_RoleId;
-	public long RoleId
+	public UInt64 m_RoleId;
+	public UInt64 RoleId
 	{
 		get { return m_RoleId;}
 		set { m_RoleId = value; }

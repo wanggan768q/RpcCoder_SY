@@ -238,7 +238,7 @@
                             string str7 = str4;
                             str4 = str7 + "\t/*\r\n" + ((descriptor.CNName == "") ? "" : ("\t" + descriptor.CNName + "\r\n")) + "\t" + descriptor.Comment.Replace("\r\n", "\r\n\t") + "\r\n\t*/\r\n";
                         }
-                        if ((((descriptor.FieldType == "float") || (descriptor.FieldType == "bool")) || ((descriptor.FieldType == "sint32") || (descriptor.FieldType == "sint64"))) && (descriptor.PreDefine == DataStruct.FieldDescriptor.PreDefineType.optional))
+                        if ((((descriptor.FieldType == "float") || (descriptor.FieldType == "bool")) || ((descriptor.FieldType == "sint32") || (descriptor.FieldType == "sint64" || descriptor.FieldType == "uint64"))) && (descriptor.PreDefine == DataStruct.FieldDescriptor.PreDefineType.optional))
                         {
                             object obj3 = str4;
                             str4 = string.Concat(new object[] { obj3, "\t", descriptor.PreDefine, " ", fieldType, " ", descriptor.FieldName, " = ", descriptor.FieldId, "[default=", descriptor.DefaultValue, "];" });
@@ -286,7 +286,7 @@
                 foreach (DataStruct.FieldDescriptor descriptor in struct2.fieldItem)
                 {
                     bool flag1 = descriptor.Comment != "";
-                    if ((descriptor.PreDefine == DataStruct.FieldDescriptor.PreDefineType.optional) && (((descriptor.FieldType == "float") || (descriptor.FieldType == "bool")) || ((descriptor.FieldType == "sint32") || (descriptor.FieldType == "sint64"))))
+                    if ((descriptor.PreDefine == DataStruct.FieldDescriptor.PreDefineType.optional) && (((descriptor.FieldType == "float") || (descriptor.FieldType == "bool")) || ((descriptor.FieldType == "sint32") || (descriptor.FieldType == "sint64") || (descriptor.FieldType == "uint64"))))
                     {
                         object obj2 = str3;
                         str3 = string.Concat(new object[] { obj2, "\t", descriptor.PreDefine, " ", descriptor.FieldType, " ", descriptor.FieldName, " = ", descriptor.FieldId, "[default=", descriptor.DefaultValue, "];\r\n" });
@@ -383,7 +383,7 @@
                                 string str8 = str5;
                                 str5 = str8 + "\t/*\r\n" + ((descriptor.CNName == "") ? "" : ("\t" + descriptor.CNName + "\r\n")) + "\t" + descriptor.Comment.Replace("\r\n", "\r\n\t") + "\r\n\t*/\r\n";
                             }
-                            if ((((descriptor.FieldType == "float") || (descriptor.FieldType == "bool")) || ((descriptor.FieldType == "sint32") || (descriptor.FieldType == "sint64"))) && (descriptor.PreDefine == DataStruct.FieldDescriptor.PreDefineType.optional))
+                            if ((((descriptor.FieldType == "float") || (descriptor.FieldType == "bool")) || ((descriptor.FieldType == "sint32") || (descriptor.FieldType == "sint64") || (descriptor.FieldType == "uint64"))) && (descriptor.PreDefine == DataStruct.FieldDescriptor.PreDefineType.optional))
                             {
                                 object obj3 = str5;
                                 str5 = string.Concat(new object[] { obj3, "\t", descriptor.PreDefine, " ", fieldType, " ", descriptor.FieldName, " = ", descriptor.FieldId, "[default=", descriptor.DefaultValue, "];" });
@@ -471,6 +471,16 @@
                             }
                             if ((((descriptor.FieldType == "float") || (descriptor.FieldType == "bool")) || ((descriptor.FieldType == "sint32") || (descriptor.FieldType == "sint64"))) && (descriptor.PreDefine == DataStruct.FieldDescriptor.PreDefineType.optional))
                             {
+                                object obj3 = str5;
+                                str5 = string.Concat(new object[] { obj3, "\t", descriptor.PreDefine, " ", fieldType, " ", descriptor.FieldName, " = ", descriptor.FieldId, "[default=", descriptor.DefaultValue, "];\r\n" });
+                            }
+                            else if ((((descriptor.FieldType == "uint64"))) && (descriptor.PreDefine == DataStruct.FieldDescriptor.PreDefineType.optional))
+                            {
+                                UInt64 t = 0;
+                                if (!UInt64.TryParse(descriptor.DefaultValue, out t))
+                                {
+                                    descriptor.DefaultValue = "0";
+                                }
                                 object obj3 = str5;
                                 str5 = string.Concat(new object[] { obj3, "\t", descriptor.PreDefine, " ", fieldType, " ", descriptor.FieldName, " = ", descriptor.FieldId, "[default=", descriptor.DefaultValue, "];\r\n" });
                             }

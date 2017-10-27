@@ -21,7 +21,7 @@
 
 
 #include "PacketFactory.h"
-#include "Main/PacketMgr.h"
+#include "include/PacketMgr.h"
 #include "LoginRpc.pb.h"
 
 
@@ -52,7 +52,9 @@ public:
 	ModuleLogin()
 	{
 	g_pPacketMgr->registerHandle(	RPC_CODE_LOGIN_CONNECT_REQUEST, &ModuleLogin::RpcConnect);
+	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_LOGIN_CONNECT_REQUEST, new Some_Factory<LoginRpcConnectAsk>());
 	g_pPacketMgr->registerHandle(	RPC_CODE_LOGIN_LOGIN_REQUEST, &ModuleLogin::RpcLogin);
+	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_LOGIN_LOGIN_REQUEST, new Some_Factory<LoginRpcLoginAsk>());
 
 	}
 	

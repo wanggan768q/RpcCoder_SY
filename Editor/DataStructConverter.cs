@@ -30,6 +30,7 @@
                 "sint32",
                 "float",
                 "sint64",
+                "uint64",
                 "string",
                 "bytes"
             };

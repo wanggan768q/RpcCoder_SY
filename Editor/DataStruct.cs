@@ -144,7 +144,7 @@
 
         public static bool IsBaseType(string name)
         {
-            if ((((name != "bool") && (name != "float")) && ((name != "sint32") && (name != "sint64"))) && ((name != "string") && (name != "bytes")))
+            if ((((name != "bool") && (name != "float")) && ((name != "sint32") && (name != "sint64") && (name != "uint64"))) && ((name != "string") && (name != "bytes")))
             {
                 return false;
             }
@@ -361,6 +361,8 @@
 
                     case "sint64":
                         return 1;
+                    case "uint64":
+                        return 1;
 
                     case "string":
                         return 2;
@@ -393,7 +395,9 @@
                         return "int";
 
                     case "sint64":
-                        return "long";
+                        return "Int64";
+                    case "uint64":
+                        return "UInt64";
 
                     case "bytes":
                         return "byte[]";
@@ -428,6 +432,8 @@
 
                     case "sint64":
                         return "INT64";
+                    case "uint64":
+                        return "uint64_t";
 
                     case "bytes":
                         return "string";
@@ -548,6 +554,14 @@
                             if (this.DefaultValue == "")
                             {
                                 this.DefaultValue = "-1";
+                            }
+                        }
+                        else if (value == "uint64")
+                        {
+                            UInt64 t = 0;
+                            if (!UInt64.TryParse(this.DefaultValue,out t))
+                            {
+                                this.DefaultValue = "0";
                             }
                         }
                         else
