@@ -12,7 +12,7 @@ local table = table
 local tostring = tostring
 local MLayerMgr = HS_MLayerMgr
 local typeof = typeof
-require("3rd/pblua/Login/LoginRpc_pb")
+require("3rd/pblua/LoginRpc_pb")
 local  LoginRpc_pb = LoginRpc_pb
 module("LoginModel")
 

@@ -469,11 +469,11 @@
                 str10 = OperationImpl;
                 //OperationImpl = str10 + "\tMsgIdMgr::Instance().MsgRegister( this, &Module" + m.ModuleName + "::" + str4 + operate.Name + ");\r\n";
                 //g_pPacketMgr->registerHandle((Packets::PACKET_DEFINE)(ID), &ModuleBag::RpcSell);
-                //g_pPacketMgr->registerPacketFacotry((Packets::PACKET_DEFINE)(ID), new Some_Factory<askpb>());
+                //g_pPacketMgr->registerPacketFacotry(RPC_CODE_LOGIN_CONNECT_REQUEST, new Some_Factory<LoginRpcConnectAsk>(), new Some_Factory<LoginRpcConnectReply>());
                 //str5 = str3 + "_CODE_" + m.ModuleName.ToUpper() + "_" + operate.Name.ToUpper() + "_" + str7.ToUpper();
                 string ssssss = "RPC_CODE_" + m.ModuleName.ToUpper() + "_" + operate.Name.ToUpper() + "_" + str7.ToUpper();
                 OperationImpl = str10 + "\tg_pPacketMgr->registerHandle(" + enumId + ", &Module" + m.ModuleName + "::" + str4 + operate.Name + ");\r\n";
-                OperationImpl += "\tg_pPacketMgr->registerPacketFacotry(" + enumId + ", new Some_Factory<" + pbClassName + ">());\r\n";
+                OperationImpl += "\tg_pPacketMgr->registerPacketFacotry(" + enumId + ", new Some_Factory<" + str + ">());\r\n";
             }
         }
 
