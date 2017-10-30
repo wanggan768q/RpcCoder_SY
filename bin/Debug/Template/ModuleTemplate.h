@@ -23,6 +23,7 @@
 #include "PacketFactory.h"
 #include "include/PacketMgr.h"
 #include "$Template$Rpc.pb.h"
+#include <memory>
 
 
 $IncludeSyncDataHeader$
@@ -31,7 +32,7 @@ $HeaderConfig$
 class CPlayer;
 class CPacket;
 
-extern PacketMgr* g_pPacketMgr;
+extern std::unique_ptr<PacketMgr> g_pPacketMgr;
 
 //$ModCName$ µœ÷¿‡
 class Module$Template$

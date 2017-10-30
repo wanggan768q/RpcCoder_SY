@@ -441,7 +441,7 @@
                     str6 = ((str10 + "\t* Input:          " + struct4.getFullName() + "Wraper& Notify " + struct4.CNName + "\r\n") + "\t* Input:          INT64 UserId 需要通知到的用户ID\r\n" + "\t* Output:         无\r\n") + "\t* Return:         无\r\n" + "\t********************************************************************************************/\r\n";
                     OperationDeclare = OperationDeclare + str6;
                     str10 = OperationDeclare;
-                    OperationDeclare = str10 + "\tvirtual void SendToClient" + operate.Name + "( INT64 UserId, " + struct4.getFullName() + "Wraper& Notify );\r\n\r\n";
+                    OperationDeclare = str10 + "\t//virtual void SendToClient" + operate.Name + "( INT64 UserId, " + struct4.getFullName() + "Wraper& Notify );\r\n\r\n";
                     str6 = str6.Replace("\t", "");
                     OperationImplement = OperationImplement + str6;
                     str10 = OperationImplement;
