@@ -2,6 +2,9 @@
 local ModuleId = 2;
 local RPC_CODE_LOGIN_CONNECT_REQUEST = 251
 local RPC_CODE_LOGIN_LOGIN_REQUEST = 252
+local RPC_CODE_LOGIN_CHARACTERLIST_REQUEST = 253
+local RPC_CODE_LOGIN_SELECTCHARACTER_REQUEST = 254
+local RPC_CODE_LOGIN_CREATECHARACTER_REQUEST = 255
 
 
 
@@ -85,6 +88,52 @@ function Login(self,Username,Passwd,_hanlder)
 	MLayerMgr.SendAsk(RPC_CODE_LOGIN_LOGIN_REQUEST, pb_data, callback)
 	showNetTip(self)
 end
+function CharacterList(self,Accountname ,_hanlder)
+	local PB = self.rpc_pb.LoginRpcCharacterListAsk()
+	PB.Accountname  = Accountname 
+	local pb_data = PB:SerializeToString()
+	local function callback(_data)
+		hideNetTip(self)
+		if _hanlder then
+			local ret_msg = self.rpc_pb.LoginRpcCharacterListReply()
+			ret_msg:ParseFromString(_data)
+			 _hanlder(ret_msg)
+		end
+	end
+	MLayerMgr.SendAsk(RPC_CODE_LOGIN_CHARACTERLIST_REQUEST, pb_data, callback)
+	showNetTip(self)
+end
+function SelectCharacter(self,RoleId,_hanlder)
+	local PB = self.rpc_pb.LoginRpcSelectCharacterAsk()
+	PB.RoleId = RoleId
+	local pb_data = PB:SerializeToString()
+	local function callback(_data)
+		hideNetTip(self)
+		if _hanlder then
+			local ret_msg = self.rpc_pb.LoginRpcSelectCharacterReply()
+			ret_msg:ParseFromString(_data)
+			 _hanlder(ret_msg)
+		end
+	end
+	MLayerMgr.SendAsk(RPC_CODE_LOGIN_SELECTCHARACTER_REQUEST, pb_data, callback)
+	showNetTip(self)
+end
+function CreateCharacter(self,Nickname,ConfigId,_hanlder)
+	local PB = self.rpc_pb.LoginRpcCreateCharacterAsk()
+	PB.Nickname = Nickname
+	PB.ConfigId = ConfigId
+	local pb_data = PB:SerializeToString()
+	local function callback(_data)
+		hideNetTip(self)
+		if _hanlder then
+			local ret_msg = self.rpc_pb.LoginRpcCreateCharacterReply()
+			ret_msg:ParseFromString(_data)
+			 _hanlder(ret_msg)
+		end
+	end
+	MLayerMgr.SendAsk(RPC_CODE_LOGIN_CREATECHARACTER_REQUEST, pb_data, callback)
+	showNetTip(self)
+end
 
 
 
@@ -107,6 +156,27 @@ t.name = "Login"
 t.para = {{name="Username",t=2},{name="Passwd",t=2}}
 t.hand = LoginModel.Login
 t.pb = LoginRpc_pb.LoginRpcLoginAsk()
+table.insert(askList.Login,t)
+
+local t = {}
+t.name = "CharacterList"
+t.para = {{name="Accountname ",t=2}}
+t.hand = LoginModel.CharacterList
+t.pb = LoginRpc_pb.LoginRpcCharacterListAsk()
+table.insert(askList.Login,t)
+
+local t = {}
+t.name = "SelectCharacter"
+t.para = {{name="RoleId",t=1}}
+t.hand = LoginModel.SelectCharacter
+t.pb = LoginRpc_pb.LoginRpcSelectCharacterAsk()
+table.insert(askList.Login,t)
+
+local t = {}
+t.name = "CreateCharacter"
+t.para = {{name="Nickname",t=2},{name="ConfigId",t=1}}
+t.hand = LoginModel.CreateCharacter
+t.pb = LoginRpc_pb.LoginRpcCreateCharacterAsk()
 table.insert(askList.Login,t)
 
 --]]

@@ -8,12 +8,24 @@
         <OP_ASK Name="Ask" CName="请求" MsgID="4" DataStruct="RpcLoginAsk" Comment="" />
         <OP_REPLY Name="Reply" CName="回应" MsgID="5" DataStruct="RpcLoginReply" Comment="" />
     </Operate>
-    <Struct Name="RpcConnectAsk" CName="连接验证请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+    <Operate Name="CharacterList" CName="角色列表" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="6" DataStruct="RpcCharacterListAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="7" DataStruct="RpcCharacterListReply" Comment="" />
+    </Operate>
+    <Operate Name="SelectCharacter" CName="选择角色" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="8" DataStruct="RpcSelectCharacterAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="9" DataStruct="RpcSelectCharacterReply" Comment="" />
+    </Operate>
+    <Operate Name="CreateCharacter" CName="创建角色" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="10" DataStruct="RpcCreateCharacterAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="11" DataStruct="RpcCreateCharacterReply" Comment="" />
+    </Operate>
+    <Struct Name="RpcConnectAsk" CName="连接验证请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
         <Field PreDefine="optional" FieldType="sint32" FieldId="1" Name="Type" CName="连接类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
     </Struct>
     <Struct Name="RpcConnectReply" CName="连接验证回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
         <Field PreDefine="optional" FieldType="sint32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
-        <Field PreDefine="optional" FieldType="sint32" FieldId="2" Name="Type" CName="类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="sint32" FieldId="2" Name="Type" CName="类型" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
     </Struct>
     <Struct Name="RpcLoginAsk" CName="登录请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
         <Field PreDefine="optional" FieldType="string" FieldId="1" Name="Username" CName="用户名" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
@@ -21,6 +33,30 @@
     </Struct>
     <Struct Name="RpcLoginReply" CName="登录回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
         <Field PreDefine="optional" FieldType="sint32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
-        <Field PreDefine="optional" FieldType="uint64" FieldId="2" Name="RoleId" CName="用户ID" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="2" Name="RoleId" CName="用户ID" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcCharacterListAsk" CName="角色列表请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="string" FieldId="1" Name="Accountname " CName="账号" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+    </Struct>
+    <Struct Name="RpcCharacterListReply" CName="角色列表回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="sint32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="CharacterInfo" FieldId="2" Name="CharacterList" CName="所有角色信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcSelectCharacterAsk" CName="选择角色请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="RoleId" CName="id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcSelectCharacterReply" CName="选择角色回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="optional" FieldType="sint32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="2" Name="RoleId" CName="id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="string" FieldId="3" Name="Ip" CName="ip" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+        <Field PreDefine="optional" FieldType="sint32" FieldId="4" Name="Port" CName="端口" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcCreateCharacterAsk" CName="创建角色请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="string" FieldId="1" Name="Nickname" CName="昵称" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+        <Field PreDefine="optional" FieldType="sint32" FieldId="2" Name="ConfigId" CName="配置表id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcCreateCharacterReply" CName="创建角色回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="sint32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="2" Name="Roleid" CName="角色id" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
     </Struct>
 </Root>

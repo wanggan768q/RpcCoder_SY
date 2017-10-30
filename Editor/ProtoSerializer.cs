@@ -409,6 +409,218 @@
             }
         }
 
+        private static ArrayList GenMessage(DataStruct struct2,ref string str5)
+        {
+            ArrayList referenceMssage = new ArrayList();
+            str5 += "message  " + struct2.getFullName() + "\r\n{\r\n";
+            foreach (DataStruct.FieldDescriptor descriptor in struct2.fieldItem)
+            {
+                DataStruct struct3 = null;
+                
+                string fieldType = descriptor.FieldType;
+                if ((((descriptor.FieldType == "float") || (descriptor.FieldType == "bool")) || ((descriptor.FieldType == "sint32") || (descriptor.FieldType == "sint64"))) && (descriptor.PreDefine == DataStruct.FieldDescriptor.PreDefineType.optional))
+                {
+                    object obj3 = str5;
+                    str5 = string.Concat(new object[] { obj3, "\t", descriptor.PreDefine, " ", fieldType, " ", descriptor.FieldName, " = ", descriptor.FieldId, "[default=", descriptor.DefaultValue, "];\r\n" });
+                }
+                else if ((((descriptor.FieldType == "uint64"))) && (descriptor.PreDefine == DataStruct.FieldDescriptor.PreDefineType.optional))
+                {
+                    UInt64 t = 0;
+                    if (!UInt64.TryParse(descriptor.DefaultValue, out t))
+                    {
+                        descriptor.DefaultValue = "0";
+                    }
+                    object obj3 = str5;
+                    str5 = string.Concat(new object[] { obj3, "\t", descriptor.PreDefine, " ", fieldType, " ", descriptor.FieldName, " = ", descriptor.FieldId, "[default=", descriptor.DefaultValue, "];\r\n" });
+                }
+                else if (descriptor.FieldType == "string")
+                {
+                    object obj4 = str5;
+                    str5 = string.Concat(new object[] { obj4, "\t", descriptor.PreDefine, " ", fieldType, " ", descriptor.FieldName, " = ", descriptor.FieldId, ";\r\n" });
+                }
+                else
+                {
+                    object obj4 = str5;
+                    DataStruct refStruct = null;
+                    if (DataStructConverter.ContainsKey(fieldType, ref refStruct))
+                    {
+                        referenceMssage.Add(refStruct);
+                    }
+
+
+                    str5 = string.Concat(new object[] { obj4, "\t", descriptor.PreDefine, " ", fieldType, " ", descriptor.FieldName, " = ", descriptor.FieldId, ";\r\n" });
+                }
+            }
+
+            str5 = str5 + "\r\n}\r\n\r\n";
+
+            return referenceMssage;
+        }
+
+        private static ArrayList GenMessage(DataStruct struct2, DataStruct.protoTypeE protoType, ref string str5, Module m, ref bool flag)
+        {
+            ArrayList referenceMssage = new ArrayList();
+            if ((struct2.ProtoType == protoType) && ((struct2.StructName.ToLower().IndexOf("svrrpc") <= -1) || (protoType != DataStruct.protoTypeE.RpcProto)))
+            {
+                if (protoType == DataStruct.protoTypeE.RpcProto)
+                {
+                    str5 = str5 + "message  " + struct2.getFullName() + "\r\n{\r\n";
+                }
+                else
+                {
+                    object obj2 = str5;
+                    str5 = string.Concat(new object[] { obj2, "message  ", struct2.getFullName(), "V", m.SyncDataVersion, "\r\n{\r\n" });
+                    if ((struct2.DataType == DataStruct.SyncType.UserData) || ((struct2.DataType == DataStruct.SyncType.CacheData) && struct2.SyncToClient))
+                    {
+                        flag = true;
+                    }
+                }
+                string temp = "";
+                foreach (DataStruct.FieldDescriptor descriptor in struct2.fieldItem)
+                {
+                    DataStruct struct3 = null;
+                    bool flag2 = DataStruct.DataStructDic.TryGetValue(descriptor.FieldType, out struct3) || DataStruct.DataStructDic.TryGetValue(m.ModuleName + descriptor.FieldType, out struct3);
+                    string fieldType = descriptor.FieldType;
+                    if (flag2)
+                    {
+                        fieldType = struct3.getFullName();
+                        DataStruct ds = null;
+                        if (!DataStructConverter.ContainsKey(descriptor.FieldType, ref ds) && (protoType == DataStruct.protoTypeE.SyncProto))
+                        {
+                            fieldType = fieldType + "V" + m.SyncDataVersion;
+                        }
+                    }
+                    if ((((descriptor.FieldType == "float") || (descriptor.FieldType == "bool")) || ((descriptor.FieldType == "sint32") || (descriptor.FieldType == "sint64"))) && (descriptor.PreDefine == DataStruct.FieldDescriptor.PreDefineType.optional))
+                    {
+                        object obj3 = str5;
+                        str5 = string.Concat(new object[] { obj3, "\t", descriptor.PreDefine, " ", fieldType, " ", descriptor.FieldName, " = ", descriptor.FieldId, "[default=", descriptor.DefaultValue, "];\r\n" });
+                    }
+                    else if ((((descriptor.FieldType == "uint64"))) && (descriptor.PreDefine == DataStruct.FieldDescriptor.PreDefineType.optional))
+                    {
+                        UInt64 t = 0;
+                        if (!UInt64.TryParse(descriptor.DefaultValue, out t))
+                        {
+                            descriptor.DefaultValue = "0";
+                        }
+                        object obj3 = str5;
+                        str5 = string.Concat(new object[] { obj3, "\t", descriptor.PreDefine, " ", fieldType, " ", descriptor.FieldName, " = ", descriptor.FieldId, "[default=", descriptor.DefaultValue, "];\r\n" });
+                    }
+                    else if (descriptor.FieldType == "string")
+                    {
+                        object obj4 = str5;
+                        str5 = string.Concat(new object[] { obj4, "\t", descriptor.PreDefine, " ", fieldType, " ", descriptor.FieldName, " = ", descriptor.FieldId, ";\r\n" });
+                    }
+                    else
+                    {
+                        object obj4 = str5;
+                        DataStruct refStruct = null;
+                        if (DataStructConverter.ContainsKey(fieldType, ref refStruct))
+                        {
+                            //temp += "," + fieldType;
+                            //MessageBox.Show(fieldType + "__" + refStruct.getFullName());
+                            referenceMssage.Add(refStruct);
+                        }
+
+
+                        str5 = string.Concat(new object[] { obj4, "\t", descriptor.PreDefine, " ", fieldType, " ", descriptor.FieldName, " = ", descriptor.FieldId, ";\r\n" });
+                    }
+                }
+
+                str5 = str5 + "\r\n}\r\n\r\n";
+            }
+            return referenceMssage;
+        }
+
+        public static void SerializeLUA_SY(Module m, string dir, Label label1, DataStruct.protoTypeE protoType)
+        {
+            if (GenLangFlags.LUA)
+            {
+                string path = dir + @"\Proto\SY\";
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+                string ns = "";
+                string str3 = "";
+                string shortName = "";
+                if (protoType == DataStruct.protoTypeE.RpcProto)
+                {
+                    ns = "RpcProtoBuf";
+                    str3 = path + m.ModuleName + "Rpc.proto";
+                    shortName = m.ModuleName + "Rpc.lua";
+                }
+                else
+                {
+                    ns = "SyncProtoBuf";
+                    str3 = string.Concat(new object[] { path, m.ModuleName, "V", m.SyncDataVersion, "Data.proto" });
+                    shortName = string.Concat(new object[] { m.ModuleName, "V", m.SyncDataVersion, "Data.lua" });
+                }
+                label1.Text = "正在生成文件: " + str3;
+                label1.Refresh();
+                bool flag = false;
+                string str5 = "";
+
+                //遍历其他类型字段
+
+                ArrayList refMsg = new ArrayList();
+                ArrayList refMsgSec = new ArrayList();
+
+                //str5 = str5 + "\r\nimport \"PublicStruct.proto\";\r\n\r\n";
+                foreach (DataStruct struct2 in m.moduleDataStruct)
+                {
+                    ArrayList tempRefMsg = GenMessage(struct2, protoType, ref str5, m, ref flag);
+                    foreach (DataStruct item in tempRefMsg)
+                    {
+                        bool notExist = true;
+                        foreach (DataStruct r in refMsg)
+                        {
+                            if (r.getFullName() == item.getFullName())
+                            {
+                                notExist = false;
+                                break;
+                            }
+                        }
+                        if (notExist)
+                        {
+                            refMsg.Add(item);
+                        }
+                    }
+                }
+
+                foreach (DataStruct struct2 in refMsg)
+                {
+                    //MessageBox.Show("AAAA " + struct2.getFullName());
+                    ArrayList tempRefMsg = GenMessage(struct2, ref str5);
+
+                    foreach (DataStruct item in tempRefMsg)
+                    {
+                        bool notExist = true;
+                        foreach (DataStruct r in refMsg)
+                        {
+                            if (r.getFullName() == item.getFullName())
+                            {
+                                notExist = false;
+                                break;
+                            }
+                        }
+                        if (notExist)
+                        {
+                            refMsgSec.Add(item);
+                        }
+                    }
+                }
+                if (flag || (protoType != DataStruct.protoTypeE.SyncProto))
+                {
+                    StreamWriter writer = new StreamWriter(str3, false, Encoding.GetEncoding("GBK"));
+                    writer.Write(str5);
+                    writer.Flush();
+                    writer.Close();
+                    ProtocLUA(ns, dir, str3, m.ModuleName, shortName);
+                }
+            }
+        
+        }
+
         public static void SerializeLUA(Module m, string dir, Label label1, DataStruct.protoTypeE protoType)
         {
             if (GenLangFlags.LUA)
@@ -440,58 +652,7 @@
                 str5 = str5 + "\r\nimport \"PublicStruct.proto\";\r\n\r\n";
                 foreach (DataStruct struct2 in m.moduleDataStruct)
                 {
-                    if ((struct2.ProtoType == protoType) && ((struct2.StructName.ToLower().IndexOf("svrrpc") <= -1) || (protoType != DataStruct.protoTypeE.RpcProto)))
-                    {
-                        if (protoType == DataStruct.protoTypeE.RpcProto)
-                        {
-                            str5 = str5 + "message  " + struct2.getFullName() + "\r\n{\r\n";
-                        }
-                        else
-                        {
-                            object obj2 = str5;
-                            str5 = string.Concat(new object[] { obj2, "message  ", struct2.getFullName(), "V", m.SyncDataVersion, "\r\n{\r\n" });
-                            if ((struct2.DataType == DataStruct.SyncType.UserData) || ((struct2.DataType == DataStruct.SyncType.CacheData) && struct2.SyncToClient))
-                            {
-                                flag = true;
-                            }
-                        }
-                        foreach (DataStruct.FieldDescriptor descriptor in struct2.fieldItem)
-                        {
-                            DataStruct struct3 = null;
-                            bool flag2 = DataStruct.DataStructDic.TryGetValue(descriptor.FieldType, out struct3) || DataStruct.DataStructDic.TryGetValue(m.ModuleName + descriptor.FieldType, out struct3);
-                            string fieldType = descriptor.FieldType;
-                            if (flag2)
-                            {
-                                fieldType = struct3.getFullName();
-                                DataStruct ds = null;
-                                if (!DataStructConverter.ContainsKey(descriptor.FieldType, ref ds) && (protoType == DataStruct.protoTypeE.SyncProto))
-                                {
-                                    fieldType = fieldType + "V" + m.SyncDataVersion;
-                                }
-                            }
-                            if ((((descriptor.FieldType == "float") || (descriptor.FieldType == "bool")) || ((descriptor.FieldType == "sint32") || (descriptor.FieldType == "sint64"))) && (descriptor.PreDefine == DataStruct.FieldDescriptor.PreDefineType.optional))
-                            {
-                                object obj3 = str5;
-                                str5 = string.Concat(new object[] { obj3, "\t", descriptor.PreDefine, " ", fieldType, " ", descriptor.FieldName, " = ", descriptor.FieldId, "[default=", descriptor.DefaultValue, "];\r\n" });
-                            }
-                            else if ((((descriptor.FieldType == "uint64"))) && (descriptor.PreDefine == DataStruct.FieldDescriptor.PreDefineType.optional))
-                            {
-                                UInt64 t = 0;
-                                if (!UInt64.TryParse(descriptor.DefaultValue, out t))
-                                {
-                                    descriptor.DefaultValue = "0";
-                                }
-                                object obj3 = str5;
-                                str5 = string.Concat(new object[] { obj3, "\t", descriptor.PreDefine, " ", fieldType, " ", descriptor.FieldName, " = ", descriptor.FieldId, "[default=", descriptor.DefaultValue, "];\r\n" });
-                            }
-                            else
-                            {
-                                object obj4 = str5;
-                                str5 = string.Concat(new object[] { obj4, "\t", descriptor.PreDefine, " ", fieldType, " ", descriptor.FieldName, " = ", descriptor.FieldId, ";\r\n" });
-                            }
-                        }
-                        str5 = str5 + "\r\n}\r\n\r\n";
-                    }
+                    GenMessage(struct2, protoType, ref str5, m, ref flag);
                 }
                 if (flag || (protoType != DataStruct.protoTypeE.SyncProto))
                 {

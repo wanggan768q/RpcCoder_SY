@@ -3,7 +3,7 @@ LoginRpcConnectAsk↑ 连接验证请求
 
 LoginRpcConnectReply↓ 连接验证回应
 	Result:int32 = -9999	;返回结果
-	Type:int32 = -1	;类型
+	Type:int32 = 0	;类型
 
 LoginRpcLoginAsk↑ 登录请求
 	Username:string	;用户名
@@ -12,4 +12,32 @@ LoginRpcLoginAsk↑ 登录请求
 LoginRpcLoginReply↓ 登录回应
 	Result:int32 = -9999	;返回结果
 	RoleId:uint64 = 0	;用户ID
+
+LoginRpcCharacterListAsk↑ 角色列表请求
+	Accountname :string	;账号
+
+LoginRpcCharacterListReply↓ 角色列表回应
+	Result:int32 = -9999	;返回结果
+	CharacterList:CharacterInfo*	;所有角色信息
+	[CharacterInfo]
+		RoleId:uint64 = 0	;roleID
+		Nickname:string	;昵称
+		ConfigId:int32 = -1	;配置表id
+
+LoginRpcSelectCharacterAsk↑ 选择角色请求
+	RoleId:uint64 = 0	;id
+
+LoginRpcSelectCharacterReply↓ 选择角色回应
+	Result:int32 = -9999	;返回结果
+	RoleId:uint64 = 0	;id
+	Ip:string	;ip
+	Port:int32 = 0	;端口
+
+LoginRpcCreateCharacterAsk↑ 创建角色请求
+	Nickname:string	;昵称
+	ConfigId:int32 = -1	;配置表id
+
+LoginRpcCreateCharacterReply↓ 创建角色回应
+	Result:int32 = -9999	;返回结果
+	Roleid:uint64 = 0	;角色id
 

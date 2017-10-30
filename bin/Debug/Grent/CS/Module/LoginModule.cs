@@ -22,6 +22,9 @@ public class LoginRPC
 	
 	public const int RPC_CODE_LOGIN_CONNECT_REQUEST = 251;
 	public const int RPC_CODE_LOGIN_LOGIN_REQUEST = 252;
+	public const int RPC_CODE_LOGIN_CHARACTERLIST_REQUEST = 253;
+	public const int RPC_CODE_LOGIN_SELECTCHARACTER_REQUEST = 254;
+	public const int RPC_CODE_LOGIN_CREATECHARACTER_REQUEST = 255;
 
 	
 	private static LoginRPC m_Instance = null;
@@ -82,6 +85,61 @@ public class LoginRPC
 
 		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
 			LoginRpcLoginReplyWraper replyPBWraper = new LoginRpcLoginReplyWraper();
+			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
+			replyCB(replyPBWraper);
+		});
+	}
+
+	/**
+	*登录模块-->角色列表 RPC请求
+	*/
+	public void CharacterList(string Accountname , ReplyHandler replyCB)
+	{
+		LoginRpcCharacterListAskWraper askPBWraper = new LoginRpcCharacterListAskWraper();
+		askPBWraper.Accountname  = Accountname ;
+		ModMessage askMsg = new ModMessage();
+		askMsg.MsgNum = RPC_CODE_LOGIN_CHARACTERLIST_REQUEST;
+		askMsg.protoMS = askPBWraper.ToMemoryStream();
+
+		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
+			LoginRpcCharacterListReplyWraper replyPBWraper = new LoginRpcCharacterListReplyWraper();
+			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
+			replyCB(replyPBWraper);
+		});
+	}
+
+	/**
+	*登录模块-->选择角色 RPC请求
+	*/
+	public void SelectCharacter(UInt64 RoleId, ReplyHandler replyCB)
+	{
+		LoginRpcSelectCharacterAskWraper askPBWraper = new LoginRpcSelectCharacterAskWraper();
+		askPBWraper.RoleId = RoleId;
+		ModMessage askMsg = new ModMessage();
+		askMsg.MsgNum = RPC_CODE_LOGIN_SELECTCHARACTER_REQUEST;
+		askMsg.protoMS = askPBWraper.ToMemoryStream();
+
+		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
+			LoginRpcSelectCharacterReplyWraper replyPBWraper = new LoginRpcSelectCharacterReplyWraper();
+			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
+			replyCB(replyPBWraper);
+		});
+	}
+
+	/**
+	*登录模块-->创建角色 RPC请求
+	*/
+	public void CreateCharacter(string Nickname, int ConfigId, ReplyHandler replyCB)
+	{
+		LoginRpcCreateCharacterAskWraper askPBWraper = new LoginRpcCreateCharacterAskWraper();
+		askPBWraper.Nickname = Nickname;
+		askPBWraper.ConfigId = ConfigId;
+		ModMessage askMsg = new ModMessage();
+		askMsg.MsgNum = RPC_CODE_LOGIN_CREATECHARACTER_REQUEST;
+		askMsg.protoMS = askPBWraper.ToMemoryStream();
+
+		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
+			LoginRpcCreateCharacterReplyWraper replyPBWraper = new LoginRpcCreateCharacterReplyWraper();
 			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
 			replyCB(replyPBWraper);
 		});

@@ -340,6 +340,8 @@
                     ProtoSerializer.SerializeCS(tag, this.lastDir, this.label1, DataStruct.protoTypeE.SyncProto);
                     ProtoSerializer.SerializeLUA(tag, this.lastDir, this.label1, DataStruct.protoTypeE.RpcProto);
                     ProtoSerializer.SerializeLUA(tag, this.lastDir, this.label1, DataStruct.protoTypeE.SyncProto);
+                    ProtoSerializer.SerializeLUA_SY(tag, this.lastDir, this.label1, DataStruct.protoTypeE.RpcProto);
+                    ProtoSerializer.SerializeLUA_SY(tag, this.lastDir, this.label1, DataStruct.protoTypeE.SyncProto);
                     CPPSerializer.Serialize(tag, ref moduleAllName, this.lastDir, this.label1);
                     CSSerializer.Serialize(tag, this.lastDir, this.label1);
                     LuaSerializer.Serialize(tag, this.lastDir, this.label1);
@@ -869,6 +871,8 @@
                             ProtoSerializer.SerializeCS(tag, dir, this.label1, DataStruct.protoTypeE.SyncProto);
                             ProtoSerializer.SerializeLUA(tag, dir, this.label1, DataStruct.protoTypeE.RpcProto);
                             ProtoSerializer.SerializeLUA(tag, dir, this.label1, DataStruct.protoTypeE.SyncProto);
+                            ProtoSerializer.SerializeLUA_SY(tag, dir, this.label1, DataStruct.protoTypeE.RpcProto);
+                            ProtoSerializer.SerializeLUA_SY(tag, dir, this.label1, DataStruct.protoTypeE.SyncProto);
                             CSSerializer.Serialize(tag, dir, this.label1);
                             CPPSerializer.Serialize(tag, ref moduleAllName, dir, this.label1);
                             CoffeeSerializer.Serialize(tag, dir, this.label1);

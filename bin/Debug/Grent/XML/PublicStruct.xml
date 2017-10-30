@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<Root>
+    <Struct Name="CharacterInfo" CName="角色信息" ProtoType="CommProto" Comment="" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="uint64" Name="RoleId" CName="roleID" Comment="" FieldId="1" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" />
+        <Field PreDefine="optional" FieldType="string" Name="Nickname" CName="昵称" Comment="" FieldId="2" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" />
+        <Field PreDefine="optional" FieldType="sint32" Name="ConfigId" CName="配置表id" Comment="" FieldId="3" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
+    </Struct>
+</Root>

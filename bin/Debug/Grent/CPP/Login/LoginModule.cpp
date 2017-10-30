@@ -29,6 +29,12 @@ ModuleLogin::ModuleLogin()
 	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_LOGIN_CONNECT_REQUEST, new Some_Factory<LoginRpcConnectAsk>());
 	g_pPacketMgr->registerHandle(	RPC_CODE_LOGIN_LOGIN_REQUEST, &ModuleLogin::RpcLogin);
 	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_LOGIN_LOGIN_REQUEST, new Some_Factory<LoginRpcLoginAsk>());
+	g_pPacketMgr->registerHandle(	RPC_CODE_LOGIN_CHARACTERLIST_REQUEST, &ModuleLogin::RpcCharacterList);
+	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_LOGIN_CHARACTERLIST_REQUEST, new Some_Factory<LoginRpcCharacterListAsk>());
+	g_pPacketMgr->registerHandle(	RPC_CODE_LOGIN_SELECTCHARACTER_REQUEST, &ModuleLogin::RpcSelectCharacter);
+	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_LOGIN_SELECTCHARACTER_REQUEST, new Some_Factory<LoginRpcSelectCharacterAsk>());
+	g_pPacketMgr->registerHandle(	RPC_CODE_LOGIN_CREATECHARACTER_REQUEST, &ModuleLogin::RpcCreateCharacter);
+	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_LOGIN_CREATECHARACTER_REQUEST, new Some_Factory<LoginRpcCreateCharacterAsk>());
 
 
 }

@@ -36,6 +36,12 @@ class LoginRpcConnectAsk;
 class LoginRpcConnectReply;
 class LoginRpcLoginAsk;
 class LoginRpcLoginReply;
+class LoginRpcCharacterListAsk;
+class LoginRpcCharacterListReply;
+class LoginRpcSelectCharacterAsk;
+class LoginRpcSelectCharacterReply;
+class LoginRpcCreateCharacterAsk;
+class LoginRpcCreateCharacterReply;
 
 // ===================================================================
 
@@ -182,7 +188,7 @@ class LoginRpcConnectReply : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 result() const;
   inline void set_result(::google::protobuf::int32 value);
 
-  // optional sint32 Type = 2 [default = -1];
+  // optional sint32 Type = 2 [default = 0];
   inline bool has_type() const;
   inline void clear_type();
   static const int kTypeFieldNumber = 2;
@@ -405,6 +411,576 @@ class LoginRpcLoginReply : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static LoginRpcLoginReply* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class LoginRpcCharacterListAsk : public ::google::protobuf::Message {
+ public:
+  LoginRpcCharacterListAsk();
+  virtual ~LoginRpcCharacterListAsk();
+
+  LoginRpcCharacterListAsk(const LoginRpcCharacterListAsk& from);
+
+  inline LoginRpcCharacterListAsk& operator=(const LoginRpcCharacterListAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const LoginRpcCharacterListAsk& default_instance();
+
+  void Swap(LoginRpcCharacterListAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  LoginRpcCharacterListAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const LoginRpcCharacterListAsk& from);
+  void MergeFrom(const LoginRpcCharacterListAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional string Accountname = 1;
+  inline bool has_accountname() const;
+  inline void clear_accountname();
+  static const int kAccountnameFieldNumber = 1;
+  inline const ::std::string& accountname() const;
+  inline void set_accountname(const ::std::string& value);
+  inline void set_accountname(const char* value);
+  inline void set_accountname(const char* value, size_t size);
+  inline ::std::string* mutable_accountname();
+  inline ::std::string* release_accountname();
+  inline void set_allocated_accountname(::std::string* accountname);
+
+  // @@protoc_insertion_point(class_scope:LoginRpcCharacterListAsk)
+ private:
+  inline void set_has_accountname();
+  inline void clear_has_accountname();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::std::string* accountname_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_LoginRpc_2eproto();
+  friend void protobuf_AssignDesc_LoginRpc_2eproto();
+  friend void protobuf_ShutdownFile_LoginRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static LoginRpcCharacterListAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class LoginRpcCharacterListReply : public ::google::protobuf::Message {
+ public:
+  LoginRpcCharacterListReply();
+  virtual ~LoginRpcCharacterListReply();
+
+  LoginRpcCharacterListReply(const LoginRpcCharacterListReply& from);
+
+  inline LoginRpcCharacterListReply& operator=(const LoginRpcCharacterListReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const LoginRpcCharacterListReply& default_instance();
+
+  void Swap(LoginRpcCharacterListReply* other);
+
+  // implements Message ----------------------------------------------
+
+  LoginRpcCharacterListReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const LoginRpcCharacterListReply& from);
+  void MergeFrom(const LoginRpcCharacterListReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 Result = 1 [default = -9999];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // repeated .CharacterInfo CharacterList = 2;
+  inline int characterlist_size() const;
+  inline void clear_characterlist();
+  static const int kCharacterListFieldNumber = 2;
+  inline const ::CharacterInfo& characterlist(int index) const;
+  inline ::CharacterInfo* mutable_characterlist(int index);
+  inline ::CharacterInfo* add_characterlist();
+  inline const ::google::protobuf::RepeatedPtrField< ::CharacterInfo >&
+      characterlist() const;
+  inline ::google::protobuf::RepeatedPtrField< ::CharacterInfo >*
+      mutable_characterlist();
+
+  // @@protoc_insertion_point(class_scope:LoginRpcCharacterListReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::RepeatedPtrField< ::CharacterInfo > characterlist_;
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_LoginRpc_2eproto();
+  friend void protobuf_AssignDesc_LoginRpc_2eproto();
+  friend void protobuf_ShutdownFile_LoginRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static LoginRpcCharacterListReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class LoginRpcSelectCharacterAsk : public ::google::protobuf::Message {
+ public:
+  LoginRpcSelectCharacterAsk();
+  virtual ~LoginRpcSelectCharacterAsk();
+
+  LoginRpcSelectCharacterAsk(const LoginRpcSelectCharacterAsk& from);
+
+  inline LoginRpcSelectCharacterAsk& operator=(const LoginRpcSelectCharacterAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const LoginRpcSelectCharacterAsk& default_instance();
+
+  void Swap(LoginRpcSelectCharacterAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  LoginRpcSelectCharacterAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const LoginRpcSelectCharacterAsk& from);
+  void MergeFrom(const LoginRpcSelectCharacterAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint64 RoleId = 1 [default = 0];
+  inline bool has_roleid() const;
+  inline void clear_roleid();
+  static const int kRoleIdFieldNumber = 1;
+  inline ::google::protobuf::uint64 roleid() const;
+  inline void set_roleid(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:LoginRpcSelectCharacterAsk)
+ private:
+  inline void set_has_roleid();
+  inline void clear_has_roleid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint64 roleid_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_LoginRpc_2eproto();
+  friend void protobuf_AssignDesc_LoginRpc_2eproto();
+  friend void protobuf_ShutdownFile_LoginRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static LoginRpcSelectCharacterAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class LoginRpcSelectCharacterReply : public ::google::protobuf::Message {
+ public:
+  LoginRpcSelectCharacterReply();
+  virtual ~LoginRpcSelectCharacterReply();
+
+  LoginRpcSelectCharacterReply(const LoginRpcSelectCharacterReply& from);
+
+  inline LoginRpcSelectCharacterReply& operator=(const LoginRpcSelectCharacterReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const LoginRpcSelectCharacterReply& default_instance();
+
+  void Swap(LoginRpcSelectCharacterReply* other);
+
+  // implements Message ----------------------------------------------
+
+  LoginRpcSelectCharacterReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const LoginRpcSelectCharacterReply& from);
+  void MergeFrom(const LoginRpcSelectCharacterReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 Result = 1 [default = -9999];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // optional uint64 RoleId = 2 [default = 0];
+  inline bool has_roleid() const;
+  inline void clear_roleid();
+  static const int kRoleIdFieldNumber = 2;
+  inline ::google::protobuf::uint64 roleid() const;
+  inline void set_roleid(::google::protobuf::uint64 value);
+
+  // optional string Ip = 3;
+  inline bool has_ip() const;
+  inline void clear_ip();
+  static const int kIpFieldNumber = 3;
+  inline const ::std::string& ip() const;
+  inline void set_ip(const ::std::string& value);
+  inline void set_ip(const char* value);
+  inline void set_ip(const char* value, size_t size);
+  inline ::std::string* mutable_ip();
+  inline ::std::string* release_ip();
+  inline void set_allocated_ip(::std::string* ip);
+
+  // optional sint32 Port = 4 [default = 0];
+  inline bool has_port() const;
+  inline void clear_port();
+  static const int kPortFieldNumber = 4;
+  inline ::google::protobuf::int32 port() const;
+  inline void set_port(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:LoginRpcSelectCharacterReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+  inline void set_has_roleid();
+  inline void clear_has_roleid();
+  inline void set_has_ip();
+  inline void clear_has_ip();
+  inline void set_has_port();
+  inline void clear_has_port();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint64 roleid_;
+  ::google::protobuf::int32 result_;
+  ::google::protobuf::int32 port_;
+  ::std::string* ip_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+
+  friend void  protobuf_AddDesc_LoginRpc_2eproto();
+  friend void protobuf_AssignDesc_LoginRpc_2eproto();
+  friend void protobuf_ShutdownFile_LoginRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static LoginRpcSelectCharacterReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class LoginRpcCreateCharacterAsk : public ::google::protobuf::Message {
+ public:
+  LoginRpcCreateCharacterAsk();
+  virtual ~LoginRpcCreateCharacterAsk();
+
+  LoginRpcCreateCharacterAsk(const LoginRpcCreateCharacterAsk& from);
+
+  inline LoginRpcCreateCharacterAsk& operator=(const LoginRpcCreateCharacterAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const LoginRpcCreateCharacterAsk& default_instance();
+
+  void Swap(LoginRpcCreateCharacterAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  LoginRpcCreateCharacterAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const LoginRpcCreateCharacterAsk& from);
+  void MergeFrom(const LoginRpcCreateCharacterAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional string Nickname = 1;
+  inline bool has_nickname() const;
+  inline void clear_nickname();
+  static const int kNicknameFieldNumber = 1;
+  inline const ::std::string& nickname() const;
+  inline void set_nickname(const ::std::string& value);
+  inline void set_nickname(const char* value);
+  inline void set_nickname(const char* value, size_t size);
+  inline ::std::string* mutable_nickname();
+  inline ::std::string* release_nickname();
+  inline void set_allocated_nickname(::std::string* nickname);
+
+  // optional sint32 ConfigId = 2 [default = -1];
+  inline bool has_configid() const;
+  inline void clear_configid();
+  static const int kConfigIdFieldNumber = 2;
+  inline ::google::protobuf::int32 configid() const;
+  inline void set_configid(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:LoginRpcCreateCharacterAsk)
+ private:
+  inline void set_has_nickname();
+  inline void clear_has_nickname();
+  inline void set_has_configid();
+  inline void clear_has_configid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::std::string* nickname_;
+  ::google::protobuf::int32 configid_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_LoginRpc_2eproto();
+  friend void protobuf_AssignDesc_LoginRpc_2eproto();
+  friend void protobuf_ShutdownFile_LoginRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static LoginRpcCreateCharacterAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class LoginRpcCreateCharacterReply : public ::google::protobuf::Message {
+ public:
+  LoginRpcCreateCharacterReply();
+  virtual ~LoginRpcCreateCharacterReply();
+
+  LoginRpcCreateCharacterReply(const LoginRpcCreateCharacterReply& from);
+
+  inline LoginRpcCreateCharacterReply& operator=(const LoginRpcCreateCharacterReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const LoginRpcCreateCharacterReply& default_instance();
+
+  void Swap(LoginRpcCreateCharacterReply* other);
+
+  // implements Message ----------------------------------------------
+
+  LoginRpcCreateCharacterReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const LoginRpcCreateCharacterReply& from);
+  void MergeFrom(const LoginRpcCreateCharacterReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 Result = 1 [default = -9999];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // optional uint64 Roleid = 2 [default = 0];
+  inline bool has_roleid() const;
+  inline void clear_roleid();
+  static const int kRoleidFieldNumber = 2;
+  inline ::google::protobuf::uint64 roleid() const;
+  inline void set_roleid(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:LoginRpcCreateCharacterReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+  inline void set_has_roleid();
+  inline void clear_has_roleid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint64 roleid_;
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_LoginRpc_2eproto();
+  friend void protobuf_AssignDesc_LoginRpc_2eproto();
+  friend void protobuf_ShutdownFile_LoginRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static LoginRpcCreateCharacterReply* default_instance_;
+};
 // ===================================================================
 
 
@@ -460,7 +1036,7 @@ inline void LoginRpcConnectReply::set_result(::google::protobuf::int32 value) {
   result_ = value;
 }
 
-// optional sint32 Type = 2 [default = -1];
+// optional sint32 Type = 2 [default = 0];
 inline bool LoginRpcConnectReply::has_type() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -471,7 +1047,7 @@ inline void LoginRpcConnectReply::clear_has_type() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline void LoginRpcConnectReply::clear_type() {
-  type_ = -1;
+  type_ = 0;
   clear_has_type();
 }
 inline ::google::protobuf::int32 LoginRpcConnectReply::type() const {
@@ -670,6 +1246,441 @@ inline ::google::protobuf::uint64 LoginRpcLoginReply::roleid() const {
   return roleid_;
 }
 inline void LoginRpcLoginReply::set_roleid(::google::protobuf::uint64 value) {
+  set_has_roleid();
+  roleid_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// LoginRpcCharacterListAsk
+
+// optional string Accountname = 1;
+inline bool LoginRpcCharacterListAsk::has_accountname() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void LoginRpcCharacterListAsk::set_has_accountname() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void LoginRpcCharacterListAsk::clear_has_accountname() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void LoginRpcCharacterListAsk::clear_accountname() {
+  if (accountname_ != &::google::protobuf::internal::kEmptyString) {
+    accountname_->clear();
+  }
+  clear_has_accountname();
+}
+inline const ::std::string& LoginRpcCharacterListAsk::accountname() const {
+  return *accountname_;
+}
+inline void LoginRpcCharacterListAsk::set_accountname(const ::std::string& value) {
+  set_has_accountname();
+  if (accountname_ == &::google::protobuf::internal::kEmptyString) {
+    accountname_ = new ::std::string;
+  }
+  accountname_->assign(value);
+}
+inline void LoginRpcCharacterListAsk::set_accountname(const char* value) {
+  set_has_accountname();
+  if (accountname_ == &::google::protobuf::internal::kEmptyString) {
+    accountname_ = new ::std::string;
+  }
+  accountname_->assign(value);
+}
+inline void LoginRpcCharacterListAsk::set_accountname(const char* value, size_t size) {
+  set_has_accountname();
+  if (accountname_ == &::google::protobuf::internal::kEmptyString) {
+    accountname_ = new ::std::string;
+  }
+  accountname_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* LoginRpcCharacterListAsk::mutable_accountname() {
+  set_has_accountname();
+  if (accountname_ == &::google::protobuf::internal::kEmptyString) {
+    accountname_ = new ::std::string;
+  }
+  return accountname_;
+}
+inline ::std::string* LoginRpcCharacterListAsk::release_accountname() {
+  clear_has_accountname();
+  if (accountname_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = accountname_;
+    accountname_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void LoginRpcCharacterListAsk::set_allocated_accountname(::std::string* accountname) {
+  if (accountname_ != &::google::protobuf::internal::kEmptyString) {
+    delete accountname_;
+  }
+  if (accountname) {
+    set_has_accountname();
+    accountname_ = accountname;
+  } else {
+    clear_has_accountname();
+    accountname_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// -------------------------------------------------------------------
+
+// LoginRpcCharacterListReply
+
+// optional sint32 Result = 1 [default = -9999];
+inline bool LoginRpcCharacterListReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void LoginRpcCharacterListReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void LoginRpcCharacterListReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void LoginRpcCharacterListReply::clear_result() {
+  result_ = -9999;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 LoginRpcCharacterListReply::result() const {
+  return result_;
+}
+inline void LoginRpcCharacterListReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// repeated .CharacterInfo CharacterList = 2;
+inline int LoginRpcCharacterListReply::characterlist_size() const {
+  return characterlist_.size();
+}
+inline void LoginRpcCharacterListReply::clear_characterlist() {
+  characterlist_.Clear();
+}
+inline const ::CharacterInfo& LoginRpcCharacterListReply::characterlist(int index) const {
+  return characterlist_.Get(index);
+}
+inline ::CharacterInfo* LoginRpcCharacterListReply::mutable_characterlist(int index) {
+  return characterlist_.Mutable(index);
+}
+inline ::CharacterInfo* LoginRpcCharacterListReply::add_characterlist() {
+  return characterlist_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::CharacterInfo >&
+LoginRpcCharacterListReply::characterlist() const {
+  return characterlist_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::CharacterInfo >*
+LoginRpcCharacterListReply::mutable_characterlist() {
+  return &characterlist_;
+}
+
+// -------------------------------------------------------------------
+
+// LoginRpcSelectCharacterAsk
+
+// optional uint64 RoleId = 1 [default = 0];
+inline bool LoginRpcSelectCharacterAsk::has_roleid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void LoginRpcSelectCharacterAsk::set_has_roleid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void LoginRpcSelectCharacterAsk::clear_has_roleid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void LoginRpcSelectCharacterAsk::clear_roleid() {
+  roleid_ = GOOGLE_ULONGLONG(0);
+  clear_has_roleid();
+}
+inline ::google::protobuf::uint64 LoginRpcSelectCharacterAsk::roleid() const {
+  return roleid_;
+}
+inline void LoginRpcSelectCharacterAsk::set_roleid(::google::protobuf::uint64 value) {
+  set_has_roleid();
+  roleid_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// LoginRpcSelectCharacterReply
+
+// optional sint32 Result = 1 [default = -9999];
+inline bool LoginRpcSelectCharacterReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void LoginRpcSelectCharacterReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void LoginRpcSelectCharacterReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void LoginRpcSelectCharacterReply::clear_result() {
+  result_ = -9999;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 LoginRpcSelectCharacterReply::result() const {
+  return result_;
+}
+inline void LoginRpcSelectCharacterReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// optional uint64 RoleId = 2 [default = 0];
+inline bool LoginRpcSelectCharacterReply::has_roleid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void LoginRpcSelectCharacterReply::set_has_roleid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void LoginRpcSelectCharacterReply::clear_has_roleid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void LoginRpcSelectCharacterReply::clear_roleid() {
+  roleid_ = GOOGLE_ULONGLONG(0);
+  clear_has_roleid();
+}
+inline ::google::protobuf::uint64 LoginRpcSelectCharacterReply::roleid() const {
+  return roleid_;
+}
+inline void LoginRpcSelectCharacterReply::set_roleid(::google::protobuf::uint64 value) {
+  set_has_roleid();
+  roleid_ = value;
+}
+
+// optional string Ip = 3;
+inline bool LoginRpcSelectCharacterReply::has_ip() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void LoginRpcSelectCharacterReply::set_has_ip() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void LoginRpcSelectCharacterReply::clear_has_ip() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void LoginRpcSelectCharacterReply::clear_ip() {
+  if (ip_ != &::google::protobuf::internal::kEmptyString) {
+    ip_->clear();
+  }
+  clear_has_ip();
+}
+inline const ::std::string& LoginRpcSelectCharacterReply::ip() const {
+  return *ip_;
+}
+inline void LoginRpcSelectCharacterReply::set_ip(const ::std::string& value) {
+  set_has_ip();
+  if (ip_ == &::google::protobuf::internal::kEmptyString) {
+    ip_ = new ::std::string;
+  }
+  ip_->assign(value);
+}
+inline void LoginRpcSelectCharacterReply::set_ip(const char* value) {
+  set_has_ip();
+  if (ip_ == &::google::protobuf::internal::kEmptyString) {
+    ip_ = new ::std::string;
+  }
+  ip_->assign(value);
+}
+inline void LoginRpcSelectCharacterReply::set_ip(const char* value, size_t size) {
+  set_has_ip();
+  if (ip_ == &::google::protobuf::internal::kEmptyString) {
+    ip_ = new ::std::string;
+  }
+  ip_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* LoginRpcSelectCharacterReply::mutable_ip() {
+  set_has_ip();
+  if (ip_ == &::google::protobuf::internal::kEmptyString) {
+    ip_ = new ::std::string;
+  }
+  return ip_;
+}
+inline ::std::string* LoginRpcSelectCharacterReply::release_ip() {
+  clear_has_ip();
+  if (ip_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = ip_;
+    ip_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void LoginRpcSelectCharacterReply::set_allocated_ip(::std::string* ip) {
+  if (ip_ != &::google::protobuf::internal::kEmptyString) {
+    delete ip_;
+  }
+  if (ip) {
+    set_has_ip();
+    ip_ = ip;
+  } else {
+    clear_has_ip();
+    ip_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional sint32 Port = 4 [default = 0];
+inline bool LoginRpcSelectCharacterReply::has_port() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void LoginRpcSelectCharacterReply::set_has_port() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void LoginRpcSelectCharacterReply::clear_has_port() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void LoginRpcSelectCharacterReply::clear_port() {
+  port_ = 0;
+  clear_has_port();
+}
+inline ::google::protobuf::int32 LoginRpcSelectCharacterReply::port() const {
+  return port_;
+}
+inline void LoginRpcSelectCharacterReply::set_port(::google::protobuf::int32 value) {
+  set_has_port();
+  port_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// LoginRpcCreateCharacterAsk
+
+// optional string Nickname = 1;
+inline bool LoginRpcCreateCharacterAsk::has_nickname() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void LoginRpcCreateCharacterAsk::set_has_nickname() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void LoginRpcCreateCharacterAsk::clear_has_nickname() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void LoginRpcCreateCharacterAsk::clear_nickname() {
+  if (nickname_ != &::google::protobuf::internal::kEmptyString) {
+    nickname_->clear();
+  }
+  clear_has_nickname();
+}
+inline const ::std::string& LoginRpcCreateCharacterAsk::nickname() const {
+  return *nickname_;
+}
+inline void LoginRpcCreateCharacterAsk::set_nickname(const ::std::string& value) {
+  set_has_nickname();
+  if (nickname_ == &::google::protobuf::internal::kEmptyString) {
+    nickname_ = new ::std::string;
+  }
+  nickname_->assign(value);
+}
+inline void LoginRpcCreateCharacterAsk::set_nickname(const char* value) {
+  set_has_nickname();
+  if (nickname_ == &::google::protobuf::internal::kEmptyString) {
+    nickname_ = new ::std::string;
+  }
+  nickname_->assign(value);
+}
+inline void LoginRpcCreateCharacterAsk::set_nickname(const char* value, size_t size) {
+  set_has_nickname();
+  if (nickname_ == &::google::protobuf::internal::kEmptyString) {
+    nickname_ = new ::std::string;
+  }
+  nickname_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* LoginRpcCreateCharacterAsk::mutable_nickname() {
+  set_has_nickname();
+  if (nickname_ == &::google::protobuf::internal::kEmptyString) {
+    nickname_ = new ::std::string;
+  }
+  return nickname_;
+}
+inline ::std::string* LoginRpcCreateCharacterAsk::release_nickname() {
+  clear_has_nickname();
+  if (nickname_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = nickname_;
+    nickname_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void LoginRpcCreateCharacterAsk::set_allocated_nickname(::std::string* nickname) {
+  if (nickname_ != &::google::protobuf::internal::kEmptyString) {
+    delete nickname_;
+  }
+  if (nickname) {
+    set_has_nickname();
+    nickname_ = nickname;
+  } else {
+    clear_has_nickname();
+    nickname_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional sint32 ConfigId = 2 [default = -1];
+inline bool LoginRpcCreateCharacterAsk::has_configid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void LoginRpcCreateCharacterAsk::set_has_configid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void LoginRpcCreateCharacterAsk::clear_has_configid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void LoginRpcCreateCharacterAsk::clear_configid() {
+  configid_ = -1;
+  clear_has_configid();
+}
+inline ::google::protobuf::int32 LoginRpcCreateCharacterAsk::configid() const {
+  return configid_;
+}
+inline void LoginRpcCreateCharacterAsk::set_configid(::google::protobuf::int32 value) {
+  set_has_configid();
+  configid_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// LoginRpcCreateCharacterReply
+
+// optional sint32 Result = 1 [default = -9999];
+inline bool LoginRpcCreateCharacterReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void LoginRpcCreateCharacterReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void LoginRpcCreateCharacterReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void LoginRpcCreateCharacterReply::clear_result() {
+  result_ = -9999;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 LoginRpcCreateCharacterReply::result() const {
+  return result_;
+}
+inline void LoginRpcCreateCharacterReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// optional uint64 Roleid = 2 [default = 0];
+inline bool LoginRpcCreateCharacterReply::has_roleid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void LoginRpcCreateCharacterReply::set_has_roleid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void LoginRpcCreateCharacterReply::clear_has_roleid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void LoginRpcCreateCharacterReply::clear_roleid() {
+  roleid_ = GOOGLE_ULONGLONG(0);
+  clear_has_roleid();
+}
+inline ::google::protobuf::uint64 LoginRpcCreateCharacterReply::roleid() const {
+  return roleid_;
+}
+inline void LoginRpcCreateCharacterReply::set_roleid(::google::protobuf::uint64 value) {
   set_has_roleid();
   roleid_ = value;
 }
