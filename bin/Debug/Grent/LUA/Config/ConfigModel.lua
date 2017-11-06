@@ -10,6 +10,7 @@ local table = table
 local tostring = tostring
 local MLayerMgr = HS_MLayerMgr
 local typeof = typeof
+local ipairs = ipairs
 require("3rd/pblua/ConfigRpc_pb")
 local  ConfigRpc_pb = ConfigRpc_pb
 module("ConfigModel")

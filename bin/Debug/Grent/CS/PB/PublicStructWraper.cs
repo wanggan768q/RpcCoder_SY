@@ -102,3 +102,88 @@ public class CharacterInfoWraper
 
 
 };
+//v3封装类
+[System.Serializable]
+public class V3Wraper
+{
+
+	//构造函数
+	public V3Wraper()
+	{
+		 m_X = (float)-1;
+		 m_Y = (float)-1;
+		 m_Z = (float)-1;
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_X = (float)-1;
+		 m_Y = (float)-1;
+		 m_Z = (float)-1;
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public V3 ToPB()
+	{
+		V3 v = new V3();
+		v.X = m_X;
+		v.Y = m_Y;
+		v.Z = m_Z;
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(V3 v)
+	{
+        if (v == null)
+            return;
+		m_X = v.X;
+		m_Y = v.Y;
+		m_Z = v.Z;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<V3>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		V3 pb = ProtoBuf.Serializer.Deserialize<V3>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//x
+	public float m_X;
+	public float X
+	{
+		get { return m_X;}
+		set { m_X = value; }
+	}
+	//y
+	public float m_Y;
+	public float Y
+	{
+		get { return m_Y;}
+		set { m_Y = value; }
+	}
+	//z
+	public float m_Z;
+	public float Z
+	{
+		get { return m_Z;}
+		set { m_Z = value; }
+	}
+
+
+};

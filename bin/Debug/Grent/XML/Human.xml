@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<Root Module="Human" CName="玩家模块" MsgNumStart="4" SyncDataVersion="1" Comment="">
+    <Operate Name="Move" CName="human move" Comment="玩家移动">
+        <OP_ASK Name="Ask" CName="请求" MsgID="4" DataStruct="RpcMoveAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="5" DataStruct="RpcMoveReply" Comment="" />
+    </Operate>
+    <Operate Name="StopMove" CName="客户端停止移动" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="6" DataStruct="RpcStopMoveAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="7" DataStruct="RpcStopMoveReply" Comment="" />
+    </Operate>
+    <Operate Name="MovementVerification" CName="移动验证" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="8" DataStruct="RpcMovementVerificationAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="9" DataStruct="RpcMovementVerificationReply" Comment="" />
+    </Operate>
+    <Operate Name="CGMoveCheck" CName="客户端位置校验" Comment="">
+        <OP_CLIENT_NOTIFY Name="Notify" CName="通知" MsgID="10" DataStruct="RpcCGMoveCheckNotify" Comment="" />
+    </Operate>
+    <Operate Name="GCMoveCheck" CName="服务器位置校验通知" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="11" DataStruct="RpcGCMoveCheckNotify" Comment="" />
+    </Operate>
+    <Struct Name="RpcMoveAsk" CName="human move请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="optional" FieldType="float" FieldId="2" Name="Dir" CName="移动方向" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="3" Name="X" CName="CurPosX" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="4" Name="Z" CName="CurPosZ" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcMoveReply" CName="human move回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="sint32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="V3" FieldId="2" Name="Pos" CName="当前位置" ValueSet="" MinValue="6" MaxValue="128" Comment="玩家当前位置" />
+        <Field PreDefine="optional" FieldType="float" FieldId="3" Name="Dir" CName="移动方向" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcStopMoveAsk" CName="客户端停止移动请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="optional" FieldType="float" FieldId="2" Name="Dir" CName="移动方向" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="3" Name="X" CName="CurPosX" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="4" Name="Z" CName="CurPosZ" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcStopMoveReply" CName="客户端停止移动回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="sint32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="V3" FieldId="2" Name="Pos" CName="当前位置" ValueSet="" MinValue="6" MaxValue="128" Comment="玩家当前位置" />
+        <Field PreDefine="optional" FieldType="float" FieldId="3" Name="Dir" CName="移动方向" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcMovementVerificationAsk" CName="移动验证请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="float" FieldId="1" Name="Dir" CName="移动方向" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="2" Name="X" CName="CurPosX" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="3" Name="Z" CName="CurPosZ" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcMovementVerificationReply" CName="移动验证回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="optional" FieldType="sint32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="float" FieldId="2" Name="Dir" CName="移动方向" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="3" Name="X" CName="CurPosX" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="4" Name="Z" CName="CurPosZ" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcCGMoveCheckNotify" CName="客户端位置校验通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="float" FieldId="1" Name="Dir" CName="方向" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="V3" FieldId="2" Name="Pos" CName="位置" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcGCMoveCheckNotify" CName="服务器位置校验通知通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="float" FieldId="1" Name="Dir" CName="方向" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="V3" FieldId="2" Name="Pos" CName="位置" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+</Root>

@@ -5,6 +5,7 @@ local RPC_CODE_LOGIN_LOGIN_REQUEST = 252
 local RPC_CODE_LOGIN_CHARACTERLIST_REQUEST = 253
 local RPC_CODE_LOGIN_SELECTCHARACTER_REQUEST = 254
 local RPC_CODE_LOGIN_CREATECHARACTER_REQUEST = 255
+local RPC_CODE_LOGIN_SELECTSAVEUSER_REQUEST = 256
 
 
 
@@ -15,6 +16,7 @@ local table = table
 local tostring = tostring
 local MLayerMgr = HS_MLayerMgr
 local typeof = typeof
+local ipairs = ipairs
 require("3rd/pblua/LoginRpc_pb")
 local  LoginRpc_pb = LoginRpc_pb
 module("LoginModel")
@@ -134,6 +136,21 @@ function CreateCharacter(self,Nickname,ConfigId,_hanlder)
 	MLayerMgr.SendAsk(RPC_CODE_LOGIN_CREATECHARACTER_REQUEST, pb_data, callback)
 	showNetTip(self)
 end
+function SelectSaveUser(self,RoleId,_hanlder)
+	local PB = self.rpc_pb.LoginRpcSelectSaveUserAsk()
+	PB.RoleId = RoleId
+	local pb_data = PB:SerializeToString()
+	local function callback(_data)
+		hideNetTip(self)
+		if _hanlder then
+			local ret_msg = self.rpc_pb.LoginRpcSelectSaveUserReply()
+			ret_msg:ParseFromString(_data)
+			 _hanlder(ret_msg)
+		end
+	end
+	MLayerMgr.SendAsk(RPC_CODE_LOGIN_SELECTSAVEUSER_REQUEST, pb_data, callback)
+	showNetTip(self)
+end
 
 
 
@@ -177,6 +194,13 @@ t.name = "CreateCharacter"
 t.para = {{name="Nickname",t=2},{name="ConfigId",t=1}}
 t.hand = LoginModel.CreateCharacter
 t.pb = LoginRpc_pb.LoginRpcCreateCharacterAsk()
+table.insert(askList.Login,t)
+
+local t = {}
+t.name = "SelectSaveUser"
+t.para = {{name="RoleId",t=1}}
+t.hand = LoginModel.SelectSaveUser
+t.pb = LoginRpc_pb.LoginRpcSelectSaveUserAsk()
 table.insert(askList.Login,t)
 
 --]]

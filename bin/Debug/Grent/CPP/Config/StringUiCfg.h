@@ -2,6 +2,7 @@
 #define __STRINGUI_CONFIG_H
 
 #include "CommonDefine.h"
+#include "DK_Assertx.h"
 
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
@@ -10,7 +11,7 @@
 
 #include <vector>
 #include <string>
-#include <map>
+#include <unordered_map>
 using namespace std;
 
 
@@ -19,6 +20,7 @@ struct StringUiElement
 {
 	friend class StringUiTable;
 	int id;                      	//序号	序号
+	string comment;              	//文本内容备注	文本内容备注
 	string sc;                   	//简体中文	简体中文
 
 private:
@@ -46,7 +48,7 @@ class StringUiTable
 private:
 	StringUiTable(){}
 	~StringUiTable(){}
-	map<int, StringUiElement>	m_mapElements;
+	unordered_map<int, StringUiElement>	m_mapElements;
 	vector<StringUiElement>	m_vecAllElements;
 	StringUiElement m_emptyItem;
 public:
@@ -56,11 +58,18 @@ public:
 		return sInstance;
 	}
 
-	StringUiElement GetElement(int key)
+	const StringUiElement* GetElement(int key)
 	{
 		if( m_mapElements.count(key)>0 )
-			return m_mapElements[key];
-		return m_emptyItem;
+			return &m_mapElements[key];
+		if (m_mapElements.count(key) > 0)
+		{
+			StringUiElement* temp = &m_mapElements[key];
+			AssertEx(temp, std::string(std::string("StringUiTable: ") + std::to_string(key)).c_str());
+			return temp;
+		}
+		AssertEx(false, std::string(std::string("StringUiTable: ") + std::to_string(key)).c_str());
+		return NULL;
 	}
 
 	bool HasElement(int key)
@@ -102,9 +111,9 @@ public:
 
 	bool LoadJson(const std::string& jsonFile)
 	{
-		boost::property_tree::ptree parse;
-		boost::property_tree::json_parser::read_json(std::string(CONFIG_PATH) + jsonFile, parse);
-		boost::property_tree::ptree sms_array = parse.get_child("data");
+		boost::property_tree::ptree sms_array;
+		boost::property_tree::json_parser::read_json(std::string(CONFIG_PATH) + jsonFile, sms_array);
+		//boost::property_tree::ptree sms_array = parse.get_child("data");
 
 		vector<string> vecLine;
 
@@ -117,6 +126,7 @@ public:
 			StringUiElement	member;
 
 						member.id=p.get<int>("id");
+			member.comment=p.get<string>("comment");
 			member.sc=p.get<string>("sc");
 
 
@@ -134,28 +144,30 @@ public:
 		int contentOffset = 0;
 		vector<string> vecLine;
 		vecLine = ReadCsvLine( strContent, contentOffset );
-		if(vecLine.size() != 2)
+		if(vecLine.size() != 3)
 		{
 			printf_message("StringUi.csv中列数量与生成的代码不匹配!");
 			assert(false);
 			return false;
 		}
 		if(vecLine[0]!="id"){printf_message("StringUi.csv中字段[id]位置不对应");assert(false); return false; }
-		if(vecLine[1]!="sc"){printf_message("StringUi.csv中字段[sc]位置不对应");assert(false); return false; }
+		if(vecLine[1]!="comment"){printf_message("StringUi.csv中字段[comment]位置不对应");assert(false); return false; }
+		if(vecLine[2]!="sc"){printf_message("StringUi.csv中字段[sc]位置不对应");assert(false); return false; }
 
 		while(true)
 		{
 			vecLine = ReadCsvLine( strContent, contentOffset );
 			if((int)vecLine.size() == 0 )
 				break;
-			if((int)vecLine.size() != (int)2)
+			if((int)vecLine.size() != (int)3)
 			{
 				assert(false);
 				return false;
 			}
 			StringUiElement	member;
 			member.id=(int)atoi(vecLine[0].c_str());
-			member.sc=vecLine[1];
+			member.comment=vecLine[1];
+			member.sc=vecLine[2];
 
 			member.SetIsValidate(true);
 			m_mapElements[member.id] = member;

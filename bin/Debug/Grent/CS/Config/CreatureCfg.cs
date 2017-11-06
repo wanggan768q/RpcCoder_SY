@@ -36,6 +36,11 @@ public class CreatureElement
 	public int pool_skill_num;   	//从技能池里随机出来的数量	从技能池里随机出来的数量
 	public string selected_sound;	//被选中音效	被选中音效
 	public string death_sound;   	//死亡音效	死亡音效
+	public int skill_1;          	//技能1	技能1
+	public int skill_2;          	//技能2	技能2
+	public int skill_3;          	//技能3	技能3
+	public int skill_4;          	//技能4	技能4
+	public int skill_5;          	//技能5	技能5
 
 	public bool IsValidate = false;
 	public CreatureElement()
@@ -128,7 +133,7 @@ public class CreatureTable
             vecLine.Add(tmpStr);
             vecHeadType.Add(tmpInt);
 		}
-		if(vecLine.Count != 27)
+		if(vecLine.Count != 32)
 		{
 			Ex.Logger.Log("Creature.csv中列数量与生成的代码不匹配!");
 			return false;
@@ -160,6 +165,11 @@ public class CreatureTable
 		if(vecLine[24]!="pool_skill_num"){Ex.Logger.Log("Creature.csv中字段[pool_skill_num]位置不对应"); return false; }
 		if(vecLine[25]!="selected_sound"){Ex.Logger.Log("Creature.csv中字段[selected_sound]位置不对应"); return false; }
 		if(vecLine[26]!="death_sound"){Ex.Logger.Log("Creature.csv中字段[death_sound]位置不对应"); return false; }
+		if(vecLine[27]!="skill_1"){Ex.Logger.Log("Creature.csv中字段[skill_1]位置不对应"); return false; }
+		if(vecLine[28]!="skill_2"){Ex.Logger.Log("Creature.csv中字段[skill_2]位置不对应"); return false; }
+		if(vecLine[29]!="skill_3"){Ex.Logger.Log("Creature.csv中字段[skill_3]位置不对应"); return false; }
+		if(vecLine[30]!="skill_4"){Ex.Logger.Log("Creature.csv中字段[skill_4]位置不对应"); return false; }
+		if(vecLine[31]!="skill_5"){Ex.Logger.Log("Creature.csv中字段[skill_5]位置不对应"); return false; }
 
 		for(int i=0; i<nRow; i++)
 		{
@@ -191,6 +201,11 @@ public class CreatureTable
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.pool_skill_num );
 			readPos += GameAssist.ReadString( binContent, readPos, out member.selected_sound);
 			readPos += GameAssist.ReadString( binContent, readPos, out member.death_sound);
+			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.skill_1 );
+			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.skill_2 );
+			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.skill_3 );
+			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.skill_4 );
+			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.skill_5 );
 
 			member.IsValidate = true;
 			m_vecAllElements.Add(member);
@@ -207,7 +222,7 @@ public class CreatureTable
 		int contentOffset = 0;
 		List<string> vecLine;
 		vecLine = GameAssist.readCsvLine( strContent, ref contentOffset );
-		if(vecLine.Count != 27)
+		if(vecLine.Count != 32)
 		{
 			Ex.Logger.Log("Creature.csv中列数量与生成的代码不匹配!");
 			return false;
@@ -239,13 +254,18 @@ public class CreatureTable
 		if(vecLine[24]!="pool_skill_num"){Ex.Logger.Log("Creature.csv中字段[pool_skill_num]位置不对应"); return false; }
 		if(vecLine[25]!="selected_sound"){Ex.Logger.Log("Creature.csv中字段[selected_sound]位置不对应"); return false; }
 		if(vecLine[26]!="death_sound"){Ex.Logger.Log("Creature.csv中字段[death_sound]位置不对应"); return false; }
+		if(vecLine[27]!="skill_1"){Ex.Logger.Log("Creature.csv中字段[skill_1]位置不对应"); return false; }
+		if(vecLine[28]!="skill_2"){Ex.Logger.Log("Creature.csv中字段[skill_2]位置不对应"); return false; }
+		if(vecLine[29]!="skill_3"){Ex.Logger.Log("Creature.csv中字段[skill_3]位置不对应"); return false; }
+		if(vecLine[30]!="skill_4"){Ex.Logger.Log("Creature.csv中字段[skill_4]位置不对应"); return false; }
+		if(vecLine[31]!="skill_5"){Ex.Logger.Log("Creature.csv中字段[skill_5]位置不对应"); return false; }
 
 		while(true)
 		{
 			vecLine = GameAssist.readCsvLine( strContent, ref contentOffset );
 			if((int)vecLine.Count == 0 )
 				break;
-			if((int)vecLine.Count != (int)27)
+			if((int)vecLine.Count != (int)32)
 			{
 				return false;
 			}
@@ -277,6 +297,11 @@ public class CreatureTable
 			member.pool_skill_num=Convert.ToInt32(vecLine[24]);
 			member.selected_sound=vecLine[25];
 			member.death_sound=vecLine[26];
+			member.skill_1=Convert.ToInt32(vecLine[27]);
+			member.skill_2=Convert.ToInt32(vecLine[28]);
+			member.skill_3=Convert.ToInt32(vecLine[29]);
+			member.skill_4=Convert.ToInt32(vecLine[30]);
+			member.skill_5=Convert.ToInt32(vecLine[31]);
 
 			member.IsValidate = true;
 			m_vecAllElements.Add(member);

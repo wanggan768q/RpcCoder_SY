@@ -10,6 +10,7 @@ using System.Collections.Generic;
 public class StringUiElement
 {
 	public int id;               	//序号	序号
+	public string comment;       	//文本内容备注	文本内容备注
 	public string sc;            	//简体中文	简体中文
 
 	public bool IsValidate = false;
@@ -103,18 +104,20 @@ public class StringUiTable
             vecLine.Add(tmpStr);
             vecHeadType.Add(tmpInt);
 		}
-		if(vecLine.Count != 2)
+		if(vecLine.Count != 3)
 		{
 			Ex.Logger.Log("StringUi.csv中列数量与生成的代码不匹配!");
 			return false;
 		}
 		if(vecLine[0]!="id"){Ex.Logger.Log("StringUi.csv中字段[id]位置不对应"); return false; }
-		if(vecLine[1]!="sc"){Ex.Logger.Log("StringUi.csv中字段[sc]位置不对应"); return false; }
+		if(vecLine[1]!="comment"){Ex.Logger.Log("StringUi.csv中字段[comment]位置不对应"); return false; }
+		if(vecLine[2]!="sc"){Ex.Logger.Log("StringUi.csv中字段[sc]位置不对应"); return false; }
 
 		for(int i=0; i<nRow; i++)
 		{
 			StringUiElement member = new StringUiElement();
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.id );
+			readPos += GameAssist.ReadString( binContent, readPos, out member.comment);
 			readPos += GameAssist.ReadString( binContent, readPos, out member.sc);
 
 			member.IsValidate = true;
@@ -132,26 +135,28 @@ public class StringUiTable
 		int contentOffset = 0;
 		List<string> vecLine;
 		vecLine = GameAssist.readCsvLine( strContent, ref contentOffset );
-		if(vecLine.Count != 2)
+		if(vecLine.Count != 3)
 		{
 			Ex.Logger.Log("StringUi.csv中列数量与生成的代码不匹配!");
 			return false;
 		}
 		if(vecLine[0]!="id"){Ex.Logger.Log("StringUi.csv中字段[id]位置不对应"); return false; }
-		if(vecLine[1]!="sc"){Ex.Logger.Log("StringUi.csv中字段[sc]位置不对应"); return false; }
+		if(vecLine[1]!="comment"){Ex.Logger.Log("StringUi.csv中字段[comment]位置不对应"); return false; }
+		if(vecLine[2]!="sc"){Ex.Logger.Log("StringUi.csv中字段[sc]位置不对应"); return false; }
 
 		while(true)
 		{
 			vecLine = GameAssist.readCsvLine( strContent, ref contentOffset );
 			if((int)vecLine.Count == 0 )
 				break;
-			if((int)vecLine.Count != (int)2)
+			if((int)vecLine.Count != (int)3)
 			{
 				return false;
 			}
 			StringUiElement member = new StringUiElement();
 			member.id=Convert.ToInt32(vecLine[0]);
-			member.sc=vecLine[1];
+			member.comment=vecLine[1];
+			member.sc=vecLine[2];
 
 			member.IsValidate = true;
 			m_vecAllElements.Add(member);

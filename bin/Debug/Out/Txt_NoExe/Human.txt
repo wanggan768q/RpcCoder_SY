@@ -1,0 +1,55 @@
+HumanRpcMoveAsk↑ human move请求
+	Dir:float = -1	;移动方向
+	X:float = -1	;CurPosX
+	Z:float = -1	;CurPosZ
+
+HumanRpcMoveReply↓ human move回应
+	Result:int32 = -9999	;返回结果
+	Pos:V3	;当前位置
+	[V3]
+		X:float = -1	;x
+		Y:float = -1	;y
+		Z:float = -1	;z
+	Dir:float = -1	;移动方向
+
+HumanRpcStopMoveAsk↑ 客户端停止移动请求
+	Dir:float = -1	;移动方向
+	X:float = -1	;CurPosX
+	Z:float = -1	;CurPosZ
+
+HumanRpcStopMoveReply↓ 客户端停止移动回应
+	Result:int32 = -9999	;返回结果
+	Pos:V3	;当前位置
+	[V3]
+		X:float = -1	;x
+		Y:float = -1	;y
+		Z:float = -1	;z
+	Dir:float = -1	;移动方向
+
+HumanRpcMovementVerificationAsk↑ 移动验证请求
+	Dir:float = -1	;移动方向
+	X:float = -1	;CurPosX
+	Z:float = -1	;CurPosZ
+
+HumanRpcMovementVerificationReply↓ 移动验证回应
+	Result:int32 = -9999	;返回结果
+	Dir:float = -1	;移动方向
+	X:float = -1	;CurPosX
+	Z:float = -1	;CurPosZ
+
+HumanRpcCGMoveCheckNotify↑ 客户端位置校验通知
+	Dir:float = 0	;方向
+	Pos:V3	;位置
+	[V3]
+		X:float = -1	;x
+		Y:float = -1	;y
+		Z:float = -1	;z
+
+HumanRpcGCMoveCheckNotify↓ 服务器位置校验通知通知
+	Dir:float = -1	;方向
+	Pos:V3	;位置
+	[V3]
+		X:float = -1	;x
+		Y:float = -1	;y
+		Z:float = -1	;z
+

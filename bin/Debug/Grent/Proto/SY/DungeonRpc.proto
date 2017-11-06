@@ -1,0 +1,27 @@
+message  DungeonRpcCreateDungeonAsk
+{
+	optional uint64 RoleId = 1[default=0];
+	optional sint32 DungeonConfigId = 2[default=-1];
+
+}
+
+message  DungeonRpcCreateDungeonReply
+{
+	optional sint32 Result = 1[default=-9999];
+	optional sint32 DungeonConfigId = 2[default=-1];
+
+}
+
+message  DungeonRpcExitDungeonAsk
+{
+	optional uint64 RoleId = 1[default=0];
+	optional sint32 SceneId = 2[default=-1];
+
+}
+
+message  DungeonRpcExitDungeonReply
+{
+	optional sint32 Result = 1[default=-9999];
+
+}
+

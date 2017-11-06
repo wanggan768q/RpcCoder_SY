@@ -35,6 +35,7 @@ message  LoginRpcCharacterListReply
 {
 	optional sint32 Result = 1[default=-9999];
 	repeated CharacterInfo CharacterList = 2;
+	optional uint64 LastSelectRoleId = 4[default=0];
 
 }
 
@@ -63,7 +64,19 @@ message  LoginRpcCreateCharacterAsk
 message  LoginRpcCreateCharacterReply
 {
 	optional sint32 Result = 1[default=-9999];
-	optional uint64 Roleid = 2[default=0];
+	optional uint64 RoleId = 2[default=0];
+
+}
+
+message  LoginRpcSelectSaveUserAsk
+{
+	optional uint64 RoleId = 1[default=0];
+
+}
+
+message  LoginRpcSelectSaveUserReply
+{
+	optional sint32 Result = 1[default=-9999];
 
 }
 

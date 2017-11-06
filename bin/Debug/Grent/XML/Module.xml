@@ -1,7 +1,6 @@
 <?xml version="1.0"?>
 <xml>
     <module>
-        <sub_module name="Config" cname="Config" fileName="Config.xml" />
-        <sub_module name="Login" cname="登录模块" fileName="Login.xml" />
+        <sub_module name="Human" cname="玩家模块" fileName="Human.xml" />
     </module>
 </xml>

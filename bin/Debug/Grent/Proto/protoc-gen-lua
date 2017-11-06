@@ -409,7 +409,7 @@ def code_gen_file(proto_file, env, is_gen):
     if is_gen:
         lua = Writer()
         write_header(lua)
-        lua('local protobuf = require "protobuf/protobuf"\n')
+        lua('local protobuf = require "protobuf"\n')
         for i in includes:
             lua('local %s_pb = require("%s_pb")\n' % (i, i))
         lua("module('%s_pb')\n" % env.filename)

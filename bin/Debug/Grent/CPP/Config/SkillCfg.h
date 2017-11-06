@@ -2,6 +2,7 @@
 #define __SKILL_CONFIG_H
 
 #include "CommonDefine.h"
+#include "DK_Assertx.h"
 
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
@@ -10,7 +11,7 @@
 
 #include <vector>
 #include <string>
-#include <map>
+#include <unordered_map>
 using namespace std;
 
 
@@ -29,6 +30,7 @@ struct SkillElement
 	int attack_type;             	//攻击的类型:0:物理攻击,1:法术攻击,2:物理&法术攻击	攻击的类型:0:物理攻击,1:法术攻击,2:物理&法术攻击
 	int attack_rate;             	//技能伤害系数	技能伤害系数
 	int attack_value;            	//技能伤害附加	技能伤害附加
+	int attack_range;            	//技能释放距离	技能释放距离
 
 private:
 	bool m_bIsValidate;
@@ -55,7 +57,7 @@ class SkillTable
 private:
 	SkillTable(){}
 	~SkillTable(){}
-	map<int, SkillElement>	m_mapElements;
+	unordered_map<int, SkillElement>	m_mapElements;
 	vector<SkillElement>	m_vecAllElements;
 	SkillElement m_emptyItem;
 public:
@@ -65,11 +67,18 @@ public:
 		return sInstance;
 	}
 
-	SkillElement GetElement(int key)
+	const SkillElement* GetElement(int key)
 	{
 		if( m_mapElements.count(key)>0 )
-			return m_mapElements[key];
-		return m_emptyItem;
+			return &m_mapElements[key];
+		if (m_mapElements.count(key) > 0)
+		{
+			SkillElement* temp = &m_mapElements[key];
+			AssertEx(temp, std::string(std::string("SkillTable: ") + std::to_string(key)).c_str());
+			return temp;
+		}
+		AssertEx(false, std::string(std::string("SkillTable: ") + std::to_string(key)).c_str());
+		return NULL;
 	}
 
 	bool HasElement(int key)
@@ -111,9 +120,9 @@ public:
 
 	bool LoadJson(const std::string& jsonFile)
 	{
-		boost::property_tree::ptree parse;
-		boost::property_tree::json_parser::read_json(std::string(CONFIG_PATH) + jsonFile, parse);
-		boost::property_tree::ptree sms_array = parse.get_child("data");
+		boost::property_tree::ptree sms_array;
+		boost::property_tree::json_parser::read_json(std::string(CONFIG_PATH) + jsonFile, sms_array);
+		//boost::property_tree::ptree sms_array = parse.get_child("data");
 
 		vector<string> vecLine;
 
@@ -141,6 +150,7 @@ public:
 			member.attack_type=p.get<int>("attack_type");
 			member.attack_rate=p.get<int>("attack_rate");
 			member.attack_value=p.get<int>("attack_value");
+			member.attack_range=p.get<int>("attack_range");
 
 
 			member.SetIsValidate(true);
@@ -157,7 +167,7 @@ public:
 		int contentOffset = 0;
 		vector<string> vecLine;
 		vecLine = ReadCsvLine( strContent, contentOffset );
-		if(vecLine.size() != 11)
+		if(vecLine.size() != 12)
 		{
 			printf_message("Skill.csv中列数量与生成的代码不匹配!");
 			assert(false);
@@ -174,13 +184,14 @@ public:
 		if(vecLine[8]!="attack_type"){printf_message("Skill.csv中字段[attack_type]位置不对应");assert(false); return false; }
 		if(vecLine[9]!="attack_rate"){printf_message("Skill.csv中字段[attack_rate]位置不对应");assert(false); return false; }
 		if(vecLine[10]!="attack_value"){printf_message("Skill.csv中字段[attack_value]位置不对应");assert(false); return false; }
+		if(vecLine[11]!="attack_range"){printf_message("Skill.csv中字段[attack_range]位置不对应");assert(false); return false; }
 
 		while(true)
 		{
 			vecLine = ReadCsvLine( strContent, contentOffset );
 			if((int)vecLine.size() == 0 )
 				break;
-			if((int)vecLine.size() != (int)11)
+			if((int)vecLine.size() != (int)12)
 			{
 				assert(false);
 				return false;
@@ -196,6 +207,7 @@ public:
 			member.attack_type=(int)atoi(vecLine[8].c_str());
 			member.attack_rate=(int)atoi(vecLine[9].c_str());
 			member.attack_value=(int)atoi(vecLine[10].c_str());
+			member.attack_range=(int)atoi(vecLine[11].c_str());
 
 			member.SetIsValidate(true);
 			m_mapElements[member.id] = member;

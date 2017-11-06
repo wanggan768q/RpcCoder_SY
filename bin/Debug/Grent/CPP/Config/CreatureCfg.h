@@ -2,6 +2,7 @@
 #define __CREATURE_CONFIG_H
 
 #include "CommonDefine.h"
+#include "DK_Assertx.h"
 
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
@@ -10,7 +11,7 @@
 
 #include <vector>
 #include <string>
-#include <map>
+#include <unordered_map>
 using namespace std;
 
 
@@ -45,6 +46,11 @@ struct CreatureElement
 	int pool_skill_num;          	//从技能池里随机出来的数量	从技能池里随机出来的数量
 	string selected_sound;       	//被选中音效	被选中音效
 	string death_sound;          	//死亡音效	死亡音效
+	int skill_1;                 	//技能1	技能1
+	int skill_2;                 	//技能2	技能2
+	int skill_3;                 	//技能3	技能3
+	int skill_4;                 	//技能4	技能4
+	int skill_5;                 	//技能5	技能5
 
 private:
 	bool m_bIsValidate;
@@ -71,7 +77,7 @@ class CreatureTable
 private:
 	CreatureTable(){}
 	~CreatureTable(){}
-	map<int, CreatureElement>	m_mapElements;
+	unordered_map<int, CreatureElement>	m_mapElements;
 	vector<CreatureElement>	m_vecAllElements;
 	CreatureElement m_emptyItem;
 public:
@@ -81,11 +87,18 @@ public:
 		return sInstance;
 	}
 
-	CreatureElement GetElement(int key)
+	const CreatureElement* GetElement(int key)
 	{
 		if( m_mapElements.count(key)>0 )
-			return m_mapElements[key];
-		return m_emptyItem;
+			return &m_mapElements[key];
+		if (m_mapElements.count(key) > 0)
+		{
+			CreatureElement* temp = &m_mapElements[key];
+			AssertEx(temp, std::string(std::string("CreatureTable: ") + std::to_string(key)).c_str());
+			return temp;
+		}
+		AssertEx(false, std::string(std::string("CreatureTable: ") + std::to_string(key)).c_str());
+		return NULL;
 	}
 
 	bool HasElement(int key)
@@ -127,9 +140,9 @@ public:
 
 	bool LoadJson(const std::string& jsonFile)
 	{
-		boost::property_tree::ptree parse;
-		boost::property_tree::json_parser::read_json(std::string(CONFIG_PATH) + jsonFile, parse);
-		boost::property_tree::ptree sms_array = parse.get_child("data");
+		boost::property_tree::ptree sms_array;
+		boost::property_tree::json_parser::read_json(std::string(CONFIG_PATH) + jsonFile, sms_array);
+		//boost::property_tree::ptree sms_array = parse.get_child("data");
 
 		vector<string> vecLine;
 
@@ -168,6 +181,11 @@ public:
 			member.pool_skill_num=p.get<int>("pool_skill_num");
 			member.selected_sound=p.get<string>("selected_sound");
 			member.death_sound=p.get<string>("death_sound");
+			member.skill_1=p.get<int>("skill_1");
+			member.skill_2=p.get<int>("skill_2");
+			member.skill_3=p.get<int>("skill_3");
+			member.skill_4=p.get<int>("skill_4");
+			member.skill_5=p.get<int>("skill_5");
 
 
 			member.SetIsValidate(true);
@@ -184,7 +202,7 @@ public:
 		int contentOffset = 0;
 		vector<string> vecLine;
 		vecLine = ReadCsvLine( strContent, contentOffset );
-		if(vecLine.size() != 27)
+		if(vecLine.size() != 32)
 		{
 			printf_message("Creature.csv中列数量与生成的代码不匹配!");
 			assert(false);
@@ -217,13 +235,18 @@ public:
 		if(vecLine[24]!="pool_skill_num"){printf_message("Creature.csv中字段[pool_skill_num]位置不对应");assert(false); return false; }
 		if(vecLine[25]!="selected_sound"){printf_message("Creature.csv中字段[selected_sound]位置不对应");assert(false); return false; }
 		if(vecLine[26]!="death_sound"){printf_message("Creature.csv中字段[death_sound]位置不对应");assert(false); return false; }
+		if(vecLine[27]!="skill_1"){printf_message("Creature.csv中字段[skill_1]位置不对应");assert(false); return false; }
+		if(vecLine[28]!="skill_2"){printf_message("Creature.csv中字段[skill_2]位置不对应");assert(false); return false; }
+		if(vecLine[29]!="skill_3"){printf_message("Creature.csv中字段[skill_3]位置不对应");assert(false); return false; }
+		if(vecLine[30]!="skill_4"){printf_message("Creature.csv中字段[skill_4]位置不对应");assert(false); return false; }
+		if(vecLine[31]!="skill_5"){printf_message("Creature.csv中字段[skill_5]位置不对应");assert(false); return false; }
 
 		while(true)
 		{
 			vecLine = ReadCsvLine( strContent, contentOffset );
 			if((int)vecLine.size() == 0 )
 				break;
-			if((int)vecLine.size() != (int)27)
+			if((int)vecLine.size() != (int)32)
 			{
 				assert(false);
 				return false;
@@ -256,6 +279,11 @@ public:
 			member.pool_skill_num=(int)atoi(vecLine[24].c_str());
 			member.selected_sound=vecLine[25];
 			member.death_sound=vecLine[26];
+			member.skill_1=(int)atoi(vecLine[27].c_str());
+			member.skill_2=(int)atoi(vecLine[28].c_str());
+			member.skill_3=(int)atoi(vecLine[29].c_str());
+			member.skill_4=(int)atoi(vecLine[30].c_str());
+			member.skill_5=(int)atoi(vecLine[31].c_str());
 
 			member.SetIsValidate(true);
 			m_mapElements[member.entry_id] = member;

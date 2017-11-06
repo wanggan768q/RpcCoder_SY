@@ -287,7 +287,8 @@
                         OperationImpl = str19 + "\tMLayerMgr.RegNotifyHd(RPC_CODE_" + m.ModuleName.ToUpper() + "_" + operate.Name.ToUpper() + "_NOTIFY,handler(self,self." + operate.Name + "CB))\r\n";
                         CallBack = CallBack + "-- 给c层 注册服务器通知回调\r\n";
                         string str20 = CallBack;
-                        CallBack = str20 + "function " + m.ModuleName + "Model:register" + operate.Name + "CBNotify(_hanlder)\r\n";
+                        //CallBack = str20 + "function " + m.ModuleName + "Model:register" + operate.Name + "CBNotify(_hanlder)\r\n";
+                        CallBack = str20 + "function register" + operate.Name + "CBNotify(self,_hanlder)\r\n";
                         CallBack = CallBack + "\tif not self." + operate.Name + "CBNotifyCallBack then\r\n";
                         CallBack = CallBack + "\t\tself." + operate.Name + "CBNotifyCallBack = {}\r\n";
                         CallBack = CallBack + "\tend\r\n";
@@ -295,7 +296,8 @@
                         CallBack = CallBack + "end\r\n";
                         CallBack = CallBack + "-- 收到服务器的通知，广播给c层注册的模块\r\n";
                         string str21 = CallBack;
-                        CallBack = str21 + "function " + m.ModuleName + "Model:" + operate.Name + "CB(notifyMsg)\r\n";
+                        //CallBack = str21 + "function " + m.ModuleName + "Model:" + operate.Name + "CB(notifyMsg)\r\n";
+                        CallBack = str21 + "function " + operate.Name + "CB(self,notifyMsg)\r\n";
                         CallBack = CallBack + "\tif self." + operate.Name + "CBNotifyCallBack then\r\n";
                         string str22 = CallBack;
                         CallBack = str22 + "\t\tlocal ret_msg = self.rpc_pb." + m.ModuleName + item.DataStructName + "() \r\n";
@@ -306,7 +308,8 @@
                         CallBack = CallBack + "\tend\r\n";
                         CallBack = CallBack + "end\r\n";
                         string str23 = CallBack;
-                        CallBack = str23 + "function " + m.ModuleName + "Model:unregister" + operate.Name + "CBNotify(_hanlder)\r\n";
+                        //CallBack = str23 + "function " + m.ModuleName + "Model:unregister" + operate.Name + "CBNotify(_hanlder)\r\n";
+                        CallBack = str23 + "function unregister" + operate.Name + "CBNotify(self,_hanlder)\r\n";
                         CallBack = CallBack + "\tif nil ~= self." + operate.Name + "CBNotifyCallBack then\r\n";
                         CallBack = CallBack + "\t\tfor i,callback in ipairs(self." + operate.Name + "CBNotifyCallBack ) do\r\n";
                         CallBack = CallBack + "\t\t\tif callback == _hanlder then\r\n";
@@ -321,7 +324,8 @@
                         CallBack = CallBack + "-- 给c层 注册服务器通知回调\r\n";
                         int num4 = 0;
                         string str24 = CallBack;
-                        CallBack = str24 + "function " + m.ModuleName + "Model:" + operate.Name + "Notify(";
+                        //CallBack = str24 + "function " + m.ModuleName + "Model:" + operate.Name + "Notify(";
+                        CallBack = str24 + "function " + operate.Name + "Notify(";
                         string str2 = "\tlocal PB = self.rpc_pb." + m.ModuleName + "Rpc" + operate.Name + "Notify()\r\n";
                         foreach (DataStruct.FieldDescriptor descriptor2 in struct4.fieldItem)
                         {
@@ -329,6 +333,11 @@
                             CallBack = CallBack + descriptor2.FieldName;
                             str3 = str2;
                             str2 = str3 + "\tPB." + descriptor2.FieldName + " = " + descriptor2.FieldName + "\r\n";
+                            if (num4 == 0)
+                            {
+                                num4 = struct4.fieldItem.Count;
+                            }
+                            num4--;
                         }
                         CallBack = CallBack + ")\r\n";
                         CallBack = CallBack + str2;

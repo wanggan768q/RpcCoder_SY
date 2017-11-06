@@ -5,4 +5,9 @@
         <Field PreDefine="optional" FieldType="string" Name="Nickname" CName="昵称" Comment="" FieldId="2" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" />
         <Field PreDefine="optional" FieldType="sint32" Name="ConfigId" CName="配置表id" Comment="" FieldId="3" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
     </Struct>
+    <Struct Name="V3" CName="v3" ProtoType="CommProto" Comment="" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="float" Name="X" CName="x" Comment="" FieldId="1" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
+        <Field PreDefine="optional" FieldType="float" Name="Y" CName="y" Comment="" FieldId="2" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
+        <Field PreDefine="optional" FieldType="float" Name="Z" CName="z" Comment="" FieldId="3" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
+    </Struct>
 </Root>

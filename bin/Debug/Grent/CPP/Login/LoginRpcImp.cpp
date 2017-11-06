@@ -108,5 +108,24 @@ static int ModuleLogin::RpcCreateCharacter( CPlayer* pPlayer, CPacket* pPacket)
 	return 0;
 }
 
+/********************************************************************************************
+* Function:       RpcSelectSaveUser
+* Description:    登录模块-->选择角色存储redis同步调用操作函数
+* Input:          LoginRpcSelectSaveUserAskWraper& Ask 选择角色存储redis请求
+* Output:         LoginRpcSelectSaveUserReplyWraper& Reply 选择角色存储redis回应
+* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+********************************************************************************************/
+static int ModuleLogin::RpcSelectSaveUser( CPlayer* pPlayer, CPacket* pPacket)
+{
+
+	//逻辑代码
+
+
+	//设置返回结果
+	Reply.SetResult(0);
+	return 0;
+}
+
 
 

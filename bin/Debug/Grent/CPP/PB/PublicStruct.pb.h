@@ -32,6 +32,7 @@ void protobuf_AssignDesc_PublicStruct_2eproto();
 void protobuf_ShutdownFile_PublicStruct_2eproto();
 
 class CharacterInfo;
+class V3;
 
 // ===================================================================
 
@@ -139,6 +140,108 @@ class CharacterInfo : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static CharacterInfo* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class V3 : public ::google::protobuf::Message {
+ public:
+  V3();
+  virtual ~V3();
+
+  V3(const V3& from);
+
+  inline V3& operator=(const V3& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const V3& default_instance();
+
+  void Swap(V3* other);
+
+  // implements Message ----------------------------------------------
+
+  V3* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const V3& from);
+  void MergeFrom(const V3& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional float X = 1 [default = -1];
+  inline bool has_x() const;
+  inline void clear_x();
+  static const int kXFieldNumber = 1;
+  inline float x() const;
+  inline void set_x(float value);
+
+  // optional float Y = 2 [default = -1];
+  inline bool has_y() const;
+  inline void clear_y();
+  static const int kYFieldNumber = 2;
+  inline float y() const;
+  inline void set_y(float value);
+
+  // optional float Z = 3 [default = -1];
+  inline bool has_z() const;
+  inline void clear_z();
+  static const int kZFieldNumber = 3;
+  inline float z() const;
+  inline void set_z(float value);
+
+  // @@protoc_insertion_point(class_scope:V3)
+ private:
+  inline void set_has_x();
+  inline void clear_has_x();
+  inline void set_has_y();
+  inline void clear_has_y();
+  inline void set_has_z();
+  inline void clear_has_z();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  float x_;
+  float y_;
+  float z_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+
+  friend void  protobuf_AddDesc_PublicStruct_2eproto();
+  friend void protobuf_AssignDesc_PublicStruct_2eproto();
+  friend void protobuf_ShutdownFile_PublicStruct_2eproto();
+
+  void InitAsDefaultInstance();
+  static V3* default_instance_;
 };
 // ===================================================================
 
@@ -259,6 +362,76 @@ inline ::google::protobuf::int32 CharacterInfo::configid() const {
 inline void CharacterInfo::set_configid(::google::protobuf::int32 value) {
   set_has_configid();
   configid_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// V3
+
+// optional float X = 1 [default = -1];
+inline bool V3::has_x() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void V3::set_has_x() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void V3::clear_has_x() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void V3::clear_x() {
+  x_ = -1;
+  clear_has_x();
+}
+inline float V3::x() const {
+  return x_;
+}
+inline void V3::set_x(float value) {
+  set_has_x();
+  x_ = value;
+}
+
+// optional float Y = 2 [default = -1];
+inline bool V3::has_y() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void V3::set_has_y() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void V3::clear_has_y() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void V3::clear_y() {
+  y_ = -1;
+  clear_has_y();
+}
+inline float V3::y() const {
+  return y_;
+}
+inline void V3::set_y(float value) {
+  set_has_y();
+  y_ = value;
+}
+
+// optional float Z = 3 [default = -1];
+inline bool V3::has_z() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void V3::set_has_z() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void V3::clear_has_z() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void V3::clear_z() {
+  z_ = -1;
+  clear_has_z();
+}
+inline float V3::z() const {
+  return z_;
+}
+inline void V3::set_z(float value) {
+  set_has_z();
+  z_ = value;
 }
 
 

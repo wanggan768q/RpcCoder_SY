@@ -25,6 +25,7 @@ public class LoginRPC
 	public const int RPC_CODE_LOGIN_CHARACTERLIST_REQUEST = 253;
 	public const int RPC_CODE_LOGIN_SELECTCHARACTER_REQUEST = 254;
 	public const int RPC_CODE_LOGIN_CREATECHARACTER_REQUEST = 255;
+	public const int RPC_CODE_LOGIN_SELECTSAVEUSER_REQUEST = 256;
 
 	
 	private static LoginRPC m_Instance = null;
@@ -140,6 +141,24 @@ public class LoginRPC
 
 		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
 			LoginRpcCreateCharacterReplyWraper replyPBWraper = new LoginRpcCreateCharacterReplyWraper();
+			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
+			replyCB(replyPBWraper);
+		});
+	}
+
+	/**
+	*登录模块-->选择角色存储redis RPC请求
+	*/
+	public void SelectSaveUser(UInt64 RoleId, ReplyHandler replyCB)
+	{
+		LoginRpcSelectSaveUserAskWraper askPBWraper = new LoginRpcSelectSaveUserAskWraper();
+		askPBWraper.RoleId = RoleId;
+		ModMessage askMsg = new ModMessage();
+		askMsg.MsgNum = RPC_CODE_LOGIN_SELECTSAVEUSER_REQUEST;
+		askMsg.protoMS = askPBWraper.ToMemoryStream();
+
+		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
+			LoginRpcSelectSaveUserReplyWraper replyPBWraper = new LoginRpcSelectSaveUserReplyWraper();
 			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
 			replyCB(replyPBWraper);
 		});

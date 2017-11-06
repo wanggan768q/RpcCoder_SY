@@ -375,6 +375,7 @@ public class LoginRpcCharacterListReplyWraper
 	{
 		 m_Result = -9999;
 		m_CharacterList = new List<CharacterInfoWraper>();
+		 m_LastSelectRoleId = 0;
 
 	}
 
@@ -383,6 +384,7 @@ public class LoginRpcCharacterListReplyWraper
 	{
 		 m_Result = -9999;
 		m_CharacterList = new List<CharacterInfoWraper>();
+		 m_LastSelectRoleId = 0;
 
 	}
 
@@ -393,6 +395,7 @@ public class LoginRpcCharacterListReplyWraper
 		v.Result = m_Result;
 		for (int i=0; i<(int)m_CharacterList.Count; i++)
 			v.CharacterList.Add( m_CharacterList[i].ToPB());
+		v.LastSelectRoleId = m_LastSelectRoleId;
 
 		return v;
 	}
@@ -408,6 +411,7 @@ public class LoginRpcCharacterListReplyWraper
 			m_CharacterList.Add( new CharacterInfoWraper());
 		for( int i=0; i<v.CharacterList.Count; i++)
 			m_CharacterList[i].FromPB(v.CharacterList[i]);
+		m_LastSelectRoleId = v.LastSelectRoleId;
 
 	}
 	
@@ -467,6 +471,13 @@ public class LoginRpcCharacterListReplyWraper
 	public void ClearCharacterList( )
 	{
 		m_CharacterList.Clear();
+	}
+	//最后一次选择的角色ID
+	public UInt64 m_LastSelectRoleId;
+	public UInt64 LastSelectRoleId
+	{
+		get { return m_LastSelectRoleId;}
+		set { m_LastSelectRoleId = value; }
 	}
 
 
@@ -713,7 +724,7 @@ public class LoginRpcCreateCharacterReplyWraper
 	public LoginRpcCreateCharacterReplyWraper()
 	{
 		 m_Result = -9999;
-		 m_Roleid = 0;
+		 m_RoleId = 0;
 
 	}
 
@@ -721,7 +732,7 @@ public class LoginRpcCreateCharacterReplyWraper
 	public void ResetWraper()
 	{
 		 m_Result = -9999;
-		 m_Roleid = 0;
+		 m_RoleId = 0;
 
 	}
 
@@ -730,7 +741,7 @@ public class LoginRpcCreateCharacterReplyWraper
 	{
 		LoginRpcCreateCharacterReply v = new LoginRpcCreateCharacterReply();
 		v.Result = m_Result;
-		v.Roleid = m_Roleid;
+		v.RoleId = m_RoleId;
 
 		return v;
 	}
@@ -741,7 +752,7 @@ public class LoginRpcCreateCharacterReplyWraper
         if (v == null)
             return;
 		m_Result = v.Result;
-		m_Roleid = v.Roleid;
+		m_RoleId = v.RoleId;
 
 	}
 	
@@ -769,11 +780,137 @@ public class LoginRpcCreateCharacterReplyWraper
 		set { m_Result = value; }
 	}
 	//角色id
-	public UInt64 m_Roleid;
-	public UInt64 Roleid
+	public UInt64 m_RoleId;
+	public UInt64 RoleId
 	{
-		get { return m_Roleid;}
-		set { m_Roleid = value; }
+		get { return m_RoleId;}
+		set { m_RoleId = value; }
+	}
+
+
+};
+//选择角色存储redis请求封装类
+[System.Serializable]
+public class LoginRpcSelectSaveUserAskWraper
+{
+
+	//构造函数
+	public LoginRpcSelectSaveUserAskWraper()
+	{
+		 m_RoleId = 0;
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_RoleId = 0;
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public LoginRpcSelectSaveUserAsk ToPB()
+	{
+		LoginRpcSelectSaveUserAsk v = new LoginRpcSelectSaveUserAsk();
+		v.RoleId = m_RoleId;
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(LoginRpcSelectSaveUserAsk v)
+	{
+        if (v == null)
+            return;
+		m_RoleId = v.RoleId;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<LoginRpcSelectSaveUserAsk>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		LoginRpcSelectSaveUserAsk pb = ProtoBuf.Serializer.Deserialize<LoginRpcSelectSaveUserAsk>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//转发角色ID
+	public UInt64 m_RoleId;
+	public UInt64 RoleId
+	{
+		get { return m_RoleId;}
+		set { m_RoleId = value; }
+	}
+
+
+};
+//选择角色存储redis回应封装类
+[System.Serializable]
+public class LoginRpcSelectSaveUserReplyWraper
+{
+
+	//构造函数
+	public LoginRpcSelectSaveUserReplyWraper()
+	{
+		 m_Result = -9999;
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_Result = -9999;
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public LoginRpcSelectSaveUserReply ToPB()
+	{
+		LoginRpcSelectSaveUserReply v = new LoginRpcSelectSaveUserReply();
+		v.Result = m_Result;
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(LoginRpcSelectSaveUserReply v)
+	{
+        if (v == null)
+            return;
+		m_Result = v.Result;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<LoginRpcSelectSaveUserReply>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		LoginRpcSelectSaveUserReply pb = ProtoBuf.Serializer.Deserialize<LoginRpcSelectSaveUserReply>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//返回结果
+	public int m_Result;
+	public int Result
+	{
+		get { return m_Result;}
+		set { m_Result = value; }
 	}
 
 

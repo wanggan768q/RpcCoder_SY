@@ -1,0 +1,71 @@
+message  HumanRpcMoveAsk
+{
+	optional float Dir = 2[default=-1];
+	optional float X = 3[default=-1];
+	optional float Z = 4[default=-1];
+
+}
+
+message  HumanRpcMoveReply
+{
+	optional sint32 Result = 1[default=-9999];
+	optional V3 Pos = 2;
+	optional float Dir = 3[default=-1];
+
+}
+
+message  HumanRpcStopMoveAsk
+{
+	optional float Dir = 2[default=-1];
+	optional float X = 3[default=-1];
+	optional float Z = 4[default=-1];
+
+}
+
+message  HumanRpcStopMoveReply
+{
+	optional sint32 Result = 1[default=-9999];
+	optional V3 Pos = 2;
+	optional float Dir = 3[default=-1];
+
+}
+
+message  HumanRpcMovementVerificationAsk
+{
+	optional float Dir = 1[default=-1];
+	optional float X = 2[default=-1];
+	optional float Z = 3[default=-1];
+
+}
+
+message  HumanRpcMovementVerificationReply
+{
+	optional sint32 Result = 1[default=-9999];
+	optional float Dir = 2[default=-1];
+	optional float X = 3[default=-1];
+	optional float Z = 4[default=-1];
+
+}
+
+message  HumanRpcCGMoveCheckNotify
+{
+	optional float Dir = 1[default=0];
+	optional V3 Pos = 2;
+
+}
+
+message  HumanRpcGCMoveCheckNotify
+{
+	optional float Dir = 1[default=-1];
+	optional V3 Pos = 2;
+
+}
+
+message  V3
+{
+	optional float X = 1[default=-1];
+	optional float Y = 2[default=-1];
+	optional float Z = 3[default=-1];
+
+}
+

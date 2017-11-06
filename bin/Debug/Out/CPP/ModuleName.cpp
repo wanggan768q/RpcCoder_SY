@@ -2,8 +2,7 @@
 map<int, string> ModuleValue;
 void InitModuleValue()
 {
-	ModuleValue[1]="Config";
-	ModuleValue[2]="登录模块";
+	ModuleValue[4]="玩家模块";
 
 }
 string GetModuleValue(int id)

@@ -23,6 +23,7 @@
 #include "PacketFactory.h"
 #include "include/PacketMgr.h"
 #include "ConfigRpc.pb.h"
+#include <memory>
 
 
 
@@ -34,6 +35,7 @@
 #include "CreatureDummyCfg.h"
 #include "CreatureSpawnCfg.h"
 #include "CreatureCfg.h"
+#include "DungeonCfg.h"
 #include "ItemProtoCfg.h"
 #include "RoleCfg.h"
 #include "SceneCfg.h"
@@ -47,7 +49,7 @@
 class CPlayer;
 class CPacket;
 
-extern PacketMgr* g_pPacketMgr;
+extern std::unique_ptr<PacketMgr> g_pPacketMgr;
 
 //Config实现类
 class ModuleConfig
@@ -72,7 +74,13 @@ public:
 	~ModuleConfig(){}
 
 
+	static ModuleConfig Instance()
+	{
+		static ModuleConfig sInstance;
+		return sInstance;
+	}
 	
+	bool Initialize();
 
 public:
 

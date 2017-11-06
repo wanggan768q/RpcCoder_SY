@@ -18,6 +18,142 @@
 
 
 
+//v3封装类
+class V3Wraper : public DataWraperInterface 
+{
+public:
+	//构造函数
+	V3Wraper()
+	{
+		
+		m_X = -1;
+		m_Y = -1;
+		m_Z = -1;
+
+	}
+	//赋值构造函数
+	V3Wraper(const V3& v){ Init(v); }
+	//等号重载函数
+	void operator = (const V3& v){ Init(v); }
+ 	//转化成Protobuffer类型函数
+	V3 ToPB() const
+	{
+		V3 v;
+		v.set_x( m_X );
+		v.set_y( m_Y );
+		v.set_z( m_Z );
+
+		return v;
+	}
+	//获取Protobuffer序列化后大小函数
+	int ByteSize() const { return ToPB().ByteSize();}
+	//Protobuffer序列化到缓冲区
+	bool SerializeToArray( void* data, int size ) const
+	{
+		return ToPB().SerializeToArray(data,size);
+	}
+	//Protobuffer序列化到字符串
+	string SerializeAsString() const
+	{
+		return ToPB().SerializeAsString();
+	}
+	//Protobuffer从字符串进行反序列化
+	bool ParseFromString(const string& v)
+	{
+		return ParseFromArray(v.data(),v.size());
+	}
+	//Protobuffer从缓冲区进行反序列化
+	bool ParseFromArray(const void* data, int size)
+	{
+		V3 pb;
+		if(!pb.ParseFromArray(data,size)){return false;}
+		Init(pb);
+		return true;
+	}
+
+	string HtmlDescHeader()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}
+
+	string ToHtml()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+		TStr tmpLine;
+		tmpLine.Fmt("<li>X：%.2ff</li>\r\n",m_X);
+		tmpLine.Fmt("<li>Y：%.2ff</li>\r\n",m_Y);
+		tmpLine.Fmt("<li>Z：%.2ff</li>\r\n",m_Z);
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}
+
+
+private:
+	//从Protobuffer类型初始化
+	void Init(const V3& v)
+	{
+		m_X = v.x();
+		m_Y = v.y();
+		m_Z = v.z();
+
+	}
+
+private:
+	//x
+	float m_X;
+public:
+	void SetX( float v)
+	{
+		m_X=v;
+	}
+	float GetX()
+	{
+		return m_X;
+	}
+	float GetX() const
+	{
+		return m_X;
+	}
+private:
+	//y
+	float m_Y;
+public:
+	void SetY( float v)
+	{
+		m_Y=v;
+	}
+	float GetY()
+	{
+		return m_Y;
+	}
+	float GetY() const
+	{
+		return m_Y;
+	}
+private:
+	//z
+	float m_Z;
+public:
+	void SetZ( float v)
+	{
+		m_Z=v;
+	}
+	float GetZ()
+	{
+		return m_Z;
+	}
+	float GetZ() const
+	{
+		return m_Z;
+	}
+
+};
 //角色信息封装类
 class CharacterInfoWraper : public DataWraperInterface 
 {

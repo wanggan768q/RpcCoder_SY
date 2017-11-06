@@ -20,6 +20,7 @@ public class SkillElement
 	public int attack_type;      	//攻击的类型:0:物理攻击,1:法术攻击,2:物理&法术攻击	攻击的类型:0:物理攻击,1:法术攻击,2:物理&法术攻击
 	public int attack_rate;      	//技能伤害系数	技能伤害系数
 	public int attack_value;     	//技能伤害附加	技能伤害附加
+	public int attack_range;     	//技能释放距离	技能释放距离
 
 	public bool IsValidate = false;
 	public SkillElement()
@@ -112,7 +113,7 @@ public class SkillTable
             vecLine.Add(tmpStr);
             vecHeadType.Add(tmpInt);
 		}
-		if(vecLine.Count != 11)
+		if(vecLine.Count != 12)
 		{
 			Ex.Logger.Log("Skill.csv中列数量与生成的代码不匹配!");
 			return false;
@@ -128,6 +129,7 @@ public class SkillTable
 		if(vecLine[8]!="attack_type"){Ex.Logger.Log("Skill.csv中字段[attack_type]位置不对应"); return false; }
 		if(vecLine[9]!="attack_rate"){Ex.Logger.Log("Skill.csv中字段[attack_rate]位置不对应"); return false; }
 		if(vecLine[10]!="attack_value"){Ex.Logger.Log("Skill.csv中字段[attack_value]位置不对应"); return false; }
+		if(vecLine[11]!="attack_range"){Ex.Logger.Log("Skill.csv中字段[attack_range]位置不对应"); return false; }
 
 		for(int i=0; i<nRow; i++)
 		{
@@ -143,6 +145,7 @@ public class SkillTable
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.attack_type );
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.attack_rate );
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.attack_value );
+			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.attack_range );
 
 			member.IsValidate = true;
 			m_vecAllElements.Add(member);
@@ -159,7 +162,7 @@ public class SkillTable
 		int contentOffset = 0;
 		List<string> vecLine;
 		vecLine = GameAssist.readCsvLine( strContent, ref contentOffset );
-		if(vecLine.Count != 11)
+		if(vecLine.Count != 12)
 		{
 			Ex.Logger.Log("Skill.csv中列数量与生成的代码不匹配!");
 			return false;
@@ -175,13 +178,14 @@ public class SkillTable
 		if(vecLine[8]!="attack_type"){Ex.Logger.Log("Skill.csv中字段[attack_type]位置不对应"); return false; }
 		if(vecLine[9]!="attack_rate"){Ex.Logger.Log("Skill.csv中字段[attack_rate]位置不对应"); return false; }
 		if(vecLine[10]!="attack_value"){Ex.Logger.Log("Skill.csv中字段[attack_value]位置不对应"); return false; }
+		if(vecLine[11]!="attack_range"){Ex.Logger.Log("Skill.csv中字段[attack_range]位置不对应"); return false; }
 
 		while(true)
 		{
 			vecLine = GameAssist.readCsvLine( strContent, ref contentOffset );
 			if((int)vecLine.Count == 0 )
 				break;
-			if((int)vecLine.Count != (int)11)
+			if((int)vecLine.Count != (int)12)
 			{
 				return false;
 			}
@@ -197,6 +201,7 @@ public class SkillTable
 			member.attack_type=Convert.ToInt32(vecLine[8]);
 			member.attack_rate=Convert.ToInt32(vecLine[9]);
 			member.attack_value=Convert.ToInt32(vecLine[10]);
+			member.attack_range=Convert.ToInt32(vecLine[11]);
 
 			member.IsValidate = true;
 			m_vecAllElements.Add(member);

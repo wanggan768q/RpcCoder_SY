@@ -2,6 +2,7 @@
 #define __WAYPOINT_CONFIG_H
 
 #include "CommonDefine.h"
+#include "DK_Assertx.h"
 
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
@@ -10,7 +11,7 @@
 
 #include <vector>
 #include <string>
-#include <map>
+#include <unordered_map>
 using namespace std;
 
 
@@ -52,7 +53,7 @@ class WayPointTable
 private:
 	WayPointTable(){}
 	~WayPointTable(){}
-	map<int, WayPointElement>	m_mapElements;
+	unordered_map<int, WayPointElement>	m_mapElements;
 	vector<WayPointElement>	m_vecAllElements;
 	WayPointElement m_emptyItem;
 public:
@@ -62,11 +63,18 @@ public:
 		return sInstance;
 	}
 
-	WayPointElement GetElement(int key)
+	const WayPointElement* GetElement(int key)
 	{
 		if( m_mapElements.count(key)>0 )
-			return m_mapElements[key];
-		return m_emptyItem;
+			return &m_mapElements[key];
+		if (m_mapElements.count(key) > 0)
+		{
+			WayPointElement* temp = &m_mapElements[key];
+			AssertEx(temp, std::string(std::string("WayPointTable: ") + std::to_string(key)).c_str());
+			return temp;
+		}
+		AssertEx(false, std::string(std::string("WayPointTable: ") + std::to_string(key)).c_str());
+		return NULL;
 	}
 
 	bool HasElement(int key)
@@ -108,9 +116,9 @@ public:
 
 	bool LoadJson(const std::string& jsonFile)
 	{
-		boost::property_tree::ptree parse;
-		boost::property_tree::json_parser::read_json(std::string(CONFIG_PATH) + jsonFile, parse);
-		boost::property_tree::ptree sms_array = parse.get_child("data");
+		boost::property_tree::ptree sms_array;
+		boost::property_tree::json_parser::read_json(std::string(CONFIG_PATH) + jsonFile, sms_array);
+		//boost::property_tree::ptree sms_array = parse.get_child("data");
 
 		vector<string> vecLine;
 

@@ -44,4 +44,38 @@ namespace GenPB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"V3")]
+  public partial class V3 : global::ProtoBuf.IExtensible
+  {
+    public V3() {}
+    
+    private float _X = (float)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"X", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)-1)]
+    public float X
+    {
+      get { return _X; }
+      set { _X = value; }
+    }
+    private float _Y = (float)-1;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Y", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)-1)]
+    public float Y
+    {
+      get { return _Y; }
+      set { _Y = value; }
+    }
+    private float _Z = (float)-1;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"Z", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)-1)]
+    public float Z
+    {
+      get { return _Z; }
+      set { _Z = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
 }

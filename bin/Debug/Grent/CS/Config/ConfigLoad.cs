@@ -31,6 +31,9 @@ public class ConfigLoad : MonoBehaviour {
 		yield return StartCoroutine(LoadData("Creature.csv"));
 		CreatureTable.Instance.LoadCsv(textContent);
 
+		yield return StartCoroutine(LoadData("Dungeon.csv"));
+		DungeonTable.Instance.LoadCsv(textContent);
+
 		yield return StartCoroutine(LoadData("ItemProto.csv"));
 		ItemProtoTable.Instance.LoadCsv(textContent);
 

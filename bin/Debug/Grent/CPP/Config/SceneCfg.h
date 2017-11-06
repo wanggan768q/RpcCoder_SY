@@ -2,6 +2,7 @@
 #define __SCENE_CONFIG_H
 
 #include "CommonDefine.h"
+#include "DK_Assertx.h"
 
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
@@ -10,7 +11,7 @@
 
 #include <vector>
 #include <string>
-#include <map>
+#include <unordered_map>
 using namespace std;
 
 
@@ -19,32 +20,23 @@ struct SceneElement
 {
 	friend class SceneTable;
 	int id;                      	//序号	序号
-	string name;                 	//名字	名字
+	string comment;              	//	
+	int name;                    	//场景名称	文本id
+	int description;             	//场景描述	文本相关id
+	string background_pic;       	//场景介绍图片	场景介绍图片
+	string loading_pic;          	//场景读取图片	如果不填则显示默认图
 	int thread_id;               	//线程ID	线程ID
-	int is_dungeon;              	//是否是副本	是否是副本
+	int scene_type;              	//副本类型	0：场景 1：副本 
 	float valid_pos_x;           	//初始位置	如果进入一个不可进入的区域，默认给玩家一个进入位置
 	float valid_pos_z;           	//初始位置	如果进入一个不可进入的区域，默认给玩家一个进入位置
-	int dungeon_type;            	//副本类型	
-	int difficult;               	//难度	
-	int required_level;          	//所需等级	
-	float required_score;        	//所需战力	
-	int required_num;            	//所需玩家数量	
-	int required_last_dungeon_id;	//所需前置副本ID	
-	int reset_type;              	//重置类型	
-	int finish_amount;           	//允许玩家完成次数	
-	int name_id;                 	//副本名字ID	
-	int describle_id;            	//副本描述ID	
-	string picture_path;         	//副本图片路径	
-	int teleport_id;             	//传送路点ID	
-	string reward_boss_ui;       	//boss掉落数组	
-	int First_reward_ui;         	//首通奖励礼包ID	
-	int general_reward__ui;      	//非首通奖励礼包ID	
-	int is_transfer;             	//是否需要装备中转表	
-	string start_music;          	//开启音乐	
-	string loop_music;           	//循环音乐	
-	int endingboss_id;           	//最后boss ID	
-	int duration_time;           	//副本存活时间	
-	int end_time;                	//副本结算时间	
+	string scene_resource;       	//场景资源	资源路径
+	int required_level;          	//所需等级	解锁该场景需要的等级
+	float required_score;        	//所需战力	解锁该场景需要的战力
+	int pre_quest;               	//前置任务	解锁该场景需要的任务
+	int teleport_id;             	//默认生成点ID	如果没有指定生成的位置，玩家会默认出现在该点
+	int camera_type;             	//摄像机类型	0：强制2.5D 1：3D&2.5D
+	string pre_music;            	//前奏音乐	进入场景时播放的音乐前奏
+	string loop_music;           	//循环音乐	在该场景循环播放的音乐
 
 private:
 	bool m_bIsValidate;
@@ -71,7 +63,7 @@ class SceneTable
 private:
 	SceneTable(){}
 	~SceneTable(){}
-	map<int, SceneElement>	m_mapElements;
+	unordered_map<int, SceneElement>	m_mapElements;
 	vector<SceneElement>	m_vecAllElements;
 	SceneElement m_emptyItem;
 public:
@@ -81,11 +73,18 @@ public:
 		return sInstance;
 	}
 
-	SceneElement GetElement(int key)
+	const SceneElement* GetElement(int key)
 	{
 		if( m_mapElements.count(key)>0 )
-			return m_mapElements[key];
-		return m_emptyItem;
+			return &m_mapElements[key];
+		if (m_mapElements.count(key) > 0)
+		{
+			SceneElement* temp = &m_mapElements[key];
+			AssertEx(temp, std::string(std::string("SceneTable: ") + std::to_string(key)).c_str());
+			return temp;
+		}
+		AssertEx(false, std::string(std::string("SceneTable: ") + std::to_string(key)).c_str());
+		return NULL;
 	}
 
 	bool HasElement(int key)
@@ -127,9 +126,9 @@ public:
 
 	bool LoadJson(const std::string& jsonFile)
 	{
-		boost::property_tree::ptree parse;
-		boost::property_tree::json_parser::read_json(std::string(CONFIG_PATH) + jsonFile, parse);
-		boost::property_tree::ptree sms_array = parse.get_child("data");
+		boost::property_tree::ptree sms_array;
+		boost::property_tree::json_parser::read_json(std::string(CONFIG_PATH) + jsonFile, sms_array);
+		//boost::property_tree::ptree sms_array = parse.get_child("data");
 
 		vector<string> vecLine;
 
@@ -142,32 +141,23 @@ public:
 			SceneElement	member;
 
 						member.id=p.get<int>("id");
-			member.name=p.get<string>("name");
+			member.comment=p.get<string>("comment");
+			member.name=p.get<int>("name");
+			member.description=p.get<int>("description");
+			member.background_pic=p.get<string>("background_pic");
+			member.loading_pic=p.get<string>("loading_pic");
 			member.thread_id=p.get<int>("thread_id");
-			member.is_dungeon=p.get<int>("is_dungeon");
+			member.scene_type=p.get<int>("scene_type");
 			member.valid_pos_x=p.get<float>("valid_pos_x");
 			member.valid_pos_z=p.get<float>("valid_pos_z");
-			member.dungeon_type=p.get<int>("dungeon_type");
-			member.difficult=p.get<int>("difficult");
+			member.scene_resource=p.get<string>("scene_resource");
 			member.required_level=p.get<int>("required_level");
 			member.required_score=p.get<float>("required_score");
-			member.required_num=p.get<int>("required_num");
-			member.required_last_dungeon_id=p.get<int>("required_last_dungeon_id");
-			member.reset_type=p.get<int>("reset_type");
-			member.finish_amount=p.get<int>("finish_amount");
-			member.name_id=p.get<int>("name_id");
-			member.describle_id=p.get<int>("describle_id");
-			member.picture_path=p.get<string>("picture_path");
+			member.pre_quest=p.get<int>("pre_quest");
 			member.teleport_id=p.get<int>("teleport_id");
-			member.reward_boss_ui=p.get<string>("reward_boss_ui");
-			member.First_reward_ui=p.get<int>("First_reward_ui");
-			member.general_reward__ui=p.get<int>("general_reward__ui");
-			member.is_transfer=p.get<int>("is_transfer");
-			member.start_music=p.get<string>("start_music");
+			member.camera_type=p.get<int>("camera_type");
+			member.pre_music=p.get<string>("pre_music");
 			member.loop_music=p.get<string>("loop_music");
-			member.endingboss_id=p.get<int>("endingboss_id");
-			member.duration_time=p.get<int>("duration_time");
-			member.end_time=p.get<int>("end_time");
 
 
 			member.SetIsValidate(true);
@@ -184,78 +174,60 @@ public:
 		int contentOffset = 0;
 		vector<string> vecLine;
 		vecLine = ReadCsvLine( strContent, contentOffset );
-		if(vecLine.size() != 27)
+		if(vecLine.size() != 18)
 		{
 			printf_message("Scene.csv中列数量与生成的代码不匹配!");
 			assert(false);
 			return false;
 		}
 		if(vecLine[0]!="id"){printf_message("Scene.csv中字段[id]位置不对应");assert(false); return false; }
-		if(vecLine[1]!="name"){printf_message("Scene.csv中字段[name]位置不对应");assert(false); return false; }
-		if(vecLine[2]!="thread_id"){printf_message("Scene.csv中字段[thread_id]位置不对应");assert(false); return false; }
-		if(vecLine[3]!="is_dungeon"){printf_message("Scene.csv中字段[is_dungeon]位置不对应");assert(false); return false; }
-		if(vecLine[4]!="valid_pos_x"){printf_message("Scene.csv中字段[valid_pos_x]位置不对应");assert(false); return false; }
-		if(vecLine[5]!="valid_pos_z"){printf_message("Scene.csv中字段[valid_pos_z]位置不对应");assert(false); return false; }
-		if(vecLine[6]!="dungeon_type"){printf_message("Scene.csv中字段[dungeon_type]位置不对应");assert(false); return false; }
-		if(vecLine[7]!="difficult"){printf_message("Scene.csv中字段[difficult]位置不对应");assert(false); return false; }
-		if(vecLine[8]!="required_level"){printf_message("Scene.csv中字段[required_level]位置不对应");assert(false); return false; }
-		if(vecLine[9]!="required_score"){printf_message("Scene.csv中字段[required_score]位置不对应");assert(false); return false; }
-		if(vecLine[10]!="required_num"){printf_message("Scene.csv中字段[required_num]位置不对应");assert(false); return false; }
-		if(vecLine[11]!="required_last_dungeon_id"){printf_message("Scene.csv中字段[required_last_dungeon_id]位置不对应");assert(false); return false; }
-		if(vecLine[12]!="reset_type"){printf_message("Scene.csv中字段[reset_type]位置不对应");assert(false); return false; }
-		if(vecLine[13]!="finish_amount"){printf_message("Scene.csv中字段[finish_amount]位置不对应");assert(false); return false; }
-		if(vecLine[14]!="name_id"){printf_message("Scene.csv中字段[name_id]位置不对应");assert(false); return false; }
-		if(vecLine[15]!="describle_id"){printf_message("Scene.csv中字段[describle_id]位置不对应");assert(false); return false; }
-		if(vecLine[16]!="picture_path"){printf_message("Scene.csv中字段[picture_path]位置不对应");assert(false); return false; }
-		if(vecLine[17]!="teleport_id"){printf_message("Scene.csv中字段[teleport_id]位置不对应");assert(false); return false; }
-		if(vecLine[18]!="reward_boss_ui"){printf_message("Scene.csv中字段[reward_boss_ui]位置不对应");assert(false); return false; }
-		if(vecLine[19]!="First_reward_ui"){printf_message("Scene.csv中字段[First_reward_ui]位置不对应");assert(false); return false; }
-		if(vecLine[20]!="general_reward__ui"){printf_message("Scene.csv中字段[general_reward__ui]位置不对应");assert(false); return false; }
-		if(vecLine[21]!="is_transfer"){printf_message("Scene.csv中字段[is_transfer]位置不对应");assert(false); return false; }
-		if(vecLine[22]!="start_music"){printf_message("Scene.csv中字段[start_music]位置不对应");assert(false); return false; }
-		if(vecLine[23]!="loop_music"){printf_message("Scene.csv中字段[loop_music]位置不对应");assert(false); return false; }
-		if(vecLine[24]!="endingboss_id"){printf_message("Scene.csv中字段[endingboss_id]位置不对应");assert(false); return false; }
-		if(vecLine[25]!="duration_time"){printf_message("Scene.csv中字段[duration_time]位置不对应");assert(false); return false; }
-		if(vecLine[26]!="end_time"){printf_message("Scene.csv中字段[end_time]位置不对应");assert(false); return false; }
+		if(vecLine[1]!="comment"){printf_message("Scene.csv中字段[comment]位置不对应");assert(false); return false; }
+		if(vecLine[2]!="name"){printf_message("Scene.csv中字段[name]位置不对应");assert(false); return false; }
+		if(vecLine[3]!="description"){printf_message("Scene.csv中字段[description]位置不对应");assert(false); return false; }
+		if(vecLine[4]!="background_pic"){printf_message("Scene.csv中字段[background_pic]位置不对应");assert(false); return false; }
+		if(vecLine[5]!="loading_pic"){printf_message("Scene.csv中字段[loading_pic]位置不对应");assert(false); return false; }
+		if(vecLine[6]!="thread_id"){printf_message("Scene.csv中字段[thread_id]位置不对应");assert(false); return false; }
+		if(vecLine[7]!="scene_type"){printf_message("Scene.csv中字段[scene_type]位置不对应");assert(false); return false; }
+		if(vecLine[8]!="valid_pos_x"){printf_message("Scene.csv中字段[valid_pos_x]位置不对应");assert(false); return false; }
+		if(vecLine[9]!="valid_pos_z"){printf_message("Scene.csv中字段[valid_pos_z]位置不对应");assert(false); return false; }
+		if(vecLine[10]!="scene_resource"){printf_message("Scene.csv中字段[scene_resource]位置不对应");assert(false); return false; }
+		if(vecLine[11]!="required_level"){printf_message("Scene.csv中字段[required_level]位置不对应");assert(false); return false; }
+		if(vecLine[12]!="required_score"){printf_message("Scene.csv中字段[required_score]位置不对应");assert(false); return false; }
+		if(vecLine[13]!="pre_quest"){printf_message("Scene.csv中字段[pre_quest]位置不对应");assert(false); return false; }
+		if(vecLine[14]!="teleport_id"){printf_message("Scene.csv中字段[teleport_id]位置不对应");assert(false); return false; }
+		if(vecLine[15]!="camera_type"){printf_message("Scene.csv中字段[camera_type]位置不对应");assert(false); return false; }
+		if(vecLine[16]!="pre_music"){printf_message("Scene.csv中字段[pre_music]位置不对应");assert(false); return false; }
+		if(vecLine[17]!="loop_music"){printf_message("Scene.csv中字段[loop_music]位置不对应");assert(false); return false; }
 
 		while(true)
 		{
 			vecLine = ReadCsvLine( strContent, contentOffset );
 			if((int)vecLine.size() == 0 )
 				break;
-			if((int)vecLine.size() != (int)27)
+			if((int)vecLine.size() != (int)18)
 			{
 				assert(false);
 				return false;
 			}
 			SceneElement	member;
 			member.id=(int)atoi(vecLine[0].c_str());
-			member.name=vecLine[1];
-			member.thread_id=(int)atoi(vecLine[2].c_str());
-			member.is_dungeon=(int)atoi(vecLine[3].c_str());
-			member.valid_pos_x=(float)atof(vecLine[4].c_str());
-			member.valid_pos_z=(float)atof(vecLine[5].c_str());
-			member.dungeon_type=(int)atoi(vecLine[6].c_str());
-			member.difficult=(int)atoi(vecLine[7].c_str());
-			member.required_level=(int)atoi(vecLine[8].c_str());
-			member.required_score=(float)atof(vecLine[9].c_str());
-			member.required_num=(int)atoi(vecLine[10].c_str());
-			member.required_last_dungeon_id=(int)atoi(vecLine[11].c_str());
-			member.reset_type=(int)atoi(vecLine[12].c_str());
-			member.finish_amount=(int)atoi(vecLine[13].c_str());
-			member.name_id=(int)atoi(vecLine[14].c_str());
-			member.describle_id=(int)atoi(vecLine[15].c_str());
-			member.picture_path=vecLine[16];
-			member.teleport_id=(int)atoi(vecLine[17].c_str());
-			member.reward_boss_ui=vecLine[18];
-			member.First_reward_ui=(int)atoi(vecLine[19].c_str());
-			member.general_reward__ui=(int)atoi(vecLine[20].c_str());
-			member.is_transfer=(int)atoi(vecLine[21].c_str());
-			member.start_music=vecLine[22];
-			member.loop_music=vecLine[23];
-			member.endingboss_id=(int)atoi(vecLine[24].c_str());
-			member.duration_time=(int)atoi(vecLine[25].c_str());
-			member.end_time=(int)atoi(vecLine[26].c_str());
+			member.comment=vecLine[1];
+			member.name=(int)atoi(vecLine[2].c_str());
+			member.description=(int)atoi(vecLine[3].c_str());
+			member.background_pic=vecLine[4];
+			member.loading_pic=vecLine[5];
+			member.thread_id=(int)atoi(vecLine[6].c_str());
+			member.scene_type=(int)atoi(vecLine[7].c_str());
+			member.valid_pos_x=(float)atof(vecLine[8].c_str());
+			member.valid_pos_z=(float)atof(vecLine[9].c_str());
+			member.scene_resource=vecLine[10];
+			member.required_level=(int)atoi(vecLine[11].c_str());
+			member.required_score=(float)atof(vecLine[12].c_str());
+			member.pre_quest=(int)atoi(vecLine[13].c_str());
+			member.teleport_id=(int)atoi(vecLine[14].c_str());
+			member.camera_type=(int)atoi(vecLine[15].c_str());
+			member.pre_music=vecLine[16];
+			member.loop_music=vecLine[17];
 
 			member.SetIsValidate(true);
 			m_mapElements[member.id] = member;

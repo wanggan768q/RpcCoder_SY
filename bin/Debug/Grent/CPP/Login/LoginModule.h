@@ -23,6 +23,7 @@
 #include "PacketFactory.h"
 #include "include/PacketMgr.h"
 #include "LoginRpc.pb.h"
+#include <memory>
 
 
 
@@ -31,7 +32,7 @@
 class CPlayer;
 class CPacket;
 
-extern PacketMgr* g_pPacketMgr;
+extern std::unique_ptr<PacketMgr> g_pPacketMgr;
 
 //登录模块实现类
 class ModuleLogin
@@ -47,6 +48,7 @@ public:
 	RPC_CODE_LOGIN_CHARACTERLIST_REQUEST         = 253,	//登录模块-->角色列表-->请求
 	RPC_CODE_LOGIN_SELECTCHARACTER_REQUEST       = 254,	//登录模块-->选择角色-->请求
 	RPC_CODE_LOGIN_CREATECHARACTER_REQUEST       = 255,	//登录模块-->创建角色-->请求
+	RPC_CODE_LOGIN_SELECTSAVEUSER_REQUEST        = 256,	//登录模块-->选择角色存储redis-->请求
 
 	};
 
@@ -64,6 +66,8 @@ public:
 	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_LOGIN_SELECTCHARACTER_REQUEST, new Some_Factory<LoginRpcSelectCharacterAsk>());
 	g_pPacketMgr->registerHandle(	RPC_CODE_LOGIN_CREATECHARACTER_REQUEST, &ModuleLogin::RpcCreateCharacter);
 	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_LOGIN_CREATECHARACTER_REQUEST, new Some_Factory<LoginRpcCreateCharacterAsk>());
+	g_pPacketMgr->registerHandle(	RPC_CODE_LOGIN_SELECTSAVEUSER_REQUEST, &ModuleLogin::RpcSelectSaveUser);
+	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_LOGIN_SELECTSAVEUSER_REQUEST, new Some_Factory<LoginRpcSelectSaveUserAsk>());
 
 	}
 	
@@ -71,7 +75,13 @@ public:
 	~ModuleLogin(){}
 
 
+	static ModuleLogin Instance()
+	{
+		static ModuleLogin sInstance;
+		return sInstance;
+	}
 	
+	bool Initialize();
 
 public:
 	/********************************************************************************************
@@ -123,6 +133,16 @@ public:
 	*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
 	********************************************************************************************/
 	static int RpcCreateCharacter( CPlayer* pPlayer, CPacket* pPacket );
+
+	/********************************************************************************************
+	* Function:       RpcSelectSaveUser
+	* Description:    登录模块-->选择角色存储redis同步调用操作函数
+	* Input:          LoginRpcSelectSaveUserAskWraper& Ask 选择角色存储redis请求
+	* Output:         LoginRpcSelectSaveUserReplyWraper& Reply 选择角色存储redis回应
+	* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+	*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+	********************************************************************************************/
+	static int RpcSelectSaveUser( CPlayer* pPlayer, CPacket* pPacket );
 
 
 

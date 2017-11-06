@@ -1,0 +1,76 @@
+message  SceneRpcEnterSceneAsk
+{
+	optional uint64 RoleId = 1[default=0];
+	optional sint32 SceneId = 2[default=-1];
+
+}
+
+message  SceneRpcEnterSceneReply
+{
+	optional sint32 Result = 1[default=-9999];
+	optional CharacterInfo RoleInfo = 2;
+
+}
+
+message  SceneRpcLoadSceneCompleteAsk
+{
+	optional uint64 RoleId = 1[default=0];
+	optional sint32 SceneId = 2[default=-1];
+
+}
+
+message  SceneRpcLoadSceneCompleteReply
+{
+	optional sint32 Result = 1[default=-9999];
+
+}
+
+message  SceneRpcNewPlayerNotify
+{
+	optional sint32 ObjId = 1[default=-1];
+	optional V3 Pos = 2;
+	optional float Dir = 3[default=-1];
+	optional sint32 ObjType = 4[default=-1];
+	optional sint32 ConfigId = 5[default=-1];
+	optional sint32 Status = 6[default=-1];
+	optional float MoveSpeed = 7[default=-1];
+
+}
+
+message  SceneRpcDeletePlayerNotify
+{
+	optional sint32 ObjId = 2[default=-1];
+	optional sint32 SceneId = 3[default=-1];
+
+}
+
+message  SceneRpcConnectGameServerAsk
+{
+	optional uint64 RoleId = 1[default=0];
+	optional string Key = 2;
+
+}
+
+message  SceneRpcConnectGameServerReply
+{
+	optional sint32 Result = 1[default=-9999];
+	optional uint64 RoleId = 2[default=0];
+
+}
+
+message  CharacterInfo
+{
+	optional uint64 RoleId = 1[default=0];
+	optional string Nickname = 2;
+	optional sint32 ConfigId = 3[default=-1];
+
+}
+
+message  V3
+{
+	optional float X = 1[default=-1];
+	optional float Y = 2[default=-1];
+	optional float Z = 3[default=-1];
+
+}
+

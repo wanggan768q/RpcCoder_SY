@@ -255,6 +255,7 @@
             DataStruct struct2 = null;
             DataStruct struct3 = null;
             DataStruct struct4 = null;
+            string clientNotify = "";
             Module.OperateType type = Module.OperateType.OP_NONE;
             string pbClassName = "" ;
             foreach (Module.OperaterItem.SubOperaterItem item in operate.subOperateItem)
@@ -284,6 +285,7 @@
                         DataStruct.DataStructDic.TryGetValue(m.ModuleName + item.DataStructName, out struct4);
                     }
                     struct4.getFullName();
+                    clientNotify = struct4.getFullName();
                 }
                 pbClassName = m.ModuleName + item.DataStructName;
             }
@@ -473,6 +475,11 @@
                 //str5 = str3 + "_CODE_" + m.ModuleName.ToUpper() + "_" + operate.Name.ToUpper() + "_" + str7.ToUpper();
                 string ssssss = "RPC_CODE_" + m.ModuleName.ToUpper() + "_" + operate.Name.ToUpper() + "_" + str7.ToUpper();
                 OperationImpl = str10 + "\tg_pPacketMgr->registerHandle(" + enumId + ", &Module" + m.ModuleName + "::" + str4 + operate.Name + ");\r\n";
+                if (str == "")
+                {
+                    str = clientNotify;
+                }
+                //OperationImpl = str10 + "\tg_pPacketMgr->registerHandle(" + enumId + ", new Some_Factory<" + str + ">());\r\n";
                 OperationImpl += "\tg_pPacketMgr->registerPacketFacotry(" + enumId + ", new Some_Factory<" + str + ">());\r\n";
             }
         }

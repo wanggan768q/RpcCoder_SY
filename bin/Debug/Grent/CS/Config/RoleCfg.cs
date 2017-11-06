@@ -9,7 +9,19 @@ using System.Collections.Generic;
 //角色属性配置数据类
 public class RoleElement
 {
-	public int id;               	//种族*100000+职业*10+性别	种族*100000+职业*10+性别
+	public int id;               	//id	种族*100000+职业*10+性别
+	public string comment;       	//注释	注释
+	public int race;             	//种族	1：人类 2：精灵 3：兽人 4：萝莉
+	public int occupation;       	//职业	1：战士 2：刺客 3：游侠 4：魔法师 5：圣骑士 6：神秘使
+	public int gender;           	//性别	1:男性 2:女性
+	public string race_icon;     	//种族图标	种族图标
+	public int race_name;        	//种族名称	种族名称
+	public int race_desc;        	//种族介绍	种族介绍
+	public string occu_icon;     	//职业图标	职业图标
+	public ls create_occu_icon;  	//创选界面图标	专门用在创选界面的职业图标 对应未选中和选中两个状态
+	public int occu_name;        	//职业名称	职业名称
+	public int occu_desc;        	//职业介绍	职业介绍
+	public li occu_evaluate;     	//职业评估	输出|生存|治疗|操作难度 0~10对应0到5格
 	public int model_id;         	//初始模型id	初始模型id
 	public int strength;         	//力量	力量
 	public int speed ;           	//敏捷	敏捷
@@ -138,53 +150,77 @@ public class RoleTable
             vecLine.Add(tmpStr);
             vecHeadType.Add(tmpInt);
 		}
-		if(vecLine.Count != 37)
+		if(vecLine.Count != 49)
 		{
 			Ex.Logger.Log("Role.csv中列数量与生成的代码不匹配!");
 			return false;
 		}
 		if(vecLine[0]!="id"){Ex.Logger.Log("Role.csv中字段[id]位置不对应"); return false; }
-		if(vecLine[1]!="model_id"){Ex.Logger.Log("Role.csv中字段[model_id]位置不对应"); return false; }
-		if(vecLine[2]!="strength"){Ex.Logger.Log("Role.csv中字段[strength]位置不对应"); return false; }
-		if(vecLine[3]!="speed "){Ex.Logger.Log("Role.csv中字段[speed ]位置不对应"); return false; }
-		if(vecLine[4]!="agile"){Ex.Logger.Log("Role.csv中字段[agile]位置不对应"); return false; }
-		if(vecLine[5]!="stamina"){Ex.Logger.Log("Role.csv中字段[stamina]位置不对应"); return false; }
-		if(vecLine[6]!="spirit"){Ex.Logger.Log("Role.csv中字段[spirit]位置不对应"); return false; }
-		if(vecLine[7]!="maxhp"){Ex.Logger.Log("Role.csv中字段[maxhp]位置不对应"); return false; }
-		if(vecLine[8]!="maxmp"){Ex.Logger.Log("Role.csv中字段[maxmp]位置不对应"); return false; }
-		if(vecLine[9]!="physic_attack"){Ex.Logger.Log("Role.csv中字段[physic_attack]位置不对应"); return false; }
-		if(vecLine[10]!="physic_defense"){Ex.Logger.Log("Role.csv中字段[physic_defense]位置不对应"); return false; }
-		if(vecLine[11]!="magic_attack"){Ex.Logger.Log("Role.csv中字段[magic_attack]位置不对应"); return false; }
-		if(vecLine[12]!="magic_defense"){Ex.Logger.Log("Role.csv中字段[magic_defense]位置不对应"); return false; }
-		if(vecLine[13]!="hit_value"){Ex.Logger.Log("Role.csv中字段[hit_value]位置不对应"); return false; }
-		if(vecLine[14]!="hit_rate"){Ex.Logger.Log("Role.csv中字段[hit_rate]位置不对应"); return false; }
-		if(vecLine[15]!="miss_value"){Ex.Logger.Log("Role.csv中字段[miss_value]位置不对应"); return false; }
-		if(vecLine[16]!="miss_rate"){Ex.Logger.Log("Role.csv中字段[miss_rate]位置不对应"); return false; }
-		if(vecLine[17]!="critical_value"){Ex.Logger.Log("Role.csv中字段[critical_value]位置不对应"); return false; }
-		if(vecLine[18]!="critical_rate"){Ex.Logger.Log("Role.csv中字段[critical_rate]位置不对应"); return false; }
-		if(vecLine[19]!="tenacity_value"){Ex.Logger.Log("Role.csv中字段[tenacity_value]位置不对应"); return false; }
-		if(vecLine[20]!="tenacity_rate"){Ex.Logger.Log("Role.csv中字段[tenacity_rate]位置不对应"); return false; }
-		if(vecLine[21]!="dodge_value"){Ex.Logger.Log("Role.csv中字段[dodge_value]位置不对应"); return false; }
-		if(vecLine[22]!="dodge_rate"){Ex.Logger.Log("Role.csv中字段[dodge_rate]位置不对应"); return false; }
-		if(vecLine[23]!="penetrate_value"){Ex.Logger.Log("Role.csv中字段[penetrate_value]位置不对应"); return false; }
-		if(vecLine[24]!="penetrate_rate"){Ex.Logger.Log("Role.csv中字段[penetrate_rate]位置不对应"); return false; }
-		if(vecLine[25]!="miss_level"){Ex.Logger.Log("Role.csv中字段[miss_level]位置不对应"); return false; }
-		if(vecLine[26]!="critical_level"){Ex.Logger.Log("Role.csv中字段[critical_level]位置不对应"); return false; }
-		if(vecLine[27]!="dodge_level"){Ex.Logger.Log("Role.csv中字段[dodge_level]位置不对应"); return false; }
-		if(vecLine[28]!="move_speed"){Ex.Logger.Log("Role.csv中字段[move_speed]位置不对应"); return false; }
-		if(vecLine[29]!="physic_oppose"){Ex.Logger.Log("Role.csv中字段[physic_oppose]位置不对应"); return false; }
-		if(vecLine[30]!="magic_oppose"){Ex.Logger.Log("Role.csv中字段[magic_oppose]位置不对应"); return false; }
-		if(vecLine[31]!="physic_add"){Ex.Logger.Log("Role.csv中字段[physic_add]位置不对应"); return false; }
-		if(vecLine[32]!="magic_add"){Ex.Logger.Log("Role.csv中字段[magic_add]位置不对应"); return false; }
-		if(vecLine[33]!="scene_id"){Ex.Logger.Log("Role.csv中字段[scene_id]位置不对应"); return false; }
-		if(vecLine[34]!="posx"){Ex.Logger.Log("Role.csv中字段[posx]位置不对应"); return false; }
-		if(vecLine[35]!="posz"){Ex.Logger.Log("Role.csv中字段[posz]位置不对应"); return false; }
-		if(vecLine[36]!="direct"){Ex.Logger.Log("Role.csv中字段[direct]位置不对应"); return false; }
+		if(vecLine[1]!="comment"){Ex.Logger.Log("Role.csv中字段[comment]位置不对应"); return false; }
+		if(vecLine[2]!="race"){Ex.Logger.Log("Role.csv中字段[race]位置不对应"); return false; }
+		if(vecLine[3]!="occupation"){Ex.Logger.Log("Role.csv中字段[occupation]位置不对应"); return false; }
+		if(vecLine[4]!="gender"){Ex.Logger.Log("Role.csv中字段[gender]位置不对应"); return false; }
+		if(vecLine[5]!="race_icon"){Ex.Logger.Log("Role.csv中字段[race_icon]位置不对应"); return false; }
+		if(vecLine[6]!="race_name"){Ex.Logger.Log("Role.csv中字段[race_name]位置不对应"); return false; }
+		if(vecLine[7]!="race_desc"){Ex.Logger.Log("Role.csv中字段[race_desc]位置不对应"); return false; }
+		if(vecLine[8]!="occu_icon"){Ex.Logger.Log("Role.csv中字段[occu_icon]位置不对应"); return false; }
+		if(vecLine[9]!="create_occu_icon"){Ex.Logger.Log("Role.csv中字段[create_occu_icon]位置不对应"); return false; }
+		if(vecLine[10]!="occu_name"){Ex.Logger.Log("Role.csv中字段[occu_name]位置不对应"); return false; }
+		if(vecLine[11]!="occu_desc"){Ex.Logger.Log("Role.csv中字段[occu_desc]位置不对应"); return false; }
+		if(vecLine[12]!="occu_evaluate"){Ex.Logger.Log("Role.csv中字段[occu_evaluate]位置不对应"); return false; }
+		if(vecLine[13]!="model_id"){Ex.Logger.Log("Role.csv中字段[model_id]位置不对应"); return false; }
+		if(vecLine[14]!="strength"){Ex.Logger.Log("Role.csv中字段[strength]位置不对应"); return false; }
+		if(vecLine[15]!="speed "){Ex.Logger.Log("Role.csv中字段[speed ]位置不对应"); return false; }
+		if(vecLine[16]!="agile"){Ex.Logger.Log("Role.csv中字段[agile]位置不对应"); return false; }
+		if(vecLine[17]!="stamina"){Ex.Logger.Log("Role.csv中字段[stamina]位置不对应"); return false; }
+		if(vecLine[18]!="spirit"){Ex.Logger.Log("Role.csv中字段[spirit]位置不对应"); return false; }
+		if(vecLine[19]!="maxhp"){Ex.Logger.Log("Role.csv中字段[maxhp]位置不对应"); return false; }
+		if(vecLine[20]!="maxmp"){Ex.Logger.Log("Role.csv中字段[maxmp]位置不对应"); return false; }
+		if(vecLine[21]!="physic_attack"){Ex.Logger.Log("Role.csv中字段[physic_attack]位置不对应"); return false; }
+		if(vecLine[22]!="physic_defense"){Ex.Logger.Log("Role.csv中字段[physic_defense]位置不对应"); return false; }
+		if(vecLine[23]!="magic_attack"){Ex.Logger.Log("Role.csv中字段[magic_attack]位置不对应"); return false; }
+		if(vecLine[24]!="magic_defense"){Ex.Logger.Log("Role.csv中字段[magic_defense]位置不对应"); return false; }
+		if(vecLine[25]!="hit_value"){Ex.Logger.Log("Role.csv中字段[hit_value]位置不对应"); return false; }
+		if(vecLine[26]!="hit_rate"){Ex.Logger.Log("Role.csv中字段[hit_rate]位置不对应"); return false; }
+		if(vecLine[27]!="miss_value"){Ex.Logger.Log("Role.csv中字段[miss_value]位置不对应"); return false; }
+		if(vecLine[28]!="miss_rate"){Ex.Logger.Log("Role.csv中字段[miss_rate]位置不对应"); return false; }
+		if(vecLine[29]!="critical_value"){Ex.Logger.Log("Role.csv中字段[critical_value]位置不对应"); return false; }
+		if(vecLine[30]!="critical_rate"){Ex.Logger.Log("Role.csv中字段[critical_rate]位置不对应"); return false; }
+		if(vecLine[31]!="tenacity_value"){Ex.Logger.Log("Role.csv中字段[tenacity_value]位置不对应"); return false; }
+		if(vecLine[32]!="tenacity_rate"){Ex.Logger.Log("Role.csv中字段[tenacity_rate]位置不对应"); return false; }
+		if(vecLine[33]!="dodge_value"){Ex.Logger.Log("Role.csv中字段[dodge_value]位置不对应"); return false; }
+		if(vecLine[34]!="dodge_rate"){Ex.Logger.Log("Role.csv中字段[dodge_rate]位置不对应"); return false; }
+		if(vecLine[35]!="penetrate_value"){Ex.Logger.Log("Role.csv中字段[penetrate_value]位置不对应"); return false; }
+		if(vecLine[36]!="penetrate_rate"){Ex.Logger.Log("Role.csv中字段[penetrate_rate]位置不对应"); return false; }
+		if(vecLine[37]!="miss_level"){Ex.Logger.Log("Role.csv中字段[miss_level]位置不对应"); return false; }
+		if(vecLine[38]!="critical_level"){Ex.Logger.Log("Role.csv中字段[critical_level]位置不对应"); return false; }
+		if(vecLine[39]!="dodge_level"){Ex.Logger.Log("Role.csv中字段[dodge_level]位置不对应"); return false; }
+		if(vecLine[40]!="move_speed"){Ex.Logger.Log("Role.csv中字段[move_speed]位置不对应"); return false; }
+		if(vecLine[41]!="physic_oppose"){Ex.Logger.Log("Role.csv中字段[physic_oppose]位置不对应"); return false; }
+		if(vecLine[42]!="magic_oppose"){Ex.Logger.Log("Role.csv中字段[magic_oppose]位置不对应"); return false; }
+		if(vecLine[43]!="physic_add"){Ex.Logger.Log("Role.csv中字段[physic_add]位置不对应"); return false; }
+		if(vecLine[44]!="magic_add"){Ex.Logger.Log("Role.csv中字段[magic_add]位置不对应"); return false; }
+		if(vecLine[45]!="scene_id"){Ex.Logger.Log("Role.csv中字段[scene_id]位置不对应"); return false; }
+		if(vecLine[46]!="posx"){Ex.Logger.Log("Role.csv中字段[posx]位置不对应"); return false; }
+		if(vecLine[47]!="posz"){Ex.Logger.Log("Role.csv中字段[posz]位置不对应"); return false; }
+		if(vecLine[48]!="direct"){Ex.Logger.Log("Role.csv中字段[direct]位置不对应"); return false; }
 
 		for(int i=0; i<nRow; i++)
 		{
 			RoleElement member = new RoleElement();
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.id );
+			readPos += GameAssist.ReadString( binContent, readPos, out member.comment);
+			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.race );
+			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.occupation );
+			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.gender );
+			readPos += GameAssist.ReadString( binContent, readPos, out member.race_icon);
+			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.race_name );
+			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.race_desc );
+			readPos += GameAssist.ReadString( binContent, readPos, out member.occu_icon);
+			readPos += GameAssist.ReadString( binContent, readPos, out member.create_occu_icon);
+			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.occu_name );
+			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.occu_desc );
+			readPos += GameAssist.ReadString( binContent, readPos, out member.occu_evaluate);
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.model_id );
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.strength );
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.speed  );
@@ -237,96 +273,120 @@ public class RoleTable
 		int contentOffset = 0;
 		List<string> vecLine;
 		vecLine = GameAssist.readCsvLine( strContent, ref contentOffset );
-		if(vecLine.Count != 37)
+		if(vecLine.Count != 49)
 		{
 			Ex.Logger.Log("Role.csv中列数量与生成的代码不匹配!");
 			return false;
 		}
 		if(vecLine[0]!="id"){Ex.Logger.Log("Role.csv中字段[id]位置不对应"); return false; }
-		if(vecLine[1]!="model_id"){Ex.Logger.Log("Role.csv中字段[model_id]位置不对应"); return false; }
-		if(vecLine[2]!="strength"){Ex.Logger.Log("Role.csv中字段[strength]位置不对应"); return false; }
-		if(vecLine[3]!="speed "){Ex.Logger.Log("Role.csv中字段[speed ]位置不对应"); return false; }
-		if(vecLine[4]!="agile"){Ex.Logger.Log("Role.csv中字段[agile]位置不对应"); return false; }
-		if(vecLine[5]!="stamina"){Ex.Logger.Log("Role.csv中字段[stamina]位置不对应"); return false; }
-		if(vecLine[6]!="spirit"){Ex.Logger.Log("Role.csv中字段[spirit]位置不对应"); return false; }
-		if(vecLine[7]!="maxhp"){Ex.Logger.Log("Role.csv中字段[maxhp]位置不对应"); return false; }
-		if(vecLine[8]!="maxmp"){Ex.Logger.Log("Role.csv中字段[maxmp]位置不对应"); return false; }
-		if(vecLine[9]!="physic_attack"){Ex.Logger.Log("Role.csv中字段[physic_attack]位置不对应"); return false; }
-		if(vecLine[10]!="physic_defense"){Ex.Logger.Log("Role.csv中字段[physic_defense]位置不对应"); return false; }
-		if(vecLine[11]!="magic_attack"){Ex.Logger.Log("Role.csv中字段[magic_attack]位置不对应"); return false; }
-		if(vecLine[12]!="magic_defense"){Ex.Logger.Log("Role.csv中字段[magic_defense]位置不对应"); return false; }
-		if(vecLine[13]!="hit_value"){Ex.Logger.Log("Role.csv中字段[hit_value]位置不对应"); return false; }
-		if(vecLine[14]!="hit_rate"){Ex.Logger.Log("Role.csv中字段[hit_rate]位置不对应"); return false; }
-		if(vecLine[15]!="miss_value"){Ex.Logger.Log("Role.csv中字段[miss_value]位置不对应"); return false; }
-		if(vecLine[16]!="miss_rate"){Ex.Logger.Log("Role.csv中字段[miss_rate]位置不对应"); return false; }
-		if(vecLine[17]!="critical_value"){Ex.Logger.Log("Role.csv中字段[critical_value]位置不对应"); return false; }
-		if(vecLine[18]!="critical_rate"){Ex.Logger.Log("Role.csv中字段[critical_rate]位置不对应"); return false; }
-		if(vecLine[19]!="tenacity_value"){Ex.Logger.Log("Role.csv中字段[tenacity_value]位置不对应"); return false; }
-		if(vecLine[20]!="tenacity_rate"){Ex.Logger.Log("Role.csv中字段[tenacity_rate]位置不对应"); return false; }
-		if(vecLine[21]!="dodge_value"){Ex.Logger.Log("Role.csv中字段[dodge_value]位置不对应"); return false; }
-		if(vecLine[22]!="dodge_rate"){Ex.Logger.Log("Role.csv中字段[dodge_rate]位置不对应"); return false; }
-		if(vecLine[23]!="penetrate_value"){Ex.Logger.Log("Role.csv中字段[penetrate_value]位置不对应"); return false; }
-		if(vecLine[24]!="penetrate_rate"){Ex.Logger.Log("Role.csv中字段[penetrate_rate]位置不对应"); return false; }
-		if(vecLine[25]!="miss_level"){Ex.Logger.Log("Role.csv中字段[miss_level]位置不对应"); return false; }
-		if(vecLine[26]!="critical_level"){Ex.Logger.Log("Role.csv中字段[critical_level]位置不对应"); return false; }
-		if(vecLine[27]!="dodge_level"){Ex.Logger.Log("Role.csv中字段[dodge_level]位置不对应"); return false; }
-		if(vecLine[28]!="move_speed"){Ex.Logger.Log("Role.csv中字段[move_speed]位置不对应"); return false; }
-		if(vecLine[29]!="physic_oppose"){Ex.Logger.Log("Role.csv中字段[physic_oppose]位置不对应"); return false; }
-		if(vecLine[30]!="magic_oppose"){Ex.Logger.Log("Role.csv中字段[magic_oppose]位置不对应"); return false; }
-		if(vecLine[31]!="physic_add"){Ex.Logger.Log("Role.csv中字段[physic_add]位置不对应"); return false; }
-		if(vecLine[32]!="magic_add"){Ex.Logger.Log("Role.csv中字段[magic_add]位置不对应"); return false; }
-		if(vecLine[33]!="scene_id"){Ex.Logger.Log("Role.csv中字段[scene_id]位置不对应"); return false; }
-		if(vecLine[34]!="posx"){Ex.Logger.Log("Role.csv中字段[posx]位置不对应"); return false; }
-		if(vecLine[35]!="posz"){Ex.Logger.Log("Role.csv中字段[posz]位置不对应"); return false; }
-		if(vecLine[36]!="direct"){Ex.Logger.Log("Role.csv中字段[direct]位置不对应"); return false; }
+		if(vecLine[1]!="comment"){Ex.Logger.Log("Role.csv中字段[comment]位置不对应"); return false; }
+		if(vecLine[2]!="race"){Ex.Logger.Log("Role.csv中字段[race]位置不对应"); return false; }
+		if(vecLine[3]!="occupation"){Ex.Logger.Log("Role.csv中字段[occupation]位置不对应"); return false; }
+		if(vecLine[4]!="gender"){Ex.Logger.Log("Role.csv中字段[gender]位置不对应"); return false; }
+		if(vecLine[5]!="race_icon"){Ex.Logger.Log("Role.csv中字段[race_icon]位置不对应"); return false; }
+		if(vecLine[6]!="race_name"){Ex.Logger.Log("Role.csv中字段[race_name]位置不对应"); return false; }
+		if(vecLine[7]!="race_desc"){Ex.Logger.Log("Role.csv中字段[race_desc]位置不对应"); return false; }
+		if(vecLine[8]!="occu_icon"){Ex.Logger.Log("Role.csv中字段[occu_icon]位置不对应"); return false; }
+		if(vecLine[9]!="create_occu_icon"){Ex.Logger.Log("Role.csv中字段[create_occu_icon]位置不对应"); return false; }
+		if(vecLine[10]!="occu_name"){Ex.Logger.Log("Role.csv中字段[occu_name]位置不对应"); return false; }
+		if(vecLine[11]!="occu_desc"){Ex.Logger.Log("Role.csv中字段[occu_desc]位置不对应"); return false; }
+		if(vecLine[12]!="occu_evaluate"){Ex.Logger.Log("Role.csv中字段[occu_evaluate]位置不对应"); return false; }
+		if(vecLine[13]!="model_id"){Ex.Logger.Log("Role.csv中字段[model_id]位置不对应"); return false; }
+		if(vecLine[14]!="strength"){Ex.Logger.Log("Role.csv中字段[strength]位置不对应"); return false; }
+		if(vecLine[15]!="speed "){Ex.Logger.Log("Role.csv中字段[speed ]位置不对应"); return false; }
+		if(vecLine[16]!="agile"){Ex.Logger.Log("Role.csv中字段[agile]位置不对应"); return false; }
+		if(vecLine[17]!="stamina"){Ex.Logger.Log("Role.csv中字段[stamina]位置不对应"); return false; }
+		if(vecLine[18]!="spirit"){Ex.Logger.Log("Role.csv中字段[spirit]位置不对应"); return false; }
+		if(vecLine[19]!="maxhp"){Ex.Logger.Log("Role.csv中字段[maxhp]位置不对应"); return false; }
+		if(vecLine[20]!="maxmp"){Ex.Logger.Log("Role.csv中字段[maxmp]位置不对应"); return false; }
+		if(vecLine[21]!="physic_attack"){Ex.Logger.Log("Role.csv中字段[physic_attack]位置不对应"); return false; }
+		if(vecLine[22]!="physic_defense"){Ex.Logger.Log("Role.csv中字段[physic_defense]位置不对应"); return false; }
+		if(vecLine[23]!="magic_attack"){Ex.Logger.Log("Role.csv中字段[magic_attack]位置不对应"); return false; }
+		if(vecLine[24]!="magic_defense"){Ex.Logger.Log("Role.csv中字段[magic_defense]位置不对应"); return false; }
+		if(vecLine[25]!="hit_value"){Ex.Logger.Log("Role.csv中字段[hit_value]位置不对应"); return false; }
+		if(vecLine[26]!="hit_rate"){Ex.Logger.Log("Role.csv中字段[hit_rate]位置不对应"); return false; }
+		if(vecLine[27]!="miss_value"){Ex.Logger.Log("Role.csv中字段[miss_value]位置不对应"); return false; }
+		if(vecLine[28]!="miss_rate"){Ex.Logger.Log("Role.csv中字段[miss_rate]位置不对应"); return false; }
+		if(vecLine[29]!="critical_value"){Ex.Logger.Log("Role.csv中字段[critical_value]位置不对应"); return false; }
+		if(vecLine[30]!="critical_rate"){Ex.Logger.Log("Role.csv中字段[critical_rate]位置不对应"); return false; }
+		if(vecLine[31]!="tenacity_value"){Ex.Logger.Log("Role.csv中字段[tenacity_value]位置不对应"); return false; }
+		if(vecLine[32]!="tenacity_rate"){Ex.Logger.Log("Role.csv中字段[tenacity_rate]位置不对应"); return false; }
+		if(vecLine[33]!="dodge_value"){Ex.Logger.Log("Role.csv中字段[dodge_value]位置不对应"); return false; }
+		if(vecLine[34]!="dodge_rate"){Ex.Logger.Log("Role.csv中字段[dodge_rate]位置不对应"); return false; }
+		if(vecLine[35]!="penetrate_value"){Ex.Logger.Log("Role.csv中字段[penetrate_value]位置不对应"); return false; }
+		if(vecLine[36]!="penetrate_rate"){Ex.Logger.Log("Role.csv中字段[penetrate_rate]位置不对应"); return false; }
+		if(vecLine[37]!="miss_level"){Ex.Logger.Log("Role.csv中字段[miss_level]位置不对应"); return false; }
+		if(vecLine[38]!="critical_level"){Ex.Logger.Log("Role.csv中字段[critical_level]位置不对应"); return false; }
+		if(vecLine[39]!="dodge_level"){Ex.Logger.Log("Role.csv中字段[dodge_level]位置不对应"); return false; }
+		if(vecLine[40]!="move_speed"){Ex.Logger.Log("Role.csv中字段[move_speed]位置不对应"); return false; }
+		if(vecLine[41]!="physic_oppose"){Ex.Logger.Log("Role.csv中字段[physic_oppose]位置不对应"); return false; }
+		if(vecLine[42]!="magic_oppose"){Ex.Logger.Log("Role.csv中字段[magic_oppose]位置不对应"); return false; }
+		if(vecLine[43]!="physic_add"){Ex.Logger.Log("Role.csv中字段[physic_add]位置不对应"); return false; }
+		if(vecLine[44]!="magic_add"){Ex.Logger.Log("Role.csv中字段[magic_add]位置不对应"); return false; }
+		if(vecLine[45]!="scene_id"){Ex.Logger.Log("Role.csv中字段[scene_id]位置不对应"); return false; }
+		if(vecLine[46]!="posx"){Ex.Logger.Log("Role.csv中字段[posx]位置不对应"); return false; }
+		if(vecLine[47]!="posz"){Ex.Logger.Log("Role.csv中字段[posz]位置不对应"); return false; }
+		if(vecLine[48]!="direct"){Ex.Logger.Log("Role.csv中字段[direct]位置不对应"); return false; }
 
 		while(true)
 		{
 			vecLine = GameAssist.readCsvLine( strContent, ref contentOffset );
 			if((int)vecLine.Count == 0 )
 				break;
-			if((int)vecLine.Count != (int)37)
+			if((int)vecLine.Count != (int)49)
 			{
 				return false;
 			}
 			RoleElement member = new RoleElement();
 			member.id=Convert.ToInt32(vecLine[0]);
-			member.model_id=Convert.ToInt32(vecLine[1]);
-			member.strength=Convert.ToInt32(vecLine[2]);
-			member.speed =Convert.ToInt32(vecLine[3]);
-			member.agile=Convert.ToInt32(vecLine[4]);
-			member.stamina=Convert.ToInt32(vecLine[5]);
-			member.spirit=Convert.ToInt32(vecLine[6]);
-			member.maxhp=Convert.ToInt32(vecLine[7]);
-			member.maxmp=Convert.ToInt32(vecLine[8]);
-			member.physic_attack=Convert.ToInt32(vecLine[9]);
-			member.physic_defense=Convert.ToInt32(vecLine[10]);
-			member.magic_attack=Convert.ToInt32(vecLine[11]);
-			member.magic_defense=Convert.ToInt32(vecLine[12]);
-			member.hit_value=Convert.ToInt32(vecLine[13]);
-			member.hit_rate=Convert.ToInt32(vecLine[14]);
-			member.miss_value=Convert.ToInt32(vecLine[15]);
-			member.miss_rate=Convert.ToInt32(vecLine[16]);
-			member.critical_value=Convert.ToInt32(vecLine[17]);
-			member.critical_rate=Convert.ToInt32(vecLine[18]);
-			member.tenacity_value=Convert.ToInt32(vecLine[19]);
-			member.tenacity_rate=Convert.ToInt32(vecLine[20]);
-			member.dodge_value=Convert.ToInt32(vecLine[21]);
-			member.dodge_rate=Convert.ToInt32(vecLine[22]);
-			member.penetrate_value=Convert.ToInt32(vecLine[23]);
-			member.penetrate_rate=Convert.ToInt32(vecLine[24]);
-			member.miss_level=Convert.ToInt32(vecLine[25]);
-			member.critical_level=Convert.ToInt32(vecLine[26]);
-			member.dodge_level=Convert.ToInt32(vecLine[27]);
-			member.move_speed=Convert.ToInt32(vecLine[28]);
-			member.physic_oppose=Convert.ToInt32(vecLine[29]);
-			member.magic_oppose=Convert.ToInt32(vecLine[30]);
-			member.physic_add=Convert.ToInt32(vecLine[31]);
-			member.magic_add=Convert.ToInt32(vecLine[32]);
-			member.scene_id=Convert.ToInt32(vecLine[33]);
-			member.posx=Convert.ToSingle(vecLine[34]);
-			member.posz=Convert.ToSingle(vecLine[35]);
-			member.direct=Convert.ToSingle(vecLine[36]);
+			member.comment=vecLine[1];
+			member.race=Convert.ToInt32(vecLine[2]);
+			member.occupation=Convert.ToInt32(vecLine[3]);
+			member.gender=Convert.ToInt32(vecLine[4]);
+			member.race_icon=vecLine[5];
+			member.race_name=Convert.ToInt32(vecLine[6]);
+			member.race_desc=Convert.ToInt32(vecLine[7]);
+			member.occu_icon=vecLine[8];
+			member.create_occu_icon=vecLine[9];
+			member.occu_name=Convert.ToInt32(vecLine[10]);
+			member.occu_desc=Convert.ToInt32(vecLine[11]);
+			member.occu_evaluate=vecLine[12];
+			member.model_id=Convert.ToInt32(vecLine[13]);
+			member.strength=Convert.ToInt32(vecLine[14]);
+			member.speed =Convert.ToInt32(vecLine[15]);
+			member.agile=Convert.ToInt32(vecLine[16]);
+			member.stamina=Convert.ToInt32(vecLine[17]);
+			member.spirit=Convert.ToInt32(vecLine[18]);
+			member.maxhp=Convert.ToInt32(vecLine[19]);
+			member.maxmp=Convert.ToInt32(vecLine[20]);
+			member.physic_attack=Convert.ToInt32(vecLine[21]);
+			member.physic_defense=Convert.ToInt32(vecLine[22]);
+			member.magic_attack=Convert.ToInt32(vecLine[23]);
+			member.magic_defense=Convert.ToInt32(vecLine[24]);
+			member.hit_value=Convert.ToInt32(vecLine[25]);
+			member.hit_rate=Convert.ToInt32(vecLine[26]);
+			member.miss_value=Convert.ToInt32(vecLine[27]);
+			member.miss_rate=Convert.ToInt32(vecLine[28]);
+			member.critical_value=Convert.ToInt32(vecLine[29]);
+			member.critical_rate=Convert.ToInt32(vecLine[30]);
+			member.tenacity_value=Convert.ToInt32(vecLine[31]);
+			member.tenacity_rate=Convert.ToInt32(vecLine[32]);
+			member.dodge_value=Convert.ToInt32(vecLine[33]);
+			member.dodge_rate=Convert.ToInt32(vecLine[34]);
+			member.penetrate_value=Convert.ToInt32(vecLine[35]);
+			member.penetrate_rate=Convert.ToInt32(vecLine[36]);
+			member.miss_level=Convert.ToInt32(vecLine[37]);
+			member.critical_level=Convert.ToInt32(vecLine[38]);
+			member.dodge_level=Convert.ToInt32(vecLine[39]);
+			member.move_speed=Convert.ToInt32(vecLine[40]);
+			member.physic_oppose=Convert.ToInt32(vecLine[41]);
+			member.magic_oppose=Convert.ToInt32(vecLine[42]);
+			member.physic_add=Convert.ToInt32(vecLine[43]);
+			member.magic_add=Convert.ToInt32(vecLine[44]);
+			member.scene_id=Convert.ToInt32(vecLine[45]);
+			member.posx=Convert.ToSingle(vecLine[46]);
+			member.posz=Convert.ToSingle(vecLine[47]);
+			member.direct=Convert.ToSingle(vecLine[48]);
 
 			member.IsValidate = true;
 			m_vecAllElements.Add(member);

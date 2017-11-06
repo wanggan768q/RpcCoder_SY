@@ -42,6 +42,8 @@ class LoginRpcSelectCharacterAsk;
 class LoginRpcSelectCharacterReply;
 class LoginRpcCreateCharacterAsk;
 class LoginRpcCreateCharacterReply;
+class LoginRpcSelectSaveUserAsk;
+class LoginRpcSelectSaveUserReply;
 
 // ===================================================================
 
@@ -573,18 +575,28 @@ class LoginRpcCharacterListReply : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::CharacterInfo >*
       mutable_characterlist();
 
+  // optional uint64 LastSelectRoleId = 4 [default = 0];
+  inline bool has_lastselectroleid() const;
+  inline void clear_lastselectroleid();
+  static const int kLastSelectRoleIdFieldNumber = 4;
+  inline ::google::protobuf::uint64 lastselectroleid() const;
+  inline void set_lastselectroleid(::google::protobuf::uint64 value);
+
   // @@protoc_insertion_point(class_scope:LoginRpcCharacterListReply)
  private:
   inline void set_has_result();
   inline void clear_has_result();
+  inline void set_has_lastselectroleid();
+  inline void clear_has_lastselectroleid();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::RepeatedPtrField< ::CharacterInfo > characterlist_;
+  ::google::protobuf::uint64 lastselectroleid_;
   ::google::protobuf::int32 result_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_LoginRpc_2eproto();
   friend void protobuf_AssignDesc_LoginRpc_2eproto();
@@ -952,10 +964,10 @@ class LoginRpcCreateCharacterReply : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 result() const;
   inline void set_result(::google::protobuf::int32 value);
 
-  // optional uint64 Roleid = 2 [default = 0];
+  // optional uint64 RoleId = 2 [default = 0];
   inline bool has_roleid() const;
   inline void clear_roleid();
-  static const int kRoleidFieldNumber = 2;
+  static const int kRoleIdFieldNumber = 2;
   inline ::google::protobuf::uint64 roleid() const;
   inline void set_roleid(::google::protobuf::uint64 value);
 
@@ -980,6 +992,170 @@ class LoginRpcCreateCharacterReply : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static LoginRpcCreateCharacterReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class LoginRpcSelectSaveUserAsk : public ::google::protobuf::Message {
+ public:
+  LoginRpcSelectSaveUserAsk();
+  virtual ~LoginRpcSelectSaveUserAsk();
+
+  LoginRpcSelectSaveUserAsk(const LoginRpcSelectSaveUserAsk& from);
+
+  inline LoginRpcSelectSaveUserAsk& operator=(const LoginRpcSelectSaveUserAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const LoginRpcSelectSaveUserAsk& default_instance();
+
+  void Swap(LoginRpcSelectSaveUserAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  LoginRpcSelectSaveUserAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const LoginRpcSelectSaveUserAsk& from);
+  void MergeFrom(const LoginRpcSelectSaveUserAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint64 RoleId = 1 [default = 0];
+  inline bool has_roleid() const;
+  inline void clear_roleid();
+  static const int kRoleIdFieldNumber = 1;
+  inline ::google::protobuf::uint64 roleid() const;
+  inline void set_roleid(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:LoginRpcSelectSaveUserAsk)
+ private:
+  inline void set_has_roleid();
+  inline void clear_has_roleid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint64 roleid_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_LoginRpc_2eproto();
+  friend void protobuf_AssignDesc_LoginRpc_2eproto();
+  friend void protobuf_ShutdownFile_LoginRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static LoginRpcSelectSaveUserAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class LoginRpcSelectSaveUserReply : public ::google::protobuf::Message {
+ public:
+  LoginRpcSelectSaveUserReply();
+  virtual ~LoginRpcSelectSaveUserReply();
+
+  LoginRpcSelectSaveUserReply(const LoginRpcSelectSaveUserReply& from);
+
+  inline LoginRpcSelectSaveUserReply& operator=(const LoginRpcSelectSaveUserReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const LoginRpcSelectSaveUserReply& default_instance();
+
+  void Swap(LoginRpcSelectSaveUserReply* other);
+
+  // implements Message ----------------------------------------------
+
+  LoginRpcSelectSaveUserReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const LoginRpcSelectSaveUserReply& from);
+  void MergeFrom(const LoginRpcSelectSaveUserReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 Result = 1 [default = -9999];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:LoginRpcSelectSaveUserReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_LoginRpc_2eproto();
+  friend void protobuf_AssignDesc_LoginRpc_2eproto();
+  friend void protobuf_ShutdownFile_LoginRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static LoginRpcSelectSaveUserReply* default_instance_;
 };
 // ===================================================================
 
@@ -1375,6 +1551,28 @@ LoginRpcCharacterListReply::mutable_characterlist() {
   return &characterlist_;
 }
 
+// optional uint64 LastSelectRoleId = 4 [default = 0];
+inline bool LoginRpcCharacterListReply::has_lastselectroleid() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void LoginRpcCharacterListReply::set_has_lastselectroleid() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void LoginRpcCharacterListReply::clear_has_lastselectroleid() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void LoginRpcCharacterListReply::clear_lastselectroleid() {
+  lastselectroleid_ = GOOGLE_ULONGLONG(0);
+  clear_has_lastselectroleid();
+}
+inline ::google::protobuf::uint64 LoginRpcCharacterListReply::lastselectroleid() const {
+  return lastselectroleid_;
+}
+inline void LoginRpcCharacterListReply::set_lastselectroleid(::google::protobuf::uint64 value) {
+  set_has_lastselectroleid();
+  lastselectroleid_ = value;
+}
+
 // -------------------------------------------------------------------
 
 // LoginRpcSelectCharacterAsk
@@ -1663,7 +1861,7 @@ inline void LoginRpcCreateCharacterReply::set_result(::google::protobuf::int32 v
   result_ = value;
 }
 
-// optional uint64 Roleid = 2 [default = 0];
+// optional uint64 RoleId = 2 [default = 0];
 inline bool LoginRpcCreateCharacterReply::has_roleid() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -1683,6 +1881,58 @@ inline ::google::protobuf::uint64 LoginRpcCreateCharacterReply::roleid() const {
 inline void LoginRpcCreateCharacterReply::set_roleid(::google::protobuf::uint64 value) {
   set_has_roleid();
   roleid_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// LoginRpcSelectSaveUserAsk
+
+// optional uint64 RoleId = 1 [default = 0];
+inline bool LoginRpcSelectSaveUserAsk::has_roleid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void LoginRpcSelectSaveUserAsk::set_has_roleid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void LoginRpcSelectSaveUserAsk::clear_has_roleid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void LoginRpcSelectSaveUserAsk::clear_roleid() {
+  roleid_ = GOOGLE_ULONGLONG(0);
+  clear_has_roleid();
+}
+inline ::google::protobuf::uint64 LoginRpcSelectSaveUserAsk::roleid() const {
+  return roleid_;
+}
+inline void LoginRpcSelectSaveUserAsk::set_roleid(::google::protobuf::uint64 value) {
+  set_has_roleid();
+  roleid_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// LoginRpcSelectSaveUserReply
+
+// optional sint32 Result = 1 [default = -9999];
+inline bool LoginRpcSelectSaveUserReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void LoginRpcSelectSaveUserReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void LoginRpcSelectSaveUserReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void LoginRpcSelectSaveUserReply::clear_result() {
+  result_ = -9999;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 LoginRpcSelectSaveUserReply::result() const {
+  return result_;
+}
+inline void LoginRpcSelectSaveUserReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
 }
 
 

@@ -1,0 +1,27 @@
+
+import "PublicStruct.proto";
+
+message  EventRpcMoveNotify
+{
+	optional sint32 ObjId = 1[default=-1];
+	optional V3 Pos = 2;
+	optional float Dir = 3[default=-1];
+
+}
+
+message  EventRpcStopMoveNotify
+{
+	optional sint32 ObjId = 1[default=-1];
+	optional V3 Pos = 2;
+	optional float Dir = 3[default=-1];
+
+}
+
+message  EventRpcBossDiedNotify
+{
+	optional sint32 SceneId = 1[default=-1];
+	optional sint32 ObjId = 2[default=-1];
+	optional bool IsEndingBoss = 3[default=false];
+
+}
+
