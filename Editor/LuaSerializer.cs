@@ -378,7 +378,8 @@
                 }
                 if (Require == "")
                 {
-                    Require = string.Concat(new object[] { "require(\"app.", m.ModuleName, ".", m.ModuleName, "V", m.SyncDataVersion, "Data_pb\")" });
+                    //Require = string.Concat(new object[] { "require(\"app.", m.ModuleName, ".", m.ModuleName, "V", m.SyncDataVersion, "Data_pb\")" });
+                    Require = string.Concat(new object[] { "require(\"3rd/pblua/",m.ModuleName, "V", m.SyncDataVersion, "Data_pb\")" });
                 }
                 foreach (DataStruct.FieldDescriptor descriptor in ds.fieldItem)
                 {
