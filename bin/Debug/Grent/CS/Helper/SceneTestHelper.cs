@@ -21,17 +21,6 @@ public class SceneRpcLoadSceneCompleteAskWraperHelper
 	public int SceneId;
 }
 [System.Serializable]
-public class SceneRpcNewPlayerNotifyWraperHelper
-{
-	public int ObjId;
-	public V3Wraper Pos;
-	public float Dir;
-	public int ObjType;
-	public int ConfigId;
-	public int Status;
-	public float MoveSpeed;
-}
-[System.Serializable]
 public class SceneRpcDeletePlayerNotifyWraperHelper
 {
 	public int ObjId;
@@ -43,6 +32,24 @@ public class SceneRpcConnectGameServerAskWraperHelper
 	public UInt64 RoleId;
 	public string Key;
 }
+[System.Serializable]
+public class SceneRpcChangeSceneAskWraperHelper
+{
+	public UInt64 RoleId;
+	public int CurSceneId;
+	public int TargetSceneId;
+}
+[System.Serializable]
+public class SceneRpcNewObjNotifyWraperHelper
+{
+	public int ObjId;
+	public V3Wraper Pos;
+	public float Dir;
+	public int ObjType;
+	public int ConfigId;
+	public int Status;
+	public float MoveSpeed;
+}
 
 
 
@@ -50,9 +57,10 @@ public class SceneTestHelper : MonoBehaviour
 {
 	public SceneRpcEnterSceneAskWraperHelper SceneRpcEnterSceneAskWraperVar;
 	public SceneRpcLoadSceneCompleteAskWraperHelper SceneRpcLoadSceneCompleteAskWraperVar;
-	public SceneRpcNewPlayerNotifyWraperHelper SceneRpcNewPlayerNotifyWraperVar;
 	public SceneRpcDeletePlayerNotifyWraperHelper SceneRpcDeletePlayerNotifyWraperVar;
 	public SceneRpcConnectGameServerAskWraperHelper SceneRpcConnectGameServerAskWraperVar;
+	public SceneRpcChangeSceneAskWraperHelper SceneRpcChangeSceneAskWraperVar;
+	public SceneRpcNewObjNotifyWraperHelper SceneRpcNewObjNotifyWraperVar;
 
 
 	public void TestEnterScene()
@@ -66,6 +74,10 @@ public class SceneTestHelper : MonoBehaviour
 	public void TestConnectGameServer()
 	{
 		SceneRPC.Instance.ConnectGameServer(SceneRpcConnectGameServerAskWraperVar.RoleId,SceneRpcConnectGameServerAskWraperVar.Key,delegate(object obj){});
+	}
+	public void TestChangeScene()
+	{
+		SceneRPC.Instance.ChangeScene(SceneRpcChangeSceneAskWraperVar.RoleId,SceneRpcChangeSceneAskWraperVar.CurSceneId,SceneRpcChangeSceneAskWraperVar.TargetSceneId,delegate(object obj){});
 	}
 
 
@@ -93,6 +105,11 @@ public class SceneTester : Editor
 		{
 			SceneTestHelper rpc = target as SceneTestHelper;
 			if( rpc ) rpc.TestConnectGameServer();
+		}
+		if (GUILayout.Button("ChangeScene"))
+		{
+			SceneTestHelper rpc = target as SceneTestHelper;
+			if( rpc ) rpc.TestChangeScene();
 		}
 
 

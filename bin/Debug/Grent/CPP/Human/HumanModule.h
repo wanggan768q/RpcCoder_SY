@@ -45,9 +45,7 @@ public:
 	MODULE_ID_HUMAN                              = 4,	//玩家模块模块ID
 	RPC_CODE_HUMAN_MOVE_REQUEST                  = 451,	//玩家模块-->human move-->请求
 	RPC_CODE_HUMAN_STOPMOVE_REQUEST              = 452,	//玩家模块-->客户端停止移动-->请求
-	RPC_CODE_HUMAN_MOVEMENTVERIFICATION_REQUEST  = 453,	//玩家模块-->移动验证-->请求
-	RPC_CODE_HUMAN_CGMOVECHECK_NOTIFY            = 454,	//玩家模块-->客户端位置校验-->通知
-	RPC_CODE_HUMAN_GCMOVECHECK_NOTIFY            = 455,	//玩家模块-->服务器位置校验通知-->通知
+	RPC_CODE_HUMAN_MOVECHECK_NOTIFY              = 453,	//玩家模块-->移动检测-->通知
 
 	};
 
@@ -59,10 +57,8 @@ public:
 	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_HUMAN_MOVE_REQUEST, new Some_Factory<HumanRpcMoveAsk>());
 	g_pPacketMgr->registerHandle(	RPC_CODE_HUMAN_STOPMOVE_REQUEST, &ModuleHuman::RpcStopMove);
 	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_HUMAN_STOPMOVE_REQUEST, new Some_Factory<HumanRpcStopMoveAsk>());
-	g_pPacketMgr->registerHandle(	RPC_CODE_HUMAN_MOVEMENTVERIFICATION_REQUEST, &ModuleHuman::RpcMovementVerification);
-	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_HUMAN_MOVEMENTVERIFICATION_REQUEST, new Some_Factory<HumanRpcMovementVerificationAsk>());
-	g_pPacketMgr->registerHandle(	RPC_CODE_HUMAN_CGMOVECHECK_NOTIFY, &ModuleHuman::RpcCGMoveCheck);
-	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_HUMAN_CGMOVECHECK_NOTIFY, new Some_Factory<HumanRpcCGMoveCheckNotify>());
+	g_pPacketMgr->registerHandle(	RPC_CODE_HUMAN_MOVECHECK_NOTIFY, &ModuleHuman::RpcMoveCheck);
+	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_HUMAN_MOVECHECK_NOTIFY, new Some_Factory<HumanRpcMoveCheckNotify>());
 
 	}
 	
@@ -70,7 +66,13 @@ public:
 	~ModuleHuman(){}
 
 
+	static ModuleHuman Instance()
+	{
+		static ModuleHuman sInstance;
+		return sInstance;
+	}
 	
+	bool Initialize();
 
 public:
 	/********************************************************************************************
@@ -94,34 +96,24 @@ public:
 	static int RpcStopMove( CPlayer* pPlayer, CPacket* pPacket );
 
 	/********************************************************************************************
-	* Function:       RpcMovementVerification
-	* Description:    玩家模块-->移动验证同步调用操作函数
-	* Input:          HumanRpcMovementVerificationAskWraper& Ask 移动验证请求
-	* Output:         HumanRpcMovementVerificationReplyWraper& Reply 移动验证回应
-	* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
-	*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
-	********************************************************************************************/
-	static int RpcMovementVerification( CPlayer* pPlayer, CPacket* pPacket );
-
-	/********************************************************************************************
-	* Function:       RpcCGMoveCheck
-	* Description:    玩家模块-->客户端位置校验异步通知操作函数
-	* Input:          HumanRpcCGMoveCheckNotifyWraper& Notify 客户端位置校验通知
+	* Function:       RpcMoveCheck
+	* Description:    玩家模块-->移动检测异步通知操作函数
+	* Input:          HumanRpcMoveCheckNotifyWraper& Notify 移动检测通知
 	* Output:         无
 	* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
 	*                     低16位无效
 	********************************************************************************************/
-	static int RpcCGMoveCheck(  CPlayer* pPlayer, CPacket* pPacket );
+	static int RpcMoveCheck(  CPlayer* pPlayer, CPacket* pPacket );
 
 	/********************************************************************************************
-	* Function:       SendToClientGCMoveCheck
-	* Description:    玩家模块-->服务器位置校验通知异步通知操作函数
-	* Input:          HumanRpcGCMoveCheckNotifyWraper& Notify 服务器位置校验通知通知
+	* Function:       SendToClientMoveCheck
+	* Description:    玩家模块-->移动检测异步通知操作函数
+	* Input:          HumanRpcMoveCheckNotifyWraper& Notify 移动检测通知
 	* Input:          INT64 UserId 需要通知到的用户ID
 	* Output:         无
 	* Return:         无
 	********************************************************************************************/
-	//virtual void SendToClientGCMoveCheck( INT64 UserId, HumanRpcGCMoveCheckNotifyWraper& Notify );
+	//virtual void SendToClientMoveCheck( INT64 UserId, HumanRpcMoveCheckNotifyWraper& Notify );
 
 
 

@@ -23,23 +23,12 @@ public class HumanRpcStopMoveAskWraperHelper
 	public float Z;
 }
 [System.Serializable]
-public class HumanRpcMovementVerificationAskWraperHelper
+public class HumanRpcMoveCheckNotifyWraperHelper
 {
+	public int Obj_id;
 	public float Dir;
 	public float X;
-	public float Z;
-}
-[System.Serializable]
-public class HumanRpcCGMoveCheckNotifyWraperHelper
-{
-	public float Dir;
-	public V3Wraper Pos;
-}
-[System.Serializable]
-public class HumanRpcGCMoveCheckNotifyWraperHelper
-{
-	public float Dir;
-	public V3Wraper Pos;
+	public float Y;
 }
 
 
@@ -48,9 +37,7 @@ public class HumanTestHelper : MonoBehaviour
 {
 	public HumanRpcMoveAskWraperHelper HumanRpcMoveAskWraperVar;
 	public HumanRpcStopMoveAskWraperHelper HumanRpcStopMoveAskWraperVar;
-	public HumanRpcMovementVerificationAskWraperHelper HumanRpcMovementVerificationAskWraperVar;
-	public HumanRpcCGMoveCheckNotifyWraperHelper HumanRpcCGMoveCheckNotifyWraperVar;
-	public HumanRpcGCMoveCheckNotifyWraperHelper HumanRpcGCMoveCheckNotifyWraperVar;
+	public HumanRpcMoveCheckNotifyWraperHelper HumanRpcMoveCheckNotifyWraperVar;
 
 
 	public void TestMove()
@@ -61,13 +48,9 @@ public class HumanTestHelper : MonoBehaviour
 	{
 		HumanRPC.Instance.StopMove(HumanRpcStopMoveAskWraperVar.Dir,HumanRpcStopMoveAskWraperVar.X,HumanRpcStopMoveAskWraperVar.Z,delegate(object obj){});
 	}
-	public void TestMovementVerification()
+	public void TestMoveCheck()
 	{
-		HumanRPC.Instance.MovementVerification(HumanRpcMovementVerificationAskWraperVar.Dir,HumanRpcMovementVerificationAskWraperVar.X,HumanRpcMovementVerificationAskWraperVar.Z,delegate(object obj){});
-	}
-	public void TestCGMoveCheck()
-	{
-		HumanRPC.Instance.CGMoveCheck(HumanRpcCGMoveCheckNotifyWraperVar.Dir,HumanRpcCGMoveCheckNotifyWraperVar.Pos);
+		HumanRPC.Instance.MoveCheck(HumanRpcMoveCheckNotifyWraperVar.Obj_id,HumanRpcMoveCheckNotifyWraperVar.Dir,HumanRpcMoveCheckNotifyWraperVar.X,HumanRpcMoveCheckNotifyWraperVar.Y);
 	}
 
 
@@ -91,15 +74,10 @@ public class HumanTester : Editor
 			HumanTestHelper rpc = target as HumanTestHelper;
 			if( rpc ) rpc.TestStopMove();
 		}
-		if (GUILayout.Button("MovementVerification"))
+		if (GUILayout.Button("MoveCheck"))
 		{
 			HumanTestHelper rpc = target as HumanTestHelper;
-			if( rpc ) rpc.TestMovementVerification();
-		}
-		if (GUILayout.Button("CGMoveCheck"))
-		{
-			HumanTestHelper rpc = target as HumanTestHelper;
-			if( rpc ) rpc.TestCGMoveCheck();
+			if( rpc ) rpc.TestMoveCheck();
 		}
 
 

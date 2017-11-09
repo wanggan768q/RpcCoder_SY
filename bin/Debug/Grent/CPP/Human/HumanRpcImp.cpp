@@ -52,42 +52,59 @@ static int ModuleHuman::RpcStopMove( CPlayer* pPlayer, CPacket* pPacket)
 }
 
 /********************************************************************************************
-* Function:       RpcMovementVerification
-* Description:    玩家模块-->移动验证同步调用操作函数
-* Input:          HumanRpcMovementVerificationAskWraper& Ask 移动验证请求
-* Output:         HumanRpcMovementVerificationReplyWraper& Reply 移动验证回应
-* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
-*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
-********************************************************************************************/
-static int ModuleHuman::RpcMovementVerification( CPlayer* pPlayer, CPacket* pPacket)
-{
-
-	//逻辑代码
-
-
-	//设置返回结果
-	Reply.SetResult(0);
-	return 0;
-}
-
-/********************************************************************************************
-* Function:       RpcCGMoveCheck
-* Description:    玩家模块-->客户端位置校验异步通知操作函数
-* Input:          HumanRpcCGMoveCheckNotifyWraper& Notify 客户端位置校验通知
+* Function:       RpcMoveCheck
+* Description:    玩家模块-->移动检测异步通知操作函数
+* Input:          HumanRpcMoveCheckNotifyWraper& Notify 移动检测通知
 * Output:         无
 * Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
 *                     低16位无效
 ********************************************************************************************/
-int ModuleHuman::RpcCGMoveCheck( INT64 UserId, HumanRpcCGMoveCheckNotifyWraper& Notify )
+int ModuleHuman::RpcMoveCheck( INT64 UserId, HumanRpcMoveCheckNotifyWraper& Notify )
 {
 
-	//检测字段[方向]数据范围
-	if( Notify.GetDir()<-1 && Notify.GetDir()!=0)
+	//检测字段[角色ID]数据范围
+	if( Notify.GetObj_id()<-1 && Notify.GetObj_id()!=-1)
 	{
 		assert(false);
 		return 0;
 	}
-	if( Notify.GetDir()>10000000 && Notify.GetDir()!=0)
+	if( Notify.GetObj_id()>10000000 && Notify.GetObj_id()!=-1)
+	{
+		assert(false);
+		return 0;
+	}
+
+	//检测字段[方向]数据范围
+	if( Notify.GetDir()<-1 && Notify.GetDir()!=-1)
+	{
+		assert(false);
+		return 0;
+	}
+	if( Notify.GetDir()>10000000 && Notify.GetDir()!=-1)
+	{
+		assert(false);
+		return 0;
+	}
+
+	//检测字段[x位置]数据范围
+	if( Notify.GetX()<-1 && Notify.GetX()!=-1)
+	{
+		assert(false);
+		return 0;
+	}
+	if( Notify.GetX()>10000000 && Notify.GetX()!=-1)
+	{
+		assert(false);
+		return 0;
+	}
+
+	//检测字段[y位置]数据范围
+	if( Notify.GetY()<-1 && Notify.GetY()!=-1)
+	{
+		assert(false);
+		return 0;
+	}
+	if( Notify.GetY()>10000000 && Notify.GetY()!=-1)
 	{
 		assert(false);
 		return 0;
@@ -100,14 +117,14 @@ int ModuleHuman::RpcCGMoveCheck( INT64 UserId, HumanRpcCGMoveCheckNotifyWraper& 
 }
 
 /********************************************************************************************
-* Function:       SendToClientGCMoveCheck
-* Description:    玩家模块-->服务器位置校验通知异步通知操作函数
-* Input:          HumanRpcGCMoveCheckNotifyWraper& Notify 服务器位置校验通知通知
+* Function:       SendToClientMoveCheck
+* Description:    玩家模块-->移动检测异步通知操作函数
+* Input:          HumanRpcMoveCheckNotifyWraper& Notify 移动检测通知
 * Input:          INT64 UserId 需要通知到的用户ID
 * Output:         无
 * Return:         无
 ********************************************************************************************/
-void ModuleHuman::SendToClientGCMoveCheck( INT64 UserId, HumanRpcGCMoveCheckNotifyWraper& Notify )
+void ModuleHuman::SendToClientMoveCheck( INT64 UserId, HumanRpcMoveCheckNotifyWraper& Notify )
 {
 	MsgStreamMgr::Instance().SendMsg( UserId, 0, Notify );
 }

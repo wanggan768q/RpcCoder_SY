@@ -30,18 +30,9 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* HumanRpcStopMoveReply_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   HumanRpcStopMoveReply_reflection_ = NULL;
-const ::google::protobuf::Descriptor* HumanRpcMovementVerificationAsk_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* HumanRpcMoveCheckNotify_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  HumanRpcMovementVerificationAsk_reflection_ = NULL;
-const ::google::protobuf::Descriptor* HumanRpcMovementVerificationReply_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  HumanRpcMovementVerificationReply_reflection_ = NULL;
-const ::google::protobuf::Descriptor* HumanRpcCGMoveCheckNotify_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  HumanRpcCGMoveCheckNotify_reflection_ = NULL;
-const ::google::protobuf::Descriptor* HumanRpcGCMoveCheckNotify_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  HumanRpcGCMoveCheckNotify_reflection_ = NULL;
+  HumanRpcMoveCheckNotify_reflection_ = NULL;
 
 }  // namespace
 
@@ -120,73 +111,24 @@ void protobuf_AssignDesc_HumanRpc_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(HumanRpcStopMoveReply));
-  HumanRpcMovementVerificationAsk_descriptor_ = file->message_type(4);
-  static const int HumanRpcMovementVerificationAsk_offsets_[3] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HumanRpcMovementVerificationAsk, dir_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HumanRpcMovementVerificationAsk, x_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HumanRpcMovementVerificationAsk, z_),
+  HumanRpcMoveCheckNotify_descriptor_ = file->message_type(4);
+  static const int HumanRpcMoveCheckNotify_offsets_[4] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HumanRpcMoveCheckNotify, obj_id_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HumanRpcMoveCheckNotify, dir_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HumanRpcMoveCheckNotify, x_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HumanRpcMoveCheckNotify, y_),
   };
-  HumanRpcMovementVerificationAsk_reflection_ =
+  HumanRpcMoveCheckNotify_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      HumanRpcMovementVerificationAsk_descriptor_,
-      HumanRpcMovementVerificationAsk::default_instance_,
-      HumanRpcMovementVerificationAsk_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HumanRpcMovementVerificationAsk, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HumanRpcMovementVerificationAsk, _unknown_fields_),
+      HumanRpcMoveCheckNotify_descriptor_,
+      HumanRpcMoveCheckNotify::default_instance_,
+      HumanRpcMoveCheckNotify_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HumanRpcMoveCheckNotify, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HumanRpcMoveCheckNotify, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(HumanRpcMovementVerificationAsk));
-  HumanRpcMovementVerificationReply_descriptor_ = file->message_type(5);
-  static const int HumanRpcMovementVerificationReply_offsets_[4] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HumanRpcMovementVerificationReply, result_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HumanRpcMovementVerificationReply, dir_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HumanRpcMovementVerificationReply, x_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HumanRpcMovementVerificationReply, z_),
-  };
-  HumanRpcMovementVerificationReply_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      HumanRpcMovementVerificationReply_descriptor_,
-      HumanRpcMovementVerificationReply::default_instance_,
-      HumanRpcMovementVerificationReply_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HumanRpcMovementVerificationReply, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HumanRpcMovementVerificationReply, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(HumanRpcMovementVerificationReply));
-  HumanRpcCGMoveCheckNotify_descriptor_ = file->message_type(6);
-  static const int HumanRpcCGMoveCheckNotify_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HumanRpcCGMoveCheckNotify, dir_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HumanRpcCGMoveCheckNotify, pos_),
-  };
-  HumanRpcCGMoveCheckNotify_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      HumanRpcCGMoveCheckNotify_descriptor_,
-      HumanRpcCGMoveCheckNotify::default_instance_,
-      HumanRpcCGMoveCheckNotify_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HumanRpcCGMoveCheckNotify, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HumanRpcCGMoveCheckNotify, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(HumanRpcCGMoveCheckNotify));
-  HumanRpcGCMoveCheckNotify_descriptor_ = file->message_type(7);
-  static const int HumanRpcGCMoveCheckNotify_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HumanRpcGCMoveCheckNotify, dir_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HumanRpcGCMoveCheckNotify, pos_),
-  };
-  HumanRpcGCMoveCheckNotify_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      HumanRpcGCMoveCheckNotify_descriptor_,
-      HumanRpcGCMoveCheckNotify::default_instance_,
-      HumanRpcGCMoveCheckNotify_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HumanRpcGCMoveCheckNotify, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(HumanRpcGCMoveCheckNotify, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(HumanRpcGCMoveCheckNotify));
+      sizeof(HumanRpcMoveCheckNotify));
 }
 
 namespace {
@@ -208,13 +150,7 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     HumanRpcStopMoveReply_descriptor_, &HumanRpcStopMoveReply::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    HumanRpcMovementVerificationAsk_descriptor_, &HumanRpcMovementVerificationAsk::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    HumanRpcMovementVerificationReply_descriptor_, &HumanRpcMovementVerificationReply::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    HumanRpcCGMoveCheckNotify_descriptor_, &HumanRpcCGMoveCheckNotify::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    HumanRpcGCMoveCheckNotify_descriptor_, &HumanRpcGCMoveCheckNotify::default_instance());
+    HumanRpcMoveCheckNotify_descriptor_, &HumanRpcMoveCheckNotify::default_instance());
 }
 
 }  // namespace
@@ -228,14 +164,8 @@ void protobuf_ShutdownFile_HumanRpc_2eproto() {
   delete HumanRpcStopMoveAsk_reflection_;
   delete HumanRpcStopMoveReply::default_instance_;
   delete HumanRpcStopMoveReply_reflection_;
-  delete HumanRpcMovementVerificationAsk::default_instance_;
-  delete HumanRpcMovementVerificationAsk_reflection_;
-  delete HumanRpcMovementVerificationReply::default_instance_;
-  delete HumanRpcMovementVerificationReply_reflection_;
-  delete HumanRpcCGMoveCheckNotify::default_instance_;
-  delete HumanRpcCGMoveCheckNotify_reflection_;
-  delete HumanRpcGCMoveCheckNotify::default_instance_;
-  delete HumanRpcGCMoveCheckNotify_reflection_;
+  delete HumanRpcMoveCheckNotify::default_instance_;
+  delete HumanRpcMoveCheckNotify_reflection_;
 }
 
 void protobuf_AddDesc_HumanRpc_2eproto() {
@@ -254,33 +184,21 @@ void protobuf_AddDesc_HumanRpc_2eproto() {
     "eAsk\022\017\n\003Dir\030\002 \001(\002:\002-1\022\r\n\001X\030\003 \001(\002:\002-1\022\r\n\001"
     "Z\030\004 \001(\002:\002-1\"Q\n\025HumanRpcStopMoveReply\022\025\n\006"
     "Result\030\001 \001(\021:\005-9999\022\020\n\003Pos\030\002 \001(\0132\003.V3\022\017\n"
-    "\003Dir\030\003 \001(\002:\002-1\"P\n\037HumanRpcMovementVerifi"
-    "cationAsk\022\017\n\003Dir\030\001 \001(\002:\002-1\022\r\n\001X\030\002 \001(\002:\002-"
-    "1\022\r\n\001Z\030\003 \001(\002:\002-1\"i\n!HumanRpcMovementVeri"
-    "ficationReply\022\025\n\006Result\030\001 \001(\021:\005-9999\022\017\n\003"
-    "Dir\030\002 \001(\002:\002-1\022\r\n\001X\030\003 \001(\002:\002-1\022\r\n\001Z\030\004 \001(\002:"
-    "\002-1\"=\n\031HumanRpcCGMoveCheckNotify\022\016\n\003Dir\030"
-    "\001 \001(\002:\0010\022\020\n\003Pos\030\002 \001(\0132\003.V3\">\n\031HumanRpcGC"
-    "MoveCheckNotify\022\017\n\003Dir\030\001 \001(\002:\002-1\022\020\n\003Pos\030"
-    "\002 \001(\0132\003.V3", 650);
+    "\003Dir\030\003 \001(\002:\002-1\"\\\n\027HumanRpcMoveCheckNotif"
+    "y\022\022\n\006Obj_id\030\001 \001(\021:\002-1\022\017\n\003Dir\030\003 \001(\002:\002-1\022\r"
+    "\n\001X\030\004 \001(\002:\002-1\022\r\n\001Y\030\005 \001(\002:\002-1", 428);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "HumanRpc.proto", &protobuf_RegisterTypes);
   HumanRpcMoveAsk::default_instance_ = new HumanRpcMoveAsk();
   HumanRpcMoveReply::default_instance_ = new HumanRpcMoveReply();
   HumanRpcStopMoveAsk::default_instance_ = new HumanRpcStopMoveAsk();
   HumanRpcStopMoveReply::default_instance_ = new HumanRpcStopMoveReply();
-  HumanRpcMovementVerificationAsk::default_instance_ = new HumanRpcMovementVerificationAsk();
-  HumanRpcMovementVerificationReply::default_instance_ = new HumanRpcMovementVerificationReply();
-  HumanRpcCGMoveCheckNotify::default_instance_ = new HumanRpcCGMoveCheckNotify();
-  HumanRpcGCMoveCheckNotify::default_instance_ = new HumanRpcGCMoveCheckNotify();
+  HumanRpcMoveCheckNotify::default_instance_ = new HumanRpcMoveCheckNotify();
   HumanRpcMoveAsk::default_instance_->InitAsDefaultInstance();
   HumanRpcMoveReply::default_instance_->InitAsDefaultInstance();
   HumanRpcStopMoveAsk::default_instance_->InitAsDefaultInstance();
   HumanRpcStopMoveReply::default_instance_->InitAsDefaultInstance();
-  HumanRpcMovementVerificationAsk::default_instance_->InitAsDefaultInstance();
-  HumanRpcMovementVerificationReply::default_instance_->InitAsDefaultInstance();
-  HumanRpcCGMoveCheckNotify::default_instance_->InitAsDefaultInstance();
-  HumanRpcGCMoveCheckNotify::default_instance_->InitAsDefaultInstance();
+  HumanRpcMoveCheckNotify::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_HumanRpc_2eproto);
 }
 
@@ -1440,381 +1358,99 @@ void HumanRpcStopMoveReply::Swap(HumanRpcStopMoveReply* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int HumanRpcMovementVerificationAsk::kDirFieldNumber;
-const int HumanRpcMovementVerificationAsk::kXFieldNumber;
-const int HumanRpcMovementVerificationAsk::kZFieldNumber;
+const int HumanRpcMoveCheckNotify::kObjIdFieldNumber;
+const int HumanRpcMoveCheckNotify::kDirFieldNumber;
+const int HumanRpcMoveCheckNotify::kXFieldNumber;
+const int HumanRpcMoveCheckNotify::kYFieldNumber;
 #endif  // !_MSC_VER
 
-HumanRpcMovementVerificationAsk::HumanRpcMovementVerificationAsk()
+HumanRpcMoveCheckNotify::HumanRpcMoveCheckNotify()
   : ::google::protobuf::Message() {
   SharedCtor();
 }
 
-void HumanRpcMovementVerificationAsk::InitAsDefaultInstance() {
+void HumanRpcMoveCheckNotify::InitAsDefaultInstance() {
 }
 
-HumanRpcMovementVerificationAsk::HumanRpcMovementVerificationAsk(const HumanRpcMovementVerificationAsk& from)
+HumanRpcMoveCheckNotify::HumanRpcMoveCheckNotify(const HumanRpcMoveCheckNotify& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
 }
 
-void HumanRpcMovementVerificationAsk::SharedCtor() {
+void HumanRpcMoveCheckNotify::SharedCtor() {
   _cached_size_ = 0;
+  obj_id_ = -1;
   dir_ = -1;
   x_ = -1;
-  z_ = -1;
+  y_ = -1;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-HumanRpcMovementVerificationAsk::~HumanRpcMovementVerificationAsk() {
+HumanRpcMoveCheckNotify::~HumanRpcMoveCheckNotify() {
   SharedDtor();
 }
 
-void HumanRpcMovementVerificationAsk::SharedDtor() {
+void HumanRpcMoveCheckNotify::SharedDtor() {
   if (this != default_instance_) {
   }
 }
 
-void HumanRpcMovementVerificationAsk::SetCachedSize(int size) const {
+void HumanRpcMoveCheckNotify::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* HumanRpcMovementVerificationAsk::descriptor() {
+const ::google::protobuf::Descriptor* HumanRpcMoveCheckNotify::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return HumanRpcMovementVerificationAsk_descriptor_;
+  return HumanRpcMoveCheckNotify_descriptor_;
 }
 
-const HumanRpcMovementVerificationAsk& HumanRpcMovementVerificationAsk::default_instance() {
+const HumanRpcMoveCheckNotify& HumanRpcMoveCheckNotify::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_HumanRpc_2eproto();
   return *default_instance_;
 }
 
-HumanRpcMovementVerificationAsk* HumanRpcMovementVerificationAsk::default_instance_ = NULL;
+HumanRpcMoveCheckNotify* HumanRpcMoveCheckNotify::default_instance_ = NULL;
 
-HumanRpcMovementVerificationAsk* HumanRpcMovementVerificationAsk::New() const {
-  return new HumanRpcMovementVerificationAsk;
+HumanRpcMoveCheckNotify* HumanRpcMoveCheckNotify::New() const {
+  return new HumanRpcMoveCheckNotify;
 }
 
-void HumanRpcMovementVerificationAsk::Clear() {
+void HumanRpcMoveCheckNotify::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    obj_id_ = -1;
     dir_ = -1;
     x_ = -1;
-    z_ = -1;
+    y_ = -1;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
 
-bool HumanRpcMovementVerificationAsk::MergePartialFromCodedStream(
+bool HumanRpcMoveCheckNotify::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional float Dir = 1 [default = -1];
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &dir_)));
-          set_has_dir();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(21)) goto parse_X;
-        break;
-      }
-
-      // optional float X = 2 [default = -1];
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
-         parse_X:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &x_)));
-          set_has_x();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(29)) goto parse_Z;
-        break;
-      }
-
-      // optional float Z = 3 [default = -1];
-      case 3: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
-         parse_Z:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &z_)));
-          set_has_z();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void HumanRpcMovementVerificationAsk::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional float Dir = 1 [default = -1];
-  if (has_dir()) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(1, this->dir(), output);
-  }
-
-  // optional float X = 2 [default = -1];
-  if (has_x()) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(2, this->x(), output);
-  }
-
-  // optional float Z = 3 [default = -1];
-  if (has_z()) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(3, this->z(), output);
-  }
-
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* HumanRpcMovementVerificationAsk::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // optional float Dir = 1 [default = -1];
-  if (has_dir()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(1, this->dir(), target);
-  }
-
-  // optional float X = 2 [default = -1];
-  if (has_x()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(2, this->x(), target);
-  }
-
-  // optional float Z = 3 [default = -1];
-  if (has_z()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(3, this->z(), target);
-  }
-
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int HumanRpcMovementVerificationAsk::ByteSize() const {
-  int total_size = 0;
-
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional float Dir = 1 [default = -1];
-    if (has_dir()) {
-      total_size += 1 + 4;
-    }
-
-    // optional float X = 2 [default = -1];
-    if (has_x()) {
-      total_size += 1 + 4;
-    }
-
-    // optional float Z = 3 [default = -1];
-    if (has_z()) {
-      total_size += 1 + 4;
-    }
-
-  }
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void HumanRpcMovementVerificationAsk::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const HumanRpcMovementVerificationAsk* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const HumanRpcMovementVerificationAsk*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void HumanRpcMovementVerificationAsk::MergeFrom(const HumanRpcMovementVerificationAsk& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_dir()) {
-      set_dir(from.dir());
-    }
-    if (from.has_x()) {
-      set_x(from.x());
-    }
-    if (from.has_z()) {
-      set_z(from.z());
-    }
-  }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void HumanRpcMovementVerificationAsk::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void HumanRpcMovementVerificationAsk::CopyFrom(const HumanRpcMovementVerificationAsk& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool HumanRpcMovementVerificationAsk::IsInitialized() const {
-
-  return true;
-}
-
-void HumanRpcMovementVerificationAsk::Swap(HumanRpcMovementVerificationAsk* other) {
-  if (other != this) {
-    std::swap(dir_, other->dir_);
-    std::swap(x_, other->x_);
-    std::swap(z_, other->z_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata HumanRpcMovementVerificationAsk::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = HumanRpcMovementVerificationAsk_descriptor_;
-  metadata.reflection = HumanRpcMovementVerificationAsk_reflection_;
-  return metadata;
-}
-
-
-// ===================================================================
-
-#ifndef _MSC_VER
-const int HumanRpcMovementVerificationReply::kResultFieldNumber;
-const int HumanRpcMovementVerificationReply::kDirFieldNumber;
-const int HumanRpcMovementVerificationReply::kXFieldNumber;
-const int HumanRpcMovementVerificationReply::kZFieldNumber;
-#endif  // !_MSC_VER
-
-HumanRpcMovementVerificationReply::HumanRpcMovementVerificationReply()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void HumanRpcMovementVerificationReply::InitAsDefaultInstance() {
-}
-
-HumanRpcMovementVerificationReply::HumanRpcMovementVerificationReply(const HumanRpcMovementVerificationReply& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void HumanRpcMovementVerificationReply::SharedCtor() {
-  _cached_size_ = 0;
-  result_ = -9999;
-  dir_ = -1;
-  x_ = -1;
-  z_ = -1;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-HumanRpcMovementVerificationReply::~HumanRpcMovementVerificationReply() {
-  SharedDtor();
-}
-
-void HumanRpcMovementVerificationReply::SharedDtor() {
-  if (this != default_instance_) {
-  }
-}
-
-void HumanRpcMovementVerificationReply::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* HumanRpcMovementVerificationReply::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return HumanRpcMovementVerificationReply_descriptor_;
-}
-
-const HumanRpcMovementVerificationReply& HumanRpcMovementVerificationReply::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_HumanRpc_2eproto();
-  return *default_instance_;
-}
-
-HumanRpcMovementVerificationReply* HumanRpcMovementVerificationReply::default_instance_ = NULL;
-
-HumanRpcMovementVerificationReply* HumanRpcMovementVerificationReply::New() const {
-  return new HumanRpcMovementVerificationReply;
-}
-
-void HumanRpcMovementVerificationReply::Clear() {
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    result_ = -9999;
-    dir_ = -1;
-    x_ = -1;
-    z_ = -1;
-  }
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool HumanRpcMovementVerificationReply::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional sint32 Result = 1 [default = -9999];
+      // optional sint32 Obj_id = 1 [default = -1];
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
-                 input, &result_)));
-          set_has_result();
+                 input, &obj_id_)));
+          set_has_obj_id();
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(21)) goto parse_Dir;
+        if (input->ExpectTag(29)) goto parse_Dir;
         break;
       }
 
-      // optional float Dir = 2 [default = -1];
-      case 2: {
+      // optional float Dir = 3 [default = -1];
+      case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
          parse_Dir:
@@ -1825,12 +1461,12 @@ bool HumanRpcMovementVerificationReply::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(29)) goto parse_X;
+        if (input->ExpectTag(37)) goto parse_X;
         break;
       }
 
-      // optional float X = 3 [default = -1];
-      case 3: {
+      // optional float X = 4 [default = -1];
+      case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
          parse_X:
@@ -1841,19 +1477,19 @@ bool HumanRpcMovementVerificationReply::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(37)) goto parse_Z;
+        if (input->ExpectTag(45)) goto parse_Y;
         break;
       }
 
-      // optional float Z = 4 [default = -1];
-      case 4: {
+      // optional float Y = 5 [default = -1];
+      case 5: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
-         parse_Z:
+         parse_Y:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &z_)));
-          set_has_z();
+                 input, &y_)));
+          set_has_y();
         } else {
           goto handle_uninterpreted;
         }
@@ -1877,26 +1513,26 @@ bool HumanRpcMovementVerificationReply::MergePartialFromCodedStream(
 #undef DO_
 }
 
-void HumanRpcMovementVerificationReply::SerializeWithCachedSizes(
+void HumanRpcMoveCheckNotify::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional sint32 Result = 1 [default = -9999];
-  if (has_result()) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(1, this->result(), output);
+  // optional sint32 Obj_id = 1 [default = -1];
+  if (has_obj_id()) {
+    ::google::protobuf::internal::WireFormatLite::WriteSInt32(1, this->obj_id(), output);
   }
 
-  // optional float Dir = 2 [default = -1];
+  // optional float Dir = 3 [default = -1];
   if (has_dir()) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(2, this->dir(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(3, this->dir(), output);
   }
 
-  // optional float X = 3 [default = -1];
+  // optional float X = 4 [default = -1];
   if (has_x()) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(3, this->x(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(4, this->x(), output);
   }
 
-  // optional float Z = 4 [default = -1];
-  if (has_z()) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(4, this->z(), output);
+  // optional float Y = 5 [default = -1];
+  if (has_y()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(5, this->y(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -1905,26 +1541,26 @@ void HumanRpcMovementVerificationReply::SerializeWithCachedSizes(
   }
 }
 
-::google::protobuf::uint8* HumanRpcMovementVerificationReply::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* HumanRpcMoveCheckNotify::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional sint32 Result = 1 [default = -9999];
-  if (has_result()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(1, this->result(), target);
+  // optional sint32 Obj_id = 1 [default = -1];
+  if (has_obj_id()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(1, this->obj_id(), target);
   }
 
-  // optional float Dir = 2 [default = -1];
+  // optional float Dir = 3 [default = -1];
   if (has_dir()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(2, this->dir(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(3, this->dir(), target);
   }
 
-  // optional float X = 3 [default = -1];
+  // optional float X = 4 [default = -1];
   if (has_x()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(3, this->x(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(4, this->x(), target);
   }
 
-  // optional float Z = 4 [default = -1];
-  if (has_z()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(4, this->z(), target);
+  // optional float Y = 5 [default = -1];
+  if (has_y()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(5, this->y(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -1934,29 +1570,29 @@ void HumanRpcMovementVerificationReply::SerializeWithCachedSizes(
   return target;
 }
 
-int HumanRpcMovementVerificationReply::ByteSize() const {
+int HumanRpcMoveCheckNotify::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional sint32 Result = 1 [default = -9999];
-    if (has_result()) {
+    // optional sint32 Obj_id = 1 [default = -1];
+    if (has_obj_id()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::SInt32Size(
-          this->result());
+          this->obj_id());
     }
 
-    // optional float Dir = 2 [default = -1];
+    // optional float Dir = 3 [default = -1];
     if (has_dir()) {
       total_size += 1 + 4;
     }
 
-    // optional float X = 3 [default = -1];
+    // optional float X = 4 [default = -1];
     if (has_x()) {
       total_size += 1 + 4;
     }
 
-    // optional float Z = 4 [default = -1];
-    if (has_z()) {
+    // optional float Y = 5 [default = -1];
+    if (has_y()) {
       total_size += 1 + 4;
     }
 
@@ -1972,10 +1608,10 @@ int HumanRpcMovementVerificationReply::ByteSize() const {
   return total_size;
 }
 
-void HumanRpcMovementVerificationReply::MergeFrom(const ::google::protobuf::Message& from) {
+void HumanRpcMoveCheckNotify::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const HumanRpcMovementVerificationReply* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const HumanRpcMovementVerificationReply*>(
+  const HumanRpcMoveCheckNotify* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const HumanRpcMoveCheckNotify*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -1984,11 +1620,11 @@ void HumanRpcMovementVerificationReply::MergeFrom(const ::google::protobuf::Mess
   }
 }
 
-void HumanRpcMovementVerificationReply::MergeFrom(const HumanRpcMovementVerificationReply& from) {
+void HumanRpcMoveCheckNotify::MergeFrom(const HumanRpcMoveCheckNotify& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_result()) {
-      set_result(from.result());
+    if (from.has_obj_id()) {
+      set_obj_id(from.obj_id());
     }
     if (from.has_dir()) {
       set_dir(from.dir());
@@ -1996,549 +1632,47 @@ void HumanRpcMovementVerificationReply::MergeFrom(const HumanRpcMovementVerifica
     if (from.has_x()) {
       set_x(from.x());
     }
-    if (from.has_z()) {
-      set_z(from.z());
+    if (from.has_y()) {
+      set_y(from.y());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void HumanRpcMovementVerificationReply::CopyFrom(const ::google::protobuf::Message& from) {
+void HumanRpcMoveCheckNotify::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void HumanRpcMovementVerificationReply::CopyFrom(const HumanRpcMovementVerificationReply& from) {
+void HumanRpcMoveCheckNotify::CopyFrom(const HumanRpcMoveCheckNotify& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool HumanRpcMovementVerificationReply::IsInitialized() const {
+bool HumanRpcMoveCheckNotify::IsInitialized() const {
 
   return true;
 }
 
-void HumanRpcMovementVerificationReply::Swap(HumanRpcMovementVerificationReply* other) {
+void HumanRpcMoveCheckNotify::Swap(HumanRpcMoveCheckNotify* other) {
   if (other != this) {
-    std::swap(result_, other->result_);
+    std::swap(obj_id_, other->obj_id_);
     std::swap(dir_, other->dir_);
     std::swap(x_, other->x_);
-    std::swap(z_, other->z_);
+    std::swap(y_, other->y_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
   }
 }
 
-::google::protobuf::Metadata HumanRpcMovementVerificationReply::GetMetadata() const {
+::google::protobuf::Metadata HumanRpcMoveCheckNotify::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = HumanRpcMovementVerificationReply_descriptor_;
-  metadata.reflection = HumanRpcMovementVerificationReply_reflection_;
-  return metadata;
-}
-
-
-// ===================================================================
-
-#ifndef _MSC_VER
-const int HumanRpcCGMoveCheckNotify::kDirFieldNumber;
-const int HumanRpcCGMoveCheckNotify::kPosFieldNumber;
-#endif  // !_MSC_VER
-
-HumanRpcCGMoveCheckNotify::HumanRpcCGMoveCheckNotify()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void HumanRpcCGMoveCheckNotify::InitAsDefaultInstance() {
-  pos_ = const_cast< ::V3*>(&::V3::default_instance());
-}
-
-HumanRpcCGMoveCheckNotify::HumanRpcCGMoveCheckNotify(const HumanRpcCGMoveCheckNotify& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void HumanRpcCGMoveCheckNotify::SharedCtor() {
-  _cached_size_ = 0;
-  dir_ = 0;
-  pos_ = NULL;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-HumanRpcCGMoveCheckNotify::~HumanRpcCGMoveCheckNotify() {
-  SharedDtor();
-}
-
-void HumanRpcCGMoveCheckNotify::SharedDtor() {
-  if (this != default_instance_) {
-    delete pos_;
-  }
-}
-
-void HumanRpcCGMoveCheckNotify::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* HumanRpcCGMoveCheckNotify::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return HumanRpcCGMoveCheckNotify_descriptor_;
-}
-
-const HumanRpcCGMoveCheckNotify& HumanRpcCGMoveCheckNotify::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_HumanRpc_2eproto();
-  return *default_instance_;
-}
-
-HumanRpcCGMoveCheckNotify* HumanRpcCGMoveCheckNotify::default_instance_ = NULL;
-
-HumanRpcCGMoveCheckNotify* HumanRpcCGMoveCheckNotify::New() const {
-  return new HumanRpcCGMoveCheckNotify;
-}
-
-void HumanRpcCGMoveCheckNotify::Clear() {
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    dir_ = 0;
-    if (has_pos()) {
-      if (pos_ != NULL) pos_->::V3::Clear();
-    }
-  }
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool HumanRpcCGMoveCheckNotify::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional float Dir = 1 [default = 0];
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &dir_)));
-          set_has_dir();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(18)) goto parse_Pos;
-        break;
-      }
-
-      // optional .V3 Pos = 2;
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_Pos:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_pos()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void HumanRpcCGMoveCheckNotify::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional float Dir = 1 [default = 0];
-  if (has_dir()) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(1, this->dir(), output);
-  }
-
-  // optional .V3 Pos = 2;
-  if (has_pos()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->pos(), output);
-  }
-
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* HumanRpcCGMoveCheckNotify::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // optional float Dir = 1 [default = 0];
-  if (has_dir()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(1, this->dir(), target);
-  }
-
-  // optional .V3 Pos = 2;
-  if (has_pos()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        2, this->pos(), target);
-  }
-
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int HumanRpcCGMoveCheckNotify::ByteSize() const {
-  int total_size = 0;
-
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional float Dir = 1 [default = 0];
-    if (has_dir()) {
-      total_size += 1 + 4;
-    }
-
-    // optional .V3 Pos = 2;
-    if (has_pos()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->pos());
-    }
-
-  }
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void HumanRpcCGMoveCheckNotify::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const HumanRpcCGMoveCheckNotify* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const HumanRpcCGMoveCheckNotify*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void HumanRpcCGMoveCheckNotify::MergeFrom(const HumanRpcCGMoveCheckNotify& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_dir()) {
-      set_dir(from.dir());
-    }
-    if (from.has_pos()) {
-      mutable_pos()->::V3::MergeFrom(from.pos());
-    }
-  }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void HumanRpcCGMoveCheckNotify::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void HumanRpcCGMoveCheckNotify::CopyFrom(const HumanRpcCGMoveCheckNotify& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool HumanRpcCGMoveCheckNotify::IsInitialized() const {
-
-  return true;
-}
-
-void HumanRpcCGMoveCheckNotify::Swap(HumanRpcCGMoveCheckNotify* other) {
-  if (other != this) {
-    std::swap(dir_, other->dir_);
-    std::swap(pos_, other->pos_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata HumanRpcCGMoveCheckNotify::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = HumanRpcCGMoveCheckNotify_descriptor_;
-  metadata.reflection = HumanRpcCGMoveCheckNotify_reflection_;
-  return metadata;
-}
-
-
-// ===================================================================
-
-#ifndef _MSC_VER
-const int HumanRpcGCMoveCheckNotify::kDirFieldNumber;
-const int HumanRpcGCMoveCheckNotify::kPosFieldNumber;
-#endif  // !_MSC_VER
-
-HumanRpcGCMoveCheckNotify::HumanRpcGCMoveCheckNotify()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void HumanRpcGCMoveCheckNotify::InitAsDefaultInstance() {
-  pos_ = const_cast< ::V3*>(&::V3::default_instance());
-}
-
-HumanRpcGCMoveCheckNotify::HumanRpcGCMoveCheckNotify(const HumanRpcGCMoveCheckNotify& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void HumanRpcGCMoveCheckNotify::SharedCtor() {
-  _cached_size_ = 0;
-  dir_ = -1;
-  pos_ = NULL;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-HumanRpcGCMoveCheckNotify::~HumanRpcGCMoveCheckNotify() {
-  SharedDtor();
-}
-
-void HumanRpcGCMoveCheckNotify::SharedDtor() {
-  if (this != default_instance_) {
-    delete pos_;
-  }
-}
-
-void HumanRpcGCMoveCheckNotify::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* HumanRpcGCMoveCheckNotify::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return HumanRpcGCMoveCheckNotify_descriptor_;
-}
-
-const HumanRpcGCMoveCheckNotify& HumanRpcGCMoveCheckNotify::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_HumanRpc_2eproto();
-  return *default_instance_;
-}
-
-HumanRpcGCMoveCheckNotify* HumanRpcGCMoveCheckNotify::default_instance_ = NULL;
-
-HumanRpcGCMoveCheckNotify* HumanRpcGCMoveCheckNotify::New() const {
-  return new HumanRpcGCMoveCheckNotify;
-}
-
-void HumanRpcGCMoveCheckNotify::Clear() {
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    dir_ = -1;
-    if (has_pos()) {
-      if (pos_ != NULL) pos_->::V3::Clear();
-    }
-  }
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool HumanRpcGCMoveCheckNotify::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional float Dir = 1 [default = -1];
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
-                 input, &dir_)));
-          set_has_dir();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(18)) goto parse_Pos;
-        break;
-      }
-
-      // optional .V3 Pos = 2;
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_Pos:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_pos()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void HumanRpcGCMoveCheckNotify::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional float Dir = 1 [default = -1];
-  if (has_dir()) {
-    ::google::protobuf::internal::WireFormatLite::WriteFloat(1, this->dir(), output);
-  }
-
-  // optional .V3 Pos = 2;
-  if (has_pos()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->pos(), output);
-  }
-
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* HumanRpcGCMoveCheckNotify::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // optional float Dir = 1 [default = -1];
-  if (has_dir()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(1, this->dir(), target);
-  }
-
-  // optional .V3 Pos = 2;
-  if (has_pos()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        2, this->pos(), target);
-  }
-
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int HumanRpcGCMoveCheckNotify::ByteSize() const {
-  int total_size = 0;
-
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional float Dir = 1 [default = -1];
-    if (has_dir()) {
-      total_size += 1 + 4;
-    }
-
-    // optional .V3 Pos = 2;
-    if (has_pos()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->pos());
-    }
-
-  }
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void HumanRpcGCMoveCheckNotify::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const HumanRpcGCMoveCheckNotify* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const HumanRpcGCMoveCheckNotify*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void HumanRpcGCMoveCheckNotify::MergeFrom(const HumanRpcGCMoveCheckNotify& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_dir()) {
-      set_dir(from.dir());
-    }
-    if (from.has_pos()) {
-      mutable_pos()->::V3::MergeFrom(from.pos());
-    }
-  }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void HumanRpcGCMoveCheckNotify::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void HumanRpcGCMoveCheckNotify::CopyFrom(const HumanRpcGCMoveCheckNotify& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool HumanRpcGCMoveCheckNotify::IsInitialized() const {
-
-  return true;
-}
-
-void HumanRpcGCMoveCheckNotify::Swap(HumanRpcGCMoveCheckNotify* other) {
-  if (other != this) {
-    std::swap(dir_, other->dir_);
-    std::swap(pos_, other->pos_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata HumanRpcGCMoveCheckNotify::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = HumanRpcGCMoveCheckNotify_descriptor_;
-  metadata.reflection = HumanRpcGCMoveCheckNotify_reflection_;
+  metadata.descriptor = HumanRpcMoveCheckNotify_descriptor_;
+  metadata.reflection = HumanRpcMoveCheckNotify_reflection_;
   return metadata;
 }
 

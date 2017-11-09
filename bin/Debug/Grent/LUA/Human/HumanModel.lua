@@ -2,9 +2,7 @@
 local ModuleId = 4;
 local RPC_CODE_HUMAN_MOVE_REQUEST = 451
 local RPC_CODE_HUMAN_STOPMOVE_REQUEST = 452
-local RPC_CODE_HUMAN_MOVEMENTVERIFICATION_REQUEST = 453
-local RPC_CODE_HUMAN_CGMOVECHECK_NOTIFY = 454;
-local RPC_CODE_HUMAN_GCMOVECHECK_NOTIFY = 455;
+local RPC_CODE_HUMAN_MOVECHECK_NOTIFY = 453;
 
 
 
@@ -15,6 +13,7 @@ local table = table
 local tostring = tostring
 local MLayerMgr = HS_MLayerMgr
 local typeof = typeof
+local ipairs = ipairs
 require("3rd/pblua/HumanRpc_pb")
 local  HumanRpc_pb = HumanRpc_pb
 module("HumanModel")
@@ -42,7 +41,7 @@ function Initialize(self)
 	self.rpc_pb = HumanRpc_pb
   --注册
   MLayerMgr.RegUpdateHd(ModuleId, handler(self,self.UpdateField))
-	MLayerMgr.RegNotifyHd(RPC_CODE_HUMAN_GCMOVECHECK_NOTIFY,handler(self,self.GCMoveCheckCB))
+	MLayerMgr.RegNotifyHd(RPC_CODE_HUMAN_MOVECHECK_NOTIFY,handler(self,self.MoveCheckCB))
 
   
 
@@ -92,59 +91,44 @@ function StopMove(self,Dir,X,Z,_hanlder)
 	MLayerMgr.SendAsk(RPC_CODE_HUMAN_STOPMOVE_REQUEST, pb_data, callback)
 	showNetTip(self)
 end
-function MovementVerification(self,Dir,X,Z,_hanlder)
-	local PB = self.rpc_pb.HumanRpcMovementVerificationAsk()
-	PB.Dir = Dir
-	PB.X = X
-	PB.Z = Z
-	local pb_data = PB:SerializeToString()
-	local function callback(_data)
-		hideNetTip(self)
-		if _hanlder then
-			local ret_msg = self.rpc_pb.HumanRpcMovementVerificationReply()
-			ret_msg:ParseFromString(_data)
-			 _hanlder(ret_msg)
-		end
-	end
-	MLayerMgr.SendAsk(RPC_CODE_HUMAN_MOVEMENTVERIFICATION_REQUEST, pb_data, callback)
-	showNetTip(self)
-end
 
 
 
 -- 给c层 注册服务器通知回调
-function HumanModel:CGMoveCheckNotify(DirPos)
-	local PB = self.rpc_pb.HumanRpcCGMoveCheckNotify()
-	PB.Dir = Dir
-	PB.Pos = Pos
-	local pb_data = PB:SerializeToString()
-	MLayerMgr.SendNotify(RPC_CODE_HUMAN_CGMOVECHECK_NOTIFY, pb_data)
-end
--- 给c层 注册服务器通知回调
-function registerGCMoveCheckCBNotify(self,_hanlder)
-	if not self.GCMoveCheckCBNotifyCallBack then
-		self.GCMoveCheckCBNotifyCallBack = {}
+function registerMoveCheckCBNotify(self,_hanlder)
+	if not self.MoveCheckCBNotifyCallBack then
+		self.MoveCheckCBNotifyCallBack = {}
 	end
-	table.insert(self.GCMoveCheckCBNotifyCallBack,_hanlder)
+	table.insert(self.MoveCheckCBNotifyCallBack,_hanlder)
 end
 -- 收到服务器的通知，广播给c层注册的模块
-function GCMoveCheckCB(self,notifyMsg)
-	if self.GCMoveCheckCBNotifyCallBack then
-		local ret_msg = self.rpc_pb.HumanRpcGCMoveCheckNotify() 
+function MoveCheckCB(self,notifyMsg)
+	if self.MoveCheckCBNotifyCallBack then
+		local ret_msg = self.rpc_pb.HumanRpcMoveCheckNotify() 
 		 ret_msg:ParseFromString(notifyMsg)
-		 for i,callback in ipairs(self.GCMoveCheckCBNotifyCallBack) do
+		 for i,callback in ipairs(self.MoveCheckCBNotifyCallBack) do
 			callback(ret_msg)
 		end
 	end
 end
-function unregisterGCMoveCheckCBNotify(self,_hanlder)
-	if nil ~= self.GCMoveCheckCBNotifyCallBack then
-		for i,callback in ipairs(self.GCMoveCheckCBNotifyCallBack ) do
+function unregisterMoveCheckCBNotify(self,_hanlder)
+	if nil ~= self.MoveCheckCBNotifyCallBack then
+		for i,callback in ipairs(self.MoveCheckCBNotifyCallBack ) do
 			if callback == _hanlder then
-				table.remove(self.GCMoveCheckCBNotifyCallBack, i )
+				table.remove(self.MoveCheckCBNotifyCallBack, i )
 			end
 		end
 	end
+end
+-- 给c层 注册服务器通知回调
+function MoveCheckNotify(Obj_id,Dir,X,Y)
+	local PB = self.rpc_pb.HumanRpcMoveCheckNotify()
+	PB.Obj_id = Obj_id
+	PB.Dir = Dir
+	PB.X = X
+	PB.Y = Y
+	local pb_data = PB:SerializeToString()
+	MLayerMgr.SendNotify(RPC_CODE_HUMAN_MOVECHECK_NOTIFY, pb_data)
 end
 
 
@@ -165,13 +149,6 @@ t.name = "StopMove"
 t.para = {{name="Dir",t=3},{name="X",t=3},{name="Z",t=3}}
 t.hand = HumanModel.StopMove
 t.pb = HumanRpc_pb.HumanRpcStopMoveAsk()
-table.insert(askList.Human,t)
-
-local t = {}
-t.name = "MovementVerification"
-t.para = {{name="Dir",t=3},{name="X",t=3},{name="Z",t=3}}
-t.hand = HumanModel.MovementVerification
-t.pb = HumanRpc_pb.HumanRpcMovementVerificationAsk()
 table.insert(askList.Human,t)
 
 --]]

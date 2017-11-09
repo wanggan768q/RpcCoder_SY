@@ -45,9 +45,10 @@ public:
 	MODULE_ID_SCENE                              = 3,	//场景模块模块ID
 	RPC_CODE_SCENE_ENTERSCENE_REQUEST            = 351,	//场景模块-->进入场景-->请求
 	RPC_CODE_SCENE_LOADSCENECOMPLETE_REQUEST     = 352,	//场景模块-->进入场景完成-->请求
-	RPC_CODE_SCENE_NEWPLAYER_NOTIFY              = 353,	//场景模块-->新玩家进入视野-->通知
-	RPC_CODE_SCENE_DELETEPLAYER_NOTIFY           = 354,	//场景模块-->玩家离开视野-->通知
-	RPC_CODE_SCENE_CONNECTGAMESERVER_REQUEST     = 355,	//场景模块-->连接场景服务器-->请求
+	RPC_CODE_SCENE_DELETEPLAYER_NOTIFY           = 353,	//场景模块-->玩家离开视野-->通知
+	RPC_CODE_SCENE_CONNECTGAMESERVER_REQUEST     = 354,	//场景模块-->连接场景服务器-->请求
+	RPC_CODE_SCENE_CHANGESCENE_REQUEST           = 355,	//场景模块-->多线程移除场景上的玩家-->请求
+	RPC_CODE_SCENE_NEWOBJ_NOTIFY                 = 356,	//场景模块-->新物体-->通知
 
 	};
 
@@ -61,6 +62,8 @@ public:
 	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_SCENE_LOADSCENECOMPLETE_REQUEST, new Some_Factory<SceneRpcLoadSceneCompleteAsk>());
 	g_pPacketMgr->registerHandle(	RPC_CODE_SCENE_CONNECTGAMESERVER_REQUEST, &ModuleScene::RpcConnectGameServer);
 	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_SCENE_CONNECTGAMESERVER_REQUEST, new Some_Factory<SceneRpcConnectGameServerAsk>());
+	g_pPacketMgr->registerHandle(	RPC_CODE_SCENE_CHANGESCENE_REQUEST, &ModuleScene::RpcChangeScene);
+	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_SCENE_CHANGESCENE_REQUEST, new Some_Factory<SceneRpcChangeSceneAsk>());
 
 	}
 	
@@ -68,13 +71,7 @@ public:
 	~ModuleScene(){}
 
 
-	static ModuleScene Instance()
-	{
-		static ModuleScene sInstance;
-		return sInstance;
-	}
 	
-	bool Initialize();
 
 public:
 	/********************************************************************************************
@@ -98,16 +95,6 @@ public:
 	static int RpcLoadSceneComplete( CPlayer* pPlayer, CPacket* pPacket );
 
 	/********************************************************************************************
-	* Function:       SendToClientNewPlayer
-	* Description:    场景模块-->新玩家进入视野异步通知操作函数
-	* Input:          SceneRpcNewPlayerNotifyWraper& Notify 新玩家进入视野通知
-	* Input:          INT64 UserId 需要通知到的用户ID
-	* Output:         无
-	* Return:         无
-	********************************************************************************************/
-	//virtual void SendToClientNewPlayer( INT64 UserId, SceneRpcNewPlayerNotifyWraper& Notify );
-
-	/********************************************************************************************
 	* Function:       SendToClientDeletePlayer
 	* Description:    场景模块-->玩家离开视野异步通知操作函数
 	* Input:          SceneRpcDeletePlayerNotifyWraper& Notify 删除玩家通知
@@ -126,6 +113,26 @@ public:
 	*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
 	********************************************************************************************/
 	static int RpcConnectGameServer( CPlayer* pPlayer, CPacket* pPacket );
+
+	/********************************************************************************************
+	* Function:       RpcChangeScene
+	* Description:    场景模块-->多线程移除场景上的玩家同步调用操作函数
+	* Input:          SceneRpcChangeSceneAskWraper& Ask 多线程移除场景上的玩家请求
+	* Output:         SceneRpcChangeSceneReplyWraper& Reply 多线程移除场景上的玩家回应
+	* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+	*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+	********************************************************************************************/
+	static int RpcChangeScene( CPlayer* pPlayer, CPacket* pPacket );
+
+	/********************************************************************************************
+	* Function:       SendToClientNewObj
+	* Description:    场景模块-->新物体异步通知操作函数
+	* Input:          SceneRpcNewObjNotifyWraper& Notify 新物体通知
+	* Input:          INT64 UserId 需要通知到的用户ID
+	* Output:         无
+	* Return:         无
+	********************************************************************************************/
+	//virtual void SendToClientNewObj( INT64 UserId, SceneRpcNewObjNotifyWraper& Notify );
 
 
 

@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections;
+    using System.Collections.Generic;
     using System.Diagnostics;
     using System.IO;
     using System.Text;
@@ -560,54 +561,51 @@
                 bool flag = false;
                 string str5 = "";
 
-                //遍历其他类型字段
-
-                ArrayList refMsg = new ArrayList();
-                ArrayList refMsgSec = new ArrayList();
-
-                //str5 = str5 + "\r\nimport \"PublicStruct.proto\";\r\n\r\n";
-                foreach (DataStruct struct2 in m.moduleDataStruct)
+                //////////////////////////////////////////////////////////
+                List<DataStruct> publicTypeList = new List<DataStruct>();
+                foreach (DataStruct ds in m.moduleDataStruct)
                 {
-                    ArrayList tempRefMsg = GenMessage(struct2, protoType, ref str5, m, ref flag);
+                    ArrayList tempRefMsg = GenMessage(ds, protoType, ref str5, m, ref flag);
                     foreach (DataStruct item in tempRefMsg)
                     {
-                        bool notExist = true;
-                        foreach (DataStruct r in refMsg)
+                        if (!publicTypeList.Contains(item))
                         {
-                            if (r.getFullName() == item.getFullName())
-                            {
-                                notExist = false;
-                                break;
-                            }
-                        }
-                        if (notExist)
-                        {
-                            refMsg.Add(item);
+                            //MessageBox.Show(item.getFullName());
+                            publicTypeList.Add(item);
                         }
                     }
                 }
 
-                foreach (DataStruct struct2 in refMsg)
-                {
-                    //MessageBox.Show("AAAA " + struct2.getFullName());
-                    ArrayList tempRefMsg = GenMessage(struct2, ref str5);
 
-                    foreach (DataStruct item in tempRefMsg)
-                    {
-                        bool notExist = true;
-                        foreach (DataStruct r in refMsg)
-                        {
-                            if (r.getFullName() == item.getFullName())
-                            {
-                                notExist = false;
-                                break;
-                            }
-                        }
-                        if (notExist)
-                        {
-                            refMsgSec.Add(item);
-                        }
-                    }
+
+               //////////////////////////////////////////////////////////
+               //遍历其他类型字段
+
+                //str5 = str5 + "\r\nimport \"PublicStruct.proto\";\r\n\r\n";
+               /* foreach (DataStruct struct2 in m.moduleDataStruct)
+                {
+                    //ArrayList tempRefMsg = GenMessage(struct2, protoType, ref str5, m, ref flag);
+//                     foreach (DataStruct item in tempRefMsg)
+//                     {
+//                         bool notExist = true;
+//                         foreach (DataStruct r in refMsg)
+//                         {
+//                             if (r.getFullName() == item.getFullName())
+//                             {
+//                                 notExist = false;
+//                                 break;
+//                             }
+//                         }
+//                         if (notExist)
+//                         {
+//                             refMsg.Add(item);
+//                         }
+//                     }
+                }*/
+
+                foreach (DataStruct struct2 in publicTypeList)
+                {
+                    ArrayList tempRefMsg = GenMessage(struct2, ref str5);
                 }
                 if (flag || (protoType != DataStruct.protoTypeE.SyncProto))
                 {

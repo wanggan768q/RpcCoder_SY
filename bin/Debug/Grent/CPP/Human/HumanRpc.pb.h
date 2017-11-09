@@ -36,10 +36,7 @@ class HumanRpcMoveAsk;
 class HumanRpcMoveReply;
 class HumanRpcStopMoveAsk;
 class HumanRpcStopMoveReply;
-class HumanRpcMovementVerificationAsk;
-class HumanRpcMovementVerificationReply;
-class HumanRpcCGMoveCheckNotify;
-class HumanRpcGCMoveCheckNotify;
+class HumanRpcMoveCheckNotify;
 
 // ===================================================================
 
@@ -455,14 +452,14 @@ class HumanRpcStopMoveReply : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class HumanRpcMovementVerificationAsk : public ::google::protobuf::Message {
+class HumanRpcMoveCheckNotify : public ::google::protobuf::Message {
  public:
-  HumanRpcMovementVerificationAsk();
-  virtual ~HumanRpcMovementVerificationAsk();
+  HumanRpcMoveCheckNotify();
+  virtual ~HumanRpcMoveCheckNotify();
 
-  HumanRpcMovementVerificationAsk(const HumanRpcMovementVerificationAsk& from);
+  HumanRpcMoveCheckNotify(const HumanRpcMoveCheckNotify& from);
 
-  inline HumanRpcMovementVerificationAsk& operator=(const HumanRpcMovementVerificationAsk& from) {
+  inline HumanRpcMoveCheckNotify& operator=(const HumanRpcMoveCheckNotify& from) {
     CopyFrom(from);
     return *this;
   }
@@ -476,17 +473,17 @@ class HumanRpcMovementVerificationAsk : public ::google::protobuf::Message {
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const HumanRpcMovementVerificationAsk& default_instance();
+  static const HumanRpcMoveCheckNotify& default_instance();
 
-  void Swap(HumanRpcMovementVerificationAsk* other);
+  void Swap(HumanRpcMoveCheckNotify* other);
 
   // implements Message ----------------------------------------------
 
-  HumanRpcMovementVerificationAsk* New() const;
+  HumanRpcMoveCheckNotify* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const HumanRpcMovementVerificationAsk& from);
-  void MergeFrom(const HumanRpcMovementVerificationAsk& from);
+  void CopyFrom(const HumanRpcMoveCheckNotify& from);
+  void MergeFrom(const HumanRpcMoveCheckNotify& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -509,153 +506,51 @@ class HumanRpcMovementVerificationAsk : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional float Dir = 1 [default = -1];
+  // optional sint32 Obj_id = 1 [default = -1];
+  inline bool has_obj_id() const;
+  inline void clear_obj_id();
+  static const int kObjIdFieldNumber = 1;
+  inline ::google::protobuf::int32 obj_id() const;
+  inline void set_obj_id(::google::protobuf::int32 value);
+
+  // optional float Dir = 3 [default = -1];
   inline bool has_dir() const;
   inline void clear_dir();
-  static const int kDirFieldNumber = 1;
+  static const int kDirFieldNumber = 3;
   inline float dir() const;
   inline void set_dir(float value);
 
-  // optional float X = 2 [default = -1];
+  // optional float X = 4 [default = -1];
   inline bool has_x() const;
   inline void clear_x();
-  static const int kXFieldNumber = 2;
+  static const int kXFieldNumber = 4;
   inline float x() const;
   inline void set_x(float value);
 
-  // optional float Z = 3 [default = -1];
-  inline bool has_z() const;
-  inline void clear_z();
-  static const int kZFieldNumber = 3;
-  inline float z() const;
-  inline void set_z(float value);
+  // optional float Y = 5 [default = -1];
+  inline bool has_y() const;
+  inline void clear_y();
+  static const int kYFieldNumber = 5;
+  inline float y() const;
+  inline void set_y(float value);
 
-  // @@protoc_insertion_point(class_scope:HumanRpcMovementVerificationAsk)
+  // @@protoc_insertion_point(class_scope:HumanRpcMoveCheckNotify)
  private:
+  inline void set_has_obj_id();
+  inline void clear_has_obj_id();
   inline void set_has_dir();
   inline void clear_has_dir();
   inline void set_has_x();
   inline void clear_has_x();
-  inline void set_has_z();
-  inline void clear_has_z();
+  inline void set_has_y();
+  inline void clear_has_y();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
+  ::google::protobuf::int32 obj_id_;
   float dir_;
   float x_;
-  float z_;
-
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
-
-  friend void  protobuf_AddDesc_HumanRpc_2eproto();
-  friend void protobuf_AssignDesc_HumanRpc_2eproto();
-  friend void protobuf_ShutdownFile_HumanRpc_2eproto();
-
-  void InitAsDefaultInstance();
-  static HumanRpcMovementVerificationAsk* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class HumanRpcMovementVerificationReply : public ::google::protobuf::Message {
- public:
-  HumanRpcMovementVerificationReply();
-  virtual ~HumanRpcMovementVerificationReply();
-
-  HumanRpcMovementVerificationReply(const HumanRpcMovementVerificationReply& from);
-
-  inline HumanRpcMovementVerificationReply& operator=(const HumanRpcMovementVerificationReply& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const HumanRpcMovementVerificationReply& default_instance();
-
-  void Swap(HumanRpcMovementVerificationReply* other);
-
-  // implements Message ----------------------------------------------
-
-  HumanRpcMovementVerificationReply* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const HumanRpcMovementVerificationReply& from);
-  void MergeFrom(const HumanRpcMovementVerificationReply& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // optional sint32 Result = 1 [default = -9999];
-  inline bool has_result() const;
-  inline void clear_result();
-  static const int kResultFieldNumber = 1;
-  inline ::google::protobuf::int32 result() const;
-  inline void set_result(::google::protobuf::int32 value);
-
-  // optional float Dir = 2 [default = -1];
-  inline bool has_dir() const;
-  inline void clear_dir();
-  static const int kDirFieldNumber = 2;
-  inline float dir() const;
-  inline void set_dir(float value);
-
-  // optional float X = 3 [default = -1];
-  inline bool has_x() const;
-  inline void clear_x();
-  static const int kXFieldNumber = 3;
-  inline float x() const;
-  inline void set_x(float value);
-
-  // optional float Z = 4 [default = -1];
-  inline bool has_z() const;
-  inline void clear_z();
-  static const int kZFieldNumber = 4;
-  inline float z() const;
-  inline void set_z(float value);
-
-  // @@protoc_insertion_point(class_scope:HumanRpcMovementVerificationReply)
- private:
-  inline void set_has_result();
-  inline void clear_has_result();
-  inline void set_has_dir();
-  inline void clear_has_dir();
-  inline void set_has_x();
-  inline void clear_has_x();
-  inline void set_has_z();
-  inline void clear_has_z();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::int32 result_;
-  float dir_;
-  float x_;
-  float z_;
+  float y_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
@@ -665,195 +560,7 @@ class HumanRpcMovementVerificationReply : public ::google::protobuf::Message {
   friend void protobuf_ShutdownFile_HumanRpc_2eproto();
 
   void InitAsDefaultInstance();
-  static HumanRpcMovementVerificationReply* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class HumanRpcCGMoveCheckNotify : public ::google::protobuf::Message {
- public:
-  HumanRpcCGMoveCheckNotify();
-  virtual ~HumanRpcCGMoveCheckNotify();
-
-  HumanRpcCGMoveCheckNotify(const HumanRpcCGMoveCheckNotify& from);
-
-  inline HumanRpcCGMoveCheckNotify& operator=(const HumanRpcCGMoveCheckNotify& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const HumanRpcCGMoveCheckNotify& default_instance();
-
-  void Swap(HumanRpcCGMoveCheckNotify* other);
-
-  // implements Message ----------------------------------------------
-
-  HumanRpcCGMoveCheckNotify* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const HumanRpcCGMoveCheckNotify& from);
-  void MergeFrom(const HumanRpcCGMoveCheckNotify& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // optional float Dir = 1 [default = 0];
-  inline bool has_dir() const;
-  inline void clear_dir();
-  static const int kDirFieldNumber = 1;
-  inline float dir() const;
-  inline void set_dir(float value);
-
-  // optional .V3 Pos = 2;
-  inline bool has_pos() const;
-  inline void clear_pos();
-  static const int kPosFieldNumber = 2;
-  inline const ::V3& pos() const;
-  inline ::V3* mutable_pos();
-  inline ::V3* release_pos();
-  inline void set_allocated_pos(::V3* pos);
-
-  // @@protoc_insertion_point(class_scope:HumanRpcCGMoveCheckNotify)
- private:
-  inline void set_has_dir();
-  inline void clear_has_dir();
-  inline void set_has_pos();
-  inline void clear_has_pos();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::V3* pos_;
-  float dir_;
-
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
-
-  friend void  protobuf_AddDesc_HumanRpc_2eproto();
-  friend void protobuf_AssignDesc_HumanRpc_2eproto();
-  friend void protobuf_ShutdownFile_HumanRpc_2eproto();
-
-  void InitAsDefaultInstance();
-  static HumanRpcCGMoveCheckNotify* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class HumanRpcGCMoveCheckNotify : public ::google::protobuf::Message {
- public:
-  HumanRpcGCMoveCheckNotify();
-  virtual ~HumanRpcGCMoveCheckNotify();
-
-  HumanRpcGCMoveCheckNotify(const HumanRpcGCMoveCheckNotify& from);
-
-  inline HumanRpcGCMoveCheckNotify& operator=(const HumanRpcGCMoveCheckNotify& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const HumanRpcGCMoveCheckNotify& default_instance();
-
-  void Swap(HumanRpcGCMoveCheckNotify* other);
-
-  // implements Message ----------------------------------------------
-
-  HumanRpcGCMoveCheckNotify* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const HumanRpcGCMoveCheckNotify& from);
-  void MergeFrom(const HumanRpcGCMoveCheckNotify& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // optional float Dir = 1 [default = -1];
-  inline bool has_dir() const;
-  inline void clear_dir();
-  static const int kDirFieldNumber = 1;
-  inline float dir() const;
-  inline void set_dir(float value);
-
-  // optional .V3 Pos = 2;
-  inline bool has_pos() const;
-  inline void clear_pos();
-  static const int kPosFieldNumber = 2;
-  inline const ::V3& pos() const;
-  inline ::V3* mutable_pos();
-  inline ::V3* release_pos();
-  inline void set_allocated_pos(::V3* pos);
-
-  // @@protoc_insertion_point(class_scope:HumanRpcGCMoveCheckNotify)
- private:
-  inline void set_has_dir();
-  inline void clear_has_dir();
-  inline void set_has_pos();
-  inline void clear_has_pos();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::V3* pos_;
-  float dir_;
-
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
-
-  friend void  protobuf_AddDesc_HumanRpc_2eproto();
-  friend void protobuf_AssignDesc_HumanRpc_2eproto();
-  friend void protobuf_ShutdownFile_HumanRpc_2eproto();
-
-  void InitAsDefaultInstance();
-  static HumanRpcGCMoveCheckNotify* default_instance_;
+  static HumanRpcMoveCheckNotify* default_instance_;
 };
 // ===================================================================
 
@@ -1172,292 +879,94 @@ inline void HumanRpcStopMoveReply::set_dir(float value) {
 
 // -------------------------------------------------------------------
 
-// HumanRpcMovementVerificationAsk
+// HumanRpcMoveCheckNotify
 
-// optional float Dir = 1 [default = -1];
-inline bool HumanRpcMovementVerificationAsk::has_dir() const {
+// optional sint32 Obj_id = 1 [default = -1];
+inline bool HumanRpcMoveCheckNotify::has_obj_id() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void HumanRpcMovementVerificationAsk::set_has_dir() {
+inline void HumanRpcMoveCheckNotify::set_has_obj_id() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void HumanRpcMovementVerificationAsk::clear_has_dir() {
+inline void HumanRpcMoveCheckNotify::clear_has_obj_id() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void HumanRpcMovementVerificationAsk::clear_dir() {
+inline void HumanRpcMoveCheckNotify::clear_obj_id() {
+  obj_id_ = -1;
+  clear_has_obj_id();
+}
+inline ::google::protobuf::int32 HumanRpcMoveCheckNotify::obj_id() const {
+  return obj_id_;
+}
+inline void HumanRpcMoveCheckNotify::set_obj_id(::google::protobuf::int32 value) {
+  set_has_obj_id();
+  obj_id_ = value;
+}
+
+// optional float Dir = 3 [default = -1];
+inline bool HumanRpcMoveCheckNotify::has_dir() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void HumanRpcMoveCheckNotify::set_has_dir() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void HumanRpcMoveCheckNotify::clear_has_dir() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void HumanRpcMoveCheckNotify::clear_dir() {
   dir_ = -1;
   clear_has_dir();
 }
-inline float HumanRpcMovementVerificationAsk::dir() const {
+inline float HumanRpcMoveCheckNotify::dir() const {
   return dir_;
 }
-inline void HumanRpcMovementVerificationAsk::set_dir(float value) {
+inline void HumanRpcMoveCheckNotify::set_dir(float value) {
   set_has_dir();
   dir_ = value;
 }
 
-// optional float X = 2 [default = -1];
-inline bool HumanRpcMovementVerificationAsk::has_x() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+// optional float X = 4 [default = -1];
+inline bool HumanRpcMoveCheckNotify::has_x() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void HumanRpcMovementVerificationAsk::set_has_x() {
-  _has_bits_[0] |= 0x00000002u;
+inline void HumanRpcMoveCheckNotify::set_has_x() {
+  _has_bits_[0] |= 0x00000004u;
 }
-inline void HumanRpcMovementVerificationAsk::clear_has_x() {
-  _has_bits_[0] &= ~0x00000002u;
+inline void HumanRpcMoveCheckNotify::clear_has_x() {
+  _has_bits_[0] &= ~0x00000004u;
 }
-inline void HumanRpcMovementVerificationAsk::clear_x() {
+inline void HumanRpcMoveCheckNotify::clear_x() {
   x_ = -1;
   clear_has_x();
 }
-inline float HumanRpcMovementVerificationAsk::x() const {
+inline float HumanRpcMoveCheckNotify::x() const {
   return x_;
 }
-inline void HumanRpcMovementVerificationAsk::set_x(float value) {
+inline void HumanRpcMoveCheckNotify::set_x(float value) {
   set_has_x();
   x_ = value;
 }
 
-// optional float Z = 3 [default = -1];
-inline bool HumanRpcMovementVerificationAsk::has_z() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void HumanRpcMovementVerificationAsk::set_has_z() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void HumanRpcMovementVerificationAsk::clear_has_z() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void HumanRpcMovementVerificationAsk::clear_z() {
-  z_ = -1;
-  clear_has_z();
-}
-inline float HumanRpcMovementVerificationAsk::z() const {
-  return z_;
-}
-inline void HumanRpcMovementVerificationAsk::set_z(float value) {
-  set_has_z();
-  z_ = value;
-}
-
-// -------------------------------------------------------------------
-
-// HumanRpcMovementVerificationReply
-
-// optional sint32 Result = 1 [default = -9999];
-inline bool HumanRpcMovementVerificationReply::has_result() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void HumanRpcMovementVerificationReply::set_has_result() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void HumanRpcMovementVerificationReply::clear_has_result() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void HumanRpcMovementVerificationReply::clear_result() {
-  result_ = -9999;
-  clear_has_result();
-}
-inline ::google::protobuf::int32 HumanRpcMovementVerificationReply::result() const {
-  return result_;
-}
-inline void HumanRpcMovementVerificationReply::set_result(::google::protobuf::int32 value) {
-  set_has_result();
-  result_ = value;
-}
-
-// optional float Dir = 2 [default = -1];
-inline bool HumanRpcMovementVerificationReply::has_dir() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void HumanRpcMovementVerificationReply::set_has_dir() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void HumanRpcMovementVerificationReply::clear_has_dir() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void HumanRpcMovementVerificationReply::clear_dir() {
-  dir_ = -1;
-  clear_has_dir();
-}
-inline float HumanRpcMovementVerificationReply::dir() const {
-  return dir_;
-}
-inline void HumanRpcMovementVerificationReply::set_dir(float value) {
-  set_has_dir();
-  dir_ = value;
-}
-
-// optional float X = 3 [default = -1];
-inline bool HumanRpcMovementVerificationReply::has_x() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void HumanRpcMovementVerificationReply::set_has_x() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void HumanRpcMovementVerificationReply::clear_has_x() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void HumanRpcMovementVerificationReply::clear_x() {
-  x_ = -1;
-  clear_has_x();
-}
-inline float HumanRpcMovementVerificationReply::x() const {
-  return x_;
-}
-inline void HumanRpcMovementVerificationReply::set_x(float value) {
-  set_has_x();
-  x_ = value;
-}
-
-// optional float Z = 4 [default = -1];
-inline bool HumanRpcMovementVerificationReply::has_z() const {
+// optional float Y = 5 [default = -1];
+inline bool HumanRpcMoveCheckNotify::has_y() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
-inline void HumanRpcMovementVerificationReply::set_has_z() {
+inline void HumanRpcMoveCheckNotify::set_has_y() {
   _has_bits_[0] |= 0x00000008u;
 }
-inline void HumanRpcMovementVerificationReply::clear_has_z() {
+inline void HumanRpcMoveCheckNotify::clear_has_y() {
   _has_bits_[0] &= ~0x00000008u;
 }
-inline void HumanRpcMovementVerificationReply::clear_z() {
-  z_ = -1;
-  clear_has_z();
+inline void HumanRpcMoveCheckNotify::clear_y() {
+  y_ = -1;
+  clear_has_y();
 }
-inline float HumanRpcMovementVerificationReply::z() const {
-  return z_;
+inline float HumanRpcMoveCheckNotify::y() const {
+  return y_;
 }
-inline void HumanRpcMovementVerificationReply::set_z(float value) {
-  set_has_z();
-  z_ = value;
-}
-
-// -------------------------------------------------------------------
-
-// HumanRpcCGMoveCheckNotify
-
-// optional float Dir = 1 [default = 0];
-inline bool HumanRpcCGMoveCheckNotify::has_dir() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void HumanRpcCGMoveCheckNotify::set_has_dir() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void HumanRpcCGMoveCheckNotify::clear_has_dir() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void HumanRpcCGMoveCheckNotify::clear_dir() {
-  dir_ = 0;
-  clear_has_dir();
-}
-inline float HumanRpcCGMoveCheckNotify::dir() const {
-  return dir_;
-}
-inline void HumanRpcCGMoveCheckNotify::set_dir(float value) {
-  set_has_dir();
-  dir_ = value;
-}
-
-// optional .V3 Pos = 2;
-inline bool HumanRpcCGMoveCheckNotify::has_pos() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void HumanRpcCGMoveCheckNotify::set_has_pos() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void HumanRpcCGMoveCheckNotify::clear_has_pos() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void HumanRpcCGMoveCheckNotify::clear_pos() {
-  if (pos_ != NULL) pos_->::V3::Clear();
-  clear_has_pos();
-}
-inline const ::V3& HumanRpcCGMoveCheckNotify::pos() const {
-  return pos_ != NULL ? *pos_ : *default_instance_->pos_;
-}
-inline ::V3* HumanRpcCGMoveCheckNotify::mutable_pos() {
-  set_has_pos();
-  if (pos_ == NULL) pos_ = new ::V3;
-  return pos_;
-}
-inline ::V3* HumanRpcCGMoveCheckNotify::release_pos() {
-  clear_has_pos();
-  ::V3* temp = pos_;
-  pos_ = NULL;
-  return temp;
-}
-inline void HumanRpcCGMoveCheckNotify::set_allocated_pos(::V3* pos) {
-  delete pos_;
-  pos_ = pos;
-  if (pos) {
-    set_has_pos();
-  } else {
-    clear_has_pos();
-  }
-}
-
-// -------------------------------------------------------------------
-
-// HumanRpcGCMoveCheckNotify
-
-// optional float Dir = 1 [default = -1];
-inline bool HumanRpcGCMoveCheckNotify::has_dir() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void HumanRpcGCMoveCheckNotify::set_has_dir() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void HumanRpcGCMoveCheckNotify::clear_has_dir() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void HumanRpcGCMoveCheckNotify::clear_dir() {
-  dir_ = -1;
-  clear_has_dir();
-}
-inline float HumanRpcGCMoveCheckNotify::dir() const {
-  return dir_;
-}
-inline void HumanRpcGCMoveCheckNotify::set_dir(float value) {
-  set_has_dir();
-  dir_ = value;
-}
-
-// optional .V3 Pos = 2;
-inline bool HumanRpcGCMoveCheckNotify::has_pos() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void HumanRpcGCMoveCheckNotify::set_has_pos() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void HumanRpcGCMoveCheckNotify::clear_has_pos() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void HumanRpcGCMoveCheckNotify::clear_pos() {
-  if (pos_ != NULL) pos_->::V3::Clear();
-  clear_has_pos();
-}
-inline const ::V3& HumanRpcGCMoveCheckNotify::pos() const {
-  return pos_ != NULL ? *pos_ : *default_instance_->pos_;
-}
-inline ::V3* HumanRpcGCMoveCheckNotify::mutable_pos() {
-  set_has_pos();
-  if (pos_ == NULL) pos_ = new ::V3;
-  return pos_;
-}
-inline ::V3* HumanRpcGCMoveCheckNotify::release_pos() {
-  clear_has_pos();
-  ::V3* temp = pos_;
-  pos_ = NULL;
-  return temp;
-}
-inline void HumanRpcGCMoveCheckNotify::set_allocated_pos(::V3* pos) {
-  delete pos_;
-  pos_ = pos;
-  if (pos) {
-    set_has_pos();
-  } else {
-    clear_has_pos();
-  }
+inline void HumanRpcMoveCheckNotify::set_y(float value) {
+  set_has_y();
+  y_ = value;
 }
 
 

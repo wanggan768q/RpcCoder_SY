@@ -357,48 +357,52 @@ public class HumanRpcStopMoveReplyWraper
 
 
 };
-//移动验证请求封装类
+//移动检测通知封装类
 [System.Serializable]
-public class HumanRpcMovementVerificationAskWraper
+public class HumanRpcMoveCheckNotifyWraper
 {
 
 	//构造函数
-	public HumanRpcMovementVerificationAskWraper()
+	public HumanRpcMoveCheckNotifyWraper()
 	{
+		 m_Obj_id = -1;
 		 m_Dir = (float)-1;
 		 m_X = (float)-1;
-		 m_Z = (float)-1;
+		 m_Y = (float)-1;
 
 	}
 
 	//重置函数
 	public void ResetWraper()
 	{
+		 m_Obj_id = -1;
 		 m_Dir = (float)-1;
 		 m_X = (float)-1;
-		 m_Z = (float)-1;
+		 m_Y = (float)-1;
 
 	}
 
  	//转化成Protobuffer类型函数
-	public HumanRpcMovementVerificationAsk ToPB()
+	public HumanRpcMoveCheckNotify ToPB()
 	{
-		HumanRpcMovementVerificationAsk v = new HumanRpcMovementVerificationAsk();
+		HumanRpcMoveCheckNotify v = new HumanRpcMoveCheckNotify();
+		v.Obj_id = m_Obj_id;
 		v.Dir = m_Dir;
 		v.X = m_X;
-		v.Z = m_Z;
+		v.Y = m_Y;
 
 		return v;
 	}
 	
 	//从Protobuffer类型初始化
-	public void FromPB(HumanRpcMovementVerificationAsk v)
+	public void FromPB(HumanRpcMoveCheckNotify v)
 	{
         if (v == null)
             return;
+		m_Obj_id = v.Obj_id;
 		m_Dir = v.Dir;
 		m_X = v.X;
-		m_Z = v.Z;
+		m_Y = v.Y;
 
 	}
 	
@@ -406,195 +410,25 @@ public class HumanRpcMovementVerificationAskWraper
 	public MemoryStream ToMemoryStream()
 	{
 		MemoryStream protoMS = new MemoryStream();
-		ProtoBuf.Serializer.Serialize<HumanRpcMovementVerificationAsk>(protoMS, ToPB());
+		ProtoBuf.Serializer.Serialize<HumanRpcMoveCheckNotify>(protoMS, ToPB());
 		return protoMS;
 	}
 	
 	//Protobuffer从MemoryStream进行反序列化
 	public bool FromMemoryStream(MemoryStream protoMS)
 	{
-		HumanRpcMovementVerificationAsk pb = ProtoBuf.Serializer.Deserialize<HumanRpcMovementVerificationAsk>(protoMS);
+		HumanRpcMoveCheckNotify pb = ProtoBuf.Serializer.Deserialize<HumanRpcMoveCheckNotify>(protoMS);
 		FromPB(pb);
 		return true;
 	}
 
-	//移动方向
-	public float m_Dir;
-	public float Dir
+	//角色ID
+	public int m_Obj_id;
+	public int Obj_id
 	{
-		get { return m_Dir;}
-		set { m_Dir = value; }
+		get { return m_Obj_id;}
+		set { m_Obj_id = value; }
 	}
-	//CurPosX
-	public float m_X;
-	public float X
-	{
-		get { return m_X;}
-		set { m_X = value; }
-	}
-	//CurPosZ
-	public float m_Z;
-	public float Z
-	{
-		get { return m_Z;}
-		set { m_Z = value; }
-	}
-
-
-};
-//移动验证回应封装类
-[System.Serializable]
-public class HumanRpcMovementVerificationReplyWraper
-{
-
-	//构造函数
-	public HumanRpcMovementVerificationReplyWraper()
-	{
-		 m_Result = -9999;
-		 m_Dir = (float)-1;
-		 m_X = (float)-1;
-		 m_Z = (float)-1;
-
-	}
-
-	//重置函数
-	public void ResetWraper()
-	{
-		 m_Result = -9999;
-		 m_Dir = (float)-1;
-		 m_X = (float)-1;
-		 m_Z = (float)-1;
-
-	}
-
- 	//转化成Protobuffer类型函数
-	public HumanRpcMovementVerificationReply ToPB()
-	{
-		HumanRpcMovementVerificationReply v = new HumanRpcMovementVerificationReply();
-		v.Result = m_Result;
-		v.Dir = m_Dir;
-		v.X = m_X;
-		v.Z = m_Z;
-
-		return v;
-	}
-	
-	//从Protobuffer类型初始化
-	public void FromPB(HumanRpcMovementVerificationReply v)
-	{
-        if (v == null)
-            return;
-		m_Result = v.Result;
-		m_Dir = v.Dir;
-		m_X = v.X;
-		m_Z = v.Z;
-
-	}
-	
-	//Protobuffer序列化到MemoryStream
-	public MemoryStream ToMemoryStream()
-	{
-		MemoryStream protoMS = new MemoryStream();
-		ProtoBuf.Serializer.Serialize<HumanRpcMovementVerificationReply>(protoMS, ToPB());
-		return protoMS;
-	}
-	
-	//Protobuffer从MemoryStream进行反序列化
-	public bool FromMemoryStream(MemoryStream protoMS)
-	{
-		HumanRpcMovementVerificationReply pb = ProtoBuf.Serializer.Deserialize<HumanRpcMovementVerificationReply>(protoMS);
-		FromPB(pb);
-		return true;
-	}
-
-	//返回结果
-	public int m_Result;
-	public int Result
-	{
-		get { return m_Result;}
-		set { m_Result = value; }
-	}
-	//移动方向
-	public float m_Dir;
-	public float Dir
-	{
-		get { return m_Dir;}
-		set { m_Dir = value; }
-	}
-	//CurPosX
-	public float m_X;
-	public float X
-	{
-		get { return m_X;}
-		set { m_X = value; }
-	}
-	//CurPosZ
-	public float m_Z;
-	public float Z
-	{
-		get { return m_Z;}
-		set { m_Z = value; }
-	}
-
-
-};
-//客户端位置校验通知封装类
-[System.Serializable]
-public class HumanRpcCGMoveCheckNotifyWraper
-{
-
-	//构造函数
-	public HumanRpcCGMoveCheckNotifyWraper()
-	{
-		 m_Dir = (float)0;
-		 m_Pos = new V3Wraper();
-
-	}
-
-	//重置函数
-	public void ResetWraper()
-	{
-		 m_Dir = (float)0;
-		 m_Pos = new V3Wraper();
-
-	}
-
- 	//转化成Protobuffer类型函数
-	public HumanRpcCGMoveCheckNotify ToPB()
-	{
-		HumanRpcCGMoveCheckNotify v = new HumanRpcCGMoveCheckNotify();
-		v.Dir = m_Dir;
-		v.Pos = m_Pos.ToPB();
-
-		return v;
-	}
-	
-	//从Protobuffer类型初始化
-	public void FromPB(HumanRpcCGMoveCheckNotify v)
-	{
-        if (v == null)
-            return;
-		m_Dir = v.Dir;
-		m_Pos.FromPB(v.Pos);
-
-	}
-	
-	//Protobuffer序列化到MemoryStream
-	public MemoryStream ToMemoryStream()
-	{
-		MemoryStream protoMS = new MemoryStream();
-		ProtoBuf.Serializer.Serialize<HumanRpcCGMoveCheckNotify>(protoMS, ToPB());
-		return protoMS;
-	}
-	
-	//Protobuffer从MemoryStream进行反序列化
-	public bool FromMemoryStream(MemoryStream protoMS)
-	{
-		HumanRpcCGMoveCheckNotify pb = ProtoBuf.Serializer.Deserialize<HumanRpcCGMoveCheckNotify>(protoMS);
-		FromPB(pb);
-		return true;
-	}
-
 	//方向
 	public float m_Dir;
 	public float Dir
@@ -602,86 +436,19 @@ public class HumanRpcCGMoveCheckNotifyWraper
 		get { return m_Dir;}
 		set { m_Dir = value; }
 	}
-	//位置
-	public V3Wraper m_Pos;
-	public V3Wraper Pos
+	//x位置
+	public float m_X;
+	public float X
 	{
-		get { return m_Pos;}
-		set { m_Pos = value; }
+		get { return m_X;}
+		set { m_X = value; }
 	}
-
-
-};
-//服务器位置校验通知通知封装类
-[System.Serializable]
-public class HumanRpcGCMoveCheckNotifyWraper
-{
-
-	//构造函数
-	public HumanRpcGCMoveCheckNotifyWraper()
+	//y位置
+	public float m_Y;
+	public float Y
 	{
-		 m_Dir = (float)-1;
-		 m_Pos = new V3Wraper();
-
-	}
-
-	//重置函数
-	public void ResetWraper()
-	{
-		 m_Dir = (float)-1;
-		 m_Pos = new V3Wraper();
-
-	}
-
- 	//转化成Protobuffer类型函数
-	public HumanRpcGCMoveCheckNotify ToPB()
-	{
-		HumanRpcGCMoveCheckNotify v = new HumanRpcGCMoveCheckNotify();
-		v.Dir = m_Dir;
-		v.Pos = m_Pos.ToPB();
-
-		return v;
-	}
-	
-	//从Protobuffer类型初始化
-	public void FromPB(HumanRpcGCMoveCheckNotify v)
-	{
-        if (v == null)
-            return;
-		m_Dir = v.Dir;
-		m_Pos.FromPB(v.Pos);
-
-	}
-	
-	//Protobuffer序列化到MemoryStream
-	public MemoryStream ToMemoryStream()
-	{
-		MemoryStream protoMS = new MemoryStream();
-		ProtoBuf.Serializer.Serialize<HumanRpcGCMoveCheckNotify>(protoMS, ToPB());
-		return protoMS;
-	}
-	
-	//Protobuffer从MemoryStream进行反序列化
-	public bool FromMemoryStream(MemoryStream protoMS)
-	{
-		HumanRpcGCMoveCheckNotify pb = ProtoBuf.Serializer.Deserialize<HumanRpcGCMoveCheckNotify>(protoMS);
-		FromPB(pb);
-		return true;
-	}
-
-	//方向
-	public float m_Dir;
-	public float Dir
-	{
-		get { return m_Dir;}
-		set { m_Dir = value; }
-	}
-	//位置
-	public V3Wraper m_Pos;
-	public V3Wraper Pos
-	{
-		get { return m_Pos;}
-		set { m_Pos = value; }
+		get { return m_Y;}
+		set { m_Y = value; }
 	}
 
 

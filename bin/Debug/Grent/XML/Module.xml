@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <xml>
     <module>
-        <sub_module name="Human" cname="玩家模块" fileName="Human.xml" />
+        <sub_module name="Scene" cname="场景模块" fileName="Scene.xml" />
     </module>
 </xml>

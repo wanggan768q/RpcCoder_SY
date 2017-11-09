@@ -1,0 +1,62 @@
+SceneRpcEnterSceneAsk↑ 进入场景请求
+	RoleId:uint64 = 0	;角色id
+	SceneId:int32 = -1	;场景id
+
+SceneRpcEnterSceneReply↓ 进入场景回应
+	Result:int32 = -9999	;返回结果
+	RoleInfo:CharacterInfo	;人物信息
+	[CharacterInfo]
+		RoleId:uint64 = 0	;roleID
+		Nickname:string	;昵称
+		ConfigId:int32 = -1	;配置表id
+	ObjId:int32 = -1	;玩家objid
+	Pos:V3	;位置
+	[V3]
+		X:float = -1	;x
+		Y:float = -1	;y
+		Z:float = -1	;z
+	Dir:float = -1	;方向
+
+SceneRpcLoadSceneCompleteAsk↑ 进入场景完成请求
+	RoleId:uint64 = 0	;角色id
+	SceneId:int32 = -1	;场景id
+
+SceneRpcLoadSceneCompleteReply↓ 进入场景完成回应
+	Result:int32 = -9999	;返回结果
+
+SceneRpcDeletePlayerNotify↓ 删除玩家通知
+	ObjId:int32 = -1	;obj id
+	SceneId:int32 = -1	;场景id
+
+SceneRpcConnectGameServerAsk↑ 连接场景服务器请求
+	RoleId:uint64 = 0	;角色id
+	Key:string	;key
+
+SceneRpcConnectGameServerReply↓ 连接场景服务器回应
+	Result:int32 = -9999	;返回结果
+	RoleId:uint64 = 0	;角色id
+
+SceneRpcChangeSceneAsk↑ 多线程移除场景上的玩家请求
+	RoleId:uint64 = 0	;玩家的唯一id
+	CurSceneId:int32 = -1	;场景id
+	TargetSceneId:int32 = -1	;目标场景id
+
+SceneRpcChangeSceneReply↓ 多线程移除场景上的玩家回应
+	Result:int32 = -9999	;返回结果
+	RoleId:uint64 = 0	;玩家的唯一id
+	CurSceneId:int32 = -1	;场景id
+	TargetSceneId:int32 = -1	;目标场景id
+
+SceneRpcNewObjNotify↓ 新物体通知
+	ObjId:int32 = -1	;obj id
+	Pos:V3	;位置
+	[V3]
+		X:float = -1	;x
+		Y:float = -1	;y
+		Z:float = -1	;z
+	Dir:float = -1	;方向
+	ObjType:int32 = -1	;obj type
+	ConfigId:int32 = -1	;config id
+	Status:int32 = -1	;状态
+	MoveSpeed:float = -1	;移动速度
+

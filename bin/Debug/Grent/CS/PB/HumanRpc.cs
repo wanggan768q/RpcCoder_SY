@@ -147,13 +147,21 @@ namespace GenPB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HumanRpcMovementVerificationAsk")]
-  public partial class HumanRpcMovementVerificationAsk : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HumanRpcMoveCheckNotify")]
+  public partial class HumanRpcMoveCheckNotify : global::ProtoBuf.IExtensible
   {
-    public HumanRpcMovementVerificationAsk() {}
+    public HumanRpcMoveCheckNotify() {}
     
+    private int _Obj_id = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Obj_id", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Obj_id
+    {
+      get { return _Obj_id; }
+      set { _Obj_id = value; }
+    }
     private float _Dir = (float)-1;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Dir", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"Dir", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
     [global::System.ComponentModel.DefaultValue((float)-1)]
     public float Dir
     {
@@ -161,114 +169,20 @@ namespace GenPB
       set { _Dir = value; }
     }
     private float _X = (float)-1;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"X", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"X", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
     [global::System.ComponentModel.DefaultValue((float)-1)]
     public float X
     {
       get { return _X; }
       set { _X = value; }
     }
-    private float _Z = (float)-1;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"Z", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    private float _Y = (float)-1;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"Y", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
     [global::System.ComponentModel.DefaultValue((float)-1)]
-    public float Z
+    public float Y
     {
-      get { return _Z; }
-      set { _Z = value; }
-    }
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HumanRpcMovementVerificationReply")]
-  public partial class HumanRpcMovementVerificationReply : global::ProtoBuf.IExtensible
-  {
-    public HumanRpcMovementVerificationReply() {}
-    
-    private int _Result = (int)-9999;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-9999)]
-    public int Result
-    {
-      get { return _Result; }
-      set { _Result = value; }
-    }
-    private float _Dir = (float)-1;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Dir", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
-    [global::System.ComponentModel.DefaultValue((float)-1)]
-    public float Dir
-    {
-      get { return _Dir; }
-      set { _Dir = value; }
-    }
-    private float _X = (float)-1;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"X", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
-    [global::System.ComponentModel.DefaultValue((float)-1)]
-    public float X
-    {
-      get { return _X; }
-      set { _X = value; }
-    }
-    private float _Z = (float)-1;
-    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"Z", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
-    [global::System.ComponentModel.DefaultValue((float)-1)]
-    public float Z
-    {
-      get { return _Z; }
-      set { _Z = value; }
-    }
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HumanRpcCGMoveCheckNotify")]
-  public partial class HumanRpcCGMoveCheckNotify : global::ProtoBuf.IExtensible
-  {
-    public HumanRpcCGMoveCheckNotify() {}
-    
-    private float _Dir = (float)0;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Dir", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
-    [global::System.ComponentModel.DefaultValue((float)0)]
-    public float Dir
-    {
-      get { return _Dir; }
-      set { _Dir = value; }
-    }
-    private V3 _Pos = null;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Pos", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue(null)]
-    public V3 Pos
-    {
-      get { return _Pos; }
-      set { _Pos = value; }
-    }
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HumanRpcGCMoveCheckNotify")]
-  public partial class HumanRpcGCMoveCheckNotify : global::ProtoBuf.IExtensible
-  {
-    public HumanRpcGCMoveCheckNotify() {}
-    
-    private float _Dir = (float)-1;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Dir", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
-    [global::System.ComponentModel.DefaultValue((float)-1)]
-    public float Dir
-    {
-      get { return _Dir; }
-      set { _Dir = value; }
-    }
-    private V3 _Pos = null;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Pos", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue(null)]
-    public V3 Pos
-    {
-      get { return _Pos; }
-      set { _Pos = value; }
+      get { return _Y; }
+      set { _Y = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

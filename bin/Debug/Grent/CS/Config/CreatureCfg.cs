@@ -14,7 +14,7 @@ public class CreatureElement
 	public string gd_comment;    	//策划备注	策划备注
 	public int name_id;          	//名字文本ID	名字文本ID
 	public int sub_name_id;      	//子名字文本ID	子名字文本ID
-	public string model_path;    	//模型路径	模型路径
+	public int model_id;         	//模型id	模型id
 	public string mapping_path;  	//贴图路径	贴图路径
 	public float scale;          	//NPC大小	NPC大小
 	public float opacity;        	//透明度	透明度
@@ -143,7 +143,7 @@ public class CreatureTable
 		if(vecLine[2]!="gd_comment"){Ex.Logger.Log("Creature.csv中字段[gd_comment]位置不对应"); return false; }
 		if(vecLine[3]!="name_id"){Ex.Logger.Log("Creature.csv中字段[name_id]位置不对应"); return false; }
 		if(vecLine[4]!="sub_name_id"){Ex.Logger.Log("Creature.csv中字段[sub_name_id]位置不对应"); return false; }
-		if(vecLine[5]!="model_path"){Ex.Logger.Log("Creature.csv中字段[model_path]位置不对应"); return false; }
+		if(vecLine[5]!="model_id"){Ex.Logger.Log("Creature.csv中字段[model_id]位置不对应"); return false; }
 		if(vecLine[6]!="mapping_path"){Ex.Logger.Log("Creature.csv中字段[mapping_path]位置不对应"); return false; }
 		if(vecLine[7]!="scale"){Ex.Logger.Log("Creature.csv中字段[scale]位置不对应"); return false; }
 		if(vecLine[8]!="opacity"){Ex.Logger.Log("Creature.csv中字段[opacity]位置不对应"); return false; }
@@ -179,7 +179,7 @@ public class CreatureTable
 			readPos += GameAssist.ReadString( binContent, readPos, out member.gd_comment);
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.name_id );
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.sub_name_id );
-			readPos += GameAssist.ReadString( binContent, readPos, out member.model_path);
+			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.model_id );
 			readPos += GameAssist.ReadString( binContent, readPos, out member.mapping_path);
 			readPos += GameAssist.ReadFloat( binContent, readPos, out member.scale);
 			readPos += GameAssist.ReadFloat( binContent, readPos, out member.opacity);
@@ -232,7 +232,7 @@ public class CreatureTable
 		if(vecLine[2]!="gd_comment"){Ex.Logger.Log("Creature.csv中字段[gd_comment]位置不对应"); return false; }
 		if(vecLine[3]!="name_id"){Ex.Logger.Log("Creature.csv中字段[name_id]位置不对应"); return false; }
 		if(vecLine[4]!="sub_name_id"){Ex.Logger.Log("Creature.csv中字段[sub_name_id]位置不对应"); return false; }
-		if(vecLine[5]!="model_path"){Ex.Logger.Log("Creature.csv中字段[model_path]位置不对应"); return false; }
+		if(vecLine[5]!="model_id"){Ex.Logger.Log("Creature.csv中字段[model_id]位置不对应"); return false; }
 		if(vecLine[6]!="mapping_path"){Ex.Logger.Log("Creature.csv中字段[mapping_path]位置不对应"); return false; }
 		if(vecLine[7]!="scale"){Ex.Logger.Log("Creature.csv中字段[scale]位置不对应"); return false; }
 		if(vecLine[8]!="opacity"){Ex.Logger.Log("Creature.csv中字段[opacity]位置不对应"); return false; }
@@ -275,7 +275,7 @@ public class CreatureTable
 			member.gd_comment=vecLine[2];
 			member.name_id=Convert.ToInt32(vecLine[3]);
 			member.sub_name_id=Convert.ToInt32(vecLine[4]);
-			member.model_path=vecLine[5];
+			member.model_id=Convert.ToInt32(vecLine[5]);
 			member.mapping_path=vecLine[6];
 			member.scale=Convert.ToSingle(vecLine[7]);
 			member.opacity=Convert.ToSingle(vecLine[8]);

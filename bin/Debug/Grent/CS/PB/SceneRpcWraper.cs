@@ -101,6 +101,9 @@ public class SceneRpcEnterSceneReplyWraper
 	{
 		 m_Result = -9999;
 		 m_RoleInfo = new CharacterInfoWraper();
+		 m_ObjId = -1;
+		 m_Pos = new V3Wraper();
+		 m_Dir = (float)-1;
 
 	}
 
@@ -109,6 +112,9 @@ public class SceneRpcEnterSceneReplyWraper
 	{
 		 m_Result = -9999;
 		 m_RoleInfo = new CharacterInfoWraper();
+		 m_ObjId = -1;
+		 m_Pos = new V3Wraper();
+		 m_Dir = (float)-1;
 
 	}
 
@@ -118,6 +124,9 @@ public class SceneRpcEnterSceneReplyWraper
 		SceneRpcEnterSceneReply v = new SceneRpcEnterSceneReply();
 		v.Result = m_Result;
 		v.RoleInfo = m_RoleInfo.ToPB();
+		v.ObjId = m_ObjId;
+		v.Pos = m_Pos.ToPB();
+		v.Dir = m_Dir;
 
 		return v;
 	}
@@ -129,6 +138,9 @@ public class SceneRpcEnterSceneReplyWraper
             return;
 		m_Result = v.Result;
 		m_RoleInfo.FromPB(v.RoleInfo);
+		m_ObjId = v.ObjId;
+		m_Pos.FromPB(v.Pos);
+		m_Dir = v.Dir;
 
 	}
 	
@@ -161,6 +173,27 @@ public class SceneRpcEnterSceneReplyWraper
 	{
 		get { return m_RoleInfo;}
 		set { m_RoleInfo = value; }
+	}
+	//玩家objid
+	public int m_ObjId;
+	public int ObjId
+	{
+		get { return m_ObjId;}
+		set { m_ObjId = value; }
+	}
+	//位置
+	public V3Wraper m_Pos;
+	public V3Wraper Pos
+	{
+		get { return m_Pos;}
+		set { m_Pos = value; }
+	}
+	//方向
+	public float m_Dir;
+	public float Dir
+	{
+		get { return m_Dir;}
+		set { m_Dir = value; }
 	}
 
 
@@ -298,135 +331,6 @@ public class SceneRpcLoadSceneCompleteReplyWraper
 	{
 		get { return m_Result;}
 		set { m_Result = value; }
-	}
-
-
-};
-//新玩家进入视野通知封装类
-[System.Serializable]
-public class SceneRpcNewPlayerNotifyWraper
-{
-
-	//构造函数
-	public SceneRpcNewPlayerNotifyWraper()
-	{
-		 m_ObjId = -1;
-		 m_Pos = new V3Wraper();
-		 m_Dir = (float)-1;
-		 m_ObjType = -1;
-		 m_ConfigId = -1;
-		 m_Status = -1;
-		 m_MoveSpeed = (float)-1;
-
-	}
-
-	//重置函数
-	public void ResetWraper()
-	{
-		 m_ObjId = -1;
-		 m_Pos = new V3Wraper();
-		 m_Dir = (float)-1;
-		 m_ObjType = -1;
-		 m_ConfigId = -1;
-		 m_Status = -1;
-		 m_MoveSpeed = (float)-1;
-
-	}
-
- 	//转化成Protobuffer类型函数
-	public SceneRpcNewPlayerNotify ToPB()
-	{
-		SceneRpcNewPlayerNotify v = new SceneRpcNewPlayerNotify();
-		v.ObjId = m_ObjId;
-		v.Pos = m_Pos.ToPB();
-		v.Dir = m_Dir;
-		v.ObjType = m_ObjType;
-		v.ConfigId = m_ConfigId;
-		v.Status = m_Status;
-		v.MoveSpeed = m_MoveSpeed;
-
-		return v;
-	}
-	
-	//从Protobuffer类型初始化
-	public void FromPB(SceneRpcNewPlayerNotify v)
-	{
-        if (v == null)
-            return;
-		m_ObjId = v.ObjId;
-		m_Pos.FromPB(v.Pos);
-		m_Dir = v.Dir;
-		m_ObjType = v.ObjType;
-		m_ConfigId = v.ConfigId;
-		m_Status = v.Status;
-		m_MoveSpeed = v.MoveSpeed;
-
-	}
-	
-	//Protobuffer序列化到MemoryStream
-	public MemoryStream ToMemoryStream()
-	{
-		MemoryStream protoMS = new MemoryStream();
-		ProtoBuf.Serializer.Serialize<SceneRpcNewPlayerNotify>(protoMS, ToPB());
-		return protoMS;
-	}
-	
-	//Protobuffer从MemoryStream进行反序列化
-	public bool FromMemoryStream(MemoryStream protoMS)
-	{
-		SceneRpcNewPlayerNotify pb = ProtoBuf.Serializer.Deserialize<SceneRpcNewPlayerNotify>(protoMS);
-		FromPB(pb);
-		return true;
-	}
-
-	//obj id
-	public int m_ObjId;
-	public int ObjId
-	{
-		get { return m_ObjId;}
-		set { m_ObjId = value; }
-	}
-	//位置
-	public V3Wraper m_Pos;
-	public V3Wraper Pos
-	{
-		get { return m_Pos;}
-		set { m_Pos = value; }
-	}
-	//方向
-	public float m_Dir;
-	public float Dir
-	{
-		get { return m_Dir;}
-		set { m_Dir = value; }
-	}
-	//obj type
-	public int m_ObjType;
-	public int ObjType
-	{
-		get { return m_ObjType;}
-		set { m_ObjType = value; }
-	}
-	//config id
-	public int m_ConfigId;
-	public int ConfigId
-	{
-		get { return m_ConfigId;}
-		set { m_ConfigId = value; }
-	}
-	//状态
-	public int m_Status;
-	public int Status
-	{
-		get { return m_Status;}
-		set { m_Status = value; }
-	}
-	//移动速度
-	public float m_MoveSpeed;
-	public float MoveSpeed
-	{
-		get { return m_MoveSpeed;}
-		set { m_MoveSpeed = value; }
 	}
 
 
@@ -649,6 +553,316 @@ public class SceneRpcConnectGameServerReplyWraper
 	{
 		get { return m_RoleId;}
 		set { m_RoleId = value; }
+	}
+
+
+};
+//多线程移除场景上的玩家请求封装类
+[System.Serializable]
+public class SceneRpcChangeSceneAskWraper
+{
+
+	//构造函数
+	public SceneRpcChangeSceneAskWraper()
+	{
+		 m_RoleId = 0;
+		 m_CurSceneId = -1;
+		 m_TargetSceneId = -1;
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_RoleId = 0;
+		 m_CurSceneId = -1;
+		 m_TargetSceneId = -1;
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public SceneRpcChangeSceneAsk ToPB()
+	{
+		SceneRpcChangeSceneAsk v = new SceneRpcChangeSceneAsk();
+		v.RoleId = m_RoleId;
+		v.CurSceneId = m_CurSceneId;
+		v.TargetSceneId = m_TargetSceneId;
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(SceneRpcChangeSceneAsk v)
+	{
+        if (v == null)
+            return;
+		m_RoleId = v.RoleId;
+		m_CurSceneId = v.CurSceneId;
+		m_TargetSceneId = v.TargetSceneId;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<SceneRpcChangeSceneAsk>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		SceneRpcChangeSceneAsk pb = ProtoBuf.Serializer.Deserialize<SceneRpcChangeSceneAsk>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//玩家的唯一id
+	public UInt64 m_RoleId;
+	public UInt64 RoleId
+	{
+		get { return m_RoleId;}
+		set { m_RoleId = value; }
+	}
+	//场景id
+	public int m_CurSceneId;
+	public int CurSceneId
+	{
+		get { return m_CurSceneId;}
+		set { m_CurSceneId = value; }
+	}
+	//目标场景id
+	public int m_TargetSceneId;
+	public int TargetSceneId
+	{
+		get { return m_TargetSceneId;}
+		set { m_TargetSceneId = value; }
+	}
+
+
+};
+//多线程移除场景上的玩家回应封装类
+[System.Serializable]
+public class SceneRpcChangeSceneReplyWraper
+{
+
+	//构造函数
+	public SceneRpcChangeSceneReplyWraper()
+	{
+		 m_Result = -9999;
+		 m_RoleId = 0;
+		 m_CurSceneId = -1;
+		 m_TargetSceneId = -1;
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_Result = -9999;
+		 m_RoleId = 0;
+		 m_CurSceneId = -1;
+		 m_TargetSceneId = -1;
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public SceneRpcChangeSceneReply ToPB()
+	{
+		SceneRpcChangeSceneReply v = new SceneRpcChangeSceneReply();
+		v.Result = m_Result;
+		v.RoleId = m_RoleId;
+		v.CurSceneId = m_CurSceneId;
+		v.TargetSceneId = m_TargetSceneId;
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(SceneRpcChangeSceneReply v)
+	{
+        if (v == null)
+            return;
+		m_Result = v.Result;
+		m_RoleId = v.RoleId;
+		m_CurSceneId = v.CurSceneId;
+		m_TargetSceneId = v.TargetSceneId;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<SceneRpcChangeSceneReply>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		SceneRpcChangeSceneReply pb = ProtoBuf.Serializer.Deserialize<SceneRpcChangeSceneReply>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//返回结果
+	public int m_Result;
+	public int Result
+	{
+		get { return m_Result;}
+		set { m_Result = value; }
+	}
+	//玩家的唯一id
+	public UInt64 m_RoleId;
+	public UInt64 RoleId
+	{
+		get { return m_RoleId;}
+		set { m_RoleId = value; }
+	}
+	//场景id
+	public int m_CurSceneId;
+	public int CurSceneId
+	{
+		get { return m_CurSceneId;}
+		set { m_CurSceneId = value; }
+	}
+	//目标场景id
+	public int m_TargetSceneId;
+	public int TargetSceneId
+	{
+		get { return m_TargetSceneId;}
+		set { m_TargetSceneId = value; }
+	}
+
+
+};
+//新物体通知封装类
+[System.Serializable]
+public class SceneRpcNewObjNotifyWraper
+{
+
+	//构造函数
+	public SceneRpcNewObjNotifyWraper()
+	{
+		 m_ObjId = -1;
+		 m_Pos = new V3Wraper();
+		 m_Dir = (float)-1;
+		 m_ObjType = -1;
+		 m_ConfigId = -1;
+		 m_Status = -1;
+		 m_MoveSpeed = (float)-1;
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_ObjId = -1;
+		 m_Pos = new V3Wraper();
+		 m_Dir = (float)-1;
+		 m_ObjType = -1;
+		 m_ConfigId = -1;
+		 m_Status = -1;
+		 m_MoveSpeed = (float)-1;
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public SceneRpcNewObjNotify ToPB()
+	{
+		SceneRpcNewObjNotify v = new SceneRpcNewObjNotify();
+		v.ObjId = m_ObjId;
+		v.Pos = m_Pos.ToPB();
+		v.Dir = m_Dir;
+		v.ObjType = m_ObjType;
+		v.ConfigId = m_ConfigId;
+		v.Status = m_Status;
+		v.MoveSpeed = m_MoveSpeed;
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(SceneRpcNewObjNotify v)
+	{
+        if (v == null)
+            return;
+		m_ObjId = v.ObjId;
+		m_Pos.FromPB(v.Pos);
+		m_Dir = v.Dir;
+		m_ObjType = v.ObjType;
+		m_ConfigId = v.ConfigId;
+		m_Status = v.Status;
+		m_MoveSpeed = v.MoveSpeed;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<SceneRpcNewObjNotify>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		SceneRpcNewObjNotify pb = ProtoBuf.Serializer.Deserialize<SceneRpcNewObjNotify>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//obj id
+	public int m_ObjId;
+	public int ObjId
+	{
+		get { return m_ObjId;}
+		set { m_ObjId = value; }
+	}
+	//位置
+	public V3Wraper m_Pos;
+	public V3Wraper Pos
+	{
+		get { return m_Pos;}
+		set { m_Pos = value; }
+	}
+	//方向
+	public float m_Dir;
+	public float Dir
+	{
+		get { return m_Dir;}
+		set { m_Dir = value; }
+	}
+	//obj type
+	public int m_ObjType;
+	public int ObjType
+	{
+		get { return m_ObjType;}
+		set { m_ObjType = value; }
+	}
+	//config id
+	public int m_ConfigId;
+	public int ConfigId
+	{
+		get { return m_ConfigId;}
+		set { m_ConfigId = value; }
+	}
+	//状态
+	public int m_Status;
+	public int Status
+	{
+		get { return m_Status;}
+		set { m_Status = value; }
+	}
+	//移动速度
+	public float m_MoveSpeed;
+	public float MoveSpeed
+	{
+		get { return m_MoveSpeed;}
+		set { m_MoveSpeed = value; }
 	}
 
 

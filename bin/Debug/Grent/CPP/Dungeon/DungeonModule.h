@@ -52,9 +52,9 @@ public:
 	//副本实现类构造函数
 	ModuleDungeon()
 	{
-	g_pPacketMgr->registerHandle(	RPC_CODE_DUNGEON_CREATEDUNGEON_REQUEST, new Some_Factory<DungeonRpcCreateDungeonAsk>());
+	g_pPacketMgr->registerHandle(	RPC_CODE_DUNGEON_CREATEDUNGEON_REQUEST, &ModuleDungeon::RpcCreateDungeon);
 	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_DUNGEON_CREATEDUNGEON_REQUEST, new Some_Factory<DungeonRpcCreateDungeonAsk>());
-	g_pPacketMgr->registerHandle(	RPC_CODE_DUNGEON_EXITDUNGEON_REQUEST, new Some_Factory<DungeonRpcExitDungeonAsk>());
+	g_pPacketMgr->registerHandle(	RPC_CODE_DUNGEON_EXITDUNGEON_REQUEST, &ModuleDungeon::RpcExitDungeon);
 	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_DUNGEON_EXITDUNGEON_REQUEST, new Some_Factory<DungeonRpcExitDungeonAsk>());
 
 	}

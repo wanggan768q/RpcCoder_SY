@@ -24,7 +24,7 @@ struct CreatureElement
 	string gd_comment;           	//策划备注	策划备注
 	int name_id;                 	//名字文本ID	名字文本ID
 	int sub_name_id;             	//子名字文本ID	子名字文本ID
-	string model_path;           	//模型路径	模型路径
+	int model_id;                	//模型id	模型id
 	string mapping_path;         	//贴图路径	贴图路径
 	float scale;                 	//NPC大小	NPC大小
 	float opacity;               	//透明度	透明度
@@ -159,7 +159,7 @@ public:
 			member.gd_comment=p.get<string>("gd_comment");
 			member.name_id=p.get<int>("name_id");
 			member.sub_name_id=p.get<int>("sub_name_id");
-			member.model_path=p.get<string>("model_path");
+			member.model_id=p.get<int>("model_id");
 			member.mapping_path=p.get<string>("mapping_path");
 			member.scale=p.get<float>("scale");
 			member.opacity=p.get<float>("opacity");
@@ -213,7 +213,7 @@ public:
 		if(vecLine[2]!="gd_comment"){printf_message("Creature.csv中字段[gd_comment]位置不对应");assert(false); return false; }
 		if(vecLine[3]!="name_id"){printf_message("Creature.csv中字段[name_id]位置不对应");assert(false); return false; }
 		if(vecLine[4]!="sub_name_id"){printf_message("Creature.csv中字段[sub_name_id]位置不对应");assert(false); return false; }
-		if(vecLine[5]!="model_path"){printf_message("Creature.csv中字段[model_path]位置不对应");assert(false); return false; }
+		if(vecLine[5]!="model_id"){printf_message("Creature.csv中字段[model_id]位置不对应");assert(false); return false; }
 		if(vecLine[6]!="mapping_path"){printf_message("Creature.csv中字段[mapping_path]位置不对应");assert(false); return false; }
 		if(vecLine[7]!="scale"){printf_message("Creature.csv中字段[scale]位置不对应");assert(false); return false; }
 		if(vecLine[8]!="opacity"){printf_message("Creature.csv中字段[opacity]位置不对应");assert(false); return false; }
@@ -257,7 +257,7 @@ public:
 			member.gd_comment=vecLine[2];
 			member.name_id=(int)atoi(vecLine[3].c_str());
 			member.sub_name_id=(int)atoi(vecLine[4].c_str());
-			member.model_path=vecLine[5];
+			member.model_id=(int)atoi(vecLine[5].c_str());
 			member.mapping_path=vecLine[6];
 			member.scale=(float)atof(vecLine[7].c_str());
 			member.opacity=(float)atof(vecLine[8].c_str());

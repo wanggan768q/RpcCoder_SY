@@ -1,0 +1,10 @@
+message  FightRpcUseSkillActionNotify
+{
+	optional sint32 ObjTargetId = 1[default=-1];
+	optional sint32 SkillId = 2[default=-1];
+	optional sint32 X = 3[default=-1];
+	optional sint32 Y = 4[default=-1];
+	optional sint32 Dir = 5[default=-1];
+
+}
+

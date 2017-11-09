@@ -22,9 +22,7 @@ public class HumanRPC
 	
 	public const int RPC_CODE_HUMAN_MOVE_REQUEST = 451;
 	public const int RPC_CODE_HUMAN_STOPMOVE_REQUEST = 452;
-	public const int RPC_CODE_HUMAN_MOVEMENTVERIFICATION_REQUEST = 453;
-	public const int RPC_CODE_HUMAN_CGMOVECHECK_NOTIFY = 454;
-	public const int RPC_CODE_HUMAN_GCMOVECHECK_NOTIFY = 455;
+	public const int RPC_CODE_HUMAN_MOVECHECK_NOTIFY = 453;
 
 	
 	private static HumanRPC m_Instance = null;
@@ -47,22 +45,24 @@ public class HumanRPC
 	{
 		Singleton<GameSocket>.Instance.RegisterSyncUpdate( ModuleId, HumanData.Instance.UpdateField );
 		
-		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_HUMAN_GCMOVECHECK_NOTIFY, GCMoveCheckCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_HUMAN_MOVECHECK_NOTIFY, MoveCheckCB);
 
 
 		return true;
 	}
 
 	/**
-	*玩家模块-->客户端位置校验 RPC通知
+	*玩家模块-->移动检测 RPC通知
 	*/
-	public void CGMoveCheck(float Dir, V3Wraper Pos)
+	public void MoveCheck(int Obj_id, float Dir, float X, float Y)
 	{
-		HumanRpcCGMoveCheckNotifyWraper notifyPBWraper = new HumanRpcCGMoveCheckNotifyWraper();
+		HumanRpcMoveCheckNotifyWraper notifyPBWraper = new HumanRpcMoveCheckNotifyWraper();
+		notifyPBWraper.Obj_id = Obj_id;
 		notifyPBWraper.Dir = Dir;
-		notifyPBWraper.Pos = Pos;
+		notifyPBWraper.X = X;
+		notifyPBWraper.Y = Y;
 		ModMessage notifyMsg = new ModMessage();
-		notifyMsg.MsgNum = RPC_CODE_HUMAN_CGMOVECHECK_NOTIFY;
+		notifyMsg.MsgNum = RPC_CODE_HUMAN_MOVECHECK_NOTIFY;
 		notifyMsg.protoMS = notifyPBWraper.ToMemoryStream();
 
 		Singleton<GameSocket>.Instance.SendNotify(notifyMsg);
@@ -109,38 +109,18 @@ public class HumanRPC
 		});
 	}
 
-	/**
-	*玩家模块-->移动验证 RPC请求
-	*/
-	public void MovementVerification(float Dir, float X, float Z, ReplyHandler replyCB)
-	{
-		HumanRpcMovementVerificationAskWraper askPBWraper = new HumanRpcMovementVerificationAskWraper();
-		askPBWraper.Dir = Dir;
-		askPBWraper.X = X;
-		askPBWraper.Z = Z;
-		ModMessage askMsg = new ModMessage();
-		askMsg.MsgNum = RPC_CODE_HUMAN_MOVEMENTVERIFICATION_REQUEST;
-		askMsg.protoMS = askPBWraper.ToMemoryStream();
-
-		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
-			HumanRpcMovementVerificationReplyWraper replyPBWraper = new HumanRpcMovementVerificationReplyWraper();
-			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
-			replyCB(replyPBWraper);
-		});
-	}
-
 
 	/**
-	*玩家模块-->服务器位置校验通知 服务器通知回调
+	*玩家模块-->移动检测 服务器通知回调
 	*/
-	public static void GCMoveCheckCB( ModMessage notifyMsg )
+	public static void MoveCheckCB( ModMessage notifyMsg )
 	{
-		HumanRpcGCMoveCheckNotifyWraper notifyPBWraper = new HumanRpcGCMoveCheckNotifyWraper();
+		HumanRpcMoveCheckNotifyWraper notifyPBWraper = new HumanRpcMoveCheckNotifyWraper();
 		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
-		if( GCMoveCheckCBDelegate != null )
-			GCMoveCheckCBDelegate( notifyPBWraper );
+		if( MoveCheckCBDelegate != null )
+			MoveCheckCBDelegate( notifyPBWraper );
 	}
-	public static ServerNotifyCallback GCMoveCheckCBDelegate = null;
+	public static ServerNotifyCallback MoveCheckCBDelegate = null;
 
 
 

@@ -1,0 +1,9 @@
+message  BaseAttrUserDataV1
+{
+	optional sint32 Exp = 1[default=-1];
+	optional sint32 Level = 3[default=-1];
+	optional sint32 ServerTime = 4[default=-1];
+	optional sint32 RoleId = 5[default=-1];
+
+}
+

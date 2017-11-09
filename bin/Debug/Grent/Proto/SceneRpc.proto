@@ -12,6 +12,9 @@ message  SceneRpcEnterSceneReply
 {
 	optional sint32 Result = 1[default=-9999];
 	optional CharacterInfo RoleInfo = 2;
+	optional sint32 ObjId = 3[default=-1];
+	optional V3 Pos = 4;
+	optional float Dir = 5[default=-1];
 
 }
 
@@ -25,18 +28,6 @@ message  SceneRpcLoadSceneCompleteAsk
 message  SceneRpcLoadSceneCompleteReply
 {
 	optional sint32 Result = 1[default=-9999];
-
-}
-
-message  SceneRpcNewPlayerNotify
-{
-	optional sint32 ObjId = 1[default=-1];
-	optional V3 Pos = 2;
-	optional float Dir = 3[default=-1];
-	optional sint32 ObjType = 4[default=-1];
-	optional sint32 ConfigId = 5[default=-1];
-	optional sint32 Status = 6[default=-1];
-	optional float MoveSpeed = 7[default=-1];
 
 }
 
@@ -58,6 +49,35 @@ message  SceneRpcConnectGameServerReply
 {
 	optional sint32 Result = 1[default=-9999];
 	optional uint64 RoleId = 2[default=0];
+
+}
+
+message  SceneRpcChangeSceneAsk
+{
+	optional uint64 RoleId = 1[default=0];
+	optional sint32 CurSceneId = 2[default=-1];
+	optional sint32 TargetSceneId = 3[default=-1];
+
+}
+
+message  SceneRpcChangeSceneReply
+{
+	optional sint32 Result = 1[default=-9999];
+	optional uint64 RoleId = 2[default=0];
+	optional sint32 CurSceneId = 3[default=-1];
+	optional sint32 TargetSceneId = 4[default=-1];
+
+}
+
+message  SceneRpcNewObjNotify
+{
+	optional sint32 ObjId = 1[default=-1];
+	optional V3 Pos = 2;
+	optional float Dir = 3[default=-1];
+	optional sint32 ObjType = 4[default=-1];
+	optional sint32 ConfigId = 5[default=-1];
+	optional sint32 Status = 6[default=-1];
+	optional float MoveSpeed = 7[default=-1];
 
 }
 

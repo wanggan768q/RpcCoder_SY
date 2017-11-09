@@ -1,0 +1,14 @@
+
+import "PublicStruct.proto";
+
+message  BaseAttrRpcSyncDataAsk
+{
+
+}
+
+message  BaseAttrRpcSyncDataReply
+{
+	optional sint32 Result = 1[default=-9999];
+
+}
+
