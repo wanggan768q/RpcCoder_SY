@@ -325,7 +325,7 @@
                         int num4 = 0;
                         string str24 = CallBack;
                         //CallBack = str24 + "function " + m.ModuleName + "Model:" + operate.Name + "Notify(";
-                        CallBack = str24 + "function " + operate.Name + "Notify(";
+                        CallBack = str24 + "function " + operate.Name + "Notify(self,";
                         string str2 = "\tlocal PB = self.rpc_pb." + m.ModuleName + "Rpc" + operate.Name + "Notify()\r\n";
                         foreach (DataStruct.FieldDescriptor descriptor2 in struct4.fieldItem)
                         {
