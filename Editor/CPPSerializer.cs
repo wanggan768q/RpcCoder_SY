@@ -985,7 +985,8 @@
                         .Replace("$ReadJsonValue$", jsonField);
                     if (flag)
                     {
-                        StreamWriter writer = new StreamWriter(str5 + file.CfgName + "Cfg.h", false, Encoding.UTF8);
+                        var utf8WithoutBom = new System.Text.UTF8Encoding(false);
+                        StreamWriter writer = new StreamWriter(str5 + file.CfgName + "Cfg.h", false, utf8WithoutBom);
                         writer.Write(str9);
                         writer.Close();
                     }
@@ -1211,7 +1212,8 @@
                     if ((((str48.IndexOf(string.Concat(new object[] { m.ModuleName, "V", m.SyncDataVersion, "Data" })) <= -1) || flag2) && ((str48.IndexOf(m.ModuleName + "DBCache") <= -1) || flag2)) && ((str48.IndexOf(string.Concat(new object[] { m.ModuleName, "V", m.SyncDataVersion, "DataWraper" })) <= -1) || flag2))
                     {
                         StreamWriter writer2 = null;
-                        writer2 = new StreamWriter((string)list2[k], false, Encoding.UTF8);
+                        var utf8WithoutBom = new System.Text.UTF8Encoding(false);
+                        writer2 = new StreamWriter((string)list2[k], false, utf8WithoutBom);
                         writer2.Write((string)list3[k]);
                         writer2.Close();
                     }
