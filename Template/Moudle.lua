@@ -4,21 +4,40 @@ $RPCVALUES$
 $TempVar$
 
 $Require$
-require("app.$TEMPLATE$.$TEMPLATE$Rpc_pb")
+local require = require
+local table = table
+local tostring = tostring
+local MLayerMgr = HS_MLayerMgr
+local typeof = typeof
+local ipairs = ipairs
+require("3rd/pblua/$TEMPLATE$Rpc_pb")
+local  $TEMPLATE$Rpc_pb = $TEMPLATE$Rpc_pb
+module("$TEMPLATE$Model")
 
-$TEMPLATE$Model = class("$TEMPLATE$Model",BaseModel)
+function handler(obj,method)
+	return function ( ... )
+		return method(obj,...)
+	end
+end
 
-function $TEMPLATE$Model:getInstance( ... )
-	-- body
-	if self.instance==nil then 
-		self.instance=$TEMPLATE$Model.new()
-	end 
-	return self.instance
+local function dataCallback(self,Id,Index)
+	if nil ~= self.DataCallback then
+		for i,callback in ipairs(self.DataCallback ) do
+			callback(Id,Index)
+		end
+	end
+end
+
+local function showNetTip(self)
+
+end
+
+local function hideNetTip(self)
+
 end
 
 -- 初始化 向MLayerMgr注册 更新数据 和 消息通知的 回调
-function $TEMPLATE$Model:ctor()
-	$TEMPLATE$Model.super.ctor(self)
+function Initialize(self)
 	self.rpc_pb = $TEMPLATE$Rpc_pb
   --注册
   MLayerMgr.RegUpdateHd(ModuleId, handler(self,self.UpdateField))
@@ -29,10 +48,10 @@ $TempVar2$
 end
 
 -- 更新数据
-function $TEMPLATE$Model:UpdateField(Id, data, Index, len)
+function UpdateField(self,Id, data, Index, len)
 $UpdataValue$
 	
-	self:dataCallback(Id,Index)
+	dataCallback(self,Id,Index)
 end
 
 
@@ -42,7 +61,23 @@ $ASKFUNCTION$
 
 $CALLBACK$
 
+function registerDataCallback(self,_hanlder)
+	if not self.DataCallback then
+		self.DataCallback = {}
+	end
+	table.insert(self.DataCallback,_hanlder)
+end
 
+function unregisterDataCallback(self,_hanlder)
+	if nil ~= self.DataCallback then
+		for i,callback in ipairs(self.DataCallback ) do
+			if callback == _hanlder then
+				table.remove(self.DataCallback, i )
+			end
+		end
+	end
+end
 
-
+--[[
 $TESTS$
+--]]
