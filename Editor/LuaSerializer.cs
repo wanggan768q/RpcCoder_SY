@@ -418,6 +418,8 @@
             FromMemoryStream = FromMemoryStream + "end";
             ToMemoryStream = ToMemoryStream + "end";
             UpdataValue = "";
+            UpdataValue = "\tlocal ret_msg = self.data_pb." + m.ModuleName + "V" + m.SyncDataVersion + "Data_pb\r\n";
+            UpdataValue += "\tret_msg:ParseFromString(uf)\r\n";
             bool flag = true;
             foreach (DataStruct.FieldDescriptor descriptor2 in ds.fieldItem)
             {
@@ -426,28 +428,65 @@
                 {
                     if ((ds.DataType == DataStruct.SyncType.UserData) || ((ds.DataType == DataStruct.SyncType.CacheData) && ds.syncToClient))
                     {
+
+                        //                         str2 = UpdataValue;
+                        //                         UpdataValue = str2 + "\t" + (flag ? "if" : "elseif") + "  Id == " + m.ModuleName.ToUpper() + "_" + descriptor2.FieldName.ToUpper() + " then\r\n";
+                        //                         string str3 = GetValue;
+                        //                         GetValue = str3 + "\t" + (flag ? "if" : "elseif") + "  Id == " + descriptor2.FieldName.ToUpper() + " then\r\n";
+                        //                         if (descriptor2.PreDefine == DataStruct.FieldDescriptor.PreDefineType.repeated)
+                        //                         {
+                        //                             UpdataValue = UpdataValue + "\t\tif Index<0 then\r\n";
+                        //                             UpdataValue = UpdataValue + "\t\t\tself.m_" + descriptor2.FieldName + " = {}\r\n";
+                        //                             UpdataValue = UpdataValue + "\t\telse\r\n";
+                        //                             UpdataValue = UpdataValue + "\t\t\tself.m_" + descriptor2.FieldName + "[Index] = tostring(data)\r\n";
+                        //                             UpdataValue = UpdataValue + "\t\tend\r\n";
+                        //                             GetValue = GetValue + "\t\tif Index<0 then\r\n";
+                        //                             GetValue = GetValue + "\t\t\treturn " + descriptor2.FieldName + "\r\n";
+                        //                             GetValue = GetValue + "\t\telse\r\n";
+                        //                             GetValue = GetValue + "\t\t\treturn " + descriptor2.FieldName + "[Index]\r\n";
+                        //                             GetValue = GetValue + "\t\tend\n";
+                        //                         }
+                        //                         else
+                        //                         {
+                        //                             UpdataValue = UpdataValue + "\t\tself.m_" + descriptor2.FieldName + " = tostring(data)\r\n";
+                        //                             GetValue = GetValue + "\t\treturn " + descriptor2.FieldName + "\r\n";
+                        //                         }
+                        //                         string str4 = SyncOpDefine2;
+                        //                         SyncOpDefine2 = str4 + "\tself.m_" + descriptor2.FieldName + " = " + ((descriptor2.PreDefine == DataStruct.FieldDescriptor.PreDefineType.repeated) ? "{}" : "\"\"") + "\r\n";
+                        //                         string str5 = SyncOpImp;
+                        //                         SyncOpImp = str5 + "\tv." + descriptor2.FieldName + " = " + m.ModuleName + "Data.m_" + descriptor2.FieldName + "\r\n";
+                        //                         string str6 = SendAllFields;
+                        //                         SendAllFields = str6 + "\t" + m.ModuleName + "Data.m_" + descriptor2.FieldName + " = v." + descriptor2.FieldName + "\r\n";
+                        //                     }
                         str2 = UpdataValue;
-                        UpdataValue = str2 + "\t" + (flag ? "if" : "elseif") + "  Id == " + m.ModuleName.ToUpper() + "_" + descriptor2.FieldName.ToUpper() + " then\r\n";
+                        //msg: HasField('Result')
+                        string keyUpdateField = m.ModuleName.ToUpper() + "_" + descriptor2.FieldName.ToUpper();
+                        string hasField = " ret_msg:HasField('" + descriptor2.FieldName + "')";
+                        UpdataValue = str2 + "\t" + (flag ? "if" : "end\r\n\tif") + hasField + " then\r\n";
                         string str3 = GetValue;
-                        GetValue = str3 + "\t" + (flag ? "if" : "elseif") + "  Id == " + descriptor2.FieldName.ToUpper() + " then\r\n";
+                        //GetValue = str3 + "\t" + (flag ? "if" : "elseif") + "  Id == " + descriptor2.FieldName.ToUpper() + " then\r\n";
+                        GetValue = str3 + "\t" + (flag ? "if" : "elseif") + "  Id == " + keyUpdateField + " then\r\n";
                         if (descriptor2.PreDefine == DataStruct.FieldDescriptor.PreDefineType.repeated)
                         {
-                            UpdataValue = UpdataValue + "\t\tif Index<0 then\r\n";
-                            UpdataValue = UpdataValue + "\t\t\tself.m_" + descriptor2.FieldName + " = {}\r\n";
-                            UpdataValue = UpdataValue + "\t\telse\r\n";
-                            UpdataValue = UpdataValue + "\t\t\tself.m_" + descriptor2.FieldName + "[Index] = tostring(data)\r\n";
-                            UpdataValue = UpdataValue + "\t\tend\r\n";
+                            //                             UpdataValue = UpdataValue + "\t\tif Index<0 then\r\n";
+                            //                             UpdataValue = UpdataValue + "\t\t\tself.m_" + descriptor2.FieldName + " = {}\r\n";
+                            //                             UpdataValue = UpdataValue + "\t\telse\r\n";
+                            //                             UpdataValue = UpdataValue + "\t\t\tself.m_" + descriptor2.FieldName + "[Index] = tostring(data)\r\n";
+                            //                             UpdataValue = UpdataValue + "\t\tend\r\n";
+                            
                             GetValue = GetValue + "\t\tif Index<0 then\r\n";
-                            GetValue = GetValue + "\t\t\treturn " + descriptor2.FieldName + "\r\n";
+                            GetValue = GetValue + "\t\t\treturn self.m_" + descriptor2.FieldName + "\r\n";
                             GetValue = GetValue + "\t\telse\r\n";
-                            GetValue = GetValue + "\t\t\treturn " + descriptor2.FieldName + "[Index]\r\n";
+                            GetValue = GetValue + "\t\t\treturn self.m_" + descriptor2.FieldName + "[Index]\r\n";
                             GetValue = GetValue + "\t\tend\n";
                         }
                         else
                         {
-                            UpdataValue = UpdataValue + "\t\tself.m_" + descriptor2.FieldName + " = tostring(data)\r\n";
-                            GetValue = GetValue + "\t\treturn " + descriptor2.FieldName + "\r\n";
+                            //UpdataValue = UpdataValue + "\t\tself.m_" + descriptor2.FieldName + " = ret_msg." + descriptor2.FieldName + "\r\n";
+                            GetValue = GetValue + "\t\treturn  self.m_" + descriptor2.FieldName + "\r\n";
                         }
+                        UpdataValue = UpdataValue + "\t\tself.m_" + descriptor2.FieldName + " = ret_msg." + descriptor2.FieldName + "\r\n";
+                        UpdataValue = UpdataValue + "\t\tdataCallback(self," + keyUpdateField + ")\r\n";
                         string str4 = SyncOpDefine2;
                         SyncOpDefine2 = str4 + "\tself.m_" + descriptor2.FieldName + " = " + ((descriptor2.PreDefine == DataStruct.FieldDescriptor.PreDefineType.repeated) ? "{}" : "\"\"") + "\r\n";
                         string str5 = SyncOpImp;
@@ -461,29 +500,33 @@
                     if ((ds.DataType == DataStruct.SyncType.UserData) || ((ds.DataType == DataStruct.SyncType.CacheData) && ds.syncToClient))
                     {
                         string str7 = UpdataValue;
-                        UpdataValue = str7 + "\t" + (flag ? "if" : "elseif") + "  Id == " + m.ModuleName.ToUpper() + "_" + descriptor2.FieldName.ToUpper() + " then\r\n";
+                        string keyUpdateField = m.ModuleName.ToUpper() + "_" + descriptor2.FieldName.ToUpper();
+                        string hasField = " ret_msg:HasField('" + descriptor2.FieldName + "')";
+                        UpdataValue = str7 + "\t" + (flag ? "if" : "end\r\n\tif") + hasField + " then\r\n";
                         string str8 = GetValue;
-                        GetValue = str8 + "\t" + (flag ? "if" : "elseif") + "  Id == " + descriptor2.FieldName.ToUpper() + " then\r\n";
+                        GetValue = str8 + "\t" + (flag ? "if" : "elseif") + "  Id == " + keyUpdateField + " then\r\n";
                         if (descriptor2.PreDefine == DataStruct.FieldDescriptor.PreDefineType.repeated)
                         {
-                            UpdataValue = UpdataValue + "\t\tif Index<0 then\r\n";
-                            UpdataValue = UpdataValue + "\t\t\tself.m_" + descriptor2.FieldName + " = {}\r\n";
-                            UpdataValue = UpdataValue + "\t\telse\r\n";
-                            UpdataValue = UpdataValue + "\t\t\tlocal num = ReadVarint32(data)\r\n";
-                            UpdataValue = UpdataValue + "\t\t\tself.m_" + descriptor2.FieldName + "[Index] = num\r\n";
-                            UpdataValue = UpdataValue + "\t\tend\r\n";
+//                             UpdataValue = UpdataValue + "\t\tif Index<0 then\r\n";
+//                             UpdataValue = UpdataValue + "\t\t\tself.m_" + descriptor2.FieldName + " = {}\r\n";
+//                             UpdataValue = UpdataValue + "\t\telse\r\n";
+//                             UpdataValue = UpdataValue + "\t\t\tlocal num = ReadVarint32(data)\r\n";
+//                             UpdataValue = UpdataValue + "\t\t\tself.m_" + descriptor2.FieldName + "[Index] = num\r\n";
+//                             UpdataValue = UpdataValue + "\t\tend\r\n";
                             GetValue = GetValue + "\t\tif Index<0 then\r\n";
-                            GetValue = GetValue + "\t\t\treturn " + descriptor2.FieldName + "\r\n";
+                            GetValue = GetValue + "\t\t\treturn self.m_" + descriptor2.FieldName + "\r\n";
                             GetValue = GetValue + "\t\telse\r\n";
-                            GetValue = GetValue + "\t\t\treturn " + descriptor2.FieldName + "[Index]\r\n";
+                            GetValue = GetValue + "\t\t\treturn self.m_" + descriptor2.FieldName + "[Index]\r\n";
                             GetValue = GetValue + "\t\tend\n";
                         }
                         else
                         {
-                            UpdataValue = UpdataValue + "\t\tlocal num = ReadVarint32(data)\r\n";
-                            UpdataValue = UpdataValue + "\t\tself.m_" + descriptor2.FieldName + " = num\r\n";
-                            GetValue = GetValue + "\t\treturn " + descriptor2.FieldName + "\r\n";
+                            //UpdataValue = UpdataValue + "\t\tlocal num = ReadVarint32(data)\r\n";
+                            //UpdataValue = UpdataValue + "\t\tself.m_" + descriptor2.FieldName + descriptor2.FieldName + " = ret_msg." + descriptor2.FieldName + "\r\n";
+                            GetValue = GetValue + "\t\treturn self.m_" + descriptor2.FieldName + "\r\n";
                         }
+                        UpdataValue = UpdataValue + "\t\tself.m_" + descriptor2.FieldName + " = ret_msg." + descriptor2.FieldName + "\r\n";
+                        UpdataValue = UpdataValue + "\t\tdataCallback(self," + keyUpdateField + ")\r\n";
                         string str9 = SyncOpDefine2;
                         SyncOpDefine2 = str9 + "\tself.m_" + descriptor2.FieldName + " = " + ((descriptor2.PreDefine == DataStruct.FieldDescriptor.PreDefineType.repeated) ? "{}" : "0") + "\r\n";
                         string str10 = SyncOpImp;
@@ -497,29 +540,33 @@
                     if ((ds.DataType == DataStruct.SyncType.UserData) || ((ds.DataType == DataStruct.SyncType.CacheData) && ds.syncToClient))
                     {
                         string str12 = UpdataValue;
-                        UpdataValue = str12 + "\t" + (flag ? "if" : "elseif") + "  Id == " + m.ModuleName.ToUpper() + "_" + descriptor2.FieldName.ToUpper() + " then\r\n";
+                        string keyUpdateField = m.ModuleName.ToUpper() + "_" + descriptor2.FieldName.ToUpper();
+                        string hasField = " ret_msg:HasField('" + descriptor2.FieldName + "')";
+                        UpdataValue = str12 + "\t" + (flag ? "if" : "end\r\n\tif") + hasField + " then\r\n";
                         string str13 = GetValue;
-                        GetValue = str13 + "\t" + (flag ? "if" : "elseif") + "  Id == " + descriptor2.FieldName.ToUpper() + " then\r\n";
+                        GetValue = str13 + "\t" + (flag ? "if" : "elseif") + "  Id == " + keyUpdateField + " then\r\n";
                         if (descriptor2.PreDefine == DataStruct.FieldDescriptor.PreDefineType.repeated)
                         {
-                            UpdataValue = UpdataValue + "\t\tif Index<0 then\r\n";
-                            UpdataValue = UpdataValue + "\t\t\tself.m_" + descriptor2.FieldName + " = {}\r\n";
-                            UpdataValue = UpdataValue + "\t\telse\r\n";
-                            UpdataValue = UpdataValue + "\t\t\tlocal num = ReadVarint64(data)\r\n";
-                            UpdataValue = UpdataValue + "\t\t\tself.m_" + descriptor2.FieldName + "[Index] = num\r\n";
-                            UpdataValue = UpdataValue + "\t\tend\r\n";
+//                             UpdataValue = UpdataValue + "\t\tif Index<0 then\r\n";
+//                             UpdataValue = UpdataValue + "\t\t\tself.m_" + descriptor2.FieldName + " = {}\r\n";
+//                             UpdataValue = UpdataValue + "\t\telse\r\n";
+//                             UpdataValue = UpdataValue + "\t\t\tlocal num = ReadVarint64(data)\r\n";
+//                             UpdataValue = UpdataValue + "\t\t\tself.m_" + descriptor2.FieldName + "[Index] = num\r\n";
+//                             UpdataValue = UpdataValue + "\t\tend\r\n";
                             GetValue = GetValue + "\t\tif Index<0 then\r\n";
-                            GetValue = GetValue + "\t\t\treturn " + descriptor2.FieldName + "\r\n";
+                            GetValue = GetValue + "\t\t\treturn self.m_" + descriptor2.FieldName + "\r\n";
                             GetValue = GetValue + "\t\telse\r\n";
-                            GetValue = GetValue + "\t\t\treturn " + descriptor2.FieldName + "[Index]\r\n";
+                            GetValue = GetValue + "\t\t\treturn self.m_" + descriptor2.FieldName + "[Index]\r\n";
                             GetValue = GetValue + "\t\tend\n";
                         }
                         else
                         {
-                            UpdataValue = UpdataValue + "\t\tlocal num = ReadVarint64(data)\r\n";
+                            //UpdataValue = UpdataValue + "\t\tlocal num = ReadVarint64(data)\r\n";
                             UpdataValue = UpdataValue + "\t\tself.m_" + descriptor2.FieldName + " = num\r\n";
-                            GetValue = GetValue + "\t\treturn " + descriptor2.FieldName + "\r\n";
+                            GetValue = GetValue + "\t\treturn self.m_" + descriptor2.FieldName + "\r\n";
                         }
+                        UpdataValue = UpdataValue + "\t\tself.m_" + descriptor2.FieldName + " = ret_msg." + descriptor2.FieldName + "\r\n";
+                        UpdataValue = UpdataValue + "\t\tdataCallback(self," + keyUpdateField + ")\r\n";
                         string str14 = SyncOpDefine2;
                         SyncOpDefine2 = str14 + "\tself.m_" + descriptor2.FieldName + " = " + ((descriptor2.PreDefine == DataStruct.FieldDescriptor.PreDefineType.repeated) ? "{}" : "0") + "\r\n";
                         string str15 = SyncOpImp;
@@ -530,26 +577,28 @@
                 }
                 else if (descriptor2.PreDefine == DataStruct.FieldDescriptor.PreDefineType.repeated)
                 {
+                    string keyUpdateField = m.ModuleName.ToUpper() + "_" + descriptor2.FieldName.ToUpper();
+                    string hasField = " ret_msg:HasField('" + descriptor2.FieldName + "')";
                     if ((ds.DataType == DataStruct.SyncType.UserData) || ((ds.DataType == DataStruct.SyncType.CacheData) && ds.syncToClient))
                     {
                         string str17 = UpdataValue;
-                        UpdataValue = str17 + "\t" + (flag ? "if" : "elseif") + "  Id == " + m.ModuleName.ToUpper() + "_" + descriptor2.FieldName.ToUpper() + " then\r\n";
+                        UpdataValue = str17 + "\t" + (flag ? "if" : "end\r\n\tif") + hasField + " then\r\n";
                         string str18 = GetValue;
-                        GetValue = str18 + "\t" + (flag ? "if" : "elseif") + "  Id == " + descriptor2.FieldName.ToUpper() + " then\r\n";
-                        UpdataValue = UpdataValue + "\t\tif Index < 0 then\r\n";
-                        UpdataValue = UpdataValue + "\t\t\tself.m_" + descriptor2.FieldName + " = {}\r\n";
-                        UpdataValue = UpdataValue + "\t\telse\r\n";
+                        GetValue = str18 + "\t" + (flag ? "if" : "elseif") + "  Id == " + keyUpdateField + " then\r\n";
+                        //UpdataValue = UpdataValue + "\t\tif Index < 0 then\r\n";
+                        //UpdataValue = UpdataValue + "\t\t\tself.m_" + descriptor2.FieldName + " = {}\r\n";
+                        //UpdataValue = UpdataValue + "\t\telse\r\n";
                         GetValue = GetValue + "\t\tif Index<0 then\r\n";
-                        GetValue = GetValue + "\t\t\treturn " + descriptor2.FieldName + "\r\n";
+                        GetValue = GetValue + "\t\t\treturn self.m_" + descriptor2.FieldName + "\r\n";
                         GetValue = GetValue + "\t\telse\r\n";
-                        GetValue = GetValue + "\t\t\treturn " + descriptor2.FieldName + "[Index]\r\n";
+                        GetValue = GetValue + "\t\t\treturn self.m_" + descriptor2.FieldName + "[Index]\r\n";
                         GetValue = GetValue + "\t\tend\n";
                         UpdataValue = UpdataValue + "\t\t\tif self.m_" + descriptor2.FieldName + "[Index] == nil then\r\n";
                         object obj5 = UpdataValue;
-                        UpdataValue = string.Concat(new object[] { obj5, "\t\t\t\tself.m_", descriptor2.FieldName, "[Index] = ", m.ModuleName, "V", m.SyncDataVersion, "Data_pb.", m.ModuleName, descriptor2.FieldType, "V", m.SyncDataVersion, "()\r\n" });
-                        UpdataValue = UpdataValue + "\t\t\tend\r\n";
-                        UpdataValue = UpdataValue + "\t\t\tself.m_" + descriptor2.FieldName + "[Index]:ParseFromString(data)\r\n";
-                        UpdataValue = UpdataValue + "\t\tend\r\n";
+                        //UpdataValue = string.Concat(new object[] { obj5, "\t\t\t\tself.m_", descriptor2.FieldName, "[Index] = ", m.ModuleName, "V", m.SyncDataVersion, "Data_pb.", m.ModuleName, descriptor2.FieldType, "V", m.SyncDataVersion, "()\r\n" });
+                        //UpdataValue = UpdataValue + "\t\t\tend\r\n";
+                        //UpdataValue = UpdataValue + "\t\t\tself.m_" + descriptor2.FieldName + "[Index]:ParseFromString(data)\r\n";
+                        //UpdataValue = UpdataValue + "\t\tend\r\n";
                         SyncOpDefine2 = SyncOpDefine2 + "\tself.m_" + descriptor2.FieldName + " = {}\r\n";
                         SyncOpImp = SyncOpImp + "\tfor i,data in ipairs(self.m_" + descriptor2.FieldName + ") do \r\n";
                         SyncOpImp = SyncOpImp + "\t\ttable.insert(v." + descriptor2.FieldName + ",data.ToPB())\r\n";
@@ -560,6 +609,8 @@
                         SendAllFields = str19 + "\t\ttable.insert(self.m_" + descriptor2.FieldName + ",self.m_" + descriptor2.FieldName + "[i].FromPB(v." + descriptor2.FieldName + "[i]))\r\n";
                         SendAllFields = SendAllFields + "\tend\r\n";
                     }
+                    UpdataValue = UpdataValue + "\t\tself.m_" + descriptor2.FieldName + " = ret_msg." + descriptor2.FieldName + "\r\n";
+                    UpdataValue = UpdataValue + "\t\tdataCallback(self," + keyUpdateField + ")\r\n";
                     DBCacheField = DBCacheField + "function self.Set" + descriptor2.FieldName + "(Index,v)\r\n";
                     DBCacheField = DBCacheField + "\tself.m_" + descriptor2.FieldName + "[Index] = v\r\n";
                     DBCacheField = DBCacheField + "end\r\n";
@@ -567,11 +618,15 @@
                 else if ((ds.DataType == DataStruct.SyncType.UserData) || ((ds.DataType == DataStruct.SyncType.CacheData) && ds.syncToClient))
                 {
                     string str20 = UpdataValue;
-                    UpdataValue = str20 + "\t" + (flag ? "if" : "elseif") + "  Id == " + m.ModuleName.ToUpper() + "_" + descriptor2.FieldName.ToUpper() + " then\r\n";
+                    string keyUpdateField = m.ModuleName.ToUpper() + "_" + descriptor2.FieldName.ToUpper();
+                    string hasField = " ret_msg:HasField('" + descriptor2.FieldName + "')";
+                    UpdataValue = str20 + "\t" + (flag ? "if" : "end\r\n\tif") + hasField + " then\r\n";
                     string str21 = GetValue;
-                    GetValue = str21 + "\t" + (flag ? "if" : "elseif") + "  Id == " + descriptor2.FieldName.ToUpper() + " then\r\n";
-                    UpdataValue = UpdataValue + "\t\tself.m_" + descriptor2.FieldName + ":ParseFromString(data)\r\n";
-                    GetValue = GetValue + "\t\treturn " + descriptor2.FieldName + "\r\n";
+                    GetValue = str21 + "\t" + (flag ? "if" : "elseif") + "  Id == " + keyUpdateField + " then\r\n";
+                    //UpdataValue = UpdataValue + "\t\tself.m_" + descriptor2.FieldName + ":ParseFromString(data)\r\n";
+                    UpdataValue = UpdataValue + "\t\tself.m_" + descriptor2.FieldName + " = ret_msg." + descriptor2.FieldName + "\r\n";
+                    UpdataValue = UpdataValue + "\t\tdataCallback(self," + keyUpdateField + ")\r\n";
+                    GetValue = GetValue + "\t\treturn self.m_" + descriptor2.FieldName + "\r\n";
                     object obj6 = SyncOpDefine2;
                     SyncOpDefine2 = string.Concat(new object[] { obj6, "\tself.m_", descriptor2.FieldName, " = ", m.ModuleName, "V", m.SyncDataVersion, "Data_pb.", m.ModuleName, descriptor2.FieldType, "V", m.SyncDataVersion, "()\r\n" });
                     string str22 = SyncOpImp;
@@ -587,8 +642,8 @@
             }
             if ((ds.DataType == DataStruct.SyncType.UserData) || ((ds.DataType == DataStruct.SyncType.CacheData) && ds.syncToClient))
             {
-                UpdataValue = UpdataValue + "\t" + (flag ? "if" : "else") + "\r\n";
-                UpdataValue = UpdataValue + "\t\t print(\"error Updata\")\r\n";
+//                 UpdataValue = UpdataValue + "\t" + (flag ? "if" : "else") + "\r\n";
+//                 UpdataValue = UpdataValue + "\t\t print(\"error Updata\")\r\n";
                 UpdataValue = UpdataValue + "\tend\r\n";
                 GetValue = GetValue + "\t" + (flag ? "if" : "else") + "\r\n";
                 GetValue = GetValue + "\t\t print(\"error Get\")\r\n";
@@ -827,8 +882,29 @@
                     string str47 = (string) list3[k];
                     str47 = str47.Replace("$TEMPLATE$", m.ModuleName);
                     syncOpDefine = syncOpDefine.Replace("$TEMPLATE$", m.ModuleName);
-                    str47 = str47.Replace("$TempVar$", syncOpDefine).Replace("$XULIEHUA$", syncOpImp).Replace("$FROMPBXULIEHUA$", sendAllFields).Replace("$SETFUNCTION$", dBCacheField).Replace("$FromMemoryStream$", fromMemoryStream).Replace("$UpdataValue$", updataValue).Replace("$RPCVALUES$", operationDeclare).Replace("$NOTIFYTD$", operationImpl)
-                        .Replace("$ASKFUNCTION$", operationImplement).Replace("$RPCASKANDREPLY$", rpcValues).Replace("$ToMemoryStream$", toMemoryStream).Replace("$CALLBACK$", callBack).Replace("$INITCONTROLLER$", initController).Replace("$CONTROLLERCALLBACKFUNCTION$", contCallBacks).Replace("$BUTTONTHING$", layer).Replace("$TempVar2$", str44).Replace("$Require$", require).Replace("$CTORLAYER$", layerCtor).Replace("$FUNCTORLAYER$", layerCtoF).Replace("$ENTERLAYER$", enterLayer).Replace("$ONENTERFUNCTIONS$", enterFunctions).Replace("$ONENTERFUNCTIONSFUNCTION$", enterFunctionsF).Replace("$CallBackARGS$", callBackARGS).Replace("$TESTS$", testProtocol).Replace("$GetValue$", getValue);
+                    str47 = str47.Replace("$TempVar$", syncOpDefine).Replace("$XULIEHUA$", syncOpImp).Replace("$FROMPBXULIEHUA$", sendAllFields)
+                        .Replace("$SETFUNCTION$", dBCacheField)
+                        .Replace("$FromMemoryStream$", fromMemoryStream)
+                        .Replace("$UpdataValue$", updataValue)
+                        .Replace("$RPCVALUES$", operationDeclare)
+                        .Replace("$NOTIFYTD$", operationImpl)
+                        .Replace("$ASKFUNCTION$", operationImplement)
+                        .Replace("$RPCASKANDREPLY$", rpcValues)
+                        .Replace("$ToMemoryStream$", toMemoryStream)
+                        .Replace("$CALLBACK$", callBack)
+                        .Replace("$INITCONTROLLER$", initController)
+                        .Replace("$CONTROLLERCALLBACKFUNCTION$", contCallBacks)
+                        .Replace("$BUTTONTHING$", layer)
+                        .Replace("$TempVar2$", str44)
+                        .Replace("$Require$", require)
+                        .Replace("$CTORLAYER$", layerCtor)
+                        .Replace("$FUNCTORLAYER$", layerCtoF)
+                        .Replace("$ENTERLAYER$", enterLayer)
+                        .Replace("$ONENTERFUNCTIONS$", enterFunctions)
+                        .Replace("$ONENTERFUNCTIONSFUNCTION$", enterFunctionsF)
+                        .Replace("$CallBackARGS$", callBackARGS)
+                        .Replace("$TESTS$", testProtocol)
+                        .Replace("$GetValue$", getValue);
                     list3[k] = str47;
                 }
                 for (int n = 0; n < list2.Count; n++)

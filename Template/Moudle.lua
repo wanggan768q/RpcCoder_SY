@@ -48,10 +48,8 @@ $TempVar2$
 end
 
 -- 更新数据
-function UpdateField(self,Id, data, Index, len)
+function UpdateField(self,uf)
 $UpdataValue$
-	
-	dataCallback(self,Id,Index)
 end
 
 
@@ -78,6 +76,12 @@ function unregisterDataCallback(self,_hanlder)
 	end
 end
 
+function GetValue(self, Id,Index )
+	-- body
+	$GetValue$
+end
+
 --[[
 $TESTS$
 --]]
+

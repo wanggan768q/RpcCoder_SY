@@ -15,6 +15,7 @@
 
         public static void Draw(Module m)
         {
+            return;
             try
             {
                 bw = new BinaryWriter(new FileStream(m.ModuleName + ".pic", FileMode.Create));

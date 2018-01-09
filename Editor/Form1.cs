@@ -863,19 +863,19 @@
                         foreach (TreeNode node2 in node.Nodes)
                         {
                             Editor.Module tag = (Editor.Module) node2.Tag;
-                            DrawPic.Draw(tag);
+                            //DrawPic.Draw(tag);
                             XMLSerializer.Serialize(tag, dir, this.label1);
                             ProtoSerializer.Serialize(tag, dir, this.label1, DataStruct.protoTypeE.RpcProto);
                             ProtoSerializer.Serialize(tag, dir, this.label1, DataStruct.protoTypeE.SyncProto);
-                            ProtoSerializer.SerializeCS(tag, dir, this.label1, DataStruct.protoTypeE.RpcProto);
-                            ProtoSerializer.SerializeCS(tag, dir, this.label1, DataStruct.protoTypeE.SyncProto);
+                            //ProtoSerializer.SerializeCS(tag, dir, this.label1, DataStruct.protoTypeE.RpcProto);
+                            //ProtoSerializer.SerializeCS(tag, dir, this.label1, DataStruct.protoTypeE.SyncProto);
                             ProtoSerializer.SerializeLUA(tag, dir, this.label1, DataStruct.protoTypeE.RpcProto);
                             ProtoSerializer.SerializeLUA(tag, dir, this.label1, DataStruct.protoTypeE.SyncProto);
                             ProtoSerializer.SerializeLUA_SY(tag, dir, this.label1, DataStruct.protoTypeE.RpcProto);
                             ProtoSerializer.SerializeLUA_SY(tag, dir, this.label1, DataStruct.protoTypeE.SyncProto);
-                            CSSerializer.Serialize(tag, dir, this.label1);
+                            //CSSerializer.Serialize(tag, dir, this.label1);
                             CPPSerializer.Serialize(tag, ref moduleAllName, dir, this.label1);
-                            CoffeeSerializer.Serialize(tag, dir, this.label1);
+                            //CoffeeSerializer.Serialize(tag, dir, this.label1);
                         }
                         str3 = (((((str3 + moduleAllName) + "\n}\n" + "string GetModuleValue(int id)\n") + "{\n" + "\tmap<int, string>::iterator iter = ModuleValue.find(id);\n") + "\tif (iter != ModuleValue.end())\n" + "\t{\n") + "\t\treturn iter->second;\n" + "\t}\n") + "\treturn \"未知\";\n" + "}\n";
                         str2 = str2 + "\n#endif";
@@ -1271,8 +1271,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Public Struct");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Module");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Public Struct");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Module");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -1327,16 +1327,16 @@
             this.treeView1.ImageList = this.imageList1;
             this.treeView1.Location = new System.Drawing.Point(21, 28);
             this.treeView1.Name = "treeView1";
-            treeNode3.Name = "Struct";
-            treeNode3.Text = "Public Struct";
-            treeNode4.Name = "Module";
-            treeNode4.Text = "Module";
+            treeNode1.Name = "Struct";
+            treeNode1.Text = "Public Struct";
+            treeNode2.Name = "Module";
+            treeNode2.Text = "Module";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3,
-            treeNode4});
+            treeNode1,
+            treeNode2});
             this.treeView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.treeView1.SelectedImageIndex = 0;
-            this.treeView1.Size = new System.Drawing.Size(258, 700);
+            this.treeView1.Size = new System.Drawing.Size(258, 685);
             this.treeView1.TabIndex = 0;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             this.treeView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.treeView1_MouseDown);
@@ -1477,7 +1477,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 732);
+            this.label1.Location = new System.Drawing.Point(15, 720);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(0, 12);
             this.label1.TabIndex = 11;
@@ -1591,7 +1591,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(382, 380);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(236, 311);
+            this.dataGridView1.Size = new System.Drawing.Size(236, 290);
             this.dataGridView1.TabIndex = 14;
             this.dataGridView1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellValueChanged);
             // 
@@ -1599,7 +1599,7 @@
             // 
             this.buttonAddGrid.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.buttonAddGrid.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonAddGrid.Location = new System.Drawing.Point(382, 705);
+            this.buttonAddGrid.Location = new System.Drawing.Point(382, 690);
             this.buttonAddGrid.Name = "buttonAddGrid";
             this.buttonAddGrid.Size = new System.Drawing.Size(98, 23);
             this.buttonAddGrid.TabIndex = 15;
@@ -1611,7 +1611,7 @@
             // 
             this.buttonDelGrid.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.buttonDelGrid.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.buttonDelGrid.Location = new System.Drawing.Point(520, 705);
+            this.buttonDelGrid.Location = new System.Drawing.Point(504, 690);
             this.buttonDelGrid.Name = "buttonDelGrid";
             this.buttonDelGrid.Size = new System.Drawing.Size(98, 23);
             this.buttonDelGrid.TabIndex = 16;
