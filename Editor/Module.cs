@@ -12,7 +12,7 @@
         private string cnName = "";
         private string comment = "";
         public ArrayList configFiles = new ArrayList();
-        public static Dictionary<int, ArrayList> errorDic = new Dictionary<int, ArrayList>();
+        public static Dictionary<int, List<Error>> errorDic = new Dictionary<int, List<Error>>();
         public static int key = 0;
         public ArrayList moduleDataStruct = new ArrayList();
         public static Dictionary<string, Module> ModuleDic = new Dictionary<string, Module>();

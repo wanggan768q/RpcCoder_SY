@@ -371,7 +371,7 @@
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            foreach (KeyValuePair<int, ArrayList> pair in Editor.Module.errorDic)
+            foreach (var pair in Editor.Module.errorDic)
             {
                 foreach (Editor.Module.Error error in pair.Value)
                 {
@@ -408,7 +408,7 @@
 
         private void buttonAddGrid_Click(object sender, EventArgs e)
         {
-            foreach (KeyValuePair<int, ArrayList> pair in Editor.Module.errorDic)
+            foreach (var pair in Editor.Module.errorDic)
             {
                 if (pair.Key == Editor.Module.key)
                 {
@@ -425,7 +425,7 @@
             }
             int num = 0;
             int index = 0;
-            foreach (KeyValuePair<int, ArrayList> pair2 in Editor.Module.errorDic)
+            foreach (var pair2 in Editor.Module.errorDic)
             {
                 if (pair2.Key != Editor.Module.key)
                 {
@@ -496,7 +496,7 @@
                 {
                     int index = row.Index;
                     this.dataGridView1.Rows.Remove(row);
-                    foreach (KeyValuePair<int, ArrayList> pair in Editor.Module.errorDic)
+                    foreach (var pair in Editor.Module.errorDic)
                     {
                         if (pair.Key == Editor.Module.key)
                         {
@@ -573,7 +573,7 @@
         {
             DataGridView view = sender as DataGridView;
             int key = Editor.Module.key;
-            foreach (KeyValuePair<int, ArrayList> pair in Editor.Module.errorDic)
+            foreach (var pair in Editor.Module.errorDic)
             {
                 if (pair.Key == key)
                 {
@@ -657,7 +657,7 @@
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            foreach (KeyValuePair<int, ArrayList> pair in Editor.Module.errorDic)
+            foreach (var pair in Editor.Module.errorDic)
             {
                 foreach (Editor.Module.Error error in pair.Value)
                 {
@@ -919,7 +919,7 @@
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             ArrayList list = new ArrayList();
-            foreach (KeyValuePair<int, ArrayList> pair in Editor.Module.errorDic)
+            foreach (var pair in Editor.Module.errorDic)
             {
                 list.Clear();
                 int num = 0;
@@ -1864,7 +1864,7 @@
                         node5.ImageIndex = 4;
                         node5.Tag = module3;
                         Editor.Module.ModuleDic.Add(module3.ModuleName, module3);
-                        ArrayList list = new ArrayList();
+                        List<Module.Error> list = new List<Module.Error>();
                         Editor.Module.errorDic.Add(startIdNum, list);
                         Editor.Module.ErrorModuleName name = new Editor.Module.ErrorModuleName {
                             en = module3.ModuleName,
@@ -2618,7 +2618,7 @@
                 this.dataGridView1.Rows.Clear();
                 Editor.Module tag = this.treeView1.SelectedNode.Tag as Editor.Module;
                 Editor.Module.key = tag.StartIdNum;
-                foreach (KeyValuePair<int, ArrayList> pair in Editor.Module.errorDic)
+                foreach (var pair in Editor.Module.errorDic)
                 {
                     if (pair.Key == Editor.Module.key)
                     {

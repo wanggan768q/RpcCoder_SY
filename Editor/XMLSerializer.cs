@@ -83,7 +83,7 @@
                             {
                                 startIdNum = new Random().Next(0x3e8, 0x270f);
                             }
-                            ArrayList list2 = new ArrayList();
+                            List<Module.Error> list2 = new List<Module.Error>();
                             Module.errorDic.Add(startIdNum, list2);
                             Module.ErrorModuleName name = new Module.ErrorModuleName {
                                 en = module.ModuleName,

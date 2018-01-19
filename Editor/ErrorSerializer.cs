@@ -26,7 +26,7 @@
                         id = strArray[0],
                         name = strArray[1]
                     };
-                    foreach (KeyValuePair<int, ArrayList> pair in Module.errorDic)
+                    foreach (var pair in Module.errorDic)
                     {
                         int num2 = (Convert.ToInt32(error.id) / 100) * 100;
                         if (pair.Key == num2)
@@ -47,7 +47,7 @@
             label1.Refresh();
             StreamWriter writer = new StreamWriter(path, false, Encoding.UTF8);
             string str3 = "INT\tSTRING\r\n#1\r\n#2ID\tNAME\r\n";
-            foreach (KeyValuePair<int, ArrayList> pair in Module.errorDic)
+            foreach (var pair in Module.errorDic)
             {
                 foreach (Module.Error error in pair.Value)
                 {
