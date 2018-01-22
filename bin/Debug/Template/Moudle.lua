@@ -9,6 +9,7 @@ local table = table
 local tostring = tostring
 local MLayerMgr = HS_MLayerMgr
 local typeof = typeof
+local ipairs = ipairs
 require("3rd/pblua/$TEMPLATE$Rpc_pb")
 local  $TEMPLATE$Rpc_pb = $TEMPLATE$Rpc_pb
 module("$TEMPLATE$Model")
@@ -20,7 +21,11 @@ function handler(obj,method)
 end
 
 local function dataCallback(self,Id,Index)
-
+	if nil ~= self.DataCallback then
+		for i,callback in ipairs(self.DataCallback ) do
+			callback(Id,Index)
+		end
+	end
 end
 
 local function showNetTip(self)
@@ -43,10 +48,8 @@ $TempVar2$
 end
 
 -- 更新数据
-function UpdateField(self,Id, data, Index, len)
+function UpdateField(self,uf)
 $UpdataValue$
-	
-	dataCallback(self,Id,Index)
 end
 
 
@@ -56,8 +59,29 @@ $ASKFUNCTION$
 
 $CALLBACK$
 
+function registerDataCallback(self,_hanlder)
+	if not self.DataCallback then
+		self.DataCallback = {}
+	end
+	table.insert(self.DataCallback,_hanlder)
+end
 
+function unregisterDataCallback(self,_hanlder)
+	if nil ~= self.DataCallback then
+		for i,callback in ipairs(self.DataCallback ) do
+			if callback == _hanlder then
+				table.remove(self.DataCallback, i )
+			end
+		end
+	end
+end
+
+function GetValue(self, Id,Index )
+	-- body
+	$GetValue$
+end
 
 --[[
 $TESTS$
 --]]
+

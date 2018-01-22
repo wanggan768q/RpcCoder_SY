@@ -2,6 +2,7 @@
 #define __$TEMPLATE$_CONFIG_H
 
 #include "CommonDefine.h"
+#include "DK_Assertx.h"
 
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
@@ -10,7 +11,7 @@
 
 #include <vector>
 #include <string>
-#include <map>
+#include <unordered_map>
 using namespace std;
 
 
@@ -44,7 +45,8 @@ class $Template$Table
 private:
 	$Template$Table(){}
 	~$Template$Table(){}
-	map<$PrimaryType$, $Template$Element>	m_mapElements;
+	typedef unordered_map<$PrimaryType$, $Template$Element> MapElementMap;
+	MapElementMap	m_mapElements;
 	vector<$Template$Element>	m_vecAllElements;
 	$Template$Element m_emptyItem;
 public:
@@ -54,11 +56,15 @@ public:
 		return sInstance;
 	}
 
-	$Template$Element GetElement($PrimaryType$ key)
+	const $Template$Element* GetElement($PrimaryType$ key)
 	{
-		if( m_mapElements.count(key)>0 )
-			return m_mapElements[key];
-		return m_emptyItem;
+		MapElementMap::iterator it = m_mapElements.find(key);
+		if (it == m_mapElements.end())
+		{
+			AssertEx(false, std::string(std::string("$Template$Table: ") + std::to_string(key)).c_str());
+			return NULL;
+		}
+		return &it->second;
 	}
 
 	bool HasElement($PrimaryType$ key)
@@ -100,9 +106,9 @@ public:
 
 	bool LoadJson(const std::string& jsonFile)
 	{
-		boost::property_tree::ptree parse;
-		boost::property_tree::json_parser::read_json(std::string(CONFIG_PATH) + jsonFile, parse);
-		boost::property_tree::ptree sms_array = parse.get_child("data");
+		boost::property_tree::ptree sms_array;
+		boost::property_tree::json_parser::read_json(std::string(CONFIG_PATH) + jsonFile, sms_array);
+		//boost::property_tree::ptree sms_array = parse.get_child("data");
 
 		vector<string> vecLine;
 

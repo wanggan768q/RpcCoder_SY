@@ -56,7 +56,13 @@ $CliOperationImpl$
 	~Module$Template$(){}
 
 
+	static Module$Template$ Instance()
+	{
+		static Module$Template$ sInstance;
+		return sInstance;
+	}
 	
+	bool Initialize();
 
 public:
 $CliOperationDeclare$

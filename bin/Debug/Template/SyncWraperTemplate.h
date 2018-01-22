@@ -12,12 +12,9 @@
 #ifndef __SYNC_WRAPER_$TEMPLATE$_H
 #define __SYNC_WRAPER_$TEMPLATE$_H
 
-#include "BASE.h"
-#include "PublicStructWraper.h"
+#include "BaseDef.h"
 #include "$Template$V$SyncDataVersion$Data.pb.h"
-#include "DataWraperInterface.h"
-#include "ModuleDataClassFactory.h"
-#include "ModuleDataInterface.h"
+using namespace std;
 
 
 $SyncClassWraper$

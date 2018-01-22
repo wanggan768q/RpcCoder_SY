@@ -31,8 +31,8 @@
             string str12 = "";
             if (((ds.DataType == DataStruct.SyncType.ModuleData) || (ds.DataType == DataStruct.SyncType.CacheData)) || (ds.DataType == DataStruct.SyncType.UserData))
             {
-                str9 = ", public ModuleDataInterface , public ModuleDataRegister<" + newValue + ">";
-                str10 = "SetDataWraper( this );\r\n";
+                //str9 = ", public ModuleDataInterface , public ModuleDataRegister<" + newValue + ">";
+                //str10 = "SetDataWraper( this );\r\n";
             }
             foreach (DataStruct.FieldDescriptor descriptor in ds.fieldItem)
             {
@@ -67,7 +67,7 @@
                         else if (descriptor.FieldType == "float")
                         {
                             string str22 = str11;
-                            str11 = str22 + "\t\ttmpLine.Fmt(\"<li>" + descriptor.FieldName + "：%.2ff</li>\\r\\n\",m_" + descriptor.FieldName + ");\r\n";
+                            //str11 = str22 + "\t\ttmpLine.Fmt(\"<li>" + descriptor.FieldName + "：%.2ff</li>\\r\\n\",m_" + descriptor.FieldName + ");\r\n";
                             //str11 = str11 + "\t\thtmlBuff += tmpLine;\r\n";
                         }
                         else
@@ -196,7 +196,7 @@
                     {
                         if (descriptor.FieldType == "bytes")
                         {
-                            str13 = str11;
+                            //str13 = str11;
                             //str11 = str13 + "\t\thtmlBuff += \"<li>" + descriptor.FieldName + "(" + descriptor.CNName + ") [" + descriptor.FieldType + "]：</li>\\r\\n\";\r\n";
                         }
                         else
@@ -243,7 +243,18 @@
                     }
                 }
             }
-            str = str.Replace("$CNName$", ds.CNName).Replace("$WraperName$", newValue).Replace("$PBName$", str4).Replace("$ConstructField$", str5).Replace("$ToPBField$", str6).Replace("$InitFuncField$", str7).Replace("$GetSetSizeField$", str8).Replace("$ModuleDataWraperDef$", str9).Replace("$ModuleDataSetWraper$", str10).Replace("$htmlField$", str11).Replace("$HtmlFieldHeader$", str12);
+            str = str.Replace("$CNName$", ds.CNName)
+                .Replace("$WraperName$", newValue)
+                .Replace("$PBName$", str4)
+                .Replace("$ConstructField$", str5)
+                .Replace("$ToPBField$", str6)
+                .Replace("$InitFuncField$", str7)
+                .Replace("$GetSetSizeField$", str8)
+                .Replace("$ModuleDataWraperDef$", str9)
+                .Replace("$ModuleDataSetWraper$", str10)
+                .Replace("$htmlField$", str11)
+                .Replace("$HtmlFieldHeader$", str12)
+                ;
             strWraper = strWraper + str;
         }
 
@@ -484,7 +495,7 @@
             }
         }
 
-        private static void GenSyncDataCode(Module m, DataStruct ds, ref string syncIds, ref string SyncOpDefine, ref string SyncOpImp, ref string SendAllFields, ref string DBCacheField)
+        private static void GenSyncDataCode(Module m, DataStruct ds, ref string syncIds, ref string SyncOpDefine, ref string SyncOpImp, ref string SendAllFields, ref string DBCacheField,ref string BindCalc,ref string RefreshField, ref string GetField)
         {
             string str = "V" + m.SyncDataVersion;
             string text1 = ds.StructName + "Wraper" + str;
@@ -492,8 +503,13 @@
             string str3 = "";
             foreach (DataStruct.FieldDescriptor descriptor in ds.fieldItem)
             {
+                //m_oCaclPropertyCallbacks.emplace(SYNCID_BASEATTR_EXP, std::move(std::bind(&Obj_Character::CalcHitValue, pObj)));
+                string enumKey = "SYNCID_" + m.ModuleName.ToUpper() + "_" + descriptor.FieldName.ToUpper();
+                BindCalc = BindCalc + "\tm_oCaclPropertyCallbacks.emplace(" + enumKey + ",std::move(std::bind(&Obj_Character::Calc" + descriptor.FieldName + ", pObj)));\r\n";
                 SendAllFields = SendAllFields + "\tSend" + descriptor.FieldName + "(OnlyToClient);\r\n";
-                string str4 = " \tSYNCID_" + m.ModuleName.ToUpper() + "_" + descriptor.FieldName.ToUpper();
+                string str4 = " \t" + enumKey;
+                RefreshField = RefreshField + "\tRefresh" + descriptor.FieldName + "();\r\n";
+                GetField = GetField + "\tGet" + descriptor.FieldName + "();\r\n";
                 string str8 = str3;
                 str3 = str8 + "\tcase SYNCID_" + m.ModuleName.ToUpper() + "_" + descriptor.FieldName.ToUpper() + ":\r\n";
                 int num = 0x2e - str4.Length;
@@ -511,6 +527,7 @@
                     SyncOpDefine = str9 + "\tvoid Set" + descriptor.FieldName + "( const " + descriptor.ToGetFieldType() + "& v );\r\n";
                     string str10 = SyncOpDefine;
                     SyncOpDefine = str10 + "\t" + descriptor.ToGetFieldType() + " Get" + descriptor.FieldName + "();\r\n";
+                    SyncOpDefine = SyncOpDefine + "\tvoid Refresh" + descriptor.FieldName + "();\r\n";
                     SyncOpDefine = SyncOpDefine + "\tvoid Send" + descriptor.FieldName + "(bool OnlyToClient=true);\r\n";
                 }
                 else
@@ -547,18 +564,26 @@
                     string str18 = SyncOpImp;
                     SyncOpImp = str18 + "void " + str2 + "::Set" + descriptor.FieldName + "( const " + descriptor.ToGetFieldType() + "& v )\r\n{\r\n";
                     string str19 = SyncOpImp;
-                    SyncOpImp = str19 + "\t" + str7 + ".Set" + descriptor.FieldName + "(v);\r\n\tOnDataChange();\r\n";
+                    //SyncOpImp = str19 + "\t" + str7 + ".Set" + descriptor.FieldName + "(v);\r\n\tOnDataChange();\r\n";
+                    SyncOpImp = str19 + "\t" + str7 + ".Set" + descriptor.FieldName + "(v);\r\n";
                     string str20 = SyncOpImp;
-                    SyncOpImp = str20 + "\t" + str6 + "::Instance().NotifySyncValueChanged(" + str7 + ".GetKey()," + str5 + ");\r\n";
-                    SyncOpImp = SyncOpImp + "\tSend" + descriptor.FieldName + "(false);\r\n}\r\n";
+                    //SyncOpImp = str20 + "\t" + str6 + "::Instance().NotifySyncValueChanged(" + str7 + ".GetKey()," + str5 + ");\r\n";
+                    //SyncOpImp = SyncOpImp + "\tSend" + descriptor.FieldName + "(false);\r\n}\r\n";
+                    SyncOpImp = SyncOpImp + "\tm_ClientDataUserData.set_" + descriptor.FieldName.ToLower() + "(v);\r\n}\r\n";
                     string str21 = SyncOpImp;
                     SyncOpImp = str21 + descriptor.ToGetFieldType() + " " + str2 + "::Get" + descriptor.FieldName + "()\r\n{\r\n";
                     string str22 = SyncOpImp;
-                    SyncOpImp = str22 + "\treturn " + str7 + ".Get" + descriptor.FieldName + "();\r\n}\r\n";
+                    //CalcMethodCB(SYNCID_BASEATTR_MAXHP, std::bind(&SyncDataBaseAttrV1::SetMaxHp, this, std::placeholders::_1));
+                    SyncOpImp = str22 + "\tCalcMethodCB(" + enumKey + ",std::bind(&" + str2 + "::Set" + descriptor.FieldName + ",this,std::placeholders::_1));\r\n";
+                    SyncOpImp = SyncOpImp + "\treturn " + str7 + ".Get" + descriptor.FieldName + "();\r\n}\r\n";
+
+                    SyncOpImp = SyncOpImp + "void " + str2 + "::Refresh" + descriptor.FieldName + "()\r\n{\r\n";
+                    SyncOpImp = SyncOpImp + "\tm_vCalcPropertyIds.insert(" + enumKey + ");\r\n}\r\n\r\n";
                     string str23 = SyncOpImp;
-                    SyncOpImp = str23 + "void " + str2 + "::Send" + descriptor.FieldName + "(bool OnlyToClient)\r\n{\r\n";
+                    //SyncOpImp = str23 + "void " + str2 + "::Send" + descriptor.FieldName + "(bool OnlyToClient)\r\n{\r\n";
                     if (descriptor.GetTypeEnum() == 1)
                     {
+                        /*
                         if (descriptor.FieldType == "bool")
                         {
                             str3 = str3 + "\t\tpDataWraper->Set" + descriptor.FieldName + "(*(bool*)pBuffer);\r\n\t\tbreak;\r\n";
@@ -575,6 +600,7 @@
                         {
                             str3 = (str3 + "\t\tReadVarint64FromArray(pBuffer,&lValue);\r\n") + "\t\tpDataWraper->Set" + descriptor.FieldName + "(lValue);\r\n\t\tbreak;\r\n";
                         }
+
                         SyncOpImp = SyncOpImp + "\tif( !OnlyToClient )\r\n";
                         if (descriptor.FieldType == "float")
                         {
@@ -602,6 +628,7 @@
                             }
                         }
                         SyncOpImp = SyncOpImp + "}\r\n";
+                        */
                     }
                     else if (descriptor.GetTypeEnum() == 2)
                     {
@@ -1087,13 +1114,16 @@
                 string str36 = "";
                 string str37 = "";
                 string str38 = "";
-                string str39 = "";
+                string strSyncDataSetWraper = "";
                 string str40 = "";
                 string str41 = "SAVE_ITEM_DATA";
                 string structName = "";
                 string dBCacheField = "";
                 string str44 = "false";
                 string str45 = "";
+                string BindCalc = "";
+                string RefreshField = "";
+                string GetField = "";
                 bool flag2 = false;
                 int num5 = 0;
                 int num6 = 0;
@@ -1159,10 +1189,11 @@
                         str40 = string.Concat(new object[] { "#include \"", m.ModuleName, "V", m.SyncDataVersion, "Data.h\"\r\n#include \"", m.ModuleName, "V", m.SyncDataVersion, "DataWraper.h\"\r\n" });
                         str45 = string.Concat(new object[] { "#include \"", m.ModuleName, "V", m.SyncDataVersion, "DataWraper.h\"\r\n" });
                         str32 = struct5.StructName;
-                        GenSyncDataCode(m, struct5, ref syncIds, ref syncOpDefine, ref syncOpImp, ref sendAllFields, ref dBCacheField);
+                        
+                        GenSyncDataCode(m, struct5, ref syncIds, ref syncOpDefine, ref syncOpImp, ref sendAllFields, ref dBCacheField,ref BindCalc,ref RefreshField, ref GetField);
                         GenClassWraperCode(m, struct5, ref strWraper);
                         str38 = string.Concat(new object[] { m.ModuleName, struct5.StructName, "WraperV", m.SyncDataVersion, " m_syncData", struct5.StructName, ";" });
-                        str39 = "SetDataWraper( &m_syncData" + struct5.StructName + " );";
+                        strSyncDataSetWraper = "SetDataWraper( &m_syncData" + struct5.StructName + " );";
                     }
                 }
                 foreach (DataStruct struct6 in XMLSerializer.OrderDataStruct(DataStructConverter.CommDataStruct))
@@ -1195,7 +1226,7 @@
                         .Replace("$PubFieldSizeMacro$", str37)
                         .Replace("$PubClassWraper$", str36)
                         .Replace("$SyncDataDefine$", str38)
-                        .Replace("$SyncDataSetWraper$", str39)
+                        .Replace("$SyncDataSetWraper$", strSyncDataSetWraper)
                         .Replace("$IncludeSyncDataHeader$", str40)
                         .Replace("$HeaderConfig$", str8)
                         .Replace("$DataSaveType$", str41)
@@ -1203,7 +1234,11 @@
                         .Replace("$DBCacheField$", dBCacheField)
                         .Replace("$SaveToDB$", str44.ToLower())
                         .Replace("$ModId$", m.StartIdNum.ToString())
-                        .Replace("$DBCacheSyncDataHeader$", str45);
+                        .Replace("$DBCacheSyncDataHeader$", str45)
+                        .Replace("$RefreshField$", RefreshField)
+                        .Replace("$BindCalc$",BindCalc)
+                        .Replace("$GetField$",GetField)
+                        ;
                     list3[j] = str47;
                 }
                 for (int k = 0; k < list2.Count; k++)

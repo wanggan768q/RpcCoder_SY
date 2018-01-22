@@ -1,6 +1,6 @@
 
 //$CNName$封装类
-class $WraperName$ : public DataWraperInterface $ModuleDataWraperDef$
+class $WraperName$
 {
 public:
 	//构造函数
@@ -45,7 +45,7 @@ $ToPBField$
 		Init(pb);
 		return true;
 	}
-
+	/*
 	string HtmlDescHeader()
 	{
 		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
@@ -54,7 +54,8 @@ $HtmlFieldHeader$
 		htmlBuff += "</div>\r\n";
 		return htmlBuff;
 	}
-
+	*/
+	/*
 	string ToHtml()
 	{
 		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
@@ -63,7 +64,7 @@ $htmlField$
 		
 		htmlBuff += "</div>\r\n";
 		return htmlBuff;
-	}
+	}*/
 
 
 private:
