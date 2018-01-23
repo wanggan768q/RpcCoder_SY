@@ -569,7 +569,8 @@
                     string str20 = SyncOpImp;
                     //SyncOpImp = str20 + "\t" + str6 + "::Instance().NotifySyncValueChanged(" + str7 + ".GetKey()," + str5 + ");\r\n";
                     //SyncOpImp = SyncOpImp + "\tSend" + descriptor.FieldName + "(false);\r\n}\r\n";
-                    SyncOpImp = SyncOpImp + "\tm_ClientDataUserData.set_" + descriptor.FieldName.ToLower() + "(v);\r\n}\r\n";
+                    SyncOpImp = SyncOpImp + "\tm_ClientDataUserData.set_" + descriptor.FieldName.ToLower() + "(v);\r\n";
+                    SyncOpImp = SyncOpImp + "\tm_bChange = true;\r\n}\r\n";
                     string str21 = SyncOpImp;
                     SyncOpImp = str21 + descriptor.ToGetFieldType() + " " + str2 + "::Get" + descriptor.FieldName + "()\r\n{\r\n";
                     string str22 = SyncOpImp;

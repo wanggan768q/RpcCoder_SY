@@ -379,7 +379,8 @@
                 if (Require == "")
                 {
                     //Require = string.Concat(new object[] { "require(\"app.", m.ModuleName, ".", m.ModuleName, "V", m.SyncDataVersion, "Data_pb\")" });
-                    Require = string.Concat(new object[] { "require(\"3rd/pblua/",m.ModuleName, "V", m.SyncDataVersion, "Data_pb\")" });
+                    Require = string.Concat(new object[] { "require(\"3rd/pblua/",m.ModuleName, "V", m.SyncDataVersion, "Data_pb\")\r\n" });
+                    Require = Require + string.Concat(new object[] { "local ",m.ModuleName, "V", m.SyncDataVersion, "Data_pb"," = ",m.ModuleName, "V", m.SyncDataVersion, "Data_pb\r\n"});
                 }
                 foreach (DataStruct.FieldDescriptor descriptor in ds.fieldItem)
                 {
@@ -418,7 +419,7 @@
             FromMemoryStream = FromMemoryStream + "end";
             ToMemoryStream = ToMemoryStream + "end";
             UpdataValue = "";
-            UpdataValue = "\tlocal ret_msg = self.data_pb." + m.ModuleName + "V" + m.SyncDataVersion + "Data_pb\r\n";
+            UpdataValue = "\tlocal ret_msg = self.data_pb." + m.ModuleName + "UserDataV" + m.SyncDataVersion + "()\r\n";
             UpdataValue += "\tret_msg:ParseFromString(uf)\r\n";
             bool flag = true;
             foreach (DataStruct.FieldDescriptor descriptor2 in ds.fieldItem)
