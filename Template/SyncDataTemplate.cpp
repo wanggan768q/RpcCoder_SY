@@ -23,12 +23,17 @@ void SyncData$Template$V$SyncDataVersion$::SetSendCallBack(const send_callback_t
 	m_oSendCallback = cb;
 }
 
+void SyncData$Template$V$SyncDataVersion$::CalcAllMembers()
+{
+	$GetField$
+}
+
 void SyncData$Template$V$SyncDataVersion$::SendAllMembers()
 {
-/*
+/**
 $SendAllFields$
-*/
-$GetField$
+**/
+	CalcAllMembers();
 	if (!m_bChange)
 	{
 		return;

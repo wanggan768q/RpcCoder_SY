@@ -14,7 +14,7 @@
 #include <unordered_map>
 #include "BaseDef.h"
 #include "$Template$V$SyncDataVersion$DataWraper.h"
-#include "Obj/Obj_Module/CalcPropertiesModule.h"
+#include "PropertiesModule.h"
 
 
 //同步数据相关枚举量定义
@@ -40,8 +40,11 @@ public:
 	void 	Init();
 	void	SendAllMembers();
 	void 	SetSendCallBack(const send_callback_type & cb);
+	void 	CalcAllMembers();
+
 	//string  ToHtml(){ return m_syncData$SyncDataName$.ToHtml(); }
 	//string  HtmlDescHeader() { return m_syncData$SyncDataName$.HtmlDescHeader(); }
+
 	template <typename T>
 	void CalcMethodCB(int32_t nType, T&cb)
 	{
@@ -57,6 +60,18 @@ public:
 			m_vCalcPropertyIds.erase(it);
 		}
 	}
+
+	string SerializeAsString()
+	{
+		CalcAllMembers();
+		return m_syncDataUserData.SerializeAsString();
+	}
+
+	void SetChange(bool b)
+	{
+		m_bChange = b;
+	}
+
 $SyncOpDefine$
 
 private:

@@ -1,8 +1,6 @@
 --将变量写入下方
 $RPCVALUES$
 
-$TempVar$
-
 $Require$
 local require = require
 local table = table
@@ -10,9 +8,14 @@ local tostring = tostring
 local MLayerMgr = HS_MLayerMgr
 local typeof = typeof
 local ipairs = ipairs
+local print = print
 require("3rd/pblua/$TEMPLATE$Rpc_pb")
 local  $TEMPLATE$Rpc_pb = $TEMPLATE$Rpc_pb
 module("$TEMPLATE$Model")
+
+
+$TempVar$
+
 
 function handler(obj,method)
 	return function ( ... )
@@ -40,7 +43,7 @@ end
 function Initialize(self)
 	self.rpc_pb = $TEMPLATE$Rpc_pb
   --注册
-  MLayerMgr.RegUpdateHd(ModuleId, handler(self,self.UpdateField))
+  --MLayerMgr.RegUpdateHd(ModuleId, handler(self,self.UpdateField))
 $NOTIFYTD$
   
 $TempVar2$
