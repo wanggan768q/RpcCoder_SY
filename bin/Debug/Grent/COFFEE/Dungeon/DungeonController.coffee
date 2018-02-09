@@ -8,11 +8,14 @@ DungeonController = cc.coffee.BaseControllerExtend.extend(
 
     ctor:(_model)->
         @_super(this, _model)
+        _model.SetSettlementNotifyCB(@SettlementCBNotify)
 
         return
 
 
 
+    SettlementCBNotify:(ret_msg)->
+        cc.log "SettlementCBNotify Respond "
 
 
 )

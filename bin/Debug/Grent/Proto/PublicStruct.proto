@@ -3,6 +3,9 @@ message  CharacterInfo
 	optional uint64 RoleId = 1[default=0];
 	optional string Nickname = 2;
 	optional sint32 ConfigId = 3[default=-1];
+	optional sint32 Hp = 4[default=-1];
+	optional sint32 HpMax = 5[default=-1];
+	optional sint32 Level = 6[default=-1];
 
 }
 
@@ -11,6 +14,108 @@ message  V3
 	optional float X = 1[default=-1];
 	optional float Y = 2[default=-1];
 	optional float Z = 3[default=-1];
+
+}
+
+message  TeamMemberInfo
+{
+	optional uint64 RoleId = 1[default=0];
+	optional sint32 SceneId = 2[default=-1];
+	optional sint32 Level = 3[default=-1];
+	optional string Name = 4;
+	optional sint32 ConfigId = 5[default=-1];
+	optional sint32 Hp = 6[default=-1];
+	optional sint32 Mp = 7[default=-1];
+	optional sint32 Status = 8[default=-1];
+	optional sint32 MemId = 10[default=-1];
+	optional sint64 MaxHp = 11[default=-1];
+	optional sint64 MaxMp = 12[default=-1];
+
+}
+
+message  TeamInfo
+{
+	repeated TeamMemberInfo Members = 1;
+	optional uint64 LeaderRoleId = 2[default=0];
+	optional sint32 TeamId = 3[default=-1];
+	optional sint32 TeamType = 4[default=-1];
+
+}
+
+message  OnlineUserInfo
+{
+	optional uint64 RoleId = 1[default=0];
+	optional sint32 Level = 2[default=-1];
+	optional sint32 Scene_id = 3[default=-1];
+	optional sint32 Memid = 4[default=-1];
+
+}
+
+message  AttrKeyValue
+{
+	optional sint32 Key = 1[default=-1];
+	optional sint64 Value = 2[default=-1];
+
+}
+
+message  ItemAttr
+{
+	repeated AttrKeyValue BaseAttr = 1;
+	repeated AttrKeyValue ExtraAttr = 2;
+
+}
+
+message  ItemData
+{
+	optional uint64 Guid = 1[default=0];
+	optional bool IsLock = 2[default=false];
+	optional sint32 OverlayCount = 3[default=-1];
+	optional sint32 ConfigId = 4[default=-1];
+	optional ItemAttr Attr = 5;
+	optional sint32 BattleScore = 8[default=-1];
+	optional bool IsNull = 10[default=false];
+
+}
+
+message  BagData
+{
+	repeated ItemObj Items = 1;
+	optional sint32 BagType = 2[default=-1];
+	optional sint32 CurCapacity = 3[default=-1];
+
+}
+
+message  ItemObj
+{
+	optional sint32 Pos = 1[default=-1];
+	optional ItemData ItemData = 2;
+
+}
+
+message  ChatMsg
+{
+	optional string Chat_content = 1;
+	optional string Chat_voice_url = 2;
+	optional sint32 Chat_voice_secs = 3[default=-1];
+
+}
+
+message  ChatInfo
+{
+	optional string Player_name = 1;
+	optional uint64 Player_guid = 2[default=0];
+	optional sint32 Avatar_id = 3[default=-1];
+	optional sint32 Avatar_frame_id = 4[default=-1];
+	optional sint32 Config_id = 5[default=-1];
+	optional uint64 Timestamp = 6[default=0];
+	optional ChatMsg Chat_msg = 7;
+
+}
+
+message  ChatChannelData
+{
+	optional sint32 Chat_channel = 1[default=-1];
+	repeated ChatInfo Chat_infos = 2;
 
 }
 

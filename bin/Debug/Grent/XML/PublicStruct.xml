@@ -1,13 +1,85 @@
 <?xml version="1.0"?>
 <Root>
-    <Struct Name="CharacterInfo" CName="角色信息" ProtoType="CommProto" Comment="" MaxFieldId="3">
+    <Struct Name="CharacterInfo" CName="角色信息" ProtoType="CommProto" Comment="" MaxFieldId="7">
         <Field PreDefine="optional" FieldType="uint64" Name="RoleId" CName="roleID" Comment="" FieldId="1" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" />
         <Field PreDefine="optional" FieldType="string" Name="Nickname" CName="昵称" Comment="" FieldId="2" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" />
         <Field PreDefine="optional" FieldType="sint32" Name="ConfigId" CName="配置表id" Comment="" FieldId="3" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
+        <Field PreDefine="optional" FieldType="sint32" Name="Hp" CName="血量" Comment="" FieldId="4" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
+        <Field PreDefine="optional" FieldType="sint32" Name="HpMax" CName="血量上限" Comment="" FieldId="5" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
+        <Field PreDefine="optional" FieldType="sint32" Name="Level" CName="Level" Comment="" FieldId="6" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
     </Struct>
     <Struct Name="V3" CName="v3" ProtoType="CommProto" Comment="" MaxFieldId="3">
         <Field PreDefine="optional" FieldType="float" Name="X" CName="x" Comment="" FieldId="1" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
         <Field PreDefine="optional" FieldType="float" Name="Y" CName="y" Comment="" FieldId="2" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
         <Field PreDefine="optional" FieldType="float" Name="Z" CName="z" Comment="" FieldId="3" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
+    </Struct>
+    <Struct Name="TeamMemberInfo" CName="TeamMemberInfo" ProtoType="CommProto" Comment="" MaxFieldId="12">
+        <Field PreDefine="optional" FieldType="uint64" Name="RoleId" CName="队员RoleId" Comment="玩家id" FieldId="1" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" />
+        <Field PreDefine="optional" FieldType="sint32" Name="SceneId" CName="队员场景id" Comment="" FieldId="2" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
+        <Field PreDefine="optional" FieldType="sint32" Name="Level" CName="队员等级" Comment="" FieldId="3" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
+        <Field PreDefine="optional" FieldType="string" Name="Name" CName="name" Comment="队员名称" FieldId="4" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" />
+        <Field PreDefine="optional" FieldType="sint32" Name="ConfigId" CName="configid" Comment="配置id" FieldId="5" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
+        <Field PreDefine="optional" FieldType="sint32" Name="Hp" CName="生命值" Comment="" FieldId="6" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
+        <Field PreDefine="optional" FieldType="sint32" Name="Mp" CName="Mp" Comment="施法资源" FieldId="7" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
+        <Field PreDefine="optional" FieldType="sint32" Name="Status" CName="Status" Comment="状态:0:活1:死" FieldId="8" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
+        <Field PreDefine="optional" FieldType="sint32" Name="MemId" CName="MemId" Comment="玩家在游戏服务器上的id" FieldId="10" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
+        <Field PreDefine="optional" FieldType="sint64" Name="MaxHp" CName="生命值" Comment="" FieldId="11" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
+        <Field PreDefine="optional" FieldType="sint64" Name="MaxMp" CName="生命值" Comment="" FieldId="12" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
+    </Struct>
+    <Struct Name="TeamInfo" CName="TeamInfo" ProtoType="CommProto" Comment="" MaxFieldId="4">
+        <Field PreDefine="repeated" FieldType="TeamMemberInfo" Name="Members" CName="Members" Comment="" FieldId="1" ValueSet="" MinValue="6" MaxValue="128" />
+        <Field PreDefine="optional" FieldType="uint64" Name="LeaderRoleId" CName="LeaderRoleId" Comment="" FieldId="2" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" />
+        <Field PreDefine="optional" FieldType="sint32" Name="TeamId" CName="TeamId" Comment="" FieldId="3" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
+        <Field PreDefine="optional" FieldType="sint32" Name="TeamType" CName="TeamType" Comment="" FieldId="4" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
+    </Struct>
+    <Struct Name="OnlineUserInfo" CName="OnlineUserInfo" ProtoType="CommProto" Comment="" MaxFieldId="4">
+        <Field PreDefine="optional" FieldType="uint64" Name="RoleId" CName="RoleId" Comment="" FieldId="1" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" />
+        <Field PreDefine="optional" FieldType="sint32" Name="Level" CName="level" Comment="" FieldId="2" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
+        <Field PreDefine="optional" FieldType="sint32" Name="Scene_id" CName="scene_id" Comment="" FieldId="3" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
+        <Field PreDefine="optional" FieldType="sint32" Name="Memid" CName="Memid" Comment="" FieldId="4" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
+    </Struct>
+    <Struct Name="AttrKeyValue" CName="AttrKeyValue" ProtoType="CommProto" Comment="" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="sint32" Name="Key" CName="属性的key" Comment="" FieldId="1" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
+        <Field PreDefine="optional" FieldType="sint64" Name="Value" CName="Value" Comment="" FieldId="2" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
+    </Struct>
+    <Struct Name="ItemAttr" CName="ItemAttr" ProtoType="CommProto" Comment="" MaxFieldId="2">
+        <Field PreDefine="repeated" FieldType="AttrKeyValue" Name="BaseAttr" CName="基础属性" Comment="" FieldId="1" ValueSet="" MinValue="6" MaxValue="128" />
+        <Field PreDefine="repeated" FieldType="AttrKeyValue" Name="ExtraAttr" CName="ExtraAttr" Comment="" FieldId="2" ValueSet="" MinValue="6" MaxValue="128" />
+    </Struct>
+    <Struct Name="ItemData" CName="ItemData" ProtoType="CommProto" Comment="" MaxFieldId="11">
+        <Field PreDefine="optional" FieldType="uint64" Name="Guid" CName="物品GUID" Comment="" FieldId="1" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" />
+        <Field PreDefine="optional" FieldType="bool" Name="IsLock" CName="物品锁" Comment="" FieldId="2" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="false" />
+        <Field PreDefine="optional" FieldType="sint32" Name="OverlayCount" CName="物品叠加数量" Comment="" FieldId="3" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
+        <Field PreDefine="optional" FieldType="sint32" Name="ConfigId" CName="物品表的id" Comment="" FieldId="4" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
+        <Field PreDefine="optional" FieldType="ItemAttr" Name="Attr" CName="装备属性" Comment="" FieldId="5" ValueSet="" MinValue="6" MaxValue="128" />
+        <Field PreDefine="optional" FieldType="sint32" Name="BattleScore" CName="装备评分" Comment="" FieldId="8" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
+        <Field PreDefine="optional" FieldType="bool" Name="IsNull" CName="是否是空" Comment="" FieldId="10" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="false" />
+    </Struct>
+    <Struct Name="BagData" CName="BagData" ProtoType="CommProto" Comment="" MaxFieldId="3">
+        <Field PreDefine="repeated" FieldType="ItemObj" Name="Items" CName="物品列表" Comment="" FieldId="1" ValueSet="" MinValue="6" MaxValue="128" />
+        <Field PreDefine="optional" FieldType="sint32" Name="BagType" CName="背包类型:0背包,1仓库,2临时背包" Comment="" FieldId="2" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
+        <Field PreDefine="optional" FieldType="sint32" Name="CurCapacity" CName="当前的容量" Comment="" FieldId="3" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
+    </Struct>
+    <Struct Name="ItemObj" CName="ItemObj" ProtoType="CommProto" Comment="" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="sint32" Name="Pos" CName="Pos" Comment="" FieldId="1" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
+        <Field PreDefine="optional" FieldType="ItemData" Name="ItemData" CName="ItemData" Comment="" FieldId="2" ValueSet="" MinValue="6" MaxValue="128" />
+    </Struct>
+    <Struct Name="ChatMsg" CName="ChatMsg" ProtoType="CommProto" Comment="" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="string" Name="Chat_content" CName="文字内容" Comment="" FieldId="1" ValueSet="" MinValue="6" MaxValue="512" DefaultValue="" />
+        <Field PreDefine="optional" FieldType="string" Name="Chat_voice_url" CName="音频URL" Comment="" FieldId="2" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" />
+        <Field PreDefine="optional" FieldType="sint32" Name="Chat_voice_secs" CName="音频秒数" Comment="" FieldId="3" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
+    </Struct>
+    <Struct Name="ChatInfo" CName="ChatInfo" ProtoType="CommProto" Comment="" MaxFieldId="7">
+        <Field PreDefine="optional" FieldType="string" Name="Player_name" CName="玩家名字" Comment="" FieldId="1" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" />
+        <Field PreDefine="optional" FieldType="uint64" Name="Player_guid" CName="玩家GUID" Comment="" FieldId="2" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" />
+        <Field PreDefine="optional" FieldType="sint32" Name="Avatar_id" CName="头像ID" Comment="" FieldId="3" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
+        <Field PreDefine="optional" FieldType="sint32" Name="Avatar_frame_id" CName="头像框ID" Comment="" FieldId="4" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
+        <Field PreDefine="optional" FieldType="sint32" Name="Config_id" CName="角色配置ID" Comment="" FieldId="5" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
+        <Field PreDefine="optional" FieldType="uint64" Name="Timestamp" CName="时间戳" Comment="" FieldId="6" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" />
+        <Field PreDefine="optional" FieldType="ChatMsg" Name="Chat_msg" CName="聊天消息" Comment="" FieldId="7" ValueSet="" MinValue="6" MaxValue="128" />
+    </Struct>
+    <Struct Name="ChatChannelData" CName="ChatChannelData" ProtoType="CommProto" Comment="" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="sint32" Name="Chat_channel" CName="聊天频道" Comment="" FieldId="1" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" />
+        <Field PreDefine="repeated" FieldType="ChatInfo" Name="Chat_infos" CName="聊天消息列表" Comment="" FieldId="2" ValueSet="" MinValue="2" MaxValue="128" />
     </Struct>
 </Root>

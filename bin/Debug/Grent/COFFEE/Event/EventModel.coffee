@@ -9,17 +9,17 @@ Proto = null
 updateFieldCB = null
 RpcMoveNotifyCB = null
 RpcStopMoveNotifyCB = null
-RpcBossDiedNotifyCB = null
+RpcObjAttrChangeNotifyCB = null
 
 
 ModuleId = 5
 RPC_CODE_MOVE_NOTIFY = 551
 RPC_CODE_STOPMOVE_NOTIFY = 552
-RPC_CODE_BOSSDIED_NOTIFY = 553
+RPC_CODE_OBJATTRCHANGE_NOTIFY = 553
 
 MoveNotifyPB = null
 StopMoveNotifyPB = null
-BossDiedNotifyPB = null
+ObjAttrChangeNotifyPB = null
 
 class EventModel
   Initialize : () ->
@@ -42,11 +42,13 @@ class EventModel
         optional V3 Pos = 2;
         optional float Dir = 3;
       }
-      message  RpcBossDiedNotify
+      message  RpcObjAttrChangeNotify
       {
-        optional sint32 SceneId = 1[default=-1];
-        optional sint32 ObjId = 2[default=-1];
-        optional bool IsEndingBoss = 3;
+        optional float Speed = 1;
+        optional sint64 Hp = 2[default=-1];
+        optional sint32 Status = 3[default=-1];
+        optional sint32 ConfigId = 4[default=-1];
+        optional sint32 ObjId = 5[default=-1];
       }
     ")
     mLayerMgr.registerUpdate(ModuleId,@updateDataField)
@@ -54,8 +56,8 @@ class EventModel
     mLayerMgr.registerNotify(RPC_CODE_MOVE_NOTIFY,@MoveCB)
     StopMoveNotifyPB = Proto.build("RpcStopMoveNotify")
     mLayerMgr.registerNotify(RPC_CODE_STOPMOVE_NOTIFY,@StopMoveCB)
-    BossDiedNotifyPB = Proto.build("RpcBossDiedNotify")
-    mLayerMgr.registerNotify(RPC_CODE_BOSSDIED_NOTIFY,@BossDiedCB)
+    ObjAttrChangeNotifyPB = Proto.build("RpcObjAttrChangeNotify")
+    mLayerMgr.registerNotify(RPC_CODE_OBJATTRCHANGE_NOTIFY,@ObjAttrChangeCB)
 
 
 
@@ -76,9 +78,9 @@ class EventModel
   SetStopMoveNotifyCB : (cb) -> RpcStopMoveNotifyCB = cb
   StopMoveCB : (data)->
     RpcStopMoveNotifyCB( StopMoveNotifyPB.decode(data)) if typeof(RpcStopMoveNotifyCB) is "function"
-  SetBossDiedNotifyCB : (cb) -> RpcBossDiedNotifyCB = cb
-  BossDiedCB : (data)->
-    RpcBossDiedNotifyCB( BossDiedNotifyPB.decode(data)) if typeof(RpcBossDiedNotifyCB) is "function"
+  SetObjAttrChangeNotifyCB : (cb) -> RpcObjAttrChangeNotifyCB = cb
+  ObjAttrChangeCB : (data)->
+    RpcObjAttrChangeNotifyCB( ObjAttrChangeNotifyPB.decode(data)) if typeof(RpcObjAttrChangeNotifyCB) is "function"
 
 
   GetCoffeeInfo: ->

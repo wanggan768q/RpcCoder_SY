@@ -8,17 +8,26 @@ SceneController = cc.coffee.BaseControllerExtend.extend(
 
     ctor:(_model)->
         @_super(this, _model)
-        _model.SetNewPlayerNotifyCB(@NewPlayerCBNotify)
         _model.SetDeletePlayerNotifyCB(@DeletePlayerCBNotify)
+        _model.SetCreateObjNotifyCB(@CreateObjCBNotify)
+        _model.SetCEnterSceneNotifyCB(@CEnterSceneCBNotify)
+        _model.SetSEnterSceneNotifyCB(@SEnterSceneCBNotify)
+        _model.SetObjDieNotifyCB(@ObjDieCBNotify)
 
         return
 
 
 
-    NewPlayerCBNotify:(ret_msg)->
-        cc.log "NewPlayerCBNotify Respond "
     DeletePlayerCBNotify:(ret_msg)->
         cc.log "DeletePlayerCBNotify Respond "
+    CreateObjCBNotify:(ret_msg)->
+        cc.log "CreateObjCBNotify Respond "
+    CEnterSceneCBNotify:(ret_msg)->
+        cc.log "CEnterSceneCBNotify Respond "
+    SEnterSceneCBNotify:(ret_msg)->
+        cc.log "SEnterSceneCBNotify Respond "
+    ObjDieCBNotify:(ret_msg)->
+        cc.log "ObjDieCBNotify Respond "
 
 
 )

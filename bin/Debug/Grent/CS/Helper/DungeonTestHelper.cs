@@ -20,6 +20,27 @@ public class DungeonRpcExitDungeonAskWraperHelper
 	public UInt64 RoleId;
 	public int SceneId;
 }
+[System.Serializable]
+public class DungeonRpcInformCreateDungeonAskWraperHelper
+{
+	public UInt64 RoleId;
+	public int TargetSceneId;
+	public int DungeonConfigId;
+	public int CurSceneId;
+	public int Result;
+	public List<UInt64> RoleIds;
+}
+[System.Serializable]
+public class DungeonRpcSettlementNotifyWraperHelper
+{
+	public int SettlementResult;
+}
+[System.Serializable]
+public class DungeonRpcEnterDungeonAskWraperHelper
+{
+	public int SceneId;
+	public int DungeonConfigId;
+}
 
 
 
@@ -27,6 +48,9 @@ public class DungeonTestHelper : MonoBehaviour
 {
 	public DungeonRpcCreateDungeonAskWraperHelper DungeonRpcCreateDungeonAskWraperVar;
 	public DungeonRpcExitDungeonAskWraperHelper DungeonRpcExitDungeonAskWraperVar;
+	public DungeonRpcInformCreateDungeonAskWraperHelper DungeonRpcInformCreateDungeonAskWraperVar;
+	public DungeonRpcSettlementNotifyWraperHelper DungeonRpcSettlementNotifyWraperVar;
+	public DungeonRpcEnterDungeonAskWraperHelper DungeonRpcEnterDungeonAskWraperVar;
 
 
 	public void TestCreateDungeon()
@@ -36,6 +60,14 @@ public class DungeonTestHelper : MonoBehaviour
 	public void TestExitDungeon()
 	{
 		DungeonRPC.Instance.ExitDungeon(DungeonRpcExitDungeonAskWraperVar.RoleId,DungeonRpcExitDungeonAskWraperVar.SceneId,delegate(object obj){});
+	}
+	public void TestEnterDungeon()
+	{
+		DungeonRPC.Instance.EnterDungeon(DungeonRpcEnterDungeonAskWraperVar.SceneId,DungeonRpcEnterDungeonAskWraperVar.DungeonConfigId,delegate(object obj){});
+	}
+	public void TestInformCreateDungeon()
+	{
+		DungeonRPC.Instance.InformCreateDungeon(DungeonRpcInformCreateDungeonAskWraperVar.RoleId,DungeonRpcInformCreateDungeonAskWraperVar.TargetSceneId,DungeonRpcInformCreateDungeonAskWraperVar.DungeonConfigId,DungeonRpcInformCreateDungeonAskWraperVar.CurSceneId,DungeonRpcInformCreateDungeonAskWraperVar.Result,DungeonRpcInformCreateDungeonAskWraperVar.RoleIds,delegate(object obj){});
 	}
 
 
@@ -58,6 +90,16 @@ public class DungeonTester : Editor
 		{
 			DungeonTestHelper rpc = target as DungeonTestHelper;
 			if( rpc ) rpc.TestExitDungeon();
+		}
+		if (GUILayout.Button("EnterDungeon"))
+		{
+			DungeonTestHelper rpc = target as DungeonTestHelper;
+			if( rpc ) rpc.TestEnterDungeon();
+		}
+		if (GUILayout.Button("InformCreateDungeon"))
+		{
+			DungeonTestHelper rpc = target as DungeonTestHelper;
+			if( rpc ) rpc.TestInformCreateDungeon();
 		}
 
 

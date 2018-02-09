@@ -34,6 +34,7 @@ void protobuf_ShutdownFile_BaseAttrRpc_2eproto();
 
 class BaseAttrRpcSyncDataAsk;
 class BaseAttrRpcSyncDataReply;
+class BaseAttrRpcSyncNotify;
 
 // ===================================================================
 
@@ -170,14 +171,116 @@ class BaseAttrRpcSyncDataReply : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 result() const;
   inline void set_result(::google::protobuf::int32 value);
 
+  // optional bytes UpdateData = 2;
+  inline bool has_updatedata() const;
+  inline void clear_updatedata();
+  static const int kUpdateDataFieldNumber = 2;
+  inline const ::std::string& updatedata() const;
+  inline void set_updatedata(const ::std::string& value);
+  inline void set_updatedata(const char* value);
+  inline void set_updatedata(const void* value, size_t size);
+  inline ::std::string* mutable_updatedata();
+  inline ::std::string* release_updatedata();
+  inline void set_allocated_updatedata(::std::string* updatedata);
+
   // @@protoc_insertion_point(class_scope:BaseAttrRpcSyncDataReply)
  private:
   inline void set_has_result();
   inline void clear_has_result();
+  inline void set_has_updatedata();
+  inline void clear_has_updatedata();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
+  ::std::string* updatedata_;
   ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_BaseAttrRpc_2eproto();
+  friend void protobuf_AssignDesc_BaseAttrRpc_2eproto();
+  friend void protobuf_ShutdownFile_BaseAttrRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static BaseAttrRpcSyncDataReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class BaseAttrRpcSyncNotify : public ::google::protobuf::Message {
+ public:
+  BaseAttrRpcSyncNotify();
+  virtual ~BaseAttrRpcSyncNotify();
+
+  BaseAttrRpcSyncNotify(const BaseAttrRpcSyncNotify& from);
+
+  inline BaseAttrRpcSyncNotify& operator=(const BaseAttrRpcSyncNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const BaseAttrRpcSyncNotify& default_instance();
+
+  void Swap(BaseAttrRpcSyncNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  BaseAttrRpcSyncNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const BaseAttrRpcSyncNotify& from);
+  void MergeFrom(const BaseAttrRpcSyncNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional bytes UpdateData = 1;
+  inline bool has_updatedata() const;
+  inline void clear_updatedata();
+  static const int kUpdateDataFieldNumber = 1;
+  inline const ::std::string& updatedata() const;
+  inline void set_updatedata(const ::std::string& value);
+  inline void set_updatedata(const char* value);
+  inline void set_updatedata(const void* value, size_t size);
+  inline ::std::string* mutable_updatedata();
+  inline ::std::string* release_updatedata();
+  inline void set_allocated_updatedata(::std::string* updatedata);
+
+  // @@protoc_insertion_point(class_scope:BaseAttrRpcSyncNotify)
+ private:
+  inline void set_has_updatedata();
+  inline void clear_has_updatedata();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::std::string* updatedata_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
@@ -187,7 +290,7 @@ class BaseAttrRpcSyncDataReply : public ::google::protobuf::Message {
   friend void protobuf_ShutdownFile_BaseAttrRpc_2eproto();
 
   void InitAsDefaultInstance();
-  static BaseAttrRpcSyncDataReply* default_instance_;
+  static BaseAttrRpcSyncNotify* default_instance_;
 };
 // ===================================================================
 
@@ -220,6 +323,150 @@ inline ::google::protobuf::int32 BaseAttrRpcSyncDataReply::result() const {
 inline void BaseAttrRpcSyncDataReply::set_result(::google::protobuf::int32 value) {
   set_has_result();
   result_ = value;
+}
+
+// optional bytes UpdateData = 2;
+inline bool BaseAttrRpcSyncDataReply::has_updatedata() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void BaseAttrRpcSyncDataReply::set_has_updatedata() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void BaseAttrRpcSyncDataReply::clear_has_updatedata() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void BaseAttrRpcSyncDataReply::clear_updatedata() {
+  if (updatedata_ != &::google::protobuf::internal::kEmptyString) {
+    updatedata_->clear();
+  }
+  clear_has_updatedata();
+}
+inline const ::std::string& BaseAttrRpcSyncDataReply::updatedata() const {
+  return *updatedata_;
+}
+inline void BaseAttrRpcSyncDataReply::set_updatedata(const ::std::string& value) {
+  set_has_updatedata();
+  if (updatedata_ == &::google::protobuf::internal::kEmptyString) {
+    updatedata_ = new ::std::string;
+  }
+  updatedata_->assign(value);
+}
+inline void BaseAttrRpcSyncDataReply::set_updatedata(const char* value) {
+  set_has_updatedata();
+  if (updatedata_ == &::google::protobuf::internal::kEmptyString) {
+    updatedata_ = new ::std::string;
+  }
+  updatedata_->assign(value);
+}
+inline void BaseAttrRpcSyncDataReply::set_updatedata(const void* value, size_t size) {
+  set_has_updatedata();
+  if (updatedata_ == &::google::protobuf::internal::kEmptyString) {
+    updatedata_ = new ::std::string;
+  }
+  updatedata_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* BaseAttrRpcSyncDataReply::mutable_updatedata() {
+  set_has_updatedata();
+  if (updatedata_ == &::google::protobuf::internal::kEmptyString) {
+    updatedata_ = new ::std::string;
+  }
+  return updatedata_;
+}
+inline ::std::string* BaseAttrRpcSyncDataReply::release_updatedata() {
+  clear_has_updatedata();
+  if (updatedata_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = updatedata_;
+    updatedata_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void BaseAttrRpcSyncDataReply::set_allocated_updatedata(::std::string* updatedata) {
+  if (updatedata_ != &::google::protobuf::internal::kEmptyString) {
+    delete updatedata_;
+  }
+  if (updatedata) {
+    set_has_updatedata();
+    updatedata_ = updatedata;
+  } else {
+    clear_has_updatedata();
+    updatedata_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// -------------------------------------------------------------------
+
+// BaseAttrRpcSyncNotify
+
+// optional bytes UpdateData = 1;
+inline bool BaseAttrRpcSyncNotify::has_updatedata() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void BaseAttrRpcSyncNotify::set_has_updatedata() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void BaseAttrRpcSyncNotify::clear_has_updatedata() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void BaseAttrRpcSyncNotify::clear_updatedata() {
+  if (updatedata_ != &::google::protobuf::internal::kEmptyString) {
+    updatedata_->clear();
+  }
+  clear_has_updatedata();
+}
+inline const ::std::string& BaseAttrRpcSyncNotify::updatedata() const {
+  return *updatedata_;
+}
+inline void BaseAttrRpcSyncNotify::set_updatedata(const ::std::string& value) {
+  set_has_updatedata();
+  if (updatedata_ == &::google::protobuf::internal::kEmptyString) {
+    updatedata_ = new ::std::string;
+  }
+  updatedata_->assign(value);
+}
+inline void BaseAttrRpcSyncNotify::set_updatedata(const char* value) {
+  set_has_updatedata();
+  if (updatedata_ == &::google::protobuf::internal::kEmptyString) {
+    updatedata_ = new ::std::string;
+  }
+  updatedata_->assign(value);
+}
+inline void BaseAttrRpcSyncNotify::set_updatedata(const void* value, size_t size) {
+  set_has_updatedata();
+  if (updatedata_ == &::google::protobuf::internal::kEmptyString) {
+    updatedata_ = new ::std::string;
+  }
+  updatedata_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* BaseAttrRpcSyncNotify::mutable_updatedata() {
+  set_has_updatedata();
+  if (updatedata_ == &::google::protobuf::internal::kEmptyString) {
+    updatedata_ = new ::std::string;
+  }
+  return updatedata_;
+}
+inline ::std::string* BaseAttrRpcSyncNotify::release_updatedata() {
+  clear_has_updatedata();
+  if (updatedata_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = updatedata_;
+    updatedata_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void BaseAttrRpcSyncNotify::set_allocated_updatedata(::std::string* updatedata) {
+  if (updatedata_ != &::google::protobuf::internal::kEmptyString) {
+    delete updatedata_;
+  }
+  if (updatedata) {
+    set_has_updatedata();
+    updatedata_ = updatedata;
+  } else {
+    clear_has_updatedata();
+    updatedata_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
 }
 
 

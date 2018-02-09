@@ -80,11 +80,15 @@ message  LoginRpcSelectSaveUserReply
 
 }
 
-message  CharacterInfo
+message  LoginRpcDeleteCharacterAsk
 {
 	optional uint64 RoleId = 1[default=0];
-	optional string Nickname = 2;
-	optional sint32 ConfigId = 3[default=-1];
+
+}
+
+message  LoginRpcDeleteCharacterReply
+{
+	optional sint32 Result = 1[default=-9999];
 
 }
 

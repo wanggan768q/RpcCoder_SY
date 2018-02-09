@@ -10,7 +10,7 @@ EventController = cc.coffee.BaseControllerExtend.extend(
         @_super(this, _model)
         _model.SetMoveNotifyCB(@MoveCBNotify)
         _model.SetStopMoveNotifyCB(@StopMoveCBNotify)
-        _model.SetBossDiedNotifyCB(@BossDiedCBNotify)
+        _model.SetObjAttrChangeNotifyCB(@ObjAttrChangeCBNotify)
 
         return
 
@@ -20,8 +20,8 @@ EventController = cc.coffee.BaseControllerExtend.extend(
         cc.log "MoveCBNotify Respond "
     StopMoveCBNotify:(ret_msg)->
         cc.log "StopMoveCBNotify Respond "
-    BossDiedCBNotify:(ret_msg)->
-        cc.log "BossDiedCBNotify Respond "
+    ObjAttrChangeCBNotify:(ret_msg)->
+        cc.log "ObjAttrChangeCBNotify Respond "
 
 
 )

@@ -1,4 +1,4 @@
-﻿#ifndef __VALUE_CONFIG_H
+#ifndef __VALUE_CONFIG_H
 #define __VALUE_CONFIG_H
 
 #include "CommonDefine.h"
@@ -48,7 +48,8 @@ class ValueTable
 private:
 	ValueTable(){}
 	~ValueTable(){}
-	unordered_map<int, ValueElement>	m_mapElements;
+	typedef unordered_map<int, ValueElement> MapElementMap;
+	MapElementMap	m_mapElements;
 	vector<ValueElement>	m_vecAllElements;
 	ValueElement m_emptyItem;
 public:
@@ -60,16 +61,13 @@ public:
 
 	const ValueElement* GetElement(int key)
 	{
-		if( m_mapElements.count(key)>0 )
-			return &m_mapElements[key];
-		if (m_mapElements.count(key) > 0)
+		MapElementMap::iterator it = m_mapElements.find(key);
+		if (it == m_mapElements.end())
 		{
-			ValueElement* temp = &m_mapElements[key];
-			AssertEx(temp, std::string(std::string("ValueTable: ") + std::to_string(key)).c_str());
-			return temp;
+			AssertEx(false, std::string(std::string("ValueTable: ") + std::to_string(key)).c_str());
+			return NULL;
 		}
-		AssertEx(false, std::string(std::string("ValueTable: ") + std::to_string(key)).c_str());
-		return NULL;
+		return &it->second;
 	}
 
 	bool HasElement(int key)
@@ -150,9 +148,9 @@ public:
 			assert(false);
 			return false;
 		}
-		if(vecLine[0]!="id"){printf_message("Value.csv中字段[id]位置不对应");assert(false); return false; }
-		if(vecLine[1]!="value"){printf_message("Value.csv中字段[value]位置不对应");assert(false); return false; }
-		if(vecLine[2]!="interpretation"){printf_message("Value.csv中字段[interpretation]位置不对应");assert(false); return false; }
+		if(vecLine[0]!="id"){printf_message("Value.csv中字段[id]位置不对应 ");assert(false); return false; }
+		if(vecLine[1]!="value"){printf_message("Value.csv中字段[value]位置不对应 ");assert(false); return false; }
+		if(vecLine[2]!="interpretation"){printf_message("Value.csv中字段[interpretation]位置不对应 ");assert(false); return false; }
 
 		while(true)
 		{

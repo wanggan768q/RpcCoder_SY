@@ -1,4 +1,4 @@
-﻿/********************************************************************************************
+/********************************************************************************************
 * Copyright (C), 2011-2025, Ambition. Co., Ltd.
 * FileName:     ModuleConfig.h
 * Author:       郭晓波
@@ -27,21 +27,30 @@
 
 
 
+#include "AttributeFormatConfigCfg.h"
 #include "BaoShiCfg.h"
+#include "BuffConflictConfigCfg.h"
 #include "BuffCfg.h"
+#include "CameraConfigCfg.h"
+#include "CharacterConfigCfg.h"
 #include "CreateRoleCfg.h"
 #include "CreatureCombatBasicCfg.h"
 #include "CreatureCombatCoeCfg.h"
 #include "CreatureDummyCfg.h"
 #include "CreatureSpawnCfg.h"
+#include "CreatureTemperConfigCfg.h"
 #include "CreatureCfg.h"
 #include "DungeonCfg.h"
+#include "GlobalCfg.h"
 #include "ItemProtoCfg.h"
 #include "RoleCfg.h"
 #include "SceneCfg.h"
+#include "ServerListCfg.h"
+#include "ServerScriptCfg.h"
 #include "SkillCfg.h"
 #include "StringCreatureCfg.h"
 #include "StringUiCfg.h"
+#include "SummonMonsterCfg.h"
 #include "ValueCfg.h"
 #include "WayPointCfg.h"
 

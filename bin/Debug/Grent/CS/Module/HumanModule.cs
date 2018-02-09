@@ -23,6 +23,8 @@ public class HumanRPC
 	public const int RPC_CODE_HUMAN_MOVE_REQUEST = 451;
 	public const int RPC_CODE_HUMAN_STOPMOVE_REQUEST = 452;
 	public const int RPC_CODE_HUMAN_MOVECHECK_NOTIFY = 453;
+	public const int RPC_CODE_HUMAN_MOVEBYPOS_NOTIFY = 454;
+	public const int RPC_CODE_HUMAN_RESPAWN_REQUEST = 455;
 
 	
 	private static HumanRPC m_Instance = null;
@@ -46,6 +48,7 @@ public class HumanRPC
 		Singleton<GameSocket>.Instance.RegisterSyncUpdate( ModuleId, HumanData.Instance.UpdateField );
 		
 		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_HUMAN_MOVECHECK_NOTIFY, MoveCheckCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_HUMAN_MOVEBYPOS_NOTIFY, MoveByPosCB);
 
 
 		return true;
@@ -54,10 +57,10 @@ public class HumanRPC
 	/**
 	*玩家模块-->移动检测 RPC通知
 	*/
-	public void MoveCheck(int Obj_id, float Dir, float X, float Y)
+	public void MoveCheck(int ObjId, float Dir, float X, float Y)
 	{
 		HumanRpcMoveCheckNotifyWraper notifyPBWraper = new HumanRpcMoveCheckNotifyWraper();
-		notifyPBWraper.Obj_id = Obj_id;
+		notifyPBWraper.ObjId = ObjId;
 		notifyPBWraper.Dir = Dir;
 		notifyPBWraper.X = X;
 		notifyPBWraper.Y = Y;
@@ -109,6 +112,23 @@ public class HumanRPC
 		});
 	}
 
+	/**
+	*玩家模块-->Respawn RPC请求
+	*/
+	public void Respawn(ReplyHandler replyCB)
+	{
+		HumanRpcRespawnAskWraper askPBWraper = new HumanRpcRespawnAskWraper();
+		ModMessage askMsg = new ModMessage();
+		askMsg.MsgNum = RPC_CODE_HUMAN_RESPAWN_REQUEST;
+		askMsg.protoMS = askPBWraper.ToMemoryStream();
+
+		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
+			HumanRpcRespawnReplyWraper replyPBWraper = new HumanRpcRespawnReplyWraper();
+			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
+			replyCB(replyPBWraper);
+		});
+	}
+
 
 	/**
 	*玩家模块-->移动检测 服务器通知回调
@@ -121,6 +141,17 @@ public class HumanRPC
 			MoveCheckCBDelegate( notifyPBWraper );
 	}
 	public static ServerNotifyCallback MoveCheckCBDelegate = null;
+	/**
+	*玩家模块-->按照点来移动 服务器通知回调
+	*/
+	public static void MoveByPosCB( ModMessage notifyMsg )
+	{
+		HumanRpcMoveByPosNotifyWraper notifyPBWraper = new HumanRpcMoveByPosNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( MoveByPosCBDelegate != null )
+			MoveByPosCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback MoveByPosCBDelegate = null;
 
 
 

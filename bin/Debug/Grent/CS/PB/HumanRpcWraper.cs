@@ -365,7 +365,7 @@ public class HumanRpcMoveCheckNotifyWraper
 	//构造函数
 	public HumanRpcMoveCheckNotifyWraper()
 	{
-		 m_Obj_id = -1;
+		 m_ObjId = -1;
 		 m_Dir = (float)-1;
 		 m_X = (float)-1;
 		 m_Y = (float)-1;
@@ -375,7 +375,7 @@ public class HumanRpcMoveCheckNotifyWraper
 	//重置函数
 	public void ResetWraper()
 	{
-		 m_Obj_id = -1;
+		 m_ObjId = -1;
 		 m_Dir = (float)-1;
 		 m_X = (float)-1;
 		 m_Y = (float)-1;
@@ -386,7 +386,7 @@ public class HumanRpcMoveCheckNotifyWraper
 	public HumanRpcMoveCheckNotify ToPB()
 	{
 		HumanRpcMoveCheckNotify v = new HumanRpcMoveCheckNotify();
-		v.Obj_id = m_Obj_id;
+		v.ObjId = m_ObjId;
 		v.Dir = m_Dir;
 		v.X = m_X;
 		v.Y = m_Y;
@@ -399,7 +399,7 @@ public class HumanRpcMoveCheckNotifyWraper
 	{
         if (v == null)
             return;
-		m_Obj_id = v.Obj_id;
+		m_ObjId = v.ObjId;
 		m_Dir = v.Dir;
 		m_X = v.X;
 		m_Y = v.Y;
@@ -423,11 +423,11 @@ public class HumanRpcMoveCheckNotifyWraper
 	}
 
 	//角色ID
-	public int m_Obj_id;
-	public int Obj_id
+	public int m_ObjId;
+	public int ObjId
 	{
-		get { return m_Obj_id;}
-		set { m_Obj_id = value; }
+		get { return m_ObjId;}
+		set { m_ObjId = value; }
 	}
 	//方向
 	public float m_Dir;
@@ -449,6 +449,206 @@ public class HumanRpcMoveCheckNotifyWraper
 	{
 		get { return m_Y;}
 		set { m_Y = value; }
+	}
+
+
+};
+//按照点来移动通知封装类
+[System.Serializable]
+public class HumanRpcMoveByPosNotifyWraper
+{
+
+	//构造函数
+	public HumanRpcMoveByPosNotifyWraper()
+	{
+		 m_ObjId = -1;
+		 m_TargetX = (float)-1;
+		 m_TargetY = (float)-1;
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_ObjId = -1;
+		 m_TargetX = (float)-1;
+		 m_TargetY = (float)-1;
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public HumanRpcMoveByPosNotify ToPB()
+	{
+		HumanRpcMoveByPosNotify v = new HumanRpcMoveByPosNotify();
+		v.ObjId = m_ObjId;
+		v.TargetX = m_TargetX;
+		v.TargetY = m_TargetY;
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(HumanRpcMoveByPosNotify v)
+	{
+        if (v == null)
+            return;
+		m_ObjId = v.ObjId;
+		m_TargetX = v.TargetX;
+		m_TargetY = v.TargetY;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<HumanRpcMoveByPosNotify>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		HumanRpcMoveByPosNotify pb = ProtoBuf.Serializer.Deserialize<HumanRpcMoveByPosNotify>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//目标ID
+	public int m_ObjId;
+	public int ObjId
+	{
+		get { return m_ObjId;}
+		set { m_ObjId = value; }
+	}
+	//目标位置
+	public float m_TargetX;
+	public float TargetX
+	{
+		get { return m_TargetX;}
+		set { m_TargetX = value; }
+	}
+	//目标位置
+	public float m_TargetY;
+	public float TargetY
+	{
+		get { return m_TargetY;}
+		set { m_TargetY = value; }
+	}
+
+
+};
+//Respawn请求封装类
+[System.Serializable]
+public class HumanRpcRespawnAskWraper
+{
+
+	//构造函数
+	public HumanRpcRespawnAskWraper()
+	{
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public HumanRpcRespawnAsk ToPB()
+	{
+		HumanRpcRespawnAsk v = new HumanRpcRespawnAsk();
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(HumanRpcRespawnAsk v)
+	{
+        if (v == null)
+            return;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<HumanRpcRespawnAsk>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		HumanRpcRespawnAsk pb = ProtoBuf.Serializer.Deserialize<HumanRpcRespawnAsk>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+
+
+};
+//Respawn回应封装类
+[System.Serializable]
+public class HumanRpcRespawnReplyWraper
+{
+
+	//构造函数
+	public HumanRpcRespawnReplyWraper()
+	{
+		 m_Result = -9999;
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_Result = -9999;
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public HumanRpcRespawnReply ToPB()
+	{
+		HumanRpcRespawnReply v = new HumanRpcRespawnReply();
+		v.Result = m_Result;
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(HumanRpcRespawnReply v)
+	{
+        if (v == null)
+            return;
+		m_Result = v.Result;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<HumanRpcRespawnReply>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		HumanRpcRespawnReply pb = ProtoBuf.Serializer.Deserialize<HumanRpcRespawnReply>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//返回结果
+	public int m_Result;
+	public int Result
+	{
+		get { return m_Result;}
+		set { m_Result = value; }
 	}
 
 

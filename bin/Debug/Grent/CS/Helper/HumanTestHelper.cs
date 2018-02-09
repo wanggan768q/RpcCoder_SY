@@ -25,10 +25,21 @@ public class HumanRpcStopMoveAskWraperHelper
 [System.Serializable]
 public class HumanRpcMoveCheckNotifyWraperHelper
 {
-	public int Obj_id;
+	public int ObjId;
 	public float Dir;
 	public float X;
 	public float Y;
+}
+[System.Serializable]
+public class HumanRpcMoveByPosNotifyWraperHelper
+{
+	public int ObjId;
+	public float TargetX;
+	public float TargetY;
+}
+[System.Serializable]
+public class HumanRpcRespawnAskWraperHelper
+{
 }
 
 
@@ -38,6 +49,8 @@ public class HumanTestHelper : MonoBehaviour
 	public HumanRpcMoveAskWraperHelper HumanRpcMoveAskWraperVar;
 	public HumanRpcStopMoveAskWraperHelper HumanRpcStopMoveAskWraperVar;
 	public HumanRpcMoveCheckNotifyWraperHelper HumanRpcMoveCheckNotifyWraperVar;
+	public HumanRpcMoveByPosNotifyWraperHelper HumanRpcMoveByPosNotifyWraperVar;
+	public HumanRpcRespawnAskWraperHelper HumanRpcRespawnAskWraperVar;
 
 
 	public void TestMove()
@@ -50,7 +63,11 @@ public class HumanTestHelper : MonoBehaviour
 	}
 	public void TestMoveCheck()
 	{
-		HumanRPC.Instance.MoveCheck(HumanRpcMoveCheckNotifyWraperVar.Obj_id,HumanRpcMoveCheckNotifyWraperVar.Dir,HumanRpcMoveCheckNotifyWraperVar.X,HumanRpcMoveCheckNotifyWraperVar.Y);
+		HumanRPC.Instance.MoveCheck(HumanRpcMoveCheckNotifyWraperVar.ObjId,HumanRpcMoveCheckNotifyWraperVar.Dir,HumanRpcMoveCheckNotifyWraperVar.X,HumanRpcMoveCheckNotifyWraperVar.Y);
+	}
+	public void TestRespawn()
+	{
+		HumanRPC.Instance.Respawn(delegate(object obj){});
 	}
 
 
@@ -78,6 +95,11 @@ public class HumanTester : Editor
 		{
 			HumanTestHelper rpc = target as HumanTestHelper;
 			if( rpc ) rpc.TestMoveCheck();
+		}
+		if (GUILayout.Button("Respawn"))
+		{
+			HumanTestHelper rpc = target as HumanTestHelper;
+			if( rpc ) rpc.TestRespawn();
 		}
 
 

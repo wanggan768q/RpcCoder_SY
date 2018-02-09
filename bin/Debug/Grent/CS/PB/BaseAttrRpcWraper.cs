@@ -78,6 +78,7 @@ public class BaseAttrRpcSyncDataReplyWraper
 	public BaseAttrRpcSyncDataReplyWraper()
 	{
 		 m_Result = -9999;
+		 m_UpdateData = new byte[0];
 
 	}
 
@@ -85,6 +86,7 @@ public class BaseAttrRpcSyncDataReplyWraper
 	public void ResetWraper()
 	{
 		 m_Result = -9999;
+		 m_UpdateData = new byte[0];
 
 	}
 
@@ -93,6 +95,7 @@ public class BaseAttrRpcSyncDataReplyWraper
 	{
 		BaseAttrRpcSyncDataReply v = new BaseAttrRpcSyncDataReply();
 		v.Result = m_Result;
+		v.UpdateData = m_UpdateData;
 
 		return v;
 	}
@@ -103,6 +106,7 @@ public class BaseAttrRpcSyncDataReplyWraper
         if (v == null)
             return;
 		m_Result = v.Result;
+		m_UpdateData = v.UpdateData;
 
 	}
 	
@@ -128,6 +132,76 @@ public class BaseAttrRpcSyncDataReplyWraper
 	{
 		get { return m_Result;}
 		set { m_Result = value; }
+	}
+	//同步数据
+	public byte[] m_UpdateData;
+	public byte[] UpdateData
+	{
+		get { return m_UpdateData;}
+		set { m_UpdateData = value; }
+	}
+
+
+};
+//数据推送通知封装类
+[System.Serializable]
+public class BaseAttrRpcSyncNotifyWraper
+{
+
+	//构造函数
+	public BaseAttrRpcSyncNotifyWraper()
+	{
+		 m_UpdateData = new byte[0];
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_UpdateData = new byte[0];
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public BaseAttrRpcSyncNotify ToPB()
+	{
+		BaseAttrRpcSyncNotify v = new BaseAttrRpcSyncNotify();
+		v.UpdateData = m_UpdateData;
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(BaseAttrRpcSyncNotify v)
+	{
+        if (v == null)
+            return;
+		m_UpdateData = v.UpdateData;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<BaseAttrRpcSyncNotify>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		BaseAttrRpcSyncNotify pb = ProtoBuf.Serializer.Deserialize<BaseAttrRpcSyncNotify>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//更新数据
+	public byte[] m_UpdateData;
+	public byte[] UpdateData
+	{
+		get { return m_UpdateData;}
+		set { m_UpdateData = value; }
 	}
 
 

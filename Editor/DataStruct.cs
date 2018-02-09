@@ -13,7 +13,7 @@
         private string comment = "";
         public static Dictionary<string, DataStruct> DataStructDic = new Dictionary<string, DataStruct>();
         private SyncType dataType = SyncType.ItemData;
-        public ArrayList fieldItem = new ArrayList();
+        public List<FieldDescriptor> fieldItem = new List<FieldDescriptor>();
         public int GenOrder;
         private int maxFieldId;
         public Module module;
@@ -144,7 +144,7 @@
 
         public static bool IsBaseType(string name)
         {
-            if ((((name != "bool") && (name != "float")) && ((name != "sint32") && (name != "sint64") && (name != "uint64"))) && ((name != "string") && (name != "bytes")))
+            if ((((name != "bool") && (name != "float")) && ((name != "sint32") && (name != "int32") && (name != "sint64") && (name != "uint64") && (name != "int64"))) && ((name != "string") && (name != "bytes")))
             {
                 return false;
             }
@@ -327,7 +327,8 @@
             public string defaultValue = "-1";
             public int FieldId;
             private string fieldName = "";
-            private string fieldType = "sint32";
+            //private string fieldType = "sint32";
+            private string fieldType = "int32";
             private int maxValue = 0x989680;
             private int minValue = -1;
             private PreDefineType preDefine;
@@ -355,13 +356,16 @@
 
                     case "float":
                         return 1;
-
+                    case "int32":
+                        return 1;
                     case "sint32":
                         return 1;
 
                     case "sint64":
                         return 1;
                     case "uint64":
+                        return 1;
+                    case "int64":
                         return 1;
 
                     case "string":
@@ -393,11 +397,15 @@
 
                     case "sint32":
                         return "int";
+                    case "int32":
+                        return "int";
 
                     case "sint64":
                         return "Int64";
                     case "uint64":
                         return "UInt64";
+                    case "int64":
+                        return "Int64";
 
                     case "bytes":
                         return "byte[]";
@@ -427,6 +435,8 @@
                     case "string":
                         return "string";
 
+                    case "int32":
+                        return "INT32";
                     case "sint32":
                         return "INT32";
 
@@ -434,6 +444,8 @@
                         return "INT64";
                     case "uint64":
                         return "uint64_t";
+                    case "int64":
+                        return "int64_t";
 
                     case "bytes":
                         return "string";
@@ -549,14 +561,14 @@
                                 this.DefaultValue = "false";
                             }
                         }
-                        else if (((value == "sint32") || (value == "float")) || (value == "sint64"))
+                        else if (((value == "sint32") || (value == "int32") || (value == "float")) || (value == "sint64") || (value == "int64"))
                         {
                             if (this.DefaultValue == "")
                             {
                                 this.DefaultValue = "-1";
                             }
                         }
-                        else if (value == "uint64")
+                        else if (value == "uint64" || value == "int64")
                         {
                             UInt64 t = 0;
                             if (!UInt64.TryParse(this.DefaultValue,out t))

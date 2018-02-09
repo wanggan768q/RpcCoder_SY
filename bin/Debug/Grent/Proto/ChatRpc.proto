@@ -1,0 +1,22 @@
+
+import "PublicStruct.proto";
+
+message  ChatRpcChatAsk
+{
+	optional ChatMsg Chat_msg = 1;
+	optional sint32 Chat_channel = 2[default=-1];
+
+}
+
+message  ChatRpcChatReply
+{
+	optional sint32 Result = 1[default=-9999];
+
+}
+
+message  ChatRpcPushChatUpdatesNotify
+{
+	repeated ChatChannelData Chat_channels = 1;
+
+}
+

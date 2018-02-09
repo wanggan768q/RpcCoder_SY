@@ -1,0 +1,175 @@
+
+import "PublicStruct.proto";
+
+message  TeamRpcCreateTeamAsk
+{
+	optional sint32 TeamType = 2[default=-1];
+
+}
+
+message  TeamRpcCreateTeamReply
+{
+	optional sint32 Result = 1[default=-9999];
+	optional TeamInfo Team = 2;
+
+}
+
+message  TeamRpcJoinTeamAsk
+{
+	optional sint32 TeamId = 1[default=-1];
+	optional sint32 TeamType = 2[default=-1];
+	optional TeamInfo Team = 3;
+	optional TeamMemberInfo TeamMember = 4;
+
+}
+
+message  TeamRpcJoinTeamReply
+{
+	optional sint32 Result = 1[default=-9999];
+	optional TeamInfo Team = 2;
+
+}
+
+message  TeamRpcLeaveTeamAsk
+{
+
+}
+
+message  TeamRpcLeaveTeamReply
+{
+	optional sint32 Result = 1[default=-9999];
+
+}
+
+message  TeamRpcAppointTeamLeaderAsk
+{
+	optional uint64 RoleId = 1[default=0];
+
+}
+
+message  TeamRpcAppointTeamLeaderReply
+{
+	optional sint32 Result = 1[default=-9999];
+	optional uint64 NewLeaderId = 2[default=0];
+
+}
+
+message  TeamRpcNewLeaderNotify
+{
+	optional uint64 Newleaderroleid = 1[default=0];
+
+}
+
+message  TeamRpcKickMemberAsk
+{
+	optional uint64 KickMemberRoleId = 1[default=0];
+
+}
+
+message  TeamRpcKickMemberReply
+{
+	optional sint32 Result = 1[default=-9999];
+
+}
+
+message  TeamRpcDissmissTeamAsk
+{
+
+}
+
+message  TeamRpcDissmissTeamReply
+{
+	optional sint32 Result = 1[default=-9999];
+
+}
+
+message  TeamRpcAppointTeamLeaderNotify
+{
+
+}
+
+message  TeamRpcKickMemberNotifyNotify
+{
+	optional uint64 KickedMemberRoleId = 1[default=0];
+
+}
+
+message  TeamRpcLeaveTeamNotifyNotify
+{
+	optional uint64 RoleId = 1[default=0];
+	optional uint64 NewLeaderRoleId = 2[default=0];
+
+}
+
+message  TeamRpcJoinTeamNotifyNotify
+{
+	optional TeamMemberInfo TeamMember = 1;
+
+}
+
+message  TeamRpcDissmissTeamNotifyNotify
+{
+
+}
+
+message  TeamRpcSurroundingTeamAsk
+{
+
+}
+
+message  TeamRpcSurroundingTeamReply
+{
+	optional sint32 Result = 1[default=-9999];
+	repeated TeamInfo TeamsInfo = 2;
+
+}
+
+message  TeamRpcApplyTeamAsk
+{
+	optional sint32 TeamId = 1[default=-1];
+
+}
+
+message  TeamRpcApplyTeamReply
+{
+	optional sint32 Result = 1[default=-9999];
+	optional sint32 TeamId = 2[default=-1];
+
+}
+
+message  TeamRpcApplyTeamNotifyNotify
+{
+	optional TeamMemberInfo TeamMember = 1;
+
+}
+
+message  TeamRpcAgreeApplicantAsk
+{
+	optional uint64 RoleId = 2[default=0];
+
+}
+
+message  TeamRpcAgreeApplicantReply
+{
+	optional sint32 Result = 1[default=-9999];
+
+}
+
+message  TeamRpcAgreeApplicantNotifyNotify
+{
+	optional TeamInfo Team = 1;
+
+}
+
+message  TeamRpcTeamInfoNotify
+{
+	optional TeamInfo Team = 1;
+
+}
+
+message  TeamRpcUpdateTeamMemInfoNotify
+{
+	optional TeamMemberInfo TeamMember = 1;
+
+}
+

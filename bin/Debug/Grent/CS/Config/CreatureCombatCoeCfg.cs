@@ -12,11 +12,11 @@ public class CreatureCombatCoeElement
 	public int id;               	//ID号	关联Creature
 	public string note;          	//中文注释	
 	public int template_id;      	//对应模板	关联CreatureCombatbasic
-	public float hp_rate;        	//生命比例	
-	public float p_atk_rate;     	//物理攻击力比例	
-	public float p_def_rate;     	//物理防御力比例	
-	public float s_atk_rate;     	//魔法攻击力比例	
-	public float s_def_rate;     	//魔法防御力比例	
+	public float maxhp_rate;     	//生命比例	
+	public float physic_attack_rate;	//物理攻击力比例	
+	public float physic_defense_rate;	//物理防御力比例	
+	public float magic_attack_rate;	//魔法攻击力比例	
+	public float magic_defense_rate;	//魔法防御力比例	
 	public float exp_rate;       	//经验比例	
 
 	public bool IsValidate = false;
@@ -118,11 +118,11 @@ public class CreatureCombatCoeTable
 		if(vecLine[0]!="id"){Ex.Logger.Log("CreatureCombatCoe.csv中字段[id]位置不对应"); return false; }
 		if(vecLine[1]!="note"){Ex.Logger.Log("CreatureCombatCoe.csv中字段[note]位置不对应"); return false; }
 		if(vecLine[2]!="template_id"){Ex.Logger.Log("CreatureCombatCoe.csv中字段[template_id]位置不对应"); return false; }
-		if(vecLine[3]!="hp_rate"){Ex.Logger.Log("CreatureCombatCoe.csv中字段[hp_rate]位置不对应"); return false; }
-		if(vecLine[4]!="p_atk_rate"){Ex.Logger.Log("CreatureCombatCoe.csv中字段[p_atk_rate]位置不对应"); return false; }
-		if(vecLine[5]!="p_def_rate"){Ex.Logger.Log("CreatureCombatCoe.csv中字段[p_def_rate]位置不对应"); return false; }
-		if(vecLine[6]!="s_atk_rate"){Ex.Logger.Log("CreatureCombatCoe.csv中字段[s_atk_rate]位置不对应"); return false; }
-		if(vecLine[7]!="s_def_rate"){Ex.Logger.Log("CreatureCombatCoe.csv中字段[s_def_rate]位置不对应"); return false; }
+		if(vecLine[3]!="maxhp_rate"){Ex.Logger.Log("CreatureCombatCoe.csv中字段[maxhp_rate]位置不对应"); return false; }
+		if(vecLine[4]!="physic_attack_rate"){Ex.Logger.Log("CreatureCombatCoe.csv中字段[physic_attack_rate]位置不对应"); return false; }
+		if(vecLine[5]!="physic_defense_rate"){Ex.Logger.Log("CreatureCombatCoe.csv中字段[physic_defense_rate]位置不对应"); return false; }
+		if(vecLine[6]!="magic_attack_rate"){Ex.Logger.Log("CreatureCombatCoe.csv中字段[magic_attack_rate]位置不对应"); return false; }
+		if(vecLine[7]!="magic_defense_rate"){Ex.Logger.Log("CreatureCombatCoe.csv中字段[magic_defense_rate]位置不对应"); return false; }
 		if(vecLine[8]!="exp_rate"){Ex.Logger.Log("CreatureCombatCoe.csv中字段[exp_rate]位置不对应"); return false; }
 
 		for(int i=0; i<nRow; i++)
@@ -131,11 +131,11 @@ public class CreatureCombatCoeTable
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.id );
 			readPos += GameAssist.ReadString( binContent, readPos, out member.note);
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.template_id );
-			readPos += GameAssist.ReadFloat( binContent, readPos, out member.hp_rate);
-			readPos += GameAssist.ReadFloat( binContent, readPos, out member.p_atk_rate);
-			readPos += GameAssist.ReadFloat( binContent, readPos, out member.p_def_rate);
-			readPos += GameAssist.ReadFloat( binContent, readPos, out member.s_atk_rate);
-			readPos += GameAssist.ReadFloat( binContent, readPos, out member.s_def_rate);
+			readPos += GameAssist.ReadFloat( binContent, readPos, out member.maxhp_rate);
+			readPos += GameAssist.ReadFloat( binContent, readPos, out member.physic_attack_rate);
+			readPos += GameAssist.ReadFloat( binContent, readPos, out member.physic_defense_rate);
+			readPos += GameAssist.ReadFloat( binContent, readPos, out member.magic_attack_rate);
+			readPos += GameAssist.ReadFloat( binContent, readPos, out member.magic_defense_rate);
 			readPos += GameAssist.ReadFloat( binContent, readPos, out member.exp_rate);
 
 			member.IsValidate = true;
@@ -161,11 +161,11 @@ public class CreatureCombatCoeTable
 		if(vecLine[0]!="id"){Ex.Logger.Log("CreatureCombatCoe.csv中字段[id]位置不对应"); return false; }
 		if(vecLine[1]!="note"){Ex.Logger.Log("CreatureCombatCoe.csv中字段[note]位置不对应"); return false; }
 		if(vecLine[2]!="template_id"){Ex.Logger.Log("CreatureCombatCoe.csv中字段[template_id]位置不对应"); return false; }
-		if(vecLine[3]!="hp_rate"){Ex.Logger.Log("CreatureCombatCoe.csv中字段[hp_rate]位置不对应"); return false; }
-		if(vecLine[4]!="p_atk_rate"){Ex.Logger.Log("CreatureCombatCoe.csv中字段[p_atk_rate]位置不对应"); return false; }
-		if(vecLine[5]!="p_def_rate"){Ex.Logger.Log("CreatureCombatCoe.csv中字段[p_def_rate]位置不对应"); return false; }
-		if(vecLine[6]!="s_atk_rate"){Ex.Logger.Log("CreatureCombatCoe.csv中字段[s_atk_rate]位置不对应"); return false; }
-		if(vecLine[7]!="s_def_rate"){Ex.Logger.Log("CreatureCombatCoe.csv中字段[s_def_rate]位置不对应"); return false; }
+		if(vecLine[3]!="maxhp_rate"){Ex.Logger.Log("CreatureCombatCoe.csv中字段[maxhp_rate]位置不对应"); return false; }
+		if(vecLine[4]!="physic_attack_rate"){Ex.Logger.Log("CreatureCombatCoe.csv中字段[physic_attack_rate]位置不对应"); return false; }
+		if(vecLine[5]!="physic_defense_rate"){Ex.Logger.Log("CreatureCombatCoe.csv中字段[physic_defense_rate]位置不对应"); return false; }
+		if(vecLine[6]!="magic_attack_rate"){Ex.Logger.Log("CreatureCombatCoe.csv中字段[magic_attack_rate]位置不对应"); return false; }
+		if(vecLine[7]!="magic_defense_rate"){Ex.Logger.Log("CreatureCombatCoe.csv中字段[magic_defense_rate]位置不对应"); return false; }
 		if(vecLine[8]!="exp_rate"){Ex.Logger.Log("CreatureCombatCoe.csv中字段[exp_rate]位置不对应"); return false; }
 
 		while(true)
@@ -181,11 +181,11 @@ public class CreatureCombatCoeTable
 			member.id=Convert.ToInt32(vecLine[0]);
 			member.note=vecLine[1];
 			member.template_id=Convert.ToInt32(vecLine[2]);
-			member.hp_rate=Convert.ToSingle(vecLine[3]);
-			member.p_atk_rate=Convert.ToSingle(vecLine[4]);
-			member.p_def_rate=Convert.ToSingle(vecLine[5]);
-			member.s_atk_rate=Convert.ToSingle(vecLine[6]);
-			member.s_def_rate=Convert.ToSingle(vecLine[7]);
+			member.maxhp_rate=Convert.ToSingle(vecLine[3]);
+			member.physic_attack_rate=Convert.ToSingle(vecLine[4]);
+			member.physic_defense_rate=Convert.ToSingle(vecLine[5]);
+			member.magic_attack_rate=Convert.ToSingle(vecLine[6]);
+			member.magic_defense_rate=Convert.ToSingle(vecLine[7]);
 			member.exp_rate=Convert.ToSingle(vecLine[8]);
 
 			member.IsValidate = true;

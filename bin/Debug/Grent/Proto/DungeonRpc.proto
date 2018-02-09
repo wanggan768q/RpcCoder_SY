@@ -12,6 +12,7 @@ message  DungeonRpcCreateDungeonReply
 {
 	optional sint32 Result = 1[default=-9999];
 	optional sint32 DungeonConfigId = 2[default=-1];
+	optional sint32 SceneId = 3[default=-1];
 
 }
 
@@ -23,6 +24,44 @@ message  DungeonRpcExitDungeonAsk
 }
 
 message  DungeonRpcExitDungeonReply
+{
+	optional sint32 Result = 1[default=-9999];
+	optional sint32 SceneConfigId = 2[default=-1];
+	optional sint32 SceneId = 3[default=-1];
+
+}
+
+message  DungeonRpcInformCreateDungeonAsk
+{
+	optional uint64 RoleId = 1[default=0];
+	optional sint32 TargetSceneId = 2[default=-1];
+	optional sint32 DungeonConfigId = 3[default=-1];
+	optional sint32 CurSceneId = 4[default=-1];
+	optional sint32 Result = 5[default=-9999];
+	repeated uint64 RoleIds = 6;
+
+}
+
+message  DungeonRpcInformCreateDungeonReply
+{
+	optional sint32 Result = 1[default=-9999];
+
+}
+
+message  DungeonRpcSettlementNotify
+{
+	optional sint32 SettlementResult = 1[default=-1];
+
+}
+
+message  DungeonRpcEnterDungeonAsk
+{
+	optional sint32 SceneId = 1[default=-1];
+	optional sint32 DungeonConfigId = 2[default=-1];
+
+}
+
+message  DungeonRpcEnterDungeonReply
 {
 	optional sint32 Result = 1[default=-9999];
 

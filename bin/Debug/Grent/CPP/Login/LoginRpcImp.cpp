@@ -1,4 +1,4 @@
-﻿/********************************************************************************************
+/********************************************************************************************
 * Copyright (C), 2011-2025, Ambition. Co., Ltd.
 * FileName:     CliRpcLoginImp.cpp
 * Author:       郭晓波
@@ -117,6 +117,25 @@ static int ModuleLogin::RpcCreateCharacter( CPlayer* pPlayer, CPacket* pPacket)
 *                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
 ********************************************************************************************/
 static int ModuleLogin::RpcSelectSaveUser( CPlayer* pPlayer, CPacket* pPacket)
+{
+
+	//逻辑代码
+
+
+	//设置返回结果
+	Reply.SetResult(0);
+	return 0;
+}
+
+/********************************************************************************************
+* Function:       RpcDeleteCharacter
+* Description:    登录模块-->删除角色同步调用操作函数
+* Input:          LoginRpcDeleteCharacterAskWraper& Ask 删除角色请求
+* Output:         LoginRpcDeleteCharacterReplyWraper& Reply 删除角色回应
+* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+********************************************************************************************/
+static int ModuleLogin::RpcDeleteCharacter( CPlayer* pPlayer, CPacket* pPacket)
 {
 
 	//逻辑代码

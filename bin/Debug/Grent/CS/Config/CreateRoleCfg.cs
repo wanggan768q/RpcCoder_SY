@@ -23,6 +23,8 @@ public class CreateRoleElement
 	public int default_female_id;	//默认女性角色id	确定种族后默认选择的女性职业
 	public li male_role_id;      	//男性角色id1	如果没有男性则无用  对应该种族男性角色职业
 	public li female_role_id;    	//女性角色id1	如果没有女性则无用  对应该种族女性角色职业
+	public ls create_occu_icon;  	//创选界面图标	专门用在创选界面的职业图标 对应未选中和选中两个状态
+	public int role_id;          	//新界面角色id	
 
 	public bool IsValidate = false;
 	public CreateRoleElement()
@@ -115,7 +117,7 @@ public class CreateRoleTable
             vecLine.Add(tmpStr);
             vecHeadType.Add(tmpInt);
 		}
-		if(vecLine.Count != 14)
+		if(vecLine.Count != 16)
 		{
 			Ex.Logger.Log("CreateRole.csv中列数量与生成的代码不匹配!");
 			return false;
@@ -134,6 +136,8 @@ public class CreateRoleTable
 		if(vecLine[11]!="default_female_id"){Ex.Logger.Log("CreateRole.csv中字段[default_female_id]位置不对应"); return false; }
 		if(vecLine[12]!="male_role_id"){Ex.Logger.Log("CreateRole.csv中字段[male_role_id]位置不对应"); return false; }
 		if(vecLine[13]!="female_role_id"){Ex.Logger.Log("CreateRole.csv中字段[female_role_id]位置不对应"); return false; }
+		if(vecLine[14]!="create_occu_icon"){Ex.Logger.Log("CreateRole.csv中字段[create_occu_icon]位置不对应"); return false; }
+		if(vecLine[15]!="role_id"){Ex.Logger.Log("CreateRole.csv中字段[role_id]位置不对应"); return false; }
 
 		for(int i=0; i<nRow; i++)
 		{
@@ -152,6 +156,8 @@ public class CreateRoleTable
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.default_female_id );
 			readPos += GameAssist.ReadString( binContent, readPos, out member.male_role_id);
 			readPos += GameAssist.ReadString( binContent, readPos, out member.female_role_id);
+			readPos += GameAssist.ReadString( binContent, readPos, out member.create_occu_icon);
+			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.role_id );
 
 			member.IsValidate = true;
 			m_vecAllElements.Add(member);
@@ -168,7 +174,7 @@ public class CreateRoleTable
 		int contentOffset = 0;
 		List<string> vecLine;
 		vecLine = GameAssist.readCsvLine( strContent, ref contentOffset );
-		if(vecLine.Count != 14)
+		if(vecLine.Count != 16)
 		{
 			Ex.Logger.Log("CreateRole.csv中列数量与生成的代码不匹配!");
 			return false;
@@ -187,13 +193,15 @@ public class CreateRoleTable
 		if(vecLine[11]!="default_female_id"){Ex.Logger.Log("CreateRole.csv中字段[default_female_id]位置不对应"); return false; }
 		if(vecLine[12]!="male_role_id"){Ex.Logger.Log("CreateRole.csv中字段[male_role_id]位置不对应"); return false; }
 		if(vecLine[13]!="female_role_id"){Ex.Logger.Log("CreateRole.csv中字段[female_role_id]位置不对应"); return false; }
+		if(vecLine[14]!="create_occu_icon"){Ex.Logger.Log("CreateRole.csv中字段[create_occu_icon]位置不对应"); return false; }
+		if(vecLine[15]!="role_id"){Ex.Logger.Log("CreateRole.csv中字段[role_id]位置不对应"); return false; }
 
 		while(true)
 		{
 			vecLine = GameAssist.readCsvLine( strContent, ref contentOffset );
 			if((int)vecLine.Count == 0 )
 				break;
-			if((int)vecLine.Count != (int)14)
+			if((int)vecLine.Count != (int)16)
 			{
 				return false;
 			}
@@ -212,6 +220,8 @@ public class CreateRoleTable
 			member.default_female_id=Convert.ToInt32(vecLine[11]);
 			member.male_role_id=vecLine[12];
 			member.female_role_id=vecLine[13];
+			member.create_occu_icon=vecLine[14];
+			member.role_id=Convert.ToInt32(vecLine[15]);
 
 			member.IsValidate = true;
 			m_vecAllElements.Add(member);

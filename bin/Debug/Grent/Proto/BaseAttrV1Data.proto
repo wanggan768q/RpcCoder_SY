@@ -3,10 +3,48 @@ import "PublicStruct.proto";
 
 message  BaseAttrUserDataV1
 {
-	optional sint32 Exp = 1[default=-1];
-	optional sint32 Level = 3[default=-1];
-	optional sint32 ServerTime = 4[default=-1];
-	optional sint32 RoleId = 5[default=-1];
+	optional sint32 Exp = 1[default=0];
+	optional sint32 Level = 3[default=0];
+	optional int64 ServerTime = 4[default=-1];
+	optional int64 RoleId = 5[default=-1];
+	optional int32 Strength = 7;
+	optional int32 Agility = 8;
+	optional int32 Intellectual = 9;
+	optional int32 Endurance = 10;
+	optional int32 Spirit = 11;
+	optional int32 Hp = 12;
+	optional int32 MaxHp = 14;
+	optional int32 PhysicAttack = 15;
+	optional int32 PhysicDefense = 16;
+	optional int32 MagicAttack = 19;
+	optional int32 MagicDefense = 20;
+	optional int32 Hit = 21;
+	optional float HitRate = 22[default=0];
+	optional int32 Miss = 23;
+	optional float MissRate = 24[default=0];
+	optional int32 Critical = 25;
+	optional float CriticalRate = 26[default=0];
+	optional int32 Tenacity = 27;
+	optional float TenacityRate = 28[default=0];
+	optional int32 Penet = 29;
+	optional float PenetRate = 30[default=0];
+	optional int32 Dodg = 31;
+	optional float DodgRate = 32[default=0];
+	optional int32 CriticalAddition = 33;
+	optional float CriticalAdditionRate = 34[default=0];
+	optional int32 CriticalImmune = 35;
+	optional float CriticalImmuneRate = 36[default=0];
+	optional int32 MissLevel = 37;
+	optional int32 CriticalLevel = 38;
+	optional int32 DodgLevel = 39;
+	optional float MoveSpeed = 40[default=0];
+	optional bool DizzyState = 41[default=false];
+	optional bool GodState = 42[default=false];
+	optional bool CantMoveState = 43[default=false];
+	optional float PhysicAddition = 45[default=0];
+	optional float MagicAddition = 46[default=0];
+	optional float PhysicOppose = 47[default=0];
+	optional float MagicOppose = 48[default=0];
 
 }
 

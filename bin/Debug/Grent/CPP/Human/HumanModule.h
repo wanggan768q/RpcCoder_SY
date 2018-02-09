@@ -1,4 +1,4 @@
-﻿/********************************************************************************************
+/********************************************************************************************
 * Copyright (C), 2011-2025, Ambition. Co., Ltd.
 * FileName:     ModuleHuman.h
 * Author:       郭晓波
@@ -46,6 +46,8 @@ public:
 	RPC_CODE_HUMAN_MOVE_REQUEST                  = 451,	//玩家模块-->human move-->请求
 	RPC_CODE_HUMAN_STOPMOVE_REQUEST              = 452,	//玩家模块-->客户端停止移动-->请求
 	RPC_CODE_HUMAN_MOVECHECK_NOTIFY              = 453,	//玩家模块-->移动检测-->通知
+	RPC_CODE_HUMAN_MOVEBYPOS_NOTIFY              = 454,	//玩家模块-->按照点来移动-->通知
+	RPC_CODE_HUMAN_RESPAWN_REQUEST               = 455,	//玩家模块-->Respawn-->请求
 
 	};
 
@@ -59,6 +61,8 @@ public:
 	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_HUMAN_STOPMOVE_REQUEST, new Some_Factory<HumanRpcStopMoveAsk>());
 	g_pPacketMgr->registerHandle(	RPC_CODE_HUMAN_MOVECHECK_NOTIFY, &ModuleHuman::RpcMoveCheck);
 	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_HUMAN_MOVECHECK_NOTIFY, new Some_Factory<HumanRpcMoveCheckNotify>());
+	g_pPacketMgr->registerHandle(	RPC_CODE_HUMAN_RESPAWN_REQUEST, &ModuleHuman::RpcRespawn);
+	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_HUMAN_RESPAWN_REQUEST, new Some_Factory<HumanRpcRespawnAsk>());
 
 	}
 	
@@ -114,6 +118,26 @@ public:
 	* Return:         无
 	********************************************************************************************/
 	//virtual void SendToClientMoveCheck( INT64 UserId, HumanRpcMoveCheckNotifyWraper& Notify );
+
+	/********************************************************************************************
+	* Function:       SendToClientMoveByPos
+	* Description:    玩家模块-->按照点来移动异步通知操作函数
+	* Input:          HumanRpcMoveByPosNotifyWraper& Notify 按照点来移动通知
+	* Input:          INT64 UserId 需要通知到的用户ID
+	* Output:         无
+	* Return:         无
+	********************************************************************************************/
+	//virtual void SendToClientMoveByPos( INT64 UserId, HumanRpcMoveByPosNotifyWraper& Notify );
+
+	/********************************************************************************************
+	* Function:       RpcRespawn
+	* Description:    玩家模块-->Respawn同步调用操作函数
+	* Input:          HumanRpcRespawnAskWraper& Ask Respawn请求
+	* Output:         HumanRpcRespawnReplyWraper& Reply Respawn回应
+	* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+	*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+	********************************************************************************************/
+	static int RpcRespawn( CPlayer* pPlayer, CPacket* pPacket );
 
 
 

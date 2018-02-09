@@ -32,11 +32,49 @@ void protobuf_AssignDesc_BaseAttrV1Data_2eproto() {
       "BaseAttrV1Data.proto");
   GOOGLE_CHECK(file != NULL);
   BaseAttrUserDataV1_descriptor_ = file->message_type(0);
-  static const int BaseAttrUserDataV1_offsets_[4] = {
+  static const int BaseAttrUserDataV1_offsets_[42] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, exp_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, level_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, servertime_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, roleid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, strength_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, agility_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, intellectual_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, endurance_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, spirit_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, hp_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, maxhp_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, physicattack_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, physicdefense_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, magicattack_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, magicdefense_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, hit_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, hitrate_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, miss_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, missrate_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, critical_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, criticalrate_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, tenacity_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, tenacityrate_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, penet_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, penetrate_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, dodg_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, dodgrate_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, criticaladdition_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, criticaladditionrate_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, criticalimmune_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, criticalimmunerate_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, misslevel_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, criticallevel_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, dodglevel_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, movespeed_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, dizzystate_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, godstate_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, cantmovestate_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, physicaddition_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, magicaddition_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, physicoppose_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrUserDataV1, magicoppose_),
   };
   BaseAttrUserDataV1_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -81,9 +119,31 @@ void protobuf_AddDesc_BaseAttrV1Data_2eproto() {
   ::protobuf_AddDesc_PublicStruct_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\024BaseAttrV1Data.proto\032\022PublicStruct.pro"
-    "to\"d\n\022BaseAttrUserDataV1\022\017\n\003Exp\030\001 \001(\021:\002-"
-    "1\022\021\n\005Level\030\003 \001(\021:\002-1\022\026\n\nServerTime\030\004 \001(\021"
-    ":\002-1\022\022\n\006RoleId\030\005 \001(\021:\002-1", 144);
+    "to\"\322\007\n\022BaseAttrUserDataV1\022\016\n\003Exp\030\001 \001(\021:\001"
+    "0\022\020\n\005Level\030\003 \001(\021:\0010\022\026\n\nServerTime\030\004 \001(\003:"
+    "\002-1\022\022\n\006RoleId\030\005 \001(\003:\002-1\022\023\n\010Strength\030\007 \001("
+    "\005:\0010\022\022\n\007Agility\030\010 \001(\005:\0010\022\027\n\014Intellectual"
+    "\030\t \001(\005:\0010\022\024\n\tEndurance\030\n \001(\005:\0010\022\021\n\006Spiri"
+    "t\030\013 \001(\005:\0010\022\r\n\002Hp\030\014 \001(\005:\0010\022\020\n\005MaxHp\030\016 \001(\005"
+    ":\0010\022\027\n\014PhysicAttack\030\017 \001(\005:\0010\022\030\n\rPhysicDe"
+    "fense\030\020 \001(\005:\0010\022\026\n\013MagicAttack\030\023 \001(\005:\0010\022\027"
+    "\n\014MagicDefense\030\024 \001(\005:\0010\022\016\n\003Hit\030\025 \001(\005:\0010\022"
+    "\022\n\007HitRate\030\026 \001(\002:\0010\022\017\n\004Miss\030\027 \001(\005:\0010\022\023\n\010"
+    "MissRate\030\030 \001(\002:\0010\022\023\n\010Critical\030\031 \001(\005:\0010\022\027"
+    "\n\014CriticalRate\030\032 \001(\002:\0010\022\023\n\010Tenacity\030\033 \001("
+    "\005:\0010\022\027\n\014TenacityRate\030\034 \001(\002:\0010\022\020\n\005Penet\030\035"
+    " \001(\005:\0010\022\024\n\tPenetRate\030\036 \001(\002:\0010\022\017\n\004Dodg\030\037 "
+    "\001(\005:\0010\022\023\n\010DodgRate\030  \001(\002:\0010\022\033\n\020CriticalA"
+    "ddition\030! \001(\005:\0010\022\037\n\024CriticalAdditionRate"
+    "\030\" \001(\002:\0010\022\031\n\016CriticalImmune\030# \001(\005:\0010\022\035\n\022"
+    "CriticalImmuneRate\030$ \001(\002:\0010\022\024\n\tMissLevel"
+    "\030% \001(\005:\0010\022\030\n\rCriticalLevel\030& \001(\005:\0010\022\024\n\tD"
+    "odgLevel\030\' \001(\005:\0010\022\024\n\tMoveSpeed\030( \001(\002:\0010\022"
+    "\031\n\nDizzyState\030) \001(\010:\005false\022\027\n\010GodState\030*"
+    " \001(\010:\005false\022\034\n\rCantMoveState\030+ \001(\010:\005fals"
+    "e\022\031\n\016PhysicAddition\030- \001(\002:\0010\022\030\n\rMagicAdd"
+    "ition\030. \001(\002:\0010\022\027\n\014PhysicOppose\030/ \001(\002:\0010\022"
+    "\026\n\013MagicOppose\0300 \001(\002:\0010", 1023);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "BaseAttrV1Data.proto", &protobuf_RegisterTypes);
   BaseAttrUserDataV1::default_instance_ = new BaseAttrUserDataV1();
@@ -105,6 +165,44 @@ const int BaseAttrUserDataV1::kExpFieldNumber;
 const int BaseAttrUserDataV1::kLevelFieldNumber;
 const int BaseAttrUserDataV1::kServerTimeFieldNumber;
 const int BaseAttrUserDataV1::kRoleIdFieldNumber;
+const int BaseAttrUserDataV1::kStrengthFieldNumber;
+const int BaseAttrUserDataV1::kAgilityFieldNumber;
+const int BaseAttrUserDataV1::kIntellectualFieldNumber;
+const int BaseAttrUserDataV1::kEnduranceFieldNumber;
+const int BaseAttrUserDataV1::kSpiritFieldNumber;
+const int BaseAttrUserDataV1::kHpFieldNumber;
+const int BaseAttrUserDataV1::kMaxHpFieldNumber;
+const int BaseAttrUserDataV1::kPhysicAttackFieldNumber;
+const int BaseAttrUserDataV1::kPhysicDefenseFieldNumber;
+const int BaseAttrUserDataV1::kMagicAttackFieldNumber;
+const int BaseAttrUserDataV1::kMagicDefenseFieldNumber;
+const int BaseAttrUserDataV1::kHitFieldNumber;
+const int BaseAttrUserDataV1::kHitRateFieldNumber;
+const int BaseAttrUserDataV1::kMissFieldNumber;
+const int BaseAttrUserDataV1::kMissRateFieldNumber;
+const int BaseAttrUserDataV1::kCriticalFieldNumber;
+const int BaseAttrUserDataV1::kCriticalRateFieldNumber;
+const int BaseAttrUserDataV1::kTenacityFieldNumber;
+const int BaseAttrUserDataV1::kTenacityRateFieldNumber;
+const int BaseAttrUserDataV1::kPenetFieldNumber;
+const int BaseAttrUserDataV1::kPenetRateFieldNumber;
+const int BaseAttrUserDataV1::kDodgFieldNumber;
+const int BaseAttrUserDataV1::kDodgRateFieldNumber;
+const int BaseAttrUserDataV1::kCriticalAdditionFieldNumber;
+const int BaseAttrUserDataV1::kCriticalAdditionRateFieldNumber;
+const int BaseAttrUserDataV1::kCriticalImmuneFieldNumber;
+const int BaseAttrUserDataV1::kCriticalImmuneRateFieldNumber;
+const int BaseAttrUserDataV1::kMissLevelFieldNumber;
+const int BaseAttrUserDataV1::kCriticalLevelFieldNumber;
+const int BaseAttrUserDataV1::kDodgLevelFieldNumber;
+const int BaseAttrUserDataV1::kMoveSpeedFieldNumber;
+const int BaseAttrUserDataV1::kDizzyStateFieldNumber;
+const int BaseAttrUserDataV1::kGodStateFieldNumber;
+const int BaseAttrUserDataV1::kCantMoveStateFieldNumber;
+const int BaseAttrUserDataV1::kPhysicAdditionFieldNumber;
+const int BaseAttrUserDataV1::kMagicAdditionFieldNumber;
+const int BaseAttrUserDataV1::kPhysicOpposeFieldNumber;
+const int BaseAttrUserDataV1::kMagicOpposeFieldNumber;
 #endif  // !_MSC_VER
 
 BaseAttrUserDataV1::BaseAttrUserDataV1()
@@ -123,10 +221,48 @@ BaseAttrUserDataV1::BaseAttrUserDataV1(const BaseAttrUserDataV1& from)
 
 void BaseAttrUserDataV1::SharedCtor() {
   _cached_size_ = 0;
-  exp_ = -1;
-  level_ = -1;
-  servertime_ = -1;
-  roleid_ = -1;
+  exp_ = 0;
+  level_ = 0;
+  servertime_ = GOOGLE_LONGLONG(-1);
+  roleid_ = GOOGLE_LONGLONG(-1);
+  strength_ = 0;
+  agility_ = 0;
+  intellectual_ = 0;
+  endurance_ = 0;
+  spirit_ = 0;
+  hp_ = 0;
+  maxhp_ = 0;
+  physicattack_ = 0;
+  physicdefense_ = 0;
+  magicattack_ = 0;
+  magicdefense_ = 0;
+  hit_ = 0;
+  hitrate_ = 0;
+  miss_ = 0;
+  missrate_ = 0;
+  critical_ = 0;
+  criticalrate_ = 0;
+  tenacity_ = 0;
+  tenacityrate_ = 0;
+  penet_ = 0;
+  penetrate_ = 0;
+  dodg_ = 0;
+  dodgrate_ = 0;
+  criticaladdition_ = 0;
+  criticaladditionrate_ = 0;
+  criticalimmune_ = 0;
+  criticalimmunerate_ = 0;
+  misslevel_ = 0;
+  criticallevel_ = 0;
+  dodglevel_ = 0;
+  movespeed_ = 0;
+  dizzystate_ = false;
+  godstate_ = false;
+  cantmovestate_ = false;
+  physicaddition_ = 0;
+  magicaddition_ = 0;
+  physicoppose_ = 0;
+  magicoppose_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -162,10 +298,58 @@ BaseAttrUserDataV1* BaseAttrUserDataV1::New() const {
 
 void BaseAttrUserDataV1::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    exp_ = -1;
-    level_ = -1;
-    servertime_ = -1;
-    roleid_ = -1;
+    exp_ = 0;
+    level_ = 0;
+    servertime_ = GOOGLE_LONGLONG(-1);
+    roleid_ = GOOGLE_LONGLONG(-1);
+    strength_ = 0;
+    agility_ = 0;
+    intellectual_ = 0;
+    endurance_ = 0;
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    spirit_ = 0;
+    hp_ = 0;
+    maxhp_ = 0;
+    physicattack_ = 0;
+    physicdefense_ = 0;
+    magicattack_ = 0;
+    magicdefense_ = 0;
+    hit_ = 0;
+  }
+  if (_has_bits_[16 / 32] & (0xffu << (16 % 32))) {
+    hitrate_ = 0;
+    miss_ = 0;
+    missrate_ = 0;
+    critical_ = 0;
+    criticalrate_ = 0;
+    tenacity_ = 0;
+    tenacityrate_ = 0;
+    penet_ = 0;
+  }
+  if (_has_bits_[24 / 32] & (0xffu << (24 % 32))) {
+    penetrate_ = 0;
+    dodg_ = 0;
+    dodgrate_ = 0;
+    criticaladdition_ = 0;
+    criticaladditionrate_ = 0;
+    criticalimmune_ = 0;
+    criticalimmunerate_ = 0;
+    misslevel_ = 0;
+  }
+  if (_has_bits_[32 / 32] & (0xffu << (32 % 32))) {
+    criticallevel_ = 0;
+    dodglevel_ = 0;
+    movespeed_ = 0;
+    dizzystate_ = false;
+    godstate_ = false;
+    cantmovestate_ = false;
+    physicaddition_ = 0;
+    magicaddition_ = 0;
+  }
+  if (_has_bits_[40 / 32] & (0xffu << (40 % 32))) {
+    physicoppose_ = 0;
+    magicoppose_ = 0;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -177,7 +361,7 @@ bool BaseAttrUserDataV1::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional sint32 Exp = 1 [default = -1];
+      // optional sint32 Exp = 1 [default = 0];
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -192,7 +376,7 @@ bool BaseAttrUserDataV1::MergePartialFromCodedStream(
         break;
       }
 
-      // optional sint32 Level = 3 [default = -1];
+      // optional sint32 Level = 3 [default = 0];
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -208,13 +392,13 @@ bool BaseAttrUserDataV1::MergePartialFromCodedStream(
         break;
       }
 
-      // optional sint32 ServerTime = 4 [default = -1];
+      // optional int64 ServerTime = 4 [default = -1];
       case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_ServerTime:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
                  input, &servertime_)));
           set_has_servertime();
         } else {
@@ -224,15 +408,623 @@ bool BaseAttrUserDataV1::MergePartialFromCodedStream(
         break;
       }
 
-      // optional sint32 RoleId = 5 [default = -1];
+      // optional int64 RoleId = 5 [default = -1];
       case 5: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_RoleId:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
                  input, &roleid_)));
           set_has_roleid();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(56)) goto parse_Strength;
+        break;
+      }
+
+      // optional int32 Strength = 7 [default = 0];
+      case 7: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_Strength:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &strength_)));
+          set_has_strength();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(64)) goto parse_Agility;
+        break;
+      }
+
+      // optional int32 Agility = 8 [default = 0];
+      case 8: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_Agility:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &agility_)));
+          set_has_agility();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(72)) goto parse_Intellectual;
+        break;
+      }
+
+      // optional int32 Intellectual = 9 [default = 0];
+      case 9: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_Intellectual:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &intellectual_)));
+          set_has_intellectual();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(80)) goto parse_Endurance;
+        break;
+      }
+
+      // optional int32 Endurance = 10 [default = 0];
+      case 10: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_Endurance:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &endurance_)));
+          set_has_endurance();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(88)) goto parse_Spirit;
+        break;
+      }
+
+      // optional int32 Spirit = 11 [default = 0];
+      case 11: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_Spirit:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &spirit_)));
+          set_has_spirit();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(96)) goto parse_Hp;
+        break;
+      }
+
+      // optional int32 Hp = 12 [default = 0];
+      case 12: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_Hp:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &hp_)));
+          set_has_hp();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(112)) goto parse_MaxHp;
+        break;
+      }
+
+      // optional int32 MaxHp = 14 [default = 0];
+      case 14: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_MaxHp:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &maxhp_)));
+          set_has_maxhp();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(120)) goto parse_PhysicAttack;
+        break;
+      }
+
+      // optional int32 PhysicAttack = 15 [default = 0];
+      case 15: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_PhysicAttack:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &physicattack_)));
+          set_has_physicattack();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(128)) goto parse_PhysicDefense;
+        break;
+      }
+
+      // optional int32 PhysicDefense = 16 [default = 0];
+      case 16: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_PhysicDefense:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &physicdefense_)));
+          set_has_physicdefense();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(152)) goto parse_MagicAttack;
+        break;
+      }
+
+      // optional int32 MagicAttack = 19 [default = 0];
+      case 19: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_MagicAttack:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &magicattack_)));
+          set_has_magicattack();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(160)) goto parse_MagicDefense;
+        break;
+      }
+
+      // optional int32 MagicDefense = 20 [default = 0];
+      case 20: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_MagicDefense:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &magicdefense_)));
+          set_has_magicdefense();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(168)) goto parse_Hit;
+        break;
+      }
+
+      // optional int32 Hit = 21 [default = 0];
+      case 21: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_Hit:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &hit_)));
+          set_has_hit();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(181)) goto parse_HitRate;
+        break;
+      }
+
+      // optional float HitRate = 22 [default = 0];
+      case 22: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_HitRate:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &hitrate_)));
+          set_has_hitrate();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(184)) goto parse_Miss;
+        break;
+      }
+
+      // optional int32 Miss = 23 [default = 0];
+      case 23: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_Miss:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &miss_)));
+          set_has_miss();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(197)) goto parse_MissRate;
+        break;
+      }
+
+      // optional float MissRate = 24 [default = 0];
+      case 24: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_MissRate:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &missrate_)));
+          set_has_missrate();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(200)) goto parse_Critical;
+        break;
+      }
+
+      // optional int32 Critical = 25 [default = 0];
+      case 25: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_Critical:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &critical_)));
+          set_has_critical();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(213)) goto parse_CriticalRate;
+        break;
+      }
+
+      // optional float CriticalRate = 26 [default = 0];
+      case 26: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_CriticalRate:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &criticalrate_)));
+          set_has_criticalrate();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(216)) goto parse_Tenacity;
+        break;
+      }
+
+      // optional int32 Tenacity = 27 [default = 0];
+      case 27: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_Tenacity:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &tenacity_)));
+          set_has_tenacity();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(229)) goto parse_TenacityRate;
+        break;
+      }
+
+      // optional float TenacityRate = 28 [default = 0];
+      case 28: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_TenacityRate:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &tenacityrate_)));
+          set_has_tenacityrate();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(232)) goto parse_Penet;
+        break;
+      }
+
+      // optional int32 Penet = 29 [default = 0];
+      case 29: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_Penet:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &penet_)));
+          set_has_penet();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(245)) goto parse_PenetRate;
+        break;
+      }
+
+      // optional float PenetRate = 30 [default = 0];
+      case 30: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_PenetRate:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &penetrate_)));
+          set_has_penetrate();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(248)) goto parse_Dodg;
+        break;
+      }
+
+      // optional int32 Dodg = 31 [default = 0];
+      case 31: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_Dodg:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &dodg_)));
+          set_has_dodg();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(261)) goto parse_DodgRate;
+        break;
+      }
+
+      // optional float DodgRate = 32 [default = 0];
+      case 32: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_DodgRate:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &dodgrate_)));
+          set_has_dodgrate();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(264)) goto parse_CriticalAddition;
+        break;
+      }
+
+      // optional int32 CriticalAddition = 33 [default = 0];
+      case 33: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_CriticalAddition:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &criticaladdition_)));
+          set_has_criticaladdition();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(277)) goto parse_CriticalAdditionRate;
+        break;
+      }
+
+      // optional float CriticalAdditionRate = 34 [default = 0];
+      case 34: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_CriticalAdditionRate:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &criticaladditionrate_)));
+          set_has_criticaladditionrate();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(280)) goto parse_CriticalImmune;
+        break;
+      }
+
+      // optional int32 CriticalImmune = 35 [default = 0];
+      case 35: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_CriticalImmune:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &criticalimmune_)));
+          set_has_criticalimmune();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(293)) goto parse_CriticalImmuneRate;
+        break;
+      }
+
+      // optional float CriticalImmuneRate = 36 [default = 0];
+      case 36: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_CriticalImmuneRate:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &criticalimmunerate_)));
+          set_has_criticalimmunerate();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(296)) goto parse_MissLevel;
+        break;
+      }
+
+      // optional int32 MissLevel = 37 [default = 0];
+      case 37: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_MissLevel:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &misslevel_)));
+          set_has_misslevel();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(304)) goto parse_CriticalLevel;
+        break;
+      }
+
+      // optional int32 CriticalLevel = 38 [default = 0];
+      case 38: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_CriticalLevel:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &criticallevel_)));
+          set_has_criticallevel();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(312)) goto parse_DodgLevel;
+        break;
+      }
+
+      // optional int32 DodgLevel = 39 [default = 0];
+      case 39: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_DodgLevel:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &dodglevel_)));
+          set_has_dodglevel();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(325)) goto parse_MoveSpeed;
+        break;
+      }
+
+      // optional float MoveSpeed = 40 [default = 0];
+      case 40: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_MoveSpeed:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &movespeed_)));
+          set_has_movespeed();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(328)) goto parse_DizzyState;
+        break;
+      }
+
+      // optional bool DizzyState = 41 [default = false];
+      case 41: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_DizzyState:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &dizzystate_)));
+          set_has_dizzystate();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(336)) goto parse_GodState;
+        break;
+      }
+
+      // optional bool GodState = 42 [default = false];
+      case 42: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_GodState:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &godstate_)));
+          set_has_godstate();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(344)) goto parse_CantMoveState;
+        break;
+      }
+
+      // optional bool CantMoveState = 43 [default = false];
+      case 43: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_CantMoveState:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
+                 input, &cantmovestate_)));
+          set_has_cantmovestate();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(365)) goto parse_PhysicAddition;
+        break;
+      }
+
+      // optional float PhysicAddition = 45 [default = 0];
+      case 45: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_PhysicAddition:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &physicaddition_)));
+          set_has_physicaddition();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(373)) goto parse_MagicAddition;
+        break;
+      }
+
+      // optional float MagicAddition = 46 [default = 0];
+      case 46: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_MagicAddition:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &magicaddition_)));
+          set_has_magicaddition();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(381)) goto parse_PhysicOppose;
+        break;
+      }
+
+      // optional float PhysicOppose = 47 [default = 0];
+      case 47: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_PhysicOppose:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &physicoppose_)));
+          set_has_physicoppose();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(389)) goto parse_MagicOppose;
+        break;
+      }
+
+      // optional float MagicOppose = 48 [default = 0];
+      case 48: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
+         parse_MagicOppose:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &magicoppose_)));
+          set_has_magicoppose();
         } else {
           goto handle_uninterpreted;
         }
@@ -258,24 +1050,214 @@ bool BaseAttrUserDataV1::MergePartialFromCodedStream(
 
 void BaseAttrUserDataV1::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional sint32 Exp = 1 [default = -1];
+  // optional sint32 Exp = 1 [default = 0];
   if (has_exp()) {
     ::google::protobuf::internal::WireFormatLite::WriteSInt32(1, this->exp(), output);
   }
 
-  // optional sint32 Level = 3 [default = -1];
+  // optional sint32 Level = 3 [default = 0];
   if (has_level()) {
     ::google::protobuf::internal::WireFormatLite::WriteSInt32(3, this->level(), output);
   }
 
-  // optional sint32 ServerTime = 4 [default = -1];
+  // optional int64 ServerTime = 4 [default = -1];
   if (has_servertime()) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(4, this->servertime(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt64(4, this->servertime(), output);
   }
 
-  // optional sint32 RoleId = 5 [default = -1];
+  // optional int64 RoleId = 5 [default = -1];
   if (has_roleid()) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(5, this->roleid(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt64(5, this->roleid(), output);
+  }
+
+  // optional int32 Strength = 7 [default = 0];
+  if (has_strength()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(7, this->strength(), output);
+  }
+
+  // optional int32 Agility = 8 [default = 0];
+  if (has_agility()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(8, this->agility(), output);
+  }
+
+  // optional int32 Intellectual = 9 [default = 0];
+  if (has_intellectual()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(9, this->intellectual(), output);
+  }
+
+  // optional int32 Endurance = 10 [default = 0];
+  if (has_endurance()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(10, this->endurance(), output);
+  }
+
+  // optional int32 Spirit = 11 [default = 0];
+  if (has_spirit()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(11, this->spirit(), output);
+  }
+
+  // optional int32 Hp = 12 [default = 0];
+  if (has_hp()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(12, this->hp(), output);
+  }
+
+  // optional int32 MaxHp = 14 [default = 0];
+  if (has_maxhp()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(14, this->maxhp(), output);
+  }
+
+  // optional int32 PhysicAttack = 15 [default = 0];
+  if (has_physicattack()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(15, this->physicattack(), output);
+  }
+
+  // optional int32 PhysicDefense = 16 [default = 0];
+  if (has_physicdefense()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(16, this->physicdefense(), output);
+  }
+
+  // optional int32 MagicAttack = 19 [default = 0];
+  if (has_magicattack()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(19, this->magicattack(), output);
+  }
+
+  // optional int32 MagicDefense = 20 [default = 0];
+  if (has_magicdefense()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(20, this->magicdefense(), output);
+  }
+
+  // optional int32 Hit = 21 [default = 0];
+  if (has_hit()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(21, this->hit(), output);
+  }
+
+  // optional float HitRate = 22 [default = 0];
+  if (has_hitrate()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(22, this->hitrate(), output);
+  }
+
+  // optional int32 Miss = 23 [default = 0];
+  if (has_miss()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(23, this->miss(), output);
+  }
+
+  // optional float MissRate = 24 [default = 0];
+  if (has_missrate()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(24, this->missrate(), output);
+  }
+
+  // optional int32 Critical = 25 [default = 0];
+  if (has_critical()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(25, this->critical(), output);
+  }
+
+  // optional float CriticalRate = 26 [default = 0];
+  if (has_criticalrate()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(26, this->criticalrate(), output);
+  }
+
+  // optional int32 Tenacity = 27 [default = 0];
+  if (has_tenacity()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(27, this->tenacity(), output);
+  }
+
+  // optional float TenacityRate = 28 [default = 0];
+  if (has_tenacityrate()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(28, this->tenacityrate(), output);
+  }
+
+  // optional int32 Penet = 29 [default = 0];
+  if (has_penet()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(29, this->penet(), output);
+  }
+
+  // optional float PenetRate = 30 [default = 0];
+  if (has_penetrate()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(30, this->penetrate(), output);
+  }
+
+  // optional int32 Dodg = 31 [default = 0];
+  if (has_dodg()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(31, this->dodg(), output);
+  }
+
+  // optional float DodgRate = 32 [default = 0];
+  if (has_dodgrate()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(32, this->dodgrate(), output);
+  }
+
+  // optional int32 CriticalAddition = 33 [default = 0];
+  if (has_criticaladdition()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(33, this->criticaladdition(), output);
+  }
+
+  // optional float CriticalAdditionRate = 34 [default = 0];
+  if (has_criticaladditionrate()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(34, this->criticaladditionrate(), output);
+  }
+
+  // optional int32 CriticalImmune = 35 [default = 0];
+  if (has_criticalimmune()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(35, this->criticalimmune(), output);
+  }
+
+  // optional float CriticalImmuneRate = 36 [default = 0];
+  if (has_criticalimmunerate()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(36, this->criticalimmunerate(), output);
+  }
+
+  // optional int32 MissLevel = 37 [default = 0];
+  if (has_misslevel()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(37, this->misslevel(), output);
+  }
+
+  // optional int32 CriticalLevel = 38 [default = 0];
+  if (has_criticallevel()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(38, this->criticallevel(), output);
+  }
+
+  // optional int32 DodgLevel = 39 [default = 0];
+  if (has_dodglevel()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(39, this->dodglevel(), output);
+  }
+
+  // optional float MoveSpeed = 40 [default = 0];
+  if (has_movespeed()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(40, this->movespeed(), output);
+  }
+
+  // optional bool DizzyState = 41 [default = false];
+  if (has_dizzystate()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(41, this->dizzystate(), output);
+  }
+
+  // optional bool GodState = 42 [default = false];
+  if (has_godstate()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(42, this->godstate(), output);
+  }
+
+  // optional bool CantMoveState = 43 [default = false];
+  if (has_cantmovestate()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBool(43, this->cantmovestate(), output);
+  }
+
+  // optional float PhysicAddition = 45 [default = 0];
+  if (has_physicaddition()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(45, this->physicaddition(), output);
+  }
+
+  // optional float MagicAddition = 46 [default = 0];
+  if (has_magicaddition()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(46, this->magicaddition(), output);
+  }
+
+  // optional float PhysicOppose = 47 [default = 0];
+  if (has_physicoppose()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(47, this->physicoppose(), output);
+  }
+
+  // optional float MagicOppose = 48 [default = 0];
+  if (has_magicoppose()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(48, this->magicoppose(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -286,24 +1268,214 @@ void BaseAttrUserDataV1::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* BaseAttrUserDataV1::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional sint32 Exp = 1 [default = -1];
+  // optional sint32 Exp = 1 [default = 0];
   if (has_exp()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(1, this->exp(), target);
   }
 
-  // optional sint32 Level = 3 [default = -1];
+  // optional sint32 Level = 3 [default = 0];
   if (has_level()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(3, this->level(), target);
   }
 
-  // optional sint32 ServerTime = 4 [default = -1];
+  // optional int64 ServerTime = 4 [default = -1];
   if (has_servertime()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(4, this->servertime(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(4, this->servertime(), target);
   }
 
-  // optional sint32 RoleId = 5 [default = -1];
+  // optional int64 RoleId = 5 [default = -1];
   if (has_roleid()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(5, this->roleid(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt64ToArray(5, this->roleid(), target);
+  }
+
+  // optional int32 Strength = 7 [default = 0];
+  if (has_strength()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(7, this->strength(), target);
+  }
+
+  // optional int32 Agility = 8 [default = 0];
+  if (has_agility()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(8, this->agility(), target);
+  }
+
+  // optional int32 Intellectual = 9 [default = 0];
+  if (has_intellectual()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(9, this->intellectual(), target);
+  }
+
+  // optional int32 Endurance = 10 [default = 0];
+  if (has_endurance()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(10, this->endurance(), target);
+  }
+
+  // optional int32 Spirit = 11 [default = 0];
+  if (has_spirit()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(11, this->spirit(), target);
+  }
+
+  // optional int32 Hp = 12 [default = 0];
+  if (has_hp()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(12, this->hp(), target);
+  }
+
+  // optional int32 MaxHp = 14 [default = 0];
+  if (has_maxhp()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(14, this->maxhp(), target);
+  }
+
+  // optional int32 PhysicAttack = 15 [default = 0];
+  if (has_physicattack()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(15, this->physicattack(), target);
+  }
+
+  // optional int32 PhysicDefense = 16 [default = 0];
+  if (has_physicdefense()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(16, this->physicdefense(), target);
+  }
+
+  // optional int32 MagicAttack = 19 [default = 0];
+  if (has_magicattack()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(19, this->magicattack(), target);
+  }
+
+  // optional int32 MagicDefense = 20 [default = 0];
+  if (has_magicdefense()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(20, this->magicdefense(), target);
+  }
+
+  // optional int32 Hit = 21 [default = 0];
+  if (has_hit()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(21, this->hit(), target);
+  }
+
+  // optional float HitRate = 22 [default = 0];
+  if (has_hitrate()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(22, this->hitrate(), target);
+  }
+
+  // optional int32 Miss = 23 [default = 0];
+  if (has_miss()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(23, this->miss(), target);
+  }
+
+  // optional float MissRate = 24 [default = 0];
+  if (has_missrate()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(24, this->missrate(), target);
+  }
+
+  // optional int32 Critical = 25 [default = 0];
+  if (has_critical()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(25, this->critical(), target);
+  }
+
+  // optional float CriticalRate = 26 [default = 0];
+  if (has_criticalrate()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(26, this->criticalrate(), target);
+  }
+
+  // optional int32 Tenacity = 27 [default = 0];
+  if (has_tenacity()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(27, this->tenacity(), target);
+  }
+
+  // optional float TenacityRate = 28 [default = 0];
+  if (has_tenacityrate()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(28, this->tenacityrate(), target);
+  }
+
+  // optional int32 Penet = 29 [default = 0];
+  if (has_penet()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(29, this->penet(), target);
+  }
+
+  // optional float PenetRate = 30 [default = 0];
+  if (has_penetrate()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(30, this->penetrate(), target);
+  }
+
+  // optional int32 Dodg = 31 [default = 0];
+  if (has_dodg()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(31, this->dodg(), target);
+  }
+
+  // optional float DodgRate = 32 [default = 0];
+  if (has_dodgrate()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(32, this->dodgrate(), target);
+  }
+
+  // optional int32 CriticalAddition = 33 [default = 0];
+  if (has_criticaladdition()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(33, this->criticaladdition(), target);
+  }
+
+  // optional float CriticalAdditionRate = 34 [default = 0];
+  if (has_criticaladditionrate()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(34, this->criticaladditionrate(), target);
+  }
+
+  // optional int32 CriticalImmune = 35 [default = 0];
+  if (has_criticalimmune()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(35, this->criticalimmune(), target);
+  }
+
+  // optional float CriticalImmuneRate = 36 [default = 0];
+  if (has_criticalimmunerate()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(36, this->criticalimmunerate(), target);
+  }
+
+  // optional int32 MissLevel = 37 [default = 0];
+  if (has_misslevel()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(37, this->misslevel(), target);
+  }
+
+  // optional int32 CriticalLevel = 38 [default = 0];
+  if (has_criticallevel()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(38, this->criticallevel(), target);
+  }
+
+  // optional int32 DodgLevel = 39 [default = 0];
+  if (has_dodglevel()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(39, this->dodglevel(), target);
+  }
+
+  // optional float MoveSpeed = 40 [default = 0];
+  if (has_movespeed()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(40, this->movespeed(), target);
+  }
+
+  // optional bool DizzyState = 41 [default = false];
+  if (has_dizzystate()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(41, this->dizzystate(), target);
+  }
+
+  // optional bool GodState = 42 [default = false];
+  if (has_godstate()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(42, this->godstate(), target);
+  }
+
+  // optional bool CantMoveState = 43 [default = false];
+  if (has_cantmovestate()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(43, this->cantmovestate(), target);
+  }
+
+  // optional float PhysicAddition = 45 [default = 0];
+  if (has_physicaddition()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(45, this->physicaddition(), target);
+  }
+
+  // optional float MagicAddition = 46 [default = 0];
+  if (has_magicaddition()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(46, this->magicaddition(), target);
+  }
+
+  // optional float PhysicOppose = 47 [default = 0];
+  if (has_physicoppose()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(47, this->physicoppose(), target);
+  }
+
+  // optional float MagicOppose = 48 [default = 0];
+  if (has_magicoppose()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(48, this->magicoppose(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -317,32 +1489,276 @@ int BaseAttrUserDataV1::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional sint32 Exp = 1 [default = -1];
+    // optional sint32 Exp = 1 [default = 0];
     if (has_exp()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::SInt32Size(
           this->exp());
     }
 
-    // optional sint32 Level = 3 [default = -1];
+    // optional sint32 Level = 3 [default = 0];
     if (has_level()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::SInt32Size(
           this->level());
     }
 
-    // optional sint32 ServerTime = 4 [default = -1];
+    // optional int64 ServerTime = 4 [default = -1];
     if (has_servertime()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+        ::google::protobuf::internal::WireFormatLite::Int64Size(
           this->servertime());
     }
 
-    // optional sint32 RoleId = 5 [default = -1];
+    // optional int64 RoleId = 5 [default = -1];
     if (has_roleid()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+        ::google::protobuf::internal::WireFormatLite::Int64Size(
           this->roleid());
+    }
+
+    // optional int32 Strength = 7 [default = 0];
+    if (has_strength()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->strength());
+    }
+
+    // optional int32 Agility = 8 [default = 0];
+    if (has_agility()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->agility());
+    }
+
+    // optional int32 Intellectual = 9 [default = 0];
+    if (has_intellectual()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->intellectual());
+    }
+
+    // optional int32 Endurance = 10 [default = 0];
+    if (has_endurance()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->endurance());
+    }
+
+  }
+  if (_has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    // optional int32 Spirit = 11 [default = 0];
+    if (has_spirit()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->spirit());
+    }
+
+    // optional int32 Hp = 12 [default = 0];
+    if (has_hp()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->hp());
+    }
+
+    // optional int32 MaxHp = 14 [default = 0];
+    if (has_maxhp()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->maxhp());
+    }
+
+    // optional int32 PhysicAttack = 15 [default = 0];
+    if (has_physicattack()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->physicattack());
+    }
+
+    // optional int32 PhysicDefense = 16 [default = 0];
+    if (has_physicdefense()) {
+      total_size += 2 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->physicdefense());
+    }
+
+    // optional int32 MagicAttack = 19 [default = 0];
+    if (has_magicattack()) {
+      total_size += 2 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->magicattack());
+    }
+
+    // optional int32 MagicDefense = 20 [default = 0];
+    if (has_magicdefense()) {
+      total_size += 2 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->magicdefense());
+    }
+
+    // optional int32 Hit = 21 [default = 0];
+    if (has_hit()) {
+      total_size += 2 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->hit());
+    }
+
+  }
+  if (_has_bits_[16 / 32] & (0xffu << (16 % 32))) {
+    // optional float HitRate = 22 [default = 0];
+    if (has_hitrate()) {
+      total_size += 2 + 4;
+    }
+
+    // optional int32 Miss = 23 [default = 0];
+    if (has_miss()) {
+      total_size += 2 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->miss());
+    }
+
+    // optional float MissRate = 24 [default = 0];
+    if (has_missrate()) {
+      total_size += 2 + 4;
+    }
+
+    // optional int32 Critical = 25 [default = 0];
+    if (has_critical()) {
+      total_size += 2 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->critical());
+    }
+
+    // optional float CriticalRate = 26 [default = 0];
+    if (has_criticalrate()) {
+      total_size += 2 + 4;
+    }
+
+    // optional int32 Tenacity = 27 [default = 0];
+    if (has_tenacity()) {
+      total_size += 2 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->tenacity());
+    }
+
+    // optional float TenacityRate = 28 [default = 0];
+    if (has_tenacityrate()) {
+      total_size += 2 + 4;
+    }
+
+    // optional int32 Penet = 29 [default = 0];
+    if (has_penet()) {
+      total_size += 2 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->penet());
+    }
+
+  }
+  if (_has_bits_[24 / 32] & (0xffu << (24 % 32))) {
+    // optional float PenetRate = 30 [default = 0];
+    if (has_penetrate()) {
+      total_size += 2 + 4;
+    }
+
+    // optional int32 Dodg = 31 [default = 0];
+    if (has_dodg()) {
+      total_size += 2 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->dodg());
+    }
+
+    // optional float DodgRate = 32 [default = 0];
+    if (has_dodgrate()) {
+      total_size += 2 + 4;
+    }
+
+    // optional int32 CriticalAddition = 33 [default = 0];
+    if (has_criticaladdition()) {
+      total_size += 2 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->criticaladdition());
+    }
+
+    // optional float CriticalAdditionRate = 34 [default = 0];
+    if (has_criticaladditionrate()) {
+      total_size += 2 + 4;
+    }
+
+    // optional int32 CriticalImmune = 35 [default = 0];
+    if (has_criticalimmune()) {
+      total_size += 2 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->criticalimmune());
+    }
+
+    // optional float CriticalImmuneRate = 36 [default = 0];
+    if (has_criticalimmunerate()) {
+      total_size += 2 + 4;
+    }
+
+    // optional int32 MissLevel = 37 [default = 0];
+    if (has_misslevel()) {
+      total_size += 2 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->misslevel());
+    }
+
+  }
+  if (_has_bits_[32 / 32] & (0xffu << (32 % 32))) {
+    // optional int32 CriticalLevel = 38 [default = 0];
+    if (has_criticallevel()) {
+      total_size += 2 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->criticallevel());
+    }
+
+    // optional int32 DodgLevel = 39 [default = 0];
+    if (has_dodglevel()) {
+      total_size += 2 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->dodglevel());
+    }
+
+    // optional float MoveSpeed = 40 [default = 0];
+    if (has_movespeed()) {
+      total_size += 2 + 4;
+    }
+
+    // optional bool DizzyState = 41 [default = false];
+    if (has_dizzystate()) {
+      total_size += 2 + 1;
+    }
+
+    // optional bool GodState = 42 [default = false];
+    if (has_godstate()) {
+      total_size += 2 + 1;
+    }
+
+    // optional bool CantMoveState = 43 [default = false];
+    if (has_cantmovestate()) {
+      total_size += 2 + 1;
+    }
+
+    // optional float PhysicAddition = 45 [default = 0];
+    if (has_physicaddition()) {
+      total_size += 2 + 4;
+    }
+
+    // optional float MagicAddition = 46 [default = 0];
+    if (has_magicaddition()) {
+      total_size += 2 + 4;
+    }
+
+  }
+  if (_has_bits_[40 / 32] & (0xffu << (40 % 32))) {
+    // optional float PhysicOppose = 47 [default = 0];
+    if (has_physicoppose()) {
+      total_size += 2 + 4;
+    }
+
+    // optional float MagicOppose = 48 [default = 0];
+    if (has_magicoppose()) {
+      total_size += 2 + 4;
     }
 
   }
@@ -384,6 +1800,130 @@ void BaseAttrUserDataV1::MergeFrom(const BaseAttrUserDataV1& from) {
     if (from.has_roleid()) {
       set_roleid(from.roleid());
     }
+    if (from.has_strength()) {
+      set_strength(from.strength());
+    }
+    if (from.has_agility()) {
+      set_agility(from.agility());
+    }
+    if (from.has_intellectual()) {
+      set_intellectual(from.intellectual());
+    }
+    if (from.has_endurance()) {
+      set_endurance(from.endurance());
+    }
+  }
+  if (from._has_bits_[8 / 32] & (0xffu << (8 % 32))) {
+    if (from.has_spirit()) {
+      set_spirit(from.spirit());
+    }
+    if (from.has_hp()) {
+      set_hp(from.hp());
+    }
+    if (from.has_maxhp()) {
+      set_maxhp(from.maxhp());
+    }
+    if (from.has_physicattack()) {
+      set_physicattack(from.physicattack());
+    }
+    if (from.has_physicdefense()) {
+      set_physicdefense(from.physicdefense());
+    }
+    if (from.has_magicattack()) {
+      set_magicattack(from.magicattack());
+    }
+    if (from.has_magicdefense()) {
+      set_magicdefense(from.magicdefense());
+    }
+    if (from.has_hit()) {
+      set_hit(from.hit());
+    }
+  }
+  if (from._has_bits_[16 / 32] & (0xffu << (16 % 32))) {
+    if (from.has_hitrate()) {
+      set_hitrate(from.hitrate());
+    }
+    if (from.has_miss()) {
+      set_miss(from.miss());
+    }
+    if (from.has_missrate()) {
+      set_missrate(from.missrate());
+    }
+    if (from.has_critical()) {
+      set_critical(from.critical());
+    }
+    if (from.has_criticalrate()) {
+      set_criticalrate(from.criticalrate());
+    }
+    if (from.has_tenacity()) {
+      set_tenacity(from.tenacity());
+    }
+    if (from.has_tenacityrate()) {
+      set_tenacityrate(from.tenacityrate());
+    }
+    if (from.has_penet()) {
+      set_penet(from.penet());
+    }
+  }
+  if (from._has_bits_[24 / 32] & (0xffu << (24 % 32))) {
+    if (from.has_penetrate()) {
+      set_penetrate(from.penetrate());
+    }
+    if (from.has_dodg()) {
+      set_dodg(from.dodg());
+    }
+    if (from.has_dodgrate()) {
+      set_dodgrate(from.dodgrate());
+    }
+    if (from.has_criticaladdition()) {
+      set_criticaladdition(from.criticaladdition());
+    }
+    if (from.has_criticaladditionrate()) {
+      set_criticaladditionrate(from.criticaladditionrate());
+    }
+    if (from.has_criticalimmune()) {
+      set_criticalimmune(from.criticalimmune());
+    }
+    if (from.has_criticalimmunerate()) {
+      set_criticalimmunerate(from.criticalimmunerate());
+    }
+    if (from.has_misslevel()) {
+      set_misslevel(from.misslevel());
+    }
+  }
+  if (from._has_bits_[32 / 32] & (0xffu << (32 % 32))) {
+    if (from.has_criticallevel()) {
+      set_criticallevel(from.criticallevel());
+    }
+    if (from.has_dodglevel()) {
+      set_dodglevel(from.dodglevel());
+    }
+    if (from.has_movespeed()) {
+      set_movespeed(from.movespeed());
+    }
+    if (from.has_dizzystate()) {
+      set_dizzystate(from.dizzystate());
+    }
+    if (from.has_godstate()) {
+      set_godstate(from.godstate());
+    }
+    if (from.has_cantmovestate()) {
+      set_cantmovestate(from.cantmovestate());
+    }
+    if (from.has_physicaddition()) {
+      set_physicaddition(from.physicaddition());
+    }
+    if (from.has_magicaddition()) {
+      set_magicaddition(from.magicaddition());
+    }
+  }
+  if (from._has_bits_[40 / 32] & (0xffu << (40 % 32))) {
+    if (from.has_physicoppose()) {
+      set_physicoppose(from.physicoppose());
+    }
+    if (from.has_magicoppose()) {
+      set_magicoppose(from.magicoppose());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -411,7 +1951,46 @@ void BaseAttrUserDataV1::Swap(BaseAttrUserDataV1* other) {
     std::swap(level_, other->level_);
     std::swap(servertime_, other->servertime_);
     std::swap(roleid_, other->roleid_);
+    std::swap(strength_, other->strength_);
+    std::swap(agility_, other->agility_);
+    std::swap(intellectual_, other->intellectual_);
+    std::swap(endurance_, other->endurance_);
+    std::swap(spirit_, other->spirit_);
+    std::swap(hp_, other->hp_);
+    std::swap(maxhp_, other->maxhp_);
+    std::swap(physicattack_, other->physicattack_);
+    std::swap(physicdefense_, other->physicdefense_);
+    std::swap(magicattack_, other->magicattack_);
+    std::swap(magicdefense_, other->magicdefense_);
+    std::swap(hit_, other->hit_);
+    std::swap(hitrate_, other->hitrate_);
+    std::swap(miss_, other->miss_);
+    std::swap(missrate_, other->missrate_);
+    std::swap(critical_, other->critical_);
+    std::swap(criticalrate_, other->criticalrate_);
+    std::swap(tenacity_, other->tenacity_);
+    std::swap(tenacityrate_, other->tenacityrate_);
+    std::swap(penet_, other->penet_);
+    std::swap(penetrate_, other->penetrate_);
+    std::swap(dodg_, other->dodg_);
+    std::swap(dodgrate_, other->dodgrate_);
+    std::swap(criticaladdition_, other->criticaladdition_);
+    std::swap(criticaladditionrate_, other->criticaladditionrate_);
+    std::swap(criticalimmune_, other->criticalimmune_);
+    std::swap(criticalimmunerate_, other->criticalimmunerate_);
+    std::swap(misslevel_, other->misslevel_);
+    std::swap(criticallevel_, other->criticallevel_);
+    std::swap(dodglevel_, other->dodglevel_);
+    std::swap(movespeed_, other->movespeed_);
+    std::swap(dizzystate_, other->dizzystate_);
+    std::swap(godstate_, other->godstate_);
+    std::swap(cantmovestate_, other->cantmovestate_);
+    std::swap(physicaddition_, other->physicaddition_);
+    std::swap(magicaddition_, other->magicaddition_);
+    std::swap(physicoppose_, other->physicoppose_);
+    std::swap(magicoppose_, other->magicoppose_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
+    std::swap(_has_bits_[1], other->_has_bits_[1]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
   }

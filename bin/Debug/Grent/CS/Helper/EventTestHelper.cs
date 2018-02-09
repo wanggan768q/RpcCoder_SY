@@ -23,11 +23,13 @@ public class EventRpcStopMoveNotifyWraperHelper
 	public float Dir;
 }
 [System.Serializable]
-public class EventRpcBossDiedNotifyWraperHelper
+public class EventRpcObjAttrChangeNotifyWraperHelper
 {
-	public int SceneId;
+	public float Speed;
+	public Int64 Hp;
+	public int Status;
+	public int ConfigId;
 	public int ObjId;
-	public bool IsEndingBoss;
 }
 
 
@@ -36,7 +38,7 @@ public class EventTestHelper : MonoBehaviour
 {
 	public EventRpcMoveNotifyWraperHelper EventRpcMoveNotifyWraperVar;
 	public EventRpcStopMoveNotifyWraperHelper EventRpcStopMoveNotifyWraperVar;
-	public EventRpcBossDiedNotifyWraperHelper EventRpcBossDiedNotifyWraperVar;
+	public EventRpcObjAttrChangeNotifyWraperHelper EventRpcObjAttrChangeNotifyWraperVar;
 
 
 

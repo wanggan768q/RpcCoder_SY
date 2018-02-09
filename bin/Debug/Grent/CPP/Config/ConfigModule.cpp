@@ -1,4 +1,4 @@
-﻿/*gxb********************************************************************************************
+/*gxb********************************************************************************************
 * Copyright (C), 2011-2025, Ambition. Co., Ltd.
 * FileName:     ModuleConfig.cpp
 * Author:       郭晓波
@@ -22,21 +22,30 @@
 bool ModuleConfig::Initialize()
 {
 
+	AttributeFormatConfigTable::Instance().Load();
 	BaoShiTable::Instance().Load();
+	BuffConflictConfigTable::Instance().Load();
 	BuffTable::Instance().Load();
+	CameraConfigTable::Instance().Load();
+	CharacterConfigTable::Instance().Load();
 	CreateRoleTable::Instance().Load();
 	CreatureCombatBasicTable::Instance().Load();
 	CreatureCombatCoeTable::Instance().Load();
 	CreatureDummyTable::Instance().Load();
 	CreatureSpawnTable::Instance().Load();
+	CreatureTemperConfigTable::Instance().Load();
 	CreatureTable::Instance().Load();
 	DungeonTable::Instance().Load();
+	GlobalTable::Instance().Load();
 	ItemProtoTable::Instance().Load();
 	RoleTable::Instance().Load();
 	SceneTable::Instance().Load();
+	ServerListTable::Instance().Load();
+	ServerScriptTable::Instance().Load();
 	SkillTable::Instance().Load();
 	StringCreatureTable::Instance().Load();
 	StringUiTable::Instance().Load();
+	SummonMonsterTable::Instance().Load();
 	ValueTable::Instance().Load();
 	WayPointTable::Instance().Load();
 	

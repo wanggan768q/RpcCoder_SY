@@ -34,7 +34,7 @@ void protobuf_ShutdownFile_EventRpc_2eproto();
 
 class EventRpcMoveNotify;
 class EventRpcStopMoveNotify;
-class EventRpcBossDiedNotify;
+class EventRpcObjAttrChangeNotify;
 
 // ===================================================================
 
@@ -246,14 +246,14 @@ class EventRpcStopMoveNotify : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
-class EventRpcBossDiedNotify : public ::google::protobuf::Message {
+class EventRpcObjAttrChangeNotify : public ::google::protobuf::Message {
  public:
-  EventRpcBossDiedNotify();
-  virtual ~EventRpcBossDiedNotify();
+  EventRpcObjAttrChangeNotify();
+  virtual ~EventRpcObjAttrChangeNotify();
 
-  EventRpcBossDiedNotify(const EventRpcBossDiedNotify& from);
+  EventRpcObjAttrChangeNotify(const EventRpcObjAttrChangeNotify& from);
 
-  inline EventRpcBossDiedNotify& operator=(const EventRpcBossDiedNotify& from) {
+  inline EventRpcObjAttrChangeNotify& operator=(const EventRpcObjAttrChangeNotify& from) {
     CopyFrom(from);
     return *this;
   }
@@ -267,17 +267,17 @@ class EventRpcBossDiedNotify : public ::google::protobuf::Message {
   }
 
   static const ::google::protobuf::Descriptor* descriptor();
-  static const EventRpcBossDiedNotify& default_instance();
+  static const EventRpcObjAttrChangeNotify& default_instance();
 
-  void Swap(EventRpcBossDiedNotify* other);
+  void Swap(EventRpcObjAttrChangeNotify* other);
 
   // implements Message ----------------------------------------------
 
-  EventRpcBossDiedNotify* New() const;
+  EventRpcObjAttrChangeNotify* New() const;
   void CopyFrom(const ::google::protobuf::Message& from);
   void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const EventRpcBossDiedNotify& from);
-  void MergeFrom(const EventRpcBossDiedNotify& from);
+  void CopyFrom(const EventRpcObjAttrChangeNotify& from);
+  void MergeFrom(const EventRpcObjAttrChangeNotify& from);
   void Clear();
   bool IsInitialized() const;
 
@@ -300,51 +300,71 @@ class EventRpcBossDiedNotify : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 SceneId = 1 [default = -1];
-  inline bool has_sceneid() const;
-  inline void clear_sceneid();
-  static const int kSceneIdFieldNumber = 1;
-  inline ::google::protobuf::int32 sceneid() const;
-  inline void set_sceneid(::google::protobuf::int32 value);
+  // optional float Speed = 1 [default = -1];
+  inline bool has_speed() const;
+  inline void clear_speed();
+  static const int kSpeedFieldNumber = 1;
+  inline float speed() const;
+  inline void set_speed(float value);
 
-  // optional sint32 ObjId = 2 [default = -1];
+  // optional sint64 Hp = 2 [default = -1];
+  inline bool has_hp() const;
+  inline void clear_hp();
+  static const int kHpFieldNumber = 2;
+  inline ::google::protobuf::int64 hp() const;
+  inline void set_hp(::google::protobuf::int64 value);
+
+  // optional sint32 Status = 3 [default = -1];
+  inline bool has_status() const;
+  inline void clear_status();
+  static const int kStatusFieldNumber = 3;
+  inline ::google::protobuf::int32 status() const;
+  inline void set_status(::google::protobuf::int32 value);
+
+  // optional sint32 ConfigId = 4 [default = -1];
+  inline bool has_configid() const;
+  inline void clear_configid();
+  static const int kConfigIdFieldNumber = 4;
+  inline ::google::protobuf::int32 configid() const;
+  inline void set_configid(::google::protobuf::int32 value);
+
+  // optional sint32 ObjId = 5 [default = -1];
   inline bool has_objid() const;
   inline void clear_objid();
-  static const int kObjIdFieldNumber = 2;
+  static const int kObjIdFieldNumber = 5;
   inline ::google::protobuf::int32 objid() const;
   inline void set_objid(::google::protobuf::int32 value);
 
-  // optional bool IsEndingBoss = 3 [default = false];
-  inline bool has_isendingboss() const;
-  inline void clear_isendingboss();
-  static const int kIsEndingBossFieldNumber = 3;
-  inline bool isendingboss() const;
-  inline void set_isendingboss(bool value);
-
-  // @@protoc_insertion_point(class_scope:EventRpcBossDiedNotify)
+  // @@protoc_insertion_point(class_scope:EventRpcObjAttrChangeNotify)
  private:
-  inline void set_has_sceneid();
-  inline void clear_has_sceneid();
+  inline void set_has_speed();
+  inline void clear_has_speed();
+  inline void set_has_hp();
+  inline void clear_has_hp();
+  inline void set_has_status();
+  inline void clear_has_status();
+  inline void set_has_configid();
+  inline void clear_has_configid();
   inline void set_has_objid();
   inline void clear_has_objid();
-  inline void set_has_isendingboss();
-  inline void clear_has_isendingboss();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::int32 sceneid_;
+  ::google::protobuf::int64 hp_;
+  float speed_;
+  ::google::protobuf::int32 status_;
+  ::google::protobuf::int32 configid_;
   ::google::protobuf::int32 objid_;
-  bool isendingboss_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
 
   friend void  protobuf_AddDesc_EventRpc_2eproto();
   friend void protobuf_AssignDesc_EventRpc_2eproto();
   friend void protobuf_ShutdownFile_EventRpc_2eproto();
 
   void InitAsDefaultInstance();
-  static EventRpcBossDiedNotify* default_instance_;
+  static EventRpcObjAttrChangeNotify* default_instance_;
 };
 // ===================================================================
 
@@ -523,72 +543,116 @@ inline void EventRpcStopMoveNotify::set_dir(float value) {
 
 // -------------------------------------------------------------------
 
-// EventRpcBossDiedNotify
+// EventRpcObjAttrChangeNotify
 
-// optional sint32 SceneId = 1 [default = -1];
-inline bool EventRpcBossDiedNotify::has_sceneid() const {
+// optional float Speed = 1 [default = -1];
+inline bool EventRpcObjAttrChangeNotify::has_speed() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void EventRpcBossDiedNotify::set_has_sceneid() {
+inline void EventRpcObjAttrChangeNotify::set_has_speed() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void EventRpcBossDiedNotify::clear_has_sceneid() {
+inline void EventRpcObjAttrChangeNotify::clear_has_speed() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void EventRpcBossDiedNotify::clear_sceneid() {
-  sceneid_ = -1;
-  clear_has_sceneid();
+inline void EventRpcObjAttrChangeNotify::clear_speed() {
+  speed_ = -1;
+  clear_has_speed();
 }
-inline ::google::protobuf::int32 EventRpcBossDiedNotify::sceneid() const {
-  return sceneid_;
+inline float EventRpcObjAttrChangeNotify::speed() const {
+  return speed_;
 }
-inline void EventRpcBossDiedNotify::set_sceneid(::google::protobuf::int32 value) {
-  set_has_sceneid();
-  sceneid_ = value;
+inline void EventRpcObjAttrChangeNotify::set_speed(float value) {
+  set_has_speed();
+  speed_ = value;
 }
 
-// optional sint32 ObjId = 2 [default = -1];
-inline bool EventRpcBossDiedNotify::has_objid() const {
+// optional sint64 Hp = 2 [default = -1];
+inline bool EventRpcObjAttrChangeNotify::has_hp() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void EventRpcBossDiedNotify::set_has_objid() {
+inline void EventRpcObjAttrChangeNotify::set_has_hp() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void EventRpcBossDiedNotify::clear_has_objid() {
+inline void EventRpcObjAttrChangeNotify::clear_has_hp() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void EventRpcBossDiedNotify::clear_objid() {
+inline void EventRpcObjAttrChangeNotify::clear_hp() {
+  hp_ = GOOGLE_LONGLONG(-1);
+  clear_has_hp();
+}
+inline ::google::protobuf::int64 EventRpcObjAttrChangeNotify::hp() const {
+  return hp_;
+}
+inline void EventRpcObjAttrChangeNotify::set_hp(::google::protobuf::int64 value) {
+  set_has_hp();
+  hp_ = value;
+}
+
+// optional sint32 Status = 3 [default = -1];
+inline bool EventRpcObjAttrChangeNotify::has_status() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void EventRpcObjAttrChangeNotify::set_has_status() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void EventRpcObjAttrChangeNotify::clear_has_status() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void EventRpcObjAttrChangeNotify::clear_status() {
+  status_ = -1;
+  clear_has_status();
+}
+inline ::google::protobuf::int32 EventRpcObjAttrChangeNotify::status() const {
+  return status_;
+}
+inline void EventRpcObjAttrChangeNotify::set_status(::google::protobuf::int32 value) {
+  set_has_status();
+  status_ = value;
+}
+
+// optional sint32 ConfigId = 4 [default = -1];
+inline bool EventRpcObjAttrChangeNotify::has_configid() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void EventRpcObjAttrChangeNotify::set_has_configid() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void EventRpcObjAttrChangeNotify::clear_has_configid() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void EventRpcObjAttrChangeNotify::clear_configid() {
+  configid_ = -1;
+  clear_has_configid();
+}
+inline ::google::protobuf::int32 EventRpcObjAttrChangeNotify::configid() const {
+  return configid_;
+}
+inline void EventRpcObjAttrChangeNotify::set_configid(::google::protobuf::int32 value) {
+  set_has_configid();
+  configid_ = value;
+}
+
+// optional sint32 ObjId = 5 [default = -1];
+inline bool EventRpcObjAttrChangeNotify::has_objid() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void EventRpcObjAttrChangeNotify::set_has_objid() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void EventRpcObjAttrChangeNotify::clear_has_objid() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void EventRpcObjAttrChangeNotify::clear_objid() {
   objid_ = -1;
   clear_has_objid();
 }
-inline ::google::protobuf::int32 EventRpcBossDiedNotify::objid() const {
+inline ::google::protobuf::int32 EventRpcObjAttrChangeNotify::objid() const {
   return objid_;
 }
-inline void EventRpcBossDiedNotify::set_objid(::google::protobuf::int32 value) {
+inline void EventRpcObjAttrChangeNotify::set_objid(::google::protobuf::int32 value) {
   set_has_objid();
   objid_ = value;
-}
-
-// optional bool IsEndingBoss = 3 [default = false];
-inline bool EventRpcBossDiedNotify::has_isendingboss() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void EventRpcBossDiedNotify::set_has_isendingboss() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void EventRpcBossDiedNotify::clear_has_isendingboss() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void EventRpcBossDiedNotify::clear_isendingboss() {
-  isendingboss_ = false;
-  clear_has_isendingboss();
-}
-inline bool EventRpcBossDiedNotify::isendingboss() const {
-  return isendingboss_;
-}
-inline void EventRpcBossDiedNotify::set_isendingboss(bool value) {
-  set_has_isendingboss();
-  isendingboss_ = value;
 }
 
 

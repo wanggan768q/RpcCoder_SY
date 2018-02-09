@@ -7,19 +7,25 @@ NetTipController=require("./../util/NetTipController.coffee")
 
 Proto = null
 updateFieldCB = null
+RpcMoveCheckNotifyCB = null
+RpcMoveByPosNotifyCB = null
 
 
 ModuleId = 4
 RPC_CODE_MOVE_REQUEST = 451
 RPC_CODE_STOPMOVE_REQUEST = 452
-RPC_CODE_MOVEMENTVERIFICATION_REQUEST = 453
+RPC_CODE_MOVECHECK_NOTIFY = 453
+RPC_CODE_MOVEBYPOS_NOTIFY = 454
+RPC_CODE_RESPAWN_REQUEST = 455
 
 MoveAskPB = null
 MoveReplyPB = null
 StopMoveAskPB = null
 StopMoveReplyPB = null
-MovementVerificationAskPB = null
-MovementVerificationReplyPB = null
+MoveCheckNotifyPB = null
+MoveByPosNotifyPB = null
+RespawnAskPB = null
+RespawnReplyPB = null
 
 class HumanModel
   Initialize : () ->
@@ -54,18 +60,25 @@ class HumanModel
         optional V3 Pos = 2;
         optional float Dir = 3;
       }
-      message  RpcMovementVerificationAsk
+      message  RpcMoveCheckNotify
       {
-        optional float Dir = 1;
-        optional float X = 2;
-        optional float Z = 3;
+        optional sint32 ObjId = 1[default=-1];
+        optional float Dir = 3;
+        optional float X = 4;
+        optional float Y = 5;
       }
-      message  RpcMovementVerificationReply
+      message  RpcMoveByPosNotify
+      {
+        optional sint32 ObjId = 1[default=-1];
+        optional float TargetX = 2;
+        optional float TargetY = 3;
+      }
+      message  RpcRespawnAsk
+      {
+      }
+      message  RpcRespawnReply
       {
         optional sint32 Result = 1[default=-9999];
-        optional float Dir = 2;
-        optional float X = 3;
-        optional float Z = 4;
       }
     ")
     mLayerMgr.registerUpdate(ModuleId,@updateDataField)
@@ -73,8 +86,12 @@ class HumanModel
     MoveReplyPB = Proto.build("RpcMoveReply")
     StopMoveAskPB = Proto.build("RpcStopMoveAsk")
     StopMoveReplyPB = Proto.build("RpcStopMoveReply")
-    MovementVerificationAskPB = Proto.build("RpcMovementVerificationAsk")
-    MovementVerificationReplyPB = Proto.build("RpcMovementVerificationReply")
+    MoveCheckNotifyPB = Proto.build("RpcMoveCheckNotify")
+    mLayerMgr.registerNotify(RPC_CODE_MOVECHECK_NOTIFY,@MoveCheckCB)
+    MoveByPosNotifyPB = Proto.build("RpcMoveByPosNotify")
+    mLayerMgr.registerNotify(RPC_CODE_MOVEBYPOS_NOTIFY,@MoveByPosCB)
+    RespawnAskPB = Proto.build("RpcRespawnAsk")
+    RespawnReplyPB = Proto.build("RpcRespawnReply")
 
 
 
@@ -101,14 +118,18 @@ class HumanModel
       replyCB( StopMoveReplyPB.decode(data)) if typeof(replyCB) is "function"
     )
     NetTipController.showNetTip()
-  MovementVerification : (Dir,X,Z,replyCB) ->
-    MovementVerificationAsk = MovementVerificationAskPB.prototype
-    MovementVerificationAsk.setDir Dir
-    MovementVerificationAsk.setX X
-    MovementVerificationAsk.setZ Z
-    mLayerMgr.sendAsk(RPC_CODE_MOVEMENTVERIFICATION_REQUEST,MovementVerificationAsk, (data)->
+  MoveCheck : (ObjId,Dir,X,Y) ->
+    MoveCheckNotify = MoveCheckNotifyPB.prototype
+    MoveCheckNotify.setObjId ObjId
+    MoveCheckNotify.setDir Dir
+    MoveCheckNotify.setX X
+    MoveCheckNotify.setY Y
+    mLayerMgr.sendNotify(RPC_CODE_MOVECHECK_NOTIFY,MoveCheckNotify)
+  Respawn : (replyCB) ->
+    RespawnAsk = RespawnAskPB.prototype
+    mLayerMgr.sendAsk(RPC_CODE_RESPAWN_REQUEST,RespawnAsk, (data)->
       NetTipController.hideNetTip()
-      replyCB( MovementVerificationReplyPB.decode(data)) if typeof(replyCB) is "function"
+      replyCB( RespawnReplyPB.decode(data)) if typeof(replyCB) is "function"
     )
     NetTipController.showNetTip()
 
@@ -119,22 +140,32 @@ class HumanModel
 
 
   SetUpdateFieldCB : ( cb ) -> updateFieldCB = cb
+  SetMoveCheckNotifyCB : (cb) -> RpcMoveCheckNotifyCB = cb
+  MoveCheckCB : (data)->
+    RpcMoveCheckNotifyCB( MoveCheckNotifyPB.decode(data)) if typeof(RpcMoveCheckNotifyCB) is "function"
+  SetMoveByPosNotifyCB : (cb) -> RpcMoveByPosNotifyCB = cb
+  MoveByPosCB : (data)->
+    RpcMoveByPosNotifyCB( MoveByPosNotifyPB.decode(data)) if typeof(RpcMoveByPosNotifyCB) is "function"
 
 
   GetCoffeeInfo: ->
       'CoffeeName': "HumanModel",
       'AskName': ["Move",
                    "StopMove",
-                   "MovementVerification"]
+                   "MoveCheck",
+                   "Respawn"]
       'ParamterList': [["Dir","X","Z"],
                        ["Dir","X","Z"],
-                       ["Dir","X","Z"]]
+                       ["ObjId","Dir","X","Y"],
+                       []]
       'AskList':[@Move,
                  @StopMove,
-                 @MovementVerification]
+                 @MoveCheck,
+                 @Respawn]
       'ParamterTypelist': [["float","float","float"],
                        ["float","float","float"],
-                       ["float","float","float"]]
+                       ["sint32","float","float","float"],
+                       []]
 
 
 module.exports =(()->

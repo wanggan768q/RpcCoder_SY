@@ -79,34 +79,50 @@ namespace GenPB
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
   }
   
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"EventRpcBossDiedNotify")]
-  public partial class EventRpcBossDiedNotify : global::ProtoBuf.IExtensible
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"EventRpcObjAttrChangeNotify")]
+  public partial class EventRpcObjAttrChangeNotify : global::ProtoBuf.IExtensible
   {
-    public EventRpcBossDiedNotify() {}
+    public EventRpcObjAttrChangeNotify() {}
     
-    private int _SceneId = (int)-1;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"SceneId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-1)]
-    public int SceneId
+    private float _Speed = (float)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Speed", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)-1)]
+    public float Speed
     {
-      get { return _SceneId; }
-      set { _SceneId = value; }
+      get { return _Speed; }
+      set { _Speed = value; }
+    }
+    private long _Hp = (long)-1;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Hp", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::System.ComponentModel.DefaultValue((long)-1)]
+    public long Hp
+    {
+      get { return _Hp; }
+      set { _Hp = value; }
+    }
+    private int _Status = (int)-1;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"Status", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Status
+    {
+      get { return _Status; }
+      set { _Status = value; }
+    }
+    private int _ConfigId = (int)-1;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"ConfigId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int ConfigId
+    {
+      get { return _ConfigId; }
+      set { _ConfigId = value; }
     }
     private int _ObjId = (int)-1;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"ObjId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"ObjId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int ObjId
     {
       get { return _ObjId; }
       set { _ObjId = value; }
-    }
-    private bool _IsEndingBoss = (bool)false;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"IsEndingBoss", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue((bool)false)]
-    public bool IsEndingBoss
-    {
-      get { return _IsEndingBoss; }
-      set { _IsEndingBoss = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

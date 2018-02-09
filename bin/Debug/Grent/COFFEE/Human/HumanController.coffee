@@ -8,11 +8,17 @@ HumanController = cc.coffee.BaseControllerExtend.extend(
 
     ctor:(_model)->
         @_super(this, _model)
+        _model.SetMoveCheckNotifyCB(@MoveCheckCBNotify)
+        _model.SetMoveByPosNotifyCB(@MoveByPosCBNotify)
 
         return
 
 
 
+    MoveCheckCBNotify:(ret_msg)->
+        cc.log "MoveCheckCBNotify Respond "
+    MoveByPosCBNotify:(ret_msg)->
+        cc.log "MoveByPosCBNotify Respond "
 
 
 )

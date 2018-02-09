@@ -83,3 +83,15 @@ message  LoginRpcSelectSaveUserReply
 
 }
 
+message  LoginRpcDeleteCharacterAsk
+{
+	optional uint64 RoleId = 1[default=0];
+
+}
+
+message  LoginRpcDeleteCharacterReply
+{
+	optional sint32 Result = 1[default=-9999];
+
+}
+

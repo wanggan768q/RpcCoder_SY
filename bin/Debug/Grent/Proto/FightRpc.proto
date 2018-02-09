@@ -3,11 +3,105 @@ import "PublicStruct.proto";
 
 message  FightRpcUseSkillActionNotify
 {
+	optional sint32 ObjId = 8[default=-1];
+	optional sint32 ObjTargetId = 9[default=-1];
+	optional sint32 SkillId = 10[default=-1];
+	optional float CastingDir = 11[default=-1];
+	optional float X = 12[default=-1];
+	optional float Y = 13[default=-1];
+	optional float Z = 14[default=-1];
+	optional sint32 MomentIndex = 15[default=-1];
+
+}
+
+message  FightRpcShowExpActionNotify
+{
+	optional sint32 ObjId = 1[default=-1];
+	optional sint32 Value = 2[default=-1];
+
+}
+
+message  FightRpcBuffActionNotify
+{
+	optional sint32 ObjId = 1[default=-1];
+	optional sint32 TargetId = 2[default=-1];
+	optional sint32 OpType = 3[default=-1];
+	optional sint32 BufId = 4[default=-1];
+	optional sint32 RemainTime = 5[default=-1];
+	optional sint32 BuffLv = 6[default=-1];
+	optional sint32 Sn = 7[default=-1];
+
+}
+
+message  FightRpcStateActionNotify
+{
+	optional sint32 ObjId = 1[default=-1];
+	optional sint32 Type = 2[default=-1];
+	optional V3 Pos = 3;
+	optional sint32 TargetPos = 4[default=-1];
+
+}
+
+message  FightRpcReviveActionNotify
+{
+	optional sint32 ObjId = 1[default=-1];
+	optional V3 Pos = 2;
+	optional sint32 CurHp = 3[default=-1];
+
+}
+
+message  FightRpcComboSkillActionNotify
+{
+	optional sint32 ObjId = 1[default=-1];
+	optional sint32 SkillId = 2[default=-1];
+
+}
+
+message  FightRpcDropActionNotify
+{
+
+}
+
+message  FightRpcUseItemActionNotify
+{
+
+}
+
+message  FightRpcHpChangeActionNotify
+{
+	optional sint32 ObjId = 1[default=-1];
+	optional sint32 CurHp = 2[default=-1];
+	optional sint32 MaxHp = 3[default=-1];
+
+}
+
+message  FightRpcUseSkillAsk
+{
 	optional sint32 ObjTargetId = 1[default=-1];
 	optional sint32 SkillId = 2[default=-1];
-	optional sint32 X = 3[default=-1];
-	optional sint32 Y = 4[default=-1];
-	optional sint32 Dir = 5[default=-1];
+	optional float CastingDir = 3[default=-1];
+	optional float X = 4[default=-1];
+	optional float Y = 5[default=-1];
+	optional float Z = 6[default=-1];
+	optional sint32 MomentIndex = 7[default=-1];
+
+}
+
+message  FightRpcUseSkillReply
+{
+	optional sint32 Result = 1[default=-9999];
+
+}
+
+message  FightRpcHurtActionNotify
+{
+	optional sint32 ObjId = 1[default=-1];
+	optional sint32 SegmentIndex = 2[default=-1];
+	optional sint32 SkillId = 3[default=-1];
+	optional sint32 TargetObjId = 4[default=-1];
+	optional sint32 HurtValue = 5[default=0];
+	optional bool IsCritical = 6[default=false];
+	optional sint32 Energy = 7[default=-1];
 
 }
 

@@ -1,4 +1,4 @@
-﻿#ifndef __DUNGEON_CONFIG_H
+#ifndef __DUNGEON_CONFIG_H
 #define __DUNGEON_CONFIG_H
 
 #include "CommonDefine.h"
@@ -22,7 +22,7 @@ struct DungeonElement
 	int id;                      	//序号	序号
 	string comment;              	//	
 	int map_id;                  	//场景ID	
-	int dungeon_type;            	//副本类型	0：野外 1：副本 2：竞技场
+	int dungeon_type;            	//副本类型	0：野外 1：5人副本 2：竞技场 3：团队本 4：战场
 	int difficult;               	//难度	
 	int required_num;            	//所需玩家数量	
 	int required_last_dungeon_id;	//所需前置副本ID	
@@ -41,6 +41,7 @@ struct DungeonElement
 	int conclusion_time;         	//副本结算时间	
 	int start_time;              	//副本开启时间	
 	int end_time;                	//副本关闭时间	
+	int exit_waypoint;           	//退出副本后的路点	
 
 private:
 	bool m_bIsValidate;
@@ -67,7 +68,8 @@ class DungeonTable
 private:
 	DungeonTable(){}
 	~DungeonTable(){}
-	unordered_map<int, DungeonElement>	m_mapElements;
+	typedef unordered_map<int, DungeonElement> MapElementMap;
+	MapElementMap	m_mapElements;
 	vector<DungeonElement>	m_vecAllElements;
 	DungeonElement m_emptyItem;
 public:
@@ -79,16 +81,13 @@ public:
 
 	const DungeonElement* GetElement(int key)
 	{
-		if( m_mapElements.count(key)>0 )
-			return &m_mapElements[key];
-		if (m_mapElements.count(key) > 0)
+		MapElementMap::iterator it = m_mapElements.find(key);
+		if (it == m_mapElements.end())
 		{
-			DungeonElement* temp = &m_mapElements[key];
-			AssertEx(temp, std::string(std::string("DungeonTable: ") + std::to_string(key)).c_str());
-			return temp;
+			AssertEx(false, std::string(std::string("DungeonTable: ") + std::to_string(key)).c_str());
+			return NULL;
 		}
-		AssertEx(false, std::string(std::string("DungeonTable: ") + std::to_string(key)).c_str());
-		return NULL;
+		return &it->second;
 	}
 
 	bool HasElement(int key)
@@ -166,6 +165,7 @@ public:
 			member.conclusion_time=p.get<int>("conclusion_time");
 			member.start_time=p.get<int>("start_time");
 			member.end_time=p.get<int>("end_time");
+			member.exit_waypoint=p.get<int>("exit_waypoint");
 
 
 			member.SetIsValidate(true);
@@ -182,41 +182,42 @@ public:
 		int contentOffset = 0;
 		vector<string> vecLine;
 		vecLine = ReadCsvLine( strContent, contentOffset );
-		if(vecLine.size() != 22)
+		if(vecLine.size() != 23)
 		{
 			printf_message("Dungeon.csv中列数量与生成的代码不匹配!");
 			assert(false);
 			return false;
 		}
-		if(vecLine[0]!="id"){printf_message("Dungeon.csv中字段[id]位置不对应");assert(false); return false; }
-		if(vecLine[1]!="comment"){printf_message("Dungeon.csv中字段[comment]位置不对应");assert(false); return false; }
-		if(vecLine[2]!="map_id"){printf_message("Dungeon.csv中字段[map_id]位置不对应");assert(false); return false; }
-		if(vecLine[3]!="dungeon_type"){printf_message("Dungeon.csv中字段[dungeon_type]位置不对应");assert(false); return false; }
-		if(vecLine[4]!="difficult"){printf_message("Dungeon.csv中字段[difficult]位置不对应");assert(false); return false; }
-		if(vecLine[5]!="required_num"){printf_message("Dungeon.csv中字段[required_num]位置不对应");assert(false); return false; }
-		if(vecLine[6]!="required_last_dungeon_id"){printf_message("Dungeon.csv中字段[required_last_dungeon_id]位置不对应");assert(false); return false; }
-		if(vecLine[7]!="reset_type"){printf_message("Dungeon.csv中字段[reset_type]位置不对应");assert(false); return false; }
-		if(vecLine[8]!="finish_amount"){printf_message("Dungeon.csv中字段[finish_amount]位置不对应");assert(false); return false; }
-		if(vecLine[9]!="name_id"){printf_message("Dungeon.csv中字段[name_id]位置不对应");assert(false); return false; }
-		if(vecLine[10]!="describle_id"){printf_message("Dungeon.csv中字段[describle_id]位置不对应");assert(false); return false; }
-		if(vecLine[11]!="reward_boss_ui"){printf_message("Dungeon.csv中字段[reward_boss_ui]位置不对应");assert(false); return false; }
-		if(vecLine[12]!="First_reward_ui"){printf_message("Dungeon.csv中字段[First_reward_ui]位置不对应");assert(false); return false; }
-		if(vecLine[13]!="general_reward__ui"){printf_message("Dungeon.csv中字段[general_reward__ui]位置不对应");assert(false); return false; }
-		if(vecLine[14]!="is_transfer"){printf_message("Dungeon.csv中字段[is_transfer]位置不对应");assert(false); return false; }
-		if(vecLine[15]!="start_music"){printf_message("Dungeon.csv中字段[start_music]位置不对应");assert(false); return false; }
-		if(vecLine[16]!="loop_music"){printf_message("Dungeon.csv中字段[loop_music]位置不对应");assert(false); return false; }
-		if(vecLine[17]!="endingboss_id"){printf_message("Dungeon.csv中字段[endingboss_id]位置不对应");assert(false); return false; }
-		if(vecLine[18]!="duration_time"){printf_message("Dungeon.csv中字段[duration_time]位置不对应");assert(false); return false; }
-		if(vecLine[19]!="conclusion_time"){printf_message("Dungeon.csv中字段[conclusion_time]位置不对应");assert(false); return false; }
-		if(vecLine[20]!="start_time"){printf_message("Dungeon.csv中字段[start_time]位置不对应");assert(false); return false; }
-		if(vecLine[21]!="end_time"){printf_message("Dungeon.csv中字段[end_time]位置不对应");assert(false); return false; }
+		if(vecLine[0]!="id"){printf_message("Dungeon.csv中字段[id]位置不对应 ");assert(false); return false; }
+		if(vecLine[1]!="comment"){printf_message("Dungeon.csv中字段[comment]位置不对应 ");assert(false); return false; }
+		if(vecLine[2]!="map_id"){printf_message("Dungeon.csv中字段[map_id]位置不对应 ");assert(false); return false; }
+		if(vecLine[3]!="dungeon_type"){printf_message("Dungeon.csv中字段[dungeon_type]位置不对应 ");assert(false); return false; }
+		if(vecLine[4]!="difficult"){printf_message("Dungeon.csv中字段[difficult]位置不对应 ");assert(false); return false; }
+		if(vecLine[5]!="required_num"){printf_message("Dungeon.csv中字段[required_num]位置不对应 ");assert(false); return false; }
+		if(vecLine[6]!="required_last_dungeon_id"){printf_message("Dungeon.csv中字段[required_last_dungeon_id]位置不对应 ");assert(false); return false; }
+		if(vecLine[7]!="reset_type"){printf_message("Dungeon.csv中字段[reset_type]位置不对应 ");assert(false); return false; }
+		if(vecLine[8]!="finish_amount"){printf_message("Dungeon.csv中字段[finish_amount]位置不对应 ");assert(false); return false; }
+		if(vecLine[9]!="name_id"){printf_message("Dungeon.csv中字段[name_id]位置不对应 ");assert(false); return false; }
+		if(vecLine[10]!="describle_id"){printf_message("Dungeon.csv中字段[describle_id]位置不对应 ");assert(false); return false; }
+		if(vecLine[11]!="reward_boss_ui"){printf_message("Dungeon.csv中字段[reward_boss_ui]位置不对应 ");assert(false); return false; }
+		if(vecLine[12]!="First_reward_ui"){printf_message("Dungeon.csv中字段[First_reward_ui]位置不对应 ");assert(false); return false; }
+		if(vecLine[13]!="general_reward__ui"){printf_message("Dungeon.csv中字段[general_reward__ui]位置不对应 ");assert(false); return false; }
+		if(vecLine[14]!="is_transfer"){printf_message("Dungeon.csv中字段[is_transfer]位置不对应 ");assert(false); return false; }
+		if(vecLine[15]!="start_music"){printf_message("Dungeon.csv中字段[start_music]位置不对应 ");assert(false); return false; }
+		if(vecLine[16]!="loop_music"){printf_message("Dungeon.csv中字段[loop_music]位置不对应 ");assert(false); return false; }
+		if(vecLine[17]!="endingboss_id"){printf_message("Dungeon.csv中字段[endingboss_id]位置不对应 ");assert(false); return false; }
+		if(vecLine[18]!="duration_time"){printf_message("Dungeon.csv中字段[duration_time]位置不对应 ");assert(false); return false; }
+		if(vecLine[19]!="conclusion_time"){printf_message("Dungeon.csv中字段[conclusion_time]位置不对应 ");assert(false); return false; }
+		if(vecLine[20]!="start_time"){printf_message("Dungeon.csv中字段[start_time]位置不对应 ");assert(false); return false; }
+		if(vecLine[21]!="end_time"){printf_message("Dungeon.csv中字段[end_time]位置不对应 ");assert(false); return false; }
+		if(vecLine[22]!="exit_waypoint"){printf_message("Dungeon.csv中字段[exit_waypoint]位置不对应 ");assert(false); return false; }
 
 		while(true)
 		{
 			vecLine = ReadCsvLine( strContent, contentOffset );
 			if((int)vecLine.size() == 0 )
 				break;
-			if((int)vecLine.size() != (int)22)
+			if((int)vecLine.size() != (int)23)
 			{
 				assert(false);
 				return false;
@@ -244,6 +245,7 @@ public:
 			member.conclusion_time=(int)atoi(vecLine[19].c_str());
 			member.start_time=(int)atoi(vecLine[20].c_str());
 			member.end_time=(int)atoi(vecLine[21].c_str());
+			member.exit_waypoint=(int)atoi(vecLine[22].c_str());
 
 			member.SetIsValidate(true);
 			m_mapElements[member.id] = member;

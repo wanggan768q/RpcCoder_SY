@@ -12,12 +12,18 @@ using System.Collections.Generic;
 public class BaseAttrRpcSyncDataAskWraperHelper
 {
 }
+[System.Serializable]
+public class BaseAttrRpcSyncNotifyWraperHelper
+{
+	public byte[] UpdateData;
+}
 
 
 
 public class BaseAttrTestHelper : MonoBehaviour
 {
 	public BaseAttrRpcSyncDataAskWraperHelper BaseAttrRpcSyncDataAskWraperVar;
+	public BaseAttrRpcSyncNotifyWraperHelper BaseAttrRpcSyncNotifyWraperVar;
 
 
 	public void TestSyncData()

@@ -1,4 +1,4 @@
-﻿/********************************************************************************************
+/********************************************************************************************
 * Copyright (C), 2011-2025, Ambition. Co., Ltd.
 * FileName:     ModuleScene.h
 * Author:       郭晓波
@@ -43,12 +43,16 @@ public:
 	enum ConstSceneE
 	{
 	MODULE_ID_SCENE                              = 3,	//场景模块模块ID
-	RPC_CODE_SCENE_ENTERSCENE_REQUEST            = 351,	//场景模块-->进入场景-->请求
-	RPC_CODE_SCENE_LOADSCENECOMPLETE_REQUEST     = 352,	//场景模块-->进入场景完成-->请求
-	RPC_CODE_SCENE_DELETEPLAYER_NOTIFY           = 353,	//场景模块-->玩家离开视野-->通知
-	RPC_CODE_SCENE_CONNECTGAMESERVER_REQUEST     = 354,	//场景模块-->连接场景服务器-->请求
-	RPC_CODE_SCENE_CHANGESCENE_REQUEST           = 355,	//场景模块-->多线程移除场景上的玩家-->请求
-	RPC_CODE_SCENE_NEWOBJ_NOTIFY                 = 356,	//场景模块-->新物体-->通知
+	RPC_CODE_SCENE_LOADSCENECOMPLETE_REQUEST     = 351,	//场景模块-->进入场景完成-->请求
+	RPC_CODE_SCENE_DELETEPLAYER_NOTIFY           = 352,	//场景模块-->玩家离开视野-->通知
+	RPC_CODE_SCENE_CONNECTGAMESERVER_REQUEST     = 353,	//场景模块-->连接场景服务器-->请求
+	RPC_CODE_SCENE_CHANGESCENE_REQUEST           = 354,	//场景模块-->多线程移除场景上的玩家-->请求
+	RPC_CODE_SCENE_CREATEOBJ_NOTIFY              = 355,	//场景模块-->创建物体-->通知
+	RPC_CODE_SCENE_SURROUNDINGHUMAN_REQUEST      = 356,	//场景模块-->SurroundingHuman-->请求
+	RPC_CODE_SCENE_CENTERSCENE_NOTIFY            = 357,	//场景模块-->进入场景-->通知
+	RPC_CODE_SCENE_SENTERSCENE_NOTIFY            = 358,	//场景模块-->进入场景返回-->通知
+	RPC_CODE_SCENE_OBJDIE_NOTIFY                 = 359,	//场景模块-->ObjDie-->通知
+	RPC_CODE_SCENE_COLLIDE_CHANGESCENE_REQUEST   = 360,	//场景模块-->collide 场景切换-->请求
 
 	};
 
@@ -56,14 +60,18 @@ public:
 	//场景模块实现类构造函数
 	ModuleScene()
 	{
-	g_pPacketMgr->registerHandle(	RPC_CODE_SCENE_ENTERSCENE_REQUEST, &ModuleScene::RpcEnterScene);
-	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_SCENE_ENTERSCENE_REQUEST, new Some_Factory<SceneRpcEnterSceneAsk>());
 	g_pPacketMgr->registerHandle(	RPC_CODE_SCENE_LOADSCENECOMPLETE_REQUEST, &ModuleScene::RpcLoadSceneComplete);
 	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_SCENE_LOADSCENECOMPLETE_REQUEST, new Some_Factory<SceneRpcLoadSceneCompleteAsk>());
 	g_pPacketMgr->registerHandle(	RPC_CODE_SCENE_CONNECTGAMESERVER_REQUEST, &ModuleScene::RpcConnectGameServer);
 	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_SCENE_CONNECTGAMESERVER_REQUEST, new Some_Factory<SceneRpcConnectGameServerAsk>());
 	g_pPacketMgr->registerHandle(	RPC_CODE_SCENE_CHANGESCENE_REQUEST, &ModuleScene::RpcChangeScene);
 	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_SCENE_CHANGESCENE_REQUEST, new Some_Factory<SceneRpcChangeSceneAsk>());
+	g_pPacketMgr->registerHandle(	RPC_CODE_SCENE_SURROUNDINGHUMAN_REQUEST, &ModuleScene::RpcSurroundingHuman);
+	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_SCENE_SURROUNDINGHUMAN_REQUEST, new Some_Factory<SceneRpcSurroundingHumanAsk>());
+	g_pPacketMgr->registerHandle(	RPC_CODE_SCENE_CENTERSCENE_NOTIFY, &ModuleScene::RpcCEnterScene);
+	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_SCENE_CENTERSCENE_NOTIFY, new Some_Factory<SceneRpcCEnterSceneNotify>());
+	g_pPacketMgr->registerHandle(	RPC_CODE_SCENE_COLLIDE_CHANGESCENE_REQUEST, &ModuleScene::RpcCollide_ChangeScene);
+	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_SCENE_COLLIDE_CHANGESCENE_REQUEST, new Some_Factory<SceneRpcCollide_ChangeSceneAsk>());
 
 	}
 	
@@ -71,19 +79,15 @@ public:
 	~ModuleScene(){}
 
 
+	static ModuleScene Instance()
+	{
+		static ModuleScene sInstance;
+		return sInstance;
+	}
 	
+	bool Initialize();
 
 public:
-	/********************************************************************************************
-	* Function:       RpcEnterScene
-	* Description:    场景模块-->进入场景同步调用操作函数
-	* Input:          SceneRpcEnterSceneAskWraper& Ask 进入场景请求
-	* Output:         SceneRpcEnterSceneReplyWraper& Reply 进入场景回应
-	* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
-	*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
-	********************************************************************************************/
-	static int RpcEnterScene( CPlayer* pPlayer, CPacket* pPacket );
-
 	/********************************************************************************************
 	* Function:       RpcLoadSceneComplete
 	* Description:    场景模块-->进入场景完成同步调用操作函数
@@ -125,14 +129,64 @@ public:
 	static int RpcChangeScene( CPlayer* pPlayer, CPacket* pPacket );
 
 	/********************************************************************************************
-	* Function:       SendToClientNewObj
-	* Description:    场景模块-->新物体异步通知操作函数
-	* Input:          SceneRpcNewObjNotifyWraper& Notify 新物体通知
+	* Function:       SendToClientCreateObj
+	* Description:    场景模块-->创建物体异步通知操作函数
+	* Input:          SceneRpcCreateObjNotifyWraper& Notify 创建物体通知
 	* Input:          INT64 UserId 需要通知到的用户ID
 	* Output:         无
 	* Return:         无
 	********************************************************************************************/
-	//virtual void SendToClientNewObj( INT64 UserId, SceneRpcNewObjNotifyWraper& Notify );
+	//virtual void SendToClientCreateObj( INT64 UserId, SceneRpcCreateObjNotifyWraper& Notify );
+
+	/********************************************************************************************
+	* Function:       RpcSurroundingHuman
+	* Description:    场景模块-->SurroundingHuman同步调用操作函数
+	* Input:          SceneRpcSurroundingHumanAskWraper& Ask SurroundingHuman请求
+	* Output:         SceneRpcSurroundingHumanReplyWraper& Reply SurroundingHuman回应
+	* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+	*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+	********************************************************************************************/
+	static int RpcSurroundingHuman( CPlayer* pPlayer, CPacket* pPacket );
+
+	/********************************************************************************************
+	* Function:       RpcCEnterScene
+	* Description:    场景模块-->进入场景异步通知操作函数
+	* Input:          SceneRpcCEnterSceneNotifyWraper& Notify 进入场景通知
+	* Output:         无
+	* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+	*                     低16位无效
+	********************************************************************************************/
+	static int RpcCEnterScene(  CPlayer* pPlayer, CPacket* pPacket );
+
+	/********************************************************************************************
+	* Function:       SendToClientSEnterScene
+	* Description:    场景模块-->进入场景返回异步通知操作函数
+	* Input:          SceneRpcSEnterSceneNotifyWraper& Notify 进入场景返回通知
+	* Input:          INT64 UserId 需要通知到的用户ID
+	* Output:         无
+	* Return:         无
+	********************************************************************************************/
+	//virtual void SendToClientSEnterScene( INT64 UserId, SceneRpcSEnterSceneNotifyWraper& Notify );
+
+	/********************************************************************************************
+	* Function:       SendToClientObjDie
+	* Description:    场景模块-->ObjDie异步通知操作函数
+	* Input:          SceneRpcObjDieNotifyWraper& Notify ObjDie通知
+	* Input:          INT64 UserId 需要通知到的用户ID
+	* Output:         无
+	* Return:         无
+	********************************************************************************************/
+	//virtual void SendToClientObjDie( INT64 UserId, SceneRpcObjDieNotifyWraper& Notify );
+
+	/********************************************************************************************
+	* Function:       RpcCollide_ChangeScene
+	* Description:    场景模块-->collide 场景切换同步调用操作函数
+	* Input:          SceneRpcCollide_ChangeSceneAskWraper& Ask collide请求
+	* Output:         SceneRpcCollide_ChangeSceneReplyWraper& Reply collide回应
+	* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+	*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+	********************************************************************************************/
+	static int RpcCollide_ChangeScene( CPlayer* pPlayer, CPacket* pPacket );
 
 
 

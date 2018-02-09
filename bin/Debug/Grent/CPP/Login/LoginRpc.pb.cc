@@ -54,6 +54,12 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* LoginRpcSelectSaveUserReply_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   LoginRpcSelectSaveUserReply_reflection_ = NULL;
+const ::google::protobuf::Descriptor* LoginRpcDeleteCharacterAsk_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  LoginRpcDeleteCharacterAsk_reflection_ = NULL;
+const ::google::protobuf::Descriptor* LoginRpcDeleteCharacterReply_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  LoginRpcDeleteCharacterReply_reflection_ = NULL;
 
 }  // namespace
 
@@ -254,6 +260,36 @@ void protobuf_AssignDesc_LoginRpc_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(LoginRpcSelectSaveUserReply));
+  LoginRpcDeleteCharacterAsk_descriptor_ = file->message_type(12);
+  static const int LoginRpcDeleteCharacterAsk_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcDeleteCharacterAsk, roleid_),
+  };
+  LoginRpcDeleteCharacterAsk_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      LoginRpcDeleteCharacterAsk_descriptor_,
+      LoginRpcDeleteCharacterAsk::default_instance_,
+      LoginRpcDeleteCharacterAsk_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcDeleteCharacterAsk, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcDeleteCharacterAsk, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(LoginRpcDeleteCharacterAsk));
+  LoginRpcDeleteCharacterReply_descriptor_ = file->message_type(13);
+  static const int LoginRpcDeleteCharacterReply_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcDeleteCharacterReply, result_),
+  };
+  LoginRpcDeleteCharacterReply_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      LoginRpcDeleteCharacterReply_descriptor_,
+      LoginRpcDeleteCharacterReply::default_instance_,
+      LoginRpcDeleteCharacterReply_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcDeleteCharacterReply, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcDeleteCharacterReply, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(LoginRpcDeleteCharacterReply));
 }
 
 namespace {
@@ -290,6 +326,10 @@ void protobuf_RegisterTypes(const ::std::string&) {
     LoginRpcSelectSaveUserAsk_descriptor_, &LoginRpcSelectSaveUserAsk::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     LoginRpcSelectSaveUserReply_descriptor_, &LoginRpcSelectSaveUserReply::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    LoginRpcDeleteCharacterAsk_descriptor_, &LoginRpcDeleteCharacterAsk::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    LoginRpcDeleteCharacterReply_descriptor_, &LoginRpcDeleteCharacterReply::default_instance());
 }
 
 }  // namespace
@@ -319,6 +359,10 @@ void protobuf_ShutdownFile_LoginRpc_2eproto() {
   delete LoginRpcSelectSaveUserAsk_reflection_;
   delete LoginRpcSelectSaveUserReply::default_instance_;
   delete LoginRpcSelectSaveUserReply_reflection_;
+  delete LoginRpcDeleteCharacterAsk::default_instance_;
+  delete LoginRpcDeleteCharacterAsk_reflection_;
+  delete LoginRpcDeleteCharacterReply::default_instance_;
+  delete LoginRpcDeleteCharacterReply_reflection_;
 }
 
 void protobuf_AddDesc_LoginRpc_2eproto() {
@@ -349,7 +393,10 @@ void protobuf_AddDesc_LoginRpc_2eproto() {
     "ly\022\025\n\006Result\030\001 \001(\021:\005-9999\022\021\n\006RoleId\030\002 \001("
     "\004:\0010\".\n\031LoginRpcSelectSaveUserAsk\022\021\n\006Rol"
     "eId\030\001 \001(\004:\0010\"4\n\033LoginRpcSelectSaveUserRe"
-    "ply\022\025\n\006Result\030\001 \001(\021:\005-9999", 826);
+    "ply\022\025\n\006Result\030\001 \001(\021:\005-9999\"/\n\032LoginRpcDe"
+    "leteCharacterAsk\022\021\n\006RoleId\030\001 \001(\004:\0010\"5\n\034L"
+    "oginRpcDeleteCharacterReply\022\025\n\006Result\030\001 "
+    "\001(\021:\005-9999", 930);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "LoginRpc.proto", &protobuf_RegisterTypes);
   LoginRpcConnectAsk::default_instance_ = new LoginRpcConnectAsk();
@@ -364,6 +411,8 @@ void protobuf_AddDesc_LoginRpc_2eproto() {
   LoginRpcCreateCharacterReply::default_instance_ = new LoginRpcCreateCharacterReply();
   LoginRpcSelectSaveUserAsk::default_instance_ = new LoginRpcSelectSaveUserAsk();
   LoginRpcSelectSaveUserReply::default_instance_ = new LoginRpcSelectSaveUserReply();
+  LoginRpcDeleteCharacterAsk::default_instance_ = new LoginRpcDeleteCharacterAsk();
+  LoginRpcDeleteCharacterReply::default_instance_ = new LoginRpcDeleteCharacterReply();
   LoginRpcConnectAsk::default_instance_->InitAsDefaultInstance();
   LoginRpcConnectReply::default_instance_->InitAsDefaultInstance();
   LoginRpcLoginAsk::default_instance_->InitAsDefaultInstance();
@@ -376,6 +425,8 @@ void protobuf_AddDesc_LoginRpc_2eproto() {
   LoginRpcCreateCharacterReply::default_instance_->InitAsDefaultInstance();
   LoginRpcSelectSaveUserAsk::default_instance_->InitAsDefaultInstance();
   LoginRpcSelectSaveUserReply::default_instance_->InitAsDefaultInstance();
+  LoginRpcDeleteCharacterAsk::default_instance_->InitAsDefaultInstance();
+  LoginRpcDeleteCharacterReply::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_LoginRpc_2eproto);
 }
 
@@ -3363,6 +3414,422 @@ void LoginRpcSelectSaveUserReply::Swap(LoginRpcSelectSaveUserReply* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = LoginRpcSelectSaveUserReply_descriptor_;
   metadata.reflection = LoginRpcSelectSaveUserReply_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int LoginRpcDeleteCharacterAsk::kRoleIdFieldNumber;
+#endif  // !_MSC_VER
+
+LoginRpcDeleteCharacterAsk::LoginRpcDeleteCharacterAsk()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void LoginRpcDeleteCharacterAsk::InitAsDefaultInstance() {
+}
+
+LoginRpcDeleteCharacterAsk::LoginRpcDeleteCharacterAsk(const LoginRpcDeleteCharacterAsk& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void LoginRpcDeleteCharacterAsk::SharedCtor() {
+  _cached_size_ = 0;
+  roleid_ = GOOGLE_ULONGLONG(0);
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+LoginRpcDeleteCharacterAsk::~LoginRpcDeleteCharacterAsk() {
+  SharedDtor();
+}
+
+void LoginRpcDeleteCharacterAsk::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void LoginRpcDeleteCharacterAsk::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* LoginRpcDeleteCharacterAsk::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return LoginRpcDeleteCharacterAsk_descriptor_;
+}
+
+const LoginRpcDeleteCharacterAsk& LoginRpcDeleteCharacterAsk::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_LoginRpc_2eproto();
+  return *default_instance_;
+}
+
+LoginRpcDeleteCharacterAsk* LoginRpcDeleteCharacterAsk::default_instance_ = NULL;
+
+LoginRpcDeleteCharacterAsk* LoginRpcDeleteCharacterAsk::New() const {
+  return new LoginRpcDeleteCharacterAsk;
+}
+
+void LoginRpcDeleteCharacterAsk::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    roleid_ = GOOGLE_ULONGLONG(0);
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool LoginRpcDeleteCharacterAsk::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint64 RoleId = 1 [default = 0];
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &roleid_)));
+          set_has_roleid();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void LoginRpcDeleteCharacterAsk::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional uint64 RoleId = 1 [default = 0];
+  if (has_roleid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->roleid(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* LoginRpcDeleteCharacterAsk::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional uint64 RoleId = 1 [default = 0];
+  if (has_roleid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->roleid(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int LoginRpcDeleteCharacterAsk::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional uint64 RoleId = 1 [default = 0];
+    if (has_roleid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt64Size(
+          this->roleid());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void LoginRpcDeleteCharacterAsk::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const LoginRpcDeleteCharacterAsk* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const LoginRpcDeleteCharacterAsk*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void LoginRpcDeleteCharacterAsk::MergeFrom(const LoginRpcDeleteCharacterAsk& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_roleid()) {
+      set_roleid(from.roleid());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void LoginRpcDeleteCharacterAsk::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void LoginRpcDeleteCharacterAsk::CopyFrom(const LoginRpcDeleteCharacterAsk& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool LoginRpcDeleteCharacterAsk::IsInitialized() const {
+
+  return true;
+}
+
+void LoginRpcDeleteCharacterAsk::Swap(LoginRpcDeleteCharacterAsk* other) {
+  if (other != this) {
+    std::swap(roleid_, other->roleid_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata LoginRpcDeleteCharacterAsk::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = LoginRpcDeleteCharacterAsk_descriptor_;
+  metadata.reflection = LoginRpcDeleteCharacterAsk_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int LoginRpcDeleteCharacterReply::kResultFieldNumber;
+#endif  // !_MSC_VER
+
+LoginRpcDeleteCharacterReply::LoginRpcDeleteCharacterReply()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void LoginRpcDeleteCharacterReply::InitAsDefaultInstance() {
+}
+
+LoginRpcDeleteCharacterReply::LoginRpcDeleteCharacterReply(const LoginRpcDeleteCharacterReply& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void LoginRpcDeleteCharacterReply::SharedCtor() {
+  _cached_size_ = 0;
+  result_ = -9999;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+LoginRpcDeleteCharacterReply::~LoginRpcDeleteCharacterReply() {
+  SharedDtor();
+}
+
+void LoginRpcDeleteCharacterReply::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void LoginRpcDeleteCharacterReply::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* LoginRpcDeleteCharacterReply::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return LoginRpcDeleteCharacterReply_descriptor_;
+}
+
+const LoginRpcDeleteCharacterReply& LoginRpcDeleteCharacterReply::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_LoginRpc_2eproto();
+  return *default_instance_;
+}
+
+LoginRpcDeleteCharacterReply* LoginRpcDeleteCharacterReply::default_instance_ = NULL;
+
+LoginRpcDeleteCharacterReply* LoginRpcDeleteCharacterReply::New() const {
+  return new LoginRpcDeleteCharacterReply;
+}
+
+void LoginRpcDeleteCharacterReply::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    result_ = -9999;
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool LoginRpcDeleteCharacterReply::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional sint32 Result = 1 [default = -9999];
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                 input, &result_)));
+          set_has_result();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void LoginRpcDeleteCharacterReply::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional sint32 Result = 1 [default = -9999];
+  if (has_result()) {
+    ::google::protobuf::internal::WireFormatLite::WriteSInt32(1, this->result(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* LoginRpcDeleteCharacterReply::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional sint32 Result = 1 [default = -9999];
+  if (has_result()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(1, this->result(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int LoginRpcDeleteCharacterReply::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional sint32 Result = 1 [default = -9999];
+    if (has_result()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+          this->result());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void LoginRpcDeleteCharacterReply::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const LoginRpcDeleteCharacterReply* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const LoginRpcDeleteCharacterReply*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void LoginRpcDeleteCharacterReply::MergeFrom(const LoginRpcDeleteCharacterReply& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_result()) {
+      set_result(from.result());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void LoginRpcDeleteCharacterReply::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void LoginRpcDeleteCharacterReply::CopyFrom(const LoginRpcDeleteCharacterReply& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool LoginRpcDeleteCharacterReply::IsInitialized() const {
+
+  return true;
+}
+
+void LoginRpcDeleteCharacterReply::Swap(LoginRpcDeleteCharacterReply* other) {
+  if (other != this) {
+    std::swap(result_, other->result_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata LoginRpcDeleteCharacterReply::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = LoginRpcDeleteCharacterReply_descriptor_;
+  metadata.reflection = LoginRpcDeleteCharacterReply_reflection_;
   return metadata;
 }
 

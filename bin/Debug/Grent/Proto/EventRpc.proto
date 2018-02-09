@@ -17,11 +17,13 @@ message  EventRpcStopMoveNotify
 
 }
 
-message  EventRpcBossDiedNotify
+message  EventRpcObjAttrChangeNotify
 {
-	optional sint32 SceneId = 1[default=-1];
-	optional sint32 ObjId = 2[default=-1];
-	optional bool IsEndingBoss = 3[default=false];
+	optional float Speed = 1[default=-1];
+	optional sint64 Hp = 2[default=-1];
+	optional sint32 Status = 3[default=-1];
+	optional sint32 ConfigId = 4[default=-1];
+	optional sint32 ObjId = 5[default=-1];
 
 }
 

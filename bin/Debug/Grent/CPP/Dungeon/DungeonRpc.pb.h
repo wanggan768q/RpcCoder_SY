@@ -36,6 +36,11 @@ class DungeonRpcCreateDungeonAsk;
 class DungeonRpcCreateDungeonReply;
 class DungeonRpcExitDungeonAsk;
 class DungeonRpcExitDungeonReply;
+class DungeonRpcInformCreateDungeonAsk;
+class DungeonRpcInformCreateDungeonReply;
+class DungeonRpcSettlementNotify;
+class DungeonRpcEnterDungeonAsk;
+class DungeonRpcEnterDungeonReply;
 
 // ===================================================================
 
@@ -199,20 +204,30 @@ class DungeonRpcCreateDungeonReply : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 dungeonconfigid() const;
   inline void set_dungeonconfigid(::google::protobuf::int32 value);
 
+  // optional sint32 SceneId = 3 [default = -1];
+  inline bool has_sceneid() const;
+  inline void clear_sceneid();
+  static const int kSceneIdFieldNumber = 3;
+  inline ::google::protobuf::int32 sceneid() const;
+  inline void set_sceneid(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:DungeonRpcCreateDungeonReply)
  private:
   inline void set_has_result();
   inline void clear_has_result();
   inline void set_has_dungeonconfigid();
   inline void clear_has_dungeonconfigid();
+  inline void set_has_sceneid();
+  inline void clear_has_sceneid();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::int32 result_;
   ::google::protobuf::int32 dungeonconfigid_;
+  ::google::protobuf::int32 sceneid_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_DungeonRpc_2eproto();
   friend void protobuf_AssignDesc_DungeonRpc_2eproto();
@@ -376,7 +391,244 @@ class DungeonRpcExitDungeonReply : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 result() const;
   inline void set_result(::google::protobuf::int32 value);
 
+  // optional sint32 SceneConfigId = 2 [default = -1];
+  inline bool has_sceneconfigid() const;
+  inline void clear_sceneconfigid();
+  static const int kSceneConfigIdFieldNumber = 2;
+  inline ::google::protobuf::int32 sceneconfigid() const;
+  inline void set_sceneconfigid(::google::protobuf::int32 value);
+
+  // optional sint32 SceneId = 3 [default = -1];
+  inline bool has_sceneid() const;
+  inline void clear_sceneid();
+  static const int kSceneIdFieldNumber = 3;
+  inline ::google::protobuf::int32 sceneid() const;
+  inline void set_sceneid(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:DungeonRpcExitDungeonReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+  inline void set_has_sceneconfigid();
+  inline void clear_has_sceneconfigid();
+  inline void set_has_sceneid();
+  inline void clear_has_sceneid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+  ::google::protobuf::int32 sceneconfigid_;
+  ::google::protobuf::int32 sceneid_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+
+  friend void  protobuf_AddDesc_DungeonRpc_2eproto();
+  friend void protobuf_AssignDesc_DungeonRpc_2eproto();
+  friend void protobuf_ShutdownFile_DungeonRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static DungeonRpcExitDungeonReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class DungeonRpcInformCreateDungeonAsk : public ::google::protobuf::Message {
+ public:
+  DungeonRpcInformCreateDungeonAsk();
+  virtual ~DungeonRpcInformCreateDungeonAsk();
+
+  DungeonRpcInformCreateDungeonAsk(const DungeonRpcInformCreateDungeonAsk& from);
+
+  inline DungeonRpcInformCreateDungeonAsk& operator=(const DungeonRpcInformCreateDungeonAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const DungeonRpcInformCreateDungeonAsk& default_instance();
+
+  void Swap(DungeonRpcInformCreateDungeonAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  DungeonRpcInformCreateDungeonAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const DungeonRpcInformCreateDungeonAsk& from);
+  void MergeFrom(const DungeonRpcInformCreateDungeonAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint64 RoleId = 1 [default = 0];
+  inline bool has_roleid() const;
+  inline void clear_roleid();
+  static const int kRoleIdFieldNumber = 1;
+  inline ::google::protobuf::uint64 roleid() const;
+  inline void set_roleid(::google::protobuf::uint64 value);
+
+  // optional sint32 TargetSceneId = 2 [default = -1];
+  inline bool has_targetsceneid() const;
+  inline void clear_targetsceneid();
+  static const int kTargetSceneIdFieldNumber = 2;
+  inline ::google::protobuf::int32 targetsceneid() const;
+  inline void set_targetsceneid(::google::protobuf::int32 value);
+
+  // optional sint32 DungeonConfigId = 3 [default = -1];
+  inline bool has_dungeonconfigid() const;
+  inline void clear_dungeonconfigid();
+  static const int kDungeonConfigIdFieldNumber = 3;
+  inline ::google::protobuf::int32 dungeonconfigid() const;
+  inline void set_dungeonconfigid(::google::protobuf::int32 value);
+
+  // optional sint32 CurSceneId = 4 [default = -1];
+  inline bool has_cursceneid() const;
+  inline void clear_cursceneid();
+  static const int kCurSceneIdFieldNumber = 4;
+  inline ::google::protobuf::int32 cursceneid() const;
+  inline void set_cursceneid(::google::protobuf::int32 value);
+
+  // optional sint32 Result = 5 [default = -9999];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 5;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // repeated uint64 RoleIds = 6;
+  inline int roleids_size() const;
+  inline void clear_roleids();
+  static const int kRoleIdsFieldNumber = 6;
+  inline ::google::protobuf::uint64 roleids(int index) const;
+  inline void set_roleids(int index, ::google::protobuf::uint64 value);
+  inline void add_roleids(::google::protobuf::uint64 value);
+  inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
+      roleids() const;
+  inline ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
+      mutable_roleids();
+
+  // @@protoc_insertion_point(class_scope:DungeonRpcInformCreateDungeonAsk)
+ private:
+  inline void set_has_roleid();
+  inline void clear_has_roleid();
+  inline void set_has_targetsceneid();
+  inline void clear_has_targetsceneid();
+  inline void set_has_dungeonconfigid();
+  inline void clear_has_dungeonconfigid();
+  inline void set_has_cursceneid();
+  inline void clear_has_cursceneid();
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint64 roleid_;
+  ::google::protobuf::int32 targetsceneid_;
+  ::google::protobuf::int32 dungeonconfigid_;
+  ::google::protobuf::int32 cursceneid_;
+  ::google::protobuf::int32 result_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint64 > roleids_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(6 + 31) / 32];
+
+  friend void  protobuf_AddDesc_DungeonRpc_2eproto();
+  friend void protobuf_AssignDesc_DungeonRpc_2eproto();
+  friend void protobuf_ShutdownFile_DungeonRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static DungeonRpcInformCreateDungeonAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class DungeonRpcInformCreateDungeonReply : public ::google::protobuf::Message {
+ public:
+  DungeonRpcInformCreateDungeonReply();
+  virtual ~DungeonRpcInformCreateDungeonReply();
+
+  DungeonRpcInformCreateDungeonReply(const DungeonRpcInformCreateDungeonReply& from);
+
+  inline DungeonRpcInformCreateDungeonReply& operator=(const DungeonRpcInformCreateDungeonReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const DungeonRpcInformCreateDungeonReply& default_instance();
+
+  void Swap(DungeonRpcInformCreateDungeonReply* other);
+
+  // implements Message ----------------------------------------------
+
+  DungeonRpcInformCreateDungeonReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const DungeonRpcInformCreateDungeonReply& from);
+  void MergeFrom(const DungeonRpcInformCreateDungeonReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 Result = 1 [default = -9999];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:DungeonRpcInformCreateDungeonReply)
  private:
   inline void set_has_result();
   inline void clear_has_result();
@@ -393,7 +645,263 @@ class DungeonRpcExitDungeonReply : public ::google::protobuf::Message {
   friend void protobuf_ShutdownFile_DungeonRpc_2eproto();
 
   void InitAsDefaultInstance();
-  static DungeonRpcExitDungeonReply* default_instance_;
+  static DungeonRpcInformCreateDungeonReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class DungeonRpcSettlementNotify : public ::google::protobuf::Message {
+ public:
+  DungeonRpcSettlementNotify();
+  virtual ~DungeonRpcSettlementNotify();
+
+  DungeonRpcSettlementNotify(const DungeonRpcSettlementNotify& from);
+
+  inline DungeonRpcSettlementNotify& operator=(const DungeonRpcSettlementNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const DungeonRpcSettlementNotify& default_instance();
+
+  void Swap(DungeonRpcSettlementNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  DungeonRpcSettlementNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const DungeonRpcSettlementNotify& from);
+  void MergeFrom(const DungeonRpcSettlementNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 SettlementResult = 1 [default = -1];
+  inline bool has_settlementresult() const;
+  inline void clear_settlementresult();
+  static const int kSettlementResultFieldNumber = 1;
+  inline ::google::protobuf::int32 settlementresult() const;
+  inline void set_settlementresult(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:DungeonRpcSettlementNotify)
+ private:
+  inline void set_has_settlementresult();
+  inline void clear_has_settlementresult();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 settlementresult_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_DungeonRpc_2eproto();
+  friend void protobuf_AssignDesc_DungeonRpc_2eproto();
+  friend void protobuf_ShutdownFile_DungeonRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static DungeonRpcSettlementNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class DungeonRpcEnterDungeonAsk : public ::google::protobuf::Message {
+ public:
+  DungeonRpcEnterDungeonAsk();
+  virtual ~DungeonRpcEnterDungeonAsk();
+
+  DungeonRpcEnterDungeonAsk(const DungeonRpcEnterDungeonAsk& from);
+
+  inline DungeonRpcEnterDungeonAsk& operator=(const DungeonRpcEnterDungeonAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const DungeonRpcEnterDungeonAsk& default_instance();
+
+  void Swap(DungeonRpcEnterDungeonAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  DungeonRpcEnterDungeonAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const DungeonRpcEnterDungeonAsk& from);
+  void MergeFrom(const DungeonRpcEnterDungeonAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 SceneId = 1 [default = -1];
+  inline bool has_sceneid() const;
+  inline void clear_sceneid();
+  static const int kSceneIdFieldNumber = 1;
+  inline ::google::protobuf::int32 sceneid() const;
+  inline void set_sceneid(::google::protobuf::int32 value);
+
+  // optional sint32 DungeonConfigId = 2 [default = -1];
+  inline bool has_dungeonconfigid() const;
+  inline void clear_dungeonconfigid();
+  static const int kDungeonConfigIdFieldNumber = 2;
+  inline ::google::protobuf::int32 dungeonconfigid() const;
+  inline void set_dungeonconfigid(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:DungeonRpcEnterDungeonAsk)
+ private:
+  inline void set_has_sceneid();
+  inline void clear_has_sceneid();
+  inline void set_has_dungeonconfigid();
+  inline void clear_has_dungeonconfigid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 sceneid_;
+  ::google::protobuf::int32 dungeonconfigid_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_DungeonRpc_2eproto();
+  friend void protobuf_AssignDesc_DungeonRpc_2eproto();
+  friend void protobuf_ShutdownFile_DungeonRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static DungeonRpcEnterDungeonAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class DungeonRpcEnterDungeonReply : public ::google::protobuf::Message {
+ public:
+  DungeonRpcEnterDungeonReply();
+  virtual ~DungeonRpcEnterDungeonReply();
+
+  DungeonRpcEnterDungeonReply(const DungeonRpcEnterDungeonReply& from);
+
+  inline DungeonRpcEnterDungeonReply& operator=(const DungeonRpcEnterDungeonReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const DungeonRpcEnterDungeonReply& default_instance();
+
+  void Swap(DungeonRpcEnterDungeonReply* other);
+
+  // implements Message ----------------------------------------------
+
+  DungeonRpcEnterDungeonReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const DungeonRpcEnterDungeonReply& from);
+  void MergeFrom(const DungeonRpcEnterDungeonReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 Result = 1 [default = -9999];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:DungeonRpcEnterDungeonReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_DungeonRpc_2eproto();
+  friend void protobuf_AssignDesc_DungeonRpc_2eproto();
+  friend void protobuf_ShutdownFile_DungeonRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static DungeonRpcEnterDungeonReply* default_instance_;
 };
 // ===================================================================
 
@@ -494,6 +1002,28 @@ inline void DungeonRpcCreateDungeonReply::set_dungeonconfigid(::google::protobuf
   dungeonconfigid_ = value;
 }
 
+// optional sint32 SceneId = 3 [default = -1];
+inline bool DungeonRpcCreateDungeonReply::has_sceneid() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void DungeonRpcCreateDungeonReply::set_has_sceneid() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void DungeonRpcCreateDungeonReply::clear_has_sceneid() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void DungeonRpcCreateDungeonReply::clear_sceneid() {
+  sceneid_ = -1;
+  clear_has_sceneid();
+}
+inline ::google::protobuf::int32 DungeonRpcCreateDungeonReply::sceneid() const {
+  return sceneid_;
+}
+inline void DungeonRpcCreateDungeonReply::set_sceneid(::google::protobuf::int32 value) {
+  set_has_sceneid();
+  sceneid_ = value;
+}
+
 // -------------------------------------------------------------------
 
 // DungeonRpcExitDungeonAsk
@@ -564,6 +1094,315 @@ inline ::google::protobuf::int32 DungeonRpcExitDungeonReply::result() const {
   return result_;
 }
 inline void DungeonRpcExitDungeonReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// optional sint32 SceneConfigId = 2 [default = -1];
+inline bool DungeonRpcExitDungeonReply::has_sceneconfigid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void DungeonRpcExitDungeonReply::set_has_sceneconfigid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void DungeonRpcExitDungeonReply::clear_has_sceneconfigid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void DungeonRpcExitDungeonReply::clear_sceneconfigid() {
+  sceneconfigid_ = -1;
+  clear_has_sceneconfigid();
+}
+inline ::google::protobuf::int32 DungeonRpcExitDungeonReply::sceneconfigid() const {
+  return sceneconfigid_;
+}
+inline void DungeonRpcExitDungeonReply::set_sceneconfigid(::google::protobuf::int32 value) {
+  set_has_sceneconfigid();
+  sceneconfigid_ = value;
+}
+
+// optional sint32 SceneId = 3 [default = -1];
+inline bool DungeonRpcExitDungeonReply::has_sceneid() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void DungeonRpcExitDungeonReply::set_has_sceneid() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void DungeonRpcExitDungeonReply::clear_has_sceneid() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void DungeonRpcExitDungeonReply::clear_sceneid() {
+  sceneid_ = -1;
+  clear_has_sceneid();
+}
+inline ::google::protobuf::int32 DungeonRpcExitDungeonReply::sceneid() const {
+  return sceneid_;
+}
+inline void DungeonRpcExitDungeonReply::set_sceneid(::google::protobuf::int32 value) {
+  set_has_sceneid();
+  sceneid_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// DungeonRpcInformCreateDungeonAsk
+
+// optional uint64 RoleId = 1 [default = 0];
+inline bool DungeonRpcInformCreateDungeonAsk::has_roleid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void DungeonRpcInformCreateDungeonAsk::set_has_roleid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void DungeonRpcInformCreateDungeonAsk::clear_has_roleid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void DungeonRpcInformCreateDungeonAsk::clear_roleid() {
+  roleid_ = GOOGLE_ULONGLONG(0);
+  clear_has_roleid();
+}
+inline ::google::protobuf::uint64 DungeonRpcInformCreateDungeonAsk::roleid() const {
+  return roleid_;
+}
+inline void DungeonRpcInformCreateDungeonAsk::set_roleid(::google::protobuf::uint64 value) {
+  set_has_roleid();
+  roleid_ = value;
+}
+
+// optional sint32 TargetSceneId = 2 [default = -1];
+inline bool DungeonRpcInformCreateDungeonAsk::has_targetsceneid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void DungeonRpcInformCreateDungeonAsk::set_has_targetsceneid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void DungeonRpcInformCreateDungeonAsk::clear_has_targetsceneid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void DungeonRpcInformCreateDungeonAsk::clear_targetsceneid() {
+  targetsceneid_ = -1;
+  clear_has_targetsceneid();
+}
+inline ::google::protobuf::int32 DungeonRpcInformCreateDungeonAsk::targetsceneid() const {
+  return targetsceneid_;
+}
+inline void DungeonRpcInformCreateDungeonAsk::set_targetsceneid(::google::protobuf::int32 value) {
+  set_has_targetsceneid();
+  targetsceneid_ = value;
+}
+
+// optional sint32 DungeonConfigId = 3 [default = -1];
+inline bool DungeonRpcInformCreateDungeonAsk::has_dungeonconfigid() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void DungeonRpcInformCreateDungeonAsk::set_has_dungeonconfigid() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void DungeonRpcInformCreateDungeonAsk::clear_has_dungeonconfigid() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void DungeonRpcInformCreateDungeonAsk::clear_dungeonconfigid() {
+  dungeonconfigid_ = -1;
+  clear_has_dungeonconfigid();
+}
+inline ::google::protobuf::int32 DungeonRpcInformCreateDungeonAsk::dungeonconfigid() const {
+  return dungeonconfigid_;
+}
+inline void DungeonRpcInformCreateDungeonAsk::set_dungeonconfigid(::google::protobuf::int32 value) {
+  set_has_dungeonconfigid();
+  dungeonconfigid_ = value;
+}
+
+// optional sint32 CurSceneId = 4 [default = -1];
+inline bool DungeonRpcInformCreateDungeonAsk::has_cursceneid() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void DungeonRpcInformCreateDungeonAsk::set_has_cursceneid() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void DungeonRpcInformCreateDungeonAsk::clear_has_cursceneid() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void DungeonRpcInformCreateDungeonAsk::clear_cursceneid() {
+  cursceneid_ = -1;
+  clear_has_cursceneid();
+}
+inline ::google::protobuf::int32 DungeonRpcInformCreateDungeonAsk::cursceneid() const {
+  return cursceneid_;
+}
+inline void DungeonRpcInformCreateDungeonAsk::set_cursceneid(::google::protobuf::int32 value) {
+  set_has_cursceneid();
+  cursceneid_ = value;
+}
+
+// optional sint32 Result = 5 [default = -9999];
+inline bool DungeonRpcInformCreateDungeonAsk::has_result() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void DungeonRpcInformCreateDungeonAsk::set_has_result() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void DungeonRpcInformCreateDungeonAsk::clear_has_result() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void DungeonRpcInformCreateDungeonAsk::clear_result() {
+  result_ = -9999;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 DungeonRpcInformCreateDungeonAsk::result() const {
+  return result_;
+}
+inline void DungeonRpcInformCreateDungeonAsk::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// repeated uint64 RoleIds = 6;
+inline int DungeonRpcInformCreateDungeonAsk::roleids_size() const {
+  return roleids_.size();
+}
+inline void DungeonRpcInformCreateDungeonAsk::clear_roleids() {
+  roleids_.Clear();
+}
+inline ::google::protobuf::uint64 DungeonRpcInformCreateDungeonAsk::roleids(int index) const {
+  return roleids_.Get(index);
+}
+inline void DungeonRpcInformCreateDungeonAsk::set_roleids(int index, ::google::protobuf::uint64 value) {
+  roleids_.Set(index, value);
+}
+inline void DungeonRpcInformCreateDungeonAsk::add_roleids(::google::protobuf::uint64 value) {
+  roleids_.Add(value);
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
+DungeonRpcInformCreateDungeonAsk::roleids() const {
+  return roleids_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
+DungeonRpcInformCreateDungeonAsk::mutable_roleids() {
+  return &roleids_;
+}
+
+// -------------------------------------------------------------------
+
+// DungeonRpcInformCreateDungeonReply
+
+// optional sint32 Result = 1 [default = -9999];
+inline bool DungeonRpcInformCreateDungeonReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void DungeonRpcInformCreateDungeonReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void DungeonRpcInformCreateDungeonReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void DungeonRpcInformCreateDungeonReply::clear_result() {
+  result_ = -9999;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 DungeonRpcInformCreateDungeonReply::result() const {
+  return result_;
+}
+inline void DungeonRpcInformCreateDungeonReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// DungeonRpcSettlementNotify
+
+// optional sint32 SettlementResult = 1 [default = -1];
+inline bool DungeonRpcSettlementNotify::has_settlementresult() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void DungeonRpcSettlementNotify::set_has_settlementresult() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void DungeonRpcSettlementNotify::clear_has_settlementresult() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void DungeonRpcSettlementNotify::clear_settlementresult() {
+  settlementresult_ = -1;
+  clear_has_settlementresult();
+}
+inline ::google::protobuf::int32 DungeonRpcSettlementNotify::settlementresult() const {
+  return settlementresult_;
+}
+inline void DungeonRpcSettlementNotify::set_settlementresult(::google::protobuf::int32 value) {
+  set_has_settlementresult();
+  settlementresult_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// DungeonRpcEnterDungeonAsk
+
+// optional sint32 SceneId = 1 [default = -1];
+inline bool DungeonRpcEnterDungeonAsk::has_sceneid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void DungeonRpcEnterDungeonAsk::set_has_sceneid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void DungeonRpcEnterDungeonAsk::clear_has_sceneid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void DungeonRpcEnterDungeonAsk::clear_sceneid() {
+  sceneid_ = -1;
+  clear_has_sceneid();
+}
+inline ::google::protobuf::int32 DungeonRpcEnterDungeonAsk::sceneid() const {
+  return sceneid_;
+}
+inline void DungeonRpcEnterDungeonAsk::set_sceneid(::google::protobuf::int32 value) {
+  set_has_sceneid();
+  sceneid_ = value;
+}
+
+// optional sint32 DungeonConfigId = 2 [default = -1];
+inline bool DungeonRpcEnterDungeonAsk::has_dungeonconfigid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void DungeonRpcEnterDungeonAsk::set_has_dungeonconfigid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void DungeonRpcEnterDungeonAsk::clear_has_dungeonconfigid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void DungeonRpcEnterDungeonAsk::clear_dungeonconfigid() {
+  dungeonconfigid_ = -1;
+  clear_has_dungeonconfigid();
+}
+inline ::google::protobuf::int32 DungeonRpcEnterDungeonAsk::dungeonconfigid() const {
+  return dungeonconfigid_;
+}
+inline void DungeonRpcEnterDungeonAsk::set_dungeonconfigid(::google::protobuf::int32 value) {
+  set_has_dungeonconfigid();
+  dungeonconfigid_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// DungeonRpcEnterDungeonReply
+
+// optional sint32 Result = 1 [default = -9999];
+inline bool DungeonRpcEnterDungeonReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void DungeonRpcEnterDungeonReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void DungeonRpcEnterDungeonReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void DungeonRpcEnterDungeonReply::clear_result() {
+  result_ = -9999;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 DungeonRpcEnterDungeonReply::result() const {
+  return result_;
+}
+inline void DungeonRpcEnterDungeonReply::set_result(::google::protobuf::int32 value) {
   set_has_result();
   result_ = value;
 }

@@ -1,4 +1,4 @@
-﻿/********************************************************************************************
+/********************************************************************************************
 * Copyright (C), 2011-2025, Ambition. Co., Ltd.
 * FileName:     RpcWraperEvent.h
 * Author:       郭晓波
@@ -25,36 +25,40 @@ enum ConstEventE
 	MODULE_ID_EVENT                              = 5,	//事件模块模块ID
 	RPC_CODE_EVENT_MOVE_NOTIFY                   = 551,	//事件模块-->ObjMove-->通知
 	RPC_CODE_EVENT_STOPMOVE_NOTIFY               = 552,	//事件模块-->ObjStopMove-->通知
-	RPC_CODE_EVENT_BOSSDIED_NOTIFY               = 553,	//事件模块-->Boss死亡-->通知
+	RPC_CODE_EVENT_OBJATTRCHANGE_NOTIFY          = 553,	//事件模块-->属性改变-->通知
 
 
 };
 
 
-//Boss死亡通知封装类
-class EventRpcBossDiedNotifyWraper : public DataWraperInterface 
+//属性改变通知封装类
+class EventRpcObjAttrChangeNotifyWraper
 {
 public:
 	//构造函数
-	EventRpcBossDiedNotifyWraper()
+	EventRpcObjAttrChangeNotifyWraper()
 	{
 		
-		m_SceneId = -1;
+		m_Speed = -1;
+		m_Hp = -1;
+		m_Status = -1;
+		m_ConfigId = -1;
 		m_ObjId = -1;
-		m_IsEndingBoss = false;
 
 	}
 	//赋值构造函数
-	EventRpcBossDiedNotifyWraper(const EventRpcBossDiedNotify& v){ Init(v); }
+	EventRpcObjAttrChangeNotifyWraper(const EventRpcObjAttrChangeNotify& v){ Init(v); }
 	//等号重载函数
-	void operator = (const EventRpcBossDiedNotify& v){ Init(v); }
+	void operator = (const EventRpcObjAttrChangeNotify& v){ Init(v); }
  	//转化成Protobuffer类型函数
-	EventRpcBossDiedNotify ToPB() const
+	EventRpcObjAttrChangeNotify ToPB() const
 	{
-		EventRpcBossDiedNotify v;
-		v.set_sceneid( m_SceneId );
+		EventRpcObjAttrChangeNotify v;
+		v.set_speed( m_Speed );
+		v.set_hp( m_Hp );
+		v.set_status( m_Status );
+		v.set_configid( m_ConfigId );
 		v.set_objid( m_ObjId );
-		v.set_isendingboss( m_IsEndingBoss );
 
 		return v;
 	}
@@ -78,12 +82,12 @@ public:
 	//Protobuffer从缓冲区进行反序列化
 	bool ParseFromArray(const void* data, int size)
 	{
-		EventRpcBossDiedNotify pb;
+		EventRpcObjAttrChangeNotify pb;
 		if(!pb.ParseFromArray(data,size)){return false;}
 		Init(pb);
 		return true;
 	}
-
+	/*
 	string HtmlDescHeader()
 	{
 		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
@@ -92,7 +96,8 @@ public:
 		htmlBuff += "</div>\r\n";
 		return htmlBuff;
 	}
-
+	*/
+	/*
 	string ToHtml()
 	{
 		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
@@ -101,37 +106,87 @@ public:
 		
 		htmlBuff += "</div>\r\n";
 		return htmlBuff;
-	}
+	}*/
 
 
 private:
 	//从Protobuffer类型初始化
-	void Init(const EventRpcBossDiedNotify& v)
+	void Init(const EventRpcObjAttrChangeNotify& v)
 	{
-		m_SceneId = v.sceneid();
+		m_Speed = v.speed();
+		m_Hp = v.hp();
+		m_Status = v.status();
+		m_ConfigId = v.configid();
 		m_ObjId = v.objid();
-		m_IsEndingBoss = v.isendingboss();
 
 	}
 
 private:
-	//boss死亡的场景id
-	INT32 m_SceneId;
+	//speed
+	float m_Speed;
 public:
-	void SetSceneId( INT32 v)
+	void SetSpeed( float v)
 	{
-		m_SceneId=v;
+		m_Speed=v;
 	}
-	INT32 GetSceneId()
+	float GetSpeed()
 	{
-		return m_SceneId;
+		return m_Speed;
 	}
-	INT32 GetSceneId() const
+	float GetSpeed() const
 	{
-		return m_SceneId;
+		return m_Speed;
 	}
 private:
-	//Boss的ObjId
+	//Hp
+	INT64 m_Hp;
+public:
+	void SetHp( INT64 v)
+	{
+		m_Hp=v;
+	}
+	INT64 GetHp()
+	{
+		return m_Hp;
+	}
+	INT64 GetHp() const
+	{
+		return m_Hp;
+	}
+private:
+	//状态
+	INT32 m_Status;
+public:
+	void SetStatus( INT32 v)
+	{
+		m_Status=v;
+	}
+	INT32 GetStatus()
+	{
+		return m_Status;
+	}
+	INT32 GetStatus() const
+	{
+		return m_Status;
+	}
+private:
+	//NpcId改变
+	INT32 m_ConfigId;
+public:
+	void SetConfigId( INT32 v)
+	{
+		m_ConfigId=v;
+	}
+	INT32 GetConfigId()
+	{
+		return m_ConfigId;
+	}
+	INT32 GetConfigId() const
+	{
+		return m_ConfigId;
+	}
+private:
+	//对象id
 	INT32 m_ObjId;
 public:
 	void SetObjId( INT32 v)
@@ -146,26 +201,10 @@ public:
 	{
 		return m_ObjId;
 	}
-private:
-	//是否是最终boss
-	bool m_IsEndingBoss;
-public:
-	void SetIsEndingBoss( bool v)
-	{
-		m_IsEndingBoss=v;
-	}
-	bool GetIsEndingBoss()
-	{
-		return m_IsEndingBoss;
-	}
-	bool GetIsEndingBoss() const
-	{
-		return m_IsEndingBoss;
-	}
 
 };
 //ObjStopMove通知封装类
-class EventRpcStopMoveNotifyWraper : public DataWraperInterface 
+class EventRpcStopMoveNotifyWraper
 {
 public:
 	//构造函数
@@ -216,7 +255,7 @@ public:
 		Init(pb);
 		return true;
 	}
-
+	/*
 	string HtmlDescHeader()
 	{
 		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
@@ -225,17 +264,17 @@ public:
 		htmlBuff += "</div>\r\n";
 		return htmlBuff;
 	}
-
+	*/
+	/*
 	string ToHtml()
 	{
 		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
 		TStr tmpLine;
-		tmpLine.Fmt("<li>Dir：%.2ff</li>\r\n",m_Dir);
 
 		
 		htmlBuff += "</div>\r\n";
 		return htmlBuff;
-	}
+	}*/
 
 
 private:
@@ -299,7 +338,7 @@ public:
 
 };
 //ObjMove通知封装类
-class EventRpcMoveNotifyWraper : public DataWraperInterface 
+class EventRpcMoveNotifyWraper
 {
 public:
 	//构造函数
@@ -350,7 +389,7 @@ public:
 		Init(pb);
 		return true;
 	}
-
+	/*
 	string HtmlDescHeader()
 	{
 		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
@@ -359,17 +398,17 @@ public:
 		htmlBuff += "</div>\r\n";
 		return htmlBuff;
 	}
-
+	*/
+	/*
 	string ToHtml()
 	{
 		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
 		TStr tmpLine;
-		tmpLine.Fmt("<li>Dir：%.2ff</li>\r\n",m_Dir);
 
 		
 		htmlBuff += "</div>\r\n";
 		return htmlBuff;
-	}
+	}*/
 
 
 private:
@@ -436,7 +475,7 @@ public:
 template<typename T> struct MessageIdT;
 template<> struct MessageIdT<EventRpcMoveNotifyWraper>{ enum{ID=RPC_CODE_EVENT_MOVE_NOTIFY};};
 template<> struct MessageIdT<EventRpcStopMoveNotifyWraper>{ enum{ID=RPC_CODE_EVENT_STOPMOVE_NOTIFY};};
-template<> struct MessageIdT<EventRpcBossDiedNotifyWraper>{ enum{ID=RPC_CODE_EVENT_BOSSDIED_NOTIFY};};
+template<> struct MessageIdT<EventRpcObjAttrChangeNotifyWraper>{ enum{ID=RPC_CODE_EVENT_OBJATTRCHANGE_NOTIFY};};
 
 
 #endif

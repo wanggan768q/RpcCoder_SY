@@ -1,4 +1,4 @@
-﻿#ifndef __CREATUREDUMMY_CONFIG_H
+#ifndef __CREATUREDUMMY_CONFIG_H
 #define __CREATUREDUMMY_CONFIG_H
 
 #include "CommonDefine.h"
@@ -57,7 +57,8 @@ class CreatureDummyTable
 private:
 	CreatureDummyTable(){}
 	~CreatureDummyTable(){}
-	unordered_map<int, CreatureDummyElement>	m_mapElements;
+	typedef unordered_map<int, CreatureDummyElement> MapElementMap;
+	MapElementMap	m_mapElements;
 	vector<CreatureDummyElement>	m_vecAllElements;
 	CreatureDummyElement m_emptyItem;
 public:
@@ -69,16 +70,13 @@ public:
 
 	const CreatureDummyElement* GetElement(int key)
 	{
-		if( m_mapElements.count(key)>0 )
-			return &m_mapElements[key];
-		if (m_mapElements.count(key) > 0)
+		MapElementMap::iterator it = m_mapElements.find(key);
+		if (it == m_mapElements.end())
 		{
-			CreatureDummyElement* temp = &m_mapElements[key];
-			AssertEx(temp, std::string(std::string("CreatureDummyTable: ") + std::to_string(key)).c_str());
-			return temp;
+			AssertEx(false, std::string(std::string("CreatureDummyTable: ") + std::to_string(key)).c_str());
+			return NULL;
 		}
-		AssertEx(false, std::string(std::string("CreatureDummyTable: ") + std::to_string(key)).c_str());
-		return NULL;
+		return &it->second;
 	}
 
 	bool HasElement(int key)
@@ -168,18 +166,18 @@ public:
 			assert(false);
 			return false;
 		}
-		if(vecLine[0]!="dummy_id"){printf_message("CreatureDummy.csv中字段[dummy_id]位置不对应");assert(false); return false; }
-		if(vecLine[1]!="spawn_map_id"){printf_message("CreatureDummy.csv中字段[spawn_map_id]位置不对应");assert(false); return false; }
-		if(vecLine[2]!="spawn_x"){printf_message("CreatureDummy.csv中字段[spawn_x]位置不对应");assert(false); return false; }
-		if(vecLine[3]!="spawn_y"){printf_message("CreatureDummy.csv中字段[spawn_y]位置不对应");assert(false); return false; }
-		if(vecLine[4]!="spawn_z"){printf_message("CreatureDummy.csv中字段[spawn_z]位置不对应");assert(false); return false; }
-		if(vecLine[5]!="move_speed"){printf_message("CreatureDummy.csv中字段[move_speed]位置不对应");assert(false); return false; }
-		if(vecLine[6]!="attached_npc_01"){printf_message("CreatureDummy.csv中字段[attached_npc_01]位置不对应");assert(false); return false; }
-		if(vecLine[7]!="attached_npc_02"){printf_message("CreatureDummy.csv中字段[attached_npc_02]位置不对应");assert(false); return false; }
-		if(vecLine[8]!="attached_npc_03"){printf_message("CreatureDummy.csv中字段[attached_npc_03]位置不对应");assert(false); return false; }
-		if(vecLine[9]!="attached_npc_04"){printf_message("CreatureDummy.csv中字段[attached_npc_04]位置不对应");assert(false); return false; }
-		if(vecLine[10]!="attached_npc_05"){printf_message("CreatureDummy.csv中字段[attached_npc_05]位置不对应");assert(false); return false; }
-		if(vecLine[11]!="waypoint_start"){printf_message("CreatureDummy.csv中字段[waypoint_start]位置不对应");assert(false); return false; }
+		if(vecLine[0]!="dummy_id"){printf_message("CreatureDummy.csv中字段[dummy_id]位置不对应 ");assert(false); return false; }
+		if(vecLine[1]!="spawn_map_id"){printf_message("CreatureDummy.csv中字段[spawn_map_id]位置不对应 ");assert(false); return false; }
+		if(vecLine[2]!="spawn_x"){printf_message("CreatureDummy.csv中字段[spawn_x]位置不对应 ");assert(false); return false; }
+		if(vecLine[3]!="spawn_y"){printf_message("CreatureDummy.csv中字段[spawn_y]位置不对应 ");assert(false); return false; }
+		if(vecLine[4]!="spawn_z"){printf_message("CreatureDummy.csv中字段[spawn_z]位置不对应 ");assert(false); return false; }
+		if(vecLine[5]!="move_speed"){printf_message("CreatureDummy.csv中字段[move_speed]位置不对应 ");assert(false); return false; }
+		if(vecLine[6]!="attached_npc_01"){printf_message("CreatureDummy.csv中字段[attached_npc_01]位置不对应 ");assert(false); return false; }
+		if(vecLine[7]!="attached_npc_02"){printf_message("CreatureDummy.csv中字段[attached_npc_02]位置不对应 ");assert(false); return false; }
+		if(vecLine[8]!="attached_npc_03"){printf_message("CreatureDummy.csv中字段[attached_npc_03]位置不对应 ");assert(false); return false; }
+		if(vecLine[9]!="attached_npc_04"){printf_message("CreatureDummy.csv中字段[attached_npc_04]位置不对应 ");assert(false); return false; }
+		if(vecLine[10]!="attached_npc_05"){printf_message("CreatureDummy.csv中字段[attached_npc_05]位置不对应 ");assert(false); return false; }
+		if(vecLine[11]!="waypoint_start"){printf_message("CreatureDummy.csv中字段[waypoint_start]位置不对应 ");assert(false); return false; }
 
 		while(true)
 		{

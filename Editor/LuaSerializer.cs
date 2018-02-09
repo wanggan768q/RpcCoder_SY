@@ -211,7 +211,7 @@
                         {
                             TestProtocol = TestProtocol + "{name=\"" + descriptor.FieldName + "\",t=2}";
                         }
-                        else if ((descriptor.FieldType == "sint32") || (descriptor.FieldType == "sint64") || (descriptor.FieldType == "uint64"))
+                        else if ((descriptor.FieldType == "sint32") || (descriptor.FieldType == "int32") || (descriptor.FieldType == "sint64") || (descriptor.FieldType == "uint64") || (descriptor.FieldType == "int64"))
                         {
                             TestProtocol = TestProtocol + "{name=\"" + descriptor.FieldName + "\",t=1}";
                         }
@@ -576,7 +576,7 @@
                         SendAllFields = str11 + "\t" + m.ModuleName + "Data.m_" + descriptor2.FieldName + " = v." + descriptor2.FieldName + "\r\n";
                     }
                 }
-                else if (descriptor2.FieldType == "sint32")
+                else if (descriptor2.FieldType == "sint32" || descriptor2.FieldType == "int32")
                 {
                     if ((ds.DataType == DataStruct.SyncType.UserData) || ((ds.DataType == DataStruct.SyncType.CacheData) && ds.syncToClient))
                     {
@@ -616,7 +616,7 @@
                         SendAllFields = str11 + "\t" + m.ModuleName + "Data.m_" + descriptor2.FieldName + " = v." + descriptor2.FieldName + "\r\n";
                     }
                 }
-                else if (descriptor2.FieldType == "sint64" || descriptor2.FieldType == "uint64")
+                else if (descriptor2.FieldType == "sint64" || descriptor2.FieldType == "uint64" || descriptor2.FieldType == "int64")
                 {
                     if ((ds.DataType == DataStruct.SyncType.UserData) || ((ds.DataType == DataStruct.SyncType.CacheData) && ds.syncToClient))
                     {

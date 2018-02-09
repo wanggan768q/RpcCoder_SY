@@ -1,4 +1,4 @@
-﻿#ifndef __CREATURECOMBATCOE_CONFIG_H
+#ifndef __CREATURECOMBATCOE_CONFIG_H
 #define __CREATURECOMBATCOE_CONFIG_H
 
 #include "CommonDefine.h"
@@ -22,11 +22,11 @@ struct CreatureCombatCoeElement
 	int id;                      	//ID号	关联Creature
 	string note;                 	//中文注释	
 	int template_id;             	//对应模板	关联CreatureCombatbasic
-	float hp_rate;               	//生命比例	
-	float p_atk_rate;            	//物理攻击力比例	
-	float p_def_rate;            	//物理防御力比例	
-	float s_atk_rate;            	//魔法攻击力比例	
-	float s_def_rate;            	//魔法防御力比例	
+	float maxhp_rate;            	//生命比例	
+	float physic_attack_rate;    	//物理攻击力比例	
+	float physic_defense_rate;   	//物理防御力比例	
+	float magic_attack_rate;     	//魔法攻击力比例	
+	float magic_defense_rate;    	//魔法防御力比例	
 	float exp_rate;              	//经验比例	
 
 private:
@@ -54,7 +54,8 @@ class CreatureCombatCoeTable
 private:
 	CreatureCombatCoeTable(){}
 	~CreatureCombatCoeTable(){}
-	unordered_map<int, CreatureCombatCoeElement>	m_mapElements;
+	typedef unordered_map<int, CreatureCombatCoeElement> MapElementMap;
+	MapElementMap	m_mapElements;
 	vector<CreatureCombatCoeElement>	m_vecAllElements;
 	CreatureCombatCoeElement m_emptyItem;
 public:
@@ -66,16 +67,13 @@ public:
 
 	const CreatureCombatCoeElement* GetElement(int key)
 	{
-		if( m_mapElements.count(key)>0 )
-			return &m_mapElements[key];
-		if (m_mapElements.count(key) > 0)
+		MapElementMap::iterator it = m_mapElements.find(key);
+		if (it == m_mapElements.end())
 		{
-			CreatureCombatCoeElement* temp = &m_mapElements[key];
-			AssertEx(temp, std::string(std::string("CreatureCombatCoeTable: ") + std::to_string(key)).c_str());
-			return temp;
+			AssertEx(false, std::string(std::string("CreatureCombatCoeTable: ") + std::to_string(key)).c_str());
+			return NULL;
 		}
-		AssertEx(false, std::string(std::string("CreatureCombatCoeTable: ") + std::to_string(key)).c_str());
-		return NULL;
+		return &it->second;
 	}
 
 	bool HasElement(int key)
@@ -134,11 +132,11 @@ public:
 						member.id=p.get<int>("id");
 			member.note=p.get<string>("note");
 			member.template_id=p.get<int>("template_id");
-			member.hp_rate=p.get<float>("hp_rate");
-			member.p_atk_rate=p.get<float>("p_atk_rate");
-			member.p_def_rate=p.get<float>("p_def_rate");
-			member.s_atk_rate=p.get<float>("s_atk_rate");
-			member.s_def_rate=p.get<float>("s_def_rate");
+			member.maxhp_rate=p.get<float>("maxhp_rate");
+			member.physic_attack_rate=p.get<float>("physic_attack_rate");
+			member.physic_defense_rate=p.get<float>("physic_defense_rate");
+			member.magic_attack_rate=p.get<float>("magic_attack_rate");
+			member.magic_defense_rate=p.get<float>("magic_defense_rate");
 			member.exp_rate=p.get<float>("exp_rate");
 
 
@@ -162,15 +160,15 @@ public:
 			assert(false);
 			return false;
 		}
-		if(vecLine[0]!="id"){printf_message("CreatureCombatCoe.csv中字段[id]位置不对应");assert(false); return false; }
-		if(vecLine[1]!="note"){printf_message("CreatureCombatCoe.csv中字段[note]位置不对应");assert(false); return false; }
-		if(vecLine[2]!="template_id"){printf_message("CreatureCombatCoe.csv中字段[template_id]位置不对应");assert(false); return false; }
-		if(vecLine[3]!="hp_rate"){printf_message("CreatureCombatCoe.csv中字段[hp_rate]位置不对应");assert(false); return false; }
-		if(vecLine[4]!="p_atk_rate"){printf_message("CreatureCombatCoe.csv中字段[p_atk_rate]位置不对应");assert(false); return false; }
-		if(vecLine[5]!="p_def_rate"){printf_message("CreatureCombatCoe.csv中字段[p_def_rate]位置不对应");assert(false); return false; }
-		if(vecLine[6]!="s_atk_rate"){printf_message("CreatureCombatCoe.csv中字段[s_atk_rate]位置不对应");assert(false); return false; }
-		if(vecLine[7]!="s_def_rate"){printf_message("CreatureCombatCoe.csv中字段[s_def_rate]位置不对应");assert(false); return false; }
-		if(vecLine[8]!="exp_rate"){printf_message("CreatureCombatCoe.csv中字段[exp_rate]位置不对应");assert(false); return false; }
+		if(vecLine[0]!="id"){printf_message("CreatureCombatCoe.csv中字段[id]位置不对应 ");assert(false); return false; }
+		if(vecLine[1]!="note"){printf_message("CreatureCombatCoe.csv中字段[note]位置不对应 ");assert(false); return false; }
+		if(vecLine[2]!="template_id"){printf_message("CreatureCombatCoe.csv中字段[template_id]位置不对应 ");assert(false); return false; }
+		if(vecLine[3]!="maxhp_rate"){printf_message("CreatureCombatCoe.csv中字段[maxhp_rate]位置不对应 ");assert(false); return false; }
+		if(vecLine[4]!="physic_attack_rate"){printf_message("CreatureCombatCoe.csv中字段[physic_attack_rate]位置不对应 ");assert(false); return false; }
+		if(vecLine[5]!="physic_defense_rate"){printf_message("CreatureCombatCoe.csv中字段[physic_defense_rate]位置不对应 ");assert(false); return false; }
+		if(vecLine[6]!="magic_attack_rate"){printf_message("CreatureCombatCoe.csv中字段[magic_attack_rate]位置不对应 ");assert(false); return false; }
+		if(vecLine[7]!="magic_defense_rate"){printf_message("CreatureCombatCoe.csv中字段[magic_defense_rate]位置不对应 ");assert(false); return false; }
+		if(vecLine[8]!="exp_rate"){printf_message("CreatureCombatCoe.csv中字段[exp_rate]位置不对应 ");assert(false); return false; }
 
 		while(true)
 		{
@@ -186,11 +184,11 @@ public:
 			member.id=(int)atoi(vecLine[0].c_str());
 			member.note=vecLine[1];
 			member.template_id=(int)atoi(vecLine[2].c_str());
-			member.hp_rate=(float)atof(vecLine[3].c_str());
-			member.p_atk_rate=(float)atof(vecLine[4].c_str());
-			member.p_def_rate=(float)atof(vecLine[5].c_str());
-			member.s_atk_rate=(float)atof(vecLine[6].c_str());
-			member.s_def_rate=(float)atof(vecLine[7].c_str());
+			member.maxhp_rate=(float)atof(vecLine[3].c_str());
+			member.physic_attack_rate=(float)atof(vecLine[4].c_str());
+			member.physic_defense_rate=(float)atof(vecLine[5].c_str());
+			member.magic_attack_rate=(float)atof(vecLine[6].c_str());
+			member.magic_defense_rate=(float)atof(vecLine[7].c_str());
 			member.exp_rate=(float)atof(vecLine[8].c_str());
 
 			member.SetIsValidate(true);

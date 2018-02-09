@@ -1,0 +1,122 @@
+
+import "PublicStruct.proto";
+
+message  WGRpcInformCreateTeamAsk
+{
+	optional TeamInfo Team = 1;
+	optional sint32 Result = 2[default=-9999];
+
+}
+
+message  WGRpcInformCreateTeamReply
+{
+	optional sint32 Result = 1[default=-9999];
+
+}
+
+message  WGRpcInformJoinTeamAsk
+{
+	optional TeamMemberInfo Member = 5;
+	optional TeamInfo Team = 6;
+
+}
+
+message  WGRpcInformJoinTeamReply
+{
+	optional sint32 Result = 1[default=-9999];
+
+}
+
+message  WGRpcInformLeaveAsk
+{
+	optional uint64 RoleId = 1[default=0];
+	optional uint64 NewLeaderRoleId = 2[default=0];
+	optional sint32 Result = 3[default=-9999];
+
+}
+
+message  WGRpcInformLeaveReply
+{
+	optional sint32 Result = 1[default=-9999];
+
+}
+
+message  WGRpcInformAppointTeamLeaderAsk
+{
+	optional sint32 Result = 1[default=-9999];
+	optional uint64 NewLeaderRoleId = 2[default=0];
+	optional uint64 OldLeaderRoleId = 3[default=0];
+
+}
+
+message  WGRpcInformAppointTeamLeaderReply
+{
+	optional sint32 Result = 1[default=-9999];
+
+}
+
+message  WGRpcInformKickTeamMemberAsk
+{
+	optional sint32 Result = 1[default=-9999];
+	optional uint64 KickedMemberRoleId = 2[default=0];
+	optional uint64 LeaderRoleId = 3[default=0];
+
+}
+
+message  WGRpcInformKickTeamMemberReply
+{
+	optional sint32 Result = 1[default=-9999];
+
+}
+
+message  WGRpcInformDissmissTeamAsk
+{
+	optional sint32 Result = 1[default=-9999];
+	optional uint64 LeaderRoleId = 2[default=0];
+
+}
+
+message  WGRpcInformDissmissTeamReply
+{
+	optional sint32 Result = 1[default=-9999];
+
+}
+
+message  WGRpcInformApplyTeamAsk
+{
+	optional TeamMemberInfo TeamMember = 1;
+	optional sint32 Result = 2[default=-9999];
+	optional sint32 TeamId = 3[default=-1];
+
+}
+
+message  WGRpcInformApplyTeamReply
+{
+	optional sint32 Result = 1[default=-9999];
+
+}
+
+message  WGRpcAgreeTeamApplicantAsk
+{
+	optional TeamInfo Team = 2;
+
+}
+
+message  WGRpcAgreeTeamApplicantReply
+{
+	optional sint32 Result = 1[default=-9999];
+
+}
+
+message  WGRpcInformLoginAsk
+{
+	optional TeamInfo Team = 1;
+
+}
+
+message  WGRpcInformLoginReply
+{
+	optional sint32 Result = 1[default=-9999];
+
+}
+

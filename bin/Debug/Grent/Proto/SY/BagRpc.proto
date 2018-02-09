@@ -1,0 +1,134 @@
+message  BagRpcUseItemAsk
+{
+	optional sint32 Count = 1[default=-1];
+	optional sint32 Pos = 2[default=-1];
+
+}
+
+message  BagRpcUseItemReply
+{
+	optional sint32 Result = 1[default=-9999];
+	optional ItemObj Item = 2;
+
+}
+
+message  BagRpcSyncAsk
+{
+
+}
+
+message  BagRpcSyncReply
+{
+	optional sint32 Result = 1[default=-9999];
+	repeated BagData Bags = 2;
+
+}
+
+message  BagRpcSaleItemAsk
+{
+	optional sint32 Pos = 5[default=-1];
+	optional sint32 Count = 6[default=-1];
+
+}
+
+message  BagRpcSaleItemReply
+{
+	optional sint32 Result = 1[default=-9999];
+	optional ItemObj Item = 4;
+
+}
+
+message  BagRpcLockItemAsk
+{
+	optional sint32 Pos = 1[default=-1];
+	optional bool IsLock = 3[default=false];
+
+}
+
+message  BagRpcLockItemReply
+{
+	optional sint32 Result = 1[default=-9999];
+	optional ItemObj Item = 5;
+
+}
+
+message  BagRpcDeblockingAsk
+{
+	optional sint32 BagType = 1[default=-1];
+
+}
+
+message  BagRpcDeblockingReply
+{
+	optional sint32 Result = 1[default=-9999];
+	optional sint32 BagType = 2[default=-1];
+	optional sint32 CurCapacity = 3[default=-1];
+
+}
+
+message  BagRpcTakeItemAsk
+{
+	optional sint32 FromBagType = 1[default=-1];
+	optional sint32 ToBagType = 2[default=-1];
+	optional sint32 FromPos = 3[default=-1];
+
+}
+
+message  BagRpcTakeItemReply
+{
+	optional sint32 Result = 1[default=-9999];
+	optional ItemObj ToItemObj = 2;
+	optional ItemObj FromItemObj = 3;
+	optional sint32 FromBagType = 4[default=-1];
+	optional sint32 ToBagType = 5[default=-1];
+
+}
+
+message  BagRpcTidyAsk
+{
+	optional sint32 BagType = 2[default=-1];
+
+}
+
+message  BagRpcTidyReply
+{
+	optional sint32 Result = 1[default=-9999];
+	repeated BagData Bags = 3;
+	optional sint32 BagType = 4[default=-1];
+
+}
+
+message  BagRpcTakeAllBackBagsAsk
+{
+
+}
+
+message  BagRpcTakeAllBackBagsReply
+{
+	optional sint32 Result = 1[default=-9999];
+	repeated BagData Bags = 2;
+
+}
+
+message  BagRpcBagChangeNotify
+{
+	optional sint32 Result = 1[default=-9999];
+	optional BagData Bags = 2;
+
+}
+
+message  ItemObj
+{
+	optional sint32 Pos = 1[default=-1];
+	optional ItemData ItemData = 2;
+
+}
+
+message  BagData
+{
+	repeated ItemObj Items = 1;
+	optional sint32 BagType = 2[default=-1];
+	optional sint32 CurCapacity = 3[default=-1];
+
+}
+

@@ -140,7 +140,7 @@
                     save.Repet = descriptor.PreDefine == DataStruct.FieldDescriptor.PreDefineType.repeated;
                     bw.Write(save.Repet);
                     save.Value = "";
-                    if ((((descriptor.FieldType == "bool") || (descriptor.FieldType == "float")) || ((descriptor.FieldType == "sint32") || (descriptor.FieldType == "sint64") || (descriptor.FieldType == "uint64"))) && (descriptor.PreDefine == DataStruct.FieldDescriptor.PreDefineType.optional))
+                    if ((((descriptor.FieldType == "bool") || (descriptor.FieldType == "float")) || ((descriptor.FieldType == "sint32") || (descriptor.FieldType == "int32") || (descriptor.FieldType == "sint64") || (descriptor.FieldType == "uint64") || (descriptor.FieldType == "int64"))) && (descriptor.PreDefine == DataStruct.FieldDescriptor.PreDefineType.optional))
                     {
                         save.Value = "[" + descriptor.DefaultValue + "]";
                     }
@@ -184,6 +184,12 @@
                     {
                         bw.Write(false);
                         string str7 = writesV;
+                        writesV = str7 + t + "\t" + descriptor.FieldName + ":sint32" + ((descriptor.PreDefine == DataStruct.FieldDescriptor.PreDefineType.repeated) ? "*" : "") + ((descriptor.DefaultValue == "") ? "" : (" = " + descriptor.DefaultValue)) + "\t;" + descriptor.CNName + "\r\n";
+                    }
+                    else if (descriptor.FieldType == "int32")
+                    {
+                        bw.Write(false);
+                        string str7 = writesV;
                         writesV = str7 + t + "\t" + descriptor.FieldName + ":int32" + ((descriptor.PreDefine == DataStruct.FieldDescriptor.PreDefineType.repeated) ? "*" : "") + ((descriptor.DefaultValue == "") ? "" : (" = " + descriptor.DefaultValue)) + "\t;" + descriptor.CNName + "\r\n";
                     }
                     else if (descriptor.FieldType == "sint64")
@@ -197,6 +203,12 @@
                         bw.Write(false);
                         string str8 = writesV;
                         writesV = str8 + t + "\t" + descriptor.FieldName + ":uint64" + ((descriptor.PreDefine == DataStruct.FieldDescriptor.PreDefineType.repeated) ? "*" : "") + ((descriptor.DefaultValue == "") ? "" : (" = " + descriptor.DefaultValue)) + "\t;" + descriptor.CNName + "\r\n";
+                    }
+                    else if (descriptor.FieldType == "int64")
+                    {
+                        bw.Write(false);
+                        string str8 = writesV;
+                        writesV = str8 + t + "\t" + descriptor.FieldName + ":int64" + ((descriptor.PreDefine == DataStruct.FieldDescriptor.PreDefineType.repeated) ? "*" : "") + ((descriptor.DefaultValue == "") ? "" : (" = " + descriptor.DefaultValue)) + "\t;" + descriptor.CNName + "\r\n";
                     }
                     else
                     {

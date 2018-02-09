@@ -2,7 +2,7 @@
 map<int, string> ModuleValue;
 void InitModuleValue()
 {
-	ModuleValue[3]="场景模块";
+	ModuleValue[12]="Bag";
 
 }
 string GetModuleValue(int id)

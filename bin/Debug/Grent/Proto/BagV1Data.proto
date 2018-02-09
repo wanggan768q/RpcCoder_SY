@@ -1,0 +1,19 @@
+
+import "PublicStruct.proto";
+
+message  BagItemDataV1
+{
+	optional sint32 Guid = 1[default=-1];
+	optional bool Lock = 2[default=false];
+	optional sint32 OverlayCount = 3[default=-1];
+
+}
+
+message  BagItemDBV1
+{
+	optional sint32 Guid = 1[default=-1];
+	optional bool Lock = 2[default=false];
+	optional sint32 OverlayCount = 3[default=-1];
+
+}
+

@@ -22,7 +22,7 @@ public class EventRPC
 	
 	public const int RPC_CODE_EVENT_MOVE_NOTIFY = 551;
 	public const int RPC_CODE_EVENT_STOPMOVE_NOTIFY = 552;
-	public const int RPC_CODE_EVENT_BOSSDIED_NOTIFY = 553;
+	public const int RPC_CODE_EVENT_OBJATTRCHANGE_NOTIFY = 553;
 
 	
 	private static EventRPC m_Instance = null;
@@ -47,7 +47,7 @@ public class EventRPC
 		
 		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_EVENT_MOVE_NOTIFY, MoveCB);
 		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_EVENT_STOPMOVE_NOTIFY, StopMoveCB);
-		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_EVENT_BOSSDIED_NOTIFY, BossDiedCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_EVENT_OBJATTRCHANGE_NOTIFY, ObjAttrChangeCB);
 
 
 		return true;
@@ -78,16 +78,16 @@ public class EventRPC
 	}
 	public static ServerNotifyCallback StopMoveCBDelegate = null;
 	/**
-	*事件模块-->Boss死亡 服务器通知回调
+	*事件模块-->属性改变 服务器通知回调
 	*/
-	public static void BossDiedCB( ModMessage notifyMsg )
+	public static void ObjAttrChangeCB( ModMessage notifyMsg )
 	{
-		EventRpcBossDiedNotifyWraper notifyPBWraper = new EventRpcBossDiedNotifyWraper();
+		EventRpcObjAttrChangeNotifyWraper notifyPBWraper = new EventRpcObjAttrChangeNotifyWraper();
 		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
-		if( BossDiedCBDelegate != null )
-			BossDiedCBDelegate( notifyPBWraper );
+		if( ObjAttrChangeCBDelegate != null )
+			ObjAttrChangeCBDelegate( notifyPBWraper );
 	}
-	public static ServerNotifyCallback BossDiedCBDelegate = null;
+	public static ServerNotifyCallback ObjAttrChangeCBDelegate = null;
 
 
 

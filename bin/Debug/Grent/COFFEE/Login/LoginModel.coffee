@@ -16,6 +16,7 @@ RPC_CODE_CHARACTERLIST_REQUEST = 253
 RPC_CODE_SELECTCHARACTER_REQUEST = 254
 RPC_CODE_CREATECHARACTER_REQUEST = 255
 RPC_CODE_SELECTSAVEUSER_REQUEST = 256
+RPC_CODE_DELETECHARACTER_REQUEST = 257
 
 ConnectAskPB = null
 ConnectReplyPB = null
@@ -29,6 +30,8 @@ CreateCharacterAskPB = null
 CreateCharacterReplyPB = null
 SelectSaveUserAskPB = null
 SelectSaveUserReplyPB = null
+DeleteCharacterAskPB = null
+DeleteCharacterReplyPB = null
 
 class LoginModel
   Initialize : () ->
@@ -61,6 +64,9 @@ class LoginModel
         optional uint64 RoleId = 1[default=0];
         optional string Nickname = 2;
         optional sint32 ConfigId = 3[default=-1];
+        optional sint32 Hp = 4[default=-1];
+        optional sint32 HpMax = 5[default=-1];
+        optional sint32 Level = 6[default=-1];
       }
       message  RpcCharacterListReply
       {
@@ -97,6 +103,14 @@ class LoginModel
       {
         optional sint32 Result = 1[default=-9999];
       }
+      message  RpcDeleteCharacterAsk
+      {
+        optional uint64 RoleId = 1[default=0];
+      }
+      message  RpcDeleteCharacterReply
+      {
+        optional sint32 Result = 1[default=-9999];
+      }
     ")
     mLayerMgr.registerUpdate(ModuleId,@updateDataField)
     ConnectAskPB = Proto.build("RpcConnectAsk")
@@ -111,6 +125,8 @@ class LoginModel
     CreateCharacterReplyPB = Proto.build("RpcCreateCharacterReply")
     SelectSaveUserAskPB = Proto.build("RpcSelectSaveUserAsk")
     SelectSaveUserReplyPB = Proto.build("RpcSelectSaveUserReply")
+    DeleteCharacterAskPB = Proto.build("RpcDeleteCharacterAsk")
+    DeleteCharacterReplyPB = Proto.build("RpcDeleteCharacterReply")
 
 
 
@@ -167,6 +183,14 @@ class LoginModel
       replyCB( SelectSaveUserReplyPB.decode(data)) if typeof(replyCB) is "function"
     )
     NetTipController.showNetTip()
+  DeleteCharacter : (RoleId,replyCB) ->
+    DeleteCharacterAsk = DeleteCharacterAskPB.prototype
+    DeleteCharacterAsk.setRoleId RoleId
+    mLayerMgr.sendAsk(RPC_CODE_DELETECHARACTER_REQUEST,DeleteCharacterAsk, (data)->
+      NetTipController.hideNetTip()
+      replyCB( DeleteCharacterReplyPB.decode(data)) if typeof(replyCB) is "function"
+    )
+    NetTipController.showNetTip()
 
 
   updateDataField : (SyncId,Index,Data,dataLen)->
@@ -184,24 +208,28 @@ class LoginModel
                    "CharacterList",
                    "SelectCharacter",
                    "CreateCharacter",
-                   "SelectSaveUser"]
+                   "SelectSaveUser",
+                   "DeleteCharacter"]
       'ParamterList': [["Type"],
                        ["Username","Passwd"],
                        ["Accountname "],
                        ["RoleId"],
                        ["Nickname","ConfigId"],
+                       ["RoleId"],
                        ["RoleId"]]
       'AskList':[@Connect,
                  @Login,
                  @CharacterList,
                  @SelectCharacter,
                  @CreateCharacter,
-                 @SelectSaveUser]
+                 @SelectSaveUser,
+                 @DeleteCharacter]
       'ParamterTypelist': [["sint32"],
                        ["string","string"],
                        ["string"],
                        ["uint64"],
                        ["string","sint32"],
+                       ["uint64"],
                        ["uint64"]]
 
 

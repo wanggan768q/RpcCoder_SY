@@ -26,6 +26,7 @@ public class LoginRPC
 	public const int RPC_CODE_LOGIN_SELECTCHARACTER_REQUEST = 254;
 	public const int RPC_CODE_LOGIN_CREATECHARACTER_REQUEST = 255;
 	public const int RPC_CODE_LOGIN_SELECTSAVEUSER_REQUEST = 256;
+	public const int RPC_CODE_LOGIN_DELETECHARACTER_REQUEST = 257;
 
 	
 	private static LoginRPC m_Instance = null;
@@ -159,6 +160,24 @@ public class LoginRPC
 
 		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
 			LoginRpcSelectSaveUserReplyWraper replyPBWraper = new LoginRpcSelectSaveUserReplyWraper();
+			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
+			replyCB(replyPBWraper);
+		});
+	}
+
+	/**
+	*登录模块-->删除角色 RPC请求
+	*/
+	public void DeleteCharacter(UInt64 RoleId, ReplyHandler replyCB)
+	{
+		LoginRpcDeleteCharacterAskWraper askPBWraper = new LoginRpcDeleteCharacterAskWraper();
+		askPBWraper.RoleId = RoleId;
+		ModMessage askMsg = new ModMessage();
+		askMsg.MsgNum = RPC_CODE_LOGIN_DELETECHARACTER_REQUEST;
+		askMsg.protoMS = askPBWraper.ToMemoryStream();
+
+		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
+			LoginRpcDeleteCharacterReplyWraper replyPBWraper = new LoginRpcDeleteCharacterReplyWraper();
 			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
 			replyCB(replyPBWraper);
 		});

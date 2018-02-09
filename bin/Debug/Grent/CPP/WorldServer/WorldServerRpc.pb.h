@@ -36,6 +36,36 @@ class WorldServerRpcChangeSceneAsk;
 class WorldServerRpcChangeSceneReply;
 class WorldServerRpcEnterSceneAsk;
 class WorldServerRpcEnterSceneReply;
+class WorldServerRpcCreateDungeonAsk;
+class WorldServerRpcCreateDungeonReply;
+class WorldServerRpcCreateTeamAsk;
+class WorldServerRpcCreateTeamReply;
+class WorldServerRpcJoinTeamAsk;
+class WorldServerRpcJoinTeamReply;
+class WorldServerRpcLeaveTeamAsk;
+class WorldServerRpcLeaveTeamReply;
+class WorldServerRpcAppointTeamLeaderAsk;
+class WorldServerRpcAppointTeamLeaderReply;
+class WorldServerRpcDismissTeamAsk;
+class WorldServerRpcDismissTeamReply;
+class WorldServerRpcKickMemberAsk;
+class WorldServerRpcKickMemberReply;
+class WorldServerRpcApplyTeamAsk;
+class WorldServerRpcApplyTeamReply;
+class WorldServerRpcAgreeTeamApplicantAsk;
+class WorldServerRpcAgreeTeamApplicantReply;
+class WorldServerRpcLoginAsk;
+class WorldServerRpcLoginReply;
+class WorldServerRpcUpdateRoleInfoAsk;
+class WorldServerRpcUpdateRoleInfoReply;
+class WorldServerRpcLogoutAsk;
+class WorldServerRpcLogoutReply;
+class WorldServerRpcCreateDungeonNotifyAsk;
+class WorldServerRpcCreateDungeonNotifyReply;
+class WorldServerRpcExitDungeonAsk;
+class WorldServerRpcExitDungeonReply;
+class WorldServerRpcReleaseDungeonAsk;
+class WorldServerRpcReleaseDungeonReply;
 
 // ===================================================================
 
@@ -121,6 +151,13 @@ class WorldServerRpcChangeSceneAsk : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 memid() const;
   inline void set_memid(::google::protobuf::int32 value);
 
+  // optional sint32 SceneId = 5 [default = -1];
+  inline bool has_sceneid() const;
+  inline void clear_sceneid();
+  static const int kSceneIdFieldNumber = 5;
+  inline ::google::protobuf::int32 sceneid() const;
+  inline void set_sceneid(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:WorldServerRpcChangeSceneAsk)
  private:
   inline void set_has_roleid();
@@ -131,6 +168,8 @@ class WorldServerRpcChangeSceneAsk : public ::google::protobuf::Message {
   inline void clear_has_targetsceneid();
   inline void set_has_memid();
   inline void clear_has_memid();
+  inline void set_has_sceneid();
+  inline void clear_has_sceneid();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -138,9 +177,10 @@ class WorldServerRpcChangeSceneAsk : public ::google::protobuf::Message {
   ::google::protobuf::int32 cursceneid_;
   ::google::protobuf::int32 targetsceneid_;
   ::google::protobuf::int32 memid_;
+  ::google::protobuf::int32 sceneid_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
 
   friend void  protobuf_AddDesc_WorldServerRpc_2eproto();
   friend void protobuf_AssignDesc_WorldServerRpc_2eproto();
@@ -341,20 +381,30 @@ class WorldServerRpcEnterSceneAsk : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 sceneid() const;
   inline void set_sceneid(::google::protobuf::int32 value);
 
+  // optional sint32 MemId = 3 [default = -1];
+  inline bool has_memid() const;
+  inline void clear_memid();
+  static const int kMemIdFieldNumber = 3;
+  inline ::google::protobuf::int32 memid() const;
+  inline void set_memid(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:WorldServerRpcEnterSceneAsk)
  private:
   inline void set_has_roleid();
   inline void clear_has_roleid();
   inline void set_has_sceneid();
   inline void clear_has_sceneid();
+  inline void set_has_memid();
+  inline void clear_has_memid();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint64 roleid_;
   ::google::protobuf::int32 sceneid_;
+  ::google::protobuf::int32 memid_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_WorldServerRpc_2eproto();
   friend void protobuf_AssignDesc_WorldServerRpc_2eproto();
@@ -444,6 +494,2959 @@ class WorldServerRpcEnterSceneReply : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static WorldServerRpcEnterSceneReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class WorldServerRpcCreateDungeonAsk : public ::google::protobuf::Message {
+ public:
+  WorldServerRpcCreateDungeonAsk();
+  virtual ~WorldServerRpcCreateDungeonAsk();
+
+  WorldServerRpcCreateDungeonAsk(const WorldServerRpcCreateDungeonAsk& from);
+
+  inline WorldServerRpcCreateDungeonAsk& operator=(const WorldServerRpcCreateDungeonAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WorldServerRpcCreateDungeonAsk& default_instance();
+
+  void Swap(WorldServerRpcCreateDungeonAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  WorldServerRpcCreateDungeonAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const WorldServerRpcCreateDungeonAsk& from);
+  void MergeFrom(const WorldServerRpcCreateDungeonAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint64 RoleId = 2 [default = 0];
+  inline bool has_roleid() const;
+  inline void clear_roleid();
+  static const int kRoleIdFieldNumber = 2;
+  inline ::google::protobuf::uint64 roleid() const;
+  inline void set_roleid(::google::protobuf::uint64 value);
+
+  // optional sint32 TargetSceneId = 3 [default = -1];
+  inline bool has_targetsceneid() const;
+  inline void clear_targetsceneid();
+  static const int kTargetSceneIdFieldNumber = 3;
+  inline ::google::protobuf::int32 targetsceneid() const;
+  inline void set_targetsceneid(::google::protobuf::int32 value);
+
+  // optional sint32 MemId = 4 [default = -1];
+  inline bool has_memid() const;
+  inline void clear_memid();
+  static const int kMemIdFieldNumber = 4;
+  inline ::google::protobuf::int32 memid() const;
+  inline void set_memid(::google::protobuf::int32 value);
+
+  // optional sint32 DungeonConfigId = 5 [default = -1];
+  inline bool has_dungeonconfigid() const;
+  inline void clear_dungeonconfigid();
+  static const int kDungeonConfigIdFieldNumber = 5;
+  inline ::google::protobuf::int32 dungeonconfigid() const;
+  inline void set_dungeonconfigid(::google::protobuf::int32 value);
+
+  // optional sint32 CurSceneId = 6 [default = -1];
+  inline bool has_cursceneid() const;
+  inline void clear_cursceneid();
+  static const int kCurSceneIdFieldNumber = 6;
+  inline ::google::protobuf::int32 cursceneid() const;
+  inline void set_cursceneid(::google::protobuf::int32 value);
+
+  // optional sint32 Result = 7 [default = -9999];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 7;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // repeated uint64 RoleIds = 8;
+  inline int roleids_size() const;
+  inline void clear_roleids();
+  static const int kRoleIdsFieldNumber = 8;
+  inline ::google::protobuf::uint64 roleids(int index) const;
+  inline void set_roleids(int index, ::google::protobuf::uint64 value);
+  inline void add_roleids(::google::protobuf::uint64 value);
+  inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
+      roleids() const;
+  inline ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
+      mutable_roleids();
+
+  // @@protoc_insertion_point(class_scope:WorldServerRpcCreateDungeonAsk)
+ private:
+  inline void set_has_roleid();
+  inline void clear_has_roleid();
+  inline void set_has_targetsceneid();
+  inline void clear_has_targetsceneid();
+  inline void set_has_memid();
+  inline void clear_has_memid();
+  inline void set_has_dungeonconfigid();
+  inline void clear_has_dungeonconfigid();
+  inline void set_has_cursceneid();
+  inline void clear_has_cursceneid();
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint64 roleid_;
+  ::google::protobuf::int32 targetsceneid_;
+  ::google::protobuf::int32 memid_;
+  ::google::protobuf::int32 dungeonconfigid_;
+  ::google::protobuf::int32 cursceneid_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint64 > roleids_;
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(7 + 31) / 32];
+
+  friend void  protobuf_AddDesc_WorldServerRpc_2eproto();
+  friend void protobuf_AssignDesc_WorldServerRpc_2eproto();
+  friend void protobuf_ShutdownFile_WorldServerRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static WorldServerRpcCreateDungeonAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class WorldServerRpcCreateDungeonReply : public ::google::protobuf::Message {
+ public:
+  WorldServerRpcCreateDungeonReply();
+  virtual ~WorldServerRpcCreateDungeonReply();
+
+  WorldServerRpcCreateDungeonReply(const WorldServerRpcCreateDungeonReply& from);
+
+  inline WorldServerRpcCreateDungeonReply& operator=(const WorldServerRpcCreateDungeonReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WorldServerRpcCreateDungeonReply& default_instance();
+
+  void Swap(WorldServerRpcCreateDungeonReply* other);
+
+  // implements Message ----------------------------------------------
+
+  WorldServerRpcCreateDungeonReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const WorldServerRpcCreateDungeonReply& from);
+  void MergeFrom(const WorldServerRpcCreateDungeonReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:WorldServerRpcCreateDungeonReply)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[1];
+
+  friend void  protobuf_AddDesc_WorldServerRpc_2eproto();
+  friend void protobuf_AssignDesc_WorldServerRpc_2eproto();
+  friend void protobuf_ShutdownFile_WorldServerRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static WorldServerRpcCreateDungeonReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class WorldServerRpcCreateTeamAsk : public ::google::protobuf::Message {
+ public:
+  WorldServerRpcCreateTeamAsk();
+  virtual ~WorldServerRpcCreateTeamAsk();
+
+  WorldServerRpcCreateTeamAsk(const WorldServerRpcCreateTeamAsk& from);
+
+  inline WorldServerRpcCreateTeamAsk& operator=(const WorldServerRpcCreateTeamAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WorldServerRpcCreateTeamAsk& default_instance();
+
+  void Swap(WorldServerRpcCreateTeamAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  WorldServerRpcCreateTeamAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const WorldServerRpcCreateTeamAsk& from);
+  void MergeFrom(const WorldServerRpcCreateTeamAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 TeamType = 2 [default = -1];
+  inline bool has_teamtype() const;
+  inline void clear_teamtype();
+  static const int kTeamTypeFieldNumber = 2;
+  inline ::google::protobuf::int32 teamtype() const;
+  inline void set_teamtype(::google::protobuf::int32 value);
+
+  // optional .TeamMemberInfo TeamMember = 5;
+  inline bool has_teammember() const;
+  inline void clear_teammember();
+  static const int kTeamMemberFieldNumber = 5;
+  inline const ::TeamMemberInfo& teammember() const;
+  inline ::TeamMemberInfo* mutable_teammember();
+  inline ::TeamMemberInfo* release_teammember();
+  inline void set_allocated_teammember(::TeamMemberInfo* teammember);
+
+  // optional sint32 Result = 6 [default = -9999];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 6;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // optional .TeamInfo Team = 7;
+  inline bool has_team() const;
+  inline void clear_team();
+  static const int kTeamFieldNumber = 7;
+  inline const ::TeamInfo& team() const;
+  inline ::TeamInfo* mutable_team();
+  inline ::TeamInfo* release_team();
+  inline void set_allocated_team(::TeamInfo* team);
+
+  // @@protoc_insertion_point(class_scope:WorldServerRpcCreateTeamAsk)
+ private:
+  inline void set_has_teamtype();
+  inline void clear_has_teamtype();
+  inline void set_has_teammember();
+  inline void clear_has_teammember();
+  inline void set_has_result();
+  inline void clear_has_result();
+  inline void set_has_team();
+  inline void clear_has_team();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::TeamMemberInfo* teammember_;
+  ::google::protobuf::int32 teamtype_;
+  ::google::protobuf::int32 result_;
+  ::TeamInfo* team_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+
+  friend void  protobuf_AddDesc_WorldServerRpc_2eproto();
+  friend void protobuf_AssignDesc_WorldServerRpc_2eproto();
+  friend void protobuf_ShutdownFile_WorldServerRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static WorldServerRpcCreateTeamAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class WorldServerRpcCreateTeamReply : public ::google::protobuf::Message {
+ public:
+  WorldServerRpcCreateTeamReply();
+  virtual ~WorldServerRpcCreateTeamReply();
+
+  WorldServerRpcCreateTeamReply(const WorldServerRpcCreateTeamReply& from);
+
+  inline WorldServerRpcCreateTeamReply& operator=(const WorldServerRpcCreateTeamReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WorldServerRpcCreateTeamReply& default_instance();
+
+  void Swap(WorldServerRpcCreateTeamReply* other);
+
+  // implements Message ----------------------------------------------
+
+  WorldServerRpcCreateTeamReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const WorldServerRpcCreateTeamReply& from);
+  void MergeFrom(const WorldServerRpcCreateTeamReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 Result = 1 [default = -9999];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:WorldServerRpcCreateTeamReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_WorldServerRpc_2eproto();
+  friend void protobuf_AssignDesc_WorldServerRpc_2eproto();
+  friend void protobuf_ShutdownFile_WorldServerRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static WorldServerRpcCreateTeamReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class WorldServerRpcJoinTeamAsk : public ::google::protobuf::Message {
+ public:
+  WorldServerRpcJoinTeamAsk();
+  virtual ~WorldServerRpcJoinTeamAsk();
+
+  WorldServerRpcJoinTeamAsk(const WorldServerRpcJoinTeamAsk& from);
+
+  inline WorldServerRpcJoinTeamAsk& operator=(const WorldServerRpcJoinTeamAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WorldServerRpcJoinTeamAsk& default_instance();
+
+  void Swap(WorldServerRpcJoinTeamAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  WorldServerRpcJoinTeamAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const WorldServerRpcJoinTeamAsk& from);
+  void MergeFrom(const WorldServerRpcJoinTeamAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 TeamId = 1 [default = -1];
+  inline bool has_teamid() const;
+  inline void clear_teamid();
+  static const int kTeamIdFieldNumber = 1;
+  inline ::google::protobuf::int32 teamid() const;
+  inline void set_teamid(::google::protobuf::int32 value);
+
+  // optional sint32 Result = 2 [default = -9999];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 2;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // optional .TeamMemberInfo TeamMember = 3;
+  inline bool has_teammember() const;
+  inline void clear_teammember();
+  static const int kTeamMemberFieldNumber = 3;
+  inline const ::TeamMemberInfo& teammember() const;
+  inline ::TeamMemberInfo* mutable_teammember();
+  inline ::TeamMemberInfo* release_teammember();
+  inline void set_allocated_teammember(::TeamMemberInfo* teammember);
+
+  // optional .TeamInfo Team = 4;
+  inline bool has_team() const;
+  inline void clear_team();
+  static const int kTeamFieldNumber = 4;
+  inline const ::TeamInfo& team() const;
+  inline ::TeamInfo* mutable_team();
+  inline ::TeamInfo* release_team();
+  inline void set_allocated_team(::TeamInfo* team);
+
+  // optional sint32 TeamType = 5 [default = -1];
+  inline bool has_teamtype() const;
+  inline void clear_teamtype();
+  static const int kTeamTypeFieldNumber = 5;
+  inline ::google::protobuf::int32 teamtype() const;
+  inline void set_teamtype(::google::protobuf::int32 value);
+
+  // optional sint32 MemId = 6 [default = -1];
+  inline bool has_memid() const;
+  inline void clear_memid();
+  static const int kMemIdFieldNumber = 6;
+  inline ::google::protobuf::int32 memid() const;
+  inline void set_memid(::google::protobuf::int32 value);
+
+  // optional sint32 SceneId = 7 [default = -1];
+  inline bool has_sceneid() const;
+  inline void clear_sceneid();
+  static const int kSceneIdFieldNumber = 7;
+  inline ::google::protobuf::int32 sceneid() const;
+  inline void set_sceneid(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:WorldServerRpcJoinTeamAsk)
+ private:
+  inline void set_has_teamid();
+  inline void clear_has_teamid();
+  inline void set_has_result();
+  inline void clear_has_result();
+  inline void set_has_teammember();
+  inline void clear_has_teammember();
+  inline void set_has_team();
+  inline void clear_has_team();
+  inline void set_has_teamtype();
+  inline void clear_has_teamtype();
+  inline void set_has_memid();
+  inline void clear_has_memid();
+  inline void set_has_sceneid();
+  inline void clear_has_sceneid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 teamid_;
+  ::google::protobuf::int32 result_;
+  ::TeamMemberInfo* teammember_;
+  ::TeamInfo* team_;
+  ::google::protobuf::int32 teamtype_;
+  ::google::protobuf::int32 memid_;
+  ::google::protobuf::int32 sceneid_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(7 + 31) / 32];
+
+  friend void  protobuf_AddDesc_WorldServerRpc_2eproto();
+  friend void protobuf_AssignDesc_WorldServerRpc_2eproto();
+  friend void protobuf_ShutdownFile_WorldServerRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static WorldServerRpcJoinTeamAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class WorldServerRpcJoinTeamReply : public ::google::protobuf::Message {
+ public:
+  WorldServerRpcJoinTeamReply();
+  virtual ~WorldServerRpcJoinTeamReply();
+
+  WorldServerRpcJoinTeamReply(const WorldServerRpcJoinTeamReply& from);
+
+  inline WorldServerRpcJoinTeamReply& operator=(const WorldServerRpcJoinTeamReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WorldServerRpcJoinTeamReply& default_instance();
+
+  void Swap(WorldServerRpcJoinTeamReply* other);
+
+  // implements Message ----------------------------------------------
+
+  WorldServerRpcJoinTeamReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const WorldServerRpcJoinTeamReply& from);
+  void MergeFrom(const WorldServerRpcJoinTeamReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 Result = 1 [default = -9999];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:WorldServerRpcJoinTeamReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_WorldServerRpc_2eproto();
+  friend void protobuf_AssignDesc_WorldServerRpc_2eproto();
+  friend void protobuf_ShutdownFile_WorldServerRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static WorldServerRpcJoinTeamReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class WorldServerRpcLeaveTeamAsk : public ::google::protobuf::Message {
+ public:
+  WorldServerRpcLeaveTeamAsk();
+  virtual ~WorldServerRpcLeaveTeamAsk();
+
+  WorldServerRpcLeaveTeamAsk(const WorldServerRpcLeaveTeamAsk& from);
+
+  inline WorldServerRpcLeaveTeamAsk& operator=(const WorldServerRpcLeaveTeamAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WorldServerRpcLeaveTeamAsk& default_instance();
+
+  void Swap(WorldServerRpcLeaveTeamAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  WorldServerRpcLeaveTeamAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const WorldServerRpcLeaveTeamAsk& from);
+  void MergeFrom(const WorldServerRpcLeaveTeamAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 TeamId = 1 [default = -1];
+  inline bool has_teamid() const;
+  inline void clear_teamid();
+  static const int kTeamIdFieldNumber = 1;
+  inline ::google::protobuf::int32 teamid() const;
+  inline void set_teamid(::google::protobuf::int32 value);
+
+  // optional uint64 RoleId = 2 [default = 0];
+  inline bool has_roleid() const;
+  inline void clear_roleid();
+  static const int kRoleIdFieldNumber = 2;
+  inline ::google::protobuf::uint64 roleid() const;
+  inline void set_roleid(::google::protobuf::uint64 value);
+
+  // optional sint32 MemId = 3 [default = -1];
+  inline bool has_memid() const;
+  inline void clear_memid();
+  static const int kMemIdFieldNumber = 3;
+  inline ::google::protobuf::int32 memid() const;
+  inline void set_memid(::google::protobuf::int32 value);
+
+  // optional sint32 SceneId = 4 [default = -1];
+  inline bool has_sceneid() const;
+  inline void clear_sceneid();
+  static const int kSceneIdFieldNumber = 4;
+  inline ::google::protobuf::int32 sceneid() const;
+  inline void set_sceneid(::google::protobuf::int32 value);
+
+  // optional uint64 NewLeaderRoleId = 5 [default = 0];
+  inline bool has_newleaderroleid() const;
+  inline void clear_newleaderroleid();
+  static const int kNewLeaderRoleIdFieldNumber = 5;
+  inline ::google::protobuf::uint64 newleaderroleid() const;
+  inline void set_newleaderroleid(::google::protobuf::uint64 value);
+
+  // optional sint32 Result = 6 [default = -9999];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 6;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:WorldServerRpcLeaveTeamAsk)
+ private:
+  inline void set_has_teamid();
+  inline void clear_has_teamid();
+  inline void set_has_roleid();
+  inline void clear_has_roleid();
+  inline void set_has_memid();
+  inline void clear_has_memid();
+  inline void set_has_sceneid();
+  inline void clear_has_sceneid();
+  inline void set_has_newleaderroleid();
+  inline void clear_has_newleaderroleid();
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint64 roleid_;
+  ::google::protobuf::int32 teamid_;
+  ::google::protobuf::int32 memid_;
+  ::google::protobuf::uint64 newleaderroleid_;
+  ::google::protobuf::int32 sceneid_;
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(6 + 31) / 32];
+
+  friend void  protobuf_AddDesc_WorldServerRpc_2eproto();
+  friend void protobuf_AssignDesc_WorldServerRpc_2eproto();
+  friend void protobuf_ShutdownFile_WorldServerRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static WorldServerRpcLeaveTeamAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class WorldServerRpcLeaveTeamReply : public ::google::protobuf::Message {
+ public:
+  WorldServerRpcLeaveTeamReply();
+  virtual ~WorldServerRpcLeaveTeamReply();
+
+  WorldServerRpcLeaveTeamReply(const WorldServerRpcLeaveTeamReply& from);
+
+  inline WorldServerRpcLeaveTeamReply& operator=(const WorldServerRpcLeaveTeamReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WorldServerRpcLeaveTeamReply& default_instance();
+
+  void Swap(WorldServerRpcLeaveTeamReply* other);
+
+  // implements Message ----------------------------------------------
+
+  WorldServerRpcLeaveTeamReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const WorldServerRpcLeaveTeamReply& from);
+  void MergeFrom(const WorldServerRpcLeaveTeamReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 Result = 1 [default = -9999];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:WorldServerRpcLeaveTeamReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_WorldServerRpc_2eproto();
+  friend void protobuf_AssignDesc_WorldServerRpc_2eproto();
+  friend void protobuf_ShutdownFile_WorldServerRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static WorldServerRpcLeaveTeamReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class WorldServerRpcAppointTeamLeaderAsk : public ::google::protobuf::Message {
+ public:
+  WorldServerRpcAppointTeamLeaderAsk();
+  virtual ~WorldServerRpcAppointTeamLeaderAsk();
+
+  WorldServerRpcAppointTeamLeaderAsk(const WorldServerRpcAppointTeamLeaderAsk& from);
+
+  inline WorldServerRpcAppointTeamLeaderAsk& operator=(const WorldServerRpcAppointTeamLeaderAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WorldServerRpcAppointTeamLeaderAsk& default_instance();
+
+  void Swap(WorldServerRpcAppointTeamLeaderAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  WorldServerRpcAppointTeamLeaderAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const WorldServerRpcAppointTeamLeaderAsk& from);
+  void MergeFrom(const WorldServerRpcAppointTeamLeaderAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint64 NewLeaderRoleId = 1 [default = 0];
+  inline bool has_newleaderroleid() const;
+  inline void clear_newleaderroleid();
+  static const int kNewLeaderRoleIdFieldNumber = 1;
+  inline ::google::protobuf::uint64 newleaderroleid() const;
+  inline void set_newleaderroleid(::google::protobuf::uint64 value);
+
+  // optional sint32 MemId = 2 [default = -1];
+  inline bool has_memid() const;
+  inline void clear_memid();
+  static const int kMemIdFieldNumber = 2;
+  inline ::google::protobuf::int32 memid() const;
+  inline void set_memid(::google::protobuf::int32 value);
+
+  // optional sint32 SceneId = 3 [default = -1];
+  inline bool has_sceneid() const;
+  inline void clear_sceneid();
+  static const int kSceneIdFieldNumber = 3;
+  inline ::google::protobuf::int32 sceneid() const;
+  inline void set_sceneid(::google::protobuf::int32 value);
+
+  // optional uint64 CurLeaderRoleId = 4 [default = 0];
+  inline bool has_curleaderroleid() const;
+  inline void clear_curleaderroleid();
+  static const int kCurLeaderRoleIdFieldNumber = 4;
+  inline ::google::protobuf::uint64 curleaderroleid() const;
+  inline void set_curleaderroleid(::google::protobuf::uint64 value);
+
+  // optional sint32 TeamId = 5 [default = -1];
+  inline bool has_teamid() const;
+  inline void clear_teamid();
+  static const int kTeamIdFieldNumber = 5;
+  inline ::google::protobuf::int32 teamid() const;
+  inline void set_teamid(::google::protobuf::int32 value);
+
+  // optional sint32 Result = 6 [default = -9999];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 6;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:WorldServerRpcAppointTeamLeaderAsk)
+ private:
+  inline void set_has_newleaderroleid();
+  inline void clear_has_newleaderroleid();
+  inline void set_has_memid();
+  inline void clear_has_memid();
+  inline void set_has_sceneid();
+  inline void clear_has_sceneid();
+  inline void set_has_curleaderroleid();
+  inline void clear_has_curleaderroleid();
+  inline void set_has_teamid();
+  inline void clear_has_teamid();
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint64 newleaderroleid_;
+  ::google::protobuf::int32 memid_;
+  ::google::protobuf::int32 sceneid_;
+  ::google::protobuf::uint64 curleaderroleid_;
+  ::google::protobuf::int32 teamid_;
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(6 + 31) / 32];
+
+  friend void  protobuf_AddDesc_WorldServerRpc_2eproto();
+  friend void protobuf_AssignDesc_WorldServerRpc_2eproto();
+  friend void protobuf_ShutdownFile_WorldServerRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static WorldServerRpcAppointTeamLeaderAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class WorldServerRpcAppointTeamLeaderReply : public ::google::protobuf::Message {
+ public:
+  WorldServerRpcAppointTeamLeaderReply();
+  virtual ~WorldServerRpcAppointTeamLeaderReply();
+
+  WorldServerRpcAppointTeamLeaderReply(const WorldServerRpcAppointTeamLeaderReply& from);
+
+  inline WorldServerRpcAppointTeamLeaderReply& operator=(const WorldServerRpcAppointTeamLeaderReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WorldServerRpcAppointTeamLeaderReply& default_instance();
+
+  void Swap(WorldServerRpcAppointTeamLeaderReply* other);
+
+  // implements Message ----------------------------------------------
+
+  WorldServerRpcAppointTeamLeaderReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const WorldServerRpcAppointTeamLeaderReply& from);
+  void MergeFrom(const WorldServerRpcAppointTeamLeaderReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 Result = 1 [default = -9999];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:WorldServerRpcAppointTeamLeaderReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_WorldServerRpc_2eproto();
+  friend void protobuf_AssignDesc_WorldServerRpc_2eproto();
+  friend void protobuf_ShutdownFile_WorldServerRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static WorldServerRpcAppointTeamLeaderReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class WorldServerRpcDismissTeamAsk : public ::google::protobuf::Message {
+ public:
+  WorldServerRpcDismissTeamAsk();
+  virtual ~WorldServerRpcDismissTeamAsk();
+
+  WorldServerRpcDismissTeamAsk(const WorldServerRpcDismissTeamAsk& from);
+
+  inline WorldServerRpcDismissTeamAsk& operator=(const WorldServerRpcDismissTeamAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WorldServerRpcDismissTeamAsk& default_instance();
+
+  void Swap(WorldServerRpcDismissTeamAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  WorldServerRpcDismissTeamAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const WorldServerRpcDismissTeamAsk& from);
+  void MergeFrom(const WorldServerRpcDismissTeamAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 SceneId = 1 [default = -1];
+  inline bool has_sceneid() const;
+  inline void clear_sceneid();
+  static const int kSceneIdFieldNumber = 1;
+  inline ::google::protobuf::int32 sceneid() const;
+  inline void set_sceneid(::google::protobuf::int32 value);
+
+  // optional sint32 MemId = 2 [default = -1];
+  inline bool has_memid() const;
+  inline void clear_memid();
+  static const int kMemIdFieldNumber = 2;
+  inline ::google::protobuf::int32 memid() const;
+  inline void set_memid(::google::protobuf::int32 value);
+
+  // optional uint64 RoleId = 3 [default = 0];
+  inline bool has_roleid() const;
+  inline void clear_roleid();
+  static const int kRoleIdFieldNumber = 3;
+  inline ::google::protobuf::uint64 roleid() const;
+  inline void set_roleid(::google::protobuf::uint64 value);
+
+  // optional sint32 TeamId = 4 [default = -1];
+  inline bool has_teamid() const;
+  inline void clear_teamid();
+  static const int kTeamIdFieldNumber = 4;
+  inline ::google::protobuf::int32 teamid() const;
+  inline void set_teamid(::google::protobuf::int32 value);
+
+  // optional sint32 Result = 5 [default = -9999];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 5;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:WorldServerRpcDismissTeamAsk)
+ private:
+  inline void set_has_sceneid();
+  inline void clear_has_sceneid();
+  inline void set_has_memid();
+  inline void clear_has_memid();
+  inline void set_has_roleid();
+  inline void clear_has_roleid();
+  inline void set_has_teamid();
+  inline void clear_has_teamid();
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 sceneid_;
+  ::google::protobuf::int32 memid_;
+  ::google::protobuf::uint64 roleid_;
+  ::google::protobuf::int32 teamid_;
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+
+  friend void  protobuf_AddDesc_WorldServerRpc_2eproto();
+  friend void protobuf_AssignDesc_WorldServerRpc_2eproto();
+  friend void protobuf_ShutdownFile_WorldServerRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static WorldServerRpcDismissTeamAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class WorldServerRpcDismissTeamReply : public ::google::protobuf::Message {
+ public:
+  WorldServerRpcDismissTeamReply();
+  virtual ~WorldServerRpcDismissTeamReply();
+
+  WorldServerRpcDismissTeamReply(const WorldServerRpcDismissTeamReply& from);
+
+  inline WorldServerRpcDismissTeamReply& operator=(const WorldServerRpcDismissTeamReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WorldServerRpcDismissTeamReply& default_instance();
+
+  void Swap(WorldServerRpcDismissTeamReply* other);
+
+  // implements Message ----------------------------------------------
+
+  WorldServerRpcDismissTeamReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const WorldServerRpcDismissTeamReply& from);
+  void MergeFrom(const WorldServerRpcDismissTeamReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 Result = 1 [default = -9999];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:WorldServerRpcDismissTeamReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_WorldServerRpc_2eproto();
+  friend void protobuf_AssignDesc_WorldServerRpc_2eproto();
+  friend void protobuf_ShutdownFile_WorldServerRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static WorldServerRpcDismissTeamReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class WorldServerRpcKickMemberAsk : public ::google::protobuf::Message {
+ public:
+  WorldServerRpcKickMemberAsk();
+  virtual ~WorldServerRpcKickMemberAsk();
+
+  WorldServerRpcKickMemberAsk(const WorldServerRpcKickMemberAsk& from);
+
+  inline WorldServerRpcKickMemberAsk& operator=(const WorldServerRpcKickMemberAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WorldServerRpcKickMemberAsk& default_instance();
+
+  void Swap(WorldServerRpcKickMemberAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  WorldServerRpcKickMemberAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const WorldServerRpcKickMemberAsk& from);
+  void MergeFrom(const WorldServerRpcKickMemberAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint64 KickMemberRoleId = 1 [default = 0];
+  inline bool has_kickmemberroleid() const;
+  inline void clear_kickmemberroleid();
+  static const int kKickMemberRoleIdFieldNumber = 1;
+  inline ::google::protobuf::uint64 kickmemberroleid() const;
+  inline void set_kickmemberroleid(::google::protobuf::uint64 value);
+
+  // optional sint32 MemId = 2 [default = -1];
+  inline bool has_memid() const;
+  inline void clear_memid();
+  static const int kMemIdFieldNumber = 2;
+  inline ::google::protobuf::int32 memid() const;
+  inline void set_memid(::google::protobuf::int32 value);
+
+  // optional sint32 SceneId = 3 [default = -1];
+  inline bool has_sceneid() const;
+  inline void clear_sceneid();
+  static const int kSceneIdFieldNumber = 3;
+  inline ::google::protobuf::int32 sceneid() const;
+  inline void set_sceneid(::google::protobuf::int32 value);
+
+  // optional sint32 TeamId = 4 [default = -1];
+  inline bool has_teamid() const;
+  inline void clear_teamid();
+  static const int kTeamIdFieldNumber = 4;
+  inline ::google::protobuf::int32 teamid() const;
+  inline void set_teamid(::google::protobuf::int32 value);
+
+  // optional uint64 LeaderRoleId = 5 [default = 0];
+  inline bool has_leaderroleid() const;
+  inline void clear_leaderroleid();
+  static const int kLeaderRoleIdFieldNumber = 5;
+  inline ::google::protobuf::uint64 leaderroleid() const;
+  inline void set_leaderroleid(::google::protobuf::uint64 value);
+
+  // optional sint32 Result = 6 [default = -9999];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 6;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:WorldServerRpcKickMemberAsk)
+ private:
+  inline void set_has_kickmemberroleid();
+  inline void clear_has_kickmemberroleid();
+  inline void set_has_memid();
+  inline void clear_has_memid();
+  inline void set_has_sceneid();
+  inline void clear_has_sceneid();
+  inline void set_has_teamid();
+  inline void clear_has_teamid();
+  inline void set_has_leaderroleid();
+  inline void clear_has_leaderroleid();
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint64 kickmemberroleid_;
+  ::google::protobuf::int32 memid_;
+  ::google::protobuf::int32 sceneid_;
+  ::google::protobuf::uint64 leaderroleid_;
+  ::google::protobuf::int32 teamid_;
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(6 + 31) / 32];
+
+  friend void  protobuf_AddDesc_WorldServerRpc_2eproto();
+  friend void protobuf_AssignDesc_WorldServerRpc_2eproto();
+  friend void protobuf_ShutdownFile_WorldServerRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static WorldServerRpcKickMemberAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class WorldServerRpcKickMemberReply : public ::google::protobuf::Message {
+ public:
+  WorldServerRpcKickMemberReply();
+  virtual ~WorldServerRpcKickMemberReply();
+
+  WorldServerRpcKickMemberReply(const WorldServerRpcKickMemberReply& from);
+
+  inline WorldServerRpcKickMemberReply& operator=(const WorldServerRpcKickMemberReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WorldServerRpcKickMemberReply& default_instance();
+
+  void Swap(WorldServerRpcKickMemberReply* other);
+
+  // implements Message ----------------------------------------------
+
+  WorldServerRpcKickMemberReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const WorldServerRpcKickMemberReply& from);
+  void MergeFrom(const WorldServerRpcKickMemberReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 Result = 1 [default = -9999];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:WorldServerRpcKickMemberReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_WorldServerRpc_2eproto();
+  friend void protobuf_AssignDesc_WorldServerRpc_2eproto();
+  friend void protobuf_ShutdownFile_WorldServerRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static WorldServerRpcKickMemberReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class WorldServerRpcApplyTeamAsk : public ::google::protobuf::Message {
+ public:
+  WorldServerRpcApplyTeamAsk();
+  virtual ~WorldServerRpcApplyTeamAsk();
+
+  WorldServerRpcApplyTeamAsk(const WorldServerRpcApplyTeamAsk& from);
+
+  inline WorldServerRpcApplyTeamAsk& operator=(const WorldServerRpcApplyTeamAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WorldServerRpcApplyTeamAsk& default_instance();
+
+  void Swap(WorldServerRpcApplyTeamAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  WorldServerRpcApplyTeamAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const WorldServerRpcApplyTeamAsk& from);
+  void MergeFrom(const WorldServerRpcApplyTeamAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 TeamId = 1 [default = -1];
+  inline bool has_teamid() const;
+  inline void clear_teamid();
+  static const int kTeamIdFieldNumber = 1;
+  inline ::google::protobuf::int32 teamid() const;
+  inline void set_teamid(::google::protobuf::int32 value);
+
+  // optional sint32 Result = 2 [default = -9999];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 2;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // optional .TeamMemberInfo TeamMember = 3;
+  inline bool has_teammember() const;
+  inline void clear_teammember();
+  static const int kTeamMemberFieldNumber = 3;
+  inline const ::TeamMemberInfo& teammember() const;
+  inline ::TeamMemberInfo* mutable_teammember();
+  inline ::TeamMemberInfo* release_teammember();
+  inline void set_allocated_teammember(::TeamMemberInfo* teammember);
+
+  // optional sint32 MemId = 4 [default = -1];
+  inline bool has_memid() const;
+  inline void clear_memid();
+  static const int kMemIdFieldNumber = 4;
+  inline ::google::protobuf::int32 memid() const;
+  inline void set_memid(::google::protobuf::int32 value);
+
+  // optional sint32 SceneId = 5 [default = -1];
+  inline bool has_sceneid() const;
+  inline void clear_sceneid();
+  static const int kSceneIdFieldNumber = 5;
+  inline ::google::protobuf::int32 sceneid() const;
+  inline void set_sceneid(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:WorldServerRpcApplyTeamAsk)
+ private:
+  inline void set_has_teamid();
+  inline void clear_has_teamid();
+  inline void set_has_result();
+  inline void clear_has_result();
+  inline void set_has_teammember();
+  inline void clear_has_teammember();
+  inline void set_has_memid();
+  inline void clear_has_memid();
+  inline void set_has_sceneid();
+  inline void clear_has_sceneid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 teamid_;
+  ::google::protobuf::int32 result_;
+  ::TeamMemberInfo* teammember_;
+  ::google::protobuf::int32 memid_;
+  ::google::protobuf::int32 sceneid_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+
+  friend void  protobuf_AddDesc_WorldServerRpc_2eproto();
+  friend void protobuf_AssignDesc_WorldServerRpc_2eproto();
+  friend void protobuf_ShutdownFile_WorldServerRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static WorldServerRpcApplyTeamAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class WorldServerRpcApplyTeamReply : public ::google::protobuf::Message {
+ public:
+  WorldServerRpcApplyTeamReply();
+  virtual ~WorldServerRpcApplyTeamReply();
+
+  WorldServerRpcApplyTeamReply(const WorldServerRpcApplyTeamReply& from);
+
+  inline WorldServerRpcApplyTeamReply& operator=(const WorldServerRpcApplyTeamReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WorldServerRpcApplyTeamReply& default_instance();
+
+  void Swap(WorldServerRpcApplyTeamReply* other);
+
+  // implements Message ----------------------------------------------
+
+  WorldServerRpcApplyTeamReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const WorldServerRpcApplyTeamReply& from);
+  void MergeFrom(const WorldServerRpcApplyTeamReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 Result = 1 [default = -9999];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:WorldServerRpcApplyTeamReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_WorldServerRpc_2eproto();
+  friend void protobuf_AssignDesc_WorldServerRpc_2eproto();
+  friend void protobuf_ShutdownFile_WorldServerRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static WorldServerRpcApplyTeamReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class WorldServerRpcAgreeTeamApplicantAsk : public ::google::protobuf::Message {
+ public:
+  WorldServerRpcAgreeTeamApplicantAsk();
+  virtual ~WorldServerRpcAgreeTeamApplicantAsk();
+
+  WorldServerRpcAgreeTeamApplicantAsk(const WorldServerRpcAgreeTeamApplicantAsk& from);
+
+  inline WorldServerRpcAgreeTeamApplicantAsk& operator=(const WorldServerRpcAgreeTeamApplicantAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WorldServerRpcAgreeTeamApplicantAsk& default_instance();
+
+  void Swap(WorldServerRpcAgreeTeamApplicantAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  WorldServerRpcAgreeTeamApplicantAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const WorldServerRpcAgreeTeamApplicantAsk& from);
+  void MergeFrom(const WorldServerRpcAgreeTeamApplicantAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint64 RoleId = 1 [default = 0];
+  inline bool has_roleid() const;
+  inline void clear_roleid();
+  static const int kRoleIdFieldNumber = 1;
+  inline ::google::protobuf::uint64 roleid() const;
+  inline void set_roleid(::google::protobuf::uint64 value);
+
+  // optional uint64 LeaderRoleId = 3 [default = 0];
+  inline bool has_leaderroleid() const;
+  inline void clear_leaderroleid();
+  static const int kLeaderRoleIdFieldNumber = 3;
+  inline ::google::protobuf::uint64 leaderroleid() const;
+  inline void set_leaderroleid(::google::protobuf::uint64 value);
+
+  // optional sint32 Result = 4 [default = -9999];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 4;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // optional sint32 MemId = 5 [default = -1];
+  inline bool has_memid() const;
+  inline void clear_memid();
+  static const int kMemIdFieldNumber = 5;
+  inline ::google::protobuf::int32 memid() const;
+  inline void set_memid(::google::protobuf::int32 value);
+
+  // optional sint32 SceneId = 6 [default = -1];
+  inline bool has_sceneid() const;
+  inline void clear_sceneid();
+  static const int kSceneIdFieldNumber = 6;
+  inline ::google::protobuf::int32 sceneid() const;
+  inline void set_sceneid(::google::protobuf::int32 value);
+
+  // optional .TeamInfo Team = 7;
+  inline bool has_team() const;
+  inline void clear_team();
+  static const int kTeamFieldNumber = 7;
+  inline const ::TeamInfo& team() const;
+  inline ::TeamInfo* mutable_team();
+  inline ::TeamInfo* release_team();
+  inline void set_allocated_team(::TeamInfo* team);
+
+  // @@protoc_insertion_point(class_scope:WorldServerRpcAgreeTeamApplicantAsk)
+ private:
+  inline void set_has_roleid();
+  inline void clear_has_roleid();
+  inline void set_has_leaderroleid();
+  inline void clear_has_leaderroleid();
+  inline void set_has_result();
+  inline void clear_has_result();
+  inline void set_has_memid();
+  inline void clear_has_memid();
+  inline void set_has_sceneid();
+  inline void clear_has_sceneid();
+  inline void set_has_team();
+  inline void clear_has_team();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint64 roleid_;
+  ::google::protobuf::uint64 leaderroleid_;
+  ::google::protobuf::int32 result_;
+  ::google::protobuf::int32 memid_;
+  ::TeamInfo* team_;
+  ::google::protobuf::int32 sceneid_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(6 + 31) / 32];
+
+  friend void  protobuf_AddDesc_WorldServerRpc_2eproto();
+  friend void protobuf_AssignDesc_WorldServerRpc_2eproto();
+  friend void protobuf_ShutdownFile_WorldServerRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static WorldServerRpcAgreeTeamApplicantAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class WorldServerRpcAgreeTeamApplicantReply : public ::google::protobuf::Message {
+ public:
+  WorldServerRpcAgreeTeamApplicantReply();
+  virtual ~WorldServerRpcAgreeTeamApplicantReply();
+
+  WorldServerRpcAgreeTeamApplicantReply(const WorldServerRpcAgreeTeamApplicantReply& from);
+
+  inline WorldServerRpcAgreeTeamApplicantReply& operator=(const WorldServerRpcAgreeTeamApplicantReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WorldServerRpcAgreeTeamApplicantReply& default_instance();
+
+  void Swap(WorldServerRpcAgreeTeamApplicantReply* other);
+
+  // implements Message ----------------------------------------------
+
+  WorldServerRpcAgreeTeamApplicantReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const WorldServerRpcAgreeTeamApplicantReply& from);
+  void MergeFrom(const WorldServerRpcAgreeTeamApplicantReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 Result = 1 [default = -9999];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:WorldServerRpcAgreeTeamApplicantReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_WorldServerRpc_2eproto();
+  friend void protobuf_AssignDesc_WorldServerRpc_2eproto();
+  friend void protobuf_ShutdownFile_WorldServerRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static WorldServerRpcAgreeTeamApplicantReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class WorldServerRpcLoginAsk : public ::google::protobuf::Message {
+ public:
+  WorldServerRpcLoginAsk();
+  virtual ~WorldServerRpcLoginAsk();
+
+  WorldServerRpcLoginAsk(const WorldServerRpcLoginAsk& from);
+
+  inline WorldServerRpcLoginAsk& operator=(const WorldServerRpcLoginAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WorldServerRpcLoginAsk& default_instance();
+
+  void Swap(WorldServerRpcLoginAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  WorldServerRpcLoginAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const WorldServerRpcLoginAsk& from);
+  void MergeFrom(const WorldServerRpcLoginAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional .TeamInfo Team = 1;
+  inline bool has_team() const;
+  inline void clear_team();
+  static const int kTeamFieldNumber = 1;
+  inline const ::TeamInfo& team() const;
+  inline ::TeamInfo* mutable_team();
+  inline ::TeamInfo* release_team();
+  inline void set_allocated_team(::TeamInfo* team);
+
+  // optional sint32 MemId = 2 [default = -1];
+  inline bool has_memid() const;
+  inline void clear_memid();
+  static const int kMemIdFieldNumber = 2;
+  inline ::google::protobuf::int32 memid() const;
+  inline void set_memid(::google::protobuf::int32 value);
+
+  // optional sint32 SceneId = 3 [default = -1];
+  inline bool has_sceneid() const;
+  inline void clear_sceneid();
+  static const int kSceneIdFieldNumber = 3;
+  inline ::google::protobuf::int32 sceneid() const;
+  inline void set_sceneid(::google::protobuf::int32 value);
+
+  // optional .OnlineUserInfo RoleInfo = 4;
+  inline bool has_roleinfo() const;
+  inline void clear_roleinfo();
+  static const int kRoleInfoFieldNumber = 4;
+  inline const ::OnlineUserInfo& roleinfo() const;
+  inline ::OnlineUserInfo* mutable_roleinfo();
+  inline ::OnlineUserInfo* release_roleinfo();
+  inline void set_allocated_roleinfo(::OnlineUserInfo* roleinfo);
+
+  // @@protoc_insertion_point(class_scope:WorldServerRpcLoginAsk)
+ private:
+  inline void set_has_team();
+  inline void clear_has_team();
+  inline void set_has_memid();
+  inline void clear_has_memid();
+  inline void set_has_sceneid();
+  inline void clear_has_sceneid();
+  inline void set_has_roleinfo();
+  inline void clear_has_roleinfo();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::TeamInfo* team_;
+  ::google::protobuf::int32 memid_;
+  ::google::protobuf::int32 sceneid_;
+  ::OnlineUserInfo* roleinfo_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+
+  friend void  protobuf_AddDesc_WorldServerRpc_2eproto();
+  friend void protobuf_AssignDesc_WorldServerRpc_2eproto();
+  friend void protobuf_ShutdownFile_WorldServerRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static WorldServerRpcLoginAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class WorldServerRpcLoginReply : public ::google::protobuf::Message {
+ public:
+  WorldServerRpcLoginReply();
+  virtual ~WorldServerRpcLoginReply();
+
+  WorldServerRpcLoginReply(const WorldServerRpcLoginReply& from);
+
+  inline WorldServerRpcLoginReply& operator=(const WorldServerRpcLoginReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WorldServerRpcLoginReply& default_instance();
+
+  void Swap(WorldServerRpcLoginReply* other);
+
+  // implements Message ----------------------------------------------
+
+  WorldServerRpcLoginReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const WorldServerRpcLoginReply& from);
+  void MergeFrom(const WorldServerRpcLoginReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 Result = 1 [default = -9999];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:WorldServerRpcLoginReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_WorldServerRpc_2eproto();
+  friend void protobuf_AssignDesc_WorldServerRpc_2eproto();
+  friend void protobuf_ShutdownFile_WorldServerRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static WorldServerRpcLoginReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class WorldServerRpcUpdateRoleInfoAsk : public ::google::protobuf::Message {
+ public:
+  WorldServerRpcUpdateRoleInfoAsk();
+  virtual ~WorldServerRpcUpdateRoleInfoAsk();
+
+  WorldServerRpcUpdateRoleInfoAsk(const WorldServerRpcUpdateRoleInfoAsk& from);
+
+  inline WorldServerRpcUpdateRoleInfoAsk& operator=(const WorldServerRpcUpdateRoleInfoAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WorldServerRpcUpdateRoleInfoAsk& default_instance();
+
+  void Swap(WorldServerRpcUpdateRoleInfoAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  WorldServerRpcUpdateRoleInfoAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const WorldServerRpcUpdateRoleInfoAsk& from);
+  void MergeFrom(const WorldServerRpcUpdateRoleInfoAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional .OnlineUserInfo RoleInfo = 1;
+  inline bool has_roleinfo() const;
+  inline void clear_roleinfo();
+  static const int kRoleInfoFieldNumber = 1;
+  inline const ::OnlineUserInfo& roleinfo() const;
+  inline ::OnlineUserInfo* mutable_roleinfo();
+  inline ::OnlineUserInfo* release_roleinfo();
+  inline void set_allocated_roleinfo(::OnlineUserInfo* roleinfo);
+
+  // @@protoc_insertion_point(class_scope:WorldServerRpcUpdateRoleInfoAsk)
+ private:
+  inline void set_has_roleinfo();
+  inline void clear_has_roleinfo();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::OnlineUserInfo* roleinfo_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_WorldServerRpc_2eproto();
+  friend void protobuf_AssignDesc_WorldServerRpc_2eproto();
+  friend void protobuf_ShutdownFile_WorldServerRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static WorldServerRpcUpdateRoleInfoAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class WorldServerRpcUpdateRoleInfoReply : public ::google::protobuf::Message {
+ public:
+  WorldServerRpcUpdateRoleInfoReply();
+  virtual ~WorldServerRpcUpdateRoleInfoReply();
+
+  WorldServerRpcUpdateRoleInfoReply(const WorldServerRpcUpdateRoleInfoReply& from);
+
+  inline WorldServerRpcUpdateRoleInfoReply& operator=(const WorldServerRpcUpdateRoleInfoReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WorldServerRpcUpdateRoleInfoReply& default_instance();
+
+  void Swap(WorldServerRpcUpdateRoleInfoReply* other);
+
+  // implements Message ----------------------------------------------
+
+  WorldServerRpcUpdateRoleInfoReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const WorldServerRpcUpdateRoleInfoReply& from);
+  void MergeFrom(const WorldServerRpcUpdateRoleInfoReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 Result = 1 [default = -9999];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:WorldServerRpcUpdateRoleInfoReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_WorldServerRpc_2eproto();
+  friend void protobuf_AssignDesc_WorldServerRpc_2eproto();
+  friend void protobuf_ShutdownFile_WorldServerRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static WorldServerRpcUpdateRoleInfoReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class WorldServerRpcLogoutAsk : public ::google::protobuf::Message {
+ public:
+  WorldServerRpcLogoutAsk();
+  virtual ~WorldServerRpcLogoutAsk();
+
+  WorldServerRpcLogoutAsk(const WorldServerRpcLogoutAsk& from);
+
+  inline WorldServerRpcLogoutAsk& operator=(const WorldServerRpcLogoutAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WorldServerRpcLogoutAsk& default_instance();
+
+  void Swap(WorldServerRpcLogoutAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  WorldServerRpcLogoutAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const WorldServerRpcLogoutAsk& from);
+  void MergeFrom(const WorldServerRpcLogoutAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional .OnlineUserInfo RoleInfo = 1;
+  inline bool has_roleinfo() const;
+  inline void clear_roleinfo();
+  static const int kRoleInfoFieldNumber = 1;
+  inline const ::OnlineUserInfo& roleinfo() const;
+  inline ::OnlineUserInfo* mutable_roleinfo();
+  inline ::OnlineUserInfo* release_roleinfo();
+  inline void set_allocated_roleinfo(::OnlineUserInfo* roleinfo);
+
+  // @@protoc_insertion_point(class_scope:WorldServerRpcLogoutAsk)
+ private:
+  inline void set_has_roleinfo();
+  inline void clear_has_roleinfo();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::OnlineUserInfo* roleinfo_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_WorldServerRpc_2eproto();
+  friend void protobuf_AssignDesc_WorldServerRpc_2eproto();
+  friend void protobuf_ShutdownFile_WorldServerRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static WorldServerRpcLogoutAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class WorldServerRpcLogoutReply : public ::google::protobuf::Message {
+ public:
+  WorldServerRpcLogoutReply();
+  virtual ~WorldServerRpcLogoutReply();
+
+  WorldServerRpcLogoutReply(const WorldServerRpcLogoutReply& from);
+
+  inline WorldServerRpcLogoutReply& operator=(const WorldServerRpcLogoutReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WorldServerRpcLogoutReply& default_instance();
+
+  void Swap(WorldServerRpcLogoutReply* other);
+
+  // implements Message ----------------------------------------------
+
+  WorldServerRpcLogoutReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const WorldServerRpcLogoutReply& from);
+  void MergeFrom(const WorldServerRpcLogoutReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 Result = 1 [default = -9999];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:WorldServerRpcLogoutReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_WorldServerRpc_2eproto();
+  friend void protobuf_AssignDesc_WorldServerRpc_2eproto();
+  friend void protobuf_ShutdownFile_WorldServerRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static WorldServerRpcLogoutReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class WorldServerRpcCreateDungeonNotifyAsk : public ::google::protobuf::Message {
+ public:
+  WorldServerRpcCreateDungeonNotifyAsk();
+  virtual ~WorldServerRpcCreateDungeonNotifyAsk();
+
+  WorldServerRpcCreateDungeonNotifyAsk(const WorldServerRpcCreateDungeonNotifyAsk& from);
+
+  inline WorldServerRpcCreateDungeonNotifyAsk& operator=(const WorldServerRpcCreateDungeonNotifyAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WorldServerRpcCreateDungeonNotifyAsk& default_instance();
+
+  void Swap(WorldServerRpcCreateDungeonNotifyAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  WorldServerRpcCreateDungeonNotifyAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const WorldServerRpcCreateDungeonNotifyAsk& from);
+  void MergeFrom(const WorldServerRpcCreateDungeonNotifyAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 CurSceneId = 1 [default = -1];
+  inline bool has_cursceneid() const;
+  inline void clear_cursceneid();
+  static const int kCurSceneIdFieldNumber = 1;
+  inline ::google::protobuf::int32 cursceneid() const;
+  inline void set_cursceneid(::google::protobuf::int32 value);
+
+  // optional uint64 RoleId = 2 [default = 0];
+  inline bool has_roleid() const;
+  inline void clear_roleid();
+  static const int kRoleIdFieldNumber = 2;
+  inline ::google::protobuf::uint64 roleid() const;
+  inline void set_roleid(::google::protobuf::uint64 value);
+
+  // optional sint32 MemId = 3 [default = -1];
+  inline bool has_memid() const;
+  inline void clear_memid();
+  static const int kMemIdFieldNumber = 3;
+  inline ::google::protobuf::int32 memid() const;
+  inline void set_memid(::google::protobuf::int32 value);
+
+  // optional sint32 TargetSceneId = 5 [default = -1];
+  inline bool has_targetsceneid() const;
+  inline void clear_targetsceneid();
+  static const int kTargetSceneIdFieldNumber = 5;
+  inline ::google::protobuf::int32 targetsceneid() const;
+  inline void set_targetsceneid(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:WorldServerRpcCreateDungeonNotifyAsk)
+ private:
+  inline void set_has_cursceneid();
+  inline void clear_has_cursceneid();
+  inline void set_has_roleid();
+  inline void clear_has_roleid();
+  inline void set_has_memid();
+  inline void clear_has_memid();
+  inline void set_has_targetsceneid();
+  inline void clear_has_targetsceneid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint64 roleid_;
+  ::google::protobuf::int32 cursceneid_;
+  ::google::protobuf::int32 memid_;
+  ::google::protobuf::int32 targetsceneid_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+
+  friend void  protobuf_AddDesc_WorldServerRpc_2eproto();
+  friend void protobuf_AssignDesc_WorldServerRpc_2eproto();
+  friend void protobuf_ShutdownFile_WorldServerRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static WorldServerRpcCreateDungeonNotifyAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class WorldServerRpcCreateDungeonNotifyReply : public ::google::protobuf::Message {
+ public:
+  WorldServerRpcCreateDungeonNotifyReply();
+  virtual ~WorldServerRpcCreateDungeonNotifyReply();
+
+  WorldServerRpcCreateDungeonNotifyReply(const WorldServerRpcCreateDungeonNotifyReply& from);
+
+  inline WorldServerRpcCreateDungeonNotifyReply& operator=(const WorldServerRpcCreateDungeonNotifyReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WorldServerRpcCreateDungeonNotifyReply& default_instance();
+
+  void Swap(WorldServerRpcCreateDungeonNotifyReply* other);
+
+  // implements Message ----------------------------------------------
+
+  WorldServerRpcCreateDungeonNotifyReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const WorldServerRpcCreateDungeonNotifyReply& from);
+  void MergeFrom(const WorldServerRpcCreateDungeonNotifyReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 Result = 1 [default = -9999];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:WorldServerRpcCreateDungeonNotifyReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_WorldServerRpc_2eproto();
+  friend void protobuf_AssignDesc_WorldServerRpc_2eproto();
+  friend void protobuf_ShutdownFile_WorldServerRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static WorldServerRpcCreateDungeonNotifyReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class WorldServerRpcExitDungeonAsk : public ::google::protobuf::Message {
+ public:
+  WorldServerRpcExitDungeonAsk();
+  virtual ~WorldServerRpcExitDungeonAsk();
+
+  WorldServerRpcExitDungeonAsk(const WorldServerRpcExitDungeonAsk& from);
+
+  inline WorldServerRpcExitDungeonAsk& operator=(const WorldServerRpcExitDungeonAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WorldServerRpcExitDungeonAsk& default_instance();
+
+  void Swap(WorldServerRpcExitDungeonAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  WorldServerRpcExitDungeonAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const WorldServerRpcExitDungeonAsk& from);
+  void MergeFrom(const WorldServerRpcExitDungeonAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint64 RoleId = 1 [default = 0];
+  inline bool has_roleid() const;
+  inline void clear_roleid();
+  static const int kRoleIdFieldNumber = 1;
+  inline ::google::protobuf::uint64 roleid() const;
+  inline void set_roleid(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:WorldServerRpcExitDungeonAsk)
+ private:
+  inline void set_has_roleid();
+  inline void clear_has_roleid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint64 roleid_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_WorldServerRpc_2eproto();
+  friend void protobuf_AssignDesc_WorldServerRpc_2eproto();
+  friend void protobuf_ShutdownFile_WorldServerRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static WorldServerRpcExitDungeonAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class WorldServerRpcExitDungeonReply : public ::google::protobuf::Message {
+ public:
+  WorldServerRpcExitDungeonReply();
+  virtual ~WorldServerRpcExitDungeonReply();
+
+  WorldServerRpcExitDungeonReply(const WorldServerRpcExitDungeonReply& from);
+
+  inline WorldServerRpcExitDungeonReply& operator=(const WorldServerRpcExitDungeonReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WorldServerRpcExitDungeonReply& default_instance();
+
+  void Swap(WorldServerRpcExitDungeonReply* other);
+
+  // implements Message ----------------------------------------------
+
+  WorldServerRpcExitDungeonReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const WorldServerRpcExitDungeonReply& from);
+  void MergeFrom(const WorldServerRpcExitDungeonReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 Result = 1 [default = -9999];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:WorldServerRpcExitDungeonReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_WorldServerRpc_2eproto();
+  friend void protobuf_AssignDesc_WorldServerRpc_2eproto();
+  friend void protobuf_ShutdownFile_WorldServerRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static WorldServerRpcExitDungeonReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class WorldServerRpcReleaseDungeonAsk : public ::google::protobuf::Message {
+ public:
+  WorldServerRpcReleaseDungeonAsk();
+  virtual ~WorldServerRpcReleaseDungeonAsk();
+
+  WorldServerRpcReleaseDungeonAsk(const WorldServerRpcReleaseDungeonAsk& from);
+
+  inline WorldServerRpcReleaseDungeonAsk& operator=(const WorldServerRpcReleaseDungeonAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WorldServerRpcReleaseDungeonAsk& default_instance();
+
+  void Swap(WorldServerRpcReleaseDungeonAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  WorldServerRpcReleaseDungeonAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const WorldServerRpcReleaseDungeonAsk& from);
+  void MergeFrom(const WorldServerRpcReleaseDungeonAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:WorldServerRpcReleaseDungeonAsk)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[1];
+
+  friend void  protobuf_AddDesc_WorldServerRpc_2eproto();
+  friend void protobuf_AssignDesc_WorldServerRpc_2eproto();
+  friend void protobuf_ShutdownFile_WorldServerRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static WorldServerRpcReleaseDungeonAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class WorldServerRpcReleaseDungeonReply : public ::google::protobuf::Message {
+ public:
+  WorldServerRpcReleaseDungeonReply();
+  virtual ~WorldServerRpcReleaseDungeonReply();
+
+  WorldServerRpcReleaseDungeonReply(const WorldServerRpcReleaseDungeonReply& from);
+
+  inline WorldServerRpcReleaseDungeonReply& operator=(const WorldServerRpcReleaseDungeonReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const WorldServerRpcReleaseDungeonReply& default_instance();
+
+  void Swap(WorldServerRpcReleaseDungeonReply* other);
+
+  // implements Message ----------------------------------------------
+
+  WorldServerRpcReleaseDungeonReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const WorldServerRpcReleaseDungeonReply& from);
+  void MergeFrom(const WorldServerRpcReleaseDungeonReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 Result = 1 [default = -9999];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:WorldServerRpcReleaseDungeonReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_WorldServerRpc_2eproto();
+  friend void protobuf_AssignDesc_WorldServerRpc_2eproto();
+  friend void protobuf_ShutdownFile_WorldServerRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static WorldServerRpcReleaseDungeonReply* default_instance_;
 };
 // ===================================================================
 
@@ -538,6 +3541,28 @@ inline ::google::protobuf::int32 WorldServerRpcChangeSceneAsk::memid() const {
 inline void WorldServerRpcChangeSceneAsk::set_memid(::google::protobuf::int32 value) {
   set_has_memid();
   memid_ = value;
+}
+
+// optional sint32 SceneId = 5 [default = -1];
+inline bool WorldServerRpcChangeSceneAsk::has_sceneid() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void WorldServerRpcChangeSceneAsk::set_has_sceneid() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void WorldServerRpcChangeSceneAsk::clear_has_sceneid() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void WorldServerRpcChangeSceneAsk::clear_sceneid() {
+  sceneid_ = -1;
+  clear_has_sceneid();
+}
+inline ::google::protobuf::int32 WorldServerRpcChangeSceneAsk::sceneid() const {
+  return sceneid_;
+}
+inline void WorldServerRpcChangeSceneAsk::set_sceneid(::google::protobuf::int32 value) {
+  set_has_sceneid();
+  sceneid_ = value;
 }
 
 // -------------------------------------------------------------------
@@ -702,6 +3727,28 @@ inline void WorldServerRpcEnterSceneAsk::set_sceneid(::google::protobuf::int32 v
   sceneid_ = value;
 }
 
+// optional sint32 MemId = 3 [default = -1];
+inline bool WorldServerRpcEnterSceneAsk::has_memid() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void WorldServerRpcEnterSceneAsk::set_has_memid() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void WorldServerRpcEnterSceneAsk::clear_has_memid() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void WorldServerRpcEnterSceneAsk::clear_memid() {
+  memid_ = -1;
+  clear_has_memid();
+}
+inline ::google::protobuf::int32 WorldServerRpcEnterSceneAsk::memid() const {
+  return memid_;
+}
+inline void WorldServerRpcEnterSceneAsk::set_memid(::google::protobuf::int32 value) {
+  set_has_memid();
+  memid_ = value;
+}
+
 // -------------------------------------------------------------------
 
 // WorldServerRpcEnterSceneReply
@@ -724,6 +3771,1983 @@ inline ::google::protobuf::int32 WorldServerRpcEnterSceneReply::result() const {
   return result_;
 }
 inline void WorldServerRpcEnterSceneReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// WorldServerRpcCreateDungeonAsk
+
+// optional uint64 RoleId = 2 [default = 0];
+inline bool WorldServerRpcCreateDungeonAsk::has_roleid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void WorldServerRpcCreateDungeonAsk::set_has_roleid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void WorldServerRpcCreateDungeonAsk::clear_has_roleid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void WorldServerRpcCreateDungeonAsk::clear_roleid() {
+  roleid_ = GOOGLE_ULONGLONG(0);
+  clear_has_roleid();
+}
+inline ::google::protobuf::uint64 WorldServerRpcCreateDungeonAsk::roleid() const {
+  return roleid_;
+}
+inline void WorldServerRpcCreateDungeonAsk::set_roleid(::google::protobuf::uint64 value) {
+  set_has_roleid();
+  roleid_ = value;
+}
+
+// optional sint32 TargetSceneId = 3 [default = -1];
+inline bool WorldServerRpcCreateDungeonAsk::has_targetsceneid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void WorldServerRpcCreateDungeonAsk::set_has_targetsceneid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void WorldServerRpcCreateDungeonAsk::clear_has_targetsceneid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void WorldServerRpcCreateDungeonAsk::clear_targetsceneid() {
+  targetsceneid_ = -1;
+  clear_has_targetsceneid();
+}
+inline ::google::protobuf::int32 WorldServerRpcCreateDungeonAsk::targetsceneid() const {
+  return targetsceneid_;
+}
+inline void WorldServerRpcCreateDungeonAsk::set_targetsceneid(::google::protobuf::int32 value) {
+  set_has_targetsceneid();
+  targetsceneid_ = value;
+}
+
+// optional sint32 MemId = 4 [default = -1];
+inline bool WorldServerRpcCreateDungeonAsk::has_memid() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void WorldServerRpcCreateDungeonAsk::set_has_memid() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void WorldServerRpcCreateDungeonAsk::clear_has_memid() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void WorldServerRpcCreateDungeonAsk::clear_memid() {
+  memid_ = -1;
+  clear_has_memid();
+}
+inline ::google::protobuf::int32 WorldServerRpcCreateDungeonAsk::memid() const {
+  return memid_;
+}
+inline void WorldServerRpcCreateDungeonAsk::set_memid(::google::protobuf::int32 value) {
+  set_has_memid();
+  memid_ = value;
+}
+
+// optional sint32 DungeonConfigId = 5 [default = -1];
+inline bool WorldServerRpcCreateDungeonAsk::has_dungeonconfigid() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void WorldServerRpcCreateDungeonAsk::set_has_dungeonconfigid() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void WorldServerRpcCreateDungeonAsk::clear_has_dungeonconfigid() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void WorldServerRpcCreateDungeonAsk::clear_dungeonconfigid() {
+  dungeonconfigid_ = -1;
+  clear_has_dungeonconfigid();
+}
+inline ::google::protobuf::int32 WorldServerRpcCreateDungeonAsk::dungeonconfigid() const {
+  return dungeonconfigid_;
+}
+inline void WorldServerRpcCreateDungeonAsk::set_dungeonconfigid(::google::protobuf::int32 value) {
+  set_has_dungeonconfigid();
+  dungeonconfigid_ = value;
+}
+
+// optional sint32 CurSceneId = 6 [default = -1];
+inline bool WorldServerRpcCreateDungeonAsk::has_cursceneid() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void WorldServerRpcCreateDungeonAsk::set_has_cursceneid() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void WorldServerRpcCreateDungeonAsk::clear_has_cursceneid() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void WorldServerRpcCreateDungeonAsk::clear_cursceneid() {
+  cursceneid_ = -1;
+  clear_has_cursceneid();
+}
+inline ::google::protobuf::int32 WorldServerRpcCreateDungeonAsk::cursceneid() const {
+  return cursceneid_;
+}
+inline void WorldServerRpcCreateDungeonAsk::set_cursceneid(::google::protobuf::int32 value) {
+  set_has_cursceneid();
+  cursceneid_ = value;
+}
+
+// optional sint32 Result = 7 [default = -9999];
+inline bool WorldServerRpcCreateDungeonAsk::has_result() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void WorldServerRpcCreateDungeonAsk::set_has_result() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void WorldServerRpcCreateDungeonAsk::clear_has_result() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void WorldServerRpcCreateDungeonAsk::clear_result() {
+  result_ = -9999;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 WorldServerRpcCreateDungeonAsk::result() const {
+  return result_;
+}
+inline void WorldServerRpcCreateDungeonAsk::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// repeated uint64 RoleIds = 8;
+inline int WorldServerRpcCreateDungeonAsk::roleids_size() const {
+  return roleids_.size();
+}
+inline void WorldServerRpcCreateDungeonAsk::clear_roleids() {
+  roleids_.Clear();
+}
+inline ::google::protobuf::uint64 WorldServerRpcCreateDungeonAsk::roleids(int index) const {
+  return roleids_.Get(index);
+}
+inline void WorldServerRpcCreateDungeonAsk::set_roleids(int index, ::google::protobuf::uint64 value) {
+  roleids_.Set(index, value);
+}
+inline void WorldServerRpcCreateDungeonAsk::add_roleids(::google::protobuf::uint64 value) {
+  roleids_.Add(value);
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
+WorldServerRpcCreateDungeonAsk::roleids() const {
+  return roleids_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
+WorldServerRpcCreateDungeonAsk::mutable_roleids() {
+  return &roleids_;
+}
+
+// -------------------------------------------------------------------
+
+// WorldServerRpcCreateDungeonReply
+
+// -------------------------------------------------------------------
+
+// WorldServerRpcCreateTeamAsk
+
+// optional sint32 TeamType = 2 [default = -1];
+inline bool WorldServerRpcCreateTeamAsk::has_teamtype() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void WorldServerRpcCreateTeamAsk::set_has_teamtype() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void WorldServerRpcCreateTeamAsk::clear_has_teamtype() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void WorldServerRpcCreateTeamAsk::clear_teamtype() {
+  teamtype_ = -1;
+  clear_has_teamtype();
+}
+inline ::google::protobuf::int32 WorldServerRpcCreateTeamAsk::teamtype() const {
+  return teamtype_;
+}
+inline void WorldServerRpcCreateTeamAsk::set_teamtype(::google::protobuf::int32 value) {
+  set_has_teamtype();
+  teamtype_ = value;
+}
+
+// optional .TeamMemberInfo TeamMember = 5;
+inline bool WorldServerRpcCreateTeamAsk::has_teammember() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void WorldServerRpcCreateTeamAsk::set_has_teammember() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void WorldServerRpcCreateTeamAsk::clear_has_teammember() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void WorldServerRpcCreateTeamAsk::clear_teammember() {
+  if (teammember_ != NULL) teammember_->::TeamMemberInfo::Clear();
+  clear_has_teammember();
+}
+inline const ::TeamMemberInfo& WorldServerRpcCreateTeamAsk::teammember() const {
+  return teammember_ != NULL ? *teammember_ : *default_instance_->teammember_;
+}
+inline ::TeamMemberInfo* WorldServerRpcCreateTeamAsk::mutable_teammember() {
+  set_has_teammember();
+  if (teammember_ == NULL) teammember_ = new ::TeamMemberInfo;
+  return teammember_;
+}
+inline ::TeamMemberInfo* WorldServerRpcCreateTeamAsk::release_teammember() {
+  clear_has_teammember();
+  ::TeamMemberInfo* temp = teammember_;
+  teammember_ = NULL;
+  return temp;
+}
+inline void WorldServerRpcCreateTeamAsk::set_allocated_teammember(::TeamMemberInfo* teammember) {
+  delete teammember_;
+  teammember_ = teammember;
+  if (teammember) {
+    set_has_teammember();
+  } else {
+    clear_has_teammember();
+  }
+}
+
+// optional sint32 Result = 6 [default = -9999];
+inline bool WorldServerRpcCreateTeamAsk::has_result() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void WorldServerRpcCreateTeamAsk::set_has_result() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void WorldServerRpcCreateTeamAsk::clear_has_result() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void WorldServerRpcCreateTeamAsk::clear_result() {
+  result_ = -9999;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 WorldServerRpcCreateTeamAsk::result() const {
+  return result_;
+}
+inline void WorldServerRpcCreateTeamAsk::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// optional .TeamInfo Team = 7;
+inline bool WorldServerRpcCreateTeamAsk::has_team() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void WorldServerRpcCreateTeamAsk::set_has_team() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void WorldServerRpcCreateTeamAsk::clear_has_team() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void WorldServerRpcCreateTeamAsk::clear_team() {
+  if (team_ != NULL) team_->::TeamInfo::Clear();
+  clear_has_team();
+}
+inline const ::TeamInfo& WorldServerRpcCreateTeamAsk::team() const {
+  return team_ != NULL ? *team_ : *default_instance_->team_;
+}
+inline ::TeamInfo* WorldServerRpcCreateTeamAsk::mutable_team() {
+  set_has_team();
+  if (team_ == NULL) team_ = new ::TeamInfo;
+  return team_;
+}
+inline ::TeamInfo* WorldServerRpcCreateTeamAsk::release_team() {
+  clear_has_team();
+  ::TeamInfo* temp = team_;
+  team_ = NULL;
+  return temp;
+}
+inline void WorldServerRpcCreateTeamAsk::set_allocated_team(::TeamInfo* team) {
+  delete team_;
+  team_ = team;
+  if (team) {
+    set_has_team();
+  } else {
+    clear_has_team();
+  }
+}
+
+// -------------------------------------------------------------------
+
+// WorldServerRpcCreateTeamReply
+
+// optional sint32 Result = 1 [default = -9999];
+inline bool WorldServerRpcCreateTeamReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void WorldServerRpcCreateTeamReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void WorldServerRpcCreateTeamReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void WorldServerRpcCreateTeamReply::clear_result() {
+  result_ = -9999;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 WorldServerRpcCreateTeamReply::result() const {
+  return result_;
+}
+inline void WorldServerRpcCreateTeamReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// WorldServerRpcJoinTeamAsk
+
+// optional sint32 TeamId = 1 [default = -1];
+inline bool WorldServerRpcJoinTeamAsk::has_teamid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void WorldServerRpcJoinTeamAsk::set_has_teamid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void WorldServerRpcJoinTeamAsk::clear_has_teamid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void WorldServerRpcJoinTeamAsk::clear_teamid() {
+  teamid_ = -1;
+  clear_has_teamid();
+}
+inline ::google::protobuf::int32 WorldServerRpcJoinTeamAsk::teamid() const {
+  return teamid_;
+}
+inline void WorldServerRpcJoinTeamAsk::set_teamid(::google::protobuf::int32 value) {
+  set_has_teamid();
+  teamid_ = value;
+}
+
+// optional sint32 Result = 2 [default = -9999];
+inline bool WorldServerRpcJoinTeamAsk::has_result() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void WorldServerRpcJoinTeamAsk::set_has_result() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void WorldServerRpcJoinTeamAsk::clear_has_result() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void WorldServerRpcJoinTeamAsk::clear_result() {
+  result_ = -9999;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 WorldServerRpcJoinTeamAsk::result() const {
+  return result_;
+}
+inline void WorldServerRpcJoinTeamAsk::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// optional .TeamMemberInfo TeamMember = 3;
+inline bool WorldServerRpcJoinTeamAsk::has_teammember() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void WorldServerRpcJoinTeamAsk::set_has_teammember() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void WorldServerRpcJoinTeamAsk::clear_has_teammember() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void WorldServerRpcJoinTeamAsk::clear_teammember() {
+  if (teammember_ != NULL) teammember_->::TeamMemberInfo::Clear();
+  clear_has_teammember();
+}
+inline const ::TeamMemberInfo& WorldServerRpcJoinTeamAsk::teammember() const {
+  return teammember_ != NULL ? *teammember_ : *default_instance_->teammember_;
+}
+inline ::TeamMemberInfo* WorldServerRpcJoinTeamAsk::mutable_teammember() {
+  set_has_teammember();
+  if (teammember_ == NULL) teammember_ = new ::TeamMemberInfo;
+  return teammember_;
+}
+inline ::TeamMemberInfo* WorldServerRpcJoinTeamAsk::release_teammember() {
+  clear_has_teammember();
+  ::TeamMemberInfo* temp = teammember_;
+  teammember_ = NULL;
+  return temp;
+}
+inline void WorldServerRpcJoinTeamAsk::set_allocated_teammember(::TeamMemberInfo* teammember) {
+  delete teammember_;
+  teammember_ = teammember;
+  if (teammember) {
+    set_has_teammember();
+  } else {
+    clear_has_teammember();
+  }
+}
+
+// optional .TeamInfo Team = 4;
+inline bool WorldServerRpcJoinTeamAsk::has_team() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void WorldServerRpcJoinTeamAsk::set_has_team() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void WorldServerRpcJoinTeamAsk::clear_has_team() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void WorldServerRpcJoinTeamAsk::clear_team() {
+  if (team_ != NULL) team_->::TeamInfo::Clear();
+  clear_has_team();
+}
+inline const ::TeamInfo& WorldServerRpcJoinTeamAsk::team() const {
+  return team_ != NULL ? *team_ : *default_instance_->team_;
+}
+inline ::TeamInfo* WorldServerRpcJoinTeamAsk::mutable_team() {
+  set_has_team();
+  if (team_ == NULL) team_ = new ::TeamInfo;
+  return team_;
+}
+inline ::TeamInfo* WorldServerRpcJoinTeamAsk::release_team() {
+  clear_has_team();
+  ::TeamInfo* temp = team_;
+  team_ = NULL;
+  return temp;
+}
+inline void WorldServerRpcJoinTeamAsk::set_allocated_team(::TeamInfo* team) {
+  delete team_;
+  team_ = team;
+  if (team) {
+    set_has_team();
+  } else {
+    clear_has_team();
+  }
+}
+
+// optional sint32 TeamType = 5 [default = -1];
+inline bool WorldServerRpcJoinTeamAsk::has_teamtype() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void WorldServerRpcJoinTeamAsk::set_has_teamtype() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void WorldServerRpcJoinTeamAsk::clear_has_teamtype() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void WorldServerRpcJoinTeamAsk::clear_teamtype() {
+  teamtype_ = -1;
+  clear_has_teamtype();
+}
+inline ::google::protobuf::int32 WorldServerRpcJoinTeamAsk::teamtype() const {
+  return teamtype_;
+}
+inline void WorldServerRpcJoinTeamAsk::set_teamtype(::google::protobuf::int32 value) {
+  set_has_teamtype();
+  teamtype_ = value;
+}
+
+// optional sint32 MemId = 6 [default = -1];
+inline bool WorldServerRpcJoinTeamAsk::has_memid() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void WorldServerRpcJoinTeamAsk::set_has_memid() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void WorldServerRpcJoinTeamAsk::clear_has_memid() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void WorldServerRpcJoinTeamAsk::clear_memid() {
+  memid_ = -1;
+  clear_has_memid();
+}
+inline ::google::protobuf::int32 WorldServerRpcJoinTeamAsk::memid() const {
+  return memid_;
+}
+inline void WorldServerRpcJoinTeamAsk::set_memid(::google::protobuf::int32 value) {
+  set_has_memid();
+  memid_ = value;
+}
+
+// optional sint32 SceneId = 7 [default = -1];
+inline bool WorldServerRpcJoinTeamAsk::has_sceneid() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void WorldServerRpcJoinTeamAsk::set_has_sceneid() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void WorldServerRpcJoinTeamAsk::clear_has_sceneid() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void WorldServerRpcJoinTeamAsk::clear_sceneid() {
+  sceneid_ = -1;
+  clear_has_sceneid();
+}
+inline ::google::protobuf::int32 WorldServerRpcJoinTeamAsk::sceneid() const {
+  return sceneid_;
+}
+inline void WorldServerRpcJoinTeamAsk::set_sceneid(::google::protobuf::int32 value) {
+  set_has_sceneid();
+  sceneid_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// WorldServerRpcJoinTeamReply
+
+// optional sint32 Result = 1 [default = -9999];
+inline bool WorldServerRpcJoinTeamReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void WorldServerRpcJoinTeamReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void WorldServerRpcJoinTeamReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void WorldServerRpcJoinTeamReply::clear_result() {
+  result_ = -9999;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 WorldServerRpcJoinTeamReply::result() const {
+  return result_;
+}
+inline void WorldServerRpcJoinTeamReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// WorldServerRpcLeaveTeamAsk
+
+// optional sint32 TeamId = 1 [default = -1];
+inline bool WorldServerRpcLeaveTeamAsk::has_teamid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void WorldServerRpcLeaveTeamAsk::set_has_teamid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void WorldServerRpcLeaveTeamAsk::clear_has_teamid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void WorldServerRpcLeaveTeamAsk::clear_teamid() {
+  teamid_ = -1;
+  clear_has_teamid();
+}
+inline ::google::protobuf::int32 WorldServerRpcLeaveTeamAsk::teamid() const {
+  return teamid_;
+}
+inline void WorldServerRpcLeaveTeamAsk::set_teamid(::google::protobuf::int32 value) {
+  set_has_teamid();
+  teamid_ = value;
+}
+
+// optional uint64 RoleId = 2 [default = 0];
+inline bool WorldServerRpcLeaveTeamAsk::has_roleid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void WorldServerRpcLeaveTeamAsk::set_has_roleid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void WorldServerRpcLeaveTeamAsk::clear_has_roleid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void WorldServerRpcLeaveTeamAsk::clear_roleid() {
+  roleid_ = GOOGLE_ULONGLONG(0);
+  clear_has_roleid();
+}
+inline ::google::protobuf::uint64 WorldServerRpcLeaveTeamAsk::roleid() const {
+  return roleid_;
+}
+inline void WorldServerRpcLeaveTeamAsk::set_roleid(::google::protobuf::uint64 value) {
+  set_has_roleid();
+  roleid_ = value;
+}
+
+// optional sint32 MemId = 3 [default = -1];
+inline bool WorldServerRpcLeaveTeamAsk::has_memid() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void WorldServerRpcLeaveTeamAsk::set_has_memid() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void WorldServerRpcLeaveTeamAsk::clear_has_memid() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void WorldServerRpcLeaveTeamAsk::clear_memid() {
+  memid_ = -1;
+  clear_has_memid();
+}
+inline ::google::protobuf::int32 WorldServerRpcLeaveTeamAsk::memid() const {
+  return memid_;
+}
+inline void WorldServerRpcLeaveTeamAsk::set_memid(::google::protobuf::int32 value) {
+  set_has_memid();
+  memid_ = value;
+}
+
+// optional sint32 SceneId = 4 [default = -1];
+inline bool WorldServerRpcLeaveTeamAsk::has_sceneid() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void WorldServerRpcLeaveTeamAsk::set_has_sceneid() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void WorldServerRpcLeaveTeamAsk::clear_has_sceneid() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void WorldServerRpcLeaveTeamAsk::clear_sceneid() {
+  sceneid_ = -1;
+  clear_has_sceneid();
+}
+inline ::google::protobuf::int32 WorldServerRpcLeaveTeamAsk::sceneid() const {
+  return sceneid_;
+}
+inline void WorldServerRpcLeaveTeamAsk::set_sceneid(::google::protobuf::int32 value) {
+  set_has_sceneid();
+  sceneid_ = value;
+}
+
+// optional uint64 NewLeaderRoleId = 5 [default = 0];
+inline bool WorldServerRpcLeaveTeamAsk::has_newleaderroleid() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void WorldServerRpcLeaveTeamAsk::set_has_newleaderroleid() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void WorldServerRpcLeaveTeamAsk::clear_has_newleaderroleid() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void WorldServerRpcLeaveTeamAsk::clear_newleaderroleid() {
+  newleaderroleid_ = GOOGLE_ULONGLONG(0);
+  clear_has_newleaderroleid();
+}
+inline ::google::protobuf::uint64 WorldServerRpcLeaveTeamAsk::newleaderroleid() const {
+  return newleaderroleid_;
+}
+inline void WorldServerRpcLeaveTeamAsk::set_newleaderroleid(::google::protobuf::uint64 value) {
+  set_has_newleaderroleid();
+  newleaderroleid_ = value;
+}
+
+// optional sint32 Result = 6 [default = -9999];
+inline bool WorldServerRpcLeaveTeamAsk::has_result() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void WorldServerRpcLeaveTeamAsk::set_has_result() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void WorldServerRpcLeaveTeamAsk::clear_has_result() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void WorldServerRpcLeaveTeamAsk::clear_result() {
+  result_ = -9999;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 WorldServerRpcLeaveTeamAsk::result() const {
+  return result_;
+}
+inline void WorldServerRpcLeaveTeamAsk::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// WorldServerRpcLeaveTeamReply
+
+// optional sint32 Result = 1 [default = -9999];
+inline bool WorldServerRpcLeaveTeamReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void WorldServerRpcLeaveTeamReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void WorldServerRpcLeaveTeamReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void WorldServerRpcLeaveTeamReply::clear_result() {
+  result_ = -9999;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 WorldServerRpcLeaveTeamReply::result() const {
+  return result_;
+}
+inline void WorldServerRpcLeaveTeamReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// WorldServerRpcAppointTeamLeaderAsk
+
+// optional uint64 NewLeaderRoleId = 1 [default = 0];
+inline bool WorldServerRpcAppointTeamLeaderAsk::has_newleaderroleid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void WorldServerRpcAppointTeamLeaderAsk::set_has_newleaderroleid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void WorldServerRpcAppointTeamLeaderAsk::clear_has_newleaderroleid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void WorldServerRpcAppointTeamLeaderAsk::clear_newleaderroleid() {
+  newleaderroleid_ = GOOGLE_ULONGLONG(0);
+  clear_has_newleaderroleid();
+}
+inline ::google::protobuf::uint64 WorldServerRpcAppointTeamLeaderAsk::newleaderroleid() const {
+  return newleaderroleid_;
+}
+inline void WorldServerRpcAppointTeamLeaderAsk::set_newleaderroleid(::google::protobuf::uint64 value) {
+  set_has_newleaderroleid();
+  newleaderroleid_ = value;
+}
+
+// optional sint32 MemId = 2 [default = -1];
+inline bool WorldServerRpcAppointTeamLeaderAsk::has_memid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void WorldServerRpcAppointTeamLeaderAsk::set_has_memid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void WorldServerRpcAppointTeamLeaderAsk::clear_has_memid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void WorldServerRpcAppointTeamLeaderAsk::clear_memid() {
+  memid_ = -1;
+  clear_has_memid();
+}
+inline ::google::protobuf::int32 WorldServerRpcAppointTeamLeaderAsk::memid() const {
+  return memid_;
+}
+inline void WorldServerRpcAppointTeamLeaderAsk::set_memid(::google::protobuf::int32 value) {
+  set_has_memid();
+  memid_ = value;
+}
+
+// optional sint32 SceneId = 3 [default = -1];
+inline bool WorldServerRpcAppointTeamLeaderAsk::has_sceneid() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void WorldServerRpcAppointTeamLeaderAsk::set_has_sceneid() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void WorldServerRpcAppointTeamLeaderAsk::clear_has_sceneid() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void WorldServerRpcAppointTeamLeaderAsk::clear_sceneid() {
+  sceneid_ = -1;
+  clear_has_sceneid();
+}
+inline ::google::protobuf::int32 WorldServerRpcAppointTeamLeaderAsk::sceneid() const {
+  return sceneid_;
+}
+inline void WorldServerRpcAppointTeamLeaderAsk::set_sceneid(::google::protobuf::int32 value) {
+  set_has_sceneid();
+  sceneid_ = value;
+}
+
+// optional uint64 CurLeaderRoleId = 4 [default = 0];
+inline bool WorldServerRpcAppointTeamLeaderAsk::has_curleaderroleid() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void WorldServerRpcAppointTeamLeaderAsk::set_has_curleaderroleid() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void WorldServerRpcAppointTeamLeaderAsk::clear_has_curleaderroleid() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void WorldServerRpcAppointTeamLeaderAsk::clear_curleaderroleid() {
+  curleaderroleid_ = GOOGLE_ULONGLONG(0);
+  clear_has_curleaderroleid();
+}
+inline ::google::protobuf::uint64 WorldServerRpcAppointTeamLeaderAsk::curleaderroleid() const {
+  return curleaderroleid_;
+}
+inline void WorldServerRpcAppointTeamLeaderAsk::set_curleaderroleid(::google::protobuf::uint64 value) {
+  set_has_curleaderroleid();
+  curleaderroleid_ = value;
+}
+
+// optional sint32 TeamId = 5 [default = -1];
+inline bool WorldServerRpcAppointTeamLeaderAsk::has_teamid() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void WorldServerRpcAppointTeamLeaderAsk::set_has_teamid() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void WorldServerRpcAppointTeamLeaderAsk::clear_has_teamid() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void WorldServerRpcAppointTeamLeaderAsk::clear_teamid() {
+  teamid_ = -1;
+  clear_has_teamid();
+}
+inline ::google::protobuf::int32 WorldServerRpcAppointTeamLeaderAsk::teamid() const {
+  return teamid_;
+}
+inline void WorldServerRpcAppointTeamLeaderAsk::set_teamid(::google::protobuf::int32 value) {
+  set_has_teamid();
+  teamid_ = value;
+}
+
+// optional sint32 Result = 6 [default = -9999];
+inline bool WorldServerRpcAppointTeamLeaderAsk::has_result() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void WorldServerRpcAppointTeamLeaderAsk::set_has_result() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void WorldServerRpcAppointTeamLeaderAsk::clear_has_result() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void WorldServerRpcAppointTeamLeaderAsk::clear_result() {
+  result_ = -9999;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 WorldServerRpcAppointTeamLeaderAsk::result() const {
+  return result_;
+}
+inline void WorldServerRpcAppointTeamLeaderAsk::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// WorldServerRpcAppointTeamLeaderReply
+
+// optional sint32 Result = 1 [default = -9999];
+inline bool WorldServerRpcAppointTeamLeaderReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void WorldServerRpcAppointTeamLeaderReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void WorldServerRpcAppointTeamLeaderReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void WorldServerRpcAppointTeamLeaderReply::clear_result() {
+  result_ = -9999;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 WorldServerRpcAppointTeamLeaderReply::result() const {
+  return result_;
+}
+inline void WorldServerRpcAppointTeamLeaderReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// WorldServerRpcDismissTeamAsk
+
+// optional sint32 SceneId = 1 [default = -1];
+inline bool WorldServerRpcDismissTeamAsk::has_sceneid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void WorldServerRpcDismissTeamAsk::set_has_sceneid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void WorldServerRpcDismissTeamAsk::clear_has_sceneid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void WorldServerRpcDismissTeamAsk::clear_sceneid() {
+  sceneid_ = -1;
+  clear_has_sceneid();
+}
+inline ::google::protobuf::int32 WorldServerRpcDismissTeamAsk::sceneid() const {
+  return sceneid_;
+}
+inline void WorldServerRpcDismissTeamAsk::set_sceneid(::google::protobuf::int32 value) {
+  set_has_sceneid();
+  sceneid_ = value;
+}
+
+// optional sint32 MemId = 2 [default = -1];
+inline bool WorldServerRpcDismissTeamAsk::has_memid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void WorldServerRpcDismissTeamAsk::set_has_memid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void WorldServerRpcDismissTeamAsk::clear_has_memid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void WorldServerRpcDismissTeamAsk::clear_memid() {
+  memid_ = -1;
+  clear_has_memid();
+}
+inline ::google::protobuf::int32 WorldServerRpcDismissTeamAsk::memid() const {
+  return memid_;
+}
+inline void WorldServerRpcDismissTeamAsk::set_memid(::google::protobuf::int32 value) {
+  set_has_memid();
+  memid_ = value;
+}
+
+// optional uint64 RoleId = 3 [default = 0];
+inline bool WorldServerRpcDismissTeamAsk::has_roleid() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void WorldServerRpcDismissTeamAsk::set_has_roleid() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void WorldServerRpcDismissTeamAsk::clear_has_roleid() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void WorldServerRpcDismissTeamAsk::clear_roleid() {
+  roleid_ = GOOGLE_ULONGLONG(0);
+  clear_has_roleid();
+}
+inline ::google::protobuf::uint64 WorldServerRpcDismissTeamAsk::roleid() const {
+  return roleid_;
+}
+inline void WorldServerRpcDismissTeamAsk::set_roleid(::google::protobuf::uint64 value) {
+  set_has_roleid();
+  roleid_ = value;
+}
+
+// optional sint32 TeamId = 4 [default = -1];
+inline bool WorldServerRpcDismissTeamAsk::has_teamid() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void WorldServerRpcDismissTeamAsk::set_has_teamid() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void WorldServerRpcDismissTeamAsk::clear_has_teamid() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void WorldServerRpcDismissTeamAsk::clear_teamid() {
+  teamid_ = -1;
+  clear_has_teamid();
+}
+inline ::google::protobuf::int32 WorldServerRpcDismissTeamAsk::teamid() const {
+  return teamid_;
+}
+inline void WorldServerRpcDismissTeamAsk::set_teamid(::google::protobuf::int32 value) {
+  set_has_teamid();
+  teamid_ = value;
+}
+
+// optional sint32 Result = 5 [default = -9999];
+inline bool WorldServerRpcDismissTeamAsk::has_result() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void WorldServerRpcDismissTeamAsk::set_has_result() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void WorldServerRpcDismissTeamAsk::clear_has_result() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void WorldServerRpcDismissTeamAsk::clear_result() {
+  result_ = -9999;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 WorldServerRpcDismissTeamAsk::result() const {
+  return result_;
+}
+inline void WorldServerRpcDismissTeamAsk::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// WorldServerRpcDismissTeamReply
+
+// optional sint32 Result = 1 [default = -9999];
+inline bool WorldServerRpcDismissTeamReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void WorldServerRpcDismissTeamReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void WorldServerRpcDismissTeamReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void WorldServerRpcDismissTeamReply::clear_result() {
+  result_ = -9999;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 WorldServerRpcDismissTeamReply::result() const {
+  return result_;
+}
+inline void WorldServerRpcDismissTeamReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// WorldServerRpcKickMemberAsk
+
+// optional uint64 KickMemberRoleId = 1 [default = 0];
+inline bool WorldServerRpcKickMemberAsk::has_kickmemberroleid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void WorldServerRpcKickMemberAsk::set_has_kickmemberroleid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void WorldServerRpcKickMemberAsk::clear_has_kickmemberroleid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void WorldServerRpcKickMemberAsk::clear_kickmemberroleid() {
+  kickmemberroleid_ = GOOGLE_ULONGLONG(0);
+  clear_has_kickmemberroleid();
+}
+inline ::google::protobuf::uint64 WorldServerRpcKickMemberAsk::kickmemberroleid() const {
+  return kickmemberroleid_;
+}
+inline void WorldServerRpcKickMemberAsk::set_kickmemberroleid(::google::protobuf::uint64 value) {
+  set_has_kickmemberroleid();
+  kickmemberroleid_ = value;
+}
+
+// optional sint32 MemId = 2 [default = -1];
+inline bool WorldServerRpcKickMemberAsk::has_memid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void WorldServerRpcKickMemberAsk::set_has_memid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void WorldServerRpcKickMemberAsk::clear_has_memid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void WorldServerRpcKickMemberAsk::clear_memid() {
+  memid_ = -1;
+  clear_has_memid();
+}
+inline ::google::protobuf::int32 WorldServerRpcKickMemberAsk::memid() const {
+  return memid_;
+}
+inline void WorldServerRpcKickMemberAsk::set_memid(::google::protobuf::int32 value) {
+  set_has_memid();
+  memid_ = value;
+}
+
+// optional sint32 SceneId = 3 [default = -1];
+inline bool WorldServerRpcKickMemberAsk::has_sceneid() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void WorldServerRpcKickMemberAsk::set_has_sceneid() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void WorldServerRpcKickMemberAsk::clear_has_sceneid() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void WorldServerRpcKickMemberAsk::clear_sceneid() {
+  sceneid_ = -1;
+  clear_has_sceneid();
+}
+inline ::google::protobuf::int32 WorldServerRpcKickMemberAsk::sceneid() const {
+  return sceneid_;
+}
+inline void WorldServerRpcKickMemberAsk::set_sceneid(::google::protobuf::int32 value) {
+  set_has_sceneid();
+  sceneid_ = value;
+}
+
+// optional sint32 TeamId = 4 [default = -1];
+inline bool WorldServerRpcKickMemberAsk::has_teamid() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void WorldServerRpcKickMemberAsk::set_has_teamid() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void WorldServerRpcKickMemberAsk::clear_has_teamid() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void WorldServerRpcKickMemberAsk::clear_teamid() {
+  teamid_ = -1;
+  clear_has_teamid();
+}
+inline ::google::protobuf::int32 WorldServerRpcKickMemberAsk::teamid() const {
+  return teamid_;
+}
+inline void WorldServerRpcKickMemberAsk::set_teamid(::google::protobuf::int32 value) {
+  set_has_teamid();
+  teamid_ = value;
+}
+
+// optional uint64 LeaderRoleId = 5 [default = 0];
+inline bool WorldServerRpcKickMemberAsk::has_leaderroleid() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void WorldServerRpcKickMemberAsk::set_has_leaderroleid() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void WorldServerRpcKickMemberAsk::clear_has_leaderroleid() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void WorldServerRpcKickMemberAsk::clear_leaderroleid() {
+  leaderroleid_ = GOOGLE_ULONGLONG(0);
+  clear_has_leaderroleid();
+}
+inline ::google::protobuf::uint64 WorldServerRpcKickMemberAsk::leaderroleid() const {
+  return leaderroleid_;
+}
+inline void WorldServerRpcKickMemberAsk::set_leaderroleid(::google::protobuf::uint64 value) {
+  set_has_leaderroleid();
+  leaderroleid_ = value;
+}
+
+// optional sint32 Result = 6 [default = -9999];
+inline bool WorldServerRpcKickMemberAsk::has_result() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void WorldServerRpcKickMemberAsk::set_has_result() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void WorldServerRpcKickMemberAsk::clear_has_result() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void WorldServerRpcKickMemberAsk::clear_result() {
+  result_ = -9999;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 WorldServerRpcKickMemberAsk::result() const {
+  return result_;
+}
+inline void WorldServerRpcKickMemberAsk::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// WorldServerRpcKickMemberReply
+
+// optional sint32 Result = 1 [default = -9999];
+inline bool WorldServerRpcKickMemberReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void WorldServerRpcKickMemberReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void WorldServerRpcKickMemberReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void WorldServerRpcKickMemberReply::clear_result() {
+  result_ = -9999;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 WorldServerRpcKickMemberReply::result() const {
+  return result_;
+}
+inline void WorldServerRpcKickMemberReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// WorldServerRpcApplyTeamAsk
+
+// optional sint32 TeamId = 1 [default = -1];
+inline bool WorldServerRpcApplyTeamAsk::has_teamid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void WorldServerRpcApplyTeamAsk::set_has_teamid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void WorldServerRpcApplyTeamAsk::clear_has_teamid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void WorldServerRpcApplyTeamAsk::clear_teamid() {
+  teamid_ = -1;
+  clear_has_teamid();
+}
+inline ::google::protobuf::int32 WorldServerRpcApplyTeamAsk::teamid() const {
+  return teamid_;
+}
+inline void WorldServerRpcApplyTeamAsk::set_teamid(::google::protobuf::int32 value) {
+  set_has_teamid();
+  teamid_ = value;
+}
+
+// optional sint32 Result = 2 [default = -9999];
+inline bool WorldServerRpcApplyTeamAsk::has_result() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void WorldServerRpcApplyTeamAsk::set_has_result() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void WorldServerRpcApplyTeamAsk::clear_has_result() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void WorldServerRpcApplyTeamAsk::clear_result() {
+  result_ = -9999;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 WorldServerRpcApplyTeamAsk::result() const {
+  return result_;
+}
+inline void WorldServerRpcApplyTeamAsk::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// optional .TeamMemberInfo TeamMember = 3;
+inline bool WorldServerRpcApplyTeamAsk::has_teammember() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void WorldServerRpcApplyTeamAsk::set_has_teammember() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void WorldServerRpcApplyTeamAsk::clear_has_teammember() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void WorldServerRpcApplyTeamAsk::clear_teammember() {
+  if (teammember_ != NULL) teammember_->::TeamMemberInfo::Clear();
+  clear_has_teammember();
+}
+inline const ::TeamMemberInfo& WorldServerRpcApplyTeamAsk::teammember() const {
+  return teammember_ != NULL ? *teammember_ : *default_instance_->teammember_;
+}
+inline ::TeamMemberInfo* WorldServerRpcApplyTeamAsk::mutable_teammember() {
+  set_has_teammember();
+  if (teammember_ == NULL) teammember_ = new ::TeamMemberInfo;
+  return teammember_;
+}
+inline ::TeamMemberInfo* WorldServerRpcApplyTeamAsk::release_teammember() {
+  clear_has_teammember();
+  ::TeamMemberInfo* temp = teammember_;
+  teammember_ = NULL;
+  return temp;
+}
+inline void WorldServerRpcApplyTeamAsk::set_allocated_teammember(::TeamMemberInfo* teammember) {
+  delete teammember_;
+  teammember_ = teammember;
+  if (teammember) {
+    set_has_teammember();
+  } else {
+    clear_has_teammember();
+  }
+}
+
+// optional sint32 MemId = 4 [default = -1];
+inline bool WorldServerRpcApplyTeamAsk::has_memid() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void WorldServerRpcApplyTeamAsk::set_has_memid() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void WorldServerRpcApplyTeamAsk::clear_has_memid() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void WorldServerRpcApplyTeamAsk::clear_memid() {
+  memid_ = -1;
+  clear_has_memid();
+}
+inline ::google::protobuf::int32 WorldServerRpcApplyTeamAsk::memid() const {
+  return memid_;
+}
+inline void WorldServerRpcApplyTeamAsk::set_memid(::google::protobuf::int32 value) {
+  set_has_memid();
+  memid_ = value;
+}
+
+// optional sint32 SceneId = 5 [default = -1];
+inline bool WorldServerRpcApplyTeamAsk::has_sceneid() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void WorldServerRpcApplyTeamAsk::set_has_sceneid() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void WorldServerRpcApplyTeamAsk::clear_has_sceneid() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void WorldServerRpcApplyTeamAsk::clear_sceneid() {
+  sceneid_ = -1;
+  clear_has_sceneid();
+}
+inline ::google::protobuf::int32 WorldServerRpcApplyTeamAsk::sceneid() const {
+  return sceneid_;
+}
+inline void WorldServerRpcApplyTeamAsk::set_sceneid(::google::protobuf::int32 value) {
+  set_has_sceneid();
+  sceneid_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// WorldServerRpcApplyTeamReply
+
+// optional sint32 Result = 1 [default = -9999];
+inline bool WorldServerRpcApplyTeamReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void WorldServerRpcApplyTeamReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void WorldServerRpcApplyTeamReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void WorldServerRpcApplyTeamReply::clear_result() {
+  result_ = -9999;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 WorldServerRpcApplyTeamReply::result() const {
+  return result_;
+}
+inline void WorldServerRpcApplyTeamReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// WorldServerRpcAgreeTeamApplicantAsk
+
+// optional uint64 RoleId = 1 [default = 0];
+inline bool WorldServerRpcAgreeTeamApplicantAsk::has_roleid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void WorldServerRpcAgreeTeamApplicantAsk::set_has_roleid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void WorldServerRpcAgreeTeamApplicantAsk::clear_has_roleid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void WorldServerRpcAgreeTeamApplicantAsk::clear_roleid() {
+  roleid_ = GOOGLE_ULONGLONG(0);
+  clear_has_roleid();
+}
+inline ::google::protobuf::uint64 WorldServerRpcAgreeTeamApplicantAsk::roleid() const {
+  return roleid_;
+}
+inline void WorldServerRpcAgreeTeamApplicantAsk::set_roleid(::google::protobuf::uint64 value) {
+  set_has_roleid();
+  roleid_ = value;
+}
+
+// optional uint64 LeaderRoleId = 3 [default = 0];
+inline bool WorldServerRpcAgreeTeamApplicantAsk::has_leaderroleid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void WorldServerRpcAgreeTeamApplicantAsk::set_has_leaderroleid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void WorldServerRpcAgreeTeamApplicantAsk::clear_has_leaderroleid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void WorldServerRpcAgreeTeamApplicantAsk::clear_leaderroleid() {
+  leaderroleid_ = GOOGLE_ULONGLONG(0);
+  clear_has_leaderroleid();
+}
+inline ::google::protobuf::uint64 WorldServerRpcAgreeTeamApplicantAsk::leaderroleid() const {
+  return leaderroleid_;
+}
+inline void WorldServerRpcAgreeTeamApplicantAsk::set_leaderroleid(::google::protobuf::uint64 value) {
+  set_has_leaderroleid();
+  leaderroleid_ = value;
+}
+
+// optional sint32 Result = 4 [default = -9999];
+inline bool WorldServerRpcAgreeTeamApplicantAsk::has_result() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void WorldServerRpcAgreeTeamApplicantAsk::set_has_result() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void WorldServerRpcAgreeTeamApplicantAsk::clear_has_result() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void WorldServerRpcAgreeTeamApplicantAsk::clear_result() {
+  result_ = -9999;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 WorldServerRpcAgreeTeamApplicantAsk::result() const {
+  return result_;
+}
+inline void WorldServerRpcAgreeTeamApplicantAsk::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// optional sint32 MemId = 5 [default = -1];
+inline bool WorldServerRpcAgreeTeamApplicantAsk::has_memid() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void WorldServerRpcAgreeTeamApplicantAsk::set_has_memid() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void WorldServerRpcAgreeTeamApplicantAsk::clear_has_memid() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void WorldServerRpcAgreeTeamApplicantAsk::clear_memid() {
+  memid_ = -1;
+  clear_has_memid();
+}
+inline ::google::protobuf::int32 WorldServerRpcAgreeTeamApplicantAsk::memid() const {
+  return memid_;
+}
+inline void WorldServerRpcAgreeTeamApplicantAsk::set_memid(::google::protobuf::int32 value) {
+  set_has_memid();
+  memid_ = value;
+}
+
+// optional sint32 SceneId = 6 [default = -1];
+inline bool WorldServerRpcAgreeTeamApplicantAsk::has_sceneid() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void WorldServerRpcAgreeTeamApplicantAsk::set_has_sceneid() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void WorldServerRpcAgreeTeamApplicantAsk::clear_has_sceneid() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void WorldServerRpcAgreeTeamApplicantAsk::clear_sceneid() {
+  sceneid_ = -1;
+  clear_has_sceneid();
+}
+inline ::google::protobuf::int32 WorldServerRpcAgreeTeamApplicantAsk::sceneid() const {
+  return sceneid_;
+}
+inline void WorldServerRpcAgreeTeamApplicantAsk::set_sceneid(::google::protobuf::int32 value) {
+  set_has_sceneid();
+  sceneid_ = value;
+}
+
+// optional .TeamInfo Team = 7;
+inline bool WorldServerRpcAgreeTeamApplicantAsk::has_team() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void WorldServerRpcAgreeTeamApplicantAsk::set_has_team() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void WorldServerRpcAgreeTeamApplicantAsk::clear_has_team() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void WorldServerRpcAgreeTeamApplicantAsk::clear_team() {
+  if (team_ != NULL) team_->::TeamInfo::Clear();
+  clear_has_team();
+}
+inline const ::TeamInfo& WorldServerRpcAgreeTeamApplicantAsk::team() const {
+  return team_ != NULL ? *team_ : *default_instance_->team_;
+}
+inline ::TeamInfo* WorldServerRpcAgreeTeamApplicantAsk::mutable_team() {
+  set_has_team();
+  if (team_ == NULL) team_ = new ::TeamInfo;
+  return team_;
+}
+inline ::TeamInfo* WorldServerRpcAgreeTeamApplicantAsk::release_team() {
+  clear_has_team();
+  ::TeamInfo* temp = team_;
+  team_ = NULL;
+  return temp;
+}
+inline void WorldServerRpcAgreeTeamApplicantAsk::set_allocated_team(::TeamInfo* team) {
+  delete team_;
+  team_ = team;
+  if (team) {
+    set_has_team();
+  } else {
+    clear_has_team();
+  }
+}
+
+// -------------------------------------------------------------------
+
+// WorldServerRpcAgreeTeamApplicantReply
+
+// optional sint32 Result = 1 [default = -9999];
+inline bool WorldServerRpcAgreeTeamApplicantReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void WorldServerRpcAgreeTeamApplicantReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void WorldServerRpcAgreeTeamApplicantReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void WorldServerRpcAgreeTeamApplicantReply::clear_result() {
+  result_ = -9999;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 WorldServerRpcAgreeTeamApplicantReply::result() const {
+  return result_;
+}
+inline void WorldServerRpcAgreeTeamApplicantReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// WorldServerRpcLoginAsk
+
+// optional .TeamInfo Team = 1;
+inline bool WorldServerRpcLoginAsk::has_team() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void WorldServerRpcLoginAsk::set_has_team() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void WorldServerRpcLoginAsk::clear_has_team() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void WorldServerRpcLoginAsk::clear_team() {
+  if (team_ != NULL) team_->::TeamInfo::Clear();
+  clear_has_team();
+}
+inline const ::TeamInfo& WorldServerRpcLoginAsk::team() const {
+  return team_ != NULL ? *team_ : *default_instance_->team_;
+}
+inline ::TeamInfo* WorldServerRpcLoginAsk::mutable_team() {
+  set_has_team();
+  if (team_ == NULL) team_ = new ::TeamInfo;
+  return team_;
+}
+inline ::TeamInfo* WorldServerRpcLoginAsk::release_team() {
+  clear_has_team();
+  ::TeamInfo* temp = team_;
+  team_ = NULL;
+  return temp;
+}
+inline void WorldServerRpcLoginAsk::set_allocated_team(::TeamInfo* team) {
+  delete team_;
+  team_ = team;
+  if (team) {
+    set_has_team();
+  } else {
+    clear_has_team();
+  }
+}
+
+// optional sint32 MemId = 2 [default = -1];
+inline bool WorldServerRpcLoginAsk::has_memid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void WorldServerRpcLoginAsk::set_has_memid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void WorldServerRpcLoginAsk::clear_has_memid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void WorldServerRpcLoginAsk::clear_memid() {
+  memid_ = -1;
+  clear_has_memid();
+}
+inline ::google::protobuf::int32 WorldServerRpcLoginAsk::memid() const {
+  return memid_;
+}
+inline void WorldServerRpcLoginAsk::set_memid(::google::protobuf::int32 value) {
+  set_has_memid();
+  memid_ = value;
+}
+
+// optional sint32 SceneId = 3 [default = -1];
+inline bool WorldServerRpcLoginAsk::has_sceneid() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void WorldServerRpcLoginAsk::set_has_sceneid() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void WorldServerRpcLoginAsk::clear_has_sceneid() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void WorldServerRpcLoginAsk::clear_sceneid() {
+  sceneid_ = -1;
+  clear_has_sceneid();
+}
+inline ::google::protobuf::int32 WorldServerRpcLoginAsk::sceneid() const {
+  return sceneid_;
+}
+inline void WorldServerRpcLoginAsk::set_sceneid(::google::protobuf::int32 value) {
+  set_has_sceneid();
+  sceneid_ = value;
+}
+
+// optional .OnlineUserInfo RoleInfo = 4;
+inline bool WorldServerRpcLoginAsk::has_roleinfo() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void WorldServerRpcLoginAsk::set_has_roleinfo() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void WorldServerRpcLoginAsk::clear_has_roleinfo() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void WorldServerRpcLoginAsk::clear_roleinfo() {
+  if (roleinfo_ != NULL) roleinfo_->::OnlineUserInfo::Clear();
+  clear_has_roleinfo();
+}
+inline const ::OnlineUserInfo& WorldServerRpcLoginAsk::roleinfo() const {
+  return roleinfo_ != NULL ? *roleinfo_ : *default_instance_->roleinfo_;
+}
+inline ::OnlineUserInfo* WorldServerRpcLoginAsk::mutable_roleinfo() {
+  set_has_roleinfo();
+  if (roleinfo_ == NULL) roleinfo_ = new ::OnlineUserInfo;
+  return roleinfo_;
+}
+inline ::OnlineUserInfo* WorldServerRpcLoginAsk::release_roleinfo() {
+  clear_has_roleinfo();
+  ::OnlineUserInfo* temp = roleinfo_;
+  roleinfo_ = NULL;
+  return temp;
+}
+inline void WorldServerRpcLoginAsk::set_allocated_roleinfo(::OnlineUserInfo* roleinfo) {
+  delete roleinfo_;
+  roleinfo_ = roleinfo;
+  if (roleinfo) {
+    set_has_roleinfo();
+  } else {
+    clear_has_roleinfo();
+  }
+}
+
+// -------------------------------------------------------------------
+
+// WorldServerRpcLoginReply
+
+// optional sint32 Result = 1 [default = -9999];
+inline bool WorldServerRpcLoginReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void WorldServerRpcLoginReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void WorldServerRpcLoginReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void WorldServerRpcLoginReply::clear_result() {
+  result_ = -9999;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 WorldServerRpcLoginReply::result() const {
+  return result_;
+}
+inline void WorldServerRpcLoginReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// WorldServerRpcUpdateRoleInfoAsk
+
+// optional .OnlineUserInfo RoleInfo = 1;
+inline bool WorldServerRpcUpdateRoleInfoAsk::has_roleinfo() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void WorldServerRpcUpdateRoleInfoAsk::set_has_roleinfo() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void WorldServerRpcUpdateRoleInfoAsk::clear_has_roleinfo() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void WorldServerRpcUpdateRoleInfoAsk::clear_roleinfo() {
+  if (roleinfo_ != NULL) roleinfo_->::OnlineUserInfo::Clear();
+  clear_has_roleinfo();
+}
+inline const ::OnlineUserInfo& WorldServerRpcUpdateRoleInfoAsk::roleinfo() const {
+  return roleinfo_ != NULL ? *roleinfo_ : *default_instance_->roleinfo_;
+}
+inline ::OnlineUserInfo* WorldServerRpcUpdateRoleInfoAsk::mutable_roleinfo() {
+  set_has_roleinfo();
+  if (roleinfo_ == NULL) roleinfo_ = new ::OnlineUserInfo;
+  return roleinfo_;
+}
+inline ::OnlineUserInfo* WorldServerRpcUpdateRoleInfoAsk::release_roleinfo() {
+  clear_has_roleinfo();
+  ::OnlineUserInfo* temp = roleinfo_;
+  roleinfo_ = NULL;
+  return temp;
+}
+inline void WorldServerRpcUpdateRoleInfoAsk::set_allocated_roleinfo(::OnlineUserInfo* roleinfo) {
+  delete roleinfo_;
+  roleinfo_ = roleinfo;
+  if (roleinfo) {
+    set_has_roleinfo();
+  } else {
+    clear_has_roleinfo();
+  }
+}
+
+// -------------------------------------------------------------------
+
+// WorldServerRpcUpdateRoleInfoReply
+
+// optional sint32 Result = 1 [default = -9999];
+inline bool WorldServerRpcUpdateRoleInfoReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void WorldServerRpcUpdateRoleInfoReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void WorldServerRpcUpdateRoleInfoReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void WorldServerRpcUpdateRoleInfoReply::clear_result() {
+  result_ = -9999;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 WorldServerRpcUpdateRoleInfoReply::result() const {
+  return result_;
+}
+inline void WorldServerRpcUpdateRoleInfoReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// WorldServerRpcLogoutAsk
+
+// optional .OnlineUserInfo RoleInfo = 1;
+inline bool WorldServerRpcLogoutAsk::has_roleinfo() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void WorldServerRpcLogoutAsk::set_has_roleinfo() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void WorldServerRpcLogoutAsk::clear_has_roleinfo() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void WorldServerRpcLogoutAsk::clear_roleinfo() {
+  if (roleinfo_ != NULL) roleinfo_->::OnlineUserInfo::Clear();
+  clear_has_roleinfo();
+}
+inline const ::OnlineUserInfo& WorldServerRpcLogoutAsk::roleinfo() const {
+  return roleinfo_ != NULL ? *roleinfo_ : *default_instance_->roleinfo_;
+}
+inline ::OnlineUserInfo* WorldServerRpcLogoutAsk::mutable_roleinfo() {
+  set_has_roleinfo();
+  if (roleinfo_ == NULL) roleinfo_ = new ::OnlineUserInfo;
+  return roleinfo_;
+}
+inline ::OnlineUserInfo* WorldServerRpcLogoutAsk::release_roleinfo() {
+  clear_has_roleinfo();
+  ::OnlineUserInfo* temp = roleinfo_;
+  roleinfo_ = NULL;
+  return temp;
+}
+inline void WorldServerRpcLogoutAsk::set_allocated_roleinfo(::OnlineUserInfo* roleinfo) {
+  delete roleinfo_;
+  roleinfo_ = roleinfo;
+  if (roleinfo) {
+    set_has_roleinfo();
+  } else {
+    clear_has_roleinfo();
+  }
+}
+
+// -------------------------------------------------------------------
+
+// WorldServerRpcLogoutReply
+
+// optional sint32 Result = 1 [default = -9999];
+inline bool WorldServerRpcLogoutReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void WorldServerRpcLogoutReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void WorldServerRpcLogoutReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void WorldServerRpcLogoutReply::clear_result() {
+  result_ = -9999;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 WorldServerRpcLogoutReply::result() const {
+  return result_;
+}
+inline void WorldServerRpcLogoutReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// WorldServerRpcCreateDungeonNotifyAsk
+
+// optional sint32 CurSceneId = 1 [default = -1];
+inline bool WorldServerRpcCreateDungeonNotifyAsk::has_cursceneid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void WorldServerRpcCreateDungeonNotifyAsk::set_has_cursceneid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void WorldServerRpcCreateDungeonNotifyAsk::clear_has_cursceneid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void WorldServerRpcCreateDungeonNotifyAsk::clear_cursceneid() {
+  cursceneid_ = -1;
+  clear_has_cursceneid();
+}
+inline ::google::protobuf::int32 WorldServerRpcCreateDungeonNotifyAsk::cursceneid() const {
+  return cursceneid_;
+}
+inline void WorldServerRpcCreateDungeonNotifyAsk::set_cursceneid(::google::protobuf::int32 value) {
+  set_has_cursceneid();
+  cursceneid_ = value;
+}
+
+// optional uint64 RoleId = 2 [default = 0];
+inline bool WorldServerRpcCreateDungeonNotifyAsk::has_roleid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void WorldServerRpcCreateDungeonNotifyAsk::set_has_roleid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void WorldServerRpcCreateDungeonNotifyAsk::clear_has_roleid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void WorldServerRpcCreateDungeonNotifyAsk::clear_roleid() {
+  roleid_ = GOOGLE_ULONGLONG(0);
+  clear_has_roleid();
+}
+inline ::google::protobuf::uint64 WorldServerRpcCreateDungeonNotifyAsk::roleid() const {
+  return roleid_;
+}
+inline void WorldServerRpcCreateDungeonNotifyAsk::set_roleid(::google::protobuf::uint64 value) {
+  set_has_roleid();
+  roleid_ = value;
+}
+
+// optional sint32 MemId = 3 [default = -1];
+inline bool WorldServerRpcCreateDungeonNotifyAsk::has_memid() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void WorldServerRpcCreateDungeonNotifyAsk::set_has_memid() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void WorldServerRpcCreateDungeonNotifyAsk::clear_has_memid() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void WorldServerRpcCreateDungeonNotifyAsk::clear_memid() {
+  memid_ = -1;
+  clear_has_memid();
+}
+inline ::google::protobuf::int32 WorldServerRpcCreateDungeonNotifyAsk::memid() const {
+  return memid_;
+}
+inline void WorldServerRpcCreateDungeonNotifyAsk::set_memid(::google::protobuf::int32 value) {
+  set_has_memid();
+  memid_ = value;
+}
+
+// optional sint32 TargetSceneId = 5 [default = -1];
+inline bool WorldServerRpcCreateDungeonNotifyAsk::has_targetsceneid() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void WorldServerRpcCreateDungeonNotifyAsk::set_has_targetsceneid() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void WorldServerRpcCreateDungeonNotifyAsk::clear_has_targetsceneid() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void WorldServerRpcCreateDungeonNotifyAsk::clear_targetsceneid() {
+  targetsceneid_ = -1;
+  clear_has_targetsceneid();
+}
+inline ::google::protobuf::int32 WorldServerRpcCreateDungeonNotifyAsk::targetsceneid() const {
+  return targetsceneid_;
+}
+inline void WorldServerRpcCreateDungeonNotifyAsk::set_targetsceneid(::google::protobuf::int32 value) {
+  set_has_targetsceneid();
+  targetsceneid_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// WorldServerRpcCreateDungeonNotifyReply
+
+// optional sint32 Result = 1 [default = -9999];
+inline bool WorldServerRpcCreateDungeonNotifyReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void WorldServerRpcCreateDungeonNotifyReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void WorldServerRpcCreateDungeonNotifyReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void WorldServerRpcCreateDungeonNotifyReply::clear_result() {
+  result_ = -9999;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 WorldServerRpcCreateDungeonNotifyReply::result() const {
+  return result_;
+}
+inline void WorldServerRpcCreateDungeonNotifyReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// WorldServerRpcExitDungeonAsk
+
+// optional uint64 RoleId = 1 [default = 0];
+inline bool WorldServerRpcExitDungeonAsk::has_roleid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void WorldServerRpcExitDungeonAsk::set_has_roleid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void WorldServerRpcExitDungeonAsk::clear_has_roleid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void WorldServerRpcExitDungeonAsk::clear_roleid() {
+  roleid_ = GOOGLE_ULONGLONG(0);
+  clear_has_roleid();
+}
+inline ::google::protobuf::uint64 WorldServerRpcExitDungeonAsk::roleid() const {
+  return roleid_;
+}
+inline void WorldServerRpcExitDungeonAsk::set_roleid(::google::protobuf::uint64 value) {
+  set_has_roleid();
+  roleid_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// WorldServerRpcExitDungeonReply
+
+// optional sint32 Result = 1 [default = -9999];
+inline bool WorldServerRpcExitDungeonReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void WorldServerRpcExitDungeonReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void WorldServerRpcExitDungeonReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void WorldServerRpcExitDungeonReply::clear_result() {
+  result_ = -9999;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 WorldServerRpcExitDungeonReply::result() const {
+  return result_;
+}
+inline void WorldServerRpcExitDungeonReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// WorldServerRpcReleaseDungeonAsk
+
+// -------------------------------------------------------------------
+
+// WorldServerRpcReleaseDungeonReply
+
+// optional sint32 Result = 1 [default = -9999];
+inline bool WorldServerRpcReleaseDungeonReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void WorldServerRpcReleaseDungeonReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void WorldServerRpcReleaseDungeonReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void WorldServerRpcReleaseDungeonReply::clear_result() {
+  result_ = -9999;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 WorldServerRpcReleaseDungeonReply::result() const {
+  return result_;
+}
+inline void WorldServerRpcReleaseDungeonReply::set_result(::google::protobuf::int32 value) {
   set_has_result();
   result_ = value;
 }

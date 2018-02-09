@@ -1,4 +1,4 @@
-﻿#ifndef __WAYPOINT_CONFIG_H
+#ifndef __WAYPOINT_CONFIG_H
 #define __WAYPOINT_CONFIG_H
 
 #include "CommonDefine.h"
@@ -20,6 +20,7 @@ struct WayPointElement
 {
 	friend class WayPointTable;
 	int waypoint_id;             	//路点ID	路点ID
+	string Comment;              	//	
 	int  spawn_map_id;           	//路点所在的场景号	路点所在的场景号
 	float spawn_x;               	//路点所处的场景的X坐标	路点所处的场景的X坐标
 	float spawn_y;               	//路点所处的场景的Y坐标	路点所处的场景的Y坐标
@@ -53,7 +54,8 @@ class WayPointTable
 private:
 	WayPointTable(){}
 	~WayPointTable(){}
-	unordered_map<int, WayPointElement>	m_mapElements;
+	typedef unordered_map<int, WayPointElement> MapElementMap;
+	MapElementMap	m_mapElements;
 	vector<WayPointElement>	m_vecAllElements;
 	WayPointElement m_emptyItem;
 public:
@@ -65,16 +67,13 @@ public:
 
 	const WayPointElement* GetElement(int key)
 	{
-		if( m_mapElements.count(key)>0 )
-			return &m_mapElements[key];
-		if (m_mapElements.count(key) > 0)
+		MapElementMap::iterator it = m_mapElements.find(key);
+		if (it == m_mapElements.end())
 		{
-			WayPointElement* temp = &m_mapElements[key];
-			AssertEx(temp, std::string(std::string("WayPointTable: ") + std::to_string(key)).c_str());
-			return temp;
+			AssertEx(false, std::string(std::string("WayPointTable: ") + std::to_string(key)).c_str());
+			return NULL;
 		}
-		AssertEx(false, std::string(std::string("WayPointTable: ") + std::to_string(key)).c_str());
-		return NULL;
+		return &it->second;
 	}
 
 	bool HasElement(int key)
@@ -131,6 +130,7 @@ public:
 			WayPointElement	member;
 
 						member.waypoint_id=p.get<int>("waypoint_id");
+			member.Comment=p.get<string>("Comment");
 			member. spawn_map_id=p.get<int>(" spawn_map_id");
 			member.spawn_x=p.get<float>("spawn_x");
 			member.spawn_y=p.get<float>("spawn_y");
@@ -154,40 +154,42 @@ public:
 		int contentOffset = 0;
 		vector<string> vecLine;
 		vecLine = ReadCsvLine( strContent, contentOffset );
-		if(vecLine.size() != 8)
+		if(vecLine.size() != 9)
 		{
 			printf_message("WayPoint.csv中列数量与生成的代码不匹配!");
 			assert(false);
 			return false;
 		}
-		if(vecLine[0]!="waypoint_id"){printf_message("WayPoint.csv中字段[waypoint_id]位置不对应");assert(false); return false; }
-		if(vecLine[1]!=" spawn_map_id"){printf_message("WayPoint.csv中字段[ spawn_map_id]位置不对应");assert(false); return false; }
-		if(vecLine[2]!="spawn_x"){printf_message("WayPoint.csv中字段[spawn_x]位置不对应");assert(false); return false; }
-		if(vecLine[3]!="spawn_y"){printf_message("WayPoint.csv中字段[spawn_y]位置不对应");assert(false); return false; }
-		if(vecLine[4]!="spawn_z"){printf_message("WayPoint.csv中字段[spawn_z]位置不对应");assert(false); return false; }
-		if(vecLine[5]!="waypoint_next_id"){printf_message("WayPoint.csv中字段[waypoint_next_id]位置不对应");assert(false); return false; }
-		if(vecLine[6]!="waypoint_animation"){printf_message("WayPoint.csv中字段[waypoint_animation]位置不对应");assert(false); return false; }
-		if(vecLine[7]!="waypoint_delay"){printf_message("WayPoint.csv中字段[waypoint_delay]位置不对应");assert(false); return false; }
+		if(vecLine[0]!="waypoint_id"){printf_message("WayPoint.csv中字段[waypoint_id]位置不对应 ");assert(false); return false; }
+		if(vecLine[1]!="Comment"){printf_message("WayPoint.csv中字段[Comment]位置不对应 ");assert(false); return false; }
+		if(vecLine[2]!=" spawn_map_id"){printf_message("WayPoint.csv中字段[ spawn_map_id]位置不对应 ");assert(false); return false; }
+		if(vecLine[3]!="spawn_x"){printf_message("WayPoint.csv中字段[spawn_x]位置不对应 ");assert(false); return false; }
+		if(vecLine[4]!="spawn_y"){printf_message("WayPoint.csv中字段[spawn_y]位置不对应 ");assert(false); return false; }
+		if(vecLine[5]!="spawn_z"){printf_message("WayPoint.csv中字段[spawn_z]位置不对应 ");assert(false); return false; }
+		if(vecLine[6]!="waypoint_next_id"){printf_message("WayPoint.csv中字段[waypoint_next_id]位置不对应 ");assert(false); return false; }
+		if(vecLine[7]!="waypoint_animation"){printf_message("WayPoint.csv中字段[waypoint_animation]位置不对应 ");assert(false); return false; }
+		if(vecLine[8]!="waypoint_delay"){printf_message("WayPoint.csv中字段[waypoint_delay]位置不对应 ");assert(false); return false; }
 
 		while(true)
 		{
 			vecLine = ReadCsvLine( strContent, contentOffset );
 			if((int)vecLine.size() == 0 )
 				break;
-			if((int)vecLine.size() != (int)8)
+			if((int)vecLine.size() != (int)9)
 			{
 				assert(false);
 				return false;
 			}
 			WayPointElement	member;
 			member.waypoint_id=(int)atoi(vecLine[0].c_str());
-			member. spawn_map_id=(int)atoi(vecLine[1].c_str());
-			member.spawn_x=(float)atof(vecLine[2].c_str());
-			member.spawn_y=(float)atof(vecLine[3].c_str());
-			member.spawn_z=(float)atof(vecLine[4].c_str());
-			member.waypoint_next_id=(int)atoi(vecLine[5].c_str());
-			member.waypoint_animation=vecLine[6];
-			member.waypoint_delay=(int)atoi(vecLine[7].c_str());
+			member.Comment=vecLine[1];
+			member. spawn_map_id=(int)atoi(vecLine[2].c_str());
+			member.spawn_x=(float)atof(vecLine[3].c_str());
+			member.spawn_y=(float)atof(vecLine[4].c_str());
+			member.spawn_z=(float)atof(vecLine[5].c_str());
+			member.waypoint_next_id=(int)atoi(vecLine[6].c_str());
+			member.waypoint_animation=vecLine[7];
+			member.waypoint_delay=(int)atoi(vecLine[8].c_str());
 
 			member.SetIsValidate(true);
 			m_mapElements[member.waypoint_id] = member;

@@ -12,7 +12,7 @@ public class DungeonElement
 	public int id;               	//序号	序号
 	public string comment;       	//	
 	public int map_id;           	//场景ID	
-	public int dungeon_type;     	//副本类型	0：野外 1：副本 2：竞技场
+	public int dungeon_type;     	//副本类型	0：野外 1：5人副本 2：竞技场 3：团队本 4：战场
 	public int difficult;        	//难度	
 	public int required_num;     	//所需玩家数量	
 	public int required_last_dungeon_id;	//所需前置副本ID	
@@ -31,6 +31,7 @@ public class DungeonElement
 	public int conclusion_time;  	//副本结算时间	
 	public int start_time;       	//副本开启时间	
 	public int end_time;         	//副本关闭时间	
+	public int exit_waypoint;    	//退出副本后的路点	
 
 	public bool IsValidate = false;
 	public DungeonElement()
@@ -123,7 +124,7 @@ public class DungeonTable
             vecLine.Add(tmpStr);
             vecHeadType.Add(tmpInt);
 		}
-		if(vecLine.Count != 22)
+		if(vecLine.Count != 23)
 		{
 			Ex.Logger.Log("Dungeon.csv中列数量与生成的代码不匹配!");
 			return false;
@@ -150,6 +151,7 @@ public class DungeonTable
 		if(vecLine[19]!="conclusion_time"){Ex.Logger.Log("Dungeon.csv中字段[conclusion_time]位置不对应"); return false; }
 		if(vecLine[20]!="start_time"){Ex.Logger.Log("Dungeon.csv中字段[start_time]位置不对应"); return false; }
 		if(vecLine[21]!="end_time"){Ex.Logger.Log("Dungeon.csv中字段[end_time]位置不对应"); return false; }
+		if(vecLine[22]!="exit_waypoint"){Ex.Logger.Log("Dungeon.csv中字段[exit_waypoint]位置不对应"); return false; }
 
 		for(int i=0; i<nRow; i++)
 		{
@@ -176,6 +178,7 @@ public class DungeonTable
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.conclusion_time );
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.start_time );
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.end_time );
+			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.exit_waypoint );
 
 			member.IsValidate = true;
 			m_vecAllElements.Add(member);
@@ -192,7 +195,7 @@ public class DungeonTable
 		int contentOffset = 0;
 		List<string> vecLine;
 		vecLine = GameAssist.readCsvLine( strContent, ref contentOffset );
-		if(vecLine.Count != 22)
+		if(vecLine.Count != 23)
 		{
 			Ex.Logger.Log("Dungeon.csv中列数量与生成的代码不匹配!");
 			return false;
@@ -219,13 +222,14 @@ public class DungeonTable
 		if(vecLine[19]!="conclusion_time"){Ex.Logger.Log("Dungeon.csv中字段[conclusion_time]位置不对应"); return false; }
 		if(vecLine[20]!="start_time"){Ex.Logger.Log("Dungeon.csv中字段[start_time]位置不对应"); return false; }
 		if(vecLine[21]!="end_time"){Ex.Logger.Log("Dungeon.csv中字段[end_time]位置不对应"); return false; }
+		if(vecLine[22]!="exit_waypoint"){Ex.Logger.Log("Dungeon.csv中字段[exit_waypoint]位置不对应"); return false; }
 
 		while(true)
 		{
 			vecLine = GameAssist.readCsvLine( strContent, ref contentOffset );
 			if((int)vecLine.Count == 0 )
 				break;
-			if((int)vecLine.Count != (int)22)
+			if((int)vecLine.Count != (int)23)
 			{
 				return false;
 			}
@@ -252,6 +256,7 @@ public class DungeonTable
 			member.conclusion_time=Convert.ToInt32(vecLine[19]);
 			member.start_time=Convert.ToInt32(vecLine[20]);
 			member.end_time=Convert.ToInt32(vecLine[21]);
+			member.exit_waypoint=Convert.ToInt32(vecLine[22]);
 
 			member.IsValidate = true;
 			m_vecAllElements.Add(member);

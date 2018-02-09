@@ -34,6 +34,32 @@ namespace GenPB
       get { return _Result; }
       set { _Result = value; }
     }
+    private byte[] _UpdateData = null;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"UpdateData", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public byte[] UpdateData
+    {
+      get { return _UpdateData; }
+      set { _UpdateData = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"BaseAttrRpcSyncNotify")]
+  public partial class BaseAttrRpcSyncNotify : global::ProtoBuf.IExtensible
+  {
+    public BaseAttrRpcSyncNotify() {}
+    
+    private byte[] _UpdateData = null;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"UpdateData", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public byte[] UpdateData
+    {
+      get { return _UpdateData; }
+      set { _UpdateData = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }

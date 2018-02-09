@@ -24,6 +24,9 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* BaseAttrRpcSyncDataReply_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   BaseAttrRpcSyncDataReply_reflection_ = NULL;
+const ::google::protobuf::Descriptor* BaseAttrRpcSyncNotify_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  BaseAttrRpcSyncNotify_reflection_ = NULL;
 
 }  // namespace
 
@@ -49,8 +52,9 @@ void protobuf_AssignDesc_BaseAttrRpc_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(BaseAttrRpcSyncDataAsk));
   BaseAttrRpcSyncDataReply_descriptor_ = file->message_type(1);
-  static const int BaseAttrRpcSyncDataReply_offsets_[1] = {
+  static const int BaseAttrRpcSyncDataReply_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrRpcSyncDataReply, result_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrRpcSyncDataReply, updatedata_),
   };
   BaseAttrRpcSyncDataReply_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -63,6 +67,21 @@ void protobuf_AssignDesc_BaseAttrRpc_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(BaseAttrRpcSyncDataReply));
+  BaseAttrRpcSyncNotify_descriptor_ = file->message_type(2);
+  static const int BaseAttrRpcSyncNotify_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrRpcSyncNotify, updatedata_),
+  };
+  BaseAttrRpcSyncNotify_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      BaseAttrRpcSyncNotify_descriptor_,
+      BaseAttrRpcSyncNotify::default_instance_,
+      BaseAttrRpcSyncNotify_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrRpcSyncNotify, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrRpcSyncNotify, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(BaseAttrRpcSyncNotify));
 }
 
 namespace {
@@ -79,6 +98,8 @@ void protobuf_RegisterTypes(const ::std::string&) {
     BaseAttrRpcSyncDataAsk_descriptor_, &BaseAttrRpcSyncDataAsk::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     BaseAttrRpcSyncDataReply_descriptor_, &BaseAttrRpcSyncDataReply::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    BaseAttrRpcSyncNotify_descriptor_, &BaseAttrRpcSyncNotify::default_instance());
 }
 
 }  // namespace
@@ -88,6 +109,8 @@ void protobuf_ShutdownFile_BaseAttrRpc_2eproto() {
   delete BaseAttrRpcSyncDataAsk_reflection_;
   delete BaseAttrRpcSyncDataReply::default_instance_;
   delete BaseAttrRpcSyncDataReply_reflection_;
+  delete BaseAttrRpcSyncNotify::default_instance_;
+  delete BaseAttrRpcSyncNotify_reflection_;
 }
 
 void protobuf_AddDesc_BaseAttrRpc_2eproto() {
@@ -99,14 +122,18 @@ void protobuf_AddDesc_BaseAttrRpc_2eproto() {
   ::protobuf_AddDesc_PublicStruct_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\021BaseAttrRpc.proto\032\022PublicStruct.proto\""
-    "\030\n\026BaseAttrRpcSyncDataAsk\"1\n\030BaseAttrRpc"
-    "SyncDataReply\022\025\n\006Result\030\001 \001(\021:\005-9999", 116);
+    "\030\n\026BaseAttrRpcSyncDataAsk\"E\n\030BaseAttrRpc"
+    "SyncDataReply\022\025\n\006Result\030\001 \001(\021:\005-9999\022\022\n\n"
+    "UpdateData\030\002 \001(\014\"+\n\025BaseAttrRpcSyncNotif"
+    "y\022\022\n\nUpdateData\030\001 \001(\014", 181);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "BaseAttrRpc.proto", &protobuf_RegisterTypes);
   BaseAttrRpcSyncDataAsk::default_instance_ = new BaseAttrRpcSyncDataAsk();
   BaseAttrRpcSyncDataReply::default_instance_ = new BaseAttrRpcSyncDataReply();
+  BaseAttrRpcSyncNotify::default_instance_ = new BaseAttrRpcSyncNotify();
   BaseAttrRpcSyncDataAsk::default_instance_->InitAsDefaultInstance();
   BaseAttrRpcSyncDataReply::default_instance_->InitAsDefaultInstance();
+  BaseAttrRpcSyncNotify::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_BaseAttrRpc_2eproto);
 }
 
@@ -277,6 +304,7 @@ void BaseAttrRpcSyncDataAsk::Swap(BaseAttrRpcSyncDataAsk* other) {
 
 #ifndef _MSC_VER
 const int BaseAttrRpcSyncDataReply::kResultFieldNumber;
+const int BaseAttrRpcSyncDataReply::kUpdateDataFieldNumber;
 #endif  // !_MSC_VER
 
 BaseAttrRpcSyncDataReply::BaseAttrRpcSyncDataReply()
@@ -296,6 +324,7 @@ BaseAttrRpcSyncDataReply::BaseAttrRpcSyncDataReply(const BaseAttrRpcSyncDataRepl
 void BaseAttrRpcSyncDataReply::SharedCtor() {
   _cached_size_ = 0;
   result_ = -9999;
+  updatedata_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -304,6 +333,9 @@ BaseAttrRpcSyncDataReply::~BaseAttrRpcSyncDataReply() {
 }
 
 void BaseAttrRpcSyncDataReply::SharedDtor() {
+  if (updatedata_ != &::google::protobuf::internal::kEmptyString) {
+    delete updatedata_;
+  }
   if (this != default_instance_) {
   }
 }
@@ -332,6 +364,11 @@ BaseAttrRpcSyncDataReply* BaseAttrRpcSyncDataReply::New() const {
 void BaseAttrRpcSyncDataReply::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     result_ = -9999;
+    if (has_updatedata()) {
+      if (updatedata_ != &::google::protobuf::internal::kEmptyString) {
+        updatedata_->clear();
+      }
+    }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -351,6 +388,20 @@ bool BaseAttrRpcSyncDataReply::MergePartialFromCodedStream(
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
                  input, &result_)));
           set_has_result();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(18)) goto parse_UpdateData;
+        break;
+      }
+
+      // optional bytes UpdateData = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_UpdateData:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
+                input, this->mutable_updatedata()));
         } else {
           goto handle_uninterpreted;
         }
@@ -381,6 +432,12 @@ void BaseAttrRpcSyncDataReply::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteSInt32(1, this->result(), output);
   }
 
+  // optional bytes UpdateData = 2;
+  if (has_updatedata()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBytes(
+      2, this->updatedata(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -392,6 +449,13 @@ void BaseAttrRpcSyncDataReply::SerializeWithCachedSizes(
   // optional sint32 Result = 1 [default = -9999];
   if (has_result()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(1, this->result(), target);
+  }
+
+  // optional bytes UpdateData = 2;
+  if (has_updatedata()) {
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
+        2, this->updatedata(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -410,6 +474,13 @@ int BaseAttrRpcSyncDataReply::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::SInt32Size(
           this->result());
+    }
+
+    // optional bytes UpdateData = 2;
+    if (has_updatedata()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::BytesSize(
+          this->updatedata());
     }
 
   }
@@ -442,6 +513,9 @@ void BaseAttrRpcSyncDataReply::MergeFrom(const BaseAttrRpcSyncDataReply& from) {
     if (from.has_result()) {
       set_result(from.result());
     }
+    if (from.has_updatedata()) {
+      set_updatedata(from.updatedata());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -466,6 +540,7 @@ bool BaseAttrRpcSyncDataReply::IsInitialized() const {
 void BaseAttrRpcSyncDataReply::Swap(BaseAttrRpcSyncDataReply* other) {
   if (other != this) {
     std::swap(result_, other->result_);
+    std::swap(updatedata_, other->updatedata_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -477,6 +552,222 @@ void BaseAttrRpcSyncDataReply::Swap(BaseAttrRpcSyncDataReply* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = BaseAttrRpcSyncDataReply_descriptor_;
   metadata.reflection = BaseAttrRpcSyncDataReply_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int BaseAttrRpcSyncNotify::kUpdateDataFieldNumber;
+#endif  // !_MSC_VER
+
+BaseAttrRpcSyncNotify::BaseAttrRpcSyncNotify()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void BaseAttrRpcSyncNotify::InitAsDefaultInstance() {
+}
+
+BaseAttrRpcSyncNotify::BaseAttrRpcSyncNotify(const BaseAttrRpcSyncNotify& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void BaseAttrRpcSyncNotify::SharedCtor() {
+  _cached_size_ = 0;
+  updatedata_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+BaseAttrRpcSyncNotify::~BaseAttrRpcSyncNotify() {
+  SharedDtor();
+}
+
+void BaseAttrRpcSyncNotify::SharedDtor() {
+  if (updatedata_ != &::google::protobuf::internal::kEmptyString) {
+    delete updatedata_;
+  }
+  if (this != default_instance_) {
+  }
+}
+
+void BaseAttrRpcSyncNotify::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* BaseAttrRpcSyncNotify::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return BaseAttrRpcSyncNotify_descriptor_;
+}
+
+const BaseAttrRpcSyncNotify& BaseAttrRpcSyncNotify::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_BaseAttrRpc_2eproto();
+  return *default_instance_;
+}
+
+BaseAttrRpcSyncNotify* BaseAttrRpcSyncNotify::default_instance_ = NULL;
+
+BaseAttrRpcSyncNotify* BaseAttrRpcSyncNotify::New() const {
+  return new BaseAttrRpcSyncNotify;
+}
+
+void BaseAttrRpcSyncNotify::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (has_updatedata()) {
+      if (updatedata_ != &::google::protobuf::internal::kEmptyString) {
+        updatedata_->clear();
+      }
+    }
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool BaseAttrRpcSyncNotify::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional bytes UpdateData = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+          DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
+                input, this->mutable_updatedata()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void BaseAttrRpcSyncNotify::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional bytes UpdateData = 1;
+  if (has_updatedata()) {
+    ::google::protobuf::internal::WireFormatLite::WriteBytes(
+      1, this->updatedata(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* BaseAttrRpcSyncNotify::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional bytes UpdateData = 1;
+  if (has_updatedata()) {
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
+        1, this->updatedata(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int BaseAttrRpcSyncNotify::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional bytes UpdateData = 1;
+    if (has_updatedata()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::BytesSize(
+          this->updatedata());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void BaseAttrRpcSyncNotify::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const BaseAttrRpcSyncNotify* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const BaseAttrRpcSyncNotify*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void BaseAttrRpcSyncNotify::MergeFrom(const BaseAttrRpcSyncNotify& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_updatedata()) {
+      set_updatedata(from.updatedata());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void BaseAttrRpcSyncNotify::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void BaseAttrRpcSyncNotify::CopyFrom(const BaseAttrRpcSyncNotify& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool BaseAttrRpcSyncNotify::IsInitialized() const {
+
+  return true;
+}
+
+void BaseAttrRpcSyncNotify::Swap(BaseAttrRpcSyncNotify* other) {
+  if (other != this) {
+    std::swap(updatedata_, other->updatedata_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata BaseAttrRpcSyncNotify::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = BaseAttrRpcSyncNotify_descriptor_;
+  metadata.reflection = BaseAttrRpcSyncNotify_reflection_;
   return metadata;
 }
 

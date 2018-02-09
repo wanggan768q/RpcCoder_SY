@@ -1,4 +1,4 @@
-﻿#ifndef __CREATEROLE_CONFIG_H
+#ifndef __CREATEROLE_CONFIG_H
 #define __CREATEROLE_CONFIG_H
 
 #include "CommonDefine.h"
@@ -33,6 +33,8 @@ struct CreateRoleElement
 	int default_female_id;       	//默认女性角色id	确定种族后默认选择的女性职业
 	vector<int> male_role_id;    	//男性角色id1	如果没有男性则无用  对应该种族男性角色职业
 	vector<int> female_role_id;  	//女性角色id1	如果没有女性则无用  对应该种族女性角色职业
+	vector<string> create_occu_icon;	//创选界面图标	专门用在创选界面的职业图标 对应未选中和选中两个状态
+	int role_id;                 	//新界面角色id	
 
 private:
 	bool m_bIsValidate;
@@ -59,7 +61,8 @@ class CreateRoleTable
 private:
 	CreateRoleTable(){}
 	~CreateRoleTable(){}
-	unordered_map<int, CreateRoleElement>	m_mapElements;
+	typedef unordered_map<int, CreateRoleElement> MapElementMap;
+	MapElementMap	m_mapElements;
 	vector<CreateRoleElement>	m_vecAllElements;
 	CreateRoleElement m_emptyItem;
 public:
@@ -71,16 +74,13 @@ public:
 
 	const CreateRoleElement* GetElement(int key)
 	{
-		if( m_mapElements.count(key)>0 )
-			return &m_mapElements[key];
-		if (m_mapElements.count(key) > 0)
+		MapElementMap::iterator it = m_mapElements.find(key);
+		if (it == m_mapElements.end())
 		{
-			CreateRoleElement* temp = &m_mapElements[key];
-			AssertEx(temp, std::string(std::string("CreateRoleTable: ") + std::to_string(key)).c_str());
-			return temp;
+			AssertEx(false, std::string(std::string("CreateRoleTable: ") + std::to_string(key)).c_str());
+			return NULL;
 		}
-		AssertEx(false, std::string(std::string("CreateRoleTable: ") + std::to_string(key)).c_str());
-		return NULL;
+		return &it->second;
 	}
 
 	bool HasElement(int key)
@@ -165,6 +165,13 @@ public:
 				int n = pos->second.get_value<int>(); 
 				member.female_role_id.push_back(n);
 			}
+			boost::property_tree::ptree sms_array_childcreate_occu_icon = p.get_child("create_occu_icon");
+			for (BOOST_AUTO(pos, sms_array_childcreate_occu_icon.begin()); pos != sms_array_childcreate_occu_icon.end(); ++pos)
+			{
+				string n = pos->second.get_value<string>(); 
+				member.create_occu_icon.push_back(n);
+			}
+			member.role_id=p.get<int>("role_id");
 
 
 			member.SetIsValidate(true);
@@ -181,33 +188,35 @@ public:
 		int contentOffset = 0;
 		vector<string> vecLine;
 		vecLine = ReadCsvLine( strContent, contentOffset );
-		if(vecLine.size() != 14)
+		if(vecLine.size() != 16)
 		{
 			printf_message("CreateRole.csv中列数量与生成的代码不匹配!");
 			assert(false);
 			return false;
 		}
-		if(vecLine[0]!="id"){printf_message("CreateRole.csv中字段[id]位置不对应");assert(false); return false; }
-		if(vecLine[1]!="race"){printf_message("CreateRole.csv中字段[race]位置不对应");assert(false); return false; }
-		if(vecLine[2]!="sex"){printf_message("CreateRole.csv中字段[sex]位置不对应");assert(false); return false; }
-		if(vecLine[3]!="race_name"){printf_message("CreateRole.csv中字段[race_name]位置不对应");assert(false); return false; }
-		if(vecLine[4]!="race_description"){printf_message("CreateRole.csv中字段[race_description]位置不对应");assert(false); return false; }
-		if(vecLine[5]!="race_icon"){printf_message("CreateRole.csv中字段[race_icon]位置不对应");assert(false); return false; }
-		if(vecLine[6]!="desc_occupations"){printf_message("CreateRole.csv中字段[desc_occupations]位置不对应");assert(false); return false; }
-		if(vecLine[7]!="default_gender"){printf_message("CreateRole.csv中字段[default_gender]位置不对应");assert(false); return false; }
-		if(vecLine[8]!="default_male_model"){printf_message("CreateRole.csv中字段[default_male_model]位置不对应");assert(false); return false; }
-		if(vecLine[9]!="default_female_model"){printf_message("CreateRole.csv中字段[default_female_model]位置不对应");assert(false); return false; }
-		if(vecLine[10]!="default_male_id"){printf_message("CreateRole.csv中字段[default_male_id]位置不对应");assert(false); return false; }
-		if(vecLine[11]!="default_female_id"){printf_message("CreateRole.csv中字段[default_female_id]位置不对应");assert(false); return false; }
-		if(vecLine[12]!="male_role_id"){printf_message("CreateRole.csv中字段[male_role_id]位置不对应");assert(false); return false; }
-		if(vecLine[13]!="female_role_id"){printf_message("CreateRole.csv中字段[female_role_id]位置不对应");assert(false); return false; }
+		if(vecLine[0]!="id"){printf_message("CreateRole.csv中字段[id]位置不对应 ");assert(false); return false; }
+		if(vecLine[1]!="race"){printf_message("CreateRole.csv中字段[race]位置不对应 ");assert(false); return false; }
+		if(vecLine[2]!="sex"){printf_message("CreateRole.csv中字段[sex]位置不对应 ");assert(false); return false; }
+		if(vecLine[3]!="race_name"){printf_message("CreateRole.csv中字段[race_name]位置不对应 ");assert(false); return false; }
+		if(vecLine[4]!="race_description"){printf_message("CreateRole.csv中字段[race_description]位置不对应 ");assert(false); return false; }
+		if(vecLine[5]!="race_icon"){printf_message("CreateRole.csv中字段[race_icon]位置不对应 ");assert(false); return false; }
+		if(vecLine[6]!="desc_occupations"){printf_message("CreateRole.csv中字段[desc_occupations]位置不对应 ");assert(false); return false; }
+		if(vecLine[7]!="default_gender"){printf_message("CreateRole.csv中字段[default_gender]位置不对应 ");assert(false); return false; }
+		if(vecLine[8]!="default_male_model"){printf_message("CreateRole.csv中字段[default_male_model]位置不对应 ");assert(false); return false; }
+		if(vecLine[9]!="default_female_model"){printf_message("CreateRole.csv中字段[default_female_model]位置不对应 ");assert(false); return false; }
+		if(vecLine[10]!="default_male_id"){printf_message("CreateRole.csv中字段[default_male_id]位置不对应 ");assert(false); return false; }
+		if(vecLine[11]!="default_female_id"){printf_message("CreateRole.csv中字段[default_female_id]位置不对应 ");assert(false); return false; }
+		if(vecLine[12]!="male_role_id"){printf_message("CreateRole.csv中字段[male_role_id]位置不对应 ");assert(false); return false; }
+		if(vecLine[13]!="female_role_id"){printf_message("CreateRole.csv中字段[female_role_id]位置不对应 ");assert(false); return false; }
+		if(vecLine[14]!="create_occu_icon"){printf_message("CreateRole.csv中字段[create_occu_icon]位置不对应 ");assert(false); return false; }
+		if(vecLine[15]!="role_id"){printf_message("CreateRole.csv中字段[role_id]位置不对应 ");assert(false); return false; }
 
 		while(true)
 		{
 			vecLine = ReadCsvLine( strContent, contentOffset );
 			if((int)vecLine.size() == 0 )
 				break;
-			if((int)vecLine.size() != (int)14)
+			if((int)vecLine.size() != (int)16)
 			{
 				assert(false);
 				return false;
@@ -224,6 +233,7 @@ public:
 			member.default_female_model=(int)atoi(vecLine[9].c_str());
 			member.default_male_id=(int)atoi(vecLine[10].c_str());
 			member.default_female_id=(int)atoi(vecLine[11].c_str());
+			member.role_id=(int)atoi(vecLine[15].c_str());
 
 			member.SetIsValidate(true);
 			m_mapElements[member.id] = member;

@@ -1,4 +1,4 @@
-﻿#ifndef __STRINGUI_CONFIG_H
+#ifndef __STRINGUI_CONFIG_H
 #define __STRINGUI_CONFIG_H
 
 #include "CommonDefine.h"
@@ -48,7 +48,8 @@ class StringUiTable
 private:
 	StringUiTable(){}
 	~StringUiTable(){}
-	unordered_map<int, StringUiElement>	m_mapElements;
+	typedef unordered_map<int, StringUiElement> MapElementMap;
+	MapElementMap	m_mapElements;
 	vector<StringUiElement>	m_vecAllElements;
 	StringUiElement m_emptyItem;
 public:
@@ -60,16 +61,13 @@ public:
 
 	const StringUiElement* GetElement(int key)
 	{
-		if( m_mapElements.count(key)>0 )
-			return &m_mapElements[key];
-		if (m_mapElements.count(key) > 0)
+		MapElementMap::iterator it = m_mapElements.find(key);
+		if (it == m_mapElements.end())
 		{
-			StringUiElement* temp = &m_mapElements[key];
-			AssertEx(temp, std::string(std::string("StringUiTable: ") + std::to_string(key)).c_str());
-			return temp;
+			AssertEx(false, std::string(std::string("StringUiTable: ") + std::to_string(key)).c_str());
+			return NULL;
 		}
-		AssertEx(false, std::string(std::string("StringUiTable: ") + std::to_string(key)).c_str());
-		return NULL;
+		return &it->second;
 	}
 
 	bool HasElement(int key)
@@ -150,9 +148,9 @@ public:
 			assert(false);
 			return false;
 		}
-		if(vecLine[0]!="id"){printf_message("StringUi.csv中字段[id]位置不对应");assert(false); return false; }
-		if(vecLine[1]!="comment"){printf_message("StringUi.csv中字段[comment]位置不对应");assert(false); return false; }
-		if(vecLine[2]!="sc"){printf_message("StringUi.csv中字段[sc]位置不对应");assert(false); return false; }
+		if(vecLine[0]!="id"){printf_message("StringUi.csv中字段[id]位置不对应 ");assert(false); return false; }
+		if(vecLine[1]!="comment"){printf_message("StringUi.csv中字段[comment]位置不对应 ");assert(false); return false; }
+		if(vecLine[2]!="sc"){printf_message("StringUi.csv中字段[sc]位置不对应 ");assert(false); return false; }
 
 		while(true)
 		{

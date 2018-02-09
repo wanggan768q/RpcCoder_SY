@@ -6,8 +6,7 @@ local RPC_CODE_LOGIN_CHARACTERLIST_REQUEST = 253
 local RPC_CODE_LOGIN_SELECTCHARACTER_REQUEST = 254
 local RPC_CODE_LOGIN_CREATECHARACTER_REQUEST = 255
 local RPC_CODE_LOGIN_SELECTSAVEUSER_REQUEST = 256
-
-
+local RPC_CODE_LOGIN_DELETECHARACTER_REQUEST = 257
 
 
 
@@ -17,9 +16,14 @@ local tostring = tostring
 local MLayerMgr = HS_MLayerMgr
 local typeof = typeof
 local ipairs = ipairs
+local print = print
 require("3rd/pblua/LoginRpc_pb")
 local  LoginRpc_pb = LoginRpc_pb
 module("LoginModel")
+
+
+
+
 
 function handler(obj,method)
 	return function ( ... )
@@ -28,7 +32,11 @@ function handler(obj,method)
 end
 
 local function dataCallback(self,Id,Index)
-
+	if nil ~= self.DataCallback then
+		for i,callback in ipairs(self.DataCallback ) do
+			callback(Id,Index)
+		end
+	end
 end
 
 local function showNetTip(self)
@@ -43,7 +51,7 @@ end
 function Initialize(self)
 	self.rpc_pb = LoginRpc_pb
   --注册
-  MLayerMgr.RegUpdateHd(ModuleId, handler(self,self.UpdateField))
+  --MLayerMgr.RegUpdateHd(ModuleId, handler(self,self.UpdateField))
 
   
 
@@ -51,10 +59,8 @@ function Initialize(self)
 end
 
 -- 更新数据
-function UpdateField(self,Id, data, Index, len)
+function UpdateField(self,uf)
 
-	
-	dataCallback(self,Id,Index)
 end
 
 
@@ -151,12 +157,47 @@ function SelectSaveUser(self,RoleId,_hanlder)
 	MLayerMgr.SendAsk(RPC_CODE_LOGIN_SELECTSAVEUSER_REQUEST, pb_data, callback)
 	showNetTip(self)
 end
+function DeleteCharacter(self,RoleId,_hanlder)
+	local PB = self.rpc_pb.LoginRpcDeleteCharacterAsk()
+	PB.RoleId = RoleId
+	local pb_data = PB:SerializeToString()
+	local function callback(_data)
+		hideNetTip(self)
+		if _hanlder then
+			local ret_msg = self.rpc_pb.LoginRpcDeleteCharacterReply()
+			ret_msg:ParseFromString(_data)
+			 _hanlder(ret_msg)
+		end
+	end
+	MLayerMgr.SendAsk(RPC_CODE_LOGIN_DELETECHARACTER_REQUEST, pb_data, callback)
+	showNetTip(self)
+end
 
 
 
 
 
+function registerDataCallback(self,_hanlder)
+	if not self.DataCallback then
+		self.DataCallback = {}
+	end
+	table.insert(self.DataCallback,_hanlder)
+end
 
+function unregisterDataCallback(self,_hanlder)
+	if nil ~= self.DataCallback then
+		for i,callback in ipairs(self.DataCallback ) do
+			if callback == _hanlder then
+				table.remove(self.DataCallback, i )
+			end
+		end
+	end
+end
+
+function GetValue(self, Id,Index )
+	-- body
+	
+end
 
 --[[
 askList.Login = {}
@@ -203,4 +244,12 @@ t.hand = LoginModel.SelectSaveUser
 t.pb = LoginRpc_pb.LoginRpcSelectSaveUserAsk()
 table.insert(askList.Login,t)
 
+local t = {}
+t.name = "DeleteCharacter"
+t.para = {{name="RoleId",t=1}}
+t.hand = LoginModel.DeleteCharacter
+t.pb = LoginRpc_pb.LoginRpcDeleteCharacterAsk()
+table.insert(askList.Login,t)
+
 --]]
+

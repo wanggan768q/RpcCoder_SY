@@ -90,33 +90,299 @@ class BaseAttrUserDataV1 : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Exp = 1 [default = -1];
+  // optional sint32 Exp = 1 [default = 0];
   inline bool has_exp() const;
   inline void clear_exp();
   static const int kExpFieldNumber = 1;
   inline ::google::protobuf::int32 exp() const;
   inline void set_exp(::google::protobuf::int32 value);
 
-  // optional sint32 Level = 3 [default = -1];
+  // optional sint32 Level = 3 [default = 0];
   inline bool has_level() const;
   inline void clear_level();
   static const int kLevelFieldNumber = 3;
   inline ::google::protobuf::int32 level() const;
   inline void set_level(::google::protobuf::int32 value);
 
-  // optional sint32 ServerTime = 4 [default = -1];
+  // optional int64 ServerTime = 4 [default = -1];
   inline bool has_servertime() const;
   inline void clear_servertime();
   static const int kServerTimeFieldNumber = 4;
-  inline ::google::protobuf::int32 servertime() const;
-  inline void set_servertime(::google::protobuf::int32 value);
+  inline ::google::protobuf::int64 servertime() const;
+  inline void set_servertime(::google::protobuf::int64 value);
 
-  // optional sint32 RoleId = 5 [default = -1];
+  // optional int64 RoleId = 5 [default = -1];
   inline bool has_roleid() const;
   inline void clear_roleid();
   static const int kRoleIdFieldNumber = 5;
-  inline ::google::protobuf::int32 roleid() const;
-  inline void set_roleid(::google::protobuf::int32 value);
+  inline ::google::protobuf::int64 roleid() const;
+  inline void set_roleid(::google::protobuf::int64 value);
+
+  // optional int32 Strength = 7 [default = 0];
+  inline bool has_strength() const;
+  inline void clear_strength();
+  static const int kStrengthFieldNumber = 7;
+  inline ::google::protobuf::int32 strength() const;
+  inline void set_strength(::google::protobuf::int32 value);
+
+  // optional int32 Agility = 8 [default = 0];
+  inline bool has_agility() const;
+  inline void clear_agility();
+  static const int kAgilityFieldNumber = 8;
+  inline ::google::protobuf::int32 agility() const;
+  inline void set_agility(::google::protobuf::int32 value);
+
+  // optional int32 Intellectual = 9 [default = 0];
+  inline bool has_intellectual() const;
+  inline void clear_intellectual();
+  static const int kIntellectualFieldNumber = 9;
+  inline ::google::protobuf::int32 intellectual() const;
+  inline void set_intellectual(::google::protobuf::int32 value);
+
+  // optional int32 Endurance = 10 [default = 0];
+  inline bool has_endurance() const;
+  inline void clear_endurance();
+  static const int kEnduranceFieldNumber = 10;
+  inline ::google::protobuf::int32 endurance() const;
+  inline void set_endurance(::google::protobuf::int32 value);
+
+  // optional int32 Spirit = 11 [default = 0];
+  inline bool has_spirit() const;
+  inline void clear_spirit();
+  static const int kSpiritFieldNumber = 11;
+  inline ::google::protobuf::int32 spirit() const;
+  inline void set_spirit(::google::protobuf::int32 value);
+
+  // optional int32 Hp = 12 [default = 0];
+  inline bool has_hp() const;
+  inline void clear_hp();
+  static const int kHpFieldNumber = 12;
+  inline ::google::protobuf::int32 hp() const;
+  inline void set_hp(::google::protobuf::int32 value);
+
+  // optional int32 MaxHp = 14 [default = 0];
+  inline bool has_maxhp() const;
+  inline void clear_maxhp();
+  static const int kMaxHpFieldNumber = 14;
+  inline ::google::protobuf::int32 maxhp() const;
+  inline void set_maxhp(::google::protobuf::int32 value);
+
+  // optional int32 PhysicAttack = 15 [default = 0];
+  inline bool has_physicattack() const;
+  inline void clear_physicattack();
+  static const int kPhysicAttackFieldNumber = 15;
+  inline ::google::protobuf::int32 physicattack() const;
+  inline void set_physicattack(::google::protobuf::int32 value);
+
+  // optional int32 PhysicDefense = 16 [default = 0];
+  inline bool has_physicdefense() const;
+  inline void clear_physicdefense();
+  static const int kPhysicDefenseFieldNumber = 16;
+  inline ::google::protobuf::int32 physicdefense() const;
+  inline void set_physicdefense(::google::protobuf::int32 value);
+
+  // optional int32 MagicAttack = 19 [default = 0];
+  inline bool has_magicattack() const;
+  inline void clear_magicattack();
+  static const int kMagicAttackFieldNumber = 19;
+  inline ::google::protobuf::int32 magicattack() const;
+  inline void set_magicattack(::google::protobuf::int32 value);
+
+  // optional int32 MagicDefense = 20 [default = 0];
+  inline bool has_magicdefense() const;
+  inline void clear_magicdefense();
+  static const int kMagicDefenseFieldNumber = 20;
+  inline ::google::protobuf::int32 magicdefense() const;
+  inline void set_magicdefense(::google::protobuf::int32 value);
+
+  // optional int32 Hit = 21 [default = 0];
+  inline bool has_hit() const;
+  inline void clear_hit();
+  static const int kHitFieldNumber = 21;
+  inline ::google::protobuf::int32 hit() const;
+  inline void set_hit(::google::protobuf::int32 value);
+
+  // optional float HitRate = 22 [default = 0];
+  inline bool has_hitrate() const;
+  inline void clear_hitrate();
+  static const int kHitRateFieldNumber = 22;
+  inline float hitrate() const;
+  inline void set_hitrate(float value);
+
+  // optional int32 Miss = 23 [default = 0];
+  inline bool has_miss() const;
+  inline void clear_miss();
+  static const int kMissFieldNumber = 23;
+  inline ::google::protobuf::int32 miss() const;
+  inline void set_miss(::google::protobuf::int32 value);
+
+  // optional float MissRate = 24 [default = 0];
+  inline bool has_missrate() const;
+  inline void clear_missrate();
+  static const int kMissRateFieldNumber = 24;
+  inline float missrate() const;
+  inline void set_missrate(float value);
+
+  // optional int32 Critical = 25 [default = 0];
+  inline bool has_critical() const;
+  inline void clear_critical();
+  static const int kCriticalFieldNumber = 25;
+  inline ::google::protobuf::int32 critical() const;
+  inline void set_critical(::google::protobuf::int32 value);
+
+  // optional float CriticalRate = 26 [default = 0];
+  inline bool has_criticalrate() const;
+  inline void clear_criticalrate();
+  static const int kCriticalRateFieldNumber = 26;
+  inline float criticalrate() const;
+  inline void set_criticalrate(float value);
+
+  // optional int32 Tenacity = 27 [default = 0];
+  inline bool has_tenacity() const;
+  inline void clear_tenacity();
+  static const int kTenacityFieldNumber = 27;
+  inline ::google::protobuf::int32 tenacity() const;
+  inline void set_tenacity(::google::protobuf::int32 value);
+
+  // optional float TenacityRate = 28 [default = 0];
+  inline bool has_tenacityrate() const;
+  inline void clear_tenacityrate();
+  static const int kTenacityRateFieldNumber = 28;
+  inline float tenacityrate() const;
+  inline void set_tenacityrate(float value);
+
+  // optional int32 Penet = 29 [default = 0];
+  inline bool has_penet() const;
+  inline void clear_penet();
+  static const int kPenetFieldNumber = 29;
+  inline ::google::protobuf::int32 penet() const;
+  inline void set_penet(::google::protobuf::int32 value);
+
+  // optional float PenetRate = 30 [default = 0];
+  inline bool has_penetrate() const;
+  inline void clear_penetrate();
+  static const int kPenetRateFieldNumber = 30;
+  inline float penetrate() const;
+  inline void set_penetrate(float value);
+
+  // optional int32 Dodg = 31 [default = 0];
+  inline bool has_dodg() const;
+  inline void clear_dodg();
+  static const int kDodgFieldNumber = 31;
+  inline ::google::protobuf::int32 dodg() const;
+  inline void set_dodg(::google::protobuf::int32 value);
+
+  // optional float DodgRate = 32 [default = 0];
+  inline bool has_dodgrate() const;
+  inline void clear_dodgrate();
+  static const int kDodgRateFieldNumber = 32;
+  inline float dodgrate() const;
+  inline void set_dodgrate(float value);
+
+  // optional int32 CriticalAddition = 33 [default = 0];
+  inline bool has_criticaladdition() const;
+  inline void clear_criticaladdition();
+  static const int kCriticalAdditionFieldNumber = 33;
+  inline ::google::protobuf::int32 criticaladdition() const;
+  inline void set_criticaladdition(::google::protobuf::int32 value);
+
+  // optional float CriticalAdditionRate = 34 [default = 0];
+  inline bool has_criticaladditionrate() const;
+  inline void clear_criticaladditionrate();
+  static const int kCriticalAdditionRateFieldNumber = 34;
+  inline float criticaladditionrate() const;
+  inline void set_criticaladditionrate(float value);
+
+  // optional int32 CriticalImmune = 35 [default = 0];
+  inline bool has_criticalimmune() const;
+  inline void clear_criticalimmune();
+  static const int kCriticalImmuneFieldNumber = 35;
+  inline ::google::protobuf::int32 criticalimmune() const;
+  inline void set_criticalimmune(::google::protobuf::int32 value);
+
+  // optional float CriticalImmuneRate = 36 [default = 0];
+  inline bool has_criticalimmunerate() const;
+  inline void clear_criticalimmunerate();
+  static const int kCriticalImmuneRateFieldNumber = 36;
+  inline float criticalimmunerate() const;
+  inline void set_criticalimmunerate(float value);
+
+  // optional int32 MissLevel = 37 [default = 0];
+  inline bool has_misslevel() const;
+  inline void clear_misslevel();
+  static const int kMissLevelFieldNumber = 37;
+  inline ::google::protobuf::int32 misslevel() const;
+  inline void set_misslevel(::google::protobuf::int32 value);
+
+  // optional int32 CriticalLevel = 38 [default = 0];
+  inline bool has_criticallevel() const;
+  inline void clear_criticallevel();
+  static const int kCriticalLevelFieldNumber = 38;
+  inline ::google::protobuf::int32 criticallevel() const;
+  inline void set_criticallevel(::google::protobuf::int32 value);
+
+  // optional int32 DodgLevel = 39 [default = 0];
+  inline bool has_dodglevel() const;
+  inline void clear_dodglevel();
+  static const int kDodgLevelFieldNumber = 39;
+  inline ::google::protobuf::int32 dodglevel() const;
+  inline void set_dodglevel(::google::protobuf::int32 value);
+
+  // optional float MoveSpeed = 40 [default = 0];
+  inline bool has_movespeed() const;
+  inline void clear_movespeed();
+  static const int kMoveSpeedFieldNumber = 40;
+  inline float movespeed() const;
+  inline void set_movespeed(float value);
+
+  // optional bool DizzyState = 41 [default = false];
+  inline bool has_dizzystate() const;
+  inline void clear_dizzystate();
+  static const int kDizzyStateFieldNumber = 41;
+  inline bool dizzystate() const;
+  inline void set_dizzystate(bool value);
+
+  // optional bool GodState = 42 [default = false];
+  inline bool has_godstate() const;
+  inline void clear_godstate();
+  static const int kGodStateFieldNumber = 42;
+  inline bool godstate() const;
+  inline void set_godstate(bool value);
+
+  // optional bool CantMoveState = 43 [default = false];
+  inline bool has_cantmovestate() const;
+  inline void clear_cantmovestate();
+  static const int kCantMoveStateFieldNumber = 43;
+  inline bool cantmovestate() const;
+  inline void set_cantmovestate(bool value);
+
+  // optional float PhysicAddition = 45 [default = 0];
+  inline bool has_physicaddition() const;
+  inline void clear_physicaddition();
+  static const int kPhysicAdditionFieldNumber = 45;
+  inline float physicaddition() const;
+  inline void set_physicaddition(float value);
+
+  // optional float MagicAddition = 46 [default = 0];
+  inline bool has_magicaddition() const;
+  inline void clear_magicaddition();
+  static const int kMagicAdditionFieldNumber = 46;
+  inline float magicaddition() const;
+  inline void set_magicaddition(float value);
+
+  // optional float PhysicOppose = 47 [default = 0];
+  inline bool has_physicoppose() const;
+  inline void clear_physicoppose();
+  static const int kPhysicOpposeFieldNumber = 47;
+  inline float physicoppose() const;
+  inline void set_physicoppose(float value);
+
+  // optional float MagicOppose = 48 [default = 0];
+  inline bool has_magicoppose() const;
+  inline void clear_magicoppose();
+  static const int kMagicOpposeFieldNumber = 48;
+  inline float magicoppose() const;
+  inline void set_magicoppose(float value);
 
   // @@protoc_insertion_point(class_scope:BaseAttrUserDataV1)
  private:
@@ -128,16 +394,130 @@ class BaseAttrUserDataV1 : public ::google::protobuf::Message {
   inline void clear_has_servertime();
   inline void set_has_roleid();
   inline void clear_has_roleid();
+  inline void set_has_strength();
+  inline void clear_has_strength();
+  inline void set_has_agility();
+  inline void clear_has_agility();
+  inline void set_has_intellectual();
+  inline void clear_has_intellectual();
+  inline void set_has_endurance();
+  inline void clear_has_endurance();
+  inline void set_has_spirit();
+  inline void clear_has_spirit();
+  inline void set_has_hp();
+  inline void clear_has_hp();
+  inline void set_has_maxhp();
+  inline void clear_has_maxhp();
+  inline void set_has_physicattack();
+  inline void clear_has_physicattack();
+  inline void set_has_physicdefense();
+  inline void clear_has_physicdefense();
+  inline void set_has_magicattack();
+  inline void clear_has_magicattack();
+  inline void set_has_magicdefense();
+  inline void clear_has_magicdefense();
+  inline void set_has_hit();
+  inline void clear_has_hit();
+  inline void set_has_hitrate();
+  inline void clear_has_hitrate();
+  inline void set_has_miss();
+  inline void clear_has_miss();
+  inline void set_has_missrate();
+  inline void clear_has_missrate();
+  inline void set_has_critical();
+  inline void clear_has_critical();
+  inline void set_has_criticalrate();
+  inline void clear_has_criticalrate();
+  inline void set_has_tenacity();
+  inline void clear_has_tenacity();
+  inline void set_has_tenacityrate();
+  inline void clear_has_tenacityrate();
+  inline void set_has_penet();
+  inline void clear_has_penet();
+  inline void set_has_penetrate();
+  inline void clear_has_penetrate();
+  inline void set_has_dodg();
+  inline void clear_has_dodg();
+  inline void set_has_dodgrate();
+  inline void clear_has_dodgrate();
+  inline void set_has_criticaladdition();
+  inline void clear_has_criticaladdition();
+  inline void set_has_criticaladditionrate();
+  inline void clear_has_criticaladditionrate();
+  inline void set_has_criticalimmune();
+  inline void clear_has_criticalimmune();
+  inline void set_has_criticalimmunerate();
+  inline void clear_has_criticalimmunerate();
+  inline void set_has_misslevel();
+  inline void clear_has_misslevel();
+  inline void set_has_criticallevel();
+  inline void clear_has_criticallevel();
+  inline void set_has_dodglevel();
+  inline void clear_has_dodglevel();
+  inline void set_has_movespeed();
+  inline void clear_has_movespeed();
+  inline void set_has_dizzystate();
+  inline void clear_has_dizzystate();
+  inline void set_has_godstate();
+  inline void clear_has_godstate();
+  inline void set_has_cantmovestate();
+  inline void clear_has_cantmovestate();
+  inline void set_has_physicaddition();
+  inline void clear_has_physicaddition();
+  inline void set_has_magicaddition();
+  inline void clear_has_magicaddition();
+  inline void set_has_physicoppose();
+  inline void clear_has_physicoppose();
+  inline void set_has_magicoppose();
+  inline void clear_has_magicoppose();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::int32 exp_;
   ::google::protobuf::int32 level_;
-  ::google::protobuf::int32 servertime_;
-  ::google::protobuf::int32 roleid_;
+  ::google::protobuf::int64 servertime_;
+  ::google::protobuf::int64 roleid_;
+  ::google::protobuf::int32 strength_;
+  ::google::protobuf::int32 agility_;
+  ::google::protobuf::int32 intellectual_;
+  ::google::protobuf::int32 endurance_;
+  ::google::protobuf::int32 spirit_;
+  ::google::protobuf::int32 hp_;
+  ::google::protobuf::int32 maxhp_;
+  ::google::protobuf::int32 physicattack_;
+  ::google::protobuf::int32 physicdefense_;
+  ::google::protobuf::int32 magicattack_;
+  ::google::protobuf::int32 magicdefense_;
+  ::google::protobuf::int32 hit_;
+  float hitrate_;
+  ::google::protobuf::int32 miss_;
+  float missrate_;
+  ::google::protobuf::int32 critical_;
+  float criticalrate_;
+  ::google::protobuf::int32 tenacity_;
+  float tenacityrate_;
+  ::google::protobuf::int32 penet_;
+  float penetrate_;
+  ::google::protobuf::int32 dodg_;
+  float dodgrate_;
+  ::google::protobuf::int32 criticaladdition_;
+  float criticaladditionrate_;
+  ::google::protobuf::int32 criticalimmune_;
+  float criticalimmunerate_;
+  ::google::protobuf::int32 misslevel_;
+  ::google::protobuf::int32 criticallevel_;
+  ::google::protobuf::int32 dodglevel_;
+  float movespeed_;
+  bool dizzystate_;
+  bool godstate_;
+  bool cantmovestate_;
+  float physicaddition_;
+  float magicaddition_;
+  float physicoppose_;
+  float magicoppose_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(42 + 31) / 32];
 
   friend void  protobuf_AddDesc_BaseAttrV1Data_2eproto();
   friend void protobuf_AssignDesc_BaseAttrV1Data_2eproto();
@@ -153,7 +533,7 @@ class BaseAttrUserDataV1 : public ::google::protobuf::Message {
 
 // BaseAttrUserDataV1
 
-// optional sint32 Exp = 1 [default = -1];
+// optional sint32 Exp = 1 [default = 0];
 inline bool BaseAttrUserDataV1::has_exp() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -164,7 +544,7 @@ inline void BaseAttrUserDataV1::clear_has_exp() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline void BaseAttrUserDataV1::clear_exp() {
-  exp_ = -1;
+  exp_ = 0;
   clear_has_exp();
 }
 inline ::google::protobuf::int32 BaseAttrUserDataV1::exp() const {
@@ -175,7 +555,7 @@ inline void BaseAttrUserDataV1::set_exp(::google::protobuf::int32 value) {
   exp_ = value;
 }
 
-// optional sint32 Level = 3 [default = -1];
+// optional sint32 Level = 3 [default = 0];
 inline bool BaseAttrUserDataV1::has_level() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -186,7 +566,7 @@ inline void BaseAttrUserDataV1::clear_has_level() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline void BaseAttrUserDataV1::clear_level() {
-  level_ = -1;
+  level_ = 0;
   clear_has_level();
 }
 inline ::google::protobuf::int32 BaseAttrUserDataV1::level() const {
@@ -197,7 +577,7 @@ inline void BaseAttrUserDataV1::set_level(::google::protobuf::int32 value) {
   level_ = value;
 }
 
-// optional sint32 ServerTime = 4 [default = -1];
+// optional int64 ServerTime = 4 [default = -1];
 inline bool BaseAttrUserDataV1::has_servertime() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -208,18 +588,18 @@ inline void BaseAttrUserDataV1::clear_has_servertime() {
   _has_bits_[0] &= ~0x00000004u;
 }
 inline void BaseAttrUserDataV1::clear_servertime() {
-  servertime_ = -1;
+  servertime_ = GOOGLE_LONGLONG(-1);
   clear_has_servertime();
 }
-inline ::google::protobuf::int32 BaseAttrUserDataV1::servertime() const {
+inline ::google::protobuf::int64 BaseAttrUserDataV1::servertime() const {
   return servertime_;
 }
-inline void BaseAttrUserDataV1::set_servertime(::google::protobuf::int32 value) {
+inline void BaseAttrUserDataV1::set_servertime(::google::protobuf::int64 value) {
   set_has_servertime();
   servertime_ = value;
 }
 
-// optional sint32 RoleId = 5 [default = -1];
+// optional int64 RoleId = 5 [default = -1];
 inline bool BaseAttrUserDataV1::has_roleid() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
@@ -230,15 +610,851 @@ inline void BaseAttrUserDataV1::clear_has_roleid() {
   _has_bits_[0] &= ~0x00000008u;
 }
 inline void BaseAttrUserDataV1::clear_roleid() {
-  roleid_ = -1;
+  roleid_ = GOOGLE_LONGLONG(-1);
   clear_has_roleid();
 }
-inline ::google::protobuf::int32 BaseAttrUserDataV1::roleid() const {
+inline ::google::protobuf::int64 BaseAttrUserDataV1::roleid() const {
   return roleid_;
 }
-inline void BaseAttrUserDataV1::set_roleid(::google::protobuf::int32 value) {
+inline void BaseAttrUserDataV1::set_roleid(::google::protobuf::int64 value) {
   set_has_roleid();
   roleid_ = value;
+}
+
+// optional int32 Strength = 7 [default = 0];
+inline bool BaseAttrUserDataV1::has_strength() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_strength() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void BaseAttrUserDataV1::clear_has_strength() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void BaseAttrUserDataV1::clear_strength() {
+  strength_ = 0;
+  clear_has_strength();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::strength() const {
+  return strength_;
+}
+inline void BaseAttrUserDataV1::set_strength(::google::protobuf::int32 value) {
+  set_has_strength();
+  strength_ = value;
+}
+
+// optional int32 Agility = 8 [default = 0];
+inline bool BaseAttrUserDataV1::has_agility() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_agility() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void BaseAttrUserDataV1::clear_has_agility() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void BaseAttrUserDataV1::clear_agility() {
+  agility_ = 0;
+  clear_has_agility();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::agility() const {
+  return agility_;
+}
+inline void BaseAttrUserDataV1::set_agility(::google::protobuf::int32 value) {
+  set_has_agility();
+  agility_ = value;
+}
+
+// optional int32 Intellectual = 9 [default = 0];
+inline bool BaseAttrUserDataV1::has_intellectual() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_intellectual() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void BaseAttrUserDataV1::clear_has_intellectual() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void BaseAttrUserDataV1::clear_intellectual() {
+  intellectual_ = 0;
+  clear_has_intellectual();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::intellectual() const {
+  return intellectual_;
+}
+inline void BaseAttrUserDataV1::set_intellectual(::google::protobuf::int32 value) {
+  set_has_intellectual();
+  intellectual_ = value;
+}
+
+// optional int32 Endurance = 10 [default = 0];
+inline bool BaseAttrUserDataV1::has_endurance() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_endurance() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void BaseAttrUserDataV1::clear_has_endurance() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void BaseAttrUserDataV1::clear_endurance() {
+  endurance_ = 0;
+  clear_has_endurance();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::endurance() const {
+  return endurance_;
+}
+inline void BaseAttrUserDataV1::set_endurance(::google::protobuf::int32 value) {
+  set_has_endurance();
+  endurance_ = value;
+}
+
+// optional int32 Spirit = 11 [default = 0];
+inline bool BaseAttrUserDataV1::has_spirit() const {
+  return (_has_bits_[0] & 0x00000100u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_spirit() {
+  _has_bits_[0] |= 0x00000100u;
+}
+inline void BaseAttrUserDataV1::clear_has_spirit() {
+  _has_bits_[0] &= ~0x00000100u;
+}
+inline void BaseAttrUserDataV1::clear_spirit() {
+  spirit_ = 0;
+  clear_has_spirit();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::spirit() const {
+  return spirit_;
+}
+inline void BaseAttrUserDataV1::set_spirit(::google::protobuf::int32 value) {
+  set_has_spirit();
+  spirit_ = value;
+}
+
+// optional int32 Hp = 12 [default = 0];
+inline bool BaseAttrUserDataV1::has_hp() const {
+  return (_has_bits_[0] & 0x00000200u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_hp() {
+  _has_bits_[0] |= 0x00000200u;
+}
+inline void BaseAttrUserDataV1::clear_has_hp() {
+  _has_bits_[0] &= ~0x00000200u;
+}
+inline void BaseAttrUserDataV1::clear_hp() {
+  hp_ = 0;
+  clear_has_hp();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::hp() const {
+  return hp_;
+}
+inline void BaseAttrUserDataV1::set_hp(::google::protobuf::int32 value) {
+  set_has_hp();
+  hp_ = value;
+}
+
+// optional int32 MaxHp = 14 [default = 0];
+inline bool BaseAttrUserDataV1::has_maxhp() const {
+  return (_has_bits_[0] & 0x00000400u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_maxhp() {
+  _has_bits_[0] |= 0x00000400u;
+}
+inline void BaseAttrUserDataV1::clear_has_maxhp() {
+  _has_bits_[0] &= ~0x00000400u;
+}
+inline void BaseAttrUserDataV1::clear_maxhp() {
+  maxhp_ = 0;
+  clear_has_maxhp();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::maxhp() const {
+  return maxhp_;
+}
+inline void BaseAttrUserDataV1::set_maxhp(::google::protobuf::int32 value) {
+  set_has_maxhp();
+  maxhp_ = value;
+}
+
+// optional int32 PhysicAttack = 15 [default = 0];
+inline bool BaseAttrUserDataV1::has_physicattack() const {
+  return (_has_bits_[0] & 0x00000800u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_physicattack() {
+  _has_bits_[0] |= 0x00000800u;
+}
+inline void BaseAttrUserDataV1::clear_has_physicattack() {
+  _has_bits_[0] &= ~0x00000800u;
+}
+inline void BaseAttrUserDataV1::clear_physicattack() {
+  physicattack_ = 0;
+  clear_has_physicattack();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::physicattack() const {
+  return physicattack_;
+}
+inline void BaseAttrUserDataV1::set_physicattack(::google::protobuf::int32 value) {
+  set_has_physicattack();
+  physicattack_ = value;
+}
+
+// optional int32 PhysicDefense = 16 [default = 0];
+inline bool BaseAttrUserDataV1::has_physicdefense() const {
+  return (_has_bits_[0] & 0x00001000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_physicdefense() {
+  _has_bits_[0] |= 0x00001000u;
+}
+inline void BaseAttrUserDataV1::clear_has_physicdefense() {
+  _has_bits_[0] &= ~0x00001000u;
+}
+inline void BaseAttrUserDataV1::clear_physicdefense() {
+  physicdefense_ = 0;
+  clear_has_physicdefense();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::physicdefense() const {
+  return physicdefense_;
+}
+inline void BaseAttrUserDataV1::set_physicdefense(::google::protobuf::int32 value) {
+  set_has_physicdefense();
+  physicdefense_ = value;
+}
+
+// optional int32 MagicAttack = 19 [default = 0];
+inline bool BaseAttrUserDataV1::has_magicattack() const {
+  return (_has_bits_[0] & 0x00002000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_magicattack() {
+  _has_bits_[0] |= 0x00002000u;
+}
+inline void BaseAttrUserDataV1::clear_has_magicattack() {
+  _has_bits_[0] &= ~0x00002000u;
+}
+inline void BaseAttrUserDataV1::clear_magicattack() {
+  magicattack_ = 0;
+  clear_has_magicattack();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::magicattack() const {
+  return magicattack_;
+}
+inline void BaseAttrUserDataV1::set_magicattack(::google::protobuf::int32 value) {
+  set_has_magicattack();
+  magicattack_ = value;
+}
+
+// optional int32 MagicDefense = 20 [default = 0];
+inline bool BaseAttrUserDataV1::has_magicdefense() const {
+  return (_has_bits_[0] & 0x00004000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_magicdefense() {
+  _has_bits_[0] |= 0x00004000u;
+}
+inline void BaseAttrUserDataV1::clear_has_magicdefense() {
+  _has_bits_[0] &= ~0x00004000u;
+}
+inline void BaseAttrUserDataV1::clear_magicdefense() {
+  magicdefense_ = 0;
+  clear_has_magicdefense();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::magicdefense() const {
+  return magicdefense_;
+}
+inline void BaseAttrUserDataV1::set_magicdefense(::google::protobuf::int32 value) {
+  set_has_magicdefense();
+  magicdefense_ = value;
+}
+
+// optional int32 Hit = 21 [default = 0];
+inline bool BaseAttrUserDataV1::has_hit() const {
+  return (_has_bits_[0] & 0x00008000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_hit() {
+  _has_bits_[0] |= 0x00008000u;
+}
+inline void BaseAttrUserDataV1::clear_has_hit() {
+  _has_bits_[0] &= ~0x00008000u;
+}
+inline void BaseAttrUserDataV1::clear_hit() {
+  hit_ = 0;
+  clear_has_hit();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::hit() const {
+  return hit_;
+}
+inline void BaseAttrUserDataV1::set_hit(::google::protobuf::int32 value) {
+  set_has_hit();
+  hit_ = value;
+}
+
+// optional float HitRate = 22 [default = 0];
+inline bool BaseAttrUserDataV1::has_hitrate() const {
+  return (_has_bits_[0] & 0x00010000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_hitrate() {
+  _has_bits_[0] |= 0x00010000u;
+}
+inline void BaseAttrUserDataV1::clear_has_hitrate() {
+  _has_bits_[0] &= ~0x00010000u;
+}
+inline void BaseAttrUserDataV1::clear_hitrate() {
+  hitrate_ = 0;
+  clear_has_hitrate();
+}
+inline float BaseAttrUserDataV1::hitrate() const {
+  return hitrate_;
+}
+inline void BaseAttrUserDataV1::set_hitrate(float value) {
+  set_has_hitrate();
+  hitrate_ = value;
+}
+
+// optional int32 Miss = 23 [default = 0];
+inline bool BaseAttrUserDataV1::has_miss() const {
+  return (_has_bits_[0] & 0x00020000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_miss() {
+  _has_bits_[0] |= 0x00020000u;
+}
+inline void BaseAttrUserDataV1::clear_has_miss() {
+  _has_bits_[0] &= ~0x00020000u;
+}
+inline void BaseAttrUserDataV1::clear_miss() {
+  miss_ = 0;
+  clear_has_miss();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::miss() const {
+  return miss_;
+}
+inline void BaseAttrUserDataV1::set_miss(::google::protobuf::int32 value) {
+  set_has_miss();
+  miss_ = value;
+}
+
+// optional float MissRate = 24 [default = 0];
+inline bool BaseAttrUserDataV1::has_missrate() const {
+  return (_has_bits_[0] & 0x00040000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_missrate() {
+  _has_bits_[0] |= 0x00040000u;
+}
+inline void BaseAttrUserDataV1::clear_has_missrate() {
+  _has_bits_[0] &= ~0x00040000u;
+}
+inline void BaseAttrUserDataV1::clear_missrate() {
+  missrate_ = 0;
+  clear_has_missrate();
+}
+inline float BaseAttrUserDataV1::missrate() const {
+  return missrate_;
+}
+inline void BaseAttrUserDataV1::set_missrate(float value) {
+  set_has_missrate();
+  missrate_ = value;
+}
+
+// optional int32 Critical = 25 [default = 0];
+inline bool BaseAttrUserDataV1::has_critical() const {
+  return (_has_bits_[0] & 0x00080000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_critical() {
+  _has_bits_[0] |= 0x00080000u;
+}
+inline void BaseAttrUserDataV1::clear_has_critical() {
+  _has_bits_[0] &= ~0x00080000u;
+}
+inline void BaseAttrUserDataV1::clear_critical() {
+  critical_ = 0;
+  clear_has_critical();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::critical() const {
+  return critical_;
+}
+inline void BaseAttrUserDataV1::set_critical(::google::protobuf::int32 value) {
+  set_has_critical();
+  critical_ = value;
+}
+
+// optional float CriticalRate = 26 [default = 0];
+inline bool BaseAttrUserDataV1::has_criticalrate() const {
+  return (_has_bits_[0] & 0x00100000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_criticalrate() {
+  _has_bits_[0] |= 0x00100000u;
+}
+inline void BaseAttrUserDataV1::clear_has_criticalrate() {
+  _has_bits_[0] &= ~0x00100000u;
+}
+inline void BaseAttrUserDataV1::clear_criticalrate() {
+  criticalrate_ = 0;
+  clear_has_criticalrate();
+}
+inline float BaseAttrUserDataV1::criticalrate() const {
+  return criticalrate_;
+}
+inline void BaseAttrUserDataV1::set_criticalrate(float value) {
+  set_has_criticalrate();
+  criticalrate_ = value;
+}
+
+// optional int32 Tenacity = 27 [default = 0];
+inline bool BaseAttrUserDataV1::has_tenacity() const {
+  return (_has_bits_[0] & 0x00200000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_tenacity() {
+  _has_bits_[0] |= 0x00200000u;
+}
+inline void BaseAttrUserDataV1::clear_has_tenacity() {
+  _has_bits_[0] &= ~0x00200000u;
+}
+inline void BaseAttrUserDataV1::clear_tenacity() {
+  tenacity_ = 0;
+  clear_has_tenacity();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::tenacity() const {
+  return tenacity_;
+}
+inline void BaseAttrUserDataV1::set_tenacity(::google::protobuf::int32 value) {
+  set_has_tenacity();
+  tenacity_ = value;
+}
+
+// optional float TenacityRate = 28 [default = 0];
+inline bool BaseAttrUserDataV1::has_tenacityrate() const {
+  return (_has_bits_[0] & 0x00400000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_tenacityrate() {
+  _has_bits_[0] |= 0x00400000u;
+}
+inline void BaseAttrUserDataV1::clear_has_tenacityrate() {
+  _has_bits_[0] &= ~0x00400000u;
+}
+inline void BaseAttrUserDataV1::clear_tenacityrate() {
+  tenacityrate_ = 0;
+  clear_has_tenacityrate();
+}
+inline float BaseAttrUserDataV1::tenacityrate() const {
+  return tenacityrate_;
+}
+inline void BaseAttrUserDataV1::set_tenacityrate(float value) {
+  set_has_tenacityrate();
+  tenacityrate_ = value;
+}
+
+// optional int32 Penet = 29 [default = 0];
+inline bool BaseAttrUserDataV1::has_penet() const {
+  return (_has_bits_[0] & 0x00800000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_penet() {
+  _has_bits_[0] |= 0x00800000u;
+}
+inline void BaseAttrUserDataV1::clear_has_penet() {
+  _has_bits_[0] &= ~0x00800000u;
+}
+inline void BaseAttrUserDataV1::clear_penet() {
+  penet_ = 0;
+  clear_has_penet();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::penet() const {
+  return penet_;
+}
+inline void BaseAttrUserDataV1::set_penet(::google::protobuf::int32 value) {
+  set_has_penet();
+  penet_ = value;
+}
+
+// optional float PenetRate = 30 [default = 0];
+inline bool BaseAttrUserDataV1::has_penetrate() const {
+  return (_has_bits_[0] & 0x01000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_penetrate() {
+  _has_bits_[0] |= 0x01000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_penetrate() {
+  _has_bits_[0] &= ~0x01000000u;
+}
+inline void BaseAttrUserDataV1::clear_penetrate() {
+  penetrate_ = 0;
+  clear_has_penetrate();
+}
+inline float BaseAttrUserDataV1::penetrate() const {
+  return penetrate_;
+}
+inline void BaseAttrUserDataV1::set_penetrate(float value) {
+  set_has_penetrate();
+  penetrate_ = value;
+}
+
+// optional int32 Dodg = 31 [default = 0];
+inline bool BaseAttrUserDataV1::has_dodg() const {
+  return (_has_bits_[0] & 0x02000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_dodg() {
+  _has_bits_[0] |= 0x02000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_dodg() {
+  _has_bits_[0] &= ~0x02000000u;
+}
+inline void BaseAttrUserDataV1::clear_dodg() {
+  dodg_ = 0;
+  clear_has_dodg();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::dodg() const {
+  return dodg_;
+}
+inline void BaseAttrUserDataV1::set_dodg(::google::protobuf::int32 value) {
+  set_has_dodg();
+  dodg_ = value;
+}
+
+// optional float DodgRate = 32 [default = 0];
+inline bool BaseAttrUserDataV1::has_dodgrate() const {
+  return (_has_bits_[0] & 0x04000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_dodgrate() {
+  _has_bits_[0] |= 0x04000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_dodgrate() {
+  _has_bits_[0] &= ~0x04000000u;
+}
+inline void BaseAttrUserDataV1::clear_dodgrate() {
+  dodgrate_ = 0;
+  clear_has_dodgrate();
+}
+inline float BaseAttrUserDataV1::dodgrate() const {
+  return dodgrate_;
+}
+inline void BaseAttrUserDataV1::set_dodgrate(float value) {
+  set_has_dodgrate();
+  dodgrate_ = value;
+}
+
+// optional int32 CriticalAddition = 33 [default = 0];
+inline bool BaseAttrUserDataV1::has_criticaladdition() const {
+  return (_has_bits_[0] & 0x08000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_criticaladdition() {
+  _has_bits_[0] |= 0x08000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_criticaladdition() {
+  _has_bits_[0] &= ~0x08000000u;
+}
+inline void BaseAttrUserDataV1::clear_criticaladdition() {
+  criticaladdition_ = 0;
+  clear_has_criticaladdition();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::criticaladdition() const {
+  return criticaladdition_;
+}
+inline void BaseAttrUserDataV1::set_criticaladdition(::google::protobuf::int32 value) {
+  set_has_criticaladdition();
+  criticaladdition_ = value;
+}
+
+// optional float CriticalAdditionRate = 34 [default = 0];
+inline bool BaseAttrUserDataV1::has_criticaladditionrate() const {
+  return (_has_bits_[0] & 0x10000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_criticaladditionrate() {
+  _has_bits_[0] |= 0x10000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_criticaladditionrate() {
+  _has_bits_[0] &= ~0x10000000u;
+}
+inline void BaseAttrUserDataV1::clear_criticaladditionrate() {
+  criticaladditionrate_ = 0;
+  clear_has_criticaladditionrate();
+}
+inline float BaseAttrUserDataV1::criticaladditionrate() const {
+  return criticaladditionrate_;
+}
+inline void BaseAttrUserDataV1::set_criticaladditionrate(float value) {
+  set_has_criticaladditionrate();
+  criticaladditionrate_ = value;
+}
+
+// optional int32 CriticalImmune = 35 [default = 0];
+inline bool BaseAttrUserDataV1::has_criticalimmune() const {
+  return (_has_bits_[0] & 0x20000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_criticalimmune() {
+  _has_bits_[0] |= 0x20000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_criticalimmune() {
+  _has_bits_[0] &= ~0x20000000u;
+}
+inline void BaseAttrUserDataV1::clear_criticalimmune() {
+  criticalimmune_ = 0;
+  clear_has_criticalimmune();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::criticalimmune() const {
+  return criticalimmune_;
+}
+inline void BaseAttrUserDataV1::set_criticalimmune(::google::protobuf::int32 value) {
+  set_has_criticalimmune();
+  criticalimmune_ = value;
+}
+
+// optional float CriticalImmuneRate = 36 [default = 0];
+inline bool BaseAttrUserDataV1::has_criticalimmunerate() const {
+  return (_has_bits_[0] & 0x40000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_criticalimmunerate() {
+  _has_bits_[0] |= 0x40000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_criticalimmunerate() {
+  _has_bits_[0] &= ~0x40000000u;
+}
+inline void BaseAttrUserDataV1::clear_criticalimmunerate() {
+  criticalimmunerate_ = 0;
+  clear_has_criticalimmunerate();
+}
+inline float BaseAttrUserDataV1::criticalimmunerate() const {
+  return criticalimmunerate_;
+}
+inline void BaseAttrUserDataV1::set_criticalimmunerate(float value) {
+  set_has_criticalimmunerate();
+  criticalimmunerate_ = value;
+}
+
+// optional int32 MissLevel = 37 [default = 0];
+inline bool BaseAttrUserDataV1::has_misslevel() const {
+  return (_has_bits_[0] & 0x80000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_misslevel() {
+  _has_bits_[0] |= 0x80000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_misslevel() {
+  _has_bits_[0] &= ~0x80000000u;
+}
+inline void BaseAttrUserDataV1::clear_misslevel() {
+  misslevel_ = 0;
+  clear_has_misslevel();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::misslevel() const {
+  return misslevel_;
+}
+inline void BaseAttrUserDataV1::set_misslevel(::google::protobuf::int32 value) {
+  set_has_misslevel();
+  misslevel_ = value;
+}
+
+// optional int32 CriticalLevel = 38 [default = 0];
+inline bool BaseAttrUserDataV1::has_criticallevel() const {
+  return (_has_bits_[1] & 0x00000001u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_criticallevel() {
+  _has_bits_[1] |= 0x00000001u;
+}
+inline void BaseAttrUserDataV1::clear_has_criticallevel() {
+  _has_bits_[1] &= ~0x00000001u;
+}
+inline void BaseAttrUserDataV1::clear_criticallevel() {
+  criticallevel_ = 0;
+  clear_has_criticallevel();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::criticallevel() const {
+  return criticallevel_;
+}
+inline void BaseAttrUserDataV1::set_criticallevel(::google::protobuf::int32 value) {
+  set_has_criticallevel();
+  criticallevel_ = value;
+}
+
+// optional int32 DodgLevel = 39 [default = 0];
+inline bool BaseAttrUserDataV1::has_dodglevel() const {
+  return (_has_bits_[1] & 0x00000002u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_dodglevel() {
+  _has_bits_[1] |= 0x00000002u;
+}
+inline void BaseAttrUserDataV1::clear_has_dodglevel() {
+  _has_bits_[1] &= ~0x00000002u;
+}
+inline void BaseAttrUserDataV1::clear_dodglevel() {
+  dodglevel_ = 0;
+  clear_has_dodglevel();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::dodglevel() const {
+  return dodglevel_;
+}
+inline void BaseAttrUserDataV1::set_dodglevel(::google::protobuf::int32 value) {
+  set_has_dodglevel();
+  dodglevel_ = value;
+}
+
+// optional float MoveSpeed = 40 [default = 0];
+inline bool BaseAttrUserDataV1::has_movespeed() const {
+  return (_has_bits_[1] & 0x00000004u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_movespeed() {
+  _has_bits_[1] |= 0x00000004u;
+}
+inline void BaseAttrUserDataV1::clear_has_movespeed() {
+  _has_bits_[1] &= ~0x00000004u;
+}
+inline void BaseAttrUserDataV1::clear_movespeed() {
+  movespeed_ = 0;
+  clear_has_movespeed();
+}
+inline float BaseAttrUserDataV1::movespeed() const {
+  return movespeed_;
+}
+inline void BaseAttrUserDataV1::set_movespeed(float value) {
+  set_has_movespeed();
+  movespeed_ = value;
+}
+
+// optional bool DizzyState = 41 [default = false];
+inline bool BaseAttrUserDataV1::has_dizzystate() const {
+  return (_has_bits_[1] & 0x00000008u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_dizzystate() {
+  _has_bits_[1] |= 0x00000008u;
+}
+inline void BaseAttrUserDataV1::clear_has_dizzystate() {
+  _has_bits_[1] &= ~0x00000008u;
+}
+inline void BaseAttrUserDataV1::clear_dizzystate() {
+  dizzystate_ = false;
+  clear_has_dizzystate();
+}
+inline bool BaseAttrUserDataV1::dizzystate() const {
+  return dizzystate_;
+}
+inline void BaseAttrUserDataV1::set_dizzystate(bool value) {
+  set_has_dizzystate();
+  dizzystate_ = value;
+}
+
+// optional bool GodState = 42 [default = false];
+inline bool BaseAttrUserDataV1::has_godstate() const {
+  return (_has_bits_[1] & 0x00000010u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_godstate() {
+  _has_bits_[1] |= 0x00000010u;
+}
+inline void BaseAttrUserDataV1::clear_has_godstate() {
+  _has_bits_[1] &= ~0x00000010u;
+}
+inline void BaseAttrUserDataV1::clear_godstate() {
+  godstate_ = false;
+  clear_has_godstate();
+}
+inline bool BaseAttrUserDataV1::godstate() const {
+  return godstate_;
+}
+inline void BaseAttrUserDataV1::set_godstate(bool value) {
+  set_has_godstate();
+  godstate_ = value;
+}
+
+// optional bool CantMoveState = 43 [default = false];
+inline bool BaseAttrUserDataV1::has_cantmovestate() const {
+  return (_has_bits_[1] & 0x00000020u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_cantmovestate() {
+  _has_bits_[1] |= 0x00000020u;
+}
+inline void BaseAttrUserDataV1::clear_has_cantmovestate() {
+  _has_bits_[1] &= ~0x00000020u;
+}
+inline void BaseAttrUserDataV1::clear_cantmovestate() {
+  cantmovestate_ = false;
+  clear_has_cantmovestate();
+}
+inline bool BaseAttrUserDataV1::cantmovestate() const {
+  return cantmovestate_;
+}
+inline void BaseAttrUserDataV1::set_cantmovestate(bool value) {
+  set_has_cantmovestate();
+  cantmovestate_ = value;
+}
+
+// optional float PhysicAddition = 45 [default = 0];
+inline bool BaseAttrUserDataV1::has_physicaddition() const {
+  return (_has_bits_[1] & 0x00000040u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_physicaddition() {
+  _has_bits_[1] |= 0x00000040u;
+}
+inline void BaseAttrUserDataV1::clear_has_physicaddition() {
+  _has_bits_[1] &= ~0x00000040u;
+}
+inline void BaseAttrUserDataV1::clear_physicaddition() {
+  physicaddition_ = 0;
+  clear_has_physicaddition();
+}
+inline float BaseAttrUserDataV1::physicaddition() const {
+  return physicaddition_;
+}
+inline void BaseAttrUserDataV1::set_physicaddition(float value) {
+  set_has_physicaddition();
+  physicaddition_ = value;
+}
+
+// optional float MagicAddition = 46 [default = 0];
+inline bool BaseAttrUserDataV1::has_magicaddition() const {
+  return (_has_bits_[1] & 0x00000080u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_magicaddition() {
+  _has_bits_[1] |= 0x00000080u;
+}
+inline void BaseAttrUserDataV1::clear_has_magicaddition() {
+  _has_bits_[1] &= ~0x00000080u;
+}
+inline void BaseAttrUserDataV1::clear_magicaddition() {
+  magicaddition_ = 0;
+  clear_has_magicaddition();
+}
+inline float BaseAttrUserDataV1::magicaddition() const {
+  return magicaddition_;
+}
+inline void BaseAttrUserDataV1::set_magicaddition(float value) {
+  set_has_magicaddition();
+  magicaddition_ = value;
+}
+
+// optional float PhysicOppose = 47 [default = 0];
+inline bool BaseAttrUserDataV1::has_physicoppose() const {
+  return (_has_bits_[1] & 0x00000100u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_physicoppose() {
+  _has_bits_[1] |= 0x00000100u;
+}
+inline void BaseAttrUserDataV1::clear_has_physicoppose() {
+  _has_bits_[1] &= ~0x00000100u;
+}
+inline void BaseAttrUserDataV1::clear_physicoppose() {
+  physicoppose_ = 0;
+  clear_has_physicoppose();
+}
+inline float BaseAttrUserDataV1::physicoppose() const {
+  return physicoppose_;
+}
+inline void BaseAttrUserDataV1::set_physicoppose(float value) {
+  set_has_physicoppose();
+  physicoppose_ = value;
+}
+
+// optional float MagicOppose = 48 [default = 0];
+inline bool BaseAttrUserDataV1::has_magicoppose() const {
+  return (_has_bits_[1] & 0x00000200u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_magicoppose() {
+  _has_bits_[1] |= 0x00000200u;
+}
+inline void BaseAttrUserDataV1::clear_has_magicoppose() {
+  _has_bits_[1] &= ~0x00000200u;
+}
+inline void BaseAttrUserDataV1::clear_magicoppose() {
+  magicoppose_ = 0;
+  clear_has_magicoppose();
+}
+inline float BaseAttrUserDataV1::magicoppose() const {
+  return magicoppose_;
+}
+inline void BaseAttrUserDataV1::set_magicoppose(float value) {
+  set_has_magicoppose();
+  magicoppose_ = value;
 }
 
 

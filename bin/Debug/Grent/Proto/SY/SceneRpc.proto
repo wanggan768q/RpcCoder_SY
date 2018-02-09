@@ -1,20 +1,3 @@
-message  SceneRpcEnterSceneAsk
-{
-	optional uint64 RoleId = 1[default=0];
-	optional sint32 SceneId = 2[default=-1];
-
-}
-
-message  SceneRpcEnterSceneReply
-{
-	optional sint32 Result = 1[default=-9999];
-	optional CharacterInfo RoleInfo = 2;
-	optional sint32 ObjId = 3[default=-1];
-	optional V3 Pos = 4;
-	optional float Dir = 5[default=-1];
-
-}
-
 message  SceneRpcLoadSceneCompleteAsk
 {
 	optional uint64 RoleId = 1[default=0];
@@ -25,6 +8,10 @@ message  SceneRpcLoadSceneCompleteAsk
 message  SceneRpcLoadSceneCompleteReply
 {
 	optional sint32 Result = 1[default=-9999];
+	optional CharacterInfo RoleInfo = 2;
+	optional sint32 ObjId = 3[default=-1];
+	optional V3 Pos = 4;
+	optional float Dir = 5[default=-1];
 
 }
 
@@ -46,86 +33,8 @@ message  SceneRpcConnectGameServerReply
 {
 	optional sint32 Result = 1[default=-9999];
 	optional uint64 RoleId = 2[default=0];
-
-}
-
-message  SceneRpcChangeSceneAsk
-{
-	optional uint64 RoleId = 1[default=0];
-	optional sint32 CurSceneId = 2[default=-1];
-	optional sint32 TargetSceneId = 3[default=-1];
-
-}
-
-message  SceneRpcChangeSceneReply
-{
-	optional sint32 Result = 1[default=-9999];
-	optional uint64 RoleId = 2[default=0];
-	optional sint32 CurSceneId = 3[default=-1];
-	optional sint32 TargetSceneId = 4[default=-1];
-
-}
-
-message  SceneRpcNewObjNotify
-{
-	optional sint32 ObjId = 1[default=-1];
-	optional V3 Pos = 2;
-	optional float Dir = 3[default=-1];
-	optional sint32 ObjType = 4[default=-1];
-	optional sint32 ConfigId = 5[default=-1];
-	optional sint32 Status = 6[default=-1];
-	optional float MoveSpeed = 7[default=-1];
-
-}
-
-message  SceneRpcEnterSceneAsk
-{
-	optional uint64 RoleId = 1[default=0];
-	optional sint32 SceneId = 2[default=-1];
-
-}
-
-message  SceneRpcEnterSceneReply
-{
-	optional sint32 Result = 1[default=-9999];
-	optional CharacterInfo RoleInfo = 2;
-	optional sint32 ObjId = 3[default=-1];
-	optional V3 Pos = 4;
-	optional float Dir = 5[default=-1];
-
-}
-
-message  SceneRpcLoadSceneCompleteAsk
-{
-	optional uint64 RoleId = 1[default=0];
-	optional sint32 SceneId = 2[default=-1];
-
-}
-
-message  SceneRpcLoadSceneCompleteReply
-{
-	optional sint32 Result = 1[default=-9999];
-
-}
-
-message  SceneRpcDeletePlayerNotify
-{
-	optional sint32 ObjId = 2[default=-1];
 	optional sint32 SceneId = 3[default=-1];
-
-}
-
-message  SceneRpcConnectGameServerAsk
-{
-	optional uint64 RoleId = 1[default=0];
-	optional string Key = 2;
-
-}
-
-message  SceneRpcConnectGameServerReply
-{
-	optional sint32 Result = 1[default=-9999];
-	optional uint64 RoleId = 2[default=0];
+	optional sint32 MapId = 5[default=-1];
 
 }
 
@@ -146,7 +55,7 @@ message  SceneRpcChangeSceneReply
 
 }
 
-message  SceneRpcNewObjNotify
+message  SceneRpcCreateObjNotify
 {
 	optional sint32 ObjId = 1[default=-1];
 	optional V3 Pos = 2;
@@ -155,22 +64,62 @@ message  SceneRpcNewObjNotify
 	optional sint32 ConfigId = 5[default=-1];
 	optional sint32 Status = 6[default=-1];
 	optional float MoveSpeed = 7[default=-1];
+	optional uint64 RoleId = 8[default=0];
+	optional string NickName = 9;
+	optional sint32 Hp = 10[default=-1];
+	optional V3 TargetPos = 11;
+	optional int32 HpMax = 12;
 
 }
 
-message  CharacterInfo
+message  SceneRpcSurroundingHumanAsk
 {
-	optional uint64 RoleId = 1[default=0];
-	optional string Nickname = 2;
+
+}
+
+message  SceneRpcSurroundingHumanReply
+{
+	optional sint32 Result = 1[default=-9999];
+	repeated CharacterInfo RoleList = 2;
+
+}
+
+message  SceneRpcCEnterSceneNotify
+{
+	optional sint32 SceneId = 3[default=-1];
+	optional sint32 MapId = 6[default=-1];
+
+}
+
+message  SceneRpcSEnterSceneNotify
+{
+	optional sint32 Result = 1[default=-9999];
+	optional sint32 SceneId = 8[default=-1];
+	optional sint32 SceneConfigId = 9[default=-1];
+	optional sint32 MapId = 10[default=-1];
+	optional uint64 RoleId = 11[default=0];
+	optional sint32 DungeonConfigId = 12[default=-1];
+
+}
+
+message  SceneRpcObjDieNotify
+{
+	optional sint32 ObjId = 1[default=-1];
+	optional sint32 RespawnTime = 2[default=-1];
 	optional sint32 ConfigId = 3[default=-1];
+	optional sint32 ObjType = 4[default=-1];
 
 }
 
-message  V3
+message  SceneRpcCollide_ChangeSceneAsk
 {
-	optional float X = 1[default=-1];
-	optional float Y = 2[default=-1];
-	optional float Z = 3[default=-1];
+	optional sint32 Collide_id = 1[default=-1];
+
+}
+
+message  SceneRpcCollide_ChangeSceneReply
+{
+	optional sint32 Result = 1[default=-9999];
 
 }
 

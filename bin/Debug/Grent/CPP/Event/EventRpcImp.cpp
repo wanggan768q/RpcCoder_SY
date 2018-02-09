@@ -1,4 +1,4 @@
-﻿/********************************************************************************************
+/********************************************************************************************
 * Copyright (C), 2011-2025, Ambition. Co., Ltd.
 * FileName:     CliRpcEventImp.cpp
 * Author:       郭晓波
@@ -40,14 +40,14 @@ void ModuleEvent::SendToClientStopMove( INT64 UserId, EventRpcStopMoveNotifyWrap
 }
 
 /********************************************************************************************
-* Function:       SendToClientBossDied
-* Description:    事件模块-->Boss死亡异步通知操作函数
-* Input:          EventRpcBossDiedNotifyWraper& Notify Boss死亡通知
+* Function:       SendToClientObjAttrChange
+* Description:    事件模块-->属性改变异步通知操作函数
+* Input:          EventRpcObjAttrChangeNotifyWraper& Notify 属性改变通知
 * Input:          INT64 UserId 需要通知到的用户ID
 * Output:         无
 * Return:         无
 ********************************************************************************************/
-void ModuleEvent::SendToClientBossDied( INT64 UserId, EventRpcBossDiedNotifyWraper& Notify )
+void ModuleEvent::SendToClientObjAttrChange( INT64 UserId, EventRpcObjAttrChangeNotifyWraper& Notify )
 {
 	MsgStreamMgr::Instance().SendMsg( UserId, 0, Notify );
 }

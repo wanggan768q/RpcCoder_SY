@@ -30,6 +30,21 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* DungeonRpcExitDungeonReply_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   DungeonRpcExitDungeonReply_reflection_ = NULL;
+const ::google::protobuf::Descriptor* DungeonRpcInformCreateDungeonAsk_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  DungeonRpcInformCreateDungeonAsk_reflection_ = NULL;
+const ::google::protobuf::Descriptor* DungeonRpcInformCreateDungeonReply_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  DungeonRpcInformCreateDungeonReply_reflection_ = NULL;
+const ::google::protobuf::Descriptor* DungeonRpcSettlementNotify_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  DungeonRpcSettlementNotify_reflection_ = NULL;
+const ::google::protobuf::Descriptor* DungeonRpcEnterDungeonAsk_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  DungeonRpcEnterDungeonAsk_reflection_ = NULL;
+const ::google::protobuf::Descriptor* DungeonRpcEnterDungeonReply_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  DungeonRpcEnterDungeonReply_reflection_ = NULL;
 
 }  // namespace
 
@@ -57,9 +72,10 @@ void protobuf_AssignDesc_DungeonRpc_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(DungeonRpcCreateDungeonAsk));
   DungeonRpcCreateDungeonReply_descriptor_ = file->message_type(1);
-  static const int DungeonRpcCreateDungeonReply_offsets_[2] = {
+  static const int DungeonRpcCreateDungeonReply_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DungeonRpcCreateDungeonReply, result_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DungeonRpcCreateDungeonReply, dungeonconfigid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DungeonRpcCreateDungeonReply, sceneid_),
   };
   DungeonRpcCreateDungeonReply_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -89,8 +105,10 @@ void protobuf_AssignDesc_DungeonRpc_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(DungeonRpcExitDungeonAsk));
   DungeonRpcExitDungeonReply_descriptor_ = file->message_type(3);
-  static const int DungeonRpcExitDungeonReply_offsets_[1] = {
+  static const int DungeonRpcExitDungeonReply_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DungeonRpcExitDungeonReply, result_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DungeonRpcExitDungeonReply, sceneconfigid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DungeonRpcExitDungeonReply, sceneid_),
   };
   DungeonRpcExitDungeonReply_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -103,6 +121,87 @@ void protobuf_AssignDesc_DungeonRpc_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(DungeonRpcExitDungeonReply));
+  DungeonRpcInformCreateDungeonAsk_descriptor_ = file->message_type(4);
+  static const int DungeonRpcInformCreateDungeonAsk_offsets_[6] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DungeonRpcInformCreateDungeonAsk, roleid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DungeonRpcInformCreateDungeonAsk, targetsceneid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DungeonRpcInformCreateDungeonAsk, dungeonconfigid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DungeonRpcInformCreateDungeonAsk, cursceneid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DungeonRpcInformCreateDungeonAsk, result_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DungeonRpcInformCreateDungeonAsk, roleids_),
+  };
+  DungeonRpcInformCreateDungeonAsk_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      DungeonRpcInformCreateDungeonAsk_descriptor_,
+      DungeonRpcInformCreateDungeonAsk::default_instance_,
+      DungeonRpcInformCreateDungeonAsk_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DungeonRpcInformCreateDungeonAsk, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DungeonRpcInformCreateDungeonAsk, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(DungeonRpcInformCreateDungeonAsk));
+  DungeonRpcInformCreateDungeonReply_descriptor_ = file->message_type(5);
+  static const int DungeonRpcInformCreateDungeonReply_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DungeonRpcInformCreateDungeonReply, result_),
+  };
+  DungeonRpcInformCreateDungeonReply_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      DungeonRpcInformCreateDungeonReply_descriptor_,
+      DungeonRpcInformCreateDungeonReply::default_instance_,
+      DungeonRpcInformCreateDungeonReply_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DungeonRpcInformCreateDungeonReply, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DungeonRpcInformCreateDungeonReply, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(DungeonRpcInformCreateDungeonReply));
+  DungeonRpcSettlementNotify_descriptor_ = file->message_type(6);
+  static const int DungeonRpcSettlementNotify_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DungeonRpcSettlementNotify, settlementresult_),
+  };
+  DungeonRpcSettlementNotify_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      DungeonRpcSettlementNotify_descriptor_,
+      DungeonRpcSettlementNotify::default_instance_,
+      DungeonRpcSettlementNotify_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DungeonRpcSettlementNotify, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DungeonRpcSettlementNotify, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(DungeonRpcSettlementNotify));
+  DungeonRpcEnterDungeonAsk_descriptor_ = file->message_type(7);
+  static const int DungeonRpcEnterDungeonAsk_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DungeonRpcEnterDungeonAsk, sceneid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DungeonRpcEnterDungeonAsk, dungeonconfigid_),
+  };
+  DungeonRpcEnterDungeonAsk_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      DungeonRpcEnterDungeonAsk_descriptor_,
+      DungeonRpcEnterDungeonAsk::default_instance_,
+      DungeonRpcEnterDungeonAsk_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DungeonRpcEnterDungeonAsk, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DungeonRpcEnterDungeonAsk, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(DungeonRpcEnterDungeonAsk));
+  DungeonRpcEnterDungeonReply_descriptor_ = file->message_type(8);
+  static const int DungeonRpcEnterDungeonReply_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DungeonRpcEnterDungeonReply, result_),
+  };
+  DungeonRpcEnterDungeonReply_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      DungeonRpcEnterDungeonReply_descriptor_,
+      DungeonRpcEnterDungeonReply::default_instance_,
+      DungeonRpcEnterDungeonReply_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DungeonRpcEnterDungeonReply, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DungeonRpcEnterDungeonReply, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(DungeonRpcEnterDungeonReply));
 }
 
 namespace {
@@ -123,6 +222,16 @@ void protobuf_RegisterTypes(const ::std::string&) {
     DungeonRpcExitDungeonAsk_descriptor_, &DungeonRpcExitDungeonAsk::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     DungeonRpcExitDungeonReply_descriptor_, &DungeonRpcExitDungeonReply::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    DungeonRpcInformCreateDungeonAsk_descriptor_, &DungeonRpcInformCreateDungeonAsk::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    DungeonRpcInformCreateDungeonReply_descriptor_, &DungeonRpcInformCreateDungeonReply::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    DungeonRpcSettlementNotify_descriptor_, &DungeonRpcSettlementNotify::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    DungeonRpcEnterDungeonAsk_descriptor_, &DungeonRpcEnterDungeonAsk::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    DungeonRpcEnterDungeonReply_descriptor_, &DungeonRpcEnterDungeonReply::default_instance());
 }
 
 }  // namespace
@@ -136,6 +245,16 @@ void protobuf_ShutdownFile_DungeonRpc_2eproto() {
   delete DungeonRpcExitDungeonAsk_reflection_;
   delete DungeonRpcExitDungeonReply::default_instance_;
   delete DungeonRpcExitDungeonReply_reflection_;
+  delete DungeonRpcInformCreateDungeonAsk::default_instance_;
+  delete DungeonRpcInformCreateDungeonAsk_reflection_;
+  delete DungeonRpcInformCreateDungeonReply::default_instance_;
+  delete DungeonRpcInformCreateDungeonReply_reflection_;
+  delete DungeonRpcSettlementNotify::default_instance_;
+  delete DungeonRpcSettlementNotify_reflection_;
+  delete DungeonRpcEnterDungeonAsk::default_instance_;
+  delete DungeonRpcEnterDungeonAsk_reflection_;
+  delete DungeonRpcEnterDungeonReply::default_instance_;
+  delete DungeonRpcEnterDungeonReply_reflection_;
 }
 
 void protobuf_AddDesc_DungeonRpc_2eproto() {
@@ -148,23 +267,45 @@ void protobuf_AddDesc_DungeonRpc_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\020DungeonRpc.proto\032\022PublicStruct.proto\"L"
     "\n\032DungeonRpcCreateDungeonAsk\022\021\n\006RoleId\030\001"
-    " \001(\004:\0010\022\033\n\017DungeonConfigId\030\002 \001(\021:\002-1\"R\n\034"
+    " \001(\004:\0010\022\033\n\017DungeonConfigId\030\002 \001(\021:\002-1\"g\n\034"
     "DungeonRpcCreateDungeonReply\022\025\n\006Result\030\001"
     " \001(\021:\005-9999\022\033\n\017DungeonConfigId\030\002 \001(\021:\002-1"
-    "\"B\n\030DungeonRpcExitDungeonAsk\022\021\n\006RoleId\030\001"
-    " \001(\004:\0010\022\023\n\007SceneId\030\002 \001(\021:\002-1\"3\n\032DungeonR"
-    "pcExitDungeonReply\022\025\n\006Result\030\001 \001(\021:\005-999"
-    "9", 321);
+    "\022\023\n\007SceneId\030\003 \001(\021:\002-1\"B\n\030DungeonRpcExitD"
+    "ungeonAsk\022\021\n\006RoleId\030\001 \001(\004:\0010\022\023\n\007SceneId\030"
+    "\002 \001(\021:\002-1\"c\n\032DungeonRpcExitDungeonReply\022"
+    "\025\n\006Result\030\001 \001(\021:\005-9999\022\031\n\rSceneConfigId\030"
+    "\002 \001(\021:\002-1\022\023\n\007SceneId\030\003 \001(\021:\002-1\"\255\001\n Dunge"
+    "onRpcInformCreateDungeonAsk\022\021\n\006RoleId\030\001 "
+    "\001(\004:\0010\022\031\n\rTargetSceneId\030\002 \001(\021:\002-1\022\033\n\017Dun"
+    "geonConfigId\030\003 \001(\021:\002-1\022\026\n\nCurSceneId\030\004 \001"
+    "(\021:\002-1\022\025\n\006Result\030\005 \001(\021:\005-9999\022\017\n\007RoleIds"
+    "\030\006 \003(\004\";\n\"DungeonRpcInformCreateDungeonR"
+    "eply\022\025\n\006Result\030\001 \001(\021:\005-9999\":\n\032DungeonRp"
+    "cSettlementNotify\022\034\n\020SettlementResult\030\001 "
+    "\001(\021:\002-1\"M\n\031DungeonRpcEnterDungeonAsk\022\023\n\007"
+    "SceneId\030\001 \001(\021:\002-1\022\033\n\017DungeonConfigId\030\002 \001"
+    "(\021:\002-1\"4\n\033DungeonRpcEnterDungeonReply\022\025\n"
+    "\006Result\030\001 \001(\021:\005-9999", 820);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "DungeonRpc.proto", &protobuf_RegisterTypes);
   DungeonRpcCreateDungeonAsk::default_instance_ = new DungeonRpcCreateDungeonAsk();
   DungeonRpcCreateDungeonReply::default_instance_ = new DungeonRpcCreateDungeonReply();
   DungeonRpcExitDungeonAsk::default_instance_ = new DungeonRpcExitDungeonAsk();
   DungeonRpcExitDungeonReply::default_instance_ = new DungeonRpcExitDungeonReply();
+  DungeonRpcInformCreateDungeonAsk::default_instance_ = new DungeonRpcInformCreateDungeonAsk();
+  DungeonRpcInformCreateDungeonReply::default_instance_ = new DungeonRpcInformCreateDungeonReply();
+  DungeonRpcSettlementNotify::default_instance_ = new DungeonRpcSettlementNotify();
+  DungeonRpcEnterDungeonAsk::default_instance_ = new DungeonRpcEnterDungeonAsk();
+  DungeonRpcEnterDungeonReply::default_instance_ = new DungeonRpcEnterDungeonReply();
   DungeonRpcCreateDungeonAsk::default_instance_->InitAsDefaultInstance();
   DungeonRpcCreateDungeonReply::default_instance_->InitAsDefaultInstance();
   DungeonRpcExitDungeonAsk::default_instance_->InitAsDefaultInstance();
   DungeonRpcExitDungeonReply::default_instance_->InitAsDefaultInstance();
+  DungeonRpcInformCreateDungeonAsk::default_instance_->InitAsDefaultInstance();
+  DungeonRpcInformCreateDungeonReply::default_instance_->InitAsDefaultInstance();
+  DungeonRpcSettlementNotify::default_instance_->InitAsDefaultInstance();
+  DungeonRpcEnterDungeonAsk::default_instance_->InitAsDefaultInstance();
+  DungeonRpcEnterDungeonReply::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_DungeonRpc_2eproto);
 }
 
@@ -428,6 +569,7 @@ void DungeonRpcCreateDungeonAsk::Swap(DungeonRpcCreateDungeonAsk* other) {
 #ifndef _MSC_VER
 const int DungeonRpcCreateDungeonReply::kResultFieldNumber;
 const int DungeonRpcCreateDungeonReply::kDungeonConfigIdFieldNumber;
+const int DungeonRpcCreateDungeonReply::kSceneIdFieldNumber;
 #endif  // !_MSC_VER
 
 DungeonRpcCreateDungeonReply::DungeonRpcCreateDungeonReply()
@@ -448,6 +590,7 @@ void DungeonRpcCreateDungeonReply::SharedCtor() {
   _cached_size_ = 0;
   result_ = -9999;
   dungeonconfigid_ = -1;
+  sceneid_ = -1;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -485,6 +628,7 @@ void DungeonRpcCreateDungeonReply::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     result_ = -9999;
     dungeonconfigid_ = -1;
+    sceneid_ = -1;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -523,6 +667,22 @@ bool DungeonRpcCreateDungeonReply::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(24)) goto parse_SceneId;
+        break;
+      }
+
+      // optional sint32 SceneId = 3 [default = -1];
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_SceneId:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                 input, &sceneid_)));
+          set_has_sceneid();
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -555,6 +715,11 @@ void DungeonRpcCreateDungeonReply::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteSInt32(2, this->dungeonconfigid(), output);
   }
 
+  // optional sint32 SceneId = 3 [default = -1];
+  if (has_sceneid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteSInt32(3, this->sceneid(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -571,6 +736,11 @@ void DungeonRpcCreateDungeonReply::SerializeWithCachedSizes(
   // optional sint32 DungeonConfigId = 2 [default = -1];
   if (has_dungeonconfigid()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(2, this->dungeonconfigid(), target);
+  }
+
+  // optional sint32 SceneId = 3 [default = -1];
+  if (has_sceneid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(3, this->sceneid(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -596,6 +766,13 @@ int DungeonRpcCreateDungeonReply::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::SInt32Size(
           this->dungeonconfigid());
+    }
+
+    // optional sint32 SceneId = 3 [default = -1];
+    if (has_sceneid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+          this->sceneid());
     }
 
   }
@@ -631,6 +808,9 @@ void DungeonRpcCreateDungeonReply::MergeFrom(const DungeonRpcCreateDungeonReply&
     if (from.has_dungeonconfigid()) {
       set_dungeonconfigid(from.dungeonconfigid());
     }
+    if (from.has_sceneid()) {
+      set_sceneid(from.sceneid());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -656,6 +836,7 @@ void DungeonRpcCreateDungeonReply::Swap(DungeonRpcCreateDungeonReply* other) {
   if (other != this) {
     std::swap(result_, other->result_);
     std::swap(dungeonconfigid_, other->dungeonconfigid_);
+    std::swap(sceneid_, other->sceneid_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -923,6 +1104,8 @@ void DungeonRpcExitDungeonAsk::Swap(DungeonRpcExitDungeonAsk* other) {
 
 #ifndef _MSC_VER
 const int DungeonRpcExitDungeonReply::kResultFieldNumber;
+const int DungeonRpcExitDungeonReply::kSceneConfigIdFieldNumber;
+const int DungeonRpcExitDungeonReply::kSceneIdFieldNumber;
 #endif  // !_MSC_VER
 
 DungeonRpcExitDungeonReply::DungeonRpcExitDungeonReply()
@@ -942,6 +1125,8 @@ DungeonRpcExitDungeonReply::DungeonRpcExitDungeonReply(const DungeonRpcExitDunge
 void DungeonRpcExitDungeonReply::SharedCtor() {
   _cached_size_ = 0;
   result_ = -9999;
+  sceneconfigid_ = -1;
+  sceneid_ = -1;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -978,12 +1163,712 @@ DungeonRpcExitDungeonReply* DungeonRpcExitDungeonReply::New() const {
 void DungeonRpcExitDungeonReply::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     result_ = -9999;
+    sceneconfigid_ = -1;
+    sceneid_ = -1;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
 
 bool DungeonRpcExitDungeonReply::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional sint32 Result = 1 [default = -9999];
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                 input, &result_)));
+          set_has_result();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(16)) goto parse_SceneConfigId;
+        break;
+      }
+
+      // optional sint32 SceneConfigId = 2 [default = -1];
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_SceneConfigId:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                 input, &sceneconfigid_)));
+          set_has_sceneconfigid();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(24)) goto parse_SceneId;
+        break;
+      }
+
+      // optional sint32 SceneId = 3 [default = -1];
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_SceneId:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                 input, &sceneid_)));
+          set_has_sceneid();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void DungeonRpcExitDungeonReply::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional sint32 Result = 1 [default = -9999];
+  if (has_result()) {
+    ::google::protobuf::internal::WireFormatLite::WriteSInt32(1, this->result(), output);
+  }
+
+  // optional sint32 SceneConfigId = 2 [default = -1];
+  if (has_sceneconfigid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteSInt32(2, this->sceneconfigid(), output);
+  }
+
+  // optional sint32 SceneId = 3 [default = -1];
+  if (has_sceneid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteSInt32(3, this->sceneid(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* DungeonRpcExitDungeonReply::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional sint32 Result = 1 [default = -9999];
+  if (has_result()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(1, this->result(), target);
+  }
+
+  // optional sint32 SceneConfigId = 2 [default = -1];
+  if (has_sceneconfigid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(2, this->sceneconfigid(), target);
+  }
+
+  // optional sint32 SceneId = 3 [default = -1];
+  if (has_sceneid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(3, this->sceneid(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int DungeonRpcExitDungeonReply::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional sint32 Result = 1 [default = -9999];
+    if (has_result()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+          this->result());
+    }
+
+    // optional sint32 SceneConfigId = 2 [default = -1];
+    if (has_sceneconfigid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+          this->sceneconfigid());
+    }
+
+    // optional sint32 SceneId = 3 [default = -1];
+    if (has_sceneid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+          this->sceneid());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void DungeonRpcExitDungeonReply::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const DungeonRpcExitDungeonReply* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const DungeonRpcExitDungeonReply*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void DungeonRpcExitDungeonReply::MergeFrom(const DungeonRpcExitDungeonReply& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_result()) {
+      set_result(from.result());
+    }
+    if (from.has_sceneconfigid()) {
+      set_sceneconfigid(from.sceneconfigid());
+    }
+    if (from.has_sceneid()) {
+      set_sceneid(from.sceneid());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void DungeonRpcExitDungeonReply::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void DungeonRpcExitDungeonReply::CopyFrom(const DungeonRpcExitDungeonReply& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool DungeonRpcExitDungeonReply::IsInitialized() const {
+
+  return true;
+}
+
+void DungeonRpcExitDungeonReply::Swap(DungeonRpcExitDungeonReply* other) {
+  if (other != this) {
+    std::swap(result_, other->result_);
+    std::swap(sceneconfigid_, other->sceneconfigid_);
+    std::swap(sceneid_, other->sceneid_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata DungeonRpcExitDungeonReply::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = DungeonRpcExitDungeonReply_descriptor_;
+  metadata.reflection = DungeonRpcExitDungeonReply_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int DungeonRpcInformCreateDungeonAsk::kRoleIdFieldNumber;
+const int DungeonRpcInformCreateDungeonAsk::kTargetSceneIdFieldNumber;
+const int DungeonRpcInformCreateDungeonAsk::kDungeonConfigIdFieldNumber;
+const int DungeonRpcInformCreateDungeonAsk::kCurSceneIdFieldNumber;
+const int DungeonRpcInformCreateDungeonAsk::kResultFieldNumber;
+const int DungeonRpcInformCreateDungeonAsk::kRoleIdsFieldNumber;
+#endif  // !_MSC_VER
+
+DungeonRpcInformCreateDungeonAsk::DungeonRpcInformCreateDungeonAsk()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void DungeonRpcInformCreateDungeonAsk::InitAsDefaultInstance() {
+}
+
+DungeonRpcInformCreateDungeonAsk::DungeonRpcInformCreateDungeonAsk(const DungeonRpcInformCreateDungeonAsk& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void DungeonRpcInformCreateDungeonAsk::SharedCtor() {
+  _cached_size_ = 0;
+  roleid_ = GOOGLE_ULONGLONG(0);
+  targetsceneid_ = -1;
+  dungeonconfigid_ = -1;
+  cursceneid_ = -1;
+  result_ = -9999;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+DungeonRpcInformCreateDungeonAsk::~DungeonRpcInformCreateDungeonAsk() {
+  SharedDtor();
+}
+
+void DungeonRpcInformCreateDungeonAsk::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void DungeonRpcInformCreateDungeonAsk::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* DungeonRpcInformCreateDungeonAsk::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return DungeonRpcInformCreateDungeonAsk_descriptor_;
+}
+
+const DungeonRpcInformCreateDungeonAsk& DungeonRpcInformCreateDungeonAsk::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_DungeonRpc_2eproto();
+  return *default_instance_;
+}
+
+DungeonRpcInformCreateDungeonAsk* DungeonRpcInformCreateDungeonAsk::default_instance_ = NULL;
+
+DungeonRpcInformCreateDungeonAsk* DungeonRpcInformCreateDungeonAsk::New() const {
+  return new DungeonRpcInformCreateDungeonAsk;
+}
+
+void DungeonRpcInformCreateDungeonAsk::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    roleid_ = GOOGLE_ULONGLONG(0);
+    targetsceneid_ = -1;
+    dungeonconfigid_ = -1;
+    cursceneid_ = -1;
+    result_ = -9999;
+  }
+  roleids_.Clear();
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool DungeonRpcInformCreateDungeonAsk::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint64 RoleId = 1 [default = 0];
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &roleid_)));
+          set_has_roleid();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(16)) goto parse_TargetSceneId;
+        break;
+      }
+
+      // optional sint32 TargetSceneId = 2 [default = -1];
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_TargetSceneId:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                 input, &targetsceneid_)));
+          set_has_targetsceneid();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(24)) goto parse_DungeonConfigId;
+        break;
+      }
+
+      // optional sint32 DungeonConfigId = 3 [default = -1];
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_DungeonConfigId:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                 input, &dungeonconfigid_)));
+          set_has_dungeonconfigid();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(32)) goto parse_CurSceneId;
+        break;
+      }
+
+      // optional sint32 CurSceneId = 4 [default = -1];
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_CurSceneId:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                 input, &cursceneid_)));
+          set_has_cursceneid();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(40)) goto parse_Result;
+        break;
+      }
+
+      // optional sint32 Result = 5 [default = -9999];
+      case 5: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_Result:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                 input, &result_)));
+          set_has_result();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(48)) goto parse_RoleIds;
+        break;
+      }
+
+      // repeated uint64 RoleIds = 6;
+      case 6: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_RoleIds:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 1, 48, input, this->mutable_roleids())));
+        } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
+                   == ::google::protobuf::internal::WireFormatLite::
+                      WIRETYPE_LENGTH_DELIMITED) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, this->mutable_roleids())));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(48)) goto parse_RoleIds;
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void DungeonRpcInformCreateDungeonAsk::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional uint64 RoleId = 1 [default = 0];
+  if (has_roleid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->roleid(), output);
+  }
+
+  // optional sint32 TargetSceneId = 2 [default = -1];
+  if (has_targetsceneid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteSInt32(2, this->targetsceneid(), output);
+  }
+
+  // optional sint32 DungeonConfigId = 3 [default = -1];
+  if (has_dungeonconfigid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteSInt32(3, this->dungeonconfigid(), output);
+  }
+
+  // optional sint32 CurSceneId = 4 [default = -1];
+  if (has_cursceneid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteSInt32(4, this->cursceneid(), output);
+  }
+
+  // optional sint32 Result = 5 [default = -9999];
+  if (has_result()) {
+    ::google::protobuf::internal::WireFormatLite::WriteSInt32(5, this->result(), output);
+  }
+
+  // repeated uint64 RoleIds = 6;
+  for (int i = 0; i < this->roleids_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(
+      6, this->roleids(i), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* DungeonRpcInformCreateDungeonAsk::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional uint64 RoleId = 1 [default = 0];
+  if (has_roleid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->roleid(), target);
+  }
+
+  // optional sint32 TargetSceneId = 2 [default = -1];
+  if (has_targetsceneid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(2, this->targetsceneid(), target);
+  }
+
+  // optional sint32 DungeonConfigId = 3 [default = -1];
+  if (has_dungeonconfigid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(3, this->dungeonconfigid(), target);
+  }
+
+  // optional sint32 CurSceneId = 4 [default = -1];
+  if (has_cursceneid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(4, this->cursceneid(), target);
+  }
+
+  // optional sint32 Result = 5 [default = -9999];
+  if (has_result()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(5, this->result(), target);
+  }
+
+  // repeated uint64 RoleIds = 6;
+  for (int i = 0; i < this->roleids_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteUInt64ToArray(6, this->roleids(i), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int DungeonRpcInformCreateDungeonAsk::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional uint64 RoleId = 1 [default = 0];
+    if (has_roleid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt64Size(
+          this->roleid());
+    }
+
+    // optional sint32 TargetSceneId = 2 [default = -1];
+    if (has_targetsceneid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+          this->targetsceneid());
+    }
+
+    // optional sint32 DungeonConfigId = 3 [default = -1];
+    if (has_dungeonconfigid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+          this->dungeonconfigid());
+    }
+
+    // optional sint32 CurSceneId = 4 [default = -1];
+    if (has_cursceneid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+          this->cursceneid());
+    }
+
+    // optional sint32 Result = 5 [default = -9999];
+    if (has_result()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+          this->result());
+    }
+
+  }
+  // repeated uint64 RoleIds = 6;
+  {
+    int data_size = 0;
+    for (int i = 0; i < this->roleids_size(); i++) {
+      data_size += ::google::protobuf::internal::WireFormatLite::
+        UInt64Size(this->roleids(i));
+    }
+    total_size += 1 * this->roleids_size() + data_size;
+  }
+
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void DungeonRpcInformCreateDungeonAsk::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const DungeonRpcInformCreateDungeonAsk* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const DungeonRpcInformCreateDungeonAsk*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void DungeonRpcInformCreateDungeonAsk::MergeFrom(const DungeonRpcInformCreateDungeonAsk& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  roleids_.MergeFrom(from.roleids_);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_roleid()) {
+      set_roleid(from.roleid());
+    }
+    if (from.has_targetsceneid()) {
+      set_targetsceneid(from.targetsceneid());
+    }
+    if (from.has_dungeonconfigid()) {
+      set_dungeonconfigid(from.dungeonconfigid());
+    }
+    if (from.has_cursceneid()) {
+      set_cursceneid(from.cursceneid());
+    }
+    if (from.has_result()) {
+      set_result(from.result());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void DungeonRpcInformCreateDungeonAsk::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void DungeonRpcInformCreateDungeonAsk::CopyFrom(const DungeonRpcInformCreateDungeonAsk& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool DungeonRpcInformCreateDungeonAsk::IsInitialized() const {
+
+  return true;
+}
+
+void DungeonRpcInformCreateDungeonAsk::Swap(DungeonRpcInformCreateDungeonAsk* other) {
+  if (other != this) {
+    std::swap(roleid_, other->roleid_);
+    std::swap(targetsceneid_, other->targetsceneid_);
+    std::swap(dungeonconfigid_, other->dungeonconfigid_);
+    std::swap(cursceneid_, other->cursceneid_);
+    std::swap(result_, other->result_);
+    roleids_.Swap(&other->roleids_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata DungeonRpcInformCreateDungeonAsk::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = DungeonRpcInformCreateDungeonAsk_descriptor_;
+  metadata.reflection = DungeonRpcInformCreateDungeonAsk_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int DungeonRpcInformCreateDungeonReply::kResultFieldNumber;
+#endif  // !_MSC_VER
+
+DungeonRpcInformCreateDungeonReply::DungeonRpcInformCreateDungeonReply()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void DungeonRpcInformCreateDungeonReply::InitAsDefaultInstance() {
+}
+
+DungeonRpcInformCreateDungeonReply::DungeonRpcInformCreateDungeonReply(const DungeonRpcInformCreateDungeonReply& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void DungeonRpcInformCreateDungeonReply::SharedCtor() {
+  _cached_size_ = 0;
+  result_ = -9999;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+DungeonRpcInformCreateDungeonReply::~DungeonRpcInformCreateDungeonReply() {
+  SharedDtor();
+}
+
+void DungeonRpcInformCreateDungeonReply::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void DungeonRpcInformCreateDungeonReply::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* DungeonRpcInformCreateDungeonReply::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return DungeonRpcInformCreateDungeonReply_descriptor_;
+}
+
+const DungeonRpcInformCreateDungeonReply& DungeonRpcInformCreateDungeonReply::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_DungeonRpc_2eproto();
+  return *default_instance_;
+}
+
+DungeonRpcInformCreateDungeonReply* DungeonRpcInformCreateDungeonReply::default_instance_ = NULL;
+
+DungeonRpcInformCreateDungeonReply* DungeonRpcInformCreateDungeonReply::New() const {
+  return new DungeonRpcInformCreateDungeonReply;
+}
+
+void DungeonRpcInformCreateDungeonReply::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    result_ = -9999;
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool DungeonRpcInformCreateDungeonReply::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
@@ -1020,7 +1905,7 @@ bool DungeonRpcExitDungeonReply::MergePartialFromCodedStream(
 #undef DO_
 }
 
-void DungeonRpcExitDungeonReply::SerializeWithCachedSizes(
+void DungeonRpcInformCreateDungeonReply::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
   // optional sint32 Result = 1 [default = -9999];
   if (has_result()) {
@@ -1033,7 +1918,7 @@ void DungeonRpcExitDungeonReply::SerializeWithCachedSizes(
   }
 }
 
-::google::protobuf::uint8* DungeonRpcExitDungeonReply::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* DungeonRpcInformCreateDungeonReply::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
   // optional sint32 Result = 1 [default = -9999];
   if (has_result()) {
@@ -1047,7 +1932,7 @@ void DungeonRpcExitDungeonReply::SerializeWithCachedSizes(
   return target;
 }
 
-int DungeonRpcExitDungeonReply::ByteSize() const {
+int DungeonRpcInformCreateDungeonReply::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
@@ -1070,10 +1955,10 @@ int DungeonRpcExitDungeonReply::ByteSize() const {
   return total_size;
 }
 
-void DungeonRpcExitDungeonReply::MergeFrom(const ::google::protobuf::Message& from) {
+void DungeonRpcInformCreateDungeonReply::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const DungeonRpcExitDungeonReply* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const DungeonRpcExitDungeonReply*>(
+  const DungeonRpcInformCreateDungeonReply* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const DungeonRpcInformCreateDungeonReply*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -1082,7 +1967,7 @@ void DungeonRpcExitDungeonReply::MergeFrom(const ::google::protobuf::Message& fr
   }
 }
 
-void DungeonRpcExitDungeonReply::MergeFrom(const DungeonRpcExitDungeonReply& from) {
+void DungeonRpcInformCreateDungeonReply::MergeFrom(const DungeonRpcInformCreateDungeonReply& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_result()) {
@@ -1092,24 +1977,24 @@ void DungeonRpcExitDungeonReply::MergeFrom(const DungeonRpcExitDungeonReply& fro
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void DungeonRpcExitDungeonReply::CopyFrom(const ::google::protobuf::Message& from) {
+void DungeonRpcInformCreateDungeonReply::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void DungeonRpcExitDungeonReply::CopyFrom(const DungeonRpcExitDungeonReply& from) {
+void DungeonRpcInformCreateDungeonReply::CopyFrom(const DungeonRpcInformCreateDungeonReply& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool DungeonRpcExitDungeonReply::IsInitialized() const {
+bool DungeonRpcInformCreateDungeonReply::IsInitialized() const {
 
   return true;
 }
 
-void DungeonRpcExitDungeonReply::Swap(DungeonRpcExitDungeonReply* other) {
+void DungeonRpcInformCreateDungeonReply::Swap(DungeonRpcInformCreateDungeonReply* other) {
   if (other != this) {
     std::swap(result_, other->result_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
@@ -1118,11 +2003,675 @@ void DungeonRpcExitDungeonReply::Swap(DungeonRpcExitDungeonReply* other) {
   }
 }
 
-::google::protobuf::Metadata DungeonRpcExitDungeonReply::GetMetadata() const {
+::google::protobuf::Metadata DungeonRpcInformCreateDungeonReply::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = DungeonRpcExitDungeonReply_descriptor_;
-  metadata.reflection = DungeonRpcExitDungeonReply_reflection_;
+  metadata.descriptor = DungeonRpcInformCreateDungeonReply_descriptor_;
+  metadata.reflection = DungeonRpcInformCreateDungeonReply_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int DungeonRpcSettlementNotify::kSettlementResultFieldNumber;
+#endif  // !_MSC_VER
+
+DungeonRpcSettlementNotify::DungeonRpcSettlementNotify()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void DungeonRpcSettlementNotify::InitAsDefaultInstance() {
+}
+
+DungeonRpcSettlementNotify::DungeonRpcSettlementNotify(const DungeonRpcSettlementNotify& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void DungeonRpcSettlementNotify::SharedCtor() {
+  _cached_size_ = 0;
+  settlementresult_ = -1;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+DungeonRpcSettlementNotify::~DungeonRpcSettlementNotify() {
+  SharedDtor();
+}
+
+void DungeonRpcSettlementNotify::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void DungeonRpcSettlementNotify::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* DungeonRpcSettlementNotify::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return DungeonRpcSettlementNotify_descriptor_;
+}
+
+const DungeonRpcSettlementNotify& DungeonRpcSettlementNotify::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_DungeonRpc_2eproto();
+  return *default_instance_;
+}
+
+DungeonRpcSettlementNotify* DungeonRpcSettlementNotify::default_instance_ = NULL;
+
+DungeonRpcSettlementNotify* DungeonRpcSettlementNotify::New() const {
+  return new DungeonRpcSettlementNotify;
+}
+
+void DungeonRpcSettlementNotify::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    settlementresult_ = -1;
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool DungeonRpcSettlementNotify::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional sint32 SettlementResult = 1 [default = -1];
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                 input, &settlementresult_)));
+          set_has_settlementresult();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void DungeonRpcSettlementNotify::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional sint32 SettlementResult = 1 [default = -1];
+  if (has_settlementresult()) {
+    ::google::protobuf::internal::WireFormatLite::WriteSInt32(1, this->settlementresult(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* DungeonRpcSettlementNotify::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional sint32 SettlementResult = 1 [default = -1];
+  if (has_settlementresult()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(1, this->settlementresult(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int DungeonRpcSettlementNotify::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional sint32 SettlementResult = 1 [default = -1];
+    if (has_settlementresult()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+          this->settlementresult());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void DungeonRpcSettlementNotify::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const DungeonRpcSettlementNotify* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const DungeonRpcSettlementNotify*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void DungeonRpcSettlementNotify::MergeFrom(const DungeonRpcSettlementNotify& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_settlementresult()) {
+      set_settlementresult(from.settlementresult());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void DungeonRpcSettlementNotify::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void DungeonRpcSettlementNotify::CopyFrom(const DungeonRpcSettlementNotify& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool DungeonRpcSettlementNotify::IsInitialized() const {
+
+  return true;
+}
+
+void DungeonRpcSettlementNotify::Swap(DungeonRpcSettlementNotify* other) {
+  if (other != this) {
+    std::swap(settlementresult_, other->settlementresult_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata DungeonRpcSettlementNotify::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = DungeonRpcSettlementNotify_descriptor_;
+  metadata.reflection = DungeonRpcSettlementNotify_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int DungeonRpcEnterDungeonAsk::kSceneIdFieldNumber;
+const int DungeonRpcEnterDungeonAsk::kDungeonConfigIdFieldNumber;
+#endif  // !_MSC_VER
+
+DungeonRpcEnterDungeonAsk::DungeonRpcEnterDungeonAsk()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void DungeonRpcEnterDungeonAsk::InitAsDefaultInstance() {
+}
+
+DungeonRpcEnterDungeonAsk::DungeonRpcEnterDungeonAsk(const DungeonRpcEnterDungeonAsk& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void DungeonRpcEnterDungeonAsk::SharedCtor() {
+  _cached_size_ = 0;
+  sceneid_ = -1;
+  dungeonconfigid_ = -1;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+DungeonRpcEnterDungeonAsk::~DungeonRpcEnterDungeonAsk() {
+  SharedDtor();
+}
+
+void DungeonRpcEnterDungeonAsk::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void DungeonRpcEnterDungeonAsk::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* DungeonRpcEnterDungeonAsk::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return DungeonRpcEnterDungeonAsk_descriptor_;
+}
+
+const DungeonRpcEnterDungeonAsk& DungeonRpcEnterDungeonAsk::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_DungeonRpc_2eproto();
+  return *default_instance_;
+}
+
+DungeonRpcEnterDungeonAsk* DungeonRpcEnterDungeonAsk::default_instance_ = NULL;
+
+DungeonRpcEnterDungeonAsk* DungeonRpcEnterDungeonAsk::New() const {
+  return new DungeonRpcEnterDungeonAsk;
+}
+
+void DungeonRpcEnterDungeonAsk::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    sceneid_ = -1;
+    dungeonconfigid_ = -1;
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool DungeonRpcEnterDungeonAsk::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional sint32 SceneId = 1 [default = -1];
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                 input, &sceneid_)));
+          set_has_sceneid();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(16)) goto parse_DungeonConfigId;
+        break;
+      }
+
+      // optional sint32 DungeonConfigId = 2 [default = -1];
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_DungeonConfigId:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                 input, &dungeonconfigid_)));
+          set_has_dungeonconfigid();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void DungeonRpcEnterDungeonAsk::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional sint32 SceneId = 1 [default = -1];
+  if (has_sceneid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteSInt32(1, this->sceneid(), output);
+  }
+
+  // optional sint32 DungeonConfigId = 2 [default = -1];
+  if (has_dungeonconfigid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteSInt32(2, this->dungeonconfigid(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* DungeonRpcEnterDungeonAsk::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional sint32 SceneId = 1 [default = -1];
+  if (has_sceneid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(1, this->sceneid(), target);
+  }
+
+  // optional sint32 DungeonConfigId = 2 [default = -1];
+  if (has_dungeonconfigid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(2, this->dungeonconfigid(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int DungeonRpcEnterDungeonAsk::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional sint32 SceneId = 1 [default = -1];
+    if (has_sceneid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+          this->sceneid());
+    }
+
+    // optional sint32 DungeonConfigId = 2 [default = -1];
+    if (has_dungeonconfigid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+          this->dungeonconfigid());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void DungeonRpcEnterDungeonAsk::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const DungeonRpcEnterDungeonAsk* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const DungeonRpcEnterDungeonAsk*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void DungeonRpcEnterDungeonAsk::MergeFrom(const DungeonRpcEnterDungeonAsk& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_sceneid()) {
+      set_sceneid(from.sceneid());
+    }
+    if (from.has_dungeonconfigid()) {
+      set_dungeonconfigid(from.dungeonconfigid());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void DungeonRpcEnterDungeonAsk::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void DungeonRpcEnterDungeonAsk::CopyFrom(const DungeonRpcEnterDungeonAsk& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool DungeonRpcEnterDungeonAsk::IsInitialized() const {
+
+  return true;
+}
+
+void DungeonRpcEnterDungeonAsk::Swap(DungeonRpcEnterDungeonAsk* other) {
+  if (other != this) {
+    std::swap(sceneid_, other->sceneid_);
+    std::swap(dungeonconfigid_, other->dungeonconfigid_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata DungeonRpcEnterDungeonAsk::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = DungeonRpcEnterDungeonAsk_descriptor_;
+  metadata.reflection = DungeonRpcEnterDungeonAsk_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int DungeonRpcEnterDungeonReply::kResultFieldNumber;
+#endif  // !_MSC_VER
+
+DungeonRpcEnterDungeonReply::DungeonRpcEnterDungeonReply()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void DungeonRpcEnterDungeonReply::InitAsDefaultInstance() {
+}
+
+DungeonRpcEnterDungeonReply::DungeonRpcEnterDungeonReply(const DungeonRpcEnterDungeonReply& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void DungeonRpcEnterDungeonReply::SharedCtor() {
+  _cached_size_ = 0;
+  result_ = -9999;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+DungeonRpcEnterDungeonReply::~DungeonRpcEnterDungeonReply() {
+  SharedDtor();
+}
+
+void DungeonRpcEnterDungeonReply::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void DungeonRpcEnterDungeonReply::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* DungeonRpcEnterDungeonReply::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return DungeonRpcEnterDungeonReply_descriptor_;
+}
+
+const DungeonRpcEnterDungeonReply& DungeonRpcEnterDungeonReply::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_DungeonRpc_2eproto();
+  return *default_instance_;
+}
+
+DungeonRpcEnterDungeonReply* DungeonRpcEnterDungeonReply::default_instance_ = NULL;
+
+DungeonRpcEnterDungeonReply* DungeonRpcEnterDungeonReply::New() const {
+  return new DungeonRpcEnterDungeonReply;
+}
+
+void DungeonRpcEnterDungeonReply::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    result_ = -9999;
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool DungeonRpcEnterDungeonReply::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional sint32 Result = 1 [default = -9999];
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                 input, &result_)));
+          set_has_result();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void DungeonRpcEnterDungeonReply::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional sint32 Result = 1 [default = -9999];
+  if (has_result()) {
+    ::google::protobuf::internal::WireFormatLite::WriteSInt32(1, this->result(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* DungeonRpcEnterDungeonReply::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional sint32 Result = 1 [default = -9999];
+  if (has_result()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(1, this->result(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int DungeonRpcEnterDungeonReply::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional sint32 Result = 1 [default = -9999];
+    if (has_result()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+          this->result());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void DungeonRpcEnterDungeonReply::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const DungeonRpcEnterDungeonReply* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const DungeonRpcEnterDungeonReply*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void DungeonRpcEnterDungeonReply::MergeFrom(const DungeonRpcEnterDungeonReply& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_result()) {
+      set_result(from.result());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void DungeonRpcEnterDungeonReply::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void DungeonRpcEnterDungeonReply::CopyFrom(const DungeonRpcEnterDungeonReply& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool DungeonRpcEnterDungeonReply::IsInitialized() const {
+
+  return true;
+}
+
+void DungeonRpcEnterDungeonReply::Swap(DungeonRpcEnterDungeonReply* other) {
+  if (other != this) {
+    std::swap(result_, other->result_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata DungeonRpcEnterDungeonReply::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = DungeonRpcEnterDungeonReply_descriptor_;
+  metadata.reflection = DungeonRpcEnterDungeonReply_reflection_;
   return metadata;
 }
 

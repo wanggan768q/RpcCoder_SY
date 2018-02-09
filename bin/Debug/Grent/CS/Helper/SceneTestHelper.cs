@@ -9,12 +9,6 @@ using System.Collections.Generic;
 
 
 [System.Serializable]
-public class SceneRpcEnterSceneAskWraperHelper
-{
-	public UInt64 RoleId;
-	public int SceneId;
-}
-[System.Serializable]
 public class SceneRpcLoadSceneCompleteAskWraperHelper
 {
 	public UInt64 RoleId;
@@ -40,7 +34,7 @@ public class SceneRpcChangeSceneAskWraperHelper
 	public int TargetSceneId;
 }
 [System.Serializable]
-public class SceneRpcNewObjNotifyWraperHelper
+public class SceneRpcCreateObjNotifyWraperHelper
 {
 	public int ObjId;
 	public V3Wraper Pos;
@@ -49,24 +43,62 @@ public class SceneRpcNewObjNotifyWraperHelper
 	public int ConfigId;
 	public int Status;
 	public float MoveSpeed;
+	public UInt64 RoleId;
+	public string NickName;
+	public int Hp;
+	public V3Wraper TargetPos;
+	public int HpMax;
+}
+[System.Serializable]
+public class SceneRpcSurroundingHumanAskWraperHelper
+{
+}
+[System.Serializable]
+public class SceneRpcCEnterSceneNotifyWraperHelper
+{
+	public int SceneId;
+	public int MapId;
+}
+[System.Serializable]
+public class SceneRpcSEnterSceneNotifyWraperHelper
+{
+	public int Result;
+	public int SceneId;
+	public int SceneConfigId;
+	public int MapId;
+	public UInt64 RoleId;
+	public int DungeonConfigId;
+}
+[System.Serializable]
+public class SceneRpcObjDieNotifyWraperHelper
+{
+	public int ObjId;
+	public int RespawnTime;
+	public int ConfigId;
+	public int ObjType;
+}
+[System.Serializable]
+public class SceneRpcCollide_ChangeSceneAskWraperHelper
+{
+	public int Collide_id;
 }
 
 
 
 public class SceneTestHelper : MonoBehaviour
 {
-	public SceneRpcEnterSceneAskWraperHelper SceneRpcEnterSceneAskWraperVar;
 	public SceneRpcLoadSceneCompleteAskWraperHelper SceneRpcLoadSceneCompleteAskWraperVar;
 	public SceneRpcDeletePlayerNotifyWraperHelper SceneRpcDeletePlayerNotifyWraperVar;
 	public SceneRpcConnectGameServerAskWraperHelper SceneRpcConnectGameServerAskWraperVar;
 	public SceneRpcChangeSceneAskWraperHelper SceneRpcChangeSceneAskWraperVar;
-	public SceneRpcNewObjNotifyWraperHelper SceneRpcNewObjNotifyWraperVar;
+	public SceneRpcCreateObjNotifyWraperHelper SceneRpcCreateObjNotifyWraperVar;
+	public SceneRpcSurroundingHumanAskWraperHelper SceneRpcSurroundingHumanAskWraperVar;
+	public SceneRpcCEnterSceneNotifyWraperHelper SceneRpcCEnterSceneNotifyWraperVar;
+	public SceneRpcSEnterSceneNotifyWraperHelper SceneRpcSEnterSceneNotifyWraperVar;
+	public SceneRpcObjDieNotifyWraperHelper SceneRpcObjDieNotifyWraperVar;
+	public SceneRpcCollide_ChangeSceneAskWraperHelper SceneRpcCollide_ChangeSceneAskWraperVar;
 
 
-	public void TestEnterScene()
-	{
-		SceneRPC.Instance.EnterScene(SceneRpcEnterSceneAskWraperVar.RoleId,SceneRpcEnterSceneAskWraperVar.SceneId,delegate(object obj){});
-	}
 	public void TestLoadSceneComplete()
 	{
 		SceneRPC.Instance.LoadSceneComplete(SceneRpcLoadSceneCompleteAskWraperVar.RoleId,SceneRpcLoadSceneCompleteAskWraperVar.SceneId,delegate(object obj){});
@@ -78,6 +110,18 @@ public class SceneTestHelper : MonoBehaviour
 	public void TestChangeScene()
 	{
 		SceneRPC.Instance.ChangeScene(SceneRpcChangeSceneAskWraperVar.RoleId,SceneRpcChangeSceneAskWraperVar.CurSceneId,SceneRpcChangeSceneAskWraperVar.TargetSceneId,delegate(object obj){});
+	}
+	public void TestSurroundingHuman()
+	{
+		SceneRPC.Instance.SurroundingHuman(delegate(object obj){});
+	}
+	public void TestCEnterScene()
+	{
+		SceneRPC.Instance.CEnterScene(SceneRpcCEnterSceneNotifyWraperVar.SceneId,SceneRpcCEnterSceneNotifyWraperVar.MapId);
+	}
+	public void TestCollide_ChangeScene()
+	{
+		SceneRPC.Instance.Collide_ChangeScene(SceneRpcCollide_ChangeSceneAskWraperVar.Collide_id,delegate(object obj){});
 	}
 
 
@@ -91,11 +135,6 @@ public class SceneTester : Editor
     {
         base.OnInspectorGUI();
         
-		if (GUILayout.Button("EnterScene"))
-		{
-			SceneTestHelper rpc = target as SceneTestHelper;
-			if( rpc ) rpc.TestEnterScene();
-		}
 		if (GUILayout.Button("LoadSceneComplete"))
 		{
 			SceneTestHelper rpc = target as SceneTestHelper;
@@ -110,6 +149,21 @@ public class SceneTester : Editor
 		{
 			SceneTestHelper rpc = target as SceneTestHelper;
 			if( rpc ) rpc.TestChangeScene();
+		}
+		if (GUILayout.Button("SurroundingHuman"))
+		{
+			SceneTestHelper rpc = target as SceneTestHelper;
+			if( rpc ) rpc.TestSurroundingHuman();
+		}
+		if (GUILayout.Button("CEnterScene"))
+		{
+			SceneTestHelper rpc = target as SceneTestHelper;
+			if( rpc ) rpc.TestCEnterScene();
+		}
+		if (GUILayout.Button("Collide_ChangeScene"))
+		{
+			SceneTestHelper rpc = target as SceneTestHelper;
+			if( rpc ) rpc.TestCollide_ChangeScene();
 		}
 
 

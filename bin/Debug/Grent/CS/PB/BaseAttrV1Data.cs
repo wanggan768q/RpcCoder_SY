@@ -16,37 +16,341 @@ namespace GenPB
   {
     public BaseAttrUserDataV1() {}
     
-    private int _Exp = (int)-1;
+    private int _Exp = (int)0;
     [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Exp", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-1)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
     public int Exp
     {
       get { return _Exp; }
       set { _Exp = value; }
     }
-    private int _Level = (int)-1;
+    private int _Level = (int)0;
     [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"Level", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-1)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
     public int Level
     {
       get { return _Level; }
       set { _Level = value; }
     }
-    private int _ServerTime = (int)-1;
-    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"ServerTime", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-1)]
-    public int ServerTime
+    private long _ServerTime = (long)-1;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"ServerTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((long)-1)]
+    public long ServerTime
     {
       get { return _ServerTime; }
       set { _ServerTime = value; }
     }
-    private int _RoleId = (int)-1;
-    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"RoleId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-1)]
-    public int RoleId
+    private long _RoleId = (long)-1;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"RoleId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((long)-1)]
+    public long RoleId
     {
       get { return _RoleId; }
       set { _RoleId = value; }
+    }
+    private int _Strength = (int)0;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"Strength", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int Strength
+    {
+      get { return _Strength; }
+      set { _Strength = value; }
+    }
+    private int _Agility = (int)0;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"Agility", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int Agility
+    {
+      get { return _Agility; }
+      set { _Agility = value; }
+    }
+    private int _Intellectual = (int)0;
+    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"Intellectual", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int Intellectual
+    {
+      get { return _Intellectual; }
+      set { _Intellectual = value; }
+    }
+    private int _Endurance = (int)0;
+    [global::ProtoBuf.ProtoMember(10, IsRequired = false, Name=@"Endurance", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int Endurance
+    {
+      get { return _Endurance; }
+      set { _Endurance = value; }
+    }
+    private int _Spirit = (int)0;
+    [global::ProtoBuf.ProtoMember(11, IsRequired = false, Name=@"Spirit", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int Spirit
+    {
+      get { return _Spirit; }
+      set { _Spirit = value; }
+    }
+    private int _Hp = (int)0;
+    [global::ProtoBuf.ProtoMember(12, IsRequired = false, Name=@"Hp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int Hp
+    {
+      get { return _Hp; }
+      set { _Hp = value; }
+    }
+    private int _MaxHp = (int)0;
+    [global::ProtoBuf.ProtoMember(14, IsRequired = false, Name=@"MaxHp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int MaxHp
+    {
+      get { return _MaxHp; }
+      set { _MaxHp = value; }
+    }
+    private int _PhysicAttack = (int)0;
+    [global::ProtoBuf.ProtoMember(15, IsRequired = false, Name=@"PhysicAttack", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int PhysicAttack
+    {
+      get { return _PhysicAttack; }
+      set { _PhysicAttack = value; }
+    }
+    private int _PhysicDefense = (int)0;
+    [global::ProtoBuf.ProtoMember(16, IsRequired = false, Name=@"PhysicDefense", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int PhysicDefense
+    {
+      get { return _PhysicDefense; }
+      set { _PhysicDefense = value; }
+    }
+    private int _MagicAttack = (int)0;
+    [global::ProtoBuf.ProtoMember(19, IsRequired = false, Name=@"MagicAttack", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int MagicAttack
+    {
+      get { return _MagicAttack; }
+      set { _MagicAttack = value; }
+    }
+    private int _MagicDefense = (int)0;
+    [global::ProtoBuf.ProtoMember(20, IsRequired = false, Name=@"MagicDefense", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int MagicDefense
+    {
+      get { return _MagicDefense; }
+      set { _MagicDefense = value; }
+    }
+    private int _Hit = (int)0;
+    [global::ProtoBuf.ProtoMember(21, IsRequired = false, Name=@"Hit", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int Hit
+    {
+      get { return _Hit; }
+      set { _Hit = value; }
+    }
+    private float _HitRate = (float)0;
+    [global::ProtoBuf.ProtoMember(22, IsRequired = false, Name=@"HitRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float HitRate
+    {
+      get { return _HitRate; }
+      set { _HitRate = value; }
+    }
+    private int _Miss = (int)0;
+    [global::ProtoBuf.ProtoMember(23, IsRequired = false, Name=@"Miss", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int Miss
+    {
+      get { return _Miss; }
+      set { _Miss = value; }
+    }
+    private float _MissRate = (float)0;
+    [global::ProtoBuf.ProtoMember(24, IsRequired = false, Name=@"MissRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float MissRate
+    {
+      get { return _MissRate; }
+      set { _MissRate = value; }
+    }
+    private int _Critical = (int)0;
+    [global::ProtoBuf.ProtoMember(25, IsRequired = false, Name=@"Critical", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int Critical
+    {
+      get { return _Critical; }
+      set { _Critical = value; }
+    }
+    private float _CriticalRate = (float)0;
+    [global::ProtoBuf.ProtoMember(26, IsRequired = false, Name=@"CriticalRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float CriticalRate
+    {
+      get { return _CriticalRate; }
+      set { _CriticalRate = value; }
+    }
+    private int _Tenacity = (int)0;
+    [global::ProtoBuf.ProtoMember(27, IsRequired = false, Name=@"Tenacity", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int Tenacity
+    {
+      get { return _Tenacity; }
+      set { _Tenacity = value; }
+    }
+    private float _TenacityRate = (float)0;
+    [global::ProtoBuf.ProtoMember(28, IsRequired = false, Name=@"TenacityRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float TenacityRate
+    {
+      get { return _TenacityRate; }
+      set { _TenacityRate = value; }
+    }
+    private int _Penet = (int)0;
+    [global::ProtoBuf.ProtoMember(29, IsRequired = false, Name=@"Penet", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int Penet
+    {
+      get { return _Penet; }
+      set { _Penet = value; }
+    }
+    private float _PenetRate = (float)0;
+    [global::ProtoBuf.ProtoMember(30, IsRequired = false, Name=@"PenetRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float PenetRate
+    {
+      get { return _PenetRate; }
+      set { _PenetRate = value; }
+    }
+    private int _Dodg = (int)0;
+    [global::ProtoBuf.ProtoMember(31, IsRequired = false, Name=@"Dodg", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int Dodg
+    {
+      get { return _Dodg; }
+      set { _Dodg = value; }
+    }
+    private float _DodgRate = (float)0;
+    [global::ProtoBuf.ProtoMember(32, IsRequired = false, Name=@"DodgRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float DodgRate
+    {
+      get { return _DodgRate; }
+      set { _DodgRate = value; }
+    }
+    private int _CriticalAddition = (int)0;
+    [global::ProtoBuf.ProtoMember(33, IsRequired = false, Name=@"CriticalAddition", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int CriticalAddition
+    {
+      get { return _CriticalAddition; }
+      set { _CriticalAddition = value; }
+    }
+    private float _CriticalAdditionRate = (float)0;
+    [global::ProtoBuf.ProtoMember(34, IsRequired = false, Name=@"CriticalAdditionRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float CriticalAdditionRate
+    {
+      get { return _CriticalAdditionRate; }
+      set { _CriticalAdditionRate = value; }
+    }
+    private int _CriticalImmune = (int)0;
+    [global::ProtoBuf.ProtoMember(35, IsRequired = false, Name=@"CriticalImmune", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int CriticalImmune
+    {
+      get { return _CriticalImmune; }
+      set { _CriticalImmune = value; }
+    }
+    private float _CriticalImmuneRate = (float)0;
+    [global::ProtoBuf.ProtoMember(36, IsRequired = false, Name=@"CriticalImmuneRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float CriticalImmuneRate
+    {
+      get { return _CriticalImmuneRate; }
+      set { _CriticalImmuneRate = value; }
+    }
+    private int _MissLevel = (int)0;
+    [global::ProtoBuf.ProtoMember(37, IsRequired = false, Name=@"MissLevel", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int MissLevel
+    {
+      get { return _MissLevel; }
+      set { _MissLevel = value; }
+    }
+    private int _CriticalLevel = (int)0;
+    [global::ProtoBuf.ProtoMember(38, IsRequired = false, Name=@"CriticalLevel", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int CriticalLevel
+    {
+      get { return _CriticalLevel; }
+      set { _CriticalLevel = value; }
+    }
+    private int _DodgLevel = (int)0;
+    [global::ProtoBuf.ProtoMember(39, IsRequired = false, Name=@"DodgLevel", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int DodgLevel
+    {
+      get { return _DodgLevel; }
+      set { _DodgLevel = value; }
+    }
+    private float _MoveSpeed = (float)0;
+    [global::ProtoBuf.ProtoMember(40, IsRequired = false, Name=@"MoveSpeed", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float MoveSpeed
+    {
+      get { return _MoveSpeed; }
+      set { _MoveSpeed = value; }
+    }
+    private bool _DizzyState = (bool)false;
+    [global::ProtoBuf.ProtoMember(41, IsRequired = false, Name=@"DizzyState", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool DizzyState
+    {
+      get { return _DizzyState; }
+      set { _DizzyState = value; }
+    }
+    private bool _GodState = (bool)false;
+    [global::ProtoBuf.ProtoMember(42, IsRequired = false, Name=@"GodState", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool GodState
+    {
+      get { return _GodState; }
+      set { _GodState = value; }
+    }
+    private bool _CantMoveState = (bool)false;
+    [global::ProtoBuf.ProtoMember(43, IsRequired = false, Name=@"CantMoveState", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool CantMoveState
+    {
+      get { return _CantMoveState; }
+      set { _CantMoveState = value; }
+    }
+    private float _PhysicAddition = (float)0;
+    [global::ProtoBuf.ProtoMember(45, IsRequired = false, Name=@"PhysicAddition", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float PhysicAddition
+    {
+      get { return _PhysicAddition; }
+      set { _PhysicAddition = value; }
+    }
+    private float _MagicAddition = (float)0;
+    [global::ProtoBuf.ProtoMember(46, IsRequired = false, Name=@"MagicAddition", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float MagicAddition
+    {
+      get { return _MagicAddition; }
+      set { _MagicAddition = value; }
+    }
+    private float _PhysicOppose = (float)0;
+    [global::ProtoBuf.ProtoMember(47, IsRequired = false, Name=@"PhysicOppose", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float PhysicOppose
+    {
+      get { return _PhysicOppose; }
+      set { _PhysicOppose = value; }
+    }
+    private float _MagicOppose = (float)0;
+    [global::ProtoBuf.ProtoMember(48, IsRequired = false, Name=@"MagicOppose", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float MagicOppose
+    {
+      get { return _MagicOppose; }
+      set { _MagicOppose = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

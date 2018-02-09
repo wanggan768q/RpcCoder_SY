@@ -40,6 +40,11 @@ public class LoginRpcSelectSaveUserAskWraperHelper
 {
 	public UInt64 RoleId;
 }
+[System.Serializable]
+public class LoginRpcDeleteCharacterAskWraperHelper
+{
+	public UInt64 RoleId;
+}
 
 
 
@@ -51,6 +56,7 @@ public class LoginTestHelper : MonoBehaviour
 	public LoginRpcSelectCharacterAskWraperHelper LoginRpcSelectCharacterAskWraperVar;
 	public LoginRpcCreateCharacterAskWraperHelper LoginRpcCreateCharacterAskWraperVar;
 	public LoginRpcSelectSaveUserAskWraperHelper LoginRpcSelectSaveUserAskWraperVar;
+	public LoginRpcDeleteCharacterAskWraperHelper LoginRpcDeleteCharacterAskWraperVar;
 
 
 	public void TestConnect()
@@ -76,6 +82,10 @@ public class LoginTestHelper : MonoBehaviour
 	public void TestSelectSaveUser()
 	{
 		LoginRPC.Instance.SelectSaveUser(LoginRpcSelectSaveUserAskWraperVar.RoleId,delegate(object obj){});
+	}
+	public void TestDeleteCharacter()
+	{
+		LoginRPC.Instance.DeleteCharacter(LoginRpcDeleteCharacterAskWraperVar.RoleId,delegate(object obj){});
 	}
 
 
@@ -118,6 +128,11 @@ public class LoginTester : Editor
 		{
 			LoginTestHelper rpc = target as LoginTestHelper;
 			if( rpc ) rpc.TestSelectSaveUser();
+		}
+		if (GUILayout.Button("DeleteCharacter"))
+		{
+			LoginTestHelper rpc = target as LoginTestHelper;
+			if( rpc ) rpc.TestDeleteCharacter();
 		}
 
 

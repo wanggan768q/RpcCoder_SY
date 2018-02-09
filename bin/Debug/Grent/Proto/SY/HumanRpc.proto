@@ -32,18 +32,29 @@ message  HumanRpcStopMoveReply
 
 message  HumanRpcMoveCheckNotify
 {
-	optional sint32 Obj_id = 1[default=-1];
+	optional sint32 ObjId = 1[default=-1];
 	optional float Dir = 3[default=-1];
 	optional float X = 4[default=-1];
 	optional float Y = 5[default=-1];
 
 }
 
-message  V3
+message  HumanRpcMoveByPosNotify
 {
-	optional float X = 1[default=-1];
-	optional float Y = 2[default=-1];
-	optional float Z = 3[default=-1];
+	optional sint32 ObjId = 1[default=-1];
+	optional float TargetX = 2[default=-1];
+	optional float TargetY = 3[default=-1];
+
+}
+
+message  HumanRpcRespawnAsk
+{
+
+}
+
+message  HumanRpcRespawnReply
+{
+	optional sint32 Result = 1[default=-9999];
 
 }
 

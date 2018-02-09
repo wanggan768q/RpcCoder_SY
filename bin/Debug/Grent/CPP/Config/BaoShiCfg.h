@@ -1,4 +1,4 @@
-﻿#ifndef __BAOSHI_CONFIG_H
+#ifndef __BAOSHI_CONFIG_H
 #define __BAOSHI_CONFIG_H
 
 #include "CommonDefine.h"
@@ -54,7 +54,8 @@ class BaoShiTable
 private:
 	BaoShiTable(){}
 	~BaoShiTable(){}
-	unordered_map<int, BaoShiElement>	m_mapElements;
+	typedef unordered_map<int, BaoShiElement> MapElementMap;
+	MapElementMap	m_mapElements;
 	vector<BaoShiElement>	m_vecAllElements;
 	BaoShiElement m_emptyItem;
 public:
@@ -66,16 +67,13 @@ public:
 
 	const BaoShiElement* GetElement(int key)
 	{
-		if( m_mapElements.count(key)>0 )
-			return &m_mapElements[key];
-		if (m_mapElements.count(key) > 0)
+		MapElementMap::iterator it = m_mapElements.find(key);
+		if (it == m_mapElements.end())
 		{
-			BaoShiElement* temp = &m_mapElements[key];
-			AssertEx(temp, std::string(std::string("BaoShiTable: ") + std::to_string(key)).c_str());
-			return temp;
+			AssertEx(false, std::string(std::string("BaoShiTable: ") + std::to_string(key)).c_str());
+			return NULL;
 		}
-		AssertEx(false, std::string(std::string("BaoShiTable: ") + std::to_string(key)).c_str());
-		return NULL;
+		return &it->second;
 	}
 
 	bool HasElement(int key)
@@ -177,15 +175,15 @@ public:
 			assert(false);
 			return false;
 		}
-		if(vecLine[0]!="ID"){printf_message("BaoShi.csv中字段[ID]位置不对应");assert(false); return false; }
-		if(vecLine[1]!="Type"){printf_message("BaoShi.csv中字段[Type]位置不对应");assert(false); return false; }
-		if(vecLine[2]!="Lv"){printf_message("BaoShi.csv中字段[Lv]位置不对应");assert(false); return false; }
-		if(vecLine[3]!="Limit"){printf_message("BaoShi.csv中字段[Limit]位置不对应");assert(false); return false; }
-		if(vecLine[4]!="AttrWuQi"){printf_message("BaoShi.csv中字段[AttrWuQi]位置不对应");assert(false); return false; }
-		if(vecLine[5]!="NumWuQi"){printf_message("BaoShi.csv中字段[NumWuQi]位置不对应");assert(false); return false; }
-		if(vecLine[6]!="AttrOther"){printf_message("BaoShi.csv中字段[AttrOther]位置不对应");assert(false); return false; }
-		if(vecLine[7]!="NumOther"){printf_message("BaoShi.csv中字段[NumOther]位置不对应");assert(false); return false; }
-		if(vecLine[8]!="HeCheng"){printf_message("BaoShi.csv中字段[HeCheng]位置不对应");assert(false); return false; }
+		if(vecLine[0]!="ID"){printf_message("BaoShi.csv中字段[ID]位置不对应 ");assert(false); return false; }
+		if(vecLine[1]!="Type"){printf_message("BaoShi.csv中字段[Type]位置不对应 ");assert(false); return false; }
+		if(vecLine[2]!="Lv"){printf_message("BaoShi.csv中字段[Lv]位置不对应 ");assert(false); return false; }
+		if(vecLine[3]!="Limit"){printf_message("BaoShi.csv中字段[Limit]位置不对应 ");assert(false); return false; }
+		if(vecLine[4]!="AttrWuQi"){printf_message("BaoShi.csv中字段[AttrWuQi]位置不对应 ");assert(false); return false; }
+		if(vecLine[5]!="NumWuQi"){printf_message("BaoShi.csv中字段[NumWuQi]位置不对应 ");assert(false); return false; }
+		if(vecLine[6]!="AttrOther"){printf_message("BaoShi.csv中字段[AttrOther]位置不对应 ");assert(false); return false; }
+		if(vecLine[7]!="NumOther"){printf_message("BaoShi.csv中字段[NumOther]位置不对应 ");assert(false); return false; }
+		if(vecLine[8]!="HeCheng"){printf_message("BaoShi.csv中字段[HeCheng]位置不对应 ");assert(false); return false; }
 
 		while(true)
 		{

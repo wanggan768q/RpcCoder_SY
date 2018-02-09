@@ -7,6 +7,7 @@ message  WorldServerRpcChangeSceneAsk
 	optional sint32 CurSceneId = 2[default=-1];
 	optional sint32 TargetSceneId = 3[default=-1];
 	optional sint32 MemId = 4[default=-1];
+	optional sint32 SceneId = 5[default=-1];
 
 }
 
@@ -24,10 +25,238 @@ message  WorldServerRpcEnterSceneAsk
 {
 	optional uint64 RoleId = 1[default=0];
 	optional sint32 SceneId = 2[default=-1];
+	optional sint32 MemId = 3[default=-1];
 
 }
 
 message  WorldServerRpcEnterSceneReply
+{
+	optional sint32 Result = 1[default=-9999];
+
+}
+
+message  WorldServerRpcCreateDungeonAsk
+{
+	optional uint64 RoleId = 2[default=0];
+	optional sint32 TargetSceneId = 3[default=-1];
+	optional sint32 MemId = 4[default=-1];
+	optional sint32 DungeonConfigId = 5[default=-1];
+	optional sint32 CurSceneId = 6[default=-1];
+	optional sint32 Result = 7[default=-9999];
+	repeated uint64 RoleIds = 8;
+
+}
+
+message  WorldServerRpcCreateDungeonReply
+{
+
+}
+
+message  WorldServerRpcCreateTeamAsk
+{
+	optional sint32 TeamType = 2[default=-1];
+	optional TeamMemberInfo TeamMember = 5;
+	optional sint32 Result = 6[default=-9999];
+	optional TeamInfo Team = 7;
+
+}
+
+message  WorldServerRpcCreateTeamReply
+{
+	optional sint32 Result = 1[default=-9999];
+
+}
+
+message  WorldServerRpcJoinTeamAsk
+{
+	optional sint32 TeamId = 1[default=-1];
+	optional sint32 Result = 2[default=-9999];
+	optional TeamMemberInfo TeamMember = 3;
+	optional TeamInfo Team = 4;
+	optional sint32 TeamType = 5[default=-1];
+	optional sint32 MemId = 6[default=-1];
+	optional sint32 SceneId = 7[default=-1];
+
+}
+
+message  WorldServerRpcJoinTeamReply
+{
+	optional sint32 Result = 1[default=-9999];
+
+}
+
+message  WorldServerRpcLeaveTeamAsk
+{
+	optional sint32 TeamId = 1[default=-1];
+	optional uint64 RoleId = 2[default=0];
+	optional sint32 MemId = 3[default=-1];
+	optional sint32 SceneId = 4[default=-1];
+	optional uint64 NewLeaderRoleId = 5[default=0];
+	optional sint32 Result = 6[default=-9999];
+
+}
+
+message  WorldServerRpcLeaveTeamReply
+{
+	optional sint32 Result = 1[default=-9999];
+
+}
+
+message  WorldServerRpcAppointTeamLeaderAsk
+{
+	optional uint64 NewLeaderRoleId = 1[default=0];
+	optional sint32 MemId = 2[default=-1];
+	optional sint32 SceneId = 3[default=-1];
+	optional uint64 CurLeaderRoleId = 4[default=0];
+	optional sint32 TeamId = 5[default=-1];
+	optional sint32 Result = 6[default=-9999];
+
+}
+
+message  WorldServerRpcAppointTeamLeaderReply
+{
+	optional sint32 Result = 1[default=-9999];
+
+}
+
+message  WorldServerRpcDismissTeamAsk
+{
+	optional sint32 SceneId = 1[default=-1];
+	optional sint32 MemId = 2[default=-1];
+	optional uint64 RoleId = 3[default=0];
+	optional sint32 TeamId = 4[default=-1];
+	optional sint32 Result = 5[default=-9999];
+
+}
+
+message  WorldServerRpcDismissTeamReply
+{
+	optional sint32 Result = 1[default=-9999];
+
+}
+
+message  WorldServerRpcKickMemberAsk
+{
+	optional uint64 KickMemberRoleId = 1[default=0];
+	optional sint32 MemId = 2[default=-1];
+	optional sint32 SceneId = 3[default=-1];
+	optional sint32 TeamId = 4[default=-1];
+	optional uint64 LeaderRoleId = 5[default=0];
+	optional sint32 Result = 6[default=-9999];
+
+}
+
+message  WorldServerRpcKickMemberReply
+{
+	optional sint32 Result = 1[default=-9999];
+
+}
+
+message  WorldServerRpcApplyTeamAsk
+{
+	optional sint32 TeamId = 1[default=-1];
+	optional sint32 Result = 2[default=-9999];
+	optional TeamMemberInfo TeamMember = 3;
+	optional sint32 MemId = 4[default=-1];
+	optional sint32 SceneId = 5[default=-1];
+
+}
+
+message  WorldServerRpcApplyTeamReply
+{
+	optional sint32 Result = 1[default=-9999];
+
+}
+
+message  WorldServerRpcAgreeTeamApplicantAsk
+{
+	optional uint64 RoleId = 1[default=0];
+	optional uint64 LeaderRoleId = 3[default=0];
+	optional sint32 Result = 4[default=-9999];
+	optional sint32 MemId = 5[default=-1];
+	optional sint32 SceneId = 6[default=-1];
+	optional TeamInfo Team = 7;
+
+}
+
+message  WorldServerRpcAgreeTeamApplicantReply
+{
+	optional sint32 Result = 1[default=-9999];
+
+}
+
+message  WorldServerRpcLoginAsk
+{
+	optional TeamInfo Team = 1;
+	optional sint32 MemId = 2[default=-1];
+	optional sint32 SceneId = 3[default=-1];
+	optional OnlineUserInfo RoleInfo = 4;
+
+}
+
+message  WorldServerRpcLoginReply
+{
+	optional sint32 Result = 1[default=-9999];
+
+}
+
+message  WorldServerRpcUpdateRoleInfoAsk
+{
+	optional OnlineUserInfo RoleInfo = 1;
+
+}
+
+message  WorldServerRpcUpdateRoleInfoReply
+{
+	optional sint32 Result = 1[default=-9999];
+
+}
+
+message  WorldServerRpcLogoutAsk
+{
+	optional OnlineUserInfo RoleInfo = 1;
+
+}
+
+message  WorldServerRpcLogoutReply
+{
+	optional sint32 Result = 1[default=-9999];
+
+}
+
+message  WorldServerRpcCreateDungeonNotifyAsk
+{
+	optional sint32 CurSceneId = 1[default=-1];
+	optional uint64 RoleId = 2[default=0];
+	optional sint32 MemId = 3[default=-1];
+	optional sint32 TargetSceneId = 5[default=-1];
+
+}
+
+message  WorldServerRpcCreateDungeonNotifyReply
+{
+	optional sint32 Result = 1[default=-9999];
+
+}
+
+message  WorldServerRpcExitDungeonAsk
+{
+	optional uint64 RoleId = 1[default=0];
+
+}
+
+message  WorldServerRpcExitDungeonReply
+{
+	optional sint32 Result = 1[default=-9999];
+
+}
+
+message  WorldServerRpcReleaseDungeonAsk
+{
+
+}
+
+message  WorldServerRpcReleaseDungeonReply
 {
 	optional sint32 Result = 1[default=-9999];
 

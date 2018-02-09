@@ -1,4 +1,4 @@
-﻿/********************************************************************************************
+/********************************************************************************************
 * Copyright (C), 2011-2025, Ambition. Co., Ltd.
 * FileName:     CliRpcBaseAttrImp.cpp
 * Author:       郭晓波
@@ -30,6 +30,19 @@ static int ModuleBaseAttr::RpcSyncData( CPlayer* pPlayer, CPacket* pPacket)
 	//设置返回结果
 	Reply.SetResult(0);
 	return 0;
+}
+
+/********************************************************************************************
+* Function:       SendToClientSync
+* Description:    基础数据-->数据推送异步通知操作函数
+* Input:          BaseAttrRpcSyncNotifyWraper& Notify 数据推送通知
+* Input:          INT64 UserId 需要通知到的用户ID
+* Output:         无
+* Return:         无
+********************************************************************************************/
+void ModuleBaseAttr::SendToClientSync( INT64 UserId, BaseAttrRpcSyncNotifyWraper& Notify )
+{
+	MsgStreamMgr::Instance().SendMsg( UserId, 0, Notify );
 }
 
 

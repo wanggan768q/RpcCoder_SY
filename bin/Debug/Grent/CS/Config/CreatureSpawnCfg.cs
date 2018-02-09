@@ -19,6 +19,7 @@ public class CreatureSpawnElement
 	public int refresh_type;     	//NPC死亡后的刷新类型	NPC死亡后的刷新类型
 	public string animation_default;	//默认动画路径	默认动画路径
 	public string animation_delay;	//动画延迟时间	动画延迟时间
+	public string waypoint_id;   	//该NPC的起始路点	该NPC的起始路点
 
 	public bool IsValidate = false;
 	public CreatureSpawnElement()
@@ -111,7 +112,7 @@ public class CreatureSpawnTable
             vecLine.Add(tmpStr);
             vecHeadType.Add(tmpInt);
 		}
-		if(vecLine.Count != 10)
+		if(vecLine.Count != 11)
 		{
 			Ex.Logger.Log("CreatureSpawn.csv中列数量与生成的代码不匹配!");
 			return false;
@@ -126,6 +127,7 @@ public class CreatureSpawnTable
 		if(vecLine[7]!="refresh_type"){Ex.Logger.Log("CreatureSpawn.csv中字段[refresh_type]位置不对应"); return false; }
 		if(vecLine[8]!="animation_default"){Ex.Logger.Log("CreatureSpawn.csv中字段[animation_default]位置不对应"); return false; }
 		if(vecLine[9]!="animation_delay"){Ex.Logger.Log("CreatureSpawn.csv中字段[animation_delay]位置不对应"); return false; }
+		if(vecLine[10]!="waypoint_id"){Ex.Logger.Log("CreatureSpawn.csv中字段[waypoint_id]位置不对应"); return false; }
 
 		for(int i=0; i<nRow; i++)
 		{
@@ -140,6 +142,7 @@ public class CreatureSpawnTable
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.refresh_type );
 			readPos += GameAssist.ReadString( binContent, readPos, out member.animation_default);
 			readPos += GameAssist.ReadString( binContent, readPos, out member.animation_delay);
+			readPos += GameAssist.ReadString( binContent, readPos, out member.waypoint_id);
 
 			member.IsValidate = true;
 			m_vecAllElements.Add(member);
@@ -156,7 +159,7 @@ public class CreatureSpawnTable
 		int contentOffset = 0;
 		List<string> vecLine;
 		vecLine = GameAssist.readCsvLine( strContent, ref contentOffset );
-		if(vecLine.Count != 10)
+		if(vecLine.Count != 11)
 		{
 			Ex.Logger.Log("CreatureSpawn.csv中列数量与生成的代码不匹配!");
 			return false;
@@ -171,13 +174,14 @@ public class CreatureSpawnTable
 		if(vecLine[7]!="refresh_type"){Ex.Logger.Log("CreatureSpawn.csv中字段[refresh_type]位置不对应"); return false; }
 		if(vecLine[8]!="animation_default"){Ex.Logger.Log("CreatureSpawn.csv中字段[animation_default]位置不对应"); return false; }
 		if(vecLine[9]!="animation_delay"){Ex.Logger.Log("CreatureSpawn.csv中字段[animation_delay]位置不对应"); return false; }
+		if(vecLine[10]!="waypoint_id"){Ex.Logger.Log("CreatureSpawn.csv中字段[waypoint_id]位置不对应"); return false; }
 
 		while(true)
 		{
 			vecLine = GameAssist.readCsvLine( strContent, ref contentOffset );
 			if((int)vecLine.Count == 0 )
 				break;
-			if((int)vecLine.Count != (int)10)
+			if((int)vecLine.Count != (int)11)
 			{
 				return false;
 			}
@@ -192,6 +196,7 @@ public class CreatureSpawnTable
 			member.refresh_type=Convert.ToInt32(vecLine[7]);
 			member.animation_default=vecLine[8];
 			member.animation_delay=vecLine[9];
+			member.waypoint_id=vecLine[10];
 
 			member.IsValidate = true;
 			m_vecAllElements.Add(member);

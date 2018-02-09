@@ -1,0 +1,97 @@
+/********************************************************************************************
+* Copyright (C), 2011-2025, Ambition. Co., Ltd.
+* FileName:     ModuleChat.h
+* Author:       郭晓波
+* Description:  Chat类，包含以下内容
+*               ★模块基本信息函数
+*               ★初始化结束回调函数
+*               ★时间相当回调函数
+*               ★用户创建上下线回调函数
+*               ★模块数据修改及同步回调函数
+*               ★服务器后台RPC函数
+*               ★客户端RPC函数
+* Version:      1.0
+* History:
+* <author>  <time>   <version >   <desc>
+* 
+********************************************************************************************/
+
+#ifndef __MODULE_CHAT_H
+#define __MODULE_CHAT_H
+
+
+#include "PacketFactory.h"
+#include "include/PacketMgr.h"
+#include "ChatRpc.pb.h"
+#include <memory>
+
+
+
+
+
+class CPlayer;
+class CPacket;
+
+extern std::unique_ptr<PacketMgr> g_pPacketMgr;
+
+//Chat实现类
+class ModuleChat
+{
+	
+public:
+	//Chat类的枚举定义
+	enum ConstChatE
+	{
+	MODULE_ID_CHAT                               = 13,	//Chat模块ID
+	RPC_CODE_CHAT_CHAT_REQUEST                   = 1351,	//Chat-->Chat-->请求
+	RPC_CODE_CHAT_PUSHCHATUPDATES_NOTIFY         = 1352,	//Chat-->PushChatUpdates-->通知
+
+	};
+
+public:
+	//Chat实现类构造函数
+	ModuleChat()
+	{
+	g_pPacketMgr->registerHandle(	RPC_CODE_CHAT_CHAT_REQUEST, &ModuleChat::RpcChat);
+	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_CHAT_CHAT_REQUEST, new Some_Factory<ChatRpcChatAsk>());
+
+	}
+	
+	//Chat实现类析构函数
+	~ModuleChat(){}
+
+
+	static ModuleChat Instance()
+	{
+		static ModuleChat sInstance;
+		return sInstance;
+	}
+	
+	bool Initialize();
+
+public:
+	/********************************************************************************************
+	* Function:       RpcChat
+	* Description:    Chat-->Chat同步调用操作函数
+	* Input:          ChatRpcChatAskWraper& Ask Chat请求
+	* Output:         ChatRpcChatReplyWraper& Reply Chat回应
+	* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+	*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+	********************************************************************************************/
+	static int RpcChat( CPlayer* pPlayer, CPacket* pPacket );
+
+	/********************************************************************************************
+	* Function:       SendToClientPushChatUpdates
+	* Description:    Chat-->PushChatUpdates异步通知操作函数
+	* Input:          ChatRpcPushChatUpdatesNotifyWraper& Notify PushChatUpdates通知
+	* Input:          INT64 UserId 需要通知到的用户ID
+	* Output:         无
+	* Return:         无
+	********************************************************************************************/
+	//virtual void SendToClientPushChatUpdates( INT64 UserId, ChatRpcPushChatUpdatesNotifyWraper& Notify );
+
+
+
+};
+
+#endif

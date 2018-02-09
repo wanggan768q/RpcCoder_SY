@@ -187,48 +187,56 @@ public class EventRpcStopMoveNotifyWraper
 
 
 };
-//Boss死亡通知封装类
+//属性改变通知封装类
 [System.Serializable]
-public class EventRpcBossDiedNotifyWraper
+public class EventRpcObjAttrChangeNotifyWraper
 {
 
 	//构造函数
-	public EventRpcBossDiedNotifyWraper()
+	public EventRpcObjAttrChangeNotifyWraper()
 	{
-		 m_SceneId = -1;
+		 m_Speed = (float)-1;
+		 m_Hp = -1;
+		 m_Status = -1;
+		 m_ConfigId = -1;
 		 m_ObjId = -1;
-		 m_IsEndingBoss = false;
 
 	}
 
 	//重置函数
 	public void ResetWraper()
 	{
-		 m_SceneId = -1;
+		 m_Speed = (float)-1;
+		 m_Hp = -1;
+		 m_Status = -1;
+		 m_ConfigId = -1;
 		 m_ObjId = -1;
-		 m_IsEndingBoss = false;
 
 	}
 
  	//转化成Protobuffer类型函数
-	public EventRpcBossDiedNotify ToPB()
+	public EventRpcObjAttrChangeNotify ToPB()
 	{
-		EventRpcBossDiedNotify v = new EventRpcBossDiedNotify();
-		v.SceneId = m_SceneId;
+		EventRpcObjAttrChangeNotify v = new EventRpcObjAttrChangeNotify();
+		v.Speed = m_Speed;
+		v.Hp = m_Hp;
+		v.Status = m_Status;
+		v.ConfigId = m_ConfigId;
 		v.ObjId = m_ObjId;
-		v.IsEndingBoss = m_IsEndingBoss;
 
 		return v;
 	}
 	
 	//从Protobuffer类型初始化
-	public void FromPB(EventRpcBossDiedNotify v)
+	public void FromPB(EventRpcObjAttrChangeNotify v)
 	{
         if (v == null)
             return;
-		m_SceneId = v.SceneId;
+		m_Speed = v.Speed;
+		m_Hp = v.Hp;
+		m_Status = v.Status;
+		m_ConfigId = v.ConfigId;
 		m_ObjId = v.ObjId;
-		m_IsEndingBoss = v.IsEndingBoss;
 
 	}
 	
@@ -236,38 +244,52 @@ public class EventRpcBossDiedNotifyWraper
 	public MemoryStream ToMemoryStream()
 	{
 		MemoryStream protoMS = new MemoryStream();
-		ProtoBuf.Serializer.Serialize<EventRpcBossDiedNotify>(protoMS, ToPB());
+		ProtoBuf.Serializer.Serialize<EventRpcObjAttrChangeNotify>(protoMS, ToPB());
 		return protoMS;
 	}
 	
 	//Protobuffer从MemoryStream进行反序列化
 	public bool FromMemoryStream(MemoryStream protoMS)
 	{
-		EventRpcBossDiedNotify pb = ProtoBuf.Serializer.Deserialize<EventRpcBossDiedNotify>(protoMS);
+		EventRpcObjAttrChangeNotify pb = ProtoBuf.Serializer.Deserialize<EventRpcObjAttrChangeNotify>(protoMS);
 		FromPB(pb);
 		return true;
 	}
 
-	//boss死亡的场景id
-	public int m_SceneId;
-	public int SceneId
+	//speed
+	public float m_Speed;
+	public float Speed
 	{
-		get { return m_SceneId;}
-		set { m_SceneId = value; }
+		get { return m_Speed;}
+		set { m_Speed = value; }
 	}
-	//Boss的ObjId
+	//Hp
+	public Int64 m_Hp;
+	public Int64 Hp
+	{
+		get { return m_Hp;}
+		set { m_Hp = value; }
+	}
+	//状态
+	public int m_Status;
+	public int Status
+	{
+		get { return m_Status;}
+		set { m_Status = value; }
+	}
+	//NpcId改变
+	public int m_ConfigId;
+	public int ConfigId
+	{
+		get { return m_ConfigId;}
+		set { m_ConfigId = value; }
+	}
+	//对象id
 	public int m_ObjId;
 	public int ObjId
 	{
 		get { return m_ObjId;}
 		set { m_ObjId = value; }
-	}
-	//是否是最终boss
-	public bool m_IsEndingBoss;
-	public bool IsEndingBoss
-	{
-		get { return m_IsEndingBoss;}
-		set { m_IsEndingBoss = value; }
 	}
 
 

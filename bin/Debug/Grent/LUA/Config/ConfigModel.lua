@@ -3,17 +3,20 @@ local ModuleId = 1;
 
 
 
-
-
 local require = require
 local table = table
 local tostring = tostring
 local MLayerMgr = HS_MLayerMgr
 local typeof = typeof
 local ipairs = ipairs
+local print = print
 require("3rd/pblua/ConfigRpc_pb")
 local  ConfigRpc_pb = ConfigRpc_pb
 module("ConfigModel")
+
+
+
+
 
 function handler(obj,method)
 	return function ( ... )
@@ -22,7 +25,11 @@ function handler(obj,method)
 end
 
 local function dataCallback(self,Id,Index)
-
+	if nil ~= self.DataCallback then
+		for i,callback in ipairs(self.DataCallback ) do
+			callback(Id,Index)
+		end
+	end
 end
 
 local function showNetTip(self)
@@ -37,7 +44,7 @@ end
 function Initialize(self)
 	self.rpc_pb = ConfigRpc_pb
   --注册
-  MLayerMgr.RegUpdateHd(ModuleId, handler(self,self.UpdateField))
+  --MLayerMgr.RegUpdateHd(ModuleId, handler(self,self.UpdateField))
 
   
 
@@ -45,10 +52,8 @@ function Initialize(self)
 end
 
 -- 更新数据
-function UpdateField(self,Id, data, Index, len)
+function UpdateField(self,uf)
 
-	
-	dataCallback(self,Id,Index)
 end
 
 
@@ -58,9 +63,30 @@ end
 
 
 
+function registerDataCallback(self,_hanlder)
+	if not self.DataCallback then
+		self.DataCallback = {}
+	end
+	table.insert(self.DataCallback,_hanlder)
+end
 
+function unregisterDataCallback(self,_hanlder)
+	if nil ~= self.DataCallback then
+		for i,callback in ipairs(self.DataCallback ) do
+			if callback == _hanlder then
+				table.remove(self.DataCallback, i )
+			end
+		end
+	end
+end
+
+function GetValue(self, Id,Index )
+	-- body
+	
+end
 
 --[[
 askList.Config = {}
 
 --]]
+

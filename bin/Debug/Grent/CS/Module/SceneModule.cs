@@ -20,12 +20,16 @@ public class SceneRPC
 {
 	public const int ModuleId = 3;
 	
-	public const int RPC_CODE_SCENE_ENTERSCENE_REQUEST = 351;
-	public const int RPC_CODE_SCENE_LOADSCENECOMPLETE_REQUEST = 352;
-	public const int RPC_CODE_SCENE_DELETEPLAYER_NOTIFY = 353;
-	public const int RPC_CODE_SCENE_CONNECTGAMESERVER_REQUEST = 354;
-	public const int RPC_CODE_SCENE_CHANGESCENE_REQUEST = 355;
-	public const int RPC_CODE_SCENE_NEWOBJ_NOTIFY = 356;
+	public const int RPC_CODE_SCENE_LOADSCENECOMPLETE_REQUEST = 351;
+	public const int RPC_CODE_SCENE_DELETEPLAYER_NOTIFY = 352;
+	public const int RPC_CODE_SCENE_CONNECTGAMESERVER_REQUEST = 353;
+	public const int RPC_CODE_SCENE_CHANGESCENE_REQUEST = 354;
+	public const int RPC_CODE_SCENE_CREATEOBJ_NOTIFY = 355;
+	public const int RPC_CODE_SCENE_SURROUNDINGHUMAN_REQUEST = 356;
+	public const int RPC_CODE_SCENE_CENTERSCENE_NOTIFY = 357;
+	public const int RPC_CODE_SCENE_SENTERSCENE_NOTIFY = 358;
+	public const int RPC_CODE_SCENE_OBJDIE_NOTIFY = 359;
+	public const int RPC_CODE_SCENE_COLLIDE_CHANGESCENE_REQUEST = 360;
 
 	
 	private static SceneRPC m_Instance = null;
@@ -49,31 +53,29 @@ public class SceneRPC
 		Singleton<GameSocket>.Instance.RegisterSyncUpdate( ModuleId, SceneData.Instance.UpdateField );
 		
 		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_SCENE_DELETEPLAYER_NOTIFY, DeletePlayerCB);
-		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_SCENE_NEWOBJ_NOTIFY, NewObjCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_SCENE_CREATEOBJ_NOTIFY, CreateObjCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_SCENE_SENTERSCENE_NOTIFY, SEnterSceneCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_SCENE_OBJDIE_NOTIFY, ObjDieCB);
 
 
 		return true;
 	}
 
-
 	/**
-	*场景模块-->进入场景 RPC请求
+	*场景模块-->进入场景 RPC通知
 	*/
-	public void EnterScene(UInt64 RoleId, int SceneId, ReplyHandler replyCB)
+	public void CEnterScene(int SceneId, int MapId)
 	{
-		SceneRpcEnterSceneAskWraper askPBWraper = new SceneRpcEnterSceneAskWraper();
-		askPBWraper.RoleId = RoleId;
-		askPBWraper.SceneId = SceneId;
-		ModMessage askMsg = new ModMessage();
-		askMsg.MsgNum = RPC_CODE_SCENE_ENTERSCENE_REQUEST;
-		askMsg.protoMS = askPBWraper.ToMemoryStream();
+		SceneRpcCEnterSceneNotifyWraper notifyPBWraper = new SceneRpcCEnterSceneNotifyWraper();
+		notifyPBWraper.SceneId = SceneId;
+		notifyPBWraper.MapId = MapId;
+		ModMessage notifyMsg = new ModMessage();
+		notifyMsg.MsgNum = RPC_CODE_SCENE_CENTERSCENE_NOTIFY;
+		notifyMsg.protoMS = notifyPBWraper.ToMemoryStream();
 
-		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
-			SceneRpcEnterSceneReplyWraper replyPBWraper = new SceneRpcEnterSceneReplyWraper();
-			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
-			replyCB(replyPBWraper);
-		});
+		Singleton<GameSocket>.Instance.SendNotify(notifyMsg);
 	}
+
 
 	/**
 	*场景模块-->进入场景完成 RPC请求
@@ -133,6 +135,41 @@ public class SceneRPC
 		});
 	}
 
+	/**
+	*场景模块-->SurroundingHuman RPC请求
+	*/
+	public void SurroundingHuman(ReplyHandler replyCB)
+	{
+		SceneRpcSurroundingHumanAskWraper askPBWraper = new SceneRpcSurroundingHumanAskWraper();
+		ModMessage askMsg = new ModMessage();
+		askMsg.MsgNum = RPC_CODE_SCENE_SURROUNDINGHUMAN_REQUEST;
+		askMsg.protoMS = askPBWraper.ToMemoryStream();
+
+		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
+			SceneRpcSurroundingHumanReplyWraper replyPBWraper = new SceneRpcSurroundingHumanReplyWraper();
+			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
+			replyCB(replyPBWraper);
+		});
+	}
+
+	/**
+	*场景模块-->collide 场景切换 RPC请求
+	*/
+	public void Collide_ChangeScene(int Collide_id, ReplyHandler replyCB)
+	{
+		SceneRpcCollide_ChangeSceneAskWraper askPBWraper = new SceneRpcCollide_ChangeSceneAskWraper();
+		askPBWraper.Collide_id = Collide_id;
+		ModMessage askMsg = new ModMessage();
+		askMsg.MsgNum = RPC_CODE_SCENE_COLLIDE_CHANGESCENE_REQUEST;
+		askMsg.protoMS = askPBWraper.ToMemoryStream();
+
+		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
+			SceneRpcCollide_ChangeSceneReplyWraper replyPBWraper = new SceneRpcCollide_ChangeSceneReplyWraper();
+			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
+			replyCB(replyPBWraper);
+		});
+	}
+
 
 	/**
 	*场景模块-->玩家离开视野 服务器通知回调
@@ -146,16 +183,38 @@ public class SceneRPC
 	}
 	public static ServerNotifyCallback DeletePlayerCBDelegate = null;
 	/**
-	*场景模块-->新物体 服务器通知回调
+	*场景模块-->创建物体 服务器通知回调
 	*/
-	public static void NewObjCB( ModMessage notifyMsg )
+	public static void CreateObjCB( ModMessage notifyMsg )
 	{
-		SceneRpcNewObjNotifyWraper notifyPBWraper = new SceneRpcNewObjNotifyWraper();
+		SceneRpcCreateObjNotifyWraper notifyPBWraper = new SceneRpcCreateObjNotifyWraper();
 		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
-		if( NewObjCBDelegate != null )
-			NewObjCBDelegate( notifyPBWraper );
+		if( CreateObjCBDelegate != null )
+			CreateObjCBDelegate( notifyPBWraper );
 	}
-	public static ServerNotifyCallback NewObjCBDelegate = null;
+	public static ServerNotifyCallback CreateObjCBDelegate = null;
+	/**
+	*场景模块-->进入场景返回 服务器通知回调
+	*/
+	public static void SEnterSceneCB( ModMessage notifyMsg )
+	{
+		SceneRpcSEnterSceneNotifyWraper notifyPBWraper = new SceneRpcSEnterSceneNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( SEnterSceneCBDelegate != null )
+			SEnterSceneCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback SEnterSceneCBDelegate = null;
+	/**
+	*场景模块-->ObjDie 服务器通知回调
+	*/
+	public static void ObjDieCB( ModMessage notifyMsg )
+	{
+		SceneRpcObjDieNotifyWraper notifyPBWraper = new SceneRpcObjDieNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( ObjDieCBDelegate != null )
+			ObjDieCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback ObjDieCBDelegate = null;
 
 
 

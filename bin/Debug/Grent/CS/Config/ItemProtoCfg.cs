@@ -9,7 +9,7 @@ using System.Collections.Generic;
 //道具原型配置数据类
 public class ItemProtoElement
 {
-	public int id;               	//道具ID	在中转中表示战士所获得的道具id
+	public int id;               	//道具ID	在中转中表示圣骑士所获得的道具id
 	public string comment;       	//道具注释	策划用
 	public int name;             	//道具名称	文本id
 	public int description;      	//道具描述	文本id
@@ -24,11 +24,7 @@ public class ItemProtoElement
 	public int exchange_init;    	//交易初始价格	对应金币价格
 	public int exchange_currency;	//交易货币类型	0通用 1交易货币 2硬货币
 	public int occupation;       	//职业限制	二进制位运算转成的十进制数，从最高位到最低位对应 【战士】=32 【刺客】=16 【游侠】=8 【魔法师】=4 【圣骑士】=2 【神秘使】=1
-	public int transfer_id_1;    	//中转【刺客】id	进行道具中专时 对应的【刺客】道具id
-	public int transfer_id_2;    	//中转【游侠】id	进行道具中专时 对应的【游侠】道具id
-	public int transfer_id_3;    	//中转【魔法师】id	进行道具中专时 对应的【魔法师】道具id
-	public int transfer_id_4;    	//中转【圣骑士】id	进行道具中专时 对应的【圣骑士】道具id
-	public int transfer_id_5;    	//中转【神秘使】id	进行道具中专时 对应的【神秘使】道具id
+	public li transfer_id;       	//中转id	进行道具中专时 对应的道具 按照顺序代表【法师】【游侠】【神秘使】【战士】
 	public int stack;            	//堆叠数量	1~65535
 	public int bind;             	//绑定形式	0不绑定 1拾取绑定 2使用绑定
 	public int merge_item;       	//对应绑定道具	非绑定道具合并时转化为对应id的道具  0表示不会转化
@@ -137,7 +133,7 @@ public class ItemProtoTable
             vecLine.Add(tmpStr);
             vecHeadType.Add(tmpInt);
 		}
-		if(vecLine.Count != 36)
+		if(vecLine.Count != 32)
 		{
 			Ex.Logger.Log("ItemProto.csv中列数量与生成的代码不匹配!");
 			return false;
@@ -157,27 +153,23 @@ public class ItemProtoTable
 		if(vecLine[12]!="exchange_init"){Ex.Logger.Log("ItemProto.csv中字段[exchange_init]位置不对应"); return false; }
 		if(vecLine[13]!="exchange_currency"){Ex.Logger.Log("ItemProto.csv中字段[exchange_currency]位置不对应"); return false; }
 		if(vecLine[14]!="occupation"){Ex.Logger.Log("ItemProto.csv中字段[occupation]位置不对应"); return false; }
-		if(vecLine[15]!="transfer_id_1"){Ex.Logger.Log("ItemProto.csv中字段[transfer_id_1]位置不对应"); return false; }
-		if(vecLine[16]!="transfer_id_2"){Ex.Logger.Log("ItemProto.csv中字段[transfer_id_2]位置不对应"); return false; }
-		if(vecLine[17]!="transfer_id_3"){Ex.Logger.Log("ItemProto.csv中字段[transfer_id_3]位置不对应"); return false; }
-		if(vecLine[18]!="transfer_id_4"){Ex.Logger.Log("ItemProto.csv中字段[transfer_id_4]位置不对应"); return false; }
-		if(vecLine[19]!="transfer_id_5"){Ex.Logger.Log("ItemProto.csv中字段[transfer_id_5]位置不对应"); return false; }
-		if(vecLine[20]!="stack"){Ex.Logger.Log("ItemProto.csv中字段[stack]位置不对应"); return false; }
-		if(vecLine[21]!="bind"){Ex.Logger.Log("ItemProto.csv中字段[bind]位置不对应"); return false; }
-		if(vecLine[22]!="merge_item"){Ex.Logger.Log("ItemProto.csv中字段[merge_item]位置不对应"); return false; }
-		if(vecLine[23]!="pickup_type"){Ex.Logger.Log("ItemProto.csv中字段[pickup_type]位置不对应"); return false; }
-		if(vecLine[24]!="item_effect"){Ex.Logger.Log("ItemProto.csv中字段[item_effect]位置不对应"); return false; }
-		if(vecLine[25]!="required_scene"){Ex.Logger.Log("ItemProto.csv中字段[required_scene]位置不对应"); return false; }
-		if(vecLine[26]!="use_destory"){Ex.Logger.Log("ItemProto.csv中字段[use_destory]位置不对应"); return false; }
-		if(vecLine[27]!="batch_use"){Ex.Logger.Log("ItemProto.csv中字段[batch_use]位置不对应"); return false; }
-		if(vecLine[28]!="use_when_dead"){Ex.Logger.Log("ItemProto.csv中字段[use_when_dead]位置不对应"); return false; }
-		if(vecLine[29]!="timer_type"){Ex.Logger.Log("ItemProto.csv中字段[timer_type]位置不对应"); return false; }
-		if(vecLine[30]!="life_time"){Ex.Logger.Log("ItemProto.csv中字段[life_time]位置不对应"); return false; }
-		if(vecLine[31]!="expire_time"){Ex.Logger.Log("ItemProto.csv中字段[expire_time]位置不对应"); return false; }
-		if(vecLine[32]!="cross_scene_destory"){Ex.Logger.Log("ItemProto.csv中字段[cross_scene_destory]位置不对应"); return false; }
-		if(vecLine[33]!="store_type"){Ex.Logger.Log("ItemProto.csv中字段[store_type]位置不对应"); return false; }
-		if(vecLine[34]!="tag"){Ex.Logger.Log("ItemProto.csv中字段[tag]位置不对应"); return false; }
-		if(vecLine[35]!="pickup_notice"){Ex.Logger.Log("ItemProto.csv中字段[pickup_notice]位置不对应"); return false; }
+		if(vecLine[15]!="transfer_id"){Ex.Logger.Log("ItemProto.csv中字段[transfer_id]位置不对应"); return false; }
+		if(vecLine[16]!="stack"){Ex.Logger.Log("ItemProto.csv中字段[stack]位置不对应"); return false; }
+		if(vecLine[17]!="bind"){Ex.Logger.Log("ItemProto.csv中字段[bind]位置不对应"); return false; }
+		if(vecLine[18]!="merge_item"){Ex.Logger.Log("ItemProto.csv中字段[merge_item]位置不对应"); return false; }
+		if(vecLine[19]!="pickup_type"){Ex.Logger.Log("ItemProto.csv中字段[pickup_type]位置不对应"); return false; }
+		if(vecLine[20]!="item_effect"){Ex.Logger.Log("ItemProto.csv中字段[item_effect]位置不对应"); return false; }
+		if(vecLine[21]!="required_scene"){Ex.Logger.Log("ItemProto.csv中字段[required_scene]位置不对应"); return false; }
+		if(vecLine[22]!="use_destory"){Ex.Logger.Log("ItemProto.csv中字段[use_destory]位置不对应"); return false; }
+		if(vecLine[23]!="batch_use"){Ex.Logger.Log("ItemProto.csv中字段[batch_use]位置不对应"); return false; }
+		if(vecLine[24]!="use_when_dead"){Ex.Logger.Log("ItemProto.csv中字段[use_when_dead]位置不对应"); return false; }
+		if(vecLine[25]!="timer_type"){Ex.Logger.Log("ItemProto.csv中字段[timer_type]位置不对应"); return false; }
+		if(vecLine[26]!="life_time"){Ex.Logger.Log("ItemProto.csv中字段[life_time]位置不对应"); return false; }
+		if(vecLine[27]!="expire_time"){Ex.Logger.Log("ItemProto.csv中字段[expire_time]位置不对应"); return false; }
+		if(vecLine[28]!="cross_scene_destory"){Ex.Logger.Log("ItemProto.csv中字段[cross_scene_destory]位置不对应"); return false; }
+		if(vecLine[29]!="store_type"){Ex.Logger.Log("ItemProto.csv中字段[store_type]位置不对应"); return false; }
+		if(vecLine[30]!="tag"){Ex.Logger.Log("ItemProto.csv中字段[tag]位置不对应"); return false; }
+		if(vecLine[31]!="pickup_notice"){Ex.Logger.Log("ItemProto.csv中字段[pickup_notice]位置不对应"); return false; }
 
 		for(int i=0; i<nRow; i++)
 		{
@@ -197,11 +189,7 @@ public class ItemProtoTable
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.exchange_init );
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.exchange_currency );
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.occupation );
-			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.transfer_id_1 );
-			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.transfer_id_2 );
-			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.transfer_id_3 );
-			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.transfer_id_4 );
-			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.transfer_id_5 );
+			readPos += GameAssist.ReadString( binContent, readPos, out member.transfer_id);
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.stack );
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.bind );
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.merge_item );
@@ -234,7 +222,7 @@ public class ItemProtoTable
 		int contentOffset = 0;
 		List<string> vecLine;
 		vecLine = GameAssist.readCsvLine( strContent, ref contentOffset );
-		if(vecLine.Count != 36)
+		if(vecLine.Count != 32)
 		{
 			Ex.Logger.Log("ItemProto.csv中列数量与生成的代码不匹配!");
 			return false;
@@ -254,34 +242,30 @@ public class ItemProtoTable
 		if(vecLine[12]!="exchange_init"){Ex.Logger.Log("ItemProto.csv中字段[exchange_init]位置不对应"); return false; }
 		if(vecLine[13]!="exchange_currency"){Ex.Logger.Log("ItemProto.csv中字段[exchange_currency]位置不对应"); return false; }
 		if(vecLine[14]!="occupation"){Ex.Logger.Log("ItemProto.csv中字段[occupation]位置不对应"); return false; }
-		if(vecLine[15]!="transfer_id_1"){Ex.Logger.Log("ItemProto.csv中字段[transfer_id_1]位置不对应"); return false; }
-		if(vecLine[16]!="transfer_id_2"){Ex.Logger.Log("ItemProto.csv中字段[transfer_id_2]位置不对应"); return false; }
-		if(vecLine[17]!="transfer_id_3"){Ex.Logger.Log("ItemProto.csv中字段[transfer_id_3]位置不对应"); return false; }
-		if(vecLine[18]!="transfer_id_4"){Ex.Logger.Log("ItemProto.csv中字段[transfer_id_4]位置不对应"); return false; }
-		if(vecLine[19]!="transfer_id_5"){Ex.Logger.Log("ItemProto.csv中字段[transfer_id_5]位置不对应"); return false; }
-		if(vecLine[20]!="stack"){Ex.Logger.Log("ItemProto.csv中字段[stack]位置不对应"); return false; }
-		if(vecLine[21]!="bind"){Ex.Logger.Log("ItemProto.csv中字段[bind]位置不对应"); return false; }
-		if(vecLine[22]!="merge_item"){Ex.Logger.Log("ItemProto.csv中字段[merge_item]位置不对应"); return false; }
-		if(vecLine[23]!="pickup_type"){Ex.Logger.Log("ItemProto.csv中字段[pickup_type]位置不对应"); return false; }
-		if(vecLine[24]!="item_effect"){Ex.Logger.Log("ItemProto.csv中字段[item_effect]位置不对应"); return false; }
-		if(vecLine[25]!="required_scene"){Ex.Logger.Log("ItemProto.csv中字段[required_scene]位置不对应"); return false; }
-		if(vecLine[26]!="use_destory"){Ex.Logger.Log("ItemProto.csv中字段[use_destory]位置不对应"); return false; }
-		if(vecLine[27]!="batch_use"){Ex.Logger.Log("ItemProto.csv中字段[batch_use]位置不对应"); return false; }
-		if(vecLine[28]!="use_when_dead"){Ex.Logger.Log("ItemProto.csv中字段[use_when_dead]位置不对应"); return false; }
-		if(vecLine[29]!="timer_type"){Ex.Logger.Log("ItemProto.csv中字段[timer_type]位置不对应"); return false; }
-		if(vecLine[30]!="life_time"){Ex.Logger.Log("ItemProto.csv中字段[life_time]位置不对应"); return false; }
-		if(vecLine[31]!="expire_time"){Ex.Logger.Log("ItemProto.csv中字段[expire_time]位置不对应"); return false; }
-		if(vecLine[32]!="cross_scene_destory"){Ex.Logger.Log("ItemProto.csv中字段[cross_scene_destory]位置不对应"); return false; }
-		if(vecLine[33]!="store_type"){Ex.Logger.Log("ItemProto.csv中字段[store_type]位置不对应"); return false; }
-		if(vecLine[34]!="tag"){Ex.Logger.Log("ItemProto.csv中字段[tag]位置不对应"); return false; }
-		if(vecLine[35]!="pickup_notice"){Ex.Logger.Log("ItemProto.csv中字段[pickup_notice]位置不对应"); return false; }
+		if(vecLine[15]!="transfer_id"){Ex.Logger.Log("ItemProto.csv中字段[transfer_id]位置不对应"); return false; }
+		if(vecLine[16]!="stack"){Ex.Logger.Log("ItemProto.csv中字段[stack]位置不对应"); return false; }
+		if(vecLine[17]!="bind"){Ex.Logger.Log("ItemProto.csv中字段[bind]位置不对应"); return false; }
+		if(vecLine[18]!="merge_item"){Ex.Logger.Log("ItemProto.csv中字段[merge_item]位置不对应"); return false; }
+		if(vecLine[19]!="pickup_type"){Ex.Logger.Log("ItemProto.csv中字段[pickup_type]位置不对应"); return false; }
+		if(vecLine[20]!="item_effect"){Ex.Logger.Log("ItemProto.csv中字段[item_effect]位置不对应"); return false; }
+		if(vecLine[21]!="required_scene"){Ex.Logger.Log("ItemProto.csv中字段[required_scene]位置不对应"); return false; }
+		if(vecLine[22]!="use_destory"){Ex.Logger.Log("ItemProto.csv中字段[use_destory]位置不对应"); return false; }
+		if(vecLine[23]!="batch_use"){Ex.Logger.Log("ItemProto.csv中字段[batch_use]位置不对应"); return false; }
+		if(vecLine[24]!="use_when_dead"){Ex.Logger.Log("ItemProto.csv中字段[use_when_dead]位置不对应"); return false; }
+		if(vecLine[25]!="timer_type"){Ex.Logger.Log("ItemProto.csv中字段[timer_type]位置不对应"); return false; }
+		if(vecLine[26]!="life_time"){Ex.Logger.Log("ItemProto.csv中字段[life_time]位置不对应"); return false; }
+		if(vecLine[27]!="expire_time"){Ex.Logger.Log("ItemProto.csv中字段[expire_time]位置不对应"); return false; }
+		if(vecLine[28]!="cross_scene_destory"){Ex.Logger.Log("ItemProto.csv中字段[cross_scene_destory]位置不对应"); return false; }
+		if(vecLine[29]!="store_type"){Ex.Logger.Log("ItemProto.csv中字段[store_type]位置不对应"); return false; }
+		if(vecLine[30]!="tag"){Ex.Logger.Log("ItemProto.csv中字段[tag]位置不对应"); return false; }
+		if(vecLine[31]!="pickup_notice"){Ex.Logger.Log("ItemProto.csv中字段[pickup_notice]位置不对应"); return false; }
 
 		while(true)
 		{
 			vecLine = GameAssist.readCsvLine( strContent, ref contentOffset );
 			if((int)vecLine.Count == 0 )
 				break;
-			if((int)vecLine.Count != (int)36)
+			if((int)vecLine.Count != (int)32)
 			{
 				return false;
 			}
@@ -301,27 +285,23 @@ public class ItemProtoTable
 			member.exchange_init=Convert.ToInt32(vecLine[12]);
 			member.exchange_currency=Convert.ToInt32(vecLine[13]);
 			member.occupation=Convert.ToInt32(vecLine[14]);
-			member.transfer_id_1=Convert.ToInt32(vecLine[15]);
-			member.transfer_id_2=Convert.ToInt32(vecLine[16]);
-			member.transfer_id_3=Convert.ToInt32(vecLine[17]);
-			member.transfer_id_4=Convert.ToInt32(vecLine[18]);
-			member.transfer_id_5=Convert.ToInt32(vecLine[19]);
-			member.stack=Convert.ToInt32(vecLine[20]);
-			member.bind=Convert.ToInt32(vecLine[21]);
-			member.merge_item=Convert.ToInt32(vecLine[22]);
-			member.pickup_type=Convert.ToInt32(vecLine[23]);
-			member.item_effect=vecLine[24];
-			member.required_scene=Convert.ToInt32(vecLine[25]);
-			member.use_destory=Convert.ToInt32(vecLine[26]);
-			member.batch_use=Convert.ToInt32(vecLine[27]);
-			member.use_when_dead=Convert.ToInt32(vecLine[28]);
-			member.timer_type=Convert.ToInt32(vecLine[29]);
-			member.life_time=Convert.ToInt32(vecLine[30]);
-			member.expire_time=Convert.ToInt32(vecLine[31]);
-			member.cross_scene_destory=Convert.ToInt32(vecLine[32]);
-			member.store_type=Convert.ToInt32(vecLine[33]);
-			member.tag=Convert.ToInt32(vecLine[34]);
-			member.pickup_notice=Convert.ToInt32(vecLine[35]);
+			member.transfer_id=vecLine[15];
+			member.stack=Convert.ToInt32(vecLine[16]);
+			member.bind=Convert.ToInt32(vecLine[17]);
+			member.merge_item=Convert.ToInt32(vecLine[18]);
+			member.pickup_type=Convert.ToInt32(vecLine[19]);
+			member.item_effect=vecLine[20];
+			member.required_scene=Convert.ToInt32(vecLine[21]);
+			member.use_destory=Convert.ToInt32(vecLine[22]);
+			member.batch_use=Convert.ToInt32(vecLine[23]);
+			member.use_when_dead=Convert.ToInt32(vecLine[24]);
+			member.timer_type=Convert.ToInt32(vecLine[25]);
+			member.life_time=Convert.ToInt32(vecLine[26]);
+			member.expire_time=Convert.ToInt32(vecLine[27]);
+			member.cross_scene_destory=Convert.ToInt32(vecLine[28]);
+			member.store_type=Convert.ToInt32(vecLine[29]);
+			member.tag=Convert.ToInt32(vecLine[30]);
+			member.pickup_notice=Convert.ToInt32(vecLine[31]);
 
 			member.IsValidate = true;
 			m_vecAllElements.Add(member);

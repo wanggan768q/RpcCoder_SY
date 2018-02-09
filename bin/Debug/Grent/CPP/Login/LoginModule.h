@@ -1,4 +1,4 @@
-﻿/********************************************************************************************
+/********************************************************************************************
 * Copyright (C), 2011-2025, Ambition. Co., Ltd.
 * FileName:     ModuleLogin.h
 * Author:       郭晓波
@@ -49,6 +49,7 @@ public:
 	RPC_CODE_LOGIN_SELECTCHARACTER_REQUEST       = 254,	//登录模块-->选择角色-->请求
 	RPC_CODE_LOGIN_CREATECHARACTER_REQUEST       = 255,	//登录模块-->创建角色-->请求
 	RPC_CODE_LOGIN_SELECTSAVEUSER_REQUEST        = 256,	//登录模块-->选择角色存储redis-->请求
+	RPC_CODE_LOGIN_DELETECHARACTER_REQUEST       = 257,	//登录模块-->删除角色-->请求
 
 	};
 
@@ -68,6 +69,8 @@ public:
 	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_LOGIN_CREATECHARACTER_REQUEST, new Some_Factory<LoginRpcCreateCharacterAsk>());
 	g_pPacketMgr->registerHandle(	RPC_CODE_LOGIN_SELECTSAVEUSER_REQUEST, &ModuleLogin::RpcSelectSaveUser);
 	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_LOGIN_SELECTSAVEUSER_REQUEST, new Some_Factory<LoginRpcSelectSaveUserAsk>());
+	g_pPacketMgr->registerHandle(	RPC_CODE_LOGIN_DELETECHARACTER_REQUEST, &ModuleLogin::RpcDeleteCharacter);
+	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_LOGIN_DELETECHARACTER_REQUEST, new Some_Factory<LoginRpcDeleteCharacterAsk>());
 
 	}
 	
@@ -143,6 +146,16 @@ public:
 	*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
 	********************************************************************************************/
 	static int RpcSelectSaveUser( CPlayer* pPlayer, CPacket* pPacket );
+
+	/********************************************************************************************
+	* Function:       RpcDeleteCharacter
+	* Description:    登录模块-->删除角色同步调用操作函数
+	* Input:          LoginRpcDeleteCharacterAskWraper& Ask 删除角色请求
+	* Output:         LoginRpcDeleteCharacterReplyWraper& Reply 删除角色回应
+	* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+	*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+	********************************************************************************************/
+	static int RpcDeleteCharacter( CPlayer* pPlayer, CPacket* pPacket );
 
 
 

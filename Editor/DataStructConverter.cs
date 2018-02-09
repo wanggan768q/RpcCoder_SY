@@ -27,9 +27,11 @@
             Module module = instance.dataStruct.module;
             ArrayList list = new ArrayList { 
                 "bool",
+                "int32",
                 "sint32",
                 "float",
                 "sint64",
+                "int64",
                 "uint64",
                 "string",
                 "bytes"

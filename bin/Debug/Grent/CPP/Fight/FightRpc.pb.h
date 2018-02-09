@@ -33,6 +33,17 @@ void protobuf_AssignDesc_FightRpc_2eproto();
 void protobuf_ShutdownFile_FightRpc_2eproto();
 
 class FightRpcUseSkillActionNotify;
+class FightRpcShowExpActionNotify;
+class FightRpcBuffActionNotify;
+class FightRpcStateActionNotify;
+class FightRpcReviveActionNotify;
+class FightRpcComboSkillActionNotify;
+class FightRpcDropActionNotify;
+class FightRpcUseItemActionNotify;
+class FightRpcHpChangeActionNotify;
+class FightRpcUseSkillAsk;
+class FightRpcUseSkillReply;
+class FightRpcHurtActionNotify;
 
 // ===================================================================
 
@@ -90,6 +101,948 @@ class FightRpcUseSkillActionNotify : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
+  // optional sint32 ObjId = 8 [default = -1];
+  inline bool has_objid() const;
+  inline void clear_objid();
+  static const int kObjIdFieldNumber = 8;
+  inline ::google::protobuf::int32 objid() const;
+  inline void set_objid(::google::protobuf::int32 value);
+
+  // optional sint32 ObjTargetId = 9 [default = -1];
+  inline bool has_objtargetid() const;
+  inline void clear_objtargetid();
+  static const int kObjTargetIdFieldNumber = 9;
+  inline ::google::protobuf::int32 objtargetid() const;
+  inline void set_objtargetid(::google::protobuf::int32 value);
+
+  // optional sint32 SkillId = 10 [default = -1];
+  inline bool has_skillid() const;
+  inline void clear_skillid();
+  static const int kSkillIdFieldNumber = 10;
+  inline ::google::protobuf::int32 skillid() const;
+  inline void set_skillid(::google::protobuf::int32 value);
+
+  // optional float CastingDir = 11 [default = -1];
+  inline bool has_castingdir() const;
+  inline void clear_castingdir();
+  static const int kCastingDirFieldNumber = 11;
+  inline float castingdir() const;
+  inline void set_castingdir(float value);
+
+  // optional float X = 12 [default = -1];
+  inline bool has_x() const;
+  inline void clear_x();
+  static const int kXFieldNumber = 12;
+  inline float x() const;
+  inline void set_x(float value);
+
+  // optional float Y = 13 [default = -1];
+  inline bool has_y() const;
+  inline void clear_y();
+  static const int kYFieldNumber = 13;
+  inline float y() const;
+  inline void set_y(float value);
+
+  // optional float Z = 14 [default = -1];
+  inline bool has_z() const;
+  inline void clear_z();
+  static const int kZFieldNumber = 14;
+  inline float z() const;
+  inline void set_z(float value);
+
+  // optional sint32 MomentIndex = 15 [default = -1];
+  inline bool has_momentindex() const;
+  inline void clear_momentindex();
+  static const int kMomentIndexFieldNumber = 15;
+  inline ::google::protobuf::int32 momentindex() const;
+  inline void set_momentindex(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:FightRpcUseSkillActionNotify)
+ private:
+  inline void set_has_objid();
+  inline void clear_has_objid();
+  inline void set_has_objtargetid();
+  inline void clear_has_objtargetid();
+  inline void set_has_skillid();
+  inline void clear_has_skillid();
+  inline void set_has_castingdir();
+  inline void clear_has_castingdir();
+  inline void set_has_x();
+  inline void clear_has_x();
+  inline void set_has_y();
+  inline void clear_has_y();
+  inline void set_has_z();
+  inline void clear_has_z();
+  inline void set_has_momentindex();
+  inline void clear_has_momentindex();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 objid_;
+  ::google::protobuf::int32 objtargetid_;
+  ::google::protobuf::int32 skillid_;
+  float castingdir_;
+  float x_;
+  float y_;
+  float z_;
+  ::google::protobuf::int32 momentindex_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(8 + 31) / 32];
+
+  friend void  protobuf_AddDesc_FightRpc_2eproto();
+  friend void protobuf_AssignDesc_FightRpc_2eproto();
+  friend void protobuf_ShutdownFile_FightRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static FightRpcUseSkillActionNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class FightRpcShowExpActionNotify : public ::google::protobuf::Message {
+ public:
+  FightRpcShowExpActionNotify();
+  virtual ~FightRpcShowExpActionNotify();
+
+  FightRpcShowExpActionNotify(const FightRpcShowExpActionNotify& from);
+
+  inline FightRpcShowExpActionNotify& operator=(const FightRpcShowExpActionNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const FightRpcShowExpActionNotify& default_instance();
+
+  void Swap(FightRpcShowExpActionNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  FightRpcShowExpActionNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const FightRpcShowExpActionNotify& from);
+  void MergeFrom(const FightRpcShowExpActionNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 ObjId = 1 [default = -1];
+  inline bool has_objid() const;
+  inline void clear_objid();
+  static const int kObjIdFieldNumber = 1;
+  inline ::google::protobuf::int32 objid() const;
+  inline void set_objid(::google::protobuf::int32 value);
+
+  // optional sint32 Value = 2 [default = -1];
+  inline bool has_value() const;
+  inline void clear_value();
+  static const int kValueFieldNumber = 2;
+  inline ::google::protobuf::int32 value() const;
+  inline void set_value(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:FightRpcShowExpActionNotify)
+ private:
+  inline void set_has_objid();
+  inline void clear_has_objid();
+  inline void set_has_value();
+  inline void clear_has_value();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 objid_;
+  ::google::protobuf::int32 value_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_FightRpc_2eproto();
+  friend void protobuf_AssignDesc_FightRpc_2eproto();
+  friend void protobuf_ShutdownFile_FightRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static FightRpcShowExpActionNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class FightRpcBuffActionNotify : public ::google::protobuf::Message {
+ public:
+  FightRpcBuffActionNotify();
+  virtual ~FightRpcBuffActionNotify();
+
+  FightRpcBuffActionNotify(const FightRpcBuffActionNotify& from);
+
+  inline FightRpcBuffActionNotify& operator=(const FightRpcBuffActionNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const FightRpcBuffActionNotify& default_instance();
+
+  void Swap(FightRpcBuffActionNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  FightRpcBuffActionNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const FightRpcBuffActionNotify& from);
+  void MergeFrom(const FightRpcBuffActionNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 ObjId = 1 [default = -1];
+  inline bool has_objid() const;
+  inline void clear_objid();
+  static const int kObjIdFieldNumber = 1;
+  inline ::google::protobuf::int32 objid() const;
+  inline void set_objid(::google::protobuf::int32 value);
+
+  // optional sint32 TargetId = 2 [default = -1];
+  inline bool has_targetid() const;
+  inline void clear_targetid();
+  static const int kTargetIdFieldNumber = 2;
+  inline ::google::protobuf::int32 targetid() const;
+  inline void set_targetid(::google::protobuf::int32 value);
+
+  // optional sint32 OpType = 3 [default = -1];
+  inline bool has_optype() const;
+  inline void clear_optype();
+  static const int kOpTypeFieldNumber = 3;
+  inline ::google::protobuf::int32 optype() const;
+  inline void set_optype(::google::protobuf::int32 value);
+
+  // optional sint32 BufId = 4 [default = -1];
+  inline bool has_bufid() const;
+  inline void clear_bufid();
+  static const int kBufIdFieldNumber = 4;
+  inline ::google::protobuf::int32 bufid() const;
+  inline void set_bufid(::google::protobuf::int32 value);
+
+  // optional sint32 RemainTime = 5 [default = -1];
+  inline bool has_remaintime() const;
+  inline void clear_remaintime();
+  static const int kRemainTimeFieldNumber = 5;
+  inline ::google::protobuf::int32 remaintime() const;
+  inline void set_remaintime(::google::protobuf::int32 value);
+
+  // optional sint32 BuffLv = 6 [default = -1];
+  inline bool has_bufflv() const;
+  inline void clear_bufflv();
+  static const int kBuffLvFieldNumber = 6;
+  inline ::google::protobuf::int32 bufflv() const;
+  inline void set_bufflv(::google::protobuf::int32 value);
+
+  // optional sint32 Sn = 7 [default = -1];
+  inline bool has_sn() const;
+  inline void clear_sn();
+  static const int kSnFieldNumber = 7;
+  inline ::google::protobuf::int32 sn() const;
+  inline void set_sn(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:FightRpcBuffActionNotify)
+ private:
+  inline void set_has_objid();
+  inline void clear_has_objid();
+  inline void set_has_targetid();
+  inline void clear_has_targetid();
+  inline void set_has_optype();
+  inline void clear_has_optype();
+  inline void set_has_bufid();
+  inline void clear_has_bufid();
+  inline void set_has_remaintime();
+  inline void clear_has_remaintime();
+  inline void set_has_bufflv();
+  inline void clear_has_bufflv();
+  inline void set_has_sn();
+  inline void clear_has_sn();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 objid_;
+  ::google::protobuf::int32 targetid_;
+  ::google::protobuf::int32 optype_;
+  ::google::protobuf::int32 bufid_;
+  ::google::protobuf::int32 remaintime_;
+  ::google::protobuf::int32 bufflv_;
+  ::google::protobuf::int32 sn_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(7 + 31) / 32];
+
+  friend void  protobuf_AddDesc_FightRpc_2eproto();
+  friend void protobuf_AssignDesc_FightRpc_2eproto();
+  friend void protobuf_ShutdownFile_FightRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static FightRpcBuffActionNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class FightRpcStateActionNotify : public ::google::protobuf::Message {
+ public:
+  FightRpcStateActionNotify();
+  virtual ~FightRpcStateActionNotify();
+
+  FightRpcStateActionNotify(const FightRpcStateActionNotify& from);
+
+  inline FightRpcStateActionNotify& operator=(const FightRpcStateActionNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const FightRpcStateActionNotify& default_instance();
+
+  void Swap(FightRpcStateActionNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  FightRpcStateActionNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const FightRpcStateActionNotify& from);
+  void MergeFrom(const FightRpcStateActionNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 ObjId = 1 [default = -1];
+  inline bool has_objid() const;
+  inline void clear_objid();
+  static const int kObjIdFieldNumber = 1;
+  inline ::google::protobuf::int32 objid() const;
+  inline void set_objid(::google::protobuf::int32 value);
+
+  // optional sint32 Type = 2 [default = -1];
+  inline bool has_type() const;
+  inline void clear_type();
+  static const int kTypeFieldNumber = 2;
+  inline ::google::protobuf::int32 type() const;
+  inline void set_type(::google::protobuf::int32 value);
+
+  // optional .V3 Pos = 3;
+  inline bool has_pos() const;
+  inline void clear_pos();
+  static const int kPosFieldNumber = 3;
+  inline const ::V3& pos() const;
+  inline ::V3* mutable_pos();
+  inline ::V3* release_pos();
+  inline void set_allocated_pos(::V3* pos);
+
+  // optional sint32 TargetPos = 4 [default = -1];
+  inline bool has_targetpos() const;
+  inline void clear_targetpos();
+  static const int kTargetPosFieldNumber = 4;
+  inline ::google::protobuf::int32 targetpos() const;
+  inline void set_targetpos(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:FightRpcStateActionNotify)
+ private:
+  inline void set_has_objid();
+  inline void clear_has_objid();
+  inline void set_has_type();
+  inline void clear_has_type();
+  inline void set_has_pos();
+  inline void clear_has_pos();
+  inline void set_has_targetpos();
+  inline void clear_has_targetpos();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 objid_;
+  ::google::protobuf::int32 type_;
+  ::V3* pos_;
+  ::google::protobuf::int32 targetpos_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+
+  friend void  protobuf_AddDesc_FightRpc_2eproto();
+  friend void protobuf_AssignDesc_FightRpc_2eproto();
+  friend void protobuf_ShutdownFile_FightRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static FightRpcStateActionNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class FightRpcReviveActionNotify : public ::google::protobuf::Message {
+ public:
+  FightRpcReviveActionNotify();
+  virtual ~FightRpcReviveActionNotify();
+
+  FightRpcReviveActionNotify(const FightRpcReviveActionNotify& from);
+
+  inline FightRpcReviveActionNotify& operator=(const FightRpcReviveActionNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const FightRpcReviveActionNotify& default_instance();
+
+  void Swap(FightRpcReviveActionNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  FightRpcReviveActionNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const FightRpcReviveActionNotify& from);
+  void MergeFrom(const FightRpcReviveActionNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 ObjId = 1 [default = -1];
+  inline bool has_objid() const;
+  inline void clear_objid();
+  static const int kObjIdFieldNumber = 1;
+  inline ::google::protobuf::int32 objid() const;
+  inline void set_objid(::google::protobuf::int32 value);
+
+  // optional .V3 Pos = 2;
+  inline bool has_pos() const;
+  inline void clear_pos();
+  static const int kPosFieldNumber = 2;
+  inline const ::V3& pos() const;
+  inline ::V3* mutable_pos();
+  inline ::V3* release_pos();
+  inline void set_allocated_pos(::V3* pos);
+
+  // optional sint32 CurHp = 3 [default = -1];
+  inline bool has_curhp() const;
+  inline void clear_curhp();
+  static const int kCurHpFieldNumber = 3;
+  inline ::google::protobuf::int32 curhp() const;
+  inline void set_curhp(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:FightRpcReviveActionNotify)
+ private:
+  inline void set_has_objid();
+  inline void clear_has_objid();
+  inline void set_has_pos();
+  inline void clear_has_pos();
+  inline void set_has_curhp();
+  inline void clear_has_curhp();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::V3* pos_;
+  ::google::protobuf::int32 objid_;
+  ::google::protobuf::int32 curhp_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+
+  friend void  protobuf_AddDesc_FightRpc_2eproto();
+  friend void protobuf_AssignDesc_FightRpc_2eproto();
+  friend void protobuf_ShutdownFile_FightRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static FightRpcReviveActionNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class FightRpcComboSkillActionNotify : public ::google::protobuf::Message {
+ public:
+  FightRpcComboSkillActionNotify();
+  virtual ~FightRpcComboSkillActionNotify();
+
+  FightRpcComboSkillActionNotify(const FightRpcComboSkillActionNotify& from);
+
+  inline FightRpcComboSkillActionNotify& operator=(const FightRpcComboSkillActionNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const FightRpcComboSkillActionNotify& default_instance();
+
+  void Swap(FightRpcComboSkillActionNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  FightRpcComboSkillActionNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const FightRpcComboSkillActionNotify& from);
+  void MergeFrom(const FightRpcComboSkillActionNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 ObjId = 1 [default = -1];
+  inline bool has_objid() const;
+  inline void clear_objid();
+  static const int kObjIdFieldNumber = 1;
+  inline ::google::protobuf::int32 objid() const;
+  inline void set_objid(::google::protobuf::int32 value);
+
+  // optional sint32 SkillId = 2 [default = -1];
+  inline bool has_skillid() const;
+  inline void clear_skillid();
+  static const int kSkillIdFieldNumber = 2;
+  inline ::google::protobuf::int32 skillid() const;
+  inline void set_skillid(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:FightRpcComboSkillActionNotify)
+ private:
+  inline void set_has_objid();
+  inline void clear_has_objid();
+  inline void set_has_skillid();
+  inline void clear_has_skillid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 objid_;
+  ::google::protobuf::int32 skillid_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_FightRpc_2eproto();
+  friend void protobuf_AssignDesc_FightRpc_2eproto();
+  friend void protobuf_ShutdownFile_FightRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static FightRpcComboSkillActionNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class FightRpcDropActionNotify : public ::google::protobuf::Message {
+ public:
+  FightRpcDropActionNotify();
+  virtual ~FightRpcDropActionNotify();
+
+  FightRpcDropActionNotify(const FightRpcDropActionNotify& from);
+
+  inline FightRpcDropActionNotify& operator=(const FightRpcDropActionNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const FightRpcDropActionNotify& default_instance();
+
+  void Swap(FightRpcDropActionNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  FightRpcDropActionNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const FightRpcDropActionNotify& from);
+  void MergeFrom(const FightRpcDropActionNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:FightRpcDropActionNotify)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[1];
+
+  friend void  protobuf_AddDesc_FightRpc_2eproto();
+  friend void protobuf_AssignDesc_FightRpc_2eproto();
+  friend void protobuf_ShutdownFile_FightRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static FightRpcDropActionNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class FightRpcUseItemActionNotify : public ::google::protobuf::Message {
+ public:
+  FightRpcUseItemActionNotify();
+  virtual ~FightRpcUseItemActionNotify();
+
+  FightRpcUseItemActionNotify(const FightRpcUseItemActionNotify& from);
+
+  inline FightRpcUseItemActionNotify& operator=(const FightRpcUseItemActionNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const FightRpcUseItemActionNotify& default_instance();
+
+  void Swap(FightRpcUseItemActionNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  FightRpcUseItemActionNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const FightRpcUseItemActionNotify& from);
+  void MergeFrom(const FightRpcUseItemActionNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:FightRpcUseItemActionNotify)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[1];
+
+  friend void  protobuf_AddDesc_FightRpc_2eproto();
+  friend void protobuf_AssignDesc_FightRpc_2eproto();
+  friend void protobuf_ShutdownFile_FightRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static FightRpcUseItemActionNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class FightRpcHpChangeActionNotify : public ::google::protobuf::Message {
+ public:
+  FightRpcHpChangeActionNotify();
+  virtual ~FightRpcHpChangeActionNotify();
+
+  FightRpcHpChangeActionNotify(const FightRpcHpChangeActionNotify& from);
+
+  inline FightRpcHpChangeActionNotify& operator=(const FightRpcHpChangeActionNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const FightRpcHpChangeActionNotify& default_instance();
+
+  void Swap(FightRpcHpChangeActionNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  FightRpcHpChangeActionNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const FightRpcHpChangeActionNotify& from);
+  void MergeFrom(const FightRpcHpChangeActionNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 ObjId = 1 [default = -1];
+  inline bool has_objid() const;
+  inline void clear_objid();
+  static const int kObjIdFieldNumber = 1;
+  inline ::google::protobuf::int32 objid() const;
+  inline void set_objid(::google::protobuf::int32 value);
+
+  // optional sint32 CurHp = 2 [default = -1];
+  inline bool has_curhp() const;
+  inline void clear_curhp();
+  static const int kCurHpFieldNumber = 2;
+  inline ::google::protobuf::int32 curhp() const;
+  inline void set_curhp(::google::protobuf::int32 value);
+
+  // optional sint32 MaxHp = 3 [default = -1];
+  inline bool has_maxhp() const;
+  inline void clear_maxhp();
+  static const int kMaxHpFieldNumber = 3;
+  inline ::google::protobuf::int32 maxhp() const;
+  inline void set_maxhp(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:FightRpcHpChangeActionNotify)
+ private:
+  inline void set_has_objid();
+  inline void clear_has_objid();
+  inline void set_has_curhp();
+  inline void clear_has_curhp();
+  inline void set_has_maxhp();
+  inline void clear_has_maxhp();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 objid_;
+  ::google::protobuf::int32 curhp_;
+  ::google::protobuf::int32 maxhp_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+
+  friend void  protobuf_AddDesc_FightRpc_2eproto();
+  friend void protobuf_AssignDesc_FightRpc_2eproto();
+  friend void protobuf_ShutdownFile_FightRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static FightRpcHpChangeActionNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class FightRpcUseSkillAsk : public ::google::protobuf::Message {
+ public:
+  FightRpcUseSkillAsk();
+  virtual ~FightRpcUseSkillAsk();
+
+  FightRpcUseSkillAsk(const FightRpcUseSkillAsk& from);
+
+  inline FightRpcUseSkillAsk& operator=(const FightRpcUseSkillAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const FightRpcUseSkillAsk& default_instance();
+
+  void Swap(FightRpcUseSkillAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  FightRpcUseSkillAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const FightRpcUseSkillAsk& from);
+  void MergeFrom(const FightRpcUseSkillAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
   // optional sint32 ObjTargetId = 1 [default = -1];
   inline bool has_objtargetid() const;
   inline void clear_objtargetid();
@@ -104,57 +1057,301 @@ class FightRpcUseSkillActionNotify : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 skillid() const;
   inline void set_skillid(::google::protobuf::int32 value);
 
-  // optional sint32 X = 3 [default = -1];
+  // optional float CastingDir = 3 [default = -1];
+  inline bool has_castingdir() const;
+  inline void clear_castingdir();
+  static const int kCastingDirFieldNumber = 3;
+  inline float castingdir() const;
+  inline void set_castingdir(float value);
+
+  // optional float X = 4 [default = -1];
   inline bool has_x() const;
   inline void clear_x();
-  static const int kXFieldNumber = 3;
-  inline ::google::protobuf::int32 x() const;
-  inline void set_x(::google::protobuf::int32 value);
+  static const int kXFieldNumber = 4;
+  inline float x() const;
+  inline void set_x(float value);
 
-  // optional sint32 Y = 4 [default = -1];
+  // optional float Y = 5 [default = -1];
   inline bool has_y() const;
   inline void clear_y();
-  static const int kYFieldNumber = 4;
-  inline ::google::protobuf::int32 y() const;
-  inline void set_y(::google::protobuf::int32 value);
+  static const int kYFieldNumber = 5;
+  inline float y() const;
+  inline void set_y(float value);
 
-  // optional sint32 Dir = 5 [default = -1];
-  inline bool has_dir() const;
-  inline void clear_dir();
-  static const int kDirFieldNumber = 5;
-  inline ::google::protobuf::int32 dir() const;
-  inline void set_dir(::google::protobuf::int32 value);
+  // optional float Z = 6 [default = -1];
+  inline bool has_z() const;
+  inline void clear_z();
+  static const int kZFieldNumber = 6;
+  inline float z() const;
+  inline void set_z(float value);
 
-  // @@protoc_insertion_point(class_scope:FightRpcUseSkillActionNotify)
+  // optional sint32 MomentIndex = 7 [default = -1];
+  inline bool has_momentindex() const;
+  inline void clear_momentindex();
+  static const int kMomentIndexFieldNumber = 7;
+  inline ::google::protobuf::int32 momentindex() const;
+  inline void set_momentindex(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:FightRpcUseSkillAsk)
  private:
   inline void set_has_objtargetid();
   inline void clear_has_objtargetid();
   inline void set_has_skillid();
   inline void clear_has_skillid();
+  inline void set_has_castingdir();
+  inline void clear_has_castingdir();
   inline void set_has_x();
   inline void clear_has_x();
   inline void set_has_y();
   inline void clear_has_y();
-  inline void set_has_dir();
-  inline void clear_has_dir();
+  inline void set_has_z();
+  inline void clear_has_z();
+  inline void set_has_momentindex();
+  inline void clear_has_momentindex();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::int32 objtargetid_;
   ::google::protobuf::int32 skillid_;
-  ::google::protobuf::int32 x_;
-  ::google::protobuf::int32 y_;
-  ::google::protobuf::int32 dir_;
+  float castingdir_;
+  float x_;
+  float y_;
+  float z_;
+  ::google::protobuf::int32 momentindex_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(7 + 31) / 32];
 
   friend void  protobuf_AddDesc_FightRpc_2eproto();
   friend void protobuf_AssignDesc_FightRpc_2eproto();
   friend void protobuf_ShutdownFile_FightRpc_2eproto();
 
   void InitAsDefaultInstance();
-  static FightRpcUseSkillActionNotify* default_instance_;
+  static FightRpcUseSkillAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class FightRpcUseSkillReply : public ::google::protobuf::Message {
+ public:
+  FightRpcUseSkillReply();
+  virtual ~FightRpcUseSkillReply();
+
+  FightRpcUseSkillReply(const FightRpcUseSkillReply& from);
+
+  inline FightRpcUseSkillReply& operator=(const FightRpcUseSkillReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const FightRpcUseSkillReply& default_instance();
+
+  void Swap(FightRpcUseSkillReply* other);
+
+  // implements Message ----------------------------------------------
+
+  FightRpcUseSkillReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const FightRpcUseSkillReply& from);
+  void MergeFrom(const FightRpcUseSkillReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 Result = 1 [default = -9999];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:FightRpcUseSkillReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_FightRpc_2eproto();
+  friend void protobuf_AssignDesc_FightRpc_2eproto();
+  friend void protobuf_ShutdownFile_FightRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static FightRpcUseSkillReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class FightRpcHurtActionNotify : public ::google::protobuf::Message {
+ public:
+  FightRpcHurtActionNotify();
+  virtual ~FightRpcHurtActionNotify();
+
+  FightRpcHurtActionNotify(const FightRpcHurtActionNotify& from);
+
+  inline FightRpcHurtActionNotify& operator=(const FightRpcHurtActionNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const FightRpcHurtActionNotify& default_instance();
+
+  void Swap(FightRpcHurtActionNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  FightRpcHurtActionNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const FightRpcHurtActionNotify& from);
+  void MergeFrom(const FightRpcHurtActionNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional sint32 ObjId = 1 [default = -1];
+  inline bool has_objid() const;
+  inline void clear_objid();
+  static const int kObjIdFieldNumber = 1;
+  inline ::google::protobuf::int32 objid() const;
+  inline void set_objid(::google::protobuf::int32 value);
+
+  // optional sint32 SegmentIndex = 2 [default = -1];
+  inline bool has_segmentindex() const;
+  inline void clear_segmentindex();
+  static const int kSegmentIndexFieldNumber = 2;
+  inline ::google::protobuf::int32 segmentindex() const;
+  inline void set_segmentindex(::google::protobuf::int32 value);
+
+  // optional sint32 SkillId = 3 [default = -1];
+  inline bool has_skillid() const;
+  inline void clear_skillid();
+  static const int kSkillIdFieldNumber = 3;
+  inline ::google::protobuf::int32 skillid() const;
+  inline void set_skillid(::google::protobuf::int32 value);
+
+  // optional sint32 TargetObjId = 4 [default = -1];
+  inline bool has_targetobjid() const;
+  inline void clear_targetobjid();
+  static const int kTargetObjIdFieldNumber = 4;
+  inline ::google::protobuf::int32 targetobjid() const;
+  inline void set_targetobjid(::google::protobuf::int32 value);
+
+  // optional sint32 HurtValue = 5 [default = 0];
+  inline bool has_hurtvalue() const;
+  inline void clear_hurtvalue();
+  static const int kHurtValueFieldNumber = 5;
+  inline ::google::protobuf::int32 hurtvalue() const;
+  inline void set_hurtvalue(::google::protobuf::int32 value);
+
+  // optional bool IsCritical = 6 [default = false];
+  inline bool has_iscritical() const;
+  inline void clear_iscritical();
+  static const int kIsCriticalFieldNumber = 6;
+  inline bool iscritical() const;
+  inline void set_iscritical(bool value);
+
+  // optional sint32 Energy = 7 [default = -1];
+  inline bool has_energy() const;
+  inline void clear_energy();
+  static const int kEnergyFieldNumber = 7;
+  inline ::google::protobuf::int32 energy() const;
+  inline void set_energy(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:FightRpcHurtActionNotify)
+ private:
+  inline void set_has_objid();
+  inline void clear_has_objid();
+  inline void set_has_segmentindex();
+  inline void clear_has_segmentindex();
+  inline void set_has_skillid();
+  inline void clear_has_skillid();
+  inline void set_has_targetobjid();
+  inline void clear_has_targetobjid();
+  inline void set_has_hurtvalue();
+  inline void clear_has_hurtvalue();
+  inline void set_has_iscritical();
+  inline void clear_has_iscritical();
+  inline void set_has_energy();
+  inline void clear_has_energy();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 objid_;
+  ::google::protobuf::int32 segmentindex_;
+  ::google::protobuf::int32 skillid_;
+  ::google::protobuf::int32 targetobjid_;
+  ::google::protobuf::int32 hurtvalue_;
+  bool iscritical_;
+  ::google::protobuf::int32 energy_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(7 + 31) / 32];
+
+  friend void  protobuf_AddDesc_FightRpc_2eproto();
+  friend void protobuf_AssignDesc_FightRpc_2eproto();
+  friend void protobuf_ShutdownFile_FightRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static FightRpcHurtActionNotify* default_instance_;
 };
 // ===================================================================
 
@@ -163,15 +1360,37 @@ class FightRpcUseSkillActionNotify : public ::google::protobuf::Message {
 
 // FightRpcUseSkillActionNotify
 
-// optional sint32 ObjTargetId = 1 [default = -1];
-inline bool FightRpcUseSkillActionNotify::has_objtargetid() const {
+// optional sint32 ObjId = 8 [default = -1];
+inline bool FightRpcUseSkillActionNotify::has_objid() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void FightRpcUseSkillActionNotify::set_has_objtargetid() {
+inline void FightRpcUseSkillActionNotify::set_has_objid() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void FightRpcUseSkillActionNotify::clear_has_objtargetid() {
+inline void FightRpcUseSkillActionNotify::clear_has_objid() {
   _has_bits_[0] &= ~0x00000001u;
+}
+inline void FightRpcUseSkillActionNotify::clear_objid() {
+  objid_ = -1;
+  clear_has_objid();
+}
+inline ::google::protobuf::int32 FightRpcUseSkillActionNotify::objid() const {
+  return objid_;
+}
+inline void FightRpcUseSkillActionNotify::set_objid(::google::protobuf::int32 value) {
+  set_has_objid();
+  objid_ = value;
+}
+
+// optional sint32 ObjTargetId = 9 [default = -1];
+inline bool FightRpcUseSkillActionNotify::has_objtargetid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void FightRpcUseSkillActionNotify::set_has_objtargetid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void FightRpcUseSkillActionNotify::clear_has_objtargetid() {
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void FightRpcUseSkillActionNotify::clear_objtargetid() {
   objtargetid_ = -1;
@@ -185,15 +1404,15 @@ inline void FightRpcUseSkillActionNotify::set_objtargetid(::google::protobuf::in
   objtargetid_ = value;
 }
 
-// optional sint32 SkillId = 2 [default = -1];
+// optional sint32 SkillId = 10 [default = -1];
 inline bool FightRpcUseSkillActionNotify::has_skillid() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void FightRpcUseSkillActionNotify::set_has_skillid() {
-  _has_bits_[0] |= 0x00000002u;
+  _has_bits_[0] |= 0x00000004u;
 }
 inline void FightRpcUseSkillActionNotify::clear_has_skillid() {
-  _has_bits_[0] &= ~0x00000002u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void FightRpcUseSkillActionNotify::clear_skillid() {
   skillid_ = -1;
@@ -207,70 +1426,982 @@ inline void FightRpcUseSkillActionNotify::set_skillid(::google::protobuf::int32 
   skillid_ = value;
 }
 
-// optional sint32 X = 3 [default = -1];
+// optional float CastingDir = 11 [default = -1];
+inline bool FightRpcUseSkillActionNotify::has_castingdir() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void FightRpcUseSkillActionNotify::set_has_castingdir() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void FightRpcUseSkillActionNotify::clear_has_castingdir() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void FightRpcUseSkillActionNotify::clear_castingdir() {
+  castingdir_ = -1;
+  clear_has_castingdir();
+}
+inline float FightRpcUseSkillActionNotify::castingdir() const {
+  return castingdir_;
+}
+inline void FightRpcUseSkillActionNotify::set_castingdir(float value) {
+  set_has_castingdir();
+  castingdir_ = value;
+}
+
+// optional float X = 12 [default = -1];
 inline bool FightRpcUseSkillActionNotify::has_x() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
 inline void FightRpcUseSkillActionNotify::set_has_x() {
-  _has_bits_[0] |= 0x00000004u;
+  _has_bits_[0] |= 0x00000010u;
 }
 inline void FightRpcUseSkillActionNotify::clear_has_x() {
-  _has_bits_[0] &= ~0x00000004u;
+  _has_bits_[0] &= ~0x00000010u;
 }
 inline void FightRpcUseSkillActionNotify::clear_x() {
   x_ = -1;
   clear_has_x();
 }
-inline ::google::protobuf::int32 FightRpcUseSkillActionNotify::x() const {
+inline float FightRpcUseSkillActionNotify::x() const {
   return x_;
 }
-inline void FightRpcUseSkillActionNotify::set_x(::google::protobuf::int32 value) {
+inline void FightRpcUseSkillActionNotify::set_x(float value) {
   set_has_x();
   x_ = value;
 }
 
-// optional sint32 Y = 4 [default = -1];
+// optional float Y = 13 [default = -1];
 inline bool FightRpcUseSkillActionNotify::has_y() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000020u) != 0;
 }
 inline void FightRpcUseSkillActionNotify::set_has_y() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000020u;
 }
 inline void FightRpcUseSkillActionNotify::clear_has_y() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline void FightRpcUseSkillActionNotify::clear_y() {
   y_ = -1;
   clear_has_y();
 }
-inline ::google::protobuf::int32 FightRpcUseSkillActionNotify::y() const {
+inline float FightRpcUseSkillActionNotify::y() const {
   return y_;
 }
-inline void FightRpcUseSkillActionNotify::set_y(::google::protobuf::int32 value) {
+inline void FightRpcUseSkillActionNotify::set_y(float value) {
   set_has_y();
   y_ = value;
 }
 
-// optional sint32 Dir = 5 [default = -1];
-inline bool FightRpcUseSkillActionNotify::has_dir() const {
+// optional float Z = 14 [default = -1];
+inline bool FightRpcUseSkillActionNotify::has_z() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void FightRpcUseSkillActionNotify::set_has_z() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void FightRpcUseSkillActionNotify::clear_has_z() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void FightRpcUseSkillActionNotify::clear_z() {
+  z_ = -1;
+  clear_has_z();
+}
+inline float FightRpcUseSkillActionNotify::z() const {
+  return z_;
+}
+inline void FightRpcUseSkillActionNotify::set_z(float value) {
+  set_has_z();
+  z_ = value;
+}
+
+// optional sint32 MomentIndex = 15 [default = -1];
+inline bool FightRpcUseSkillActionNotify::has_momentindex() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void FightRpcUseSkillActionNotify::set_has_momentindex() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void FightRpcUseSkillActionNotify::clear_has_momentindex() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void FightRpcUseSkillActionNotify::clear_momentindex() {
+  momentindex_ = -1;
+  clear_has_momentindex();
+}
+inline ::google::protobuf::int32 FightRpcUseSkillActionNotify::momentindex() const {
+  return momentindex_;
+}
+inline void FightRpcUseSkillActionNotify::set_momentindex(::google::protobuf::int32 value) {
+  set_has_momentindex();
+  momentindex_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// FightRpcShowExpActionNotify
+
+// optional sint32 ObjId = 1 [default = -1];
+inline bool FightRpcShowExpActionNotify::has_objid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void FightRpcShowExpActionNotify::set_has_objid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void FightRpcShowExpActionNotify::clear_has_objid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void FightRpcShowExpActionNotify::clear_objid() {
+  objid_ = -1;
+  clear_has_objid();
+}
+inline ::google::protobuf::int32 FightRpcShowExpActionNotify::objid() const {
+  return objid_;
+}
+inline void FightRpcShowExpActionNotify::set_objid(::google::protobuf::int32 value) {
+  set_has_objid();
+  objid_ = value;
+}
+
+// optional sint32 Value = 2 [default = -1];
+inline bool FightRpcShowExpActionNotify::has_value() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void FightRpcShowExpActionNotify::set_has_value() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void FightRpcShowExpActionNotify::clear_has_value() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void FightRpcShowExpActionNotify::clear_value() {
+  value_ = -1;
+  clear_has_value();
+}
+inline ::google::protobuf::int32 FightRpcShowExpActionNotify::value() const {
+  return value_;
+}
+inline void FightRpcShowExpActionNotify::set_value(::google::protobuf::int32 value) {
+  set_has_value();
+  value_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// FightRpcBuffActionNotify
+
+// optional sint32 ObjId = 1 [default = -1];
+inline bool FightRpcBuffActionNotify::has_objid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void FightRpcBuffActionNotify::set_has_objid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void FightRpcBuffActionNotify::clear_has_objid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void FightRpcBuffActionNotify::clear_objid() {
+  objid_ = -1;
+  clear_has_objid();
+}
+inline ::google::protobuf::int32 FightRpcBuffActionNotify::objid() const {
+  return objid_;
+}
+inline void FightRpcBuffActionNotify::set_objid(::google::protobuf::int32 value) {
+  set_has_objid();
+  objid_ = value;
+}
+
+// optional sint32 TargetId = 2 [default = -1];
+inline bool FightRpcBuffActionNotify::has_targetid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void FightRpcBuffActionNotify::set_has_targetid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void FightRpcBuffActionNotify::clear_has_targetid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void FightRpcBuffActionNotify::clear_targetid() {
+  targetid_ = -1;
+  clear_has_targetid();
+}
+inline ::google::protobuf::int32 FightRpcBuffActionNotify::targetid() const {
+  return targetid_;
+}
+inline void FightRpcBuffActionNotify::set_targetid(::google::protobuf::int32 value) {
+  set_has_targetid();
+  targetid_ = value;
+}
+
+// optional sint32 OpType = 3 [default = -1];
+inline bool FightRpcBuffActionNotify::has_optype() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void FightRpcBuffActionNotify::set_has_optype() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void FightRpcBuffActionNotify::clear_has_optype() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void FightRpcBuffActionNotify::clear_optype() {
+  optype_ = -1;
+  clear_has_optype();
+}
+inline ::google::protobuf::int32 FightRpcBuffActionNotify::optype() const {
+  return optype_;
+}
+inline void FightRpcBuffActionNotify::set_optype(::google::protobuf::int32 value) {
+  set_has_optype();
+  optype_ = value;
+}
+
+// optional sint32 BufId = 4 [default = -1];
+inline bool FightRpcBuffActionNotify::has_bufid() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void FightRpcBuffActionNotify::set_has_bufid() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void FightRpcBuffActionNotify::clear_has_bufid() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void FightRpcBuffActionNotify::clear_bufid() {
+  bufid_ = -1;
+  clear_has_bufid();
+}
+inline ::google::protobuf::int32 FightRpcBuffActionNotify::bufid() const {
+  return bufid_;
+}
+inline void FightRpcBuffActionNotify::set_bufid(::google::protobuf::int32 value) {
+  set_has_bufid();
+  bufid_ = value;
+}
+
+// optional sint32 RemainTime = 5 [default = -1];
+inline bool FightRpcBuffActionNotify::has_remaintime() const {
   return (_has_bits_[0] & 0x00000010u) != 0;
 }
-inline void FightRpcUseSkillActionNotify::set_has_dir() {
+inline void FightRpcBuffActionNotify::set_has_remaintime() {
   _has_bits_[0] |= 0x00000010u;
 }
-inline void FightRpcUseSkillActionNotify::clear_has_dir() {
+inline void FightRpcBuffActionNotify::clear_has_remaintime() {
   _has_bits_[0] &= ~0x00000010u;
 }
-inline void FightRpcUseSkillActionNotify::clear_dir() {
-  dir_ = -1;
-  clear_has_dir();
+inline void FightRpcBuffActionNotify::clear_remaintime() {
+  remaintime_ = -1;
+  clear_has_remaintime();
 }
-inline ::google::protobuf::int32 FightRpcUseSkillActionNotify::dir() const {
-  return dir_;
+inline ::google::protobuf::int32 FightRpcBuffActionNotify::remaintime() const {
+  return remaintime_;
 }
-inline void FightRpcUseSkillActionNotify::set_dir(::google::protobuf::int32 value) {
-  set_has_dir();
-  dir_ = value;
+inline void FightRpcBuffActionNotify::set_remaintime(::google::protobuf::int32 value) {
+  set_has_remaintime();
+  remaintime_ = value;
+}
+
+// optional sint32 BuffLv = 6 [default = -1];
+inline bool FightRpcBuffActionNotify::has_bufflv() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void FightRpcBuffActionNotify::set_has_bufflv() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void FightRpcBuffActionNotify::clear_has_bufflv() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void FightRpcBuffActionNotify::clear_bufflv() {
+  bufflv_ = -1;
+  clear_has_bufflv();
+}
+inline ::google::protobuf::int32 FightRpcBuffActionNotify::bufflv() const {
+  return bufflv_;
+}
+inline void FightRpcBuffActionNotify::set_bufflv(::google::protobuf::int32 value) {
+  set_has_bufflv();
+  bufflv_ = value;
+}
+
+// optional sint32 Sn = 7 [default = -1];
+inline bool FightRpcBuffActionNotify::has_sn() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void FightRpcBuffActionNotify::set_has_sn() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void FightRpcBuffActionNotify::clear_has_sn() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void FightRpcBuffActionNotify::clear_sn() {
+  sn_ = -1;
+  clear_has_sn();
+}
+inline ::google::protobuf::int32 FightRpcBuffActionNotify::sn() const {
+  return sn_;
+}
+inline void FightRpcBuffActionNotify::set_sn(::google::protobuf::int32 value) {
+  set_has_sn();
+  sn_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// FightRpcStateActionNotify
+
+// optional sint32 ObjId = 1 [default = -1];
+inline bool FightRpcStateActionNotify::has_objid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void FightRpcStateActionNotify::set_has_objid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void FightRpcStateActionNotify::clear_has_objid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void FightRpcStateActionNotify::clear_objid() {
+  objid_ = -1;
+  clear_has_objid();
+}
+inline ::google::protobuf::int32 FightRpcStateActionNotify::objid() const {
+  return objid_;
+}
+inline void FightRpcStateActionNotify::set_objid(::google::protobuf::int32 value) {
+  set_has_objid();
+  objid_ = value;
+}
+
+// optional sint32 Type = 2 [default = -1];
+inline bool FightRpcStateActionNotify::has_type() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void FightRpcStateActionNotify::set_has_type() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void FightRpcStateActionNotify::clear_has_type() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void FightRpcStateActionNotify::clear_type() {
+  type_ = -1;
+  clear_has_type();
+}
+inline ::google::protobuf::int32 FightRpcStateActionNotify::type() const {
+  return type_;
+}
+inline void FightRpcStateActionNotify::set_type(::google::protobuf::int32 value) {
+  set_has_type();
+  type_ = value;
+}
+
+// optional .V3 Pos = 3;
+inline bool FightRpcStateActionNotify::has_pos() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void FightRpcStateActionNotify::set_has_pos() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void FightRpcStateActionNotify::clear_has_pos() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void FightRpcStateActionNotify::clear_pos() {
+  if (pos_ != NULL) pos_->::V3::Clear();
+  clear_has_pos();
+}
+inline const ::V3& FightRpcStateActionNotify::pos() const {
+  return pos_ != NULL ? *pos_ : *default_instance_->pos_;
+}
+inline ::V3* FightRpcStateActionNotify::mutable_pos() {
+  set_has_pos();
+  if (pos_ == NULL) pos_ = new ::V3;
+  return pos_;
+}
+inline ::V3* FightRpcStateActionNotify::release_pos() {
+  clear_has_pos();
+  ::V3* temp = pos_;
+  pos_ = NULL;
+  return temp;
+}
+inline void FightRpcStateActionNotify::set_allocated_pos(::V3* pos) {
+  delete pos_;
+  pos_ = pos;
+  if (pos) {
+    set_has_pos();
+  } else {
+    clear_has_pos();
+  }
+}
+
+// optional sint32 TargetPos = 4 [default = -1];
+inline bool FightRpcStateActionNotify::has_targetpos() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void FightRpcStateActionNotify::set_has_targetpos() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void FightRpcStateActionNotify::clear_has_targetpos() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void FightRpcStateActionNotify::clear_targetpos() {
+  targetpos_ = -1;
+  clear_has_targetpos();
+}
+inline ::google::protobuf::int32 FightRpcStateActionNotify::targetpos() const {
+  return targetpos_;
+}
+inline void FightRpcStateActionNotify::set_targetpos(::google::protobuf::int32 value) {
+  set_has_targetpos();
+  targetpos_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// FightRpcReviveActionNotify
+
+// optional sint32 ObjId = 1 [default = -1];
+inline bool FightRpcReviveActionNotify::has_objid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void FightRpcReviveActionNotify::set_has_objid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void FightRpcReviveActionNotify::clear_has_objid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void FightRpcReviveActionNotify::clear_objid() {
+  objid_ = -1;
+  clear_has_objid();
+}
+inline ::google::protobuf::int32 FightRpcReviveActionNotify::objid() const {
+  return objid_;
+}
+inline void FightRpcReviveActionNotify::set_objid(::google::protobuf::int32 value) {
+  set_has_objid();
+  objid_ = value;
+}
+
+// optional .V3 Pos = 2;
+inline bool FightRpcReviveActionNotify::has_pos() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void FightRpcReviveActionNotify::set_has_pos() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void FightRpcReviveActionNotify::clear_has_pos() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void FightRpcReviveActionNotify::clear_pos() {
+  if (pos_ != NULL) pos_->::V3::Clear();
+  clear_has_pos();
+}
+inline const ::V3& FightRpcReviveActionNotify::pos() const {
+  return pos_ != NULL ? *pos_ : *default_instance_->pos_;
+}
+inline ::V3* FightRpcReviveActionNotify::mutable_pos() {
+  set_has_pos();
+  if (pos_ == NULL) pos_ = new ::V3;
+  return pos_;
+}
+inline ::V3* FightRpcReviveActionNotify::release_pos() {
+  clear_has_pos();
+  ::V3* temp = pos_;
+  pos_ = NULL;
+  return temp;
+}
+inline void FightRpcReviveActionNotify::set_allocated_pos(::V3* pos) {
+  delete pos_;
+  pos_ = pos;
+  if (pos) {
+    set_has_pos();
+  } else {
+    clear_has_pos();
+  }
+}
+
+// optional sint32 CurHp = 3 [default = -1];
+inline bool FightRpcReviveActionNotify::has_curhp() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void FightRpcReviveActionNotify::set_has_curhp() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void FightRpcReviveActionNotify::clear_has_curhp() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void FightRpcReviveActionNotify::clear_curhp() {
+  curhp_ = -1;
+  clear_has_curhp();
+}
+inline ::google::protobuf::int32 FightRpcReviveActionNotify::curhp() const {
+  return curhp_;
+}
+inline void FightRpcReviveActionNotify::set_curhp(::google::protobuf::int32 value) {
+  set_has_curhp();
+  curhp_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// FightRpcComboSkillActionNotify
+
+// optional sint32 ObjId = 1 [default = -1];
+inline bool FightRpcComboSkillActionNotify::has_objid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void FightRpcComboSkillActionNotify::set_has_objid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void FightRpcComboSkillActionNotify::clear_has_objid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void FightRpcComboSkillActionNotify::clear_objid() {
+  objid_ = -1;
+  clear_has_objid();
+}
+inline ::google::protobuf::int32 FightRpcComboSkillActionNotify::objid() const {
+  return objid_;
+}
+inline void FightRpcComboSkillActionNotify::set_objid(::google::protobuf::int32 value) {
+  set_has_objid();
+  objid_ = value;
+}
+
+// optional sint32 SkillId = 2 [default = -1];
+inline bool FightRpcComboSkillActionNotify::has_skillid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void FightRpcComboSkillActionNotify::set_has_skillid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void FightRpcComboSkillActionNotify::clear_has_skillid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void FightRpcComboSkillActionNotify::clear_skillid() {
+  skillid_ = -1;
+  clear_has_skillid();
+}
+inline ::google::protobuf::int32 FightRpcComboSkillActionNotify::skillid() const {
+  return skillid_;
+}
+inline void FightRpcComboSkillActionNotify::set_skillid(::google::protobuf::int32 value) {
+  set_has_skillid();
+  skillid_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// FightRpcDropActionNotify
+
+// -------------------------------------------------------------------
+
+// FightRpcUseItemActionNotify
+
+// -------------------------------------------------------------------
+
+// FightRpcHpChangeActionNotify
+
+// optional sint32 ObjId = 1 [default = -1];
+inline bool FightRpcHpChangeActionNotify::has_objid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void FightRpcHpChangeActionNotify::set_has_objid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void FightRpcHpChangeActionNotify::clear_has_objid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void FightRpcHpChangeActionNotify::clear_objid() {
+  objid_ = -1;
+  clear_has_objid();
+}
+inline ::google::protobuf::int32 FightRpcHpChangeActionNotify::objid() const {
+  return objid_;
+}
+inline void FightRpcHpChangeActionNotify::set_objid(::google::protobuf::int32 value) {
+  set_has_objid();
+  objid_ = value;
+}
+
+// optional sint32 CurHp = 2 [default = -1];
+inline bool FightRpcHpChangeActionNotify::has_curhp() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void FightRpcHpChangeActionNotify::set_has_curhp() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void FightRpcHpChangeActionNotify::clear_has_curhp() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void FightRpcHpChangeActionNotify::clear_curhp() {
+  curhp_ = -1;
+  clear_has_curhp();
+}
+inline ::google::protobuf::int32 FightRpcHpChangeActionNotify::curhp() const {
+  return curhp_;
+}
+inline void FightRpcHpChangeActionNotify::set_curhp(::google::protobuf::int32 value) {
+  set_has_curhp();
+  curhp_ = value;
+}
+
+// optional sint32 MaxHp = 3 [default = -1];
+inline bool FightRpcHpChangeActionNotify::has_maxhp() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void FightRpcHpChangeActionNotify::set_has_maxhp() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void FightRpcHpChangeActionNotify::clear_has_maxhp() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void FightRpcHpChangeActionNotify::clear_maxhp() {
+  maxhp_ = -1;
+  clear_has_maxhp();
+}
+inline ::google::protobuf::int32 FightRpcHpChangeActionNotify::maxhp() const {
+  return maxhp_;
+}
+inline void FightRpcHpChangeActionNotify::set_maxhp(::google::protobuf::int32 value) {
+  set_has_maxhp();
+  maxhp_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// FightRpcUseSkillAsk
+
+// optional sint32 ObjTargetId = 1 [default = -1];
+inline bool FightRpcUseSkillAsk::has_objtargetid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void FightRpcUseSkillAsk::set_has_objtargetid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void FightRpcUseSkillAsk::clear_has_objtargetid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void FightRpcUseSkillAsk::clear_objtargetid() {
+  objtargetid_ = -1;
+  clear_has_objtargetid();
+}
+inline ::google::protobuf::int32 FightRpcUseSkillAsk::objtargetid() const {
+  return objtargetid_;
+}
+inline void FightRpcUseSkillAsk::set_objtargetid(::google::protobuf::int32 value) {
+  set_has_objtargetid();
+  objtargetid_ = value;
+}
+
+// optional sint32 SkillId = 2 [default = -1];
+inline bool FightRpcUseSkillAsk::has_skillid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void FightRpcUseSkillAsk::set_has_skillid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void FightRpcUseSkillAsk::clear_has_skillid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void FightRpcUseSkillAsk::clear_skillid() {
+  skillid_ = -1;
+  clear_has_skillid();
+}
+inline ::google::protobuf::int32 FightRpcUseSkillAsk::skillid() const {
+  return skillid_;
+}
+inline void FightRpcUseSkillAsk::set_skillid(::google::protobuf::int32 value) {
+  set_has_skillid();
+  skillid_ = value;
+}
+
+// optional float CastingDir = 3 [default = -1];
+inline bool FightRpcUseSkillAsk::has_castingdir() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void FightRpcUseSkillAsk::set_has_castingdir() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void FightRpcUseSkillAsk::clear_has_castingdir() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void FightRpcUseSkillAsk::clear_castingdir() {
+  castingdir_ = -1;
+  clear_has_castingdir();
+}
+inline float FightRpcUseSkillAsk::castingdir() const {
+  return castingdir_;
+}
+inline void FightRpcUseSkillAsk::set_castingdir(float value) {
+  set_has_castingdir();
+  castingdir_ = value;
+}
+
+// optional float X = 4 [default = -1];
+inline bool FightRpcUseSkillAsk::has_x() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void FightRpcUseSkillAsk::set_has_x() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void FightRpcUseSkillAsk::clear_has_x() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void FightRpcUseSkillAsk::clear_x() {
+  x_ = -1;
+  clear_has_x();
+}
+inline float FightRpcUseSkillAsk::x() const {
+  return x_;
+}
+inline void FightRpcUseSkillAsk::set_x(float value) {
+  set_has_x();
+  x_ = value;
+}
+
+// optional float Y = 5 [default = -1];
+inline bool FightRpcUseSkillAsk::has_y() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void FightRpcUseSkillAsk::set_has_y() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void FightRpcUseSkillAsk::clear_has_y() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void FightRpcUseSkillAsk::clear_y() {
+  y_ = -1;
+  clear_has_y();
+}
+inline float FightRpcUseSkillAsk::y() const {
+  return y_;
+}
+inline void FightRpcUseSkillAsk::set_y(float value) {
+  set_has_y();
+  y_ = value;
+}
+
+// optional float Z = 6 [default = -1];
+inline bool FightRpcUseSkillAsk::has_z() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void FightRpcUseSkillAsk::set_has_z() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void FightRpcUseSkillAsk::clear_has_z() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void FightRpcUseSkillAsk::clear_z() {
+  z_ = -1;
+  clear_has_z();
+}
+inline float FightRpcUseSkillAsk::z() const {
+  return z_;
+}
+inline void FightRpcUseSkillAsk::set_z(float value) {
+  set_has_z();
+  z_ = value;
+}
+
+// optional sint32 MomentIndex = 7 [default = -1];
+inline bool FightRpcUseSkillAsk::has_momentindex() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void FightRpcUseSkillAsk::set_has_momentindex() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void FightRpcUseSkillAsk::clear_has_momentindex() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void FightRpcUseSkillAsk::clear_momentindex() {
+  momentindex_ = -1;
+  clear_has_momentindex();
+}
+inline ::google::protobuf::int32 FightRpcUseSkillAsk::momentindex() const {
+  return momentindex_;
+}
+inline void FightRpcUseSkillAsk::set_momentindex(::google::protobuf::int32 value) {
+  set_has_momentindex();
+  momentindex_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// FightRpcUseSkillReply
+
+// optional sint32 Result = 1 [default = -9999];
+inline bool FightRpcUseSkillReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void FightRpcUseSkillReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void FightRpcUseSkillReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void FightRpcUseSkillReply::clear_result() {
+  result_ = -9999;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 FightRpcUseSkillReply::result() const {
+  return result_;
+}
+inline void FightRpcUseSkillReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// FightRpcHurtActionNotify
+
+// optional sint32 ObjId = 1 [default = -1];
+inline bool FightRpcHurtActionNotify::has_objid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void FightRpcHurtActionNotify::set_has_objid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void FightRpcHurtActionNotify::clear_has_objid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void FightRpcHurtActionNotify::clear_objid() {
+  objid_ = -1;
+  clear_has_objid();
+}
+inline ::google::protobuf::int32 FightRpcHurtActionNotify::objid() const {
+  return objid_;
+}
+inline void FightRpcHurtActionNotify::set_objid(::google::protobuf::int32 value) {
+  set_has_objid();
+  objid_ = value;
+}
+
+// optional sint32 SegmentIndex = 2 [default = -1];
+inline bool FightRpcHurtActionNotify::has_segmentindex() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void FightRpcHurtActionNotify::set_has_segmentindex() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void FightRpcHurtActionNotify::clear_has_segmentindex() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void FightRpcHurtActionNotify::clear_segmentindex() {
+  segmentindex_ = -1;
+  clear_has_segmentindex();
+}
+inline ::google::protobuf::int32 FightRpcHurtActionNotify::segmentindex() const {
+  return segmentindex_;
+}
+inline void FightRpcHurtActionNotify::set_segmentindex(::google::protobuf::int32 value) {
+  set_has_segmentindex();
+  segmentindex_ = value;
+}
+
+// optional sint32 SkillId = 3 [default = -1];
+inline bool FightRpcHurtActionNotify::has_skillid() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void FightRpcHurtActionNotify::set_has_skillid() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void FightRpcHurtActionNotify::clear_has_skillid() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void FightRpcHurtActionNotify::clear_skillid() {
+  skillid_ = -1;
+  clear_has_skillid();
+}
+inline ::google::protobuf::int32 FightRpcHurtActionNotify::skillid() const {
+  return skillid_;
+}
+inline void FightRpcHurtActionNotify::set_skillid(::google::protobuf::int32 value) {
+  set_has_skillid();
+  skillid_ = value;
+}
+
+// optional sint32 TargetObjId = 4 [default = -1];
+inline bool FightRpcHurtActionNotify::has_targetobjid() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void FightRpcHurtActionNotify::set_has_targetobjid() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void FightRpcHurtActionNotify::clear_has_targetobjid() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void FightRpcHurtActionNotify::clear_targetobjid() {
+  targetobjid_ = -1;
+  clear_has_targetobjid();
+}
+inline ::google::protobuf::int32 FightRpcHurtActionNotify::targetobjid() const {
+  return targetobjid_;
+}
+inline void FightRpcHurtActionNotify::set_targetobjid(::google::protobuf::int32 value) {
+  set_has_targetobjid();
+  targetobjid_ = value;
+}
+
+// optional sint32 HurtValue = 5 [default = 0];
+inline bool FightRpcHurtActionNotify::has_hurtvalue() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void FightRpcHurtActionNotify::set_has_hurtvalue() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void FightRpcHurtActionNotify::clear_has_hurtvalue() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void FightRpcHurtActionNotify::clear_hurtvalue() {
+  hurtvalue_ = 0;
+  clear_has_hurtvalue();
+}
+inline ::google::protobuf::int32 FightRpcHurtActionNotify::hurtvalue() const {
+  return hurtvalue_;
+}
+inline void FightRpcHurtActionNotify::set_hurtvalue(::google::protobuf::int32 value) {
+  set_has_hurtvalue();
+  hurtvalue_ = value;
+}
+
+// optional bool IsCritical = 6 [default = false];
+inline bool FightRpcHurtActionNotify::has_iscritical() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void FightRpcHurtActionNotify::set_has_iscritical() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void FightRpcHurtActionNotify::clear_has_iscritical() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void FightRpcHurtActionNotify::clear_iscritical() {
+  iscritical_ = false;
+  clear_has_iscritical();
+}
+inline bool FightRpcHurtActionNotify::iscritical() const {
+  return iscritical_;
+}
+inline void FightRpcHurtActionNotify::set_iscritical(bool value) {
+  set_has_iscritical();
+  iscritical_ = value;
+}
+
+// optional sint32 Energy = 7 [default = -1];
+inline bool FightRpcHurtActionNotify::has_energy() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void FightRpcHurtActionNotify::set_has_energy() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void FightRpcHurtActionNotify::clear_has_energy() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void FightRpcHurtActionNotify::clear_energy() {
+  energy_ = -1;
+  clear_has_energy();
+}
+inline ::google::protobuf::int32 FightRpcHurtActionNotify::energy() const {
+  return energy_;
+}
+inline void FightRpcHurtActionNotify::set_energy(::google::protobuf::int32 value) {
+  set_has_energy();
+  energy_ = value;
 }
 
 

@@ -1,4 +1,4 @@
-﻿#ifndef __STRINGCREATURE_CONFIG_H
+#ifndef __STRINGCREATURE_CONFIG_H
 #define __STRINGCREATURE_CONFIG_H
 
 #include "CommonDefine.h"
@@ -20,6 +20,7 @@ struct StringCreatureElement
 {
 	friend class StringCreatureTable;
 	int id;                      	//序号	序号
+	string comment;              	//	
 	string sc;                   	//简体中文	简体中文
 
 private:
@@ -47,7 +48,8 @@ class StringCreatureTable
 private:
 	StringCreatureTable(){}
 	~StringCreatureTable(){}
-	unordered_map<int, StringCreatureElement>	m_mapElements;
+	typedef unordered_map<int, StringCreatureElement> MapElementMap;
+	MapElementMap	m_mapElements;
 	vector<StringCreatureElement>	m_vecAllElements;
 	StringCreatureElement m_emptyItem;
 public:
@@ -59,16 +61,13 @@ public:
 
 	const StringCreatureElement* GetElement(int key)
 	{
-		if( m_mapElements.count(key)>0 )
-			return &m_mapElements[key];
-		if (m_mapElements.count(key) > 0)
+		MapElementMap::iterator it = m_mapElements.find(key);
+		if (it == m_mapElements.end())
 		{
-			StringCreatureElement* temp = &m_mapElements[key];
-			AssertEx(temp, std::string(std::string("StringCreatureTable: ") + std::to_string(key)).c_str());
-			return temp;
+			AssertEx(false, std::string(std::string("StringCreatureTable: ") + std::to_string(key)).c_str());
+			return NULL;
 		}
-		AssertEx(false, std::string(std::string("StringCreatureTable: ") + std::to_string(key)).c_str());
-		return NULL;
+		return &it->second;
 	}
 
 	bool HasElement(int key)
@@ -125,6 +124,7 @@ public:
 			StringCreatureElement	member;
 
 						member.id=p.get<int>("id");
+			member.comment=p.get<string>("comment");
 			member.sc=p.get<string>("sc");
 
 
@@ -142,28 +142,30 @@ public:
 		int contentOffset = 0;
 		vector<string> vecLine;
 		vecLine = ReadCsvLine( strContent, contentOffset );
-		if(vecLine.size() != 2)
+		if(vecLine.size() != 3)
 		{
 			printf_message("StringCreature.csv中列数量与生成的代码不匹配!");
 			assert(false);
 			return false;
 		}
-		if(vecLine[0]!="id"){printf_message("StringCreature.csv中字段[id]位置不对应");assert(false); return false; }
-		if(vecLine[1]!="sc"){printf_message("StringCreature.csv中字段[sc]位置不对应");assert(false); return false; }
+		if(vecLine[0]!="id"){printf_message("StringCreature.csv中字段[id]位置不对应 ");assert(false); return false; }
+		if(vecLine[1]!="comment"){printf_message("StringCreature.csv中字段[comment]位置不对应 ");assert(false); return false; }
+		if(vecLine[2]!="sc"){printf_message("StringCreature.csv中字段[sc]位置不对应 ");assert(false); return false; }
 
 		while(true)
 		{
 			vecLine = ReadCsvLine( strContent, contentOffset );
 			if((int)vecLine.size() == 0 )
 				break;
-			if((int)vecLine.size() != (int)2)
+			if((int)vecLine.size() != (int)3)
 			{
 				assert(false);
 				return false;
 			}
 			StringCreatureElement	member;
 			member.id=(int)atoi(vecLine[0].c_str());
-			member.sc=vecLine[1];
+			member.comment=vecLine[1];
+			member.sc=vecLine[2];
 
 			member.SetIsValidate(true);
 			m_mapElements[member.id] = member;

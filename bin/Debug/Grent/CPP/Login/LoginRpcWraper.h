@@ -1,4 +1,4 @@
-﻿/********************************************************************************************
+/********************************************************************************************
 * Copyright (C), 2011-2025, Ambition. Co., Ltd.
 * FileName:     RpcWraperLogin.h
 * Author:       郭晓波
@@ -29,13 +29,129 @@ enum ConstLoginE
 	RPC_CODE_LOGIN_SELECTCHARACTER_REQUEST       = 254,	//登录模块-->选择角色-->请求
 	RPC_CODE_LOGIN_CREATECHARACTER_REQUEST       = 255,	//登录模块-->创建角色-->请求
 	RPC_CODE_LOGIN_SELECTSAVEUSER_REQUEST        = 256,	//登录模块-->选择角色存储redis-->请求
+	RPC_CODE_LOGIN_DELETECHARACTER_REQUEST       = 257,	//登录模块-->删除角色-->请求
 
 
 };
 
 
+//创建角色回应封装类
+class LoginRpcCreateCharacterReplyWraper
+{
+public:
+	//构造函数
+	LoginRpcCreateCharacterReplyWraper()
+	{
+		
+		m_Result = -9999;
+		m_RoleId = 0;
+
+	}
+	//赋值构造函数
+	LoginRpcCreateCharacterReplyWraper(const LoginRpcCreateCharacterReply& v){ Init(v); }
+	//等号重载函数
+	void operator = (const LoginRpcCreateCharacterReply& v){ Init(v); }
+ 	//转化成Protobuffer类型函数
+	LoginRpcCreateCharacterReply ToPB() const
+	{
+		LoginRpcCreateCharacterReply v;
+		v.set_result( m_Result );
+		v.set_roleid( m_RoleId );
+
+		return v;
+	}
+	//获取Protobuffer序列化后大小函数
+	int ByteSize() const { return ToPB().ByteSize();}
+	//Protobuffer序列化到缓冲区
+	bool SerializeToArray( void* data, int size ) const
+	{
+		return ToPB().SerializeToArray(data,size);
+	}
+	//Protobuffer序列化到字符串
+	string SerializeAsString() const
+	{
+		return ToPB().SerializeAsString();
+	}
+	//Protobuffer从字符串进行反序列化
+	bool ParseFromString(const string& v)
+	{
+		return ParseFromArray(v.data(),v.size());
+	}
+	//Protobuffer从缓冲区进行反序列化
+	bool ParseFromArray(const void* data, int size)
+	{
+		LoginRpcCreateCharacterReply pb;
+		if(!pb.ParseFromArray(data,size)){return false;}
+		Init(pb);
+		return true;
+	}
+	/*
+	string HtmlDescHeader()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}
+	*/
+	/*
+	string ToHtml()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+		TStr tmpLine;
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}*/
+
+
+private:
+	//从Protobuffer类型初始化
+	void Init(const LoginRpcCreateCharacterReply& v)
+	{
+		m_Result = v.result();
+		m_RoleId = v.roleid();
+
+	}
+
+private:
+	//返回结果
+	INT32 m_Result;
+public:
+	void SetResult( INT32 v)
+	{
+		m_Result=v;
+	}
+	INT32 GetResult()
+	{
+		return m_Result;
+	}
+	INT32 GetResult() const
+	{
+		return m_Result;
+	}
+private:
+	//角色id
+	uint64_t m_RoleId;
+public:
+	void SetRoleId( uint64_t v)
+	{
+		m_RoleId=v;
+	}
+	uint64_t GetRoleId()
+	{
+		return m_RoleId;
+	}
+	uint64_t GetRoleId() const
+	{
+		return m_RoleId;
+	}
+
+};
 //创建角色请求封装类
-class LoginRpcCreateCharacterAskWraper : public DataWraperInterface 
+class LoginRpcCreateCharacterAskWraper
 {
 public:
 	//构造函数
@@ -84,7 +200,7 @@ public:
 		Init(pb);
 		return true;
 	}
-
+	/*
 	string HtmlDescHeader()
 	{
 		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
@@ -93,7 +209,8 @@ public:
 		htmlBuff += "</div>\r\n";
 		return htmlBuff;
 	}
-
+	*/
+	/*
 	string ToHtml()
 	{
 		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
@@ -102,7 +219,7 @@ public:
 		
 		htmlBuff += "</div>\r\n";
 		return htmlBuff;
-	}
+	}*/
 
 
 private:
@@ -149,7 +266,7 @@ public:
 
 };
 //选择角色回应封装类
-class LoginRpcSelectCharacterReplyWraper : public DataWraperInterface 
+class LoginRpcSelectCharacterReplyWraper
 {
 public:
 	//构造函数
@@ -202,7 +319,7 @@ public:
 		Init(pb);
 		return true;
 	}
-
+	/*
 	string HtmlDescHeader()
 	{
 		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
@@ -211,7 +328,8 @@ public:
 		htmlBuff += "</div>\r\n";
 		return htmlBuff;
 	}
-
+	*/
+	/*
 	string ToHtml()
 	{
 		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
@@ -220,7 +338,7 @@ public:
 		
 		htmlBuff += "</div>\r\n";
 		return htmlBuff;
-	}
+	}*/
 
 
 private:
@@ -300,198 +418,8 @@ public:
 	}
 
 };
-//选择角色请求封装类
-class LoginRpcSelectCharacterAskWraper : public DataWraperInterface 
-{
-public:
-	//构造函数
-	LoginRpcSelectCharacterAskWraper()
-	{
-		
-		m_RoleId = 0;
-
-	}
-	//赋值构造函数
-	LoginRpcSelectCharacterAskWraper(const LoginRpcSelectCharacterAsk& v){ Init(v); }
-	//等号重载函数
-	void operator = (const LoginRpcSelectCharacterAsk& v){ Init(v); }
- 	//转化成Protobuffer类型函数
-	LoginRpcSelectCharacterAsk ToPB() const
-	{
-		LoginRpcSelectCharacterAsk v;
-		v.set_roleid( m_RoleId );
-
-		return v;
-	}
-	//获取Protobuffer序列化后大小函数
-	int ByteSize() const { return ToPB().ByteSize();}
-	//Protobuffer序列化到缓冲区
-	bool SerializeToArray( void* data, int size ) const
-	{
-		return ToPB().SerializeToArray(data,size);
-	}
-	//Protobuffer序列化到字符串
-	string SerializeAsString() const
-	{
-		return ToPB().SerializeAsString();
-	}
-	//Protobuffer从字符串进行反序列化
-	bool ParseFromString(const string& v)
-	{
-		return ParseFromArray(v.data(),v.size());
-	}
-	//Protobuffer从缓冲区进行反序列化
-	bool ParseFromArray(const void* data, int size)
-	{
-		LoginRpcSelectCharacterAsk pb;
-		if(!pb.ParseFromArray(data,size)){return false;}
-		Init(pb);
-		return true;
-	}
-
-	string HtmlDescHeader()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-
-	string ToHtml()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-		TStr tmpLine;
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-
-
-private:
-	//从Protobuffer类型初始化
-	void Init(const LoginRpcSelectCharacterAsk& v)
-	{
-		m_RoleId = v.roleid();
-
-	}
-
-private:
-	//id
-	uint64_t m_RoleId;
-public:
-	void SetRoleId( uint64_t v)
-	{
-		m_RoleId=v;
-	}
-	uint64_t GetRoleId()
-	{
-		return m_RoleId;
-	}
-	uint64_t GetRoleId() const
-	{
-		return m_RoleId;
-	}
-
-};
-//选择角色存储redis回应封装类
-class LoginRpcSelectSaveUserReplyWraper : public DataWraperInterface 
-{
-public:
-	//构造函数
-	LoginRpcSelectSaveUserReplyWraper()
-	{
-		
-		m_Result = -9999;
-
-	}
-	//赋值构造函数
-	LoginRpcSelectSaveUserReplyWraper(const LoginRpcSelectSaveUserReply& v){ Init(v); }
-	//等号重载函数
-	void operator = (const LoginRpcSelectSaveUserReply& v){ Init(v); }
- 	//转化成Protobuffer类型函数
-	LoginRpcSelectSaveUserReply ToPB() const
-	{
-		LoginRpcSelectSaveUserReply v;
-		v.set_result( m_Result );
-
-		return v;
-	}
-	//获取Protobuffer序列化后大小函数
-	int ByteSize() const { return ToPB().ByteSize();}
-	//Protobuffer序列化到缓冲区
-	bool SerializeToArray( void* data, int size ) const
-	{
-		return ToPB().SerializeToArray(data,size);
-	}
-	//Protobuffer序列化到字符串
-	string SerializeAsString() const
-	{
-		return ToPB().SerializeAsString();
-	}
-	//Protobuffer从字符串进行反序列化
-	bool ParseFromString(const string& v)
-	{
-		return ParseFromArray(v.data(),v.size());
-	}
-	//Protobuffer从缓冲区进行反序列化
-	bool ParseFromArray(const void* data, int size)
-	{
-		LoginRpcSelectSaveUserReply pb;
-		if(!pb.ParseFromArray(data,size)){return false;}
-		Init(pb);
-		return true;
-	}
-
-	string HtmlDescHeader()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-
-	string ToHtml()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-		TStr tmpLine;
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-
-
-private:
-	//从Protobuffer类型初始化
-	void Init(const LoginRpcSelectSaveUserReply& v)
-	{
-		m_Result = v.result();
-
-	}
-
-private:
-	//返回结果
-	INT32 m_Result;
-public:
-	void SetResult( INT32 v)
-	{
-		m_Result=v;
-	}
-	INT32 GetResult()
-	{
-		return m_Result;
-	}
-	INT32 GetResult() const
-	{
-		return m_Result;
-	}
-
-};
 //选择角色存储redis请求封装类
-class LoginRpcSelectSaveUserAskWraper : public DataWraperInterface 
+class LoginRpcSelectSaveUserAskWraper
 {
 public:
 	//构造函数
@@ -538,7 +466,7 @@ public:
 		Init(pb);
 		return true;
 	}
-
+	/*
 	string HtmlDescHeader()
 	{
 		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
@@ -547,7 +475,8 @@ public:
 		htmlBuff += "</div>\r\n";
 		return htmlBuff;
 	}
-
+	*/
+	/*
 	string ToHtml()
 	{
 		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
@@ -556,7 +485,7 @@ public:
 		
 		htmlBuff += "</div>\r\n";
 		return htmlBuff;
-	}
+	}*/
 
 
 private:
@@ -585,27 +514,121 @@ public:
 	}
 
 };
-//创建角色回应封装类
-class LoginRpcCreateCharacterReplyWraper : public DataWraperInterface 
+//删除角色回应封装类
+class LoginRpcDeleteCharacterReplyWraper
 {
 public:
 	//构造函数
-	LoginRpcCreateCharacterReplyWraper()
+	LoginRpcDeleteCharacterReplyWraper()
 	{
 		
 		m_Result = -9999;
+
+	}
+	//赋值构造函数
+	LoginRpcDeleteCharacterReplyWraper(const LoginRpcDeleteCharacterReply& v){ Init(v); }
+	//等号重载函数
+	void operator = (const LoginRpcDeleteCharacterReply& v){ Init(v); }
+ 	//转化成Protobuffer类型函数
+	LoginRpcDeleteCharacterReply ToPB() const
+	{
+		LoginRpcDeleteCharacterReply v;
+		v.set_result( m_Result );
+
+		return v;
+	}
+	//获取Protobuffer序列化后大小函数
+	int ByteSize() const { return ToPB().ByteSize();}
+	//Protobuffer序列化到缓冲区
+	bool SerializeToArray( void* data, int size ) const
+	{
+		return ToPB().SerializeToArray(data,size);
+	}
+	//Protobuffer序列化到字符串
+	string SerializeAsString() const
+	{
+		return ToPB().SerializeAsString();
+	}
+	//Protobuffer从字符串进行反序列化
+	bool ParseFromString(const string& v)
+	{
+		return ParseFromArray(v.data(),v.size());
+	}
+	//Protobuffer从缓冲区进行反序列化
+	bool ParseFromArray(const void* data, int size)
+	{
+		LoginRpcDeleteCharacterReply pb;
+		if(!pb.ParseFromArray(data,size)){return false;}
+		Init(pb);
+		return true;
+	}
+	/*
+	string HtmlDescHeader()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}
+	*/
+	/*
+	string ToHtml()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+		TStr tmpLine;
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}*/
+
+
+private:
+	//从Protobuffer类型初始化
+	void Init(const LoginRpcDeleteCharacterReply& v)
+	{
+		m_Result = v.result();
+
+	}
+
+private:
+	//返回结果
+	INT32 m_Result;
+public:
+	void SetResult( INT32 v)
+	{
+		m_Result=v;
+	}
+	INT32 GetResult()
+	{
+		return m_Result;
+	}
+	INT32 GetResult() const
+	{
+		return m_Result;
+	}
+
+};
+//删除角色请求封装类
+class LoginRpcDeleteCharacterAskWraper
+{
+public:
+	//构造函数
+	LoginRpcDeleteCharacterAskWraper()
+	{
+		
 		m_RoleId = 0;
 
 	}
 	//赋值构造函数
-	LoginRpcCreateCharacterReplyWraper(const LoginRpcCreateCharacterReply& v){ Init(v); }
+	LoginRpcDeleteCharacterAskWraper(const LoginRpcDeleteCharacterAsk& v){ Init(v); }
 	//等号重载函数
-	void operator = (const LoginRpcCreateCharacterReply& v){ Init(v); }
+	void operator = (const LoginRpcDeleteCharacterAsk& v){ Init(v); }
  	//转化成Protobuffer类型函数
-	LoginRpcCreateCharacterReply ToPB() const
+	LoginRpcDeleteCharacterAsk ToPB() const
 	{
-		LoginRpcCreateCharacterReply v;
-		v.set_result( m_Result );
+		LoginRpcDeleteCharacterAsk v;
 		v.set_roleid( m_RoleId );
 
 		return v;
@@ -630,12 +653,12 @@ public:
 	//Protobuffer从缓冲区进行反序列化
 	bool ParseFromArray(const void* data, int size)
 	{
-		LoginRpcCreateCharacterReply pb;
+		LoginRpcDeleteCharacterAsk pb;
 		if(!pb.ParseFromArray(data,size)){return false;}
 		Init(pb);
 		return true;
 	}
-
+	/*
 	string HtmlDescHeader()
 	{
 		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
@@ -644,7 +667,8 @@ public:
 		htmlBuff += "</div>\r\n";
 		return htmlBuff;
 	}
-
+	*/
+	/*
 	string ToHtml()
 	{
 		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
@@ -653,15 +677,110 @@ public:
 		
 		htmlBuff += "</div>\r\n";
 		return htmlBuff;
-	}
+	}*/
 
 
 private:
 	//从Protobuffer类型初始化
-	void Init(const LoginRpcCreateCharacterReply& v)
+	void Init(const LoginRpcDeleteCharacterAsk& v)
+	{
+		m_RoleId = v.roleid();
+
+	}
+
+private:
+	//id
+	uint64_t m_RoleId;
+public:
+	void SetRoleId( uint64_t v)
+	{
+		m_RoleId=v;
+	}
+	uint64_t GetRoleId()
+	{
+		return m_RoleId;
+	}
+	uint64_t GetRoleId() const
+	{
+		return m_RoleId;
+	}
+
+};
+//选择角色存储redis回应封装类
+class LoginRpcSelectSaveUserReplyWraper
+{
+public:
+	//构造函数
+	LoginRpcSelectSaveUserReplyWraper()
+	{
+		
+		m_Result = -9999;
+
+	}
+	//赋值构造函数
+	LoginRpcSelectSaveUserReplyWraper(const LoginRpcSelectSaveUserReply& v){ Init(v); }
+	//等号重载函数
+	void operator = (const LoginRpcSelectSaveUserReply& v){ Init(v); }
+ 	//转化成Protobuffer类型函数
+	LoginRpcSelectSaveUserReply ToPB() const
+	{
+		LoginRpcSelectSaveUserReply v;
+		v.set_result( m_Result );
+
+		return v;
+	}
+	//获取Protobuffer序列化后大小函数
+	int ByteSize() const { return ToPB().ByteSize();}
+	//Protobuffer序列化到缓冲区
+	bool SerializeToArray( void* data, int size ) const
+	{
+		return ToPB().SerializeToArray(data,size);
+	}
+	//Protobuffer序列化到字符串
+	string SerializeAsString() const
+	{
+		return ToPB().SerializeAsString();
+	}
+	//Protobuffer从字符串进行反序列化
+	bool ParseFromString(const string& v)
+	{
+		return ParseFromArray(v.data(),v.size());
+	}
+	//Protobuffer从缓冲区进行反序列化
+	bool ParseFromArray(const void* data, int size)
+	{
+		LoginRpcSelectSaveUserReply pb;
+		if(!pb.ParseFromArray(data,size)){return false;}
+		Init(pb);
+		return true;
+	}
+	/*
+	string HtmlDescHeader()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}
+	*/
+	/*
+	string ToHtml()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+		TStr tmpLine;
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}*/
+
+
+private:
+	//从Protobuffer类型初始化
+	void Init(const LoginRpcSelectSaveUserReply& v)
 	{
 		m_Result = v.result();
-		m_RoleId = v.roleid();
 
 	}
 
@@ -681,26 +800,10 @@ public:
 	{
 		return m_Result;
 	}
-private:
-	//角色id
-	uint64_t m_RoleId;
-public:
-	void SetRoleId( uint64_t v)
-	{
-		m_RoleId=v;
-	}
-	uint64_t GetRoleId()
-	{
-		return m_RoleId;
-	}
-	uint64_t GetRoleId() const
-	{
-		return m_RoleId;
-	}
 
 };
 //登录请求封装类
-class LoginRpcLoginAskWraper : public DataWraperInterface 
+class LoginRpcLoginAskWraper
 {
 public:
 	//构造函数
@@ -749,7 +852,7 @@ public:
 		Init(pb);
 		return true;
 	}
-
+	/*
 	string HtmlDescHeader()
 	{
 		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
@@ -758,7 +861,8 @@ public:
 		htmlBuff += "</div>\r\n";
 		return htmlBuff;
 	}
-
+	*/
+	/*
 	string ToHtml()
 	{
 		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
@@ -767,7 +871,7 @@ public:
 		
 		htmlBuff += "</div>\r\n";
 		return htmlBuff;
-	}
+	}*/
 
 
 private:
@@ -814,7 +918,7 @@ public:
 
 };
 //连接验证回应封装类
-class LoginRpcConnectReplyWraper : public DataWraperInterface 
+class LoginRpcConnectReplyWraper
 {
 public:
 	//构造函数
@@ -863,7 +967,7 @@ public:
 		Init(pb);
 		return true;
 	}
-
+	/*
 	string HtmlDescHeader()
 	{
 		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
@@ -872,7 +976,8 @@ public:
 		htmlBuff += "</div>\r\n";
 		return htmlBuff;
 	}
-
+	*/
+	/*
 	string ToHtml()
 	{
 		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
@@ -881,7 +986,7 @@ public:
 		
 		htmlBuff += "</div>\r\n";
 		return htmlBuff;
-	}
+	}*/
 
 
 private:
@@ -928,7 +1033,7 @@ public:
 
 };
 //连接验证请求封装类
-class LoginRpcConnectAskWraper : public DataWraperInterface 
+class LoginRpcConnectAskWraper
 {
 public:
 	//构造函数
@@ -975,7 +1080,7 @@ public:
 		Init(pb);
 		return true;
 	}
-
+	/*
 	string HtmlDescHeader()
 	{
 		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
@@ -984,7 +1089,8 @@ public:
 		htmlBuff += "</div>\r\n";
 		return htmlBuff;
 	}
-
+	*/
+	/*
 	string ToHtml()
 	{
 		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
@@ -993,7 +1099,7 @@ public:
 		
 		htmlBuff += "</div>\r\n";
 		return htmlBuff;
-	}
+	}*/
 
 
 private:
@@ -1022,8 +1128,219 @@ public:
 	}
 
 };
+//登录回应封装类
+class LoginRpcLoginReplyWraper
+{
+public:
+	//构造函数
+	LoginRpcLoginReplyWraper()
+	{
+		
+		m_Result = -9999;
+		m_RoleId = 0;
+
+	}
+	//赋值构造函数
+	LoginRpcLoginReplyWraper(const LoginRpcLoginReply& v){ Init(v); }
+	//等号重载函数
+	void operator = (const LoginRpcLoginReply& v){ Init(v); }
+ 	//转化成Protobuffer类型函数
+	LoginRpcLoginReply ToPB() const
+	{
+		LoginRpcLoginReply v;
+		v.set_result( m_Result );
+		v.set_roleid( m_RoleId );
+
+		return v;
+	}
+	//获取Protobuffer序列化后大小函数
+	int ByteSize() const { return ToPB().ByteSize();}
+	//Protobuffer序列化到缓冲区
+	bool SerializeToArray( void* data, int size ) const
+	{
+		return ToPB().SerializeToArray(data,size);
+	}
+	//Protobuffer序列化到字符串
+	string SerializeAsString() const
+	{
+		return ToPB().SerializeAsString();
+	}
+	//Protobuffer从字符串进行反序列化
+	bool ParseFromString(const string& v)
+	{
+		return ParseFromArray(v.data(),v.size());
+	}
+	//Protobuffer从缓冲区进行反序列化
+	bool ParseFromArray(const void* data, int size)
+	{
+		LoginRpcLoginReply pb;
+		if(!pb.ParseFromArray(data,size)){return false;}
+		Init(pb);
+		return true;
+	}
+	/*
+	string HtmlDescHeader()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}
+	*/
+	/*
+	string ToHtml()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+		TStr tmpLine;
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}*/
+
+
+private:
+	//从Protobuffer类型初始化
+	void Init(const LoginRpcLoginReply& v)
+	{
+		m_Result = v.result();
+		m_RoleId = v.roleid();
+
+	}
+
+private:
+	//返回结果
+	INT32 m_Result;
+public:
+	void SetResult( INT32 v)
+	{
+		m_Result=v;
+	}
+	INT32 GetResult()
+	{
+		return m_Result;
+	}
+	INT32 GetResult() const
+	{
+		return m_Result;
+	}
+private:
+	//用户ID
+	uint64_t m_RoleId;
+public:
+	void SetRoleId( uint64_t v)
+	{
+		m_RoleId=v;
+	}
+	uint64_t GetRoleId()
+	{
+		return m_RoleId;
+	}
+	uint64_t GetRoleId() const
+	{
+		return m_RoleId;
+	}
+
+};
+//选择角色请求封装类
+class LoginRpcSelectCharacterAskWraper
+{
+public:
+	//构造函数
+	LoginRpcSelectCharacterAskWraper()
+	{
+		
+		m_RoleId = 0;
+
+	}
+	//赋值构造函数
+	LoginRpcSelectCharacterAskWraper(const LoginRpcSelectCharacterAsk& v){ Init(v); }
+	//等号重载函数
+	void operator = (const LoginRpcSelectCharacterAsk& v){ Init(v); }
+ 	//转化成Protobuffer类型函数
+	LoginRpcSelectCharacterAsk ToPB() const
+	{
+		LoginRpcSelectCharacterAsk v;
+		v.set_roleid( m_RoleId );
+
+		return v;
+	}
+	//获取Protobuffer序列化后大小函数
+	int ByteSize() const { return ToPB().ByteSize();}
+	//Protobuffer序列化到缓冲区
+	bool SerializeToArray( void* data, int size ) const
+	{
+		return ToPB().SerializeToArray(data,size);
+	}
+	//Protobuffer序列化到字符串
+	string SerializeAsString() const
+	{
+		return ToPB().SerializeAsString();
+	}
+	//Protobuffer从字符串进行反序列化
+	bool ParseFromString(const string& v)
+	{
+		return ParseFromArray(v.data(),v.size());
+	}
+	//Protobuffer从缓冲区进行反序列化
+	bool ParseFromArray(const void* data, int size)
+	{
+		LoginRpcSelectCharacterAsk pb;
+		if(!pb.ParseFromArray(data,size)){return false;}
+		Init(pb);
+		return true;
+	}
+	/*
+	string HtmlDescHeader()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}
+	*/
+	/*
+	string ToHtml()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+		TStr tmpLine;
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}*/
+
+
+private:
+	//从Protobuffer类型初始化
+	void Init(const LoginRpcSelectCharacterAsk& v)
+	{
+		m_RoleId = v.roleid();
+
+	}
+
+private:
+	//id
+	uint64_t m_RoleId;
+public:
+	void SetRoleId( uint64_t v)
+	{
+		m_RoleId=v;
+	}
+	uint64_t GetRoleId()
+	{
+		return m_RoleId;
+	}
+	uint64_t GetRoleId() const
+	{
+		return m_RoleId;
+	}
+
+};
 //角色列表回应封装类
-class LoginRpcCharacterListReplyWraper : public DataWraperInterface 
+class LoginRpcCharacterListReplyWraper
 {
 public:
 	//构造函数
@@ -1077,7 +1394,7 @@ public:
 		Init(pb);
 		return true;
 	}
-
+	/*
 	string HtmlDescHeader()
 	{
 		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
@@ -1086,7 +1403,8 @@ public:
 		htmlBuff += "</div>\r\n";
 		return htmlBuff;
 	}
-
+	*/
+	/*
 	string ToHtml()
 	{
 		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
@@ -1095,7 +1413,7 @@ public:
 		
 		htmlBuff += "</div>\r\n";
 		return htmlBuff;
-	}
+	}*/
 
 
 private:
@@ -1188,7 +1506,7 @@ public:
 
 };
 //角色列表请求封装类
-class LoginRpcCharacterListAskWraper : public DataWraperInterface 
+class LoginRpcCharacterListAskWraper
 {
 public:
 	//构造函数
@@ -1235,7 +1553,7 @@ public:
 		Init(pb);
 		return true;
 	}
-
+	/*
 	string HtmlDescHeader()
 	{
 		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
@@ -1244,7 +1562,8 @@ public:
 		htmlBuff += "</div>\r\n";
 		return htmlBuff;
 	}
-
+	*/
+	/*
 	string ToHtml()
 	{
 		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
@@ -1253,7 +1572,7 @@ public:
 		
 		htmlBuff += "</div>\r\n";
 		return htmlBuff;
-	}
+	}*/
 
 
 private:
@@ -1279,120 +1598,6 @@ public:
 	string GetAccountname () const
 	{
 		return m_Accountname ;
-	}
-
-};
-//登录回应封装类
-class LoginRpcLoginReplyWraper : public DataWraperInterface 
-{
-public:
-	//构造函数
-	LoginRpcLoginReplyWraper()
-	{
-		
-		m_Result = -9999;
-		m_RoleId = 0;
-
-	}
-	//赋值构造函数
-	LoginRpcLoginReplyWraper(const LoginRpcLoginReply& v){ Init(v); }
-	//等号重载函数
-	void operator = (const LoginRpcLoginReply& v){ Init(v); }
- 	//转化成Protobuffer类型函数
-	LoginRpcLoginReply ToPB() const
-	{
-		LoginRpcLoginReply v;
-		v.set_result( m_Result );
-		v.set_roleid( m_RoleId );
-
-		return v;
-	}
-	//获取Protobuffer序列化后大小函数
-	int ByteSize() const { return ToPB().ByteSize();}
-	//Protobuffer序列化到缓冲区
-	bool SerializeToArray( void* data, int size ) const
-	{
-		return ToPB().SerializeToArray(data,size);
-	}
-	//Protobuffer序列化到字符串
-	string SerializeAsString() const
-	{
-		return ToPB().SerializeAsString();
-	}
-	//Protobuffer从字符串进行反序列化
-	bool ParseFromString(const string& v)
-	{
-		return ParseFromArray(v.data(),v.size());
-	}
-	//Protobuffer从缓冲区进行反序列化
-	bool ParseFromArray(const void* data, int size)
-	{
-		LoginRpcLoginReply pb;
-		if(!pb.ParseFromArray(data,size)){return false;}
-		Init(pb);
-		return true;
-	}
-
-	string HtmlDescHeader()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-
-	string ToHtml()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-		TStr tmpLine;
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-
-
-private:
-	//从Protobuffer类型初始化
-	void Init(const LoginRpcLoginReply& v)
-	{
-		m_Result = v.result();
-		m_RoleId = v.roleid();
-
-	}
-
-private:
-	//返回结果
-	INT32 m_Result;
-public:
-	void SetResult( INT32 v)
-	{
-		m_Result=v;
-	}
-	INT32 GetResult()
-	{
-		return m_Result;
-	}
-	INT32 GetResult() const
-	{
-		return m_Result;
-	}
-private:
-	//用户ID
-	uint64_t m_RoleId;
-public:
-	void SetRoleId( uint64_t v)
-	{
-		m_RoleId=v;
-	}
-	uint64_t GetRoleId()
-	{
-		return m_RoleId;
-	}
-	uint64_t GetRoleId() const
-	{
-		return m_RoleId;
 	}
 
 };

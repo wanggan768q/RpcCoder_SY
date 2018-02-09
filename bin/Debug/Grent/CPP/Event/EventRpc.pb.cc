@@ -24,9 +24,9 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* EventRpcStopMoveNotify_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   EventRpcStopMoveNotify_reflection_ = NULL;
-const ::google::protobuf::Descriptor* EventRpcBossDiedNotify_descriptor_ = NULL;
+const ::google::protobuf::Descriptor* EventRpcObjAttrChangeNotify_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
-  EventRpcBossDiedNotify_reflection_ = NULL;
+  EventRpcObjAttrChangeNotify_reflection_ = NULL;
 
 }  // namespace
 
@@ -71,23 +71,25 @@ void protobuf_AssignDesc_EventRpc_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(EventRpcStopMoveNotify));
-  EventRpcBossDiedNotify_descriptor_ = file->message_type(2);
-  static const int EventRpcBossDiedNotify_offsets_[3] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(EventRpcBossDiedNotify, sceneid_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(EventRpcBossDiedNotify, objid_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(EventRpcBossDiedNotify, isendingboss_),
+  EventRpcObjAttrChangeNotify_descriptor_ = file->message_type(2);
+  static const int EventRpcObjAttrChangeNotify_offsets_[5] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(EventRpcObjAttrChangeNotify, speed_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(EventRpcObjAttrChangeNotify, hp_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(EventRpcObjAttrChangeNotify, status_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(EventRpcObjAttrChangeNotify, configid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(EventRpcObjAttrChangeNotify, objid_),
   };
-  EventRpcBossDiedNotify_reflection_ =
+  EventRpcObjAttrChangeNotify_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
-      EventRpcBossDiedNotify_descriptor_,
-      EventRpcBossDiedNotify::default_instance_,
-      EventRpcBossDiedNotify_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(EventRpcBossDiedNotify, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(EventRpcBossDiedNotify, _unknown_fields_),
+      EventRpcObjAttrChangeNotify_descriptor_,
+      EventRpcObjAttrChangeNotify::default_instance_,
+      EventRpcObjAttrChangeNotify_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(EventRpcObjAttrChangeNotify, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(EventRpcObjAttrChangeNotify, _unknown_fields_),
       -1,
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(EventRpcBossDiedNotify));
+      sizeof(EventRpcObjAttrChangeNotify));
 }
 
 namespace {
@@ -105,7 +107,7 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     EventRpcStopMoveNotify_descriptor_, &EventRpcStopMoveNotify::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    EventRpcBossDiedNotify_descriptor_, &EventRpcBossDiedNotify::default_instance());
+    EventRpcObjAttrChangeNotify_descriptor_, &EventRpcObjAttrChangeNotify::default_instance());
 }
 
 }  // namespace
@@ -115,8 +117,8 @@ void protobuf_ShutdownFile_EventRpc_2eproto() {
   delete EventRpcMoveNotify_reflection_;
   delete EventRpcStopMoveNotify::default_instance_;
   delete EventRpcStopMoveNotify_reflection_;
-  delete EventRpcBossDiedNotify::default_instance_;
-  delete EventRpcBossDiedNotify_reflection_;
+  delete EventRpcObjAttrChangeNotify::default_instance_;
+  delete EventRpcObjAttrChangeNotify_reflection_;
 }
 
 void protobuf_AddDesc_EventRpc_2eproto() {
@@ -131,18 +133,18 @@ void protobuf_AddDesc_EventRpc_2eproto() {
     "EventRpcMoveNotify\022\021\n\005ObjId\030\001 \001(\021:\002-1\022\020\n"
     "\003Pos\030\002 \001(\0132\003.V3\022\017\n\003Dir\030\003 \001(\002:\002-1\"N\n\026Even"
     "tRpcStopMoveNotify\022\021\n\005ObjId\030\001 \001(\021:\002-1\022\020\n"
-    "\003Pos\030\002 \001(\0132\003.V3\022\017\n\003Dir\030\003 \001(\002:\002-1\"]\n\026Even"
-    "tRpcBossDiedNotify\022\023\n\007SceneId\030\001 \001(\021:\002-1\022"
-    "\021\n\005ObjId\030\002 \001(\021:\002-1\022\033\n\014IsEndingBoss\030\003 \001(\010"
-    ":\005false", 287);
+    "\003Pos\030\002 \001(\0132\003.V3\022\017\n\003Dir\030\003 \001(\002:\002-1\"}\n\033Even"
+    "tRpcObjAttrChangeNotify\022\021\n\005Speed\030\001 \001(\002:\002"
+    "-1\022\016\n\002Hp\030\002 \001(\022:\002-1\022\022\n\006Status\030\003 \001(\021:\002-1\022\024"
+    "\n\010ConfigId\030\004 \001(\021:\002-1\022\021\n\005ObjId\030\005 \001(\021:\002-1", 319);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "EventRpc.proto", &protobuf_RegisterTypes);
   EventRpcMoveNotify::default_instance_ = new EventRpcMoveNotify();
   EventRpcStopMoveNotify::default_instance_ = new EventRpcStopMoveNotify();
-  EventRpcBossDiedNotify::default_instance_ = new EventRpcBossDiedNotify();
+  EventRpcObjAttrChangeNotify::default_instance_ = new EventRpcObjAttrChangeNotify();
   EventRpcMoveNotify::default_instance_->InitAsDefaultInstance();
   EventRpcStopMoveNotify::default_instance_->InitAsDefaultInstance();
-  EventRpcBossDiedNotify::default_instance_->InitAsDefaultInstance();
+  EventRpcObjAttrChangeNotify::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_EventRpc_2eproto);
 }
 
@@ -738,96 +740,150 @@ void EventRpcStopMoveNotify::Swap(EventRpcStopMoveNotify* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int EventRpcBossDiedNotify::kSceneIdFieldNumber;
-const int EventRpcBossDiedNotify::kObjIdFieldNumber;
-const int EventRpcBossDiedNotify::kIsEndingBossFieldNumber;
+const int EventRpcObjAttrChangeNotify::kSpeedFieldNumber;
+const int EventRpcObjAttrChangeNotify::kHpFieldNumber;
+const int EventRpcObjAttrChangeNotify::kStatusFieldNumber;
+const int EventRpcObjAttrChangeNotify::kConfigIdFieldNumber;
+const int EventRpcObjAttrChangeNotify::kObjIdFieldNumber;
 #endif  // !_MSC_VER
 
-EventRpcBossDiedNotify::EventRpcBossDiedNotify()
+EventRpcObjAttrChangeNotify::EventRpcObjAttrChangeNotify()
   : ::google::protobuf::Message() {
   SharedCtor();
 }
 
-void EventRpcBossDiedNotify::InitAsDefaultInstance() {
+void EventRpcObjAttrChangeNotify::InitAsDefaultInstance() {
 }
 
-EventRpcBossDiedNotify::EventRpcBossDiedNotify(const EventRpcBossDiedNotify& from)
+EventRpcObjAttrChangeNotify::EventRpcObjAttrChangeNotify(const EventRpcObjAttrChangeNotify& from)
   : ::google::protobuf::Message() {
   SharedCtor();
   MergeFrom(from);
 }
 
-void EventRpcBossDiedNotify::SharedCtor() {
+void EventRpcObjAttrChangeNotify::SharedCtor() {
   _cached_size_ = 0;
-  sceneid_ = -1;
+  speed_ = -1;
+  hp_ = GOOGLE_LONGLONG(-1);
+  status_ = -1;
+  configid_ = -1;
   objid_ = -1;
-  isendingboss_ = false;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
-EventRpcBossDiedNotify::~EventRpcBossDiedNotify() {
+EventRpcObjAttrChangeNotify::~EventRpcObjAttrChangeNotify() {
   SharedDtor();
 }
 
-void EventRpcBossDiedNotify::SharedDtor() {
+void EventRpcObjAttrChangeNotify::SharedDtor() {
   if (this != default_instance_) {
   }
 }
 
-void EventRpcBossDiedNotify::SetCachedSize(int size) const {
+void EventRpcObjAttrChangeNotify::SetCachedSize(int size) const {
   GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
   _cached_size_ = size;
   GOOGLE_SAFE_CONCURRENT_WRITES_END();
 }
-const ::google::protobuf::Descriptor* EventRpcBossDiedNotify::descriptor() {
+const ::google::protobuf::Descriptor* EventRpcObjAttrChangeNotify::descriptor() {
   protobuf_AssignDescriptorsOnce();
-  return EventRpcBossDiedNotify_descriptor_;
+  return EventRpcObjAttrChangeNotify_descriptor_;
 }
 
-const EventRpcBossDiedNotify& EventRpcBossDiedNotify::default_instance() {
+const EventRpcObjAttrChangeNotify& EventRpcObjAttrChangeNotify::default_instance() {
   if (default_instance_ == NULL) protobuf_AddDesc_EventRpc_2eproto();
   return *default_instance_;
 }
 
-EventRpcBossDiedNotify* EventRpcBossDiedNotify::default_instance_ = NULL;
+EventRpcObjAttrChangeNotify* EventRpcObjAttrChangeNotify::default_instance_ = NULL;
 
-EventRpcBossDiedNotify* EventRpcBossDiedNotify::New() const {
-  return new EventRpcBossDiedNotify;
+EventRpcObjAttrChangeNotify* EventRpcObjAttrChangeNotify::New() const {
+  return new EventRpcObjAttrChangeNotify;
 }
 
-void EventRpcBossDiedNotify::Clear() {
+void EventRpcObjAttrChangeNotify::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    sceneid_ = -1;
+    speed_ = -1;
+    hp_ = GOOGLE_LONGLONG(-1);
+    status_ = -1;
+    configid_ = -1;
     objid_ = -1;
-    isendingboss_ = false;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
 
-bool EventRpcBossDiedNotify::MergePartialFromCodedStream(
+bool EventRpcObjAttrChangeNotify::MergePartialFromCodedStream(
     ::google::protobuf::io::CodedInputStream* input) {
 #define DO_(EXPRESSION) if (!(EXPRESSION)) return false
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional sint32 SceneId = 1 [default = -1];
+      // optional float Speed = 1 [default = -1];
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_FIXED32) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
-                 input, &sceneid_)));
-          set_has_sceneid();
+                   float, ::google::protobuf::internal::WireFormatLite::TYPE_FLOAT>(
+                 input, &speed_)));
+          set_has_speed();
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(16)) goto parse_ObjId;
+        if (input->ExpectTag(16)) goto parse_Hp;
         break;
       }
 
-      // optional sint32 ObjId = 2 [default = -1];
+      // optional sint64 Hp = 2 [default = -1];
       case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_Hp:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_SINT64>(
+                 input, &hp_)));
+          set_has_hp();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(24)) goto parse_Status;
+        break;
+      }
+
+      // optional sint32 Status = 3 [default = -1];
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_Status:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                 input, &status_)));
+          set_has_status();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(32)) goto parse_ConfigId;
+        break;
+      }
+
+      // optional sint32 ConfigId = 4 [default = -1];
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_ConfigId:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                 input, &configid_)));
+          set_has_configid();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(40)) goto parse_ObjId;
+        break;
+      }
+
+      // optional sint32 ObjId = 5 [default = -1];
+      case 5: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_ObjId:
@@ -835,22 +891,6 @@ bool EventRpcBossDiedNotify::MergePartialFromCodedStream(
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
                  input, &objid_)));
           set_has_objid();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(24)) goto parse_IsEndingBoss;
-        break;
-      }
-
-      // optional bool IsEndingBoss = 3 [default = false];
-      case 3: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_IsEndingBoss:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   bool, ::google::protobuf::internal::WireFormatLite::TYPE_BOOL>(
-                 input, &isendingboss_)));
-          set_has_isendingboss();
         } else {
           goto handle_uninterpreted;
         }
@@ -874,21 +914,31 @@ bool EventRpcBossDiedNotify::MergePartialFromCodedStream(
 #undef DO_
 }
 
-void EventRpcBossDiedNotify::SerializeWithCachedSizes(
+void EventRpcObjAttrChangeNotify::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional sint32 SceneId = 1 [default = -1];
-  if (has_sceneid()) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(1, this->sceneid(), output);
+  // optional float Speed = 1 [default = -1];
+  if (has_speed()) {
+    ::google::protobuf::internal::WireFormatLite::WriteFloat(1, this->speed(), output);
   }
 
-  // optional sint32 ObjId = 2 [default = -1];
+  // optional sint64 Hp = 2 [default = -1];
+  if (has_hp()) {
+    ::google::protobuf::internal::WireFormatLite::WriteSInt64(2, this->hp(), output);
+  }
+
+  // optional sint32 Status = 3 [default = -1];
+  if (has_status()) {
+    ::google::protobuf::internal::WireFormatLite::WriteSInt32(3, this->status(), output);
+  }
+
+  // optional sint32 ConfigId = 4 [default = -1];
+  if (has_configid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteSInt32(4, this->configid(), output);
+  }
+
+  // optional sint32 ObjId = 5 [default = -1];
   if (has_objid()) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(2, this->objid(), output);
-  }
-
-  // optional bool IsEndingBoss = 3 [default = false];
-  if (has_isendingboss()) {
-    ::google::protobuf::internal::WireFormatLite::WriteBool(3, this->isendingboss(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteSInt32(5, this->objid(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -897,21 +947,31 @@ void EventRpcBossDiedNotify::SerializeWithCachedSizes(
   }
 }
 
-::google::protobuf::uint8* EventRpcBossDiedNotify::SerializeWithCachedSizesToArray(
+::google::protobuf::uint8* EventRpcObjAttrChangeNotify::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional sint32 SceneId = 1 [default = -1];
-  if (has_sceneid()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(1, this->sceneid(), target);
+  // optional float Speed = 1 [default = -1];
+  if (has_speed()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteFloatToArray(1, this->speed(), target);
   }
 
-  // optional sint32 ObjId = 2 [default = -1];
+  // optional sint64 Hp = 2 [default = -1];
+  if (has_hp()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteSInt64ToArray(2, this->hp(), target);
+  }
+
+  // optional sint32 Status = 3 [default = -1];
+  if (has_status()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(3, this->status(), target);
+  }
+
+  // optional sint32 ConfigId = 4 [default = -1];
+  if (has_configid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(4, this->configid(), target);
+  }
+
+  // optional sint32 ObjId = 5 [default = -1];
   if (has_objid()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(2, this->objid(), target);
-  }
-
-  // optional bool IsEndingBoss = 3 [default = false];
-  if (has_isendingboss()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteBoolToArray(3, this->isendingboss(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(5, this->objid(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -921,27 +981,41 @@ void EventRpcBossDiedNotify::SerializeWithCachedSizes(
   return target;
 }
 
-int EventRpcBossDiedNotify::ByteSize() const {
+int EventRpcObjAttrChangeNotify::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional sint32 SceneId = 1 [default = -1];
-    if (has_sceneid()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::SInt32Size(
-          this->sceneid());
+    // optional float Speed = 1 [default = -1];
+    if (has_speed()) {
+      total_size += 1 + 4;
     }
 
-    // optional sint32 ObjId = 2 [default = -1];
+    // optional sint64 Hp = 2 [default = -1];
+    if (has_hp()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::SInt64Size(
+          this->hp());
+    }
+
+    // optional sint32 Status = 3 [default = -1];
+    if (has_status()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+          this->status());
+    }
+
+    // optional sint32 ConfigId = 4 [default = -1];
+    if (has_configid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+          this->configid());
+    }
+
+    // optional sint32 ObjId = 5 [default = -1];
     if (has_objid()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::SInt32Size(
           this->objid());
-    }
-
-    // optional bool IsEndingBoss = 3 [default = false];
-    if (has_isendingboss()) {
-      total_size += 1 + 1;
     }
 
   }
@@ -956,10 +1030,10 @@ int EventRpcBossDiedNotify::ByteSize() const {
   return total_size;
 }
 
-void EventRpcBossDiedNotify::MergeFrom(const ::google::protobuf::Message& from) {
+void EventRpcObjAttrChangeNotify::MergeFrom(const ::google::protobuf::Message& from) {
   GOOGLE_CHECK_NE(&from, this);
-  const EventRpcBossDiedNotify* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const EventRpcBossDiedNotify*>(
+  const EventRpcObjAttrChangeNotify* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const EventRpcObjAttrChangeNotify*>(
       &from);
   if (source == NULL) {
     ::google::protobuf::internal::ReflectionOps::Merge(from, this);
@@ -968,55 +1042,63 @@ void EventRpcBossDiedNotify::MergeFrom(const ::google::protobuf::Message& from) 
   }
 }
 
-void EventRpcBossDiedNotify::MergeFrom(const EventRpcBossDiedNotify& from) {
+void EventRpcObjAttrChangeNotify::MergeFrom(const EventRpcObjAttrChangeNotify& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_sceneid()) {
-      set_sceneid(from.sceneid());
+    if (from.has_speed()) {
+      set_speed(from.speed());
+    }
+    if (from.has_hp()) {
+      set_hp(from.hp());
+    }
+    if (from.has_status()) {
+      set_status(from.status());
+    }
+    if (from.has_configid()) {
+      set_configid(from.configid());
     }
     if (from.has_objid()) {
       set_objid(from.objid());
-    }
-    if (from.has_isendingboss()) {
-      set_isendingboss(from.isendingboss());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
 
-void EventRpcBossDiedNotify::CopyFrom(const ::google::protobuf::Message& from) {
+void EventRpcObjAttrChangeNotify::CopyFrom(const ::google::protobuf::Message& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-void EventRpcBossDiedNotify::CopyFrom(const EventRpcBossDiedNotify& from) {
+void EventRpcObjAttrChangeNotify::CopyFrom(const EventRpcObjAttrChangeNotify& from) {
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-bool EventRpcBossDiedNotify::IsInitialized() const {
+bool EventRpcObjAttrChangeNotify::IsInitialized() const {
 
   return true;
 }
 
-void EventRpcBossDiedNotify::Swap(EventRpcBossDiedNotify* other) {
+void EventRpcObjAttrChangeNotify::Swap(EventRpcObjAttrChangeNotify* other) {
   if (other != this) {
-    std::swap(sceneid_, other->sceneid_);
+    std::swap(speed_, other->speed_);
+    std::swap(hp_, other->hp_);
+    std::swap(status_, other->status_);
+    std::swap(configid_, other->configid_);
     std::swap(objid_, other->objid_);
-    std::swap(isendingboss_, other->isendingboss_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
   }
 }
 
-::google::protobuf::Metadata EventRpcBossDiedNotify::GetMetadata() const {
+::google::protobuf::Metadata EventRpcObjAttrChangeNotify::GetMetadata() const {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::Metadata metadata;
-  metadata.descriptor = EventRpcBossDiedNotify_descriptor_;
-  metadata.reflection = EventRpcBossDiedNotify_reflection_;
+  metadata.descriptor = EventRpcObjAttrChangeNotify_descriptor_;
+  metadata.reflection = EventRpcObjAttrChangeNotify_reflection_;
   return metadata;
 }
 

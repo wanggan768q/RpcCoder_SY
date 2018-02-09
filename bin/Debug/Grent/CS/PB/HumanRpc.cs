@@ -152,13 +152,13 @@ namespace GenPB
   {
     public HumanRpcMoveCheckNotify() {}
     
-    private int _Obj_id = (int)-1;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Obj_id", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    private int _ObjId = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ObjId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
-    public int Obj_id
+    public int ObjId
     {
-      get { return _Obj_id; }
-      set { _Obj_id = value; }
+      get { return _ObjId; }
+      set { _ObjId = value; }
     }
     private float _Dir = (float)-1;
     [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"Dir", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
@@ -183,6 +183,68 @@ namespace GenPB
     {
       get { return _Y; }
       set { _Y = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HumanRpcMoveByPosNotify")]
+  public partial class HumanRpcMoveByPosNotify : global::ProtoBuf.IExtensible
+  {
+    public HumanRpcMoveByPosNotify() {}
+    
+    private int _ObjId = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ObjId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int ObjId
+    {
+      get { return _ObjId; }
+      set { _ObjId = value; }
+    }
+    private float _TargetX = (float)-1;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"TargetX", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)-1)]
+    public float TargetX
+    {
+      get { return _TargetX; }
+      set { _TargetX = value; }
+    }
+    private float _TargetY = (float)-1;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"TargetY", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)-1)]
+    public float TargetY
+    {
+      get { return _TargetY; }
+      set { _TargetY = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HumanRpcRespawnAsk")]
+  public partial class HumanRpcRespawnAsk : global::ProtoBuf.IExtensible
+  {
+    public HumanRpcRespawnAsk() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"HumanRpcRespawnReply")]
+  public partial class HumanRpcRespawnReply : global::ProtoBuf.IExtensible
+  {
+    public HumanRpcRespawnReply() {}
+    
+    private int _Result = (int)-9999;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::System.ComponentModel.DefaultValue((int)-9999)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
