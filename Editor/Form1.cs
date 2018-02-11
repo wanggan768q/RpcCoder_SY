@@ -60,6 +60,12 @@
         private PropertyGrid propertyGrid1;
         private ToolStripMenuItem saveToolStripMenuItem1;
         private ToolStripSeparator toolStripMenuItem1;
+        private ToolStripMenuItem clientToolStripMenuItem;
+        private ToolStripMenuItem protoToLuaToolStripMenuItem;
+        private ToolStripMenuItem copyProtoAndBuildToolStripMenuItem;
+        private ToolStripMenuItem serverToolStripMenuItem;
+        private ToolStripMenuItem copyModelToolStripMenuItem;
+        private ToolStripMenuItem copyConfigToolStripMenuItem;
         private TreeView treeView1;
 
         public Form1()
@@ -1271,8 +1277,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Public Struct");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Module");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Public Struct");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Module");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -1312,6 +1318,12 @@
             this.Coffee = new System.Windows.Forms.CheckBox();
             this.CSCat = new System.Windows.Forms.CheckBox();
             this.ActEditor = new System.Windows.Forms.CheckBox();
+            this.clientToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.serverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.protoToLuaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyModelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyProtoAndBuildToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyConfigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -1327,13 +1339,13 @@
             this.treeView1.ImageList = this.imageList1;
             this.treeView1.Location = new System.Drawing.Point(21, 28);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "Struct";
-            treeNode1.Text = "Public Struct";
-            treeNode2.Name = "Module";
-            treeNode2.Text = "Module";
+            treeNode3.Name = "Struct";
+            treeNode3.Text = "Public Struct";
+            treeNode4.Name = "Module";
+            treeNode4.Text = "Module";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2});
+            treeNode3,
+            treeNode4});
             this.treeView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.treeView1.SelectedImageIndex = 0;
             this.treeView1.Size = new System.Drawing.Size(258, 685);
@@ -1497,7 +1509,9 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.editorToolStripMenuItem,
-            this.editToolStripMenuItem});
+            this.editToolStripMenuItem,
+            this.clientToolStripMenuItem,
+            this.serverToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(639, 25);
@@ -1702,6 +1716,52 @@
             this.ActEditor.Text = "动编版";
             this.ActEditor.UseVisualStyleBackColor = true;
             this.ActEditor.CheckedChanged += new System.EventHandler(this.SkillEditor_CheckedChanged);
+            // 
+            // clientToolStripMenuItem
+            // 
+            this.clientToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.protoToLuaToolStripMenuItem,
+            this.copyProtoAndBuildToolStripMenuItem,
+            this.copyConfigToolStripMenuItem});
+            this.clientToolStripMenuItem.Name = "clientToolStripMenuItem";
+            this.clientToolStripMenuItem.Size = new System.Drawing.Size(52, 21);
+            this.clientToolStripMenuItem.Text = "Client";
+            // 
+            // serverToolStripMenuItem
+            // 
+            this.serverToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyModelToolStripMenuItem});
+            this.serverToolStripMenuItem.Name = "serverToolStripMenuItem";
+            this.serverToolStripMenuItem.Size = new System.Drawing.Size(57, 21);
+            this.serverToolStripMenuItem.Text = "Server";
+            // 
+            // protoToLuaToolStripMenuItem
+            // 
+            this.protoToLuaToolStripMenuItem.Name = "protoToLuaToolStripMenuItem";
+            this.protoToLuaToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.protoToLuaToolStripMenuItem.Text = "Proto To Lua";
+            this.protoToLuaToolStripMenuItem.Click += new System.EventHandler(this.protoToLuaToolStripMenuItem_Click);
+            // 
+            // copyModelToolStripMenuItem
+            // 
+            this.copyModelToolStripMenuItem.Name = "copyModelToolStripMenuItem";
+            this.copyModelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.copyModelToolStripMenuItem.Text = "Copy Model";
+            this.copyModelToolStripMenuItem.Click += new System.EventHandler(this.copyModelToolStripMenuItem_Click);
+            // 
+            // copyProtoAndBuildToolStripMenuItem
+            // 
+            this.copyProtoAndBuildToolStripMenuItem.Name = "copyProtoAndBuildToolStripMenuItem";
+            this.copyProtoAndBuildToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.copyProtoAndBuildToolStripMenuItem.Text = "Copy Proto And Build";
+            this.copyProtoAndBuildToolStripMenuItem.Click += new System.EventHandler(this.copyProtoAndBuildToolStripMenuItem_Click);
+            // 
+            // copyConfigToolStripMenuItem
+            // 
+            this.copyConfigToolStripMenuItem.Name = "copyConfigToolStripMenuItem";
+            this.copyConfigToolStripMenuItem.Size = new System.Drawing.Size(202, 22);
+            this.copyConfigToolStripMenuItem.Text = "Copy Config";
+            this.copyConfigToolStripMenuItem.Click += new System.EventHandler(this.copyConfigToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -2712,6 +2772,26 @@
         private void LoadArchive(object sender, EventArgs e)
         {
             this.Open();
+        }
+
+        private void copyProtoAndBuildToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RunBat.Run("Copy Client.bat");
+        }
+
+        private void protoToLuaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RunBat.Run("BuildProto.bat");
+        }
+
+        private void copyModelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RunBat.Run("Copy Server.bat");
+        }
+
+        private void copyConfigToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RunBat.Run("CopyConfig.bat");
         }
     }
 }
