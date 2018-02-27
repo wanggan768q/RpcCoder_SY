@@ -183,7 +183,7 @@
                                         && (str3.ToLower() != "ls")
                                         && (str3.ToLower() != "lf")))
                                     {
-                                        MessageBox.Show("field type[" + str3 + "] invalid only be[int/string/float/li/ls/lf]");
+                                        MessageBox.Show(fileName + " field type[" + str3 + "] invalid only be[int/string/float/li/ls/lf]");
                                         return;
                                     }
                                 }
@@ -191,6 +191,7 @@
                                 ArrayList list3 = this.readXlsxLine(ws, 3, list.Count);
                                 ArrayList list4 = this.readXlsxLine(ws, 4, list.Count);
                                 ArrayList list5 = this.readXlsxLine(ws, 5, list.Count);
+
                                 for (int i = 0; i < list.Count; i++)
                                 {
                                     if (file2.ContainField((string) list3[i]))
@@ -2176,7 +2177,7 @@
                                             && (str5.ToLower() != "ls")
                                             && (str5.ToLower() != "lf")))
                                         {
-                                            MessageBox.Show("field type[" + str5 + "] invalid only be[int/string/float/li/ls/lf]");
+                                            MessageBox.Show(fileName + " field type[" + str5 + "] invalid only be[int/string/float/li/ls/lf]");
                                             break;
                                         }
                                     }
