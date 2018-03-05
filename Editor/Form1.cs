@@ -138,6 +138,8 @@
                             {
                                 string str2 = fileName.Substring(index + 1, (num3 - index) - 1);
                                 fileName = fileName.Substring(0, index);
+                                this.label1.Text = "准备导入表 " + fileName;
+                                label1.Refresh();
                                 TreeNode selectedNode = this.treeView1.SelectedNode;
                                 ConfigFile tag = (ConfigFile) this.treeView1.SelectedNode.Tag;
                                 if (tag != null)
@@ -2119,6 +2121,8 @@
             foreach (string str2 in strArray)
             {
                 string fileName = str2;
+                this.label1.Text = "准备导入表 " + fileName;
+                label1.Refresh();
                 int index = fileName.ToLower().IndexOf(".xlsx");
                 int num2 = fileName.ToLower().IndexOf(@"\~$");
                 if ((index >= 0) && (num2 <= 0))
@@ -2243,6 +2247,8 @@
                     }
                 }
             }
+            this.label1.Text = "";
+            label1.Refresh();
         }
 
         private void loadXML(string dir)
