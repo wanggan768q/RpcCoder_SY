@@ -205,7 +205,24 @@
                         else
                         {
                             string str11 = str;
-                            str = str11 + "\tPB." + descriptor.FieldName + " = " + descriptor.FieldName + "\r\n";
+                            //如果不是基础类型
+                            if (descriptor.GetTypeEnum() == 3)
+                            {
+                                string referencesStruct = "";
+                                DataStruct ds = null;
+                                if (DataStructConverter.ContainsKey(descriptor.FieldType, ref ds))
+                                {
+                                    foreach (var v in ds.fieldItem)
+                                    {
+                                        referencesStruct += "\tPB." + descriptor.FieldName + "." + v.FieldName + " = " + descriptor.FieldName + "." + v.FieldName + "\r\n";
+                                    }
+                                }
+                                str = str11 + referencesStruct;
+                            }
+                            else {
+                                str = str11 + "\tPB." + descriptor.FieldName + " = " + descriptor.FieldName + "\r\n";
+                            }
+                            
                         }
                         if (descriptor.FieldType == "string")
                         {

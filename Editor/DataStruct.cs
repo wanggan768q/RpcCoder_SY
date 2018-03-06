@@ -553,6 +553,14 @@
                     }
                     else
                     {
+                        if (value == "sint32")
+                        {
+                            value = "int32";
+                        }
+                        if (value == "sint64")
+                        {
+                            value = "int64";
+                        }
                         this.fieldType = value;
                         if (value == "bool")
                         {
