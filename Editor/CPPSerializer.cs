@@ -642,16 +642,16 @@
                     {
                         str3 = str3 + "\t\tpDataWraper->Set" + descriptor.FieldName + "(string(pBuffer,dataLen));\r\n\t\tbreak;\r\n";
                         string str29 = SyncOpImp;
-                        SyncOpImp = str29 + "\tconst string v=" + str7 + ".Get" + descriptor.FieldName + "();\r\n";
-                        SyncOpImp = SyncOpImp + "\tif( !OnlyToClient )\r\n";
-                        SyncOpImp = SyncOpImp + "\t\tMsgStreamMgr::Instance().IncrementCache(GetKey()," + str5 + ",v.data(),v.size());\r\n";
+                        //SyncOpImp = str29 + "\tconst string v=" + str7 + ".Get" + descriptor.FieldName + "();\r\n";
+                        //SyncOpImp = SyncOpImp + "\tif( !OnlyToClient )\r\n";
+                        //SyncOpImp = SyncOpImp + "\t\tMsgStreamMgr::Instance().IncrementCache(GetKey()," + str5 + ",v.data(),v.size());\r\n";
                         if ((ds.DataType == DataStruct.SyncType.UserData) || ((ds.DataType == DataStruct.SyncType.CacheData) && ds.SyncToClient))
                         {
                             string str30 = SyncOpImp;
-                            SyncOpImp = str30 + "\tif(" + str6 + "::Instance().NotSyncToClient(" + str5 + ")||GetKey()==0) return;\r\n";
-                            SyncOpImp = SyncOpImp + "\tMsgStreamMgr::Instance().SendSync(GetKey()," + str5 + ",v.data(),v.size());\r\n";
+                            //SyncOpImp = str30 + "\tif(" + str6 + "::Instance().NotSyncToClient(" + str5 + ")||GetKey()==0) return;\r\n";
+                            //SyncOpImp = SyncOpImp + "\tMsgStreamMgr::Instance().SendSync(GetKey()," + str5 + ",v.data(),v.size());\r\n";
                         }
-                        SyncOpImp = SyncOpImp + "}\r\n";
+                        //SyncOpImp = SyncOpImp + "}\r\n";
                     }
                     else
                     {
@@ -660,13 +660,13 @@
                         str3 = str32 + "\t\t\tpDataWraper->Set" + descriptor.FieldName + "(tmp" + descriptor.FieldName + "Wraper);\r\n\t\t}\r\n\t\tbreak;\r\n";
                         str8 = SyncOpImp;
                         SyncOpImp = str8 + "\tconst string v=" + str7 + ".Get" + descriptor.FieldName + "().SerializeAsString();\r\n";
-                        SyncOpImp = SyncOpImp + "\tif( !OnlyToClient )\r\n";
-                        SyncOpImp = SyncOpImp + "\t\tMsgStreamMgr::Instance().IncrementCache(GetKey()," + str5 + ",v.data(),v.size());\r\n";
+                        //SyncOpImp = SyncOpImp + "\tif( !OnlyToClient )\r\n";
+                        //SyncOpImp = SyncOpImp + "\t\tMsgStreamMgr::Instance().IncrementCache(GetKey()," + str5 + ",v.data(),v.size());\r\n";
                         if ((ds.DataType == DataStruct.SyncType.UserData) || ((ds.DataType == DataStruct.SyncType.CacheData) && ds.SyncToClient))
                         {
                             str8 = SyncOpImp;
-                            SyncOpImp = str8 + "\tif(" + str6 + "::Instance().NotSyncToClient(" + str5 + ")||GetKey()==0) return;\r\n";
-                            SyncOpImp = SyncOpImp + "\tMsgStreamMgr::Instance().SendSync(GetKey()," + str5 + ",v.data(),v.size());\r\n";
+                            //SyncOpImp = str8 + "\tif(" + str6 + "::Instance().NotSyncToClient(" + str5 + ")||GetKey()==0) return;\r\n";
+                            //SyncOpImp = SyncOpImp + "\tMsgStreamMgr::Instance().SendSync(GetKey()," + str5 + ",v.data(),v.size());\r\n";
                         }
                         SyncOpImp = SyncOpImp + "}\r\n";
                     }
@@ -729,8 +729,8 @@
                         if ((ds.DataType == DataStruct.SyncType.UserData) || ((ds.DataType == DataStruct.SyncType.CacheData) && ds.SyncToClient))
                         {
                             str8 = SyncOpImp;
-                            SyncOpImp = str8 + "\t\tif(" + str6 + "::Instance().NotSyncToClient(" + str5 + ")||GetKey()==0) return;\r\n";
-                            SyncOpImp = SyncOpImp + "\t\tMsgStreamMgr::Instance().SendSync(GetKey()," + str5 + ",Index,NULL,0);\r\n";
+                            //SyncOpImp = str8 + "\t\tif(" + str6 + "::Instance().NotSyncToClient(" + str5 + ")||GetKey()==0) return;\r\n";
+                            //SyncOpImp = SyncOpImp + "\t\tMsgStreamMgr::Instance().SendSync(GetKey()," + str5 + ",Index,NULL,0);\r\n";
                         }
                         SyncOpImp = SyncOpImp + "\t\treturn;\r\n\t}\r\n";
                         SyncOpImp = SyncOpImp + "\tif( !OnlyToClient )\r\n";
@@ -747,7 +747,7 @@
                         if ((ds.DataType == DataStruct.SyncType.UserData) || ((ds.DataType == DataStruct.SyncType.CacheData) && ds.SyncToClient))
                         {
                             str8 = SyncOpImp;
-                            SyncOpImp = str8 + "\tif(" + str6 + "::Instance().NotSyncToClient(" + str5 + ")||GetKey()==0) return;\r\n";
+                            //SyncOpImp = str8 + "\tif(" + str6 + "::Instance().NotSyncToClient(" + str5 + ")||GetKey()==0) return;\r\n";
                             if (descriptor.FieldType == "float")
                             {
                                 str8 = SyncOpImp;
@@ -778,19 +778,19 @@
                         if ((ds.DataType == DataStruct.SyncType.UserData) || ((ds.DataType == DataStruct.SyncType.CacheData) && ds.SyncToClient))
                         {
                             str8 = SyncOpImp;
-                            SyncOpImp = str8 + "\t\tif(" + str6 + "::Instance().NotSyncToClient(" + str5 + ")||GetKey()==0) return;\r\n";
-                            SyncOpImp = SyncOpImp + "\t\tMsgStreamMgr::Instance().SendSync(GetKey()," + str5 + ",Index,NULL,0);\r\n";
+                            //SyncOpImp = str8 + "\t\tif(" + str6 + "::Instance().NotSyncToClient(" + str5 + ")||GetKey()==0) return;\r\n";
+                            //SyncOpImp = SyncOpImp + "\t\tMsgStreamMgr::Instance().SendSync(GetKey()," + str5 + ",Index,NULL,0);\r\n";
                         }
                         SyncOpImp = SyncOpImp + "\t\treturn;\r\n\t}\r\n";
                         str8 = SyncOpImp;
-                        SyncOpImp = str8 + "\tconst string v=" + str7 + ".Get" + descriptor.FieldName + "(Index);\r\n";
-                        SyncOpImp = SyncOpImp + "\tif( !OnlyToClient )\r\n";
+                        //SyncOpImp = str8 + "\tconst string v=" + str7 + ".Get" + descriptor.FieldName + "(Index);\r\n";
+                        //SyncOpImp = SyncOpImp + "\tif( !OnlyToClient )\r\n";
                         SyncOpImp = SyncOpImp + "\t\tMsgStreamMgr::Instance().IncrementCache(GetKey()," + str5 + ",Index,v.data(),v.size());\r\n";
                         if ((ds.DataType == DataStruct.SyncType.UserData) || ((ds.DataType == DataStruct.SyncType.CacheData) && ds.SyncToClient))
                         {
                             str8 = SyncOpImp;
-                            SyncOpImp = str8 + "\tif(" + str6 + "::Instance().NotSyncToClient(" + str5 + ")||GetKey()==0) return;\r\n";
-                            SyncOpImp = SyncOpImp + "\tMsgStreamMgr::Instance().SendSync(GetKey()," + str5 + ",Index,v.data(),v.size());\r\n";
+                            //SyncOpImp = str8 + "\tif(" + str6 + "::Instance().NotSyncToClient(" + str5 + ")||GetKey()==0) return;\r\n";
+                            //SyncOpImp = SyncOpImp + "\tMsgStreamMgr::Instance().SendSync(GetKey()," + str5 + ",Index,v.data(),v.size());\r\n";
                         }
                         SyncOpImp = SyncOpImp + "}\r\n";
                         str8 = SyncOpImp;
@@ -814,8 +814,8 @@
                         if ((ds.DataType == DataStruct.SyncType.UserData) || ((ds.DataType == DataStruct.SyncType.CacheData) && ds.SyncToClient))
                         {
                             str8 = SyncOpImp;
-                            SyncOpImp = str8 + "\t\tif(" + str6 + "::Instance().NotSyncToClient(" + str5 + ")||GetKey()==0) return;\r\n";
-                            SyncOpImp = SyncOpImp + "\t\tMsgStreamMgr::Instance().SendSync(GetKey()," + str5 + ",Index,NULL,0);\r\n";
+                            //SyncOpImp = str8 + "\t\tif(" + str6 + "::Instance().NotSyncToClient(" + str5 + ")||GetKey()==0) return;\r\n";
+                            //SyncOpImp = SyncOpImp + "\t\tMsgStreamMgr::Instance().SendSync(GetKey()," + str5 + ",Index,NULL,0);\r\n";
                         }
                         SyncOpImp = SyncOpImp + "\t\treturn;\r\n\t}\r\n";
                         SyncOpImp = SyncOpImp + "\tconst string v= Get" + descriptor.FieldName + "(Index).SerializeAsString();\r\n";
@@ -824,8 +824,8 @@
                         if ((ds.DataType == DataStruct.SyncType.UserData) || ((ds.DataType == DataStruct.SyncType.CacheData) && ds.SyncToClient))
                         {
                             str8 = SyncOpImp;
-                            SyncOpImp = str8 + "\tif(" + str6 + "::Instance().NotSyncToClient(" + str5 + ")||GetKey()==0) return;\r\n";
-                            SyncOpImp = SyncOpImp + "\tMsgStreamMgr::Instance().SendSync(GetKey()," + str5 + ",Index,v.data(),v.size());\r\n";
+                            //SyncOpImp = str8 + "\tif(" + str6 + "::Instance().NotSyncToClient(" + str5 + ")||GetKey()==0) return;\r\n";
+                            //SyncOpImp = SyncOpImp + "\tMsgStreamMgr::Instance().SendSync(GetKey()," + str5 + ",Index,v.data(),v.size());\r\n";
                         }
                         SyncOpImp = SyncOpImp + "}\r\n";
                         str8 = SyncOpImp;

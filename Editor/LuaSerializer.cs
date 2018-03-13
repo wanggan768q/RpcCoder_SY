@@ -503,7 +503,7 @@
                             //UpdataValue = UpdataValue + "\t\tself.m_" + descriptor2.FieldName + " = ret_msg." + descriptor2.FieldName + "\r\n";
                             GetValue = GetValue + "\t\treturn  self.m_" + descriptor2.FieldName + "\r\n";
                         }
-                        UpdataValue = UpdataValue + "\t\tself.m_" + descriptor2.FieldName + " = ret_msg." + descriptor2.FieldName + "\r\n";
+                        UpdataValue = UpdataValue + "\t\toldData." + descriptor2.FieldName + " = ret_msg." + descriptor2.FieldName + "\r\n";
                         UpdataValue = UpdataValue + "\t\tdataCallback(self," + keyUpdateField + ",ret_msg." + descriptor2.FieldName + ")\r\n";
                         string str4 = SyncOpDefine2;
                         SyncOpDefine2 = str4 + "\tself.m_" + descriptor2.FieldName + " = " + ((descriptor2.PreDefine == DataStruct.FieldDescriptor.PreDefineType.repeated) ? "{}" : "\"\"") + "\r\n";
@@ -543,7 +543,7 @@
                             //UpdataValue = UpdataValue + "\t\tself.m_" + descriptor2.FieldName + descriptor2.FieldName + " = ret_msg." + descriptor2.FieldName + "\r\n";
                             GetValue = GetValue + "\t\treturn self.m_" + descriptor2.FieldName + "\r\n";
                         }
-                        UpdataValue = UpdataValue + "\t\tself.m_" + descriptor2.FieldName + " = ret_msg." + descriptor2.FieldName + "\r\n";
+                        UpdataValue = UpdataValue + "\t\toldData." + descriptor2.FieldName + " = ret_msg." + descriptor2.FieldName + "\r\n";
                         UpdataValue = UpdataValue + "\t\tdataCallback(self," + keyUpdateField + ",ret_msg." + descriptor2.FieldName + ")\r\n";
                         string str9 = SyncOpDefine2;
                         SyncOpDefine2 = str9 + "\tself.m_" + descriptor2.FieldName + " = " + ((descriptor2.PreDefine == DataStruct.FieldDescriptor.PreDefineType.repeated) ? "{}" : "0") + "\r\n";
@@ -583,7 +583,7 @@
                             //UpdataValue = UpdataValue + "\t\tself.m_" + descriptor2.FieldName + descriptor2.FieldName + " = ret_msg." + descriptor2.FieldName + "\r\n";
                             GetValue = GetValue + "\t\treturn self.m_" + descriptor2.FieldName + "\r\n";
                         }
-                        UpdataValue = UpdataValue + "\t\tself.m_" + descriptor2.FieldName + " = ret_msg." + descriptor2.FieldName + "\r\n";
+                        UpdataValue = UpdataValue + "\t\toldData." + descriptor2.FieldName + " = ret_msg." + descriptor2.FieldName + "\r\n";
                         UpdataValue = UpdataValue + "\t\tdataCallback(self," + keyUpdateField + ",ret_msg." + descriptor2.FieldName + ")\r\n";
                         string str9 = SyncOpDefine2;
                         SyncOpDefine2 = str9 + "\tself.m_" + descriptor2.FieldName + " = " + ((descriptor2.PreDefine == DataStruct.FieldDescriptor.PreDefineType.repeated) ? "{}" : "false") + "\r\n";
@@ -623,7 +623,7 @@
                             //UpdataValue = UpdataValue + "\t\tself.m_" + descriptor2.FieldName + descriptor2.FieldName + " = ret_msg." + descriptor2.FieldName + "\r\n";
                             GetValue = GetValue + "\t\treturn self.m_" + descriptor2.FieldName + "\r\n";
                         }
-                        UpdataValue = UpdataValue + "\t\tself.m_" + descriptor2.FieldName + " = ret_msg." + descriptor2.FieldName + "\r\n";
+                        UpdataValue = UpdataValue + "\t\toldData." + descriptor2.FieldName + " = ret_msg." + descriptor2.FieldName + "\r\n";
                         UpdataValue = UpdataValue + "\t\tdataCallback(self," + keyUpdateField + ",ret_msg." + descriptor2.FieldName + ")\r\n";
                         string str9 = SyncOpDefine2;
                         SyncOpDefine2 = str9 + "\tself.m_" + descriptor2.FieldName + " = " + ((descriptor2.PreDefine == DataStruct.FieldDescriptor.PreDefineType.repeated) ? "{}" : "0") + "\r\n";
@@ -663,7 +663,7 @@
                             UpdataValue = UpdataValue + "\t\tself.m_" + descriptor2.FieldName + " = num\r\n";
                             GetValue = GetValue + "\t\treturn self.m_" + descriptor2.FieldName + "\r\n";
                         }
-                        UpdataValue = UpdataValue + "\t\tself.m_" + descriptor2.FieldName + " = ret_msg." + descriptor2.FieldName + "\r\n";
+                        UpdataValue = UpdataValue + "\t\toldData." + descriptor2.FieldName + " = ret_msg." + descriptor2.FieldName + "\r\n";
                         UpdataValue = UpdataValue + "\t\tdataCallback(self," + keyUpdateField + ",ret_msg." + descriptor2.FieldName + ")\r\n";
                         string str14 = SyncOpDefine2;
                         SyncOpDefine2 = str14 + "\tself.m_" + descriptor2.FieldName + " = " + ((descriptor2.PreDefine == DataStruct.FieldDescriptor.PreDefineType.repeated) ? "{}" : "0") + "\r\n";
@@ -707,7 +707,7 @@
                         SendAllFields = str19 + "\t\ttable.insert(self.m_" + descriptor2.FieldName + ",self.m_" + descriptor2.FieldName + "[i].FromPB(v." + descriptor2.FieldName + "[i]))\r\n";
                         SendAllFields = SendAllFields + "\tend\r\n";
                     }
-                    UpdataValue = UpdataValue + "\t\tself.m_" + descriptor2.FieldName + " = ret_msg." + descriptor2.FieldName + "\r\n";
+                    UpdataValue = UpdataValue + "\t\toldData." + descriptor2.FieldName + " = ret_msg." + descriptor2.FieldName + "\r\n";
                     UpdataValue = UpdataValue + "\t\tdataCallback(self," + keyUpdateField + ",ret_msg." + descriptor2.FieldName + ")\r\n";
                     DBCacheField = DBCacheField + "function self.Set" + descriptor2.FieldName + "(Index,v)\r\n";
                     DBCacheField = DBCacheField + "\tself.m_" + descriptor2.FieldName + "[Index] = v\r\n";
@@ -722,7 +722,7 @@
                     string str21 = GetValue;
                     GetValue = str21 + "\t" + (flag ? "if" : "elseif") + "  Id == " + keyUpdateField + " then\r\n";
                     //UpdataValue = UpdataValue + "\t\tself.m_" + descriptor2.FieldName + ":ParseFromString(data)\r\n";
-                    UpdataValue = UpdataValue + "\t\tself.m_" + descriptor2.FieldName + " = ret_msg." + descriptor2.FieldName + "\r\n";
+                    UpdataValue = UpdataValue + "\t\toldData." + descriptor2.FieldName + " = ret_msg." + descriptor2.FieldName + "\r\n";
                     UpdataValue = UpdataValue + "\t\tdataCallback(self," + keyUpdateField + ",ret_msg." + descriptor2.FieldName + ")\r\n";
                     GetValue = GetValue + "\t\treturn self.m_" + descriptor2.FieldName + "\r\n";
                     object obj6 = SyncOpDefine2;
