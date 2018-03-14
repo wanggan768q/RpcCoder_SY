@@ -333,6 +333,7 @@
                     XMLSerializer.Serialize(DataStructConverter.CommDataStruct, this.lastDir, this.label1);
                     XMLSerializer.SerializeXML(Editor.Module.ModuleDic, this.lastDir, this.label1);
                     this.label1.Text = "完成!!!";
+                    this.BringToFront();
                     MessageBox.Show("Finished!!!");
                 }
             }
@@ -356,6 +357,7 @@
                     LuaSerializer.Serialize(tag, this.lastDir, this.label1);
                     CoffeeSerializer.Serialize(tag, this.lastDir, this.label1);
                     this.label1.Text = "完成!!!";
+                    this.BringToFront();
                     MessageBox.Show("Finished!!!");
                 }
             }
@@ -372,6 +374,7 @@
                     this.doSerialize(selectedPath);
                     this.label1.Text = "完成!!!";
                     this.lastDir = selectedPath;
+                    this.BringToFront();
                     MessageBox.Show("Finished!!!");
                     this.isChanged = false;
                 }
@@ -2454,7 +2457,7 @@
                     ICell c = r.GetCell(i);
                     if (c != null)
                     {
-                        object obj2 = c.ToString();
+                        string obj2 = c.ToString();
                         if ((obj2 != null) || (colCount != 0))
                         {
                             list.Add(obj2);
