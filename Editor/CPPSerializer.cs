@@ -574,10 +574,10 @@
                     SyncOpImp = SyncOpImp + "\tif (g_SyncOtherProperty.IsInOtherSync(" + str5 + "))\r\n";
                     SyncOpImp = SyncOpImp + "\t{\r\n";
                     SyncOpImp = SyncOpImp + "\t\tm_OtherDataUserData.set_" + descriptor.FieldName.ToLower() + "(v);\r\n";
-                    SyncOpImp = SyncOpImp + "\t\tm_bOtherChange = true;\r\n";
+                    SyncOpImp = SyncOpImp + "\t\tSetOtherChange(true);\r\n";
                     SyncOpImp = SyncOpImp + "\t}\r\n";
-
-                    SyncOpImp = SyncOpImp + "\tm_bChange = true;\r\n}\r\n";
+                    
+                    SyncOpImp = SyncOpImp + "\tSetChange(true);\r\n}\r\n";
                     string str21 = SyncOpImp;
                     SyncOpImp = str21 + descriptor.ToGetFieldType() + " " + str2 + "::Get" + descriptor.FieldName + "()\r\n{\r\n";
                     string str22 = SyncOpImp;
