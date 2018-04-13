@@ -560,6 +560,11 @@
                         if (value == "sint64")
                         {
                             value = "int64";
+                            long v = -1;
+                            if (!Int64.TryParse(this.DefaultValue, out v))
+                            {
+                                this.DefaultValue = v + "";
+                            }
                         }
                         this.fieldType = value;
                         if (value == "bool")
@@ -571,10 +576,7 @@
                         }
                         else if (((value == "sint32") || (value == "int32") || (value == "float")) || (value == "sint64") || (value == "int64"))
                         {
-                            if (this.DefaultValue == "")
-                            {
-                                this.DefaultValue = "-1";
-                            }
+                            this.DefaultValue = "-1";
                         }
                         else if (value == "uint64" || value == "int64")
                         {

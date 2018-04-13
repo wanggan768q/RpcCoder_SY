@@ -1,15 +1,20 @@
-﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
-<!DOCTYPE dotfuscator SYSTEM "http://www.preemptive.com/dotfuscator/dtd/dotfuscator_v2.4.dtd">
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE dotfuscator SYSTEM "http://www.preemptive.com/dotfuscator/dtd/dotfuscator_v2.3.dtd">
 <dotfuscator version="2.3">
+  <!--This is application generated code. Do not edit manually.-->
+  <propertylist>
+    <property name="ILASM_v2.0.50727" value="C:\Windows\Microsoft.NET\Framework\v2.0.50727\ilasm.exe" />
+    <property name="ILDASM_v2.0.50727" value="C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\ildasm.exe" />
+  </propertylist>
   <input>
     <loadpaths />
     <asmlist>
-      <inputassembly refid="7292da2c-91a9-46fa-b8c1-7eb0560822e3">
+      <inputassembly refid="f3d4b61e-48aa-45fe-b9ab-e14d5ffcc63d">
         <option>honoroas</option>
         <option>stripoa</option>
         <option>library</option>
         <option>transformxaml</option>
-        <file dir="F:\Work\Project\ice_client\common\RpcCoder" name="RpcCoder.exe" />
+        <file dir="F:\Github\RpcCoder_SY\bin\Debug" name="RpcCoder.exe" />
       </inputassembly>
     </asmlist>
   </input>
@@ -26,19 +31,22 @@
     </mapping>
     <referencerulelist>
       <referencerule rulekey="{6655B10A-FD58-462d-8D4F-5B1316DFF0FF}" />
-      <referencerule rulekey="{7D9C8B02-2383-420f-8740-A9760394C2C1}" />
       <referencerule rulekey="{229FD6F8-5BCC-427b-8F72-A7A413ECDF1A}" />
       <referencerule rulekey="{2B7E7C8C-A39A-4db8-9DFC-6AFD38509061}" />
       <referencerule rulekey="{494EA3BA-B947-44B5-BEE8-A11CC85AAF9B}" />
       <referencerule rulekey="{89769974-93E9-4e71-8D92-BE70E855ACFC}" />
-      <referencerule rulekey="{4D81E604-A545-4631-8B6D-C3735F793F80}" />
-      <referencerule rulekey="{62bd3899-7d53-4336-8ca2-4e5dbae187d5}" />
+      <referencerule rulekey="{7D9C8B02-2383-420f-8740-A9760394C2C1}" />
     </referencerulelist>
   </renaming>
   <controlflow level="high" />
-  <stringencrypt />
+  <stringencrypt>
+    <includelist>
+      <assembly>
+        <file dir="F:\Github\RpcCoder_SY\bin\Debug" name="RpcCoder.exe" />
+      </assembly>
+    </includelist>
+  </stringencrypt>
   <sos mergeruntime="true">
-    <option>version:v4</option>
     <option>dontsendtamper</option>
   </sos>
   <smartobfuscation>
