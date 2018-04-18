@@ -1,107 +1,21 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE dotfuscatorMap SYSTEM "http://www.preemptive.com/dotfuscator/dtd/dotfuscatorMap_v1.2.dtd">
 <dotfuscatorMap version="1.1">
     <header>
-        <timestamp>2018-04-18T18:44:46</timestamp>
-        <product version="5.32.1.6167" user="XiaoBo Guo" serial="237413-391">Dotfuscator Community Edition</product>
+        <timestamp>2018-04-13T10:36:40</timestamp>
+        <product version="4.9.6005.29054" user="firefly " serial="124576-PRO-AC6AB7C5-7A50E312-F0BBEBCC-829D98D7">Dotfuscator Professional Edition</product>
     </header>
     <mapping>
         <module>
             <name>RpcCoder.exe</name>
             <type>
                 <name>&lt;PrivateImplementationDetails&gt;</name>
-                <newname>l</newname>
+                <newname>ᜈ</newname>
                 <methodlist>
                     <method>
                         <signature>unsigned int32(string)</signature>
                         <name>ComputeStringHash</name>
-                        <newname>a</newname>
-                    </method>
-                </methodlist>
-                <fieldlist />
-                <propertylist />
-                <eventlist />
-            </type>
-            <type>
-                <name>Editor.CPPSerializer</name>
-                <newname>i</newname>
-                <methodlist>
-                    <method>
-                        <signature>void()</signature>
-                        <name>.ctor</name>
-                    </method>
-                    <method>
-                        <signature>void(Editor.Module, Editor.DataStruct, string&amp;)</signature>
-                        <name>GenClassWraperCode</name>
-                        <newname>a</newname>
-                    </method>
-                    <method>
-                        <signature>void(Editor.Module, Editor.Module/OperaterItem, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, int32&amp;, int32&amp;, string&amp;)</signature>
-                        <name>GenRpcCode</name>
-                        <newname>a</newname>
-                    </method>
-                    <method>
-                        <signature>void(Editor.Module, Editor.DataStruct, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;)</signature>
-                        <name>GenSyncDataCode</name>
-                        <newname>a</newname>
-                    </method>
-                    <method>
-                        <signature>void(Editor.Module, string&amp;, string, System.Windows.Forms.Label)</signature>
-                        <name>Serialize</name>
-                        <newname>a</newname>
-                    </method>
-                </methodlist>
-                <fieldlist />
-                <propertylist />
-                <eventlist />
-            </type>
-            <type>
-                <name>Editor.CSSerializer</name>
-                <newname>f</newname>
-                <methodlist>
-                    <method>
-                        <signature>void()</signature>
-                        <name>.ctor</name>
-                    </method>
-                    <method>
-                        <signature>void(Editor.Module, Editor.DataStruct, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;)</signature>
-                        <name>GenActionWraperCode</name>
-                        <newname>a</newname>
-                    </method>
-                    <method>
-                        <signature>void(Editor.Module, Editor.DataStruct, string&amp;, string&amp;, string&amp;, string&amp;)</signature>
-                        <name>GenClassWraperCode</name>
-                        <newname>b</newname>
-                    </method>
-                    <method>
-                        <signature>void(Editor.Module, Editor.DataStruct, string&amp;, string&amp;, string&amp;, string&amp;)</signature>
-                        <name>GenClassWraperCode2</name>
-                        <newname>a</newname>
-                    </method>
-                    <method>
-                        <signature>void(Editor.Module, Editor.Module/OperaterItem, int32, string&amp;, string&amp;)</signature>
-                        <name>GenClientFrameCode</name>
-                        <newname>a</newname>
-                    </method>
-                    <method>
-                        <signature>void(Editor.Module, Editor.Module/OperaterItem, int32, string&amp;, string&amp;, string&amp;)</signature>
-                        <name>GenInteractRpc</name>
-                        <newname>b</newname>
-                    </method>
-                    <method>
-                        <signature>void(Editor.Module, Editor.Module/OperaterItem, int32, string&amp;)</signature>
-                        <name>GenNotifyCallback</name>
-                        <newname>a</newname>
-                    </method>
-                    <method>
-                        <signature>void(Editor.Module, Editor.Module/OperaterItem, int32, string&amp;, string&amp;, string&amp;)</signature>
-                        <name>GenNotifyRpc</name>
-                        <newname>a</newname>
-                    </method>
-                    <method>
-                        <signature>void(Editor.Module, string, System.Windows.Forms.Label)</signature>
-                        <name>Serialize</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                 </methodlist>
                 <fieldlist />
@@ -110,7 +24,7 @@
             </type>
             <type>
                 <name>Editor.CoffeeSerializer</name>
-                <newname>e</newname>
+                <newname>ᜂ</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -119,34 +33,34 @@
                     <method>
                         <signature>void(Editor.Module&amp;, string&amp;, string, bool)</signature>
                         <name>DiGui</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                     <method>
                         <signature>void(Editor.Module, Editor.DataStruct, string&amp;)</signature>
                         <name>GenClassWraperCode</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                     <method>
                         <signature>void(Editor.Module, Editor.Module/OperaterItem, string&amp;, string&amp;, string&amp;, int32&amp;, int32&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;)</signature>
                         <name>GenRpcCode</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                     <method>
                         <signature>void(Editor.Module, Editor.DataStruct, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;)</signature>
                         <name>GenSyncDataCode</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                     <method>
                         <signature>void(Editor.Module, string, System.Windows.Forms.Label)</signature>
                         <name>Serialize</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                 </methodlist>
                 <fieldlist>
                     <field>
                         <signature>System.Collections.Generic.Dictionary`2&lt;string,int32&gt;</signature>
                         <name>map</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </field>
                 </fieldlist>
                 <propertylist />
@@ -172,26 +86,6 @@
                         <name>ContainsKey</name>
                     </method>
                     <method>
-                        <signature>Editor.ConfigFile(string)</signature>
-                        <name>GetConfigFile</name>
-                    </method>
-                    <method>
-                        <signature>bool(string)</signature>
-                        <name>IsBaseType</name>
-                    </method>
-                    <method>
-                        <signature>void(Editor.ConfigFile/ConfigField)</signature>
-                        <name>Remove</name>
-                    </method>
-                    <method>
-                        <signature>string()</signature>
-                        <name>ToString</name>
-                    </method>
-                    <method>
-                        <signature>string()</signature>
-                        <name>getModuleName</name>
-                    </method>
-                    <method>
                         <signature>string()</signature>
                         <name>get_CNName</name>
                     </method>
@@ -202,6 +96,22 @@
                     <method>
                         <signature>string()</signature>
                         <name>get_ConfigName</name>
+                    </method>
+                    <method>
+                        <signature>Editor.ConfigFile(string)</signature>
+                        <name>GetConfigFile</name>
+                    </method>
+                    <method>
+                        <signature>string()</signature>
+                        <name>getModuleName</name>
+                    </method>
+                    <method>
+                        <signature>bool(string)</signature>
+                        <name>IsBaseType</name>
+                    </method>
+                    <method>
+                        <signature>void(Editor.ConfigFile/ConfigField)</signature>
+                        <name>Remove</name>
                     </method>
                     <method>
                         <signature>void(string)</signature>
@@ -219,6 +129,10 @@
                         <signature>void(string)</signature>
                         <name>toSetConfigName</name>
                     </method>
+                    <method>
+                        <signature>string()</signature>
+                        <name>ToString</name>
+                    </method>
                 </methodlist>
                 <fieldlist>
                     <field>
@@ -226,23 +140,23 @@
                         <name>CfgName</name>
                     </field>
                     <field>
+                        <signature>string</signature>
+                        <name>cnName</name>
+                        <newname>ᜀ</newname>
+                    </field>
+                    <field>
+                        <signature>string</signature>
+                        <name>comment</name>
+                        <newname>ᜁ</newname>
+                    </field>
+                    <field>
                         <signature>System.Collections.Generic.Dictionary`2&lt;string,Editor.ConfigFile&gt;</signature>
                         <name>ConfigFileDic</name>
                     </field>
                     <field>
                         <signature>string</signature>
-                        <name>cnName</name>
-                        <newname>a</newname>
-                    </field>
-                    <field>
-                        <signature>string</signature>
-                        <name>comment</name>
-                        <newname>b</newname>
-                    </field>
-                    <field>
-                        <signature>string</signature>
                         <name>configName</name>
-                        <newname>c</newname>
+                        <newname>ᜂ</newname>
                     </field>
                     <field>
                         <signature>System.Collections.ArrayList</signature>
@@ -278,15 +192,11 @@
                     </method>
                     <method>
                         <signature>string()</signature>
-                        <name>ToString</name>
+                        <name>get_CheckIndex</name>
                     </method>
                     <method>
                         <signature>string()</signature>
                         <name>get_CNName</name>
-                    </method>
-                    <method>
-                        <signature>string()</signature>
-                        <name>get_CheckIndex</name>
                     </method>
                     <method>
                         <signature>string()</signature>
@@ -330,11 +240,11 @@
                     </method>
                     <method>
                         <signature>void(string)</signature>
-                        <name>set_CNName</name>
+                        <name>set_CheckIndex</name>
                     </method>
                     <method>
                         <signature>void(string)</signature>
-                        <name>set_CheckIndex</name>
+                        <name>set_CNName</name>
                     </method>
                     <method>
                         <signature>void(string)</signature>
@@ -424,22 +334,26 @@
                         <signature>void(string)</signature>
                         <name>toSetValueSet</name>
                     </method>
+                    <method>
+                        <signature>string()</signature>
+                        <name>ToString</name>
+                    </method>
                 </methodlist>
                 <fieldlist>
                     <field>
                         <signature>string</signature>
                         <name>checkIndex</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </field>
                     <field>
                         <signature>string</signature>
                         <name>cnName</name>
-                        <newname>b</newname>
+                        <newname>ᜁ</newname>
                     </field>
                     <field>
                         <signature>string</signature>
                         <name>comment</name>
-                        <newname>c</newname>
+                        <newname>ᜂ</newname>
                     </field>
                     <field>
                         <signature>Editor.ConfigFile</signature>
@@ -448,57 +362,57 @@
                     <field>
                         <signature>string</signature>
                         <name>defaultValue</name>
-                        <newname>d</newname>
+                        <newname>ᜃ</newname>
                     </field>
                     <field>
                         <signature>string</signature>
                         <name>fieldName</name>
-                        <newname>e</newname>
+                        <newname>ᜄ</newname>
                     </field>
                     <field>
                         <signature>string</signature>
                         <name>fieldType</name>
-                        <newname>f</newname>
+                        <newname>ᜅ</newname>
                     </field>
                     <field>
                         <signature>bool</signature>
                         <name>isDes</name>
-                        <newname>g</newname>
+                        <newname>ᜆ</newname>
                     </field>
                     <field>
                         <signature>bool</signature>
                         <name>isPri</name>
-                        <newname>h</newname>
+                        <newname>ᜇ</newname>
                     </field>
                     <field>
                         <signature>bool</signature>
                         <name>isSvr</name>
-                        <newname>i</newname>
+                        <newname>ᜈ</newname>
                     </field>
                     <field>
                         <signature>int32</signature>
                         <name>maxValue</name>
-                        <newname>j</newname>
+                        <newname>ᜉ</newname>
                     </field>
                     <field>
                         <signature>int32</signature>
                         <name>minValue</name>
-                        <newname>k</newname>
+                        <newname>ᜊ</newname>
                     </field>
                     <field>
                         <signature>string</signature>
                         <name>valueSet</name>
-                        <newname>l</newname>
+                        <newname>ᜋ</newname>
                     </field>
                 </fieldlist>
                 <propertylist>
                     <property>
                         <signature>string()</signature>
-                        <name>CNName</name>
+                        <name>CheckIndex</name>
                     </property>
                     <property>
                         <signature>string()</signature>
-                        <name>CheckIndex</name>
+                        <name>CNName</name>
                     </property>
                     <property>
                         <signature>string()</signature>
@@ -544,6 +458,92 @@
                 <eventlist />
             </type>
             <type>
+                <name>Editor.CPPSerializer</name>
+                <newname>ᜀ</newname>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>void(Editor.Module, Editor.DataStruct, string&amp;)</signature>
+                        <name>GenClassWraperCode</name>
+                        <newname>ᜀ</newname>
+                    </method>
+                    <method>
+                        <signature>void(Editor.Module, Editor.Module/OperaterItem, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, int32&amp;, int32&amp;, string&amp;)</signature>
+                        <name>GenRpcCode</name>
+                        <newname>ᜀ</newname>
+                    </method>
+                    <method>
+                        <signature>void(Editor.Module, Editor.DataStruct, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;)</signature>
+                        <name>GenSyncDataCode</name>
+                        <newname>ᜀ</newname>
+                    </method>
+                    <method>
+                        <signature>void(Editor.Module, string&amp;, string, System.Windows.Forms.Label)</signature>
+                        <name>Serialize</name>
+                        <newname>ᜀ</newname>
+                    </method>
+                </methodlist>
+                <fieldlist />
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
+                <name>Editor.CSSerializer</name>
+                <newname>ᜊ</newname>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>void(Editor.Module, Editor.DataStruct, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;)</signature>
+                        <name>GenActionWraperCode</name>
+                        <newname>ᜀ</newname>
+                    </method>
+                    <method>
+                        <signature>void(Editor.Module, Editor.DataStruct, string&amp;, string&amp;, string&amp;, string&amp;)</signature>
+                        <name>GenClassWraperCode</name>
+                        <newname>ᜁ</newname>
+                    </method>
+                    <method>
+                        <signature>void(Editor.Module, Editor.DataStruct, string&amp;, string&amp;, string&amp;, string&amp;)</signature>
+                        <name>GenClassWraperCode2</name>
+                        <newname>ᜀ</newname>
+                    </method>
+                    <method>
+                        <signature>void(Editor.Module, Editor.Module/OperaterItem, int32, string&amp;, string&amp;)</signature>
+                        <name>GenClientFrameCode</name>
+                        <newname>ᜀ</newname>
+                    </method>
+                    <method>
+                        <signature>void(Editor.Module, Editor.Module/OperaterItem, int32, string&amp;, string&amp;, string&amp;)</signature>
+                        <name>GenInteractRpc</name>
+                        <newname>ᜁ</newname>
+                    </method>
+                    <method>
+                        <signature>void(Editor.Module, Editor.Module/OperaterItem, int32, string&amp;)</signature>
+                        <name>GenNotifyCallback</name>
+                        <newname>ᜀ</newname>
+                    </method>
+                    <method>
+                        <signature>void(Editor.Module, Editor.Module/OperaterItem, int32, string&amp;, string&amp;, string&amp;)</signature>
+                        <name>GenNotifyRpc</name>
+                        <newname>ᜀ</newname>
+                    </method>
+                    <method>
+                        <signature>void(Editor.Module, string, System.Windows.Forms.Label)</signature>
+                        <name>Serialize</name>
+                        <newname>ᜀ</newname>
+                    </method>
+                </methodlist>
+                <fieldlist />
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
                 <name>Editor.DataStruct</name>
                 <methodlist>
                     <method>
@@ -561,50 +561,6 @@
                     <method>
                         <signature>Editor.DataStruct/SyncType(string)</signature>
                         <name>ConvertDataType</name>
-                    </method>
-                    <method>
-                        <signature>Editor.DataStruct(string, string)</signature>
-                        <name>GetDataStruct</name>
-                    </method>
-                    <method>
-                        <signature>int32()</signature>
-                        <name>GetMaxFieldId</name>
-                    </method>
-                    <method>
-                        <signature>bool(string)</signature>
-                        <name>IsBaseType</name>
-                    </method>
-                    <method>
-                        <signature>void(Editor.DataStruct/FieldDescriptor)</signature>
-                        <name>Remove</name>
-                    </method>
-                    <method>
-                        <signature>void(Editor.DataStruct/SyncType)</signature>
-                        <name>ToSetDataType</name>
-                    </method>
-                    <method>
-                        <signature>string()</signature>
-                        <name>ToString</name>
-                    </method>
-                    <method>
-                        <signature>string()</signature>
-                        <name>getFullName</name>
-                    </method>
-                    <method>
-                        <signature>string()</signature>
-                        <name>getModuleName</name>
-                    </method>
-                    <method>
-                        <signature>string()</signature>
-                        <name>getPrefix</name>
-                    </method>
-                    <method>
-                        <signature>string(Editor.DataStruct/protoTypeE)</signature>
-                        <name>getProtoTypeName</name>
-                    </method>
-                    <method>
-                        <signature>Editor.DataStruct/protoTypeE(string)</signature>
-                        <name>getProtoTypeValue</name>
                     </method>
                     <method>
                         <signature>string()</signature>
@@ -635,6 +591,42 @@
                         <name>get_SyncToClient</name>
                     </method>
                     <method>
+                        <signature>Editor.DataStruct(string, string)</signature>
+                        <name>GetDataStruct</name>
+                    </method>
+                    <method>
+                        <signature>string()</signature>
+                        <name>getFullName</name>
+                    </method>
+                    <method>
+                        <signature>int32()</signature>
+                        <name>GetMaxFieldId</name>
+                    </method>
+                    <method>
+                        <signature>string()</signature>
+                        <name>getModuleName</name>
+                    </method>
+                    <method>
+                        <signature>string()</signature>
+                        <name>getPrefix</name>
+                    </method>
+                    <method>
+                        <signature>string(Editor.DataStruct/protoTypeE)</signature>
+                        <name>getProtoTypeName</name>
+                    </method>
+                    <method>
+                        <signature>Editor.DataStruct/protoTypeE(string)</signature>
+                        <name>getProtoTypeValue</name>
+                    </method>
+                    <method>
+                        <signature>bool(string)</signature>
+                        <name>IsBaseType</name>
+                    </method>
+                    <method>
+                        <signature>void(Editor.DataStruct/FieldDescriptor)</signature>
+                        <name>Remove</name>
+                    </method>
+                    <method>
                         <signature>void(string)</signature>
                         <name>set_CNName</name>
                     </method>
@@ -662,38 +654,34 @@
                         <signature>void(bool)</signature>
                         <name>set_SyncToClient</name>
                     </method>
+                    <method>
+                        <signature>void(Editor.DataStruct/SyncType)</signature>
+                        <name>ToSetDataType</name>
+                    </method>
+                    <method>
+                        <signature>string()</signature>
+                        <name>ToString</name>
+                    </method>
                 </methodlist>
                 <fieldlist>
+                    <field>
+                        <signature>string</signature>
+                        <name>cnName</name>
+                        <newname>ᜀ</newname>
+                    </field>
+                    <field>
+                        <signature>string</signature>
+                        <name>comment</name>
+                        <newname>ᜁ</newname>
+                    </field>
                     <field>
                         <signature>System.Collections.Generic.Dictionary`2&lt;string,Editor.DataStruct&gt;</signature>
                         <name>DataStructDic</name>
                     </field>
                     <field>
-                        <signature>int32</signature>
-                        <name>GenOrder</name>
-                    </field>
-                    <field>
-                        <signature>Editor.DataStruct/protoTypeE</signature>
-                        <name>ProtoType</name>
-                    </field>
-                    <field>
-                        <signature>Editor.Module/OperaterItem/SubOperaterItem</signature>
-                        <name>SubOperate</name>
-                    </field>
-                    <field>
-                        <signature>string</signature>
-                        <name>cnName</name>
-                        <newname>a</newname>
-                    </field>
-                    <field>
-                        <signature>string</signature>
-                        <name>comment</name>
-                        <newname>b</newname>
-                    </field>
-                    <field>
                         <signature>Editor.DataStruct/SyncType</signature>
                         <name>dataType</name>
-                        <newname>c</newname>
+                        <newname>ᜂ</newname>
                     </field>
                     <field>
                         <signature>System.Collections.Generic.List`1&lt;Editor.DataStruct/FieldDescriptor&gt;</signature>
@@ -701,12 +689,20 @@
                     </field>
                     <field>
                         <signature>int32</signature>
+                        <name>GenOrder</name>
+                    </field>
+                    <field>
+                        <signature>int32</signature>
                         <name>maxFieldId</name>
-                        <newname>d</newname>
+                        <newname>ᜃ</newname>
                     </field>
                     <field>
                         <signature>Editor.Module</signature>
                         <name>module</name>
+                    </field>
+                    <field>
+                        <signature>Editor.DataStruct/protoTypeE</signature>
+                        <name>ProtoType</name>
                     </field>
                     <field>
                         <signature>bool</signature>
@@ -719,7 +715,11 @@
                     <field>
                         <signature>string</signature>
                         <name>structName</name>
-                        <newname>e</newname>
+                        <newname>ᜄ</newname>
+                    </field>
+                    <field>
+                        <signature>Editor.Module/OperaterItem/SubOperaterItem</signature>
+                        <name>SubOperate</name>
                     </field>
                     <field>
                         <signature>bool</signature>
@@ -770,26 +770,6 @@
                         <name>Clone</name>
                     </method>
                     <method>
-                        <signature>int32()</signature>
-                        <name>GetTypeEnum</name>
-                    </method>
-                    <method>
-                        <signature>void()</signature>
-                        <name>Remove</name>
-                    </method>
-                    <method>
-                        <signature>string()</signature>
-                        <name>ToGetCSFieldType</name>
-                    </method>
-                    <method>
-                        <signature>string()</signature>
-                        <name>ToGetFieldType</name>
-                    </method>
-                    <method>
-                        <signature>string()</signature>
-                        <name>ToString</name>
-                    </method>
-                    <method>
                         <signature>string()</signature>
                         <name>get_CNName</name>
                     </method>
@@ -830,6 +810,14 @@
                         <name>get_ValueSet</name>
                     </method>
                     <method>
+                        <signature>int32()</signature>
+                        <name>GetTypeEnum</name>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>Remove</name>
+                    </method>
+                    <method>
                         <signature>void(string)</signature>
                         <name>set_CNName</name>
                     </method>
@@ -865,21 +853,29 @@
                         <signature>void(string)</signature>
                         <name>set_ValueSet</name>
                     </method>
+                    <method>
+                        <signature>string()</signature>
+                        <name>ToGetCSFieldType</name>
+                    </method>
+                    <method>
+                        <signature>string()</signature>
+                        <name>ToGetFieldType</name>
+                    </method>
+                    <method>
+                        <signature>string()</signature>
+                        <name>ToString</name>
+                    </method>
                 </methodlist>
                 <fieldlist>
                     <field>
-                        <signature>int32</signature>
-                        <name>FieldId</name>
-                    </field>
-                    <field>
                         <signature>string</signature>
                         <name>cnName</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </field>
                     <field>
                         <signature>string</signature>
                         <name>comment</name>
-                        <newname>b</newname>
+                        <newname>ᜁ</newname>
                     </field>
                     <field>
                         <signature>Editor.DataStruct</signature>
@@ -890,34 +886,38 @@
                         <name>defaultValue</name>
                     </field>
                     <field>
+                        <signature>int32</signature>
+                        <name>FieldId</name>
+                    </field>
+                    <field>
                         <signature>string</signature>
                         <name>fieldName</name>
-                        <newname>c</newname>
+                        <newname>ᜂ</newname>
                     </field>
                     <field>
                         <signature>string</signature>
                         <name>fieldType</name>
-                        <newname>d</newname>
+                        <newname>ᜃ</newname>
                     </field>
                     <field>
                         <signature>int32</signature>
                         <name>maxValue</name>
-                        <newname>e</newname>
+                        <newname>ᜄ</newname>
                     </field>
                     <field>
                         <signature>int32</signature>
                         <name>minValue</name>
-                        <newname>f</newname>
+                        <newname>ᜅ</newname>
                     </field>
                     <field>
                         <signature>Editor.DataStruct/FieldDescriptor/PreDefineType</signature>
                         <name>preDefine</name>
-                        <newname>g</newname>
+                        <newname>ᜆ</newname>
                     </field>
                     <field>
                         <signature>string</signature>
                         <name>valueSet</name>
-                        <newname>h</newname>
+                        <newname>ᜇ</newname>
                     </field>
                 </fieldlist>
                 <propertylist>
@@ -985,6 +985,34 @@
                 <eventlist />
             </type>
             <type>
+                <name>Editor.DataStruct/protoTypeE</name>
+                <methodlist />
+                <fieldlist>
+                    <field>
+                        <signature>Editor.DataStruct/protoTypeE</signature>
+                        <name>CommProto</name>
+                    </field>
+                    <field>
+                        <signature>Editor.DataStruct/protoTypeE</signature>
+                        <name>RpcProto</name>
+                    </field>
+                    <field>
+                        <signature>Editor.DataStruct/protoTypeE</signature>
+                        <name>SyncProto</name>
+                    </field>
+                    <field>
+                        <signature>Editor.DataStruct/protoTypeE</signature>
+                        <name>UnknowProto</name>
+                    </field>
+                    <field>
+                        <signature>int32</signature>
+                        <name>value__</name>
+                    </field>
+                </fieldlist>
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
                 <name>Editor.DataStruct/SyncType</name>
                 <methodlist />
                 <fieldlist>
@@ -1007,34 +1035,6 @@
                     <field>
                         <signature>Editor.DataStruct/SyncType</signature>
                         <name>UserData</name>
-                    </field>
-                    <field>
-                        <signature>int32</signature>
-                        <name>value__</name>
-                    </field>
-                </fieldlist>
-                <propertylist />
-                <eventlist />
-            </type>
-            <type>
-                <name>Editor.DataStruct/protoTypeE</name>
-                <methodlist />
-                <fieldlist>
-                    <field>
-                        <signature>Editor.DataStruct/protoTypeE</signature>
-                        <name>CommProto</name>
-                    </field>
-                    <field>
-                        <signature>Editor.DataStruct/protoTypeE</signature>
-                        <name>RpcProto</name>
-                    </field>
-                    <field>
-                        <signature>Editor.DataStruct/protoTypeE</signature>
-                        <name>SyncProto</name>
-                    </field>
-                    <field>
-                        <signature>Editor.DataStruct/protoTypeE</signature>
-                        <name>UnknowProto</name>
                     </field>
                     <field>
                         <signature>int32</signature>
@@ -1083,7 +1083,7 @@
             </type>
             <type>
                 <name>Editor.DrawPic</name>
-                <newname>c</newname>
+                <newname>ᜅ</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -1096,34 +1096,34 @@
                     <method>
                         <signature>void(Editor.Module)</signature>
                         <name>Draw</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                     <method>
                         <signature>void(Editor.Module, string, string, string, string&amp;, Editor.Save&amp;, int32)</signature>
                         <name>LookFor</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                 </methodlist>
                 <fieldlist>
                     <field>
                         <signature>System.IO.BinaryWriter</signature>
                         <name>bw</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </field>
                     <field>
                         <signature>bool</signature>
                         <name>isCToS</name>
-                        <newname>b</newname>
+                        <newname>ᜁ</newname>
                     </field>
                     <field>
                         <signature>bool</signature>
                         <name>isSToC</name>
-                        <newname>c</newname>
+                        <newname>ᜂ</newname>
                     </field>
                     <field>
                         <signature>System.Collections.ArrayList</signature>
                         <name>saves</name>
-                        <newname>d</newname>
+                        <newname>ᜃ</newname>
                     </field>
                 </fieldlist>
                 <propertylist />
@@ -1131,7 +1131,7 @@
             </type>
             <type>
                 <name>Editor.ErrorSerializer</name>
-                <newname>j</newname>
+                <newname>ᜆ</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -1140,12 +1140,12 @@
                     <method>
                         <signature>void(string)</signature>
                         <name>DeserializeErrorTab</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                     <method>
                         <signature>void(System.Windows.Forms.DataGridView, string, System.Windows.Forms.Label)</signature>
                         <name>SerializeErrorTab</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                 </methodlist>
                 <fieldlist />
@@ -1161,52 +1161,207 @@
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>CSCat_CheckedChanged</name>
-                        <newname>w</newname>
+                        <name>btnCsvLoad_Click</name>
+                        <newname>ᜧ</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>CS_CheckedChanged</name>
-                        <newname>x</newname>
+                        <name>btnDown_Click</name>
+                        <newname>ᜦ</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>btnUp_Click</name>
+                        <newname>ᜥ</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>buildFileToolStripMenuItem_Click</name>
+                        <newname>ᜤ</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>button1_Click</name>
+                        <newname>ᜣ</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>button1_Click_1</name>
+                        <newname>ᜢ</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>button2_Click</name>
+                        <newname>ᜡ</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>button2_Click_1</name>
+                        <newname>ᜠ</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>button3_Click</name>
+                        <newname>ᜟ</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>buttonAddGrid_Click</name>
+                        <newname>᜞</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>buttonDelGrid_Click</name>
+                        <newname>᜝</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>C_CheckedChanged</name>
-                        <newname>ac</newname>
+                        <newname>᜜</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>Coffee_CheckedChanged</name>
-                        <newname>ab</newname>
+                        <newname>᜛</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>collapseAllToolStripMenuItem_Click</name>
+                        <newname>᜚</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>collapseToolStripMenuItem_Click</name>
+                        <newname>᜙</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.ComponentModel.CancelEventArgs)</signature>
+                        <name>contextMenuStrip1_Opening</name>
+                        <newname>ᜀ</newname>
                     </method>
                     <method>
                         <signature>void()</signature>
                         <name>Copy</name>
-                        <newname>k</newname>
+                        <newname>ᜊ</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>copyConfigToolStripMenuItem_Click</name>
+                        <newname>ᜁ</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>copyConfigToolStripMenuItem1_Click</name>
+                        <newname>ᜀ</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>copyModelToolStripMenuItem_Click</name>
+                        <newname>ᜂ</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>copyProtoAndBuildToolStripMenuItem_Click</name>
+                        <newname>ᜄ</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>copyToolStripMenuItem_Click</name>
+                        <newname>᜘</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>CS_CheckedChanged</name>
+                        <newname>᜗</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>CSCat_CheckedChanged</name>
+                        <newname>᜖</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.Windows.Forms.DataGridViewCellEventArgs)</signature>
+                        <name>dataGridView1_CellValueChanged</name>
+                        <newname>ᜀ</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>ddToolStripMenuItem_Click</name>
+                        <newname>᜕</newname>
                     </method>
                     <method>
                         <signature>void()</signature>
                         <name>Delete</name>
-                        <newname>j</newname>
+                        <newname>ᜉ</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>deleteToolStripMenuItem_Click</name>
+                        <newname>᜔</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>deleteToolStripMenuItem1_Click</name>
+                        <newname>ᜓ</newname>
                     </method>
                     <method>
                         <signature>void(bool)</signature>
                         <name>Dispose</name>
                     </method>
                     <method>
+                        <signature>bool()</signature>
+                        <name>doCheck</name>
+                        <newname>ᜈ</newname>
+                    </method>
+                    <method>
+                        <signature>bool()</signature>
+                        <name>doCheckCommDataStruct</name>
+                        <newname>ᜇ</newname>
+                    </method>
+                    <method>
+                        <signature>bool(Editor.Module)</signature>
+                        <name>doCheckModule</name>
+                        <newname>ᜀ</newname>
+                    </method>
+                    <method>
+                        <signature>void(string)</signature>
+                        <name>doSerialize</name>
+                        <newname>ᜈ</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>editorToolStripMenuItem_Click</name>
+                        <newname>ᜒ</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>exitToolStripMenuItem_Click</name>
+                        <newname>ᜑ</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>expandAllNodeToolStripMenuItem_Click</name>
+                        <newname>ᜐ</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>expandToolStripMenuItem_Click</name>
+                        <newname>ᜏ</newname>
+                    </method>
+                    <method>
                         <signature>void(object, System.Windows.Forms.FormClosingEventArgs)</signature>
                         <name>Form1_FormClosing</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>Form1_Load</name>
-                        <newname>o</newname>
+                        <newname>ᜎ</newname>
                     </method>
                     <method>
                         <signature>string(string)</signature>
                         <name>GetCheck</name>
-                        <newname>h</newname>
+                        <newname>ᜇ</newname>
                     </method>
                     <method>
                         <signature>bool(string)</signature>
@@ -1215,32 +1370,32 @@
                     <method>
                         <signature>string(string)</signature>
                         <name>GetDefaultValue</name>
-                        <newname>g</newname>
+                        <newname>ᜆ</newname>
                     </method>
                     <method>
                         <signature>bool(string)</signature>
                         <name>GetIsDes</name>
-                        <newname>f</newname>
+                        <newname>ᜅ</newname>
                     </method>
                     <method>
                         <signature>bool(string)</signature>
                         <name>GetIsSvr</name>
-                        <newname>e</newname>
+                        <newname>ᜄ</newname>
                     </method>
                     <method>
                         <signature>int32(string)</signature>
                         <name>GetMaxValue</name>
-                        <newname>d</newname>
+                        <newname>ᜃ</newname>
                     </method>
                     <method>
                         <signature>int32(string)</signature>
                         <name>GetMinValue</name>
-                        <newname>c</newname>
+                        <newname>ᜂ</newname>
                     </method>
                     <method>
                         <signature>string(string)</signature>
                         <name>GetValueSet</name>
-                        <newname>b</newname>
+                        <newname>ᜁ</newname>
                     </method>
                     <method>
                         <signature>NPOI.SS.UserModel.ISheet(string)</signature>
@@ -1249,524 +1404,369 @@
                     <method>
                         <signature>void()</signature>
                         <name>InitializeComponent</name>
-                        <newname>g</newname>
+                        <newname>ᜆ</newname>
                     </method>
                     <method>
                         <signature>void()</signature>
                         <name>Insert</name>
-                        <newname>f</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>LUA_CheckedChanged</name>
-                        <newname>l</newname>
-                    </method>
-                    <method>
-                        <signature>void()</signature>
-                        <name>LoadAllConfigFiles</name>
-                        <newname>d</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>LoadArchive</name>
-                        <newname>f</newname>
-                    </method>
-                    <method>
-                        <signature>void()</signature>
-                        <name>Open</name>
-                        <newname>c</newname>
-                    </method>
-                    <method>
-                        <signature>void()</signature>
-                        <name>Paste</name>
-                        <newname>b</newname>
-                    </method>
-                    <method>
-                        <signature>void()</signature>
-                        <name>Save</name>
-                        <newname>a</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>SkillEditor_CheckedChanged</name>
-                        <newname>g</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnCsvLoad_Click</name>
-                        <newname>an</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnDown_Click</name>
-                        <newname>am</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnUp_Click</name>
-                        <newname>al</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>buildFileToolStripMenuItem_Click</name>
-                        <newname>ak</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>button1_Click</name>
-                        <newname>aj</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>button1_Click_1</name>
-                        <newname>ai</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>button2_Click</name>
-                        <newname>ah</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>button2_Click_1</name>
-                        <newname>ag</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>button3_Click</name>
-                        <newname>af</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>buttonAddGrid_Click</name>
-                        <newname>ae</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>buttonDelGrid_Click</name>
-                        <newname>ad</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>collapseAllToolStripMenuItem_Click</name>
-                        <newname>aa</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>collapseToolStripMenuItem_Click</name>
-                        <newname>z</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.ComponentModel.CancelEventArgs)</signature>
-                        <name>contextMenuStrip1_Opening</name>
-                        <newname>a</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>copyConfigToolStripMenuItem1_Click</name>
-                        <newname>a</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>copyConfigToolStripMenuItem_Click</name>
-                        <newname>b</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>copyModelToolStripMenuItem_Click</name>
-                        <newname>c</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>copyProtoAndBuildToolStripMenuItem_Click</name>
-                        <newname>e</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>copyToolStripMenuItem_Click</name>
-                        <newname>y</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.Windows.Forms.DataGridViewCellEventArgs)</signature>
-                        <name>dataGridView1_CellValueChanged</name>
-                        <newname>a</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>ddToolStripMenuItem_Click</name>
-                        <newname>v</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>deleteToolStripMenuItem1_Click</name>
-                        <newname>t</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>deleteToolStripMenuItem_Click</name>
-                        <newname>u</newname>
-                    </method>
-                    <method>
-                        <signature>bool()</signature>
-                        <name>doCheck</name>
-                        <newname>i</newname>
-                    </method>
-                    <method>
-                        <signature>bool()</signature>
-                        <name>doCheckCommDataStruct</name>
-                        <newname>h</newname>
-                    </method>
-                    <method>
-                        <signature>bool(Editor.Module)</signature>
-                        <name>doCheckModule</name>
-                        <newname>a</newname>
-                    </method>
-                    <method>
-                        <signature>void(string)</signature>
-                        <name>doSerialize</name>
-                        <newname>i</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>editorToolStripMenuItem_Click</name>
-                        <newname>s</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>exitToolStripMenuItem_Click</name>
-                        <newname>r</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>expandAllNodeToolStripMenuItem_Click</name>
-                        <newname>q</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>expandToolStripMenuItem_Click</name>
-                        <newname>p</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>insertToolStripMenuItem1_Click</name>
-                        <newname>m</newname>
+                        <newname>ᜅ</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>insertToolStripMenuItem_Click</name>
-                        <newname>n</newname>
+                        <newname>ᜍ</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>insertToolStripMenuItem1_Click</name>
+                        <newname>ᜌ</newname>
                     </method>
                     <method>
                         <signature>bool()</signature>
                         <name>isDisableBuildBtn</name>
-                        <newname>e</newname>
+                        <newname>ᜄ</newname>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>LoadAllConfigFiles</name>
+                        <newname>ᜃ</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>LoadArchive</name>
+                        <newname>ᜅ</newname>
                     </method>
                     <method>
                         <signature>void(string)</signature>
                         <name>loadXML</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>pasteToolStripMenuItem1_Click</name>
-                        <newname>j</newname>
+                        <name>LUA_CheckedChanged</name>
+                        <newname>ᜋ</newname>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>Open</name>
+                        <newname>ᜂ</newname>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>Paste</name>
+                        <newname>ᜁ</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>pasteToolStripMenuItem_Click</name>
-                        <newname>k</newname>
+                        <newname>ᜊ</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>pasteToolStripMenuItem1_Click</name>
+                        <newname>ᜉ</newname>
                     </method>
                     <method>
                         <signature>void(object, System.Windows.Forms.PropertyValueChangedEventArgs)</signature>
                         <name>propertyGrid1_PropertyValueChanged</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>protoToLuaToolStripMenuItem_Click</name>
-                        <newname>d</newname>
+                        <newname>ᜃ</newname>
                     </method>
                     <method>
                         <signature>System.Collections.ArrayList(string, int32&amp;)</signature>
                         <name>readCsvLine</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                     <method>
                         <signature>System.Collections.ArrayList(NPOI.SS.UserModel.ISheet, int32, int32)</signature>
                         <name>readXlsxLine</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                     <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>saveToolStripMenuItem1_Click</name>
-                        <newname>h</newname>
+                        <signature>void()</signature>
+                        <name>Save</name>
+                        <newname>ᜀ</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>saveToolStripMenuItem_Click</name>
-                        <newname>i</newname>
+                        <newname>ᜈ</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>saveToolStripMenuItem1_Click</name>
+                        <newname>ᜇ</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
+                        <name>SkillEditor_CheckedChanged</name>
+                        <newname>ᜆ</newname>
                     </method>
                     <method>
                         <signature>void(System.Windows.Forms.TreeNode, System.Windows.Forms.TreeNode)</signature>
                         <name>swap_node</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                     <method>
                         <signature>void(object, System.Windows.Forms.TreeViewEventArgs)</signature>
                         <name>treeView1_AfterSelect</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                     <method>
                         <signature>void(object, System.Windows.Forms.MouseEventArgs)</signature>
                         <name>treeView1_MouseDown</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                 </methodlist>
                 <fieldlist>
                     <field>
                         <signature>System.Windows.Forms.CheckBox</signature>
                         <name>ActEditor</name>
-                        <newname>a</newname>
-                    </field>
-                    <field>
-                        <signature>System.Windows.Forms.CheckBox</signature>
-                        <name>C</name>
-                        <newname>k</newname>
-                    </field>
-                    <field>
-                        <signature>System.Windows.Forms.CheckBox</signature>
-                        <name>CS</name>
-                        <newname>r</newname>
-                    </field>
-                    <field>
-                        <signature>System.Windows.Forms.CheckBox</signature>
-                        <name>CSCat</name>
-                        <newname>s</newname>
-                    </field>
-                    <field>
-                        <signature>System.Windows.Forms.CheckBox</signature>
-                        <name>Coffee</name>
-                        <newname>l</newname>
-                    </field>
-                    <field>
-                        <signature>System.Windows.Forms.CheckBox</signature>
-                        <name>LUA</name>
-                        <newname>ai</newname>
+                        <newname>ᜀ</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.Button</signature>
                         <name>btnAddChildNode</name>
-                        <newname>b</newname>
+                        <newname>ᜁ</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.Button</signature>
                         <name>btnBuild</name>
-                        <newname>c</newname>
+                        <newname>ᜂ</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.Button</signature>
                         <name>btnCsvLoad</name>
-                        <newname>d</newname>
+                        <newname>ᜃ</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.Button</signature>
                         <name>btnDelNode</name>
-                        <newname>e</newname>
+                        <newname>ᜄ</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.Button</signature>
                         <name>btnSave</name>
-                        <newname>f</newname>
+                        <newname>ᜅ</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.ToolStripMenuItem</signature>
                         <name>buildFileToolStripMenuItem</name>
-                        <newname>g</newname>
+                        <newname>ᜆ</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.Button</signature>
                         <name>button2</name>
-                        <newname>h</newname>
+                        <newname>ᜇ</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.Button</signature>
                         <name>buttonAddGrid</name>
-                        <newname>i</newname>
+                        <newname>ᜈ</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.Button</signature>
                         <name>buttonDelGrid</name>
-                        <newname>j</newname>
+                        <newname>ᜉ</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Forms.CheckBox</signature>
+                        <name>C</name>
+                        <newname>ᜊ</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.ToolStripMenuItem</signature>
                         <name>clientToolStripMenuItem</name>
-                        <newname>ap</newname>
+                        <newname>ᜩ</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Forms.CheckBox</signature>
+                        <name>Coffee</name>
+                        <newname>ᜋ</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.ToolStripMenuItem</signature>
                         <name>collapseAllToolStripMenuItem</name>
-                        <newname>m</newname>
+                        <newname>ᜌ</newname>
                     </field>
                     <field>
                         <signature>System.ComponentModel.IContainer</signature>
                         <name>components</name>
-                        <newname>n</newname>
+                        <newname>ᜍ</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.ContextMenuStrip</signature>
                         <name>contextMenuStrip1</name>
-                        <newname>o</newname>
+                        <newname>ᜎ</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.ToolStripMenuItem</signature>
                         <name>copyConfigToolStripMenuItem</name>
-                        <newname>au</newname>
+                        <newname>ᜮ</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.ToolStripMenuItem</signature>
                         <name>copyConfigToolStripMenuItem1</name>
-                        <newname>av</newname>
+                        <newname>ᜯ</newname>
                     </field>
                     <field>
                         <signature>Editor.DataStruct/FieldDescriptor</signature>
                         <name>copyFd</name>
-                        <newname>p</newname>
+                        <newname>ᜏ</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.ToolStripMenuItem</signature>
                         <name>copyModelToolStripMenuItem</name>
-                        <newname>at</newname>
+                        <newname>ᜭ</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.ToolStripMenuItem</signature>
                         <name>copyProtoAndBuildToolStripMenuItem</name>
-                        <newname>ar</newname>
+                        <newname>ᜫ</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.ToolStripMenuItem</signature>
                         <name>copyToolStripMenuItem</name>
-                        <newname>q</newname>
+                        <newname>ᜐ</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Forms.CheckBox</signature>
+                        <name>CS</name>
+                        <newname>ᜑ</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Forms.CheckBox</signature>
+                        <name>CSCat</name>
+                        <newname>ᜒ</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.DataGridView</signature>
                         <name>dataGridView1</name>
-                        <newname>t</newname>
-                    </field>
-                    <field>
-                        <signature>System.Windows.Forms.ToolStripMenuItem</signature>
-                        <name>delNode</name>
-                        <newname>w</newname>
+                        <newname>ᜓ</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.ToolStripMenuItem</signature>
                         <name>deleteToolStripMenuItem</name>
-                        <newname>u</newname>
+                        <newname>᜔</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.ToolStripMenuItem</signature>
                         <name>deleteToolStripMenuItem1</name>
-                        <newname>v</newname>
+                        <newname>᜕</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.ToolStripMenuItem</signature>
-                        <name>editToolStripMenuItem</name>
-                        <newname>y</newname>
+                        <name>delNode</name>
+                        <newname>᜖</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.ToolStripMenuItem</signature>
                         <name>editorToolStripMenuItem</name>
-                        <newname>x</newname>
+                        <newname>᜗</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Forms.ToolStripMenuItem</signature>
+                        <name>editToolStripMenuItem</name>
+                        <newname>᜘</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.ToolStripMenuItem</signature>
                         <name>exitToolStripMenuItem</name>
-                        <newname>z</newname>
+                        <newname>᜙</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.ToolStripMenuItem</signature>
                         <name>expandAllNodeToolStripMenuItem</name>
-                        <newname>aa</newname>
+                        <newname>᜚</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.FolderBrowserDialog</signature>
                         <name>folderBrowserDialog1</name>
-                        <newname>ab</newname>
+                        <newname>᜛</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.ImageList</signature>
                         <name>imageList1</name>
-                        <newname>ac</newname>
+                        <newname>᜜</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.ToolStripMenuItem</signature>
                         <name>insertToolStripMenuItem</name>
-                        <newname>ad</newname>
+                        <newname>᜝</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.ToolStripMenuItem</signature>
                         <name>insertToolStripMenuItem1</name>
-                        <newname>ae</newname>
+                        <newname>᜞</newname>
                     </field>
                     <field>
                         <signature>bool</signature>
                         <name>isChanged</name>
-                        <newname>af</newname>
+                        <newname>ᜟ</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.Label</signature>
                         <name>label1</name>
-                        <newname>ag</newname>
+                        <newname>ᜠ</newname>
                     </field>
                     <field>
                         <signature>string</signature>
                         <name>lastDir</name>
-                        <newname>ah</newname>
+                        <newname>ᜡ</newname>
+                    </field>
+                    <field>
+                        <signature>System.Windows.Forms.CheckBox</signature>
+                        <name>LUA</name>
+                        <newname>ᜢ</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.MenuStrip</signature>
                         <name>menuStrip1</name>
-                        <newname>aj</newname>
+                        <newname>ᜣ</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.ToolStripMenuItem</signature>
                         <name>pasteToolStripMenuItem</name>
-                        <newname>ak</newname>
+                        <newname>ᜤ</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.ToolStripMenuItem</signature>
                         <name>pasteToolStripMenuItem1</name>
-                        <newname>al</newname>
+                        <newname>ᜥ</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.PropertyGrid</signature>
                         <name>propertyGrid1</name>
-                        <newname>am</newname>
+                        <newname>ᜦ</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.ToolStripMenuItem</signature>
                         <name>protoToLuaToolStripMenuItem</name>
-                        <newname>aq</newname>
+                        <newname>ᜪ</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.ToolStripMenuItem</signature>
                         <name>saveToolStripMenuItem1</name>
-                        <newname>an</newname>
+                        <newname>ᜧ</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.ToolStripMenuItem</signature>
                         <name>serverToolStripMenuItem</name>
-                        <newname>as</newname>
+                        <newname>ᜬ</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.ToolStripSeparator</signature>
                         <name>toolStripMenuItem1</name>
-                        <newname>ao</newname>
+                        <newname>ᜨ</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.TreeView</signature>
                         <name>treeView1</name>
-                        <newname>aw</newname>
+                        <newname>ᜰ</newname>
                     </field>
                 </fieldlist>
                 <propertylist />
@@ -1791,6 +1791,10 @@
                     </field>
                     <field>
                         <signature>bool</signature>
+                        <name>Coffee</name>
+                    </field>
+                    <field>
+                        <signature>bool</signature>
                         <name>CPP</name>
                     </field>
                     <field>
@@ -1803,10 +1807,6 @@
                     </field>
                     <field>
                         <signature>bool</signature>
-                        <name>Coffee</name>
-                    </field>
-                    <field>
-                        <signature>bool</signature>
                         <name>LUA</name>
                     </field>
                 </fieldlist>
@@ -1815,7 +1815,7 @@
             </type>
             <type>
                 <name>Editor.LuaSerializer</name>
-                <newname>g</newname>
+                <newname>ᜇ</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -1824,22 +1824,22 @@
                     <method>
                         <signature>void(Editor.Module, Editor.DataStruct, string&amp;)</signature>
                         <name>GenClassWraperCode</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                     <method>
                         <signature>void(Editor.Module, Editor.Module/OperaterItem, string&amp;, string&amp;, string&amp;, int32&amp;, int32&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;)</signature>
                         <name>GenRpcCode</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                     <method>
                         <signature>void(Editor.Module, Editor.DataStruct, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;)</signature>
                         <name>GenSyncDataCode</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                     <method>
                         <signature>void(Editor.Module, string, System.Windows.Forms.Label)</signature>
                         <name>Serialize</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                 </methodlist>
                 <fieldlist />
@@ -1862,22 +1862,6 @@
                         <name>ContainsKey</name>
                     </method>
                     <method>
-                        <signature>Editor.Module/OperaterItem/SubOperaterItem(string, string)</signature>
-                        <name>GetSubOperaterItem</name>
-                    </method>
-                    <method>
-                        <signature>void(Editor.Module/OperaterItem)</signature>
-                        <name>Remove</name>
-                    </method>
-                    <method>
-                        <signature>string()</signature>
-                        <name>ToString</name>
-                    </method>
-                    <method>
-                        <signature>Editor.DataStruct(string)</signature>
-                        <name>getModuleStruct</name>
-                    </method>
-                    <method>
                         <signature>string()</signature>
                         <name>get_CNName</name>
                     </method>
@@ -1896,6 +1880,18 @@
                     <method>
                         <signature>int32()</signature>
                         <name>get_SyncDataVersion</name>
+                    </method>
+                    <method>
+                        <signature>Editor.DataStruct(string)</signature>
+                        <name>getModuleStruct</name>
+                    </method>
+                    <method>
+                        <signature>Editor.Module/OperaterItem/SubOperaterItem(string, string)</signature>
+                        <name>GetSubOperaterItem</name>
+                    </method>
+                    <method>
+                        <signature>void(Editor.Module/OperaterItem)</signature>
+                        <name>Remove</name>
                     </method>
                     <method>
                         <signature>void(string)</signature>
@@ -1917,21 +1913,21 @@
                         <signature>void(int32)</signature>
                         <name>set_SyncDataVersion</name>
                     </method>
+                    <method>
+                        <signature>string()</signature>
+                        <name>ToString</name>
+                    </method>
                 </methodlist>
                 <fieldlist>
                     <field>
-                        <signature>System.Collections.Generic.Dictionary`2&lt;string,Editor.Module&gt;</signature>
-                        <name>ModuleDic</name>
-                    </field>
-                    <field>
                         <signature>string</signature>
                         <name>cnName</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </field>
                     <field>
                         <signature>string</signature>
                         <name>comment</name>
-                        <newname>b</newname>
+                        <newname>ᜁ</newname>
                     </field>
                     <field>
                         <signature>System.Collections.ArrayList</signature>
@@ -1950,9 +1946,13 @@
                         <name>moduleDataStruct</name>
                     </field>
                     <field>
+                        <signature>System.Collections.Generic.Dictionary`2&lt;string,Editor.Module&gt;</signature>
+                        <name>ModuleDic</name>
+                    </field>
+                    <field>
                         <signature>string</signature>
                         <name>moduleName</name>
-                        <newname>c</newname>
+                        <newname>ᜂ</newname>
                     </field>
                     <field>
                         <signature>System.Collections.Generic.Dictionary`2&lt;int32,Editor.Module/ErrorModuleName&gt;</signature>
@@ -1969,12 +1969,12 @@
                     <field>
                         <signature>int32</signature>
                         <name>startIdNum</name>
-                        <newname>d</newname>
+                        <newname>ᜃ</newname>
                     </field>
                     <field>
                         <signature>int32</signature>
                         <name>syncDataVersion</name>
-                        <newname>e</newname>
+                        <newname>ᜄ</newname>
                     </field>
                 </fieldlist>
                 <propertylist>
@@ -2044,6 +2044,234 @@
                 <eventlist />
             </type>
             <type>
+                <name>Editor.Module/OperaterItem</name>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>string()</signature>
+                        <name>get_CNName</name>
+                    </method>
+                    <method>
+                        <signature>string()</signature>
+                        <name>get_Comment</name>
+                    </method>
+                    <method>
+                        <signature>string()</signature>
+                        <name>get_Name</name>
+                    </method>
+                    <method>
+                        <signature>string()</signature>
+                        <name>getFullName</name>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>Remove</name>
+                    </method>
+                    <method>
+                        <signature>void(Editor.Module/OperaterItem/SubOperaterItem)</signature>
+                        <name>Remove</name>
+                    </method>
+                    <method>
+                        <signature>void(string)</signature>
+                        <name>set_CNName</name>
+                    </method>
+                    <method>
+                        <signature>void(string)</signature>
+                        <name>set_Comment</name>
+                    </method>
+                    <method>
+                        <signature>void(string)</signature>
+                        <name>set_Name</name>
+                    </method>
+                    <method>
+                        <signature>string()</signature>
+                        <name>ToString</name>
+                    </method>
+                </methodlist>
+                <fieldlist>
+                    <field>
+                        <signature>string</signature>
+                        <name>cnName</name>
+                        <newname>ᜀ</newname>
+                    </field>
+                    <field>
+                        <signature>string</signature>
+                        <name>comment</name>
+                        <newname>ᜁ</newname>
+                    </field>
+                    <field>
+                        <signature>Editor.Module</signature>
+                        <name>module</name>
+                    </field>
+                    <field>
+                        <signature>string</signature>
+                        <name>name</name>
+                        <newname>ᜂ</newname>
+                    </field>
+                    <field>
+                        <signature>System.Collections.ArrayList</signature>
+                        <name>subOperateItem</name>
+                    </field>
+                </fieldlist>
+                <propertylist>
+                    <property>
+                        <signature>string()</signature>
+                        <name>CNName</name>
+                    </property>
+                    <property>
+                        <signature>string()</signature>
+                        <name>Comment</name>
+                    </property>
+                    <property>
+                        <signature>string()</signature>
+                        <name>Name</name>
+                    </property>
+                </propertylist>
+                <eventlist />
+            </type>
+            <type>
+                <name>Editor.Module/OperaterItem/SubOperaterItem</name>
+                <methodlist>
+                    <method>
+                        <signature>void()</signature>
+                        <name>.ctor</name>
+                    </method>
+                    <method>
+                        <signature>string()</signature>
+                        <name>get_CNName</name>
+                    </method>
+                    <method>
+                        <signature>string()</signature>
+                        <name>get_Comment</name>
+                    </method>
+                    <method>
+                        <signature>string()</signature>
+                        <name>get_DataStructName</name>
+                    </method>
+                    <method>
+                        <signature>string()</signature>
+                        <name>get_Name</name>
+                    </method>
+                    <method>
+                        <signature>string()</signature>
+                        <name>get_OpType</name>
+                    </method>
+                    <method>
+                        <signature>string()</signature>
+                        <name>getDataStructName</name>
+                    </method>
+                    <method>
+                        <signature>Editor.Module/OperateType(string)</signature>
+                        <name>getOperateType</name>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>Remove</name>
+                    </method>
+                    <method>
+                        <signature>void(string)</signature>
+                        <name>set_CNName</name>
+                    </method>
+                    <method>
+                        <signature>void(string)</signature>
+                        <name>set_Comment</name>
+                    </method>
+                    <method>
+                        <signature>void(string)</signature>
+                        <name>set_DataStructName</name>
+                    </method>
+                    <method>
+                        <signature>void(string)</signature>
+                        <name>set_Name</name>
+                    </method>
+                    <method>
+                        <signature>void(string)</signature>
+                        <name>set_OpType</name>
+                    </method>
+                    <method>
+                        <signature>void(string)</signature>
+                        <name>toSetCnName</name>
+                    </method>
+                    <method>
+                        <signature>void(string)</signature>
+                        <name>toSetDataStructName</name>
+                    </method>
+                    <method>
+                        <signature>void(string)</signature>
+                        <name>toSetName</name>
+                    </method>
+                    <method>
+                        <signature>void(string)</signature>
+                        <name>toSetOpType</name>
+                    </method>
+                    <method>
+                        <signature>string()</signature>
+                        <name>ToString</name>
+                    </method>
+                </methodlist>
+                <fieldlist>
+                    <field>
+                        <signature>string</signature>
+                        <name>cnName</name>
+                        <newname>ᜀ</newname>
+                    </field>
+                    <field>
+                        <signature>string</signature>
+                        <name>comment</name>
+                        <newname>ᜁ</newname>
+                    </field>
+                    <field>
+                        <signature>string</signature>
+                        <name>dataStructName</name>
+                        <newname>ᜂ</newname>
+                    </field>
+                    <field>
+                        <signature>string</signature>
+                        <name>name</name>
+                        <newname>ᜃ</newname>
+                    </field>
+                    <field>
+                        <signature>Editor.Module/OperaterItem</signature>
+                        <name>operaterItem</name>
+                    </field>
+                    <field>
+                        <signature>string</signature>
+                        <name>opType</name>
+                        <newname>ᜄ</newname>
+                    </field>
+                    <field>
+                        <signature>Editor.Module/OperateType</signature>
+                        <name>Type</name>
+                    </field>
+                </fieldlist>
+                <propertylist>
+                    <property>
+                        <signature>string()</signature>
+                        <name>CNName</name>
+                    </property>
+                    <property>
+                        <signature>string()</signature>
+                        <name>Comment</name>
+                    </property>
+                    <property>
+                        <signature>string()</signature>
+                        <name>DataStructName</name>
+                    </property>
+                    <property>
+                        <signature>string()</signature>
+                        <name>Name</name>
+                    </property>
+                    <property>
+                        <signature>string()</signature>
+                        <name>OpType</name>
+                    </property>
+                </propertylist>
+                <eventlist />
+            </type>
+            <type>
                 <name>Editor.Module/OperateType</name>
                 <methodlist />
                 <fieldlist>
@@ -2084,234 +2312,6 @@
                 <eventlist />
             </type>
             <type>
-                <name>Editor.Module/OperaterItem</name>
-                <methodlist>
-                    <method>
-                        <signature>void()</signature>
-                        <name>.ctor</name>
-                    </method>
-                    <method>
-                        <signature>void()</signature>
-                        <name>Remove</name>
-                    </method>
-                    <method>
-                        <signature>void(Editor.Module/OperaterItem/SubOperaterItem)</signature>
-                        <name>Remove</name>
-                    </method>
-                    <method>
-                        <signature>string()</signature>
-                        <name>ToString</name>
-                    </method>
-                    <method>
-                        <signature>string()</signature>
-                        <name>getFullName</name>
-                    </method>
-                    <method>
-                        <signature>string()</signature>
-                        <name>get_CNName</name>
-                    </method>
-                    <method>
-                        <signature>string()</signature>
-                        <name>get_Comment</name>
-                    </method>
-                    <method>
-                        <signature>string()</signature>
-                        <name>get_Name</name>
-                    </method>
-                    <method>
-                        <signature>void(string)</signature>
-                        <name>set_CNName</name>
-                    </method>
-                    <method>
-                        <signature>void(string)</signature>
-                        <name>set_Comment</name>
-                    </method>
-                    <method>
-                        <signature>void(string)</signature>
-                        <name>set_Name</name>
-                    </method>
-                </methodlist>
-                <fieldlist>
-                    <field>
-                        <signature>string</signature>
-                        <name>cnName</name>
-                        <newname>a</newname>
-                    </field>
-                    <field>
-                        <signature>string</signature>
-                        <name>comment</name>
-                        <newname>b</newname>
-                    </field>
-                    <field>
-                        <signature>Editor.Module</signature>
-                        <name>module</name>
-                    </field>
-                    <field>
-                        <signature>string</signature>
-                        <name>name</name>
-                        <newname>c</newname>
-                    </field>
-                    <field>
-                        <signature>System.Collections.ArrayList</signature>
-                        <name>subOperateItem</name>
-                    </field>
-                </fieldlist>
-                <propertylist>
-                    <property>
-                        <signature>string()</signature>
-                        <name>CNName</name>
-                    </property>
-                    <property>
-                        <signature>string()</signature>
-                        <name>Comment</name>
-                    </property>
-                    <property>
-                        <signature>string()</signature>
-                        <name>Name</name>
-                    </property>
-                </propertylist>
-                <eventlist />
-            </type>
-            <type>
-                <name>Editor.Module/OperaterItem/SubOperaterItem</name>
-                <methodlist>
-                    <method>
-                        <signature>void()</signature>
-                        <name>.ctor</name>
-                    </method>
-                    <method>
-                        <signature>void()</signature>
-                        <name>Remove</name>
-                    </method>
-                    <method>
-                        <signature>string()</signature>
-                        <name>ToString</name>
-                    </method>
-                    <method>
-                        <signature>string()</signature>
-                        <name>getDataStructName</name>
-                    </method>
-                    <method>
-                        <signature>Editor.Module/OperateType(string)</signature>
-                        <name>getOperateType</name>
-                    </method>
-                    <method>
-                        <signature>string()</signature>
-                        <name>get_CNName</name>
-                    </method>
-                    <method>
-                        <signature>string()</signature>
-                        <name>get_Comment</name>
-                    </method>
-                    <method>
-                        <signature>string()</signature>
-                        <name>get_DataStructName</name>
-                    </method>
-                    <method>
-                        <signature>string()</signature>
-                        <name>get_Name</name>
-                    </method>
-                    <method>
-                        <signature>string()</signature>
-                        <name>get_OpType</name>
-                    </method>
-                    <method>
-                        <signature>void(string)</signature>
-                        <name>set_CNName</name>
-                    </method>
-                    <method>
-                        <signature>void(string)</signature>
-                        <name>set_Comment</name>
-                    </method>
-                    <method>
-                        <signature>void(string)</signature>
-                        <name>set_DataStructName</name>
-                    </method>
-                    <method>
-                        <signature>void(string)</signature>
-                        <name>set_Name</name>
-                    </method>
-                    <method>
-                        <signature>void(string)</signature>
-                        <name>set_OpType</name>
-                    </method>
-                    <method>
-                        <signature>void(string)</signature>
-                        <name>toSetCnName</name>
-                    </method>
-                    <method>
-                        <signature>void(string)</signature>
-                        <name>toSetDataStructName</name>
-                    </method>
-                    <method>
-                        <signature>void(string)</signature>
-                        <name>toSetName</name>
-                    </method>
-                    <method>
-                        <signature>void(string)</signature>
-                        <name>toSetOpType</name>
-                    </method>
-                </methodlist>
-                <fieldlist>
-                    <field>
-                        <signature>Editor.Module/OperateType</signature>
-                        <name>Type</name>
-                    </field>
-                    <field>
-                        <signature>string</signature>
-                        <name>cnName</name>
-                        <newname>a</newname>
-                    </field>
-                    <field>
-                        <signature>string</signature>
-                        <name>comment</name>
-                        <newname>b</newname>
-                    </field>
-                    <field>
-                        <signature>string</signature>
-                        <name>dataStructName</name>
-                        <newname>c</newname>
-                    </field>
-                    <field>
-                        <signature>string</signature>
-                        <name>name</name>
-                        <newname>d</newname>
-                    </field>
-                    <field>
-                        <signature>string</signature>
-                        <name>opType</name>
-                        <newname>e</newname>
-                    </field>
-                    <field>
-                        <signature>Editor.Module/OperaterItem</signature>
-                        <name>operaterItem</name>
-                    </field>
-                </fieldlist>
-                <propertylist>
-                    <property>
-                        <signature>string()</signature>
-                        <name>CNName</name>
-                    </property>
-                    <property>
-                        <signature>string()</signature>
-                        <name>Comment</name>
-                    </property>
-                    <property>
-                        <signature>string()</signature>
-                        <name>DataStructName</name>
-                    </property>
-                    <property>
-                        <signature>string()</signature>
-                        <name>Name</name>
-                    </property>
-                    <property>
-                        <signature>string()</signature>
-                        <name>OpType</name>
-                    </property>
-                </propertylist>
-                <eventlist />
-            </type>
-            <type>
                 <name>Editor.ModuleDataStructConverter</name>
                 <methodlist>
                     <method>
@@ -2347,6 +2347,10 @@
                         <name>.ctor</name>
                     </method>
                     <method>
+                        <signature>string(string, int32)</signature>
+                        <name>b</name>
+                    </method>
+                    <method>
                         <signature>object(System.ComponentModel.ITypeDescriptorContext, System.IServiceProvider, object)</signature>
                         <name>EditValue</name>
                     </method>
@@ -2361,12 +2365,12 @@
             </type>
             <type>
                 <name>Editor.Program</name>
-                <newname>d</newname>
+                <newname>ᜄ</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
                         <name>Main</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                 </methodlist>
                 <fieldlist />
@@ -2375,7 +2379,7 @@
             </type>
             <type>
                 <name>Editor.ProtoSerializer</name>
-                <newname>h</newname>
+                <newname>ᜋ</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -2384,57 +2388,57 @@
                     <method>
                         <signature>System.Collections.ArrayList(Editor.DataStruct, Editor.DataStruct/protoTypeE, string&amp;, Editor.Module, bool&amp;)</signature>
                         <name>GenMessage</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                     <method>
                         <signature>System.Collections.ArrayList(Editor.DataStruct, string&amp;)</signature>
                         <name>GenMessage</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                     <method>
                         <signature>void(string, string, string, string, Editor.DataStruct/protoTypeE)</signature>
                         <name>Protoc</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                     <method>
                         <signature>void(string, string, string, string, string)</signature>
                         <name>ProtocCS</name>
-                        <newname>b</newname>
+                        <newname>ᜁ</newname>
                     </method>
                     <method>
                         <signature>void(string, string, string, string, string)</signature>
                         <name>ProtocLUA</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                     <method>
                         <signature>void(Editor.DataStruct, System.Collections.Generic.List`1&lt;string&gt;&amp;)</signature>
                         <name>RecursionContainsDataStruct</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                     <method>
                         <signature>void(Editor.Module, string, System.Windows.Forms.Label, Editor.DataStruct/protoTypeE)</signature>
                         <name>Serialize</name>
-                        <newname>d</newname>
+                        <newname>ᜃ</newname>
                     </method>
                     <method>
                         <signature>void(System.Collections.ArrayList, string, System.Windows.Forms.Label, string)</signature>
                         <name>Serialize</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                     <method>
                         <signature>void(Editor.Module, string, System.Windows.Forms.Label, Editor.DataStruct/protoTypeE)</signature>
                         <name>SerializeCS</name>
-                        <newname>c</newname>
+                        <newname>ᜂ</newname>
                     </method>
                     <method>
                         <signature>void(Editor.Module, string, System.Windows.Forms.Label, Editor.DataStruct/protoTypeE)</signature>
                         <name>SerializeLUA</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                     <method>
                         <signature>void(Editor.Module, string, System.Windows.Forms.Label, Editor.DataStruct/protoTypeE)</signature>
                         <name>SerializeLUA_SY</name>
-                        <newname>b</newname>
+                        <newname>ᜁ</newname>
                     </method>
                 </methodlist>
                 <fieldlist />
@@ -2443,7 +2447,7 @@
             </type>
             <type>
                 <name>Editor.RunBat</name>
-                <newname>a</newname>
+                <newname>ᜃ</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -2452,7 +2456,7 @@
                     <method>
                         <signature>void(string)</signature>
                         <name>Run</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                 </methodlist>
                 <fieldlist />
@@ -2461,7 +2465,7 @@
             </type>
             <type>
                 <name>Editor.Save</name>
-                <newname>b</newname>
+                <newname>ᜁ</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -2470,94 +2474,94 @@
                     <method>
                         <signature>string()</signature>
                         <name>get_CNName</name>
-                        <newname>g</newname>
+                        <newname>ᜉ</newname>
                     </method>
                     <method>
                         <signature>string()</signature>
                         <name>get_Name</name>
-                        <newname>h</newname>
+                        <newname>ᜊ</newname>
                     </method>
                     <method>
                         <signature>Editor.Save()</signature>
                         <name>get_Next</name>
-                        <newname>i</newname>
+                        <newname>ᜆ</newname>
                     </method>
                     <method>
                         <signature>bool()</signature>
                         <name>get_Repet</name>
-                        <newname>j</newname>
+                        <newname>ᜋ</newname>
                     </method>
                     <method>
                         <signature>string()</signature>
                         <name>get_Type</name>
-                        <newname>k</newname>
+                        <newname>ᜈ</newname>
                     </method>
                     <method>
                         <signature>string()</signature>
                         <name>get_Value</name>
-                        <newname>l</newname>
+                        <newname>ᜇ</newname>
                     </method>
                     <method>
                         <signature>void(string)</signature>
                         <name>set_CNName</name>
-                        <newname>g</newname>
+                        <newname>ᜆ</newname>
                     </method>
                     <method>
                         <signature>void(string)</signature>
                         <name>set_Name</name>
-                        <newname>h</newname>
+                        <newname>ᜈ</newname>
                     </method>
                     <method>
                         <signature>void(Editor.Save)</signature>
                         <name>set_Next</name>
-                        <newname>g</newname>
+                        <newname>ᜆ</newname>
                     </method>
                     <method>
                         <signature>void(bool)</signature>
                         <name>set_Repet</name>
-                        <newname>g</newname>
+                        <newname>ᜆ</newname>
                     </method>
                     <method>
                         <signature>void(string)</signature>
                         <name>set_Type</name>
-                        <newname>i</newname>
+                        <newname>ᜇ</newname>
                     </method>
                     <method>
                         <signature>void(string)</signature>
                         <name>set_Value</name>
-                        <newname>j</newname>
+                        <newname>ᜉ</newname>
                     </method>
                 </methodlist>
                 <fieldlist>
                     <field>
                         <signature>string</signature>
                         <name>&lt;CNName&gt;k__BackingField</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </field>
                     <field>
                         <signature>string</signature>
                         <name>&lt;Name&gt;k__BackingField</name>
-                        <newname>b</newname>
+                        <newname>ᜁ</newname>
                     </field>
                     <field>
                         <signature>Editor.Save</signature>
                         <name>&lt;Next&gt;k__BackingField</name>
-                        <newname>c</newname>
+                        <newname>ᜂ</newname>
                     </field>
                     <field>
                         <signature>bool</signature>
                         <name>&lt;Repet&gt;k__BackingField</name>
-                        <newname>d</newname>
+                        <newname>ᜃ</newname>
                     </field>
                     <field>
                         <signature>string</signature>
                         <name>&lt;Type&gt;k__BackingField</name>
-                        <newname>e</newname>
+                        <newname>ᜄ</newname>
                     </field>
                     <field>
                         <signature>string</signature>
                         <name>&lt;Value&gt;k__BackingField</name>
-                        <newname>f</newname>
+                        <newname>ᜅ</newname>
                     </field>
                 </fieldlist>
                 <propertylist />
@@ -2589,7 +2593,7 @@
             </type>
             <type>
                 <name>Editor.XMLSerializer</name>
-                <newname>k</newname>
+                <newname>ᜉ</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -2598,37 +2602,37 @@
                     <method>
                         <signature>void(System.Windows.Forms.TreeView, string)</signature>
                         <name>Deserialize</name>
-                        <newname>a</newname>
-                    </method>
-                    <method>
-                        <signature>System.Collections.ArrayList(Editor.Module, Editor.DataStruct/protoTypeE)</signature>
-                        <name>OrderDataStruct</name>
-                        <newname>a</newname>
-                    </method>
-                    <method>
-                        <signature>System.Collections.ArrayList(System.Collections.ArrayList)</signature>
-                        <name>OrderDataStruct</name>
-                        <newname>a</newname>
-                    </method>
-                    <method>
-                        <signature>void(Editor.Module, string, System.Windows.Forms.Label)</signature>
-                        <name>Serialize</name>
-                        <newname>a</newname>
-                    </method>
-                    <method>
-                        <signature>void(System.Collections.ArrayList, string, System.Windows.Forms.Label)</signature>
-                        <name>Serialize</name>
-                        <newname>a</newname>
-                    </method>
-                    <method>
-                        <signature>void(System.Collections.Generic.Dictionary`2&lt;string,Editor.Module&gt;, string, System.Windows.Forms.Label)</signature>
-                        <name>SerializeXML</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                     <method>
                         <signature>void(System.Collections.ArrayList, Editor.DataStruct)</signature>
                         <name>getDataStructName</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
+                    </method>
+                    <method>
+                        <signature>System.Collections.ArrayList(Editor.Module, Editor.DataStruct/protoTypeE)</signature>
+                        <name>OrderDataStruct</name>
+                        <newname>ᜀ</newname>
+                    </method>
+                    <method>
+                        <signature>System.Collections.ArrayList(System.Collections.ArrayList)</signature>
+                        <name>OrderDataStruct</name>
+                        <newname>ᜀ</newname>
+                    </method>
+                    <method>
+                        <signature>void(Editor.Module, string, System.Windows.Forms.Label)</signature>
+                        <name>Serialize</name>
+                        <newname>ᜀ</newname>
+                    </method>
+                    <method>
+                        <signature>void(System.Collections.ArrayList, string, System.Windows.Forms.Label)</signature>
+                        <name>Serialize</name>
+                        <newname>ᜀ</newname>
+                    </method>
+                    <method>
+                        <signature>void(System.Collections.Generic.Dictionary`2&lt;string,Editor.Module&gt;, string, System.Windows.Forms.Label)</signature>
+                        <name>SerializeXML</name>
+                        <newname>ᜀ</newname>
                     </method>
                 </methodlist>
                 <fieldlist />
@@ -2637,7 +2641,7 @@
             </type>
             <type>
                 <name>Editor.XMLSerializer/DataStructComparer</name>
-                <newname>k/a</newname>
+                <newname>ᜉ/ᜀ</newname>
                 <methodlist>
                     <method>
                         <signature>void()</signature>
@@ -2662,29 +2666,29 @@
                     <method>
                         <signature>System.Globalization.CultureInfo()</signature>
                         <name>get_Culture</name>
-                        <newname>b</newname>
+                        <newname>ᜁ</newname>
                     </method>
                     <method>
                         <signature>System.Resources.ResourceManager()</signature>
                         <name>get_ResourceManager</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                     <method>
                         <signature>void(System.Globalization.CultureInfo)</signature>
                         <name>set_Culture</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                 </methodlist>
                 <fieldlist>
                     <field>
                         <signature>System.Globalization.CultureInfo</signature>
                         <name>resourceCulture</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </field>
                     <field>
                         <signature>System.Resources.ResourceManager</signature>
                         <name>resourceMan</name>
-                        <newname>b</newname>
+                        <newname>ᜁ</newname>
                     </field>
                 </fieldlist>
                 <propertylist>
@@ -2713,14 +2717,14 @@
                     <method>
                         <signature>RpcCoder.Properties.Settings()</signature>
                         <name>get_Default</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                 </methodlist>
                 <fieldlist>
                     <field>
                         <signature>RpcCoder.Properties.Settings</signature>
                         <name>defaultInstance</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </field>
                 </fieldlist>
                 <propertylist>
@@ -2741,29 +2745,29 @@
                     <method>
                         <signature>System.Globalization.CultureInfo()</signature>
                         <name>get_Culture</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                     <method>
                         <signature>System.Resources.ResourceManager()</signature>
                         <name>get_ResourceManager</name>
-                        <newname>b</newname>
+                        <newname>ᜁ</newname>
                     </method>
                     <method>
                         <signature>void(System.Globalization.CultureInfo)</signature>
                         <name>set_Culture</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </method>
                 </methodlist>
                 <fieldlist>
                     <field>
                         <signature>System.Globalization.CultureInfo</signature>
                         <name>resourceCulture</name>
-                        <newname>b</newname>
+                        <newname>ᜁ</newname>
                     </field>
                     <field>
                         <signature>System.Resources.ResourceManager</signature>
                         <name>resourceMan</name>
-                        <newname>a</newname>
+                        <newname>ᜀ</newname>
                     </field>
                 </fieldlist>
                 <propertylist>
@@ -2787,7 +2791,7 @@
         </statisticline>
         <statisticline>
             <description>Total Methods</description>
-            <statistic>334</statistic>
+            <statistic>335</statistic>
         </statisticline>
         <statisticline>
             <description>Total Fields</description>
@@ -2809,7 +2813,7 @@
         <statisticline>
             <description>Total Methods Renamed</description>
             <statistic>135</statistic>
-            <statistic>40.42%</statistic>
+            <statistic>40.30%</statistic>
         </statisticline>
         <statisticline>
             <description>Total Fields Renamed</description>
@@ -2827,39 +2831,39 @@
             <statistic>0.00%</statistic>
         </statisticline>
         <statisticline>
-            <description>Methods Renamed to 'a'</description>
+            <description>Methods Renamed to 'ᜀ'</description>
             <statistic>58</statistic>
-            <statistic>17.37%</statistic>
+            <statistic>17.31%</statistic>
         </statisticline>
         <statisticline>
-            <description>Methods Renamed to 'b'</description>
+            <description>Methods Renamed to 'ᜁ'</description>
             <statistic>9</statistic>
             <statistic>2.69%</statistic>
         </statisticline>
         <statisticline>
-            <description>Methods Renamed to 'g'</description>
+            <description>Methods Renamed to 'ᜆ'</description>
             <statistic>7</statistic>
-            <statistic>2.10%</statistic>
+            <statistic>2.09%</statistic>
         </statisticline>
         <statisticline>
-            <description>Methods Renamed to 'h'</description>
+            <description>Methods Renamed to 'ᜈ'</description>
             <statistic>5</statistic>
-            <statistic>1.50%</statistic>
+            <statistic>1.49%</statistic>
         </statisticline>
         <statisticline>
-            <description>Methods Renamed to 'i'</description>
+            <description>Methods Renamed to 'ᜇ'</description>
             <statistic>5</statistic>
-            <statistic>1.50%</statistic>
+            <statistic>1.49%</statistic>
         </statisticline>
         <statisticline>
-            <description>Methods Renamed to 'c'</description>
+            <description>Methods Renamed to 'ᜉ'</description>
             <statistic>4</statistic>
-            <statistic>1.20%</statistic>
+            <statistic>1.19%</statistic>
         </statisticline>
         <statisticline>
-            <description>Methods Renamed to 'd'</description>
+            <description>Methods Renamed to 'ᜂ'</description>
             <statistic>4</statistic>
-            <statistic>1.20%</statistic>
+            <statistic>1.19%</statistic>
         </statisticline>
     </statistics>
 </dotfuscatorMap>

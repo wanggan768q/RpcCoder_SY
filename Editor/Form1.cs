@@ -335,7 +335,7 @@
                     XMLSerializer.SerializeXML(Editor.Module.ModuleDic, this.lastDir, this.label1);
                     this.label1.Text = "完成!!!";
                     this.BringToFront();
-                    MessageBox.Show("Finished!!!");
+                    MessageBox.Show("处理完毕");
                 }
             }
             else if (this.treeView1.SelectedNode.Name == "NewModule")
@@ -359,7 +359,7 @@
                     CoffeeSerializer.Serialize(tag, this.lastDir, this.label1);
                     this.label1.Text = "完成!!!";
                     this.BringToFront();
-                    MessageBox.Show("Finished!!!");
+                    MessageBox.Show("处理完毕");
                 }
             }
         }
@@ -376,7 +376,7 @@
                     this.label1.Text = "完成!!!";
                     this.lastDir = selectedPath;
                     this.BringToFront();
-                    MessageBox.Show("Finished!!!");
+                    MessageBox.Show("处理完毕");
                     this.isChanged = false;
                 }
             }
