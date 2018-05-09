@@ -951,18 +951,24 @@
                             {
                                 obj2 = str16;
                                 str16 = string.Concat(new object[] { obj2, "\t\t\tmember.", field2.FieldName, "=(int)atoi(vecLine[", num2, "].c_str());\r\n" });
+                                //str16 = string.Concat(new object[] { obj2, "\t\t\tmember.", field2.FieldName, "=p[", num2, "].asInt();\r\n" });
                                 str15 = str15 + "\t\t\tpContent = ReadBinInt(member." + field2.FieldName + ",pContent);\r\n";
-                                jsonField += string.Concat(new object[] {"\t\t\tmember.", field2.FieldName, "=p.get<int>(\"", field2.FieldName, "\");\r\n" });
+                                //jsonField += string.Concat(new object[] {"\t\t\tmember.", field2.FieldName, "=p.get<int>(\"", field2.FieldName, "\");\r\n" });
+
+                                jsonField += string.Concat(new object[] { "\t\t\tmember.", field2.FieldName, "=p[\"", field2.FieldName, "\"].asInt();\r\n" });
                             }
                             else if (field2.FieldType == "float")
                             {
                                 obj2 = str16;
                                 str16 = string.Concat(new object[] { obj2, "\t\t\tmember.", field2.FieldName, "=(float)atof(vecLine[", num2, "].c_str());\r\n" });
+                                //str16 = string.Concat(new object[] { obj2, "\t\t\tmember.", field2.FieldName, "=p[", num2, "].asFloat();\r\n" });
                                 str15 = str15 + "\t\t\tpContent = ReadBinInt(member." + field2.FieldName + ",pContent);\r\n";
-                                jsonField += string.Concat(new object[] { "\t\t\tmember.", field2.FieldName, "=p.get<float>(\"", field2.FieldName, "\");\r\n" });
+                                //jsonField += string.Concat(new object[] { "\t\t\tmember.", field2.FieldName, "=p.get<float>(\"", field2.FieldName, "\");\r\n" });
+                                jsonField += string.Concat(new object[] { "\t\t\tmember.", field2.FieldName, "=p[\"", field2.FieldName, "\"].asFloat();\r\n" });
                             }
                             else if (field2.FieldType == "li")
                             {
+                                /*
                                 jsonField += string.Concat(new object[] { "\t\t\tboost::property_tree::ptree sms_array_child" + field2.FieldName + " = p.get_child(\"" + field2.FieldName + "\");\r\n" });
                                 jsonField += string.Concat(new object[] { "\t\t\tfor (BOOST_AUTO(pos, sms_array_child" + field2.FieldName + ".begin()); pos != sms_array_child" + field2.FieldName + ".end(); ++pos)\r\n" });
                                 jsonField += string.Concat(new object[] { "\t\t\t{\r\n" });
@@ -972,9 +978,17 @@
                                 jsonField += string.Concat(new object[] { "\t\t\t\tmember.", field2.FieldName, ".push_back(n);\r\n" });
 
                                 jsonField += string.Concat(new object[] { "\t\t\t}\r\n" });
+                                */
+                                jsonField += string.Concat(new object[] { "\t\t\tJson::ValueIterator end_", field2.FieldName, " = p[\"", field2.FieldName, "\"].end();\r\n" });
+                                jsonField += string.Concat(new object[] { "\t\t\tfor (Json::ValueIterator jt = p[\"", field2.FieldName, "\"].begin(); jt != end_", field2.FieldName, "; ++jt)\r\n" });
+                                jsonField += string.Concat(new object[] { "\t\t\t{\r\n" });
+                                jsonField += string.Concat(new object[] { "\t\t\t\tint n = (*jt).asInt();\r\n" });
+                                jsonField += string.Concat(new object[] { "\t\t\t\tmember.", field2.FieldName, ".push_back(n);\r\n" });
+                                jsonField += string.Concat(new object[] { "\t\t\t}\r\n" });
                             }
                             else if (field2.FieldType == "ls")
                             {
+                                /*
                                 jsonField += string.Concat(new object[] { "\t\t\tboost::property_tree::ptree sms_array_child" + field2.FieldName + " = p.get_child(\"" + field2.FieldName + "\");\r\n" });
                                 jsonField += string.Concat(new object[] { "\t\t\tfor (BOOST_AUTO(pos, sms_array_child" + field2.FieldName + ".begin()); pos != sms_array_child" + field2.FieldName + ".end(); ++pos)\r\n" });
                                 jsonField += string.Concat(new object[] { "\t\t\t{\r\n" });
@@ -984,9 +998,17 @@
                                 jsonField += string.Concat(new object[] { "\t\t\t\tmember.", field2.FieldName, ".push_back(n);\r\n" });
 
                                 jsonField += string.Concat(new object[] { "\t\t\t}\r\n" });
+                                */
+                                jsonField += string.Concat(new object[] { "\t\t\tJson::ValueIterator end_", field2.FieldName, " = p[\"", field2.FieldName, "\"].end();\r\n" });
+                                jsonField += string.Concat(new object[] { "\t\t\tfor (Json::ValueIterator jt = p[\"", field2.FieldName, "\"].begin(); jt != end_", field2.FieldName, "; ++jt)\r\n" });
+                                jsonField += string.Concat(new object[] { "\t\t\t{\r\n" });
+                                jsonField += string.Concat(new object[] { "\t\t\t\tstd::string n = (*jt).asString();\r\n" });
+                                jsonField += string.Concat(new object[] { "\t\t\t\tmember.", field2.FieldName, ".push_back(n);\r\n" });
+                                jsonField += string.Concat(new object[] { "\t\t\t}\r\n" });
                             }
                             else if (field2.FieldType == "lf")
                             {
+                                /*
                                 jsonField += string.Concat(new object[] { "\t\t\tboost::property_tree::ptree sms_array_child" + field2.FieldName + " = p.get_child(\"" + field2.FieldName + "\");\r\n" });
                                 jsonField += string.Concat(new object[] { "\t\t\tfor (BOOST_AUTO(pos, sms_array_child" + field2.FieldName + ".begin()); pos != sms_array_child" + field2.FieldName + ".end(); ++pos)\r\n" });
                                 jsonField += string.Concat(new object[] { "\t\t\t{\r\n" });
@@ -996,13 +1018,21 @@
                                 jsonField += string.Concat(new object[] { "\t\t\t\tmember.", field2.FieldName, ".push_back(n);\r\n" });
 
                                 jsonField += string.Concat(new object[] { "\t\t\t}\r\n" });
+                                */
+                                jsonField += string.Concat(new object[] { "\t\t\tJson::ValueIterator end_", field2.FieldName, " = p[\"", field2.FieldName, "\"].end();\r\n" });
+                                jsonField += string.Concat(new object[] { "\t\t\tfor (Json::ValueIterator jt = p[\"", field2.FieldName, "\"].begin(); jt != end_", field2.FieldName, "; ++jt)\r\n" });
+                                jsonField += string.Concat(new object[] { "\t\t\t{\r\n" });
+                                jsonField += string.Concat(new object[] { "\t\t\t\tfloat n = (*jt).asFloat();\r\n" });
+                                jsonField += string.Concat(new object[] { "\t\t\t\tmember.", field2.FieldName, ".push_back(n);\r\n" });
+                                jsonField += string.Concat(new object[] { "\t\t\t}\r\n" });
                             }
                             else
                             {
                                 obj2 = str16;
                                 str16 = string.Concat(new object[] { obj2, "\t\t\tmember.", field2.FieldName, "=vecLine[", num2, "];\r\n" });
                                 str15 = str15 + "\t\t\tpContent = ReadBinStr(member." + field2.FieldName + ",pContent);\r\n";
-                                jsonField += string.Concat(new object[] { "\t\t\tmember.", field2.FieldName, "=p.get<string>(\"", field2.FieldName, "\");\r\n" });
+                                //jsonField += string.Concat(new object[] { "\t\t\tmember.", field2.FieldName, "=p.get<string>(\"", field2.FieldName, "\");\r\n" });
+                                jsonField += string.Concat(new object[] { "\t\t\tmember.", field2.FieldName, "=p[\"", field2.FieldName, "\"].asString();\r\n" });
                             }
                             num2++;
                         }
