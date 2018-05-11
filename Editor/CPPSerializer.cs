@@ -495,7 +495,8 @@
             }
         }
 
-        private static void GenSyncDataCode(Module m, DataStruct ds, ref string syncIds, ref string SyncOpDefine, ref string SyncOpImp, ref string SendAllFields, ref string DBCacheField,ref string BindCalc,ref string RefreshField, ref string GetField)
+        private static void GenSyncDataCode(Module m, DataStruct ds, ref string syncIds, ref string SyncOpDefine, ref string SyncOpImp, ref string SendAllFields, 
+            ref string DBCacheField,ref string BindCalc,ref string RefreshField, ref string GetField,ref string GetAttrByType)
         {
             string str = "V" + m.SyncDataVersion;
             string text1 = ds.StructName + "Wraper" + str;
@@ -510,6 +511,11 @@
                 string str4 = " \t" + enumKey;
                 RefreshField = RefreshField + "\tRefresh" + descriptor.FieldName + "();\r\n";
                 GetField = GetField + "\tGet" + descriptor.FieldName + "();\r\n";
+
+
+                GetAttrByType +=  "\tcase SYNCID_" + m.ModuleName.ToUpper() + "_" + descriptor.FieldName.ToUpper() + ":\r\n";
+                GetAttrByType += "\t\treturn Get" + descriptor.FieldName + "();\r\n";
+
                 string str8 = str3;
                 str3 = str8 + "\tcase SYNCID_" + m.ModuleName.ToUpper() + "_" + descriptor.FieldName.ToUpper() + ":\r\n";
                 int num = 0x2e - str4.Length;
@@ -591,7 +597,7 @@
                     //SyncOpImp = str23 + "void " + str2 + "::Send" + descriptor.FieldName + "(bool OnlyToClient)\r\n{\r\n";
                     if (descriptor.GetTypeEnum() == 1)
                     {
-                        /*
+                        /**
                         if (descriptor.FieldType == "bool")
                         {
                             str3 = str3 + "\t\tpDataWraper->Set" + descriptor.FieldName + "(*(bool*)pBuffer);\r\n\t\tbreak;\r\n";
@@ -879,10 +885,12 @@
                 str6 = reader.ReadToEnd();
                 reader.Close();
                 string newValue = "";
+                string reLoadConfig = "";
                 string str8 = "";
                 foreach (ConfigFile file in m.configFiles)
                 {
                     newValue = newValue + "\t" + file.CfgName + "Table::Instance().Load();\r\n";
+                    reLoadConfig = reLoadConfig + "\t" + file.CfgName + "Table::Instance().ReLoad();\r\n";
                     str8 = str8 + "#include \"" + file.CfgName + "Cfg.h\"\r\n";
                     string str9 = str6;
                     string fieldName = "";
@@ -1162,6 +1170,7 @@
                 string BindCalc = "";
                 string RefreshField = "";
                 string GetField = "";
+                string GetAttrByType = "";
                 bool flag2 = false;
                 int num5 = 0;
                 int num6 = 0;
@@ -1228,7 +1237,8 @@
                         str45 = string.Concat(new object[] { "#include \"", m.ModuleName, "V", m.SyncDataVersion, "DataWraper.h\"\r\n" });
                         str32 = struct5.StructName;
                         
-                        GenSyncDataCode(m, struct5, ref syncIds, ref syncOpDefine, ref syncOpImp, ref sendAllFields, ref dBCacheField,ref BindCalc,ref RefreshField, ref GetField);
+                        GenSyncDataCode(m, struct5, ref syncIds, ref syncOpDefine, ref syncOpImp, ref sendAllFields, 
+                            ref dBCacheField,ref BindCalc,ref RefreshField, ref GetField,ref GetAttrByType);
                         GenClassWraperCode(m, struct5, ref strWraper);
                         str38 = string.Concat(new object[] { m.ModuleName, struct5.StructName, "WraperV", m.SyncDataVersion, " m_syncData", struct5.StructName, ";" });
                         strSyncDataSetWraper = "SetDataWraper( &m_syncData" + struct5.StructName + " );";
@@ -1243,6 +1253,7 @@
                     string str47 = (string)list3[j];
                     str47 = str47.Replace("$Date$", DateTime.Now.ToShortDateString().ToString())
                         .Replace("$LoadConfig$", newValue)
+                        .Replace("$ReLoadConfig$", reLoadConfig)
                         .Replace("$Template$", m.ModuleName)
                         .Replace("$ModCName$", m.CNName)
                         .Replace("$TEMPLATE$", m.ModuleName.ToUpper())
@@ -1276,6 +1287,7 @@
                         .Replace("$RefreshField$", RefreshField)
                         .Replace("$BindCalc$",BindCalc)
                         .Replace("$GetField$",GetField)
+                        .Replace("$GetAttrByType$", GetAttrByType)
                         ;
                     list3[j] = str47;
                 }
