@@ -541,25 +541,26 @@
                     string str11 = SyncOpDefine;
                     SyncOpDefine = str11 + "\tvoid Set" + descriptor.FieldName + "( const vector<" + descriptor.ToGetFieldType() + ">& v );\r\n";
                     string str12 = SyncOpDefine;
-                    SyncOpDefine = str12 + "\tvoid Set" + descriptor.FieldName + "( int Index, const " + descriptor.ToGetFieldType() + "& v );\r\n";
+                    //SyncOpDefine = str12 + "\tvoid Set" + descriptor.FieldName + "( int Index, const " + descriptor.ToGetFieldType() + "& v );\r\n";
                     string str13 = SyncOpDefine;
                     SyncOpDefine = str13 + "\tvector<" + descriptor.ToGetFieldType() + "> Get" + descriptor.FieldName + "();\r\n";
                     string str14 = SyncOpDefine;
-                    SyncOpDefine = str14 + "\t" + descriptor.ToGetFieldType() + " Get" + descriptor.FieldName + "( int Index );\r\n";
+                    //SyncOpDefine = str14 + "\t" + descriptor.ToGetFieldType() + " Get" + descriptor.FieldName + "( int Index );\r\n";
                     if (descriptor.GetTypeEnum() == 1)
                     {
                         string str15 = SyncOpDefine;
-                        SyncOpDefine = str15 + "\tvoid Add" + descriptor.FieldName + "( " + descriptor.ToGetFieldType() + " v=" + descriptor.DefaultValue + " );\r\n";
+                        //SyncOpDefine = str15 + "\tvoid Add" + descriptor.FieldName + "( " + descriptor.ToGetFieldType() + " v=" + descriptor.DefaultValue + " );\r\n";
                     }
                     else
                     {
                         string str16 = SyncOpDefine;
                         SyncOpDefine = str16 + "\tvoid Add" + descriptor.FieldName + "( const " + descriptor.ToGetFieldType() + "& v);\r\n";
                     }
-                    SyncOpDefine = SyncOpDefine + "\tvoid Send" + descriptor.FieldName + "( int Index,bool OnlyToClient=true );\r\n";
-                    SyncOpDefine = SyncOpDefine + "\tvoid Send" + descriptor.FieldName + "(bool OnlyToClient=true);\r\n";
+                    //SyncOpDefine = SyncOpDefine + "\tvoid Send" + descriptor.FieldName + "( int Index,bool OnlyToClient=true );\r\n";
+                    //SyncOpDefine = SyncOpDefine + "\tvoid Send" + descriptor.FieldName + "(bool OnlyToClient=true);\r\n";
                     string str17 = SyncOpDefine;
-                    SyncOpDefine = str17 + "\tint  Size" + descriptor.FieldName + "(){ return m_syncData" + ds.StructName + ".Size" + descriptor.FieldName + "(); }\r\n";
+                    SyncOpDefine = SyncOpDefine + "\tvoid Refresh" + descriptor.FieldName + "();\r\n";
+                    //SyncOpDefine = str17 + "\tint  Size" + descriptor.FieldName + "(){ return m_syncData" + ds.StructName + ".Size" + descriptor.FieldName + "(); }\r\n";
                 }
                 string str5 = "SYNCID_" + m.ModuleName.ToUpper() + "_" + descriptor.FieldName.ToUpper();
                 string str6 = "Module" + m.ModuleName;
@@ -682,36 +683,63 @@
                     str8 = SyncOpImp;
                     SyncOpImp = str8 + "void " + str2 + "::Set" + descriptor.FieldName + "( const vector<" + descriptor.ToGetFieldType() + ">& v )\r\n{\r\n";
                     str8 = SyncOpImp;
-                    SyncOpImp = str8 + "\t" + str7 + ".Set" + descriptor.FieldName + "(v);\r\n\tOnDataChange();\r\n";
+                    SyncOpImp = str8 + "\t" + str7 + ".Set" + descriptor.FieldName + "(v);\r\n";
                     str8 = SyncOpImp;
-                    SyncOpImp = str8 + "\t" + str6 + "::Instance().NotifySyncValueChanged(" + str7 + ".GetKey()," + str5 + ");\r\n";
-                    SyncOpImp = SyncOpImp + "\tSend" + descriptor.FieldName + "(false);\r\n}\r\n";
+                    SyncOpImp = SyncOpImp + "\tfor (auto iter : v)\r\n";
+                    SyncOpImp = SyncOpImp + "\t{\r\n";
+                    SyncOpImp = SyncOpImp + "\t\tm_ClientDataUserData.add_" + descriptor.FieldName.ToLower() + "(iter);\r\n";
+                    SyncOpImp = SyncOpImp + "\t}\r\n";
+
+                    //SyncOpImp = str8 + "\t" + str6 + "::Instance().NotifySyncValueChanged(" + str7 + ".GetKey()," + str5 + ");\r\n";
+
+                    SyncOpImp = SyncOpImp + "\tif (g_SyncOtherProperty.IsInOtherSync(" + str5 + "))\r\n";
+                    SyncOpImp = SyncOpImp + "\t{\r\n";
+                    SyncOpImp = SyncOpImp + "\t\tfor (auto iter : v)\r\n";
+                    SyncOpImp = SyncOpImp + "\t\t{\r\n";
+                    SyncOpImp = SyncOpImp + "\t\t\tm_OtherDataUserData.add_" + descriptor.FieldName.ToLower() + "(iter);\r\n";
+                    SyncOpImp = SyncOpImp + "\t\t}\r\n";
+                    SyncOpImp = SyncOpImp + "\t\tSetOtherChange(true);\r\n";
+                    SyncOpImp = SyncOpImp + "\t}\r\n";
+                    SyncOpImp = SyncOpImp + "\tSetChange(true);\r\n";
+                    SyncOpImp = SyncOpImp + "}\r\n";
+
+
+
+                    // SyncOpImp = SyncOpImp + "\tSend" + descriptor.FieldName + "(false);\r\n}\r\n";
+                    //str8 = SyncOpImp;
+                    //SyncOpImp = str8 + "void " + str2 + "::Set" + descriptor.FieldName + "( int Index, const " + descriptor.ToGetFieldType() + "& v )\r\n{\r\n";
+                    //str8 = SyncOpImp;
+                    //SyncOpImp = str8 + "\t" + str7 + ".Set" + descriptor.FieldName + "(Index,v);\r\n\tOnDataChange();\r\n";
                     str8 = SyncOpImp;
-                    SyncOpImp = str8 + "void " + str2 + "::Set" + descriptor.FieldName + "( int Index, const " + descriptor.ToGetFieldType() + "& v )\r\n{\r\n";
-                    str8 = SyncOpImp;
-                    SyncOpImp = str8 + "\t" + str7 + ".Set" + descriptor.FieldName + "(Index,v);\r\n\tOnDataChange();\r\n";
-                    str8 = SyncOpImp;
-                    SyncOpImp = str8 + "\t" + str6 + "::Instance().NotifySyncValueChanged(" + str7 + ".GetKey()," + str5 + ",Index);\r\n";
-                    SyncOpImp = SyncOpImp + "\tSend" + descriptor.FieldName + "(Index,false);\r\n}\r\n";
+                    //SyncOpImp = str8 + "\t" + str6 + "::Instance().NotifySyncValueChanged(" + str7 + ".GetKey()," + str5 + ",Index);\r\n";
+                    //SyncOpImp = SyncOpImp + "\tSend" + descriptor.FieldName + "(Index,false);\r\n}\r\n";
                     str8 = SyncOpImp;
                     SyncOpImp = str8 + "vector<" + descriptor.ToGetFieldType() + "> " + str2 + "::Get" + descriptor.FieldName + "()\r\n{\r\n";
                     str8 = SyncOpImp;
+                    SyncOpImp = str8 + "\tCalcMethodCB(" + enumKey + ",std::bind(&" + str2 + "::Set" + descriptor.FieldName + ",this,std::placeholders::_1));\r\n";
+                    str8 = SyncOpImp;
                     SyncOpImp = str8 + "\treturn " + str7 + ".Get" + descriptor.FieldName + "();\r\n}\r\n";
+
                     str8 = SyncOpImp;
-                    SyncOpImp = str8 + descriptor.ToGetFieldType() + " " + str2 + "::Get" + descriptor.FieldName + "( int Index )\r\n{\r\n";
-                    str8 = SyncOpImp;
-                    SyncOpImp = str8 + "\treturn " + str7 + ".Get" + descriptor.FieldName + "(Index);\r\n}\r\n";
-                    str8 = SyncOpImp;
-                    SyncOpImp = str8 + "void " + str2 + "::Send" + descriptor.FieldName + "(bool OnlyToClient)\r\n{\r\n";
-                    SyncOpImp = SyncOpImp + "\tSend" + descriptor.FieldName + "(-1,OnlyToClient);\r\n";
-                    str8 = SyncOpImp;
-                    SyncOpImp = str8 + "\tfor(int i=0; i<" + str7 + ".Size" + descriptor.FieldName + "(); i++)\r\n";
-                    SyncOpImp = SyncOpImp + "\t\tSend" + descriptor.FieldName + "(i,OnlyToClient);\r\n}\r\n";
-                    str3 = ((((str3 + "\t\tif( Index<0 )\r\n\t\t{\r\n") + "\t\t\tpDataWraper->Clear" + descriptor.FieldName + "();\r\n\t\t\tbreak;\r\n\t\t}\r\n") + "\t\tif (Index >= pDataWraper->Size" + descriptor.FieldName + "())\r\n\t\t{\r\n") + "\t\t\tint Count = Index -pDataWraper->Size" + descriptor.FieldName + "() + 1;\r\n") + "\t\t\tfor (int i = 0; i < Count; i++)\r\n";
-                    str8 = SyncOpImp;
-                    SyncOpImp = str8 + "void " + str2 + "::Send" + descriptor.FieldName + "( int Index, bool OnlyToClient )\r\n{\r\n";
+                    SyncOpImp = SyncOpImp + "void " + str2 + "::Refresh" + descriptor.FieldName + "()\r\n{\r\n";
+                    SyncOpImp = SyncOpImp + "\tm_vCalcPropertyIds.insert(" + enumKey + ");\r\n}\r\n\r\n";
+
+                    //str8 = SyncOpImp;
+                    //SyncOpImp = str8 + descriptor.ToGetFieldType() + " " + str2 + "::Get" + descriptor.FieldName + "( int Index )\r\n{\r\n";
+                    //str8 = SyncOpImp;
+                    //SyncOpImp = str8 + "\treturn " + str7 + ".Get" + descriptor.FieldName + "(Index);\r\n}\r\n";
+                    //str8 = SyncOpImp;
+                    //SyncOpImp = str8 + "void " + str2 + "::Send" + descriptor.FieldName + "(bool OnlyToClient)\r\n{\r\n";
+                    //SyncOpImp = SyncOpImp + "\tSend" + descriptor.FieldName + "(-1,OnlyToClient);\r\n";
+                    //str8 = SyncOpImp;
+                    //SyncOpImp = str8 + "\tfor(int i=0; i<" + str7 + ".Size" + descriptor.FieldName + "(); i++)\r\n";
+                    //SyncOpImp = SyncOpImp + "\t\tSend" + descriptor.FieldName + "(i,OnlyToClient);\r\n}\r\n";
+                    //str3 = ((((str3 + "\t\tif( Index<0 )\r\n\t\t{\r\n") + "\t\t\tpDataWraper->Clear" + descriptor.FieldName + "();\r\n\t\t\tbreak;\r\n\t\t}\r\n") + "\t\tif (Index >= pDataWraper->Size" + descriptor.FieldName + "())\r\n\t\t{\r\n") + "\t\t\tint Count = Index -pDataWraper->Size" + descriptor.FieldName + "() + 1;\r\n") + "\t\t\tfor (int i = 0; i < Count; i++)\r\n";
+                    //str8 = SyncOpImp;
+                    //SyncOpImp = str8 + "void " + str2 + "::Send" + descriptor.FieldName + "( int Index, bool OnlyToClient )\r\n{\r\n";
                     if (descriptor.GetTypeEnum() == 1)
                     {
+                        /*
                         str8 = str3;
                         str3 = str8 + "\t\t\t\tpDataWraper->Add" + descriptor.FieldName + "(" + descriptor.DefaultValue + ");\r\n\t\t}\r\n";
                         if (descriptor.FieldType == "bool")
@@ -730,25 +758,25 @@
                         {
                             str3 = (str3 + "\t\tReadVarint64FromArray(pBuffer,&lValue);\r\n") + "\t\tpDataWraper->Set" + descriptor.FieldName + "(Index,lValue);\r\n\t\tbreak;\r\n";
                         }
-                        SyncOpImp = SyncOpImp + "\tif( Index<0 )\r\n\t{\r\n\t\tif( !OnlyToClient )\r\n";
-                        SyncOpImp = SyncOpImp + "\t\t\tMsgStreamMgr::Instance().IncrementCache(GetKey()," + str5 + ",Index,NULL,0);\r\n";
+                        //SyncOpImp = SyncOpImp + "\tif( Index<0 )\r\n\t{\r\n\t\tif( !OnlyToClient )\r\n";
+                        //SyncOpImp = SyncOpImp + "\t\t\tMsgStreamMgr::Instance().IncrementCache(GetKey()," + str5 + ",Index,NULL,0);\r\n";
                         if ((ds.DataType == DataStruct.SyncType.UserData) || ((ds.DataType == DataStruct.SyncType.CacheData) && ds.SyncToClient))
                         {
                             str8 = SyncOpImp;
                             //SyncOpImp = str8 + "\t\tif(" + str6 + "::Instance().NotSyncToClient(" + str5 + ")||GetKey()==0) return;\r\n";
                             //SyncOpImp = SyncOpImp + "\t\tMsgStreamMgr::Instance().SendSync(GetKey()," + str5 + ",Index,NULL,0);\r\n";
                         }
-                        SyncOpImp = SyncOpImp + "\t\treturn;\r\n\t}\r\n";
-                        SyncOpImp = SyncOpImp + "\tif( !OnlyToClient )\r\n";
+                        //SyncOpImp = SyncOpImp + "\t\treturn;\r\n\t}\r\n";
+                        //SyncOpImp = SyncOpImp + "\tif( !OnlyToClient )\r\n";
                         if (descriptor.FieldType == "float")
                         {
                             str8 = SyncOpImp;
-                            SyncOpImp = str8 + "\t\tMsgStreamMgr::Instance().IncrementCacheF(GetKey()," + str5 + ",Index," + str7 + ".Get" + descriptor.FieldName + "(Index));\r\n";
+                            //SyncOpImp = str8 + "\t\tMsgStreamMgr::Instance().IncrementCacheF(GetKey()," + str5 + ",Index," + str7 + ".Get" + descriptor.FieldName + "(Index));\r\n";
                         }
                         else
                         {
                             str8 = SyncOpImp;
-                            SyncOpImp = str8 + "\t\tMsgStreamMgr::Instance().IncrementCache(GetKey()," + str5 + ",Index," + str7 + ".Get" + descriptor.FieldName + "(Index));\r\n";
+                            //SyncOpImp = str8 + "\t\tMsgStreamMgr::Instance().IncrementCache(GetKey()," + str5 + ",Index," + str7 + ".Get" + descriptor.FieldName + "(Index));\r\n";
                         }
                         if ((ds.DataType == DataStruct.SyncType.UserData) || ((ds.DataType == DataStruct.SyncType.CacheData) && ds.SyncToClient))
                         {
@@ -757,12 +785,12 @@
                             if (descriptor.FieldType == "float")
                             {
                                 str8 = SyncOpImp;
-                                SyncOpImp = str8 + "\tMsgStreamMgr::Instance().SendSyncF(GetKey()," + str5 + ",Index," + str7 + ".Get" + descriptor.FieldName + "(Index));\r\n";
+                                //SyncOpImp = str8 + "\tMsgStreamMgr::Instance().SendSyncF(GetKey()," + str5 + ",Index," + str7 + ".Get" + descriptor.FieldName + "(Index));\r\n";
                             }
                             else
                             {
                                 str8 = SyncOpImp;
-                                SyncOpImp = str8 + "\tMsgStreamMgr::Instance().SendSync(GetKey()," + str5 + ",Index," + str7 + ".Get" + descriptor.FieldName + "(Index));\r\n";
+                                //SyncOpImp = str8 + "\tMsgStreamMgr::Instance().SendSync(GetKey()," + str5 + ",Index," + str7 + ".Get" + descriptor.FieldName + "(Index));\r\n";
                             }
                         }
                         SyncOpImp = SyncOpImp + "}\r\n";
@@ -775,12 +803,14 @@
                         str8 = SyncOpImp;
                         SyncOpImp = str8 + "\t" + str6 + "::Instance().NotifySyncValueChanged(" + str7 + ".GetKey()," + str5 + ",Index);\r\n";
                         SyncOpImp = SyncOpImp + "\tSend" + descriptor.FieldName + "(Index,false);\r\n}\r\n";
+                        */
                     }
                     else if (descriptor.GetTypeEnum() == 2)
                     {
-                        str3 = (str3 + "\t\t\t\tpDataWraper->Add" + descriptor.FieldName + "(\"\");\r\n\t\t}\r\n") + "\t\tpDataWraper->Set" + descriptor.FieldName + "(Index,string(pBuffer,dataLen));\r\n\t\tbreak;\r\n";
-                        SyncOpImp = SyncOpImp + "\tif( Index<0 )\r\n\t{\r\n\t\tif( !OnlyToClient )\r\n";
-                        SyncOpImp = SyncOpImp + "\t\t\tMsgStreamMgr::Instance().IncrementCache(GetKey()," + str5 + ",Index,NULL,0);\r\n";
+                        /*
+                        //str3 = (str3 + "\t\t\t\tpDataWraper->Add" + descriptor.FieldName + "(\"\");\r\n\t\t}\r\n") + "\t\tpDataWraper->Set" + descriptor.FieldName + "(Index,string(pBuffer,dataLen));\r\n\t\tbreak;\r\n";
+                        //SyncOpImp = SyncOpImp + "\tif( Index<0 )\r\n\t{\r\n\t\tif( !OnlyToClient )\r\n";
+                        //SyncOpImp = SyncOpImp + "\t\t\tMsgStreamMgr::Instance().IncrementCache(GetKey()," + str5 + ",Index,NULL,0);\r\n";
                         if ((ds.DataType == DataStruct.SyncType.UserData) || ((ds.DataType == DataStruct.SyncType.CacheData) && ds.SyncToClient))
                         {
                             str8 = SyncOpImp;
@@ -808,9 +838,11 @@
                         str8 = SyncOpImp;
                         SyncOpImp = str8 + "\t" + str6 + "::Instance().NotifySyncValueChanged(" + str7 + ".GetKey()," + str5 + ",Index);\r\n";
                         SyncOpImp = SyncOpImp + "\tSend" + descriptor.FieldName + "(Index,false);\r\n}\r\n";
+                        */
                     }
                     else
                     {
+                        /*
                         str8 = str3;
                         str8 = str8 + "\t\t\t\tpDataWraper->Add" + descriptor.FieldName + "(" + descriptor.ToGetFieldType() + "());\r\n\t\t}\r\n";
                         str8 = (str8 + "\t\t{\r\n\t\t\t" + descriptor.ToGetFieldType() + " tmp" + descriptor.FieldName + "Wraper;\r\n") + "\t\t\ttmp" + descriptor.FieldName + "Wraper.ParseFromArray(pBuffer,dataLen);\r\n";
@@ -843,6 +875,7 @@
                         str8 = SyncOpImp;
                         SyncOpImp = str8 + "\t" + str6 + "::Instance().NotifySyncValueChanged(" + str7 + ".GetKey()," + str5 + ",Index);\r\n";
                         SyncOpImp = SyncOpImp + "\tSend" + descriptor.FieldName + "(Index,false);\r\n}\r\n";
+                        */
                     }
                 }
                 DBCacheField = DBCacheField + str3;
