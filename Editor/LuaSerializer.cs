@@ -500,9 +500,11 @@
                             hasField = " #ret_msg." + descriptor2.FieldName + " > 0";
                             UpdataValue = str2 + "\t" + (flag ? "if" : "end\r\n\tif") + hasField + " then\r\n";
 
-                            UpdataValue = UpdataValue + "\t\tm_SkillList." + descriptor2.FieldName + " = {}\r\n";
+                            UpdataValue = UpdataValue + "\t\tm_"+ descriptor2.FieldName  + "." + descriptor2.FieldName + " = {}\r\n";
+                            UpdataValue = UpdataValue + "\t\tremoveTableData(oldData." + descriptor2.FieldName + ")\r\n";
+
                             UpdataValue = UpdataValue + "\t\tfor i = 1, #ret_msg." + descriptor2.FieldName + " do\r\n";
-                            UpdataValue = UpdataValue + "\t\t\toldData." + descriptor2.FieldName + "[i] = " + "ret_msg." + descriptor2.FieldName + "[i]\r\n";
+                            UpdataValue = UpdataValue + "\t\t\ttable.insert( oldData." + descriptor2.FieldName + ",ret_msg." + descriptor2.FieldName + "[i])\r\n";
                             UpdataValue = UpdataValue + "\t\tend\r\n";
 
                             UpdataValue = UpdataValue + "\t\tif isForceUpdate == true then\r\n";
@@ -579,9 +581,10 @@
                             hasField = " #ret_msg." + descriptor2.FieldName + " > 0";
                             UpdataValue = str7 + "\t" + (flag ? "if" : "end\r\n\tif") + hasField + " then\r\n";
 
-                            UpdataValue = UpdataValue + "\t\tm_SkillList." + descriptor2.FieldName + " = {}\r\n";
+                            UpdataValue = UpdataValue + "\t\tm_" + descriptor2.FieldName + "." + descriptor2.FieldName + " = {}\r\n";
+                            UpdataValue = UpdataValue + "\t\tremoveTableData(oldData." + descriptor2.FieldName + ")\r\n";
                             UpdataValue = UpdataValue + "\t\tfor i = 1, #ret_msg." + descriptor2.FieldName + " do\r\n";
-                            UpdataValue = UpdataValue + "\t\t\toldData." + descriptor2.FieldName + "[i] = " + "ret_msg." + descriptor2.FieldName + "[i]\r\n";
+                            UpdataValue = UpdataValue + "\t\t\ttable.insert( oldData." + descriptor2.FieldName + ",ret_msg." + descriptor2.FieldName + "[i])\r\n";
                             UpdataValue = UpdataValue + "\t\tend\r\n";
 
                             UpdataValue = UpdataValue + "\t\tif isForceUpdate == true then\r\n";
@@ -659,9 +662,10 @@
                             hasField = " #ret_msg." + descriptor2.FieldName + " > 0";
                             UpdataValue = str7 + "\t" + (flag ? "if" : "end\r\n\tif") + hasField + " then\r\n";
 
-                            UpdataValue = UpdataValue + "\t\tm_SkillList." + descriptor2.FieldName + " = {}\r\n";
+                            UpdataValue = UpdataValue + "\t\tm_" + descriptor2.FieldName + "." + descriptor2.FieldName + " = {}\r\n";
+                            UpdataValue = UpdataValue + "\t\tremoveTableData(oldData." + descriptor2.FieldName + ")\r\n";
                             UpdataValue = UpdataValue + "\t\tfor i = 1, #ret_msg." + descriptor2.FieldName + " do\r\n";
-                            UpdataValue = UpdataValue + "\t\t\toldData." + descriptor2.FieldName + "[i] = " + "ret_msg." + descriptor2.FieldName + "[i]\r\n";
+                            UpdataValue = UpdataValue + "\t\t\ttable.insert( oldData." + descriptor2.FieldName + ",ret_msg." + descriptor2.FieldName + "[i])\r\n";
                             UpdataValue = UpdataValue + "\t\tend\r\n";
 
                             UpdataValue = UpdataValue + "\t\tif isForceUpdate == true then\r\n";
@@ -740,9 +744,10 @@
                             hasField = " #ret_msg." + descriptor2.FieldName + " > 0";
                             UpdataValue = str7 + "\t" + (flag ? "if" : "end\r\n\tif") + hasField + " then\r\n";
 
-                            UpdataValue = UpdataValue + "\t\tm_SkillList." + descriptor2.FieldName + " = {}\r\n";
+                            UpdataValue = UpdataValue + "\t\tm_" + descriptor2.FieldName + "." + descriptor2.FieldName + " = {}\r\n";
+                            UpdataValue = UpdataValue + "\t\tremoveTableData(oldData." + descriptor2.FieldName + ")\r\n";
                             UpdataValue = UpdataValue + "\t\tfor i = 1, #ret_msg." + descriptor2.FieldName + " do\r\n";
-                            UpdataValue = UpdataValue + "\t\t\toldData." + descriptor2.FieldName + "[i] = " + "ret_msg." + descriptor2.FieldName + "[i]\r\n";
+                            UpdataValue = UpdataValue + "\t\t\ttable.insert( oldData." + descriptor2.FieldName + ",ret_msg." + descriptor2.FieldName + "[i])\r\n";
                             UpdataValue = UpdataValue + "\t\tend\r\n";
 
                             UpdataValue = UpdataValue + "\t\tif isForceUpdate == true then\r\n";
@@ -820,9 +825,10 @@
                             hasField = " #ret_msg." + descriptor2.FieldName + " > 0";
                             UpdataValue = str12 + "\t" + (flag ? "if" : "end\r\n\tif") + hasField + " then\r\n";
 
-                            UpdataValue = UpdataValue + "\t\tm_SkillList." + descriptor2.FieldName + " = {}\r\n";
+                            UpdataValue = UpdataValue + "\t\tm_" + descriptor2.FieldName + "." + descriptor2.FieldName + " = {}\r\n";
+                            UpdataValue = UpdataValue + "\t\tremoveTableData(oldData." + descriptor2.FieldName + ")\r\n";
                             UpdataValue = UpdataValue + "\t\tfor i = 1, #ret_msg." + descriptor2.FieldName + " do\r\n";
-                            UpdataValue = UpdataValue + "\t\t\toldData." + descriptor2.FieldName + "[i] = " + "ret_msg." + descriptor2.FieldName + "[i]\r\n";
+                            UpdataValue = UpdataValue + "\t\t\ttable.insert( oldData." + descriptor2.FieldName + ",ret_msg." + descriptor2.FieldName + "[i])\r\n";
                             UpdataValue = UpdataValue + "\t\tend\r\n";
 
                             UpdataValue = UpdataValue + "\t\tif isForceUpdate == true then\r\n";
