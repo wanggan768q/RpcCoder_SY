@@ -2,7 +2,7 @@
 <!DOCTYPE dotfuscatorMap SYSTEM "http://www.preemptive.com/dotfuscator/dtd/dotfuscatorMap_v1.2.dtd">
 <dotfuscatorMap version="1.1">
     <header>
-        <timestamp>2018-04-18T18:40:16</timestamp>
+        <timestamp>2018-05-28T18:32:44</timestamp>
         <product version="5.32.1.6167" user="XiaoBo Guo" serial="237413-391">Dotfuscator Community Edition</product>
     </header>
     <mapping>
@@ -41,7 +41,7 @@
                         <newname>a</newname>
                     </method>
                     <method>
-                        <signature>void(Editor.Module, Editor.DataStruct, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;)</signature>
+                        <signature>void(Editor.Module, Editor.DataStruct, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;, string&amp;)</signature>
                         <name>GenSyncDataCode</name>
                         <newname>a</newname>
                     </method>

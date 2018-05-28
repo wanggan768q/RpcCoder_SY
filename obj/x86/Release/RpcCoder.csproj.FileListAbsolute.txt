@@ -21,11 +21,10 @@ F:\Github\RpcCoder_SY\bin\Release\NPOI.dll
 F:\Github\RpcCoder_SY\bin\Release\NPOI.OOXML.dll
 F:\Github\RpcCoder_SY\bin\Release\NPOI.OpenXml4Net.dll
 F:\Github\RpcCoder_SY\bin\Release\NPOI.OpenXmlFormats.dll
-F:\Github\RpcCoder_SY\obj\x86\Release\RpcCoder.csprojResolveAssemblyReference.cache
 F:\Github\RpcCoder_SY\obj\x86\Release\RpcCoder.Resources.resources
 F:\Github\RpcCoder_SY\obj\x86\Release\Editor.Form1.resources
-F:\Github\RpcCoder_SY\obj\x86\Release\RpcCoder.csproj.GenerateResource.Cache
+F:\Github\RpcCoder_SY\obj\x86\Release\RpcCoder.csproj.GenerateResource.cache
 F:\Github\RpcCoder_SY\obj\x86\Release\RpcCoder.csproj.CoreCompileInputs.cache
+F:\Github\RpcCoder_SY\obj\x86\Release\RpcCoder.csproj.CopyComplete
 F:\Github\RpcCoder_SY\obj\x86\Release\RpcCoder.exe
 F:\Github\RpcCoder_SY\obj\x86\Release\RpcCoder.pdb
-F:\Github\RpcCoder_SY\obj\x86\Release\RpcCoder.csproj.CopyComplete

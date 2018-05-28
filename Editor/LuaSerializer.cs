@@ -214,11 +214,18 @@
                                 {
                                     foreach (var v in ds.fieldItem)
                                     {
-                                        //referencesStruct += "\tPB." + descriptor.FieldName + "." + v.FieldName + " = " + descriptor.FieldName + "." + v.FieldName + "\r\n";
+                                        if (v.PreDefine == DataStruct.FieldDescriptor.PreDefineType.repeated)
+                                        {
+                                            referencesStruct += "\tfor i = 1, #" + descriptor.FieldName + "." + v.FieldName + " do\r\n";
+                                            referencesStruct += "\t\ttable.insert( PB." + descriptor.FieldName + "." + v.FieldName + "," + descriptor.FieldName + "." + v.FieldName + "[i] )\r\n";
+                                            referencesStruct += "\tend\r\n";
+                                        }
+                                        else
+                                        {
+                                            referencesStruct += "\tPB." + descriptor.FieldName + "." + v.FieldName + " = " + descriptor.FieldName + "." + v.FieldName + "\r\n";
+                                        }
 
-                                        referencesStruct += "\tfor i = 1, #" + descriptor.FieldName + "." + v.FieldName + " do\r\n";
-                                        referencesStruct += "\t\ttable.insert( PB." + descriptor.FieldName + "." + v.FieldName + "," + descriptor.FieldName + "." + v.FieldName + "[i]\r\n";
-                                        referencesStruct += "\tend\r\n";
+                                        
                                     }
                                 }
                                 str = str11 + referencesStruct;
