@@ -204,7 +204,7 @@
                                     }
                                     ConfigFile.ConfigField field = new ConfigFile.ConfigField();
                                     field.toSetFieldType(((string) list[i]).ToLower());
-                                    field.toSetFieldName((string) list3[i]);
+                                    field.toSetFieldName((string)list2[i]);
                                     field.toSetCnName((string) list4[i]);
                                     string str4 = (string) list5[i];
                                     if (str4 != null)
