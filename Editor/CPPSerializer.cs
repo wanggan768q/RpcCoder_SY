@@ -496,7 +496,7 @@
         }
 
         private static void GenSyncDataCode(Module m, DataStruct ds, ref string syncIds, ref string SyncOpDefine, ref string SyncOpImp, ref string SendAllFields, 
-            ref string DBCacheField,ref string BindCalc,ref string RefreshField, ref string GetField,ref string GetAttrByType)
+            ref string DBCacheField,ref string BindCalc,ref string RefreshField, ref string GetField,ref string GetAttrByType,ref string CompleteData)
         {
             string str = "V" + m.SyncDataVersion;
             string text1 = ds.StructName + "Wraper" + str;
@@ -535,6 +535,8 @@
                     SyncOpDefine = str10 + "\t" + descriptor.ToGetFieldType() + " Get" + descriptor.FieldName + "();\r\n";
                     SyncOpDefine = SyncOpDefine + "\tvoid Refresh" + descriptor.FieldName + "();\r\n";
                     SyncOpDefine = SyncOpDefine + "\tvoid Send" + descriptor.FieldName + "(bool OnlyToClient=true);\r\n";
+
+                    CompleteData += "\tbase.set_" + descriptor.FieldName.ToLower() + "(Get" + descriptor.FieldName + "());\r\n";
                 }
                 else
                 {
@@ -561,6 +563,9 @@
                     string str17 = SyncOpDefine;
                     SyncOpDefine = SyncOpDefine + "\tvoid Refresh" + descriptor.FieldName + "();\r\n";
                     //SyncOpDefine = str17 + "\tint  Size" + descriptor.FieldName + "(){ return m_syncData" + ds.StructName + ".Size" + descriptor.FieldName + "(); }\r\n";
+
+                    CompleteData += "\tGet" + descriptor.FieldName + "();\r\n";
+                    CompleteData += "\tbase.mutable_" + descriptor.FieldName.ToLower() + "()->CopyFrom(m_ClientDataUserData." + descriptor.FieldName.ToLower() + "());\r\n";
                 }
                 string str5 = "SYNCID_" + m.ModuleName.ToUpper() + "_" + descriptor.FieldName.ToUpper();
                 string str6 = "Module" + m.ModuleName;
@@ -1204,6 +1209,7 @@
                 string RefreshField = "";
                 string GetField = "";
                 string GetAttrByType = "";
+                string CompleteData = "";
                 bool flag2 = false;
                 int num5 = 0;
                 int num6 = 0;
@@ -1271,7 +1277,7 @@
                         str32 = struct5.StructName;
                         
                         GenSyncDataCode(m, struct5, ref syncIds, ref syncOpDefine, ref syncOpImp, ref sendAllFields, 
-                            ref dBCacheField,ref BindCalc,ref RefreshField, ref GetField,ref GetAttrByType);
+                            ref dBCacheField,ref BindCalc,ref RefreshField, ref GetField,ref GetAttrByType,ref CompleteData);
                         GenClassWraperCode(m, struct5, ref strWraper);
                         str38 = string.Concat(new object[] { m.ModuleName, struct5.StructName, "WraperV", m.SyncDataVersion, " m_syncData", struct5.StructName, ";" });
                         strSyncDataSetWraper = "SetDataWraper( &m_syncData" + struct5.StructName + " );";
@@ -1321,6 +1327,7 @@
                         .Replace("$BindCalc$",BindCalc)
                         .Replace("$GetField$",GetField)
                         .Replace("$GetAttrByType$", GetAttrByType)
+                        .Replace("$CompleteData$", CompleteData)
                         ;
                     list3[j] = str47;
                 }
