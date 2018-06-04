@@ -589,7 +589,7 @@
                             GetValue = GetValue + "\t\t\treturn self.m_" + descriptor2.FieldName + "[Index]\r\n";
                             GetValue = GetValue + "\t\tend\n";
 
-                            hasField = " #ret_msg." + descriptor2.FieldName + " > 0";
+                            hasField = " #ret_msg." + descriptor2.FieldName + " > 0 and oldData." + descriptor2.FieldName;
                             UpdataValue = str7 + "\t" + (flag ? "if" : "end\r\n\tif") + hasField + " then\r\n";
 
                             UpdataValue = UpdataValue + "\t\tm_" + descriptor2.FieldName + "." + descriptor2.FieldName + " = {}\r\n";
@@ -670,7 +670,7 @@
                             GetValue = GetValue + "\t\t\treturn self.m_" + descriptor2.FieldName + "[Index]\r\n";
                             GetValue = GetValue + "\t\tend\n";
 
-                            hasField = " #ret_msg." + descriptor2.FieldName + " > 0";
+                            hasField = " #ret_msg." + descriptor2.FieldName + " > 0 and oldData." + descriptor2.FieldName;
                             UpdataValue = str7 + "\t" + (flag ? "if" : "end\r\n\tif") + hasField + " then\r\n";
 
                             UpdataValue = UpdataValue + "\t\tm_" + descriptor2.FieldName + "." + descriptor2.FieldName + " = {}\r\n";
@@ -752,7 +752,7 @@
                             GetValue = GetValue + "\t\t\treturn self.m_" + descriptor2.FieldName + "[Index]\r\n";
                             GetValue = GetValue + "\t\tend\n";
 
-                            hasField = " #ret_msg." + descriptor2.FieldName + " > 0";
+                            hasField = " #ret_msg." + descriptor2.FieldName + " > 0 and oldData." + descriptor2.FieldName;
                             UpdataValue = str7 + "\t" + (flag ? "if" : "end\r\n\tif") + hasField + " then\r\n";
 
                             UpdataValue = UpdataValue + "\t\tm_" + descriptor2.FieldName + "." + descriptor2.FieldName + " = {}\r\n";
@@ -833,7 +833,7 @@
                             GetValue = GetValue + "\t\t\treturn self.m_" + descriptor2.FieldName + "[Index]\r\n";
                             GetValue = GetValue + "\t\tend\n";
 
-                            hasField = " #ret_msg." + descriptor2.FieldName + " > 0";
+                            hasField = " #ret_msg." + descriptor2.FieldName + " > 0 and oldData." + descriptor2.FieldName;
                             UpdataValue = str12 + "\t" + (flag ? "if" : "end\r\n\tif") + hasField + " then\r\n";
 
                             UpdataValue = UpdataValue + "\t\tm_" + descriptor2.FieldName + "." + descriptor2.FieldName + " = {}\r\n";
