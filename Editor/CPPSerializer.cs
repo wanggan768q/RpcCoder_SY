@@ -564,8 +564,10 @@
                     SyncOpDefine = SyncOpDefine + "\tvoid Refresh" + descriptor.FieldName + "();\r\n";
                     //SyncOpDefine = str17 + "\tint  Size" + descriptor.FieldName + "(){ return m_syncData" + ds.StructName + ".Size" + descriptor.FieldName + "(); }\r\n";
 
-                    CompleteData += "\tGet" + descriptor.FieldName + "();\r\n";
-                    CompleteData += "\tbase.mutable_" + descriptor.FieldName.ToLower() + "()->CopyFrom(m_ClientDataUserData." + descriptor.FieldName.ToLower() + "());\r\n";
+                    CompleteData += "\tconst vector<" + descriptor.ToGetFieldType() + ">& v" + descriptor.FieldName + " = Get" + descriptor.FieldName + "();\r\n";
+                    CompleteData += "\tfor (int i = 0; i < v" + descriptor.FieldName + ".size(); ++i)\r\n";
+                    CompleteData += "\t\tbase.mutable_" + descriptor.FieldName.ToLower() + "()->Add(v" + descriptor.FieldName + "[i]);\r\n";
+                    
                 }
                 string str5 = "SYNCID_" + m.ModuleName.ToUpper() + "_" + descriptor.FieldName.ToUpper();
                 string str6 = "Module" + m.ModuleName;
