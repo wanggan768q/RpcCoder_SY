@@ -260,7 +260,12 @@
                     string str12 = OperationImplement;
                     OperationImplement = str12 + "\t\t\tlocal ret_msg = self.rpc_pb." + m.ModuleName + "Rpc" + operate.Name + "Reply()\r\n";
                     OperationImplement = OperationImplement + "\t\t\tret_msg:ParseFromString(_data)\r\n";
-                    OperationImplement = OperationImplement + "\t\t\t _hanlder(ret_msg)\r\n";
+
+                    OperationImplement = OperationImplement + "\t\t\tif ret_msg.Result < 1 then\r\n";
+                    OperationImplement = OperationImplement + "\t\t\t\tEvent.Brocast(CommonE.ErrorCode,ret_msg.Result)\r\n";
+                    OperationImplement = OperationImplement + "\t\t\tend\r\n";
+
+                    OperationImplement = OperationImplement + "\t\t\t_hanlder(ret_msg)\r\n";
                     OperationImplement = OperationImplement + "\t\tend\r\n";
                     OperationImplement = OperationImplement + "\tend\r\n";
                     string str13 = OperationImplement;
@@ -755,7 +760,7 @@
                             hasField = " #ret_msg." + descriptor2.FieldName + " > 0 and oldData." + descriptor2.FieldName;
                             UpdataValue = str7 + "\t" + (flag ? "if" : "end\r\n\tif") + hasField + " then\r\n";
 
-                            UpdataValue = UpdataValue + "\t\tm_" + descriptor2.FieldName + "." + descriptor2.FieldName + " = {}\r\n";
+                            UpdataValue = UpdataValue + "\t\tm_" + descriptor2.FieldName + " = {}\r\n";
                             UpdataValue = UpdataValue + "\t\tremoveTableData(oldData." + descriptor2.FieldName + ")\r\n";
                             UpdataValue = UpdataValue + "\t\tfor i = 1, #ret_msg." + descriptor2.FieldName + " do\r\n";
                             UpdataValue = UpdataValue + "\t\t\ttable.insert( oldData." + descriptor2.FieldName + ",ret_msg." + descriptor2.FieldName + "[i])\r\n";
@@ -764,14 +769,14 @@
                             UpdataValue = UpdataValue + "\t\tif isForceUpdate == true then\r\n";
 
                             UpdataValue = UpdataValue + "\t\t\tfor i = 1, #ret_msg." + descriptor2.FieldName + " do\r\n";
-                            UpdataValue = UpdataValue + "\t\t\t\tself.m_SkillList." + descriptor2.FieldName + "[i] = " + "ret_msg." + descriptor2.FieldName + "[i]\r\n";
+                            UpdataValue = UpdataValue + "\t\t\t\tself." + descriptor2.FieldName + "[i] = " + "ret_msg." + descriptor2.FieldName + "[i]\r\n";
                             UpdataValue = UpdataValue + "\t\t\tend\r\n";
 
                             UpdataValue = UpdataValue + "\t\tend\r\n";
                             UpdataValue = UpdataValue + "\t\tif isNotify == true then\r\n";
 
                             UpdataValue = UpdataValue + "\t\t\tfor i = 1, #ret_msg." + descriptor2.FieldName + " do\r\n";
-                            UpdataValue = UpdataValue + "\t\t\t\tself.m_SkillList." + descriptor2.FieldName + "[i] = " + "ret_msg." + descriptor2.FieldName + "[i]\r\n";
+                            UpdataValue = UpdataValue + "\t\t\t\tself." + descriptor2.FieldName + "[i] = " + "ret_msg." + descriptor2.FieldName + "[i]\r\n";
                             UpdataValue = UpdataValue + "\t\t\tend\r\n";
 
                             UpdataValue = UpdataValue + "\t\t\tdataCallback(self," + keyUpdateField + ",ret_msg." + descriptor2.FieldName + ")\r\n";
@@ -894,7 +899,8 @@
                 else if (descriptor2.PreDefine == DataStruct.FieldDescriptor.PreDefineType.repeated)
                 {
                     string keyUpdateField = m.ModuleName.ToUpper() + "_" + descriptor2.FieldName.ToUpper();
-                    string hasField = " ret_msg:HasField('" + descriptor2.FieldName + "')";
+                    //string hasField = " ret_msg:HasField('" + descriptor2.FieldName + "')";
+                    string hasField = " #ret_msg." + descriptor2.FieldName + " > 0 and oldData." + descriptor2.FieldName;
                     if ((ds.DataType == DataStruct.SyncType.UserData) || ((ds.DataType == DataStruct.SyncType.CacheData) && ds.syncToClient))
                     {
                         string str17 = UpdataValue;
@@ -909,8 +915,9 @@
                         GetValue = GetValue + "\t\telse\r\n";
                         GetValue = GetValue + "\t\t\treturn self.m_" + descriptor2.FieldName + "[Index]\r\n";
                         GetValue = GetValue + "\t\tend\n";
-                        UpdataValue = UpdataValue + "\t\t\tif self.m_" + descriptor2.FieldName + "[Index] == nil then\r\n";
-                        object obj5 = UpdataValue;
+                        UpdataValue = UpdataValue + "\t\tcopyTableData(oldData." + descriptor2.FieldName + ",ret_msg" + descriptor2.FieldName + ")\r\n";
+                        //UpdataValue = UpdataValue + "\t\t\tif self.m_" + descriptor2.FieldName + "[Index] == nil then\r\n";
+                        //object obj5 = UpdataValue;
                         //UpdataValue = string.Concat(new object[] { obj5, "\t\t\t\tself.m_", descriptor2.FieldName, "[Index] = ", m.ModuleName, "V", m.SyncDataVersion, "Data_pb.", m.ModuleName, descriptor2.FieldType, "V", m.SyncDataVersion, "()\r\n" });
                         //UpdataValue = UpdataValue + "\t\t\tend\r\n";
                         //UpdataValue = UpdataValue + "\t\t\tself.m_" + descriptor2.FieldName + "[Index]:ParseFromString(data)\r\n";
@@ -927,10 +934,10 @@
                     }
                     UpdataValue = UpdataValue + "\t\toldData." + descriptor2.FieldName + " = ret_msg." + descriptor2.FieldName + "\r\n";
                     UpdataValue = UpdataValue + "\t\tif isForceUpdate == true then\r\n";
-                    UpdataValue = UpdataValue + "\t\t\tself.m_" + descriptor2.FieldName + " = ret_msg." + descriptor2.FieldName + "\r\n";
+                    UpdataValue = UpdataValue + "\t\t\tcopyTableData(oldData." + descriptor2.FieldName + ",ret_msg" + descriptor2.FieldName + ")\r\n";
                     UpdataValue = UpdataValue + "\t\tend\r\n";
                     UpdataValue = UpdataValue + "\t\tif isNotify == true then\r\n";
-                    UpdataValue = UpdataValue + "\t\t\tself.m_" + descriptor2.FieldName + " = ret_msg." + descriptor2.FieldName + "\r\n";
+                    UpdataValue = UpdataValue + "\t\t\tcopyTableData(oldData." + descriptor2.FieldName + ",ret_msg" + descriptor2.FieldName + ")\r\n";
                     UpdataValue = UpdataValue + "\t\t\tdataCallback(self," + keyUpdateField + ",ret_msg." + descriptor2.FieldName + ")\r\n";
                     UpdataValue = UpdataValue + "\t\tend\r\n";
                     UpdataValue = UpdataValue + "\t\tif main.OnUpdateField ~= nil then\r\n";
