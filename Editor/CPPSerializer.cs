@@ -991,7 +991,7 @@
                                 str19 = field2.Comment.Replace("\r\n", " ");
                             }
                             string str49 = str18;
-                            str18 = str49 + "\t//" + field2.CNName + "\t" + str19.Replace("\n", " ") + "\r\n";
+                            str18 = str49 + "\t//" + field2.CNName.Replace("\r\n", " ").Replace("\n", " ") + "\t" + str19.Replace("\n", " ") + "\r\n";
                             str13 = str13 + str18;
                             obj2 = str14;
                             str14 = string.Concat(new object[] { obj2, "\t\tif(vecLine[", num2, "]!=\"", field2.FieldName, "\"){printf_message(\"", file.CfgName, ".csv中字段[", field2.FieldName, "]位置不对应 \");assert(false); return false; }\r\n" });
