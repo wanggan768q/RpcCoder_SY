@@ -526,14 +526,14 @@
                             UpdataValue = UpdataValue + "\t\tif isForceUpdate == true then\r\n";
 
                             UpdataValue = UpdataValue + "\t\t\tfor i = 1, #ret_msg." + descriptor2.FieldName + " do\r\n";
-                            UpdataValue = UpdataValue + "\t\t\t\tself.m_SkillList." + descriptor2.FieldName + "[i] = " + "ret_msg." + descriptor2.FieldName + "[i]\r\n";
+                            UpdataValue = UpdataValue + "\t\t\t\tself.m_." + descriptor2.FieldName + "[i] = " + "ret_msg." + descriptor2.FieldName + "[i]\r\n";
                             UpdataValue = UpdataValue + "\t\t\tend\r\n";
 
                             UpdataValue = UpdataValue + "\t\tend\r\n";
                             UpdataValue = UpdataValue + "\t\tif isNotify == true then\r\n";
 
                             UpdataValue = UpdataValue + "\t\t\tfor i = 1, #ret_msg." + descriptor2.FieldName + " do\r\n";
-                            UpdataValue = UpdataValue + "\t\t\t\tself.m_SkillList." + descriptor2.FieldName + "[i] = " + "ret_msg." + descriptor2.FieldName + "[i]\r\n";
+                            UpdataValue = UpdataValue + "\t\t\t\tself.m_." + descriptor2.FieldName + "[i] = " + "ret_msg." + descriptor2.FieldName + "[i]\r\n";
                             UpdataValue = UpdataValue + "\t\t\tend\r\n";
 
                             UpdataValue = UpdataValue + "\t\t\tdataCallback(self," + keyUpdateField + ",ret_msg." + descriptor2.FieldName + ")\r\n";
@@ -606,14 +606,14 @@
                             UpdataValue = UpdataValue + "\t\tif isForceUpdate == true then\r\n";
 
                             UpdataValue = UpdataValue + "\t\t\tfor i = 1, #ret_msg." + descriptor2.FieldName + " do\r\n";
-                            UpdataValue = UpdataValue + "\t\t\t\tself.m_SkillList." + descriptor2.FieldName + "[i] = " + "ret_msg." + descriptor2.FieldName + "[i]\r\n";
+                            UpdataValue = UpdataValue + "\t\t\t\tself.m_" + descriptor2.FieldName + "[i] = " + "ret_msg." + descriptor2.FieldName + "[i]\r\n";
                             UpdataValue = UpdataValue + "\t\t\tend\r\n";
 
                             UpdataValue = UpdataValue + "\t\tend\r\n";
                             UpdataValue = UpdataValue + "\t\tif isNotify == true then\r\n";
 
                             UpdataValue = UpdataValue + "\t\t\tfor i = 1, #ret_msg." + descriptor2.FieldName + " do\r\n";
-                            UpdataValue = UpdataValue + "\t\t\t\tself.m_SkillList." + descriptor2.FieldName + "[i] = " + "ret_msg." + descriptor2.FieldName + "[i]\r\n";
+                            UpdataValue = UpdataValue + "\t\t\t\tself.m_." + descriptor2.FieldName + "[i] = " + "ret_msg." + descriptor2.FieldName + "[i]\r\n";
                             UpdataValue = UpdataValue + "\t\t\tend\r\n";
 
                             UpdataValue = UpdataValue + "\t\t\tdataCallback(self," + keyUpdateField + ",ret_msg." + descriptor2.FieldName + ")\r\n";
@@ -687,14 +687,14 @@
                             UpdataValue = UpdataValue + "\t\tif isForceUpdate == true then\r\n";
 
                             UpdataValue = UpdataValue + "\t\t\tfor i = 1, #ret_msg." + descriptor2.FieldName + " do\r\n";
-                            UpdataValue = UpdataValue + "\t\t\t\tself.m_SkillList." + descriptor2.FieldName + "[i] = " + "ret_msg." + descriptor2.FieldName + "[i]\r\n";
+                            UpdataValue = UpdataValue + "\t\t\t\tself.m_." + descriptor2.FieldName + "[i] = " + "ret_msg." + descriptor2.FieldName + "[i]\r\n";
                             UpdataValue = UpdataValue + "\t\t\tend\r\n";
 
                             UpdataValue = UpdataValue + "\t\tend\r\n";
                             UpdataValue = UpdataValue + "\t\tif isNotify == true then\r\n";
 
                             UpdataValue = UpdataValue + "\t\t\tfor i = 1, #ret_msg." + descriptor2.FieldName + " do\r\n";
-                            UpdataValue = UpdataValue + "\t\t\t\tself.m_SkillList." + descriptor2.FieldName + "[i] = " + "ret_msg." + descriptor2.FieldName + "[i]\r\n";
+                            UpdataValue = UpdataValue + "\t\t\t\tself.m_." + descriptor2.FieldName + "[i] = " + "ret_msg." + descriptor2.FieldName + "[i]\r\n";
                             UpdataValue = UpdataValue + "\t\t\tend\r\n";
 
                             UpdataValue = UpdataValue + "\t\t\tdataCallback(self," + keyUpdateField + ",ret_msg." + descriptor2.FieldName + ")\r\n";
@@ -769,14 +769,14 @@
                             UpdataValue = UpdataValue + "\t\tif isForceUpdate == true then\r\n";
 
                             UpdataValue = UpdataValue + "\t\t\tfor i = 1, #ret_msg." + descriptor2.FieldName + " do\r\n";
-                            UpdataValue = UpdataValue + "\t\t\t\tself." + descriptor2.FieldName + "[i] = " + "ret_msg." + descriptor2.FieldName + "[i]\r\n";
+                            UpdataValue = UpdataValue + "\t\t\t\tself.m_" + descriptor2.FieldName + "[i] = " + "ret_msg." + descriptor2.FieldName + "[i]\r\n";
                             UpdataValue = UpdataValue + "\t\t\tend\r\n";
 
                             UpdataValue = UpdataValue + "\t\tend\r\n";
                             UpdataValue = UpdataValue + "\t\tif isNotify == true then\r\n";
 
                             UpdataValue = UpdataValue + "\t\t\tfor i = 1, #ret_msg." + descriptor2.FieldName + " do\r\n";
-                            UpdataValue = UpdataValue + "\t\t\t\tself." + descriptor2.FieldName + "[i] = " + "ret_msg." + descriptor2.FieldName + "[i]\r\n";
+                            UpdataValue = UpdataValue + "\t\t\t\tself.m_" + descriptor2.FieldName + "[i] = " + "ret_msg." + descriptor2.FieldName + "[i]\r\n";
                             UpdataValue = UpdataValue + "\t\t\tend\r\n";
 
                             UpdataValue = UpdataValue + "\t\t\tdataCallback(self," + keyUpdateField + ",ret_msg." + descriptor2.FieldName + ")\r\n";
@@ -850,14 +850,14 @@
                             UpdataValue = UpdataValue + "\t\tif isForceUpdate == true then\r\n";
 
                             UpdataValue = UpdataValue + "\t\t\tfor i = 1, #ret_msg." + descriptor2.FieldName + " do\r\n";
-                            UpdataValue = UpdataValue + "\t\t\t\tself.m_SkillList." + descriptor2.FieldName + "[i] = " + "ret_msg." + descriptor2.FieldName + "[i]\r\n";
+                            UpdataValue = UpdataValue + "\t\t\t\tself.m_." + descriptor2.FieldName + "[i] = " + "ret_msg." + descriptor2.FieldName + "[i]\r\n";
                             UpdataValue = UpdataValue + "\t\t\tend\r\n";
 
                             UpdataValue = UpdataValue + "\t\tend\r\n";
                             UpdataValue = UpdataValue + "\t\tif isNotify == true then\r\n";
 
                             UpdataValue = UpdataValue + "\t\t\tfor i = 1, #ret_msg." + descriptor2.FieldName + " do\r\n";
-                            UpdataValue = UpdataValue + "\t\t\t\tself.m_SkillList." + descriptor2.FieldName + "[i] = " + "ret_msg." + descriptor2.FieldName + "[i]\r\n";
+                            UpdataValue = UpdataValue + "\t\t\t\tself.m_." + descriptor2.FieldName + "[i] = " + "ret_msg." + descriptor2.FieldName + "[i]\r\n";
                             UpdataValue = UpdataValue + "\t\t\tend\r\n";
 
                             UpdataValue = UpdataValue + "\t\t\tdataCallback(self," + keyUpdateField + ",ret_msg." + descriptor2.FieldName + ")\r\n";
