@@ -1284,8 +1284,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Public Struct");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Module");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Public Struct");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Module");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -1321,6 +1321,7 @@
             this.copyConfigToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serverToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyModelToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.copyConfigToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.buttonAddGrid = new System.Windows.Forms.Button();
             this.buttonDelGrid = new System.Windows.Forms.Button();
@@ -1331,7 +1332,6 @@
             this.Coffee = new System.Windows.Forms.CheckBox();
             this.CSCat = new System.Windows.Forms.CheckBox();
             this.ActEditor = new System.Windows.Forms.CheckBox();
-            this.copyConfigToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -1347,13 +1347,13 @@
             this.treeView1.ImageList = this.imageList1;
             this.treeView1.Location = new System.Drawing.Point(21, 28);
             this.treeView1.Name = "treeView1";
-            treeNode1.Name = "Struct";
-            treeNode1.Text = "Public Struct";
-            treeNode2.Name = "Module";
-            treeNode2.Text = "Module";
+            treeNode3.Name = "Struct";
+            treeNode3.Text = "Public Struct";
+            treeNode4.Name = "Module";
+            treeNode4.Text = "Module";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2});
+            treeNode3,
+            treeNode4});
             this.treeView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.treeView1.SelectedImageIndex = 0;
             this.treeView1.Size = new System.Drawing.Size(258, 685);
@@ -1650,9 +1650,16 @@
             // copyModelToolStripMenuItem
             // 
             this.copyModelToolStripMenuItem.Name = "copyModelToolStripMenuItem";
-            this.copyModelToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.copyModelToolStripMenuItem.Size = new System.Drawing.Size(148, 22);
             this.copyModelToolStripMenuItem.Text = "Copy Model";
             this.copyModelToolStripMenuItem.Click += new System.EventHandler(this.copyModelToolStripMenuItem_Click);
+            // 
+            // copyConfigToolStripMenuItem1
+            // 
+            this.copyConfigToolStripMenuItem1.Name = "copyConfigToolStripMenuItem1";
+            this.copyConfigToolStripMenuItem1.Size = new System.Drawing.Size(148, 22);
+            this.copyConfigToolStripMenuItem1.Text = "Copy Config";
+            this.copyConfigToolStripMenuItem1.Click += new System.EventHandler(this.copyConfigToolStripMenuItem1_Click);
             // 
             // dataGridView1
             // 
@@ -1771,13 +1778,6 @@
             this.ActEditor.Text = "动编版";
             this.ActEditor.UseVisualStyleBackColor = true;
             this.ActEditor.CheckedChanged += new System.EventHandler(this.SkillEditor_CheckedChanged);
-            // 
-            // copyConfigToolStripMenuItem1
-            // 
-            this.copyConfigToolStripMenuItem1.Name = "copyConfigToolStripMenuItem1";
-            this.copyConfigToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.copyConfigToolStripMenuItem1.Text = "Copy Config";
-            this.copyConfigToolStripMenuItem1.Click += new System.EventHandler(this.copyConfigToolStripMenuItem1_Click);
             // 
             // Form1
             // 
