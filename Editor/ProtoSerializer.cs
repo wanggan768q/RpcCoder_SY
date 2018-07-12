@@ -274,7 +274,9 @@
             string str2 = path + "PublicStruct.proto";
             label1.Text = "正在生成文件: " + str2;
             label1.Refresh();
-            StreamWriter writer = new StreamWriter(str2, false, Encoding.GetEncoding("GBK"));
+            //StreamWriter writer = new StreamWriter(str2, false, Encoding.GetEncoding("GBK"));
+            UTF8Encoding utf8 = new UTF8Encoding(false);
+            StreamWriter writer = new StreamWriter(str2, false, utf8);
             string str3 = "";
             foreach (DataStruct struct2 in dataStruct)
             {

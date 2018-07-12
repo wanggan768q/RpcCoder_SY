@@ -28,3 +28,4 @@ F:\Github\RpcCoder_SY\obj\x86\Release\RpcCoder.csproj.CoreCompileInputs.cache
 F:\Github\RpcCoder_SY\obj\x86\Release\RpcCoder.csproj.CopyComplete
 F:\Github\RpcCoder_SY\obj\x86\Release\RpcCoder.exe
 F:\Github\RpcCoder_SY\obj\x86\Release\RpcCoder.pdb
+F:\Github\RpcCoder_SY\obj\x86\Release\RpcCoder.csprojResolveAssemblyReference.cache
