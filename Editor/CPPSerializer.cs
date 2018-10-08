@@ -148,39 +148,39 @@
                     {
                         if ((descriptor.FieldType == "sint32") || (descriptor.FieldType == "bool"))
                         {
-//                             str11 = str11 + "\t\thtmlBuff += \"<li>" + descriptor.FieldName + "：</li>\\r\\n\";\r\n";
-//                             str11 = str11 + "\t\thtmlBuff +=\"<div style=\\\"padding-left:15px\\\"><table border=1>\\r\\n<tr>\\r\\n\";\r\n";
-//                             str11 = str11 + "\t\tfor( int i=0; i<(int)m_" + descriptor.FieldName + ".size(); i++){\r\n";
-//                             str11 = str11 + "\t\t\ttmpLine.Fmt(\"<td>%di</td>\\r\\n\",m_" + descriptor.FieldName + "[i]);\r\n";
-//                             str11 = str11 + "\t\t\thtmlBuff += tmpLine;\r\n";
-//                             str11 = str11 + "\t\t\tif((i+1)%10==0) htmlBuff += \"</tr>\\r\\n<tr>\";\r\n";
-//                             str11 = str11 + "\t\t}\r\n";
-//                             str11 = str11 + "\t\tif( (m_" + descriptor.FieldName + ".size() +1)%10 != 0 ) htmlBuff += \"</tr>\";\r\n";
-//                             str11 = str11 + "\t\thtmlBuff += \"</table></div>\";\r\n";
+                            //                             str11 = str11 + "\t\thtmlBuff += \"<li>" + descriptor.FieldName + "：</li>\\r\\n\";\r\n";
+                            //                             str11 = str11 + "\t\thtmlBuff +=\"<div style=\\\"padding-left:15px\\\"><table border=1>\\r\\n<tr>\\r\\n\";\r\n";
+                            //                             str11 = str11 + "\t\tfor( int i=0; i<(int)m_" + descriptor.FieldName + ".size(); i++){\r\n";
+                            //                             str11 = str11 + "\t\t\ttmpLine.Fmt(\"<td>%di</td>\\r\\n\",m_" + descriptor.FieldName + "[i]);\r\n";
+                            //                             str11 = str11 + "\t\t\thtmlBuff += tmpLine;\r\n";
+                            //                             str11 = str11 + "\t\t\tif((i+1)%10==0) htmlBuff += \"</tr>\\r\\n<tr>\";\r\n";
+                            //                             str11 = str11 + "\t\t}\r\n";
+                            //                             str11 = str11 + "\t\tif( (m_" + descriptor.FieldName + ".size() +1)%10 != 0 ) htmlBuff += \"</tr>\";\r\n";
+                            //                             str11 = str11 + "\t\thtmlBuff += \"</table></div>\";\r\n";
                         }
                         else if (descriptor.FieldType == "float")
                         {
-//                             str11 = str11 + "\t\thtmlBuff += \"<li>" + descriptor.FieldName + "：</li>\\r\\n\";\r\n";
-//                             str11 = str11 + "\t\thtmlBuff +=\"<div style=\\\"padding-left:15px\\\"><table border=1>\\r\\n<tr>\\r\\n\";\r\n";
-//                             str11 = str11 + "\t\tfor( int i=0; i<(int)m_" + descriptor.FieldName + ".size(); i++){\r\n";
-//                             str11 = str11 + "\t\t\ttmpLine.Fmt(\"<td>%.2ff</td>\\r\\n\",m_" + descriptor.FieldName + "[i]);\r\n";
-//                             str11 = str11 + "\t\t\thtmlBuff += tmpLine;\r\n";
-//                             str11 = str11 + "\t\t\tif((i+1)%10==0) htmlBuff += \"</tr>\\r\\n<tr>\";\r\n";
-//                             str11 = str11 + "\t\t}\r\n";
-//                             str11 = str11 + "\t\tif( (m_" + descriptor.FieldName + ".size() +1)%10 != 0 ) htmlBuff += \"</tr>\";\r\n";
-//                             str11 = str11 + "\t\thtmlBuff += \"</table></div>\";\r\n";
+                            //                             str11 = str11 + "\t\thtmlBuff += \"<li>" + descriptor.FieldName + "：</li>\\r\\n\";\r\n";
+                            //                             str11 = str11 + "\t\thtmlBuff +=\"<div style=\\\"padding-left:15px\\\"><table border=1>\\r\\n<tr>\\r\\n\";\r\n";
+                            //                             str11 = str11 + "\t\tfor( int i=0; i<(int)m_" + descriptor.FieldName + ".size(); i++){\r\n";
+                            //                             str11 = str11 + "\t\t\ttmpLine.Fmt(\"<td>%.2ff</td>\\r\\n\",m_" + descriptor.FieldName + "[i]);\r\n";
+                            //                             str11 = str11 + "\t\t\thtmlBuff += tmpLine;\r\n";
+                            //                             str11 = str11 + "\t\t\tif((i+1)%10==0) htmlBuff += \"</tr>\\r\\n<tr>\";\r\n";
+                            //                             str11 = str11 + "\t\t}\r\n";
+                            //                             str11 = str11 + "\t\tif( (m_" + descriptor.FieldName + ".size() +1)%10 != 0 ) htmlBuff += \"</tr>\";\r\n";
+                            //                             str11 = str11 + "\t\thtmlBuff += \"</table></div>\";\r\n";
                         }
                         else
                         {
-//                             str11 = str11 + "\t\thtmlBuff += \"<li>" + descriptor.FieldName + "：</li>\\r\\n\";\r\n";
-//                             str11 = str11 + "\t\thtmlBuff +=\"<div style=\\\"padding-left:15px\\\"><table border=1>\\r\\n<tr>\\r\\n\";\r\n";
-//                             str11 = str11 + "\t\tfor( int i=0; i<(int)m_" + descriptor.FieldName + ".size(); i++){\r\n";
-//                             str11 = str11 + "\t\t\ttmpLine.Fmt(\"<td>%lldL</td>\\r\\n\",m_" + descriptor.FieldName + "[i]);\r\n";
-//                             str11 = str11 + "\t\t\thtmlBuff += tmpLine;\r\n";
-//                             str11 = str11 + "\t\t\tif((i+1)%10==0) htmlBuff += \"</tr>\\r\\n<tr>\";\r\n";
-//                             str11 = str11 + "\t\t}\r\n";
-//                             str11 = str11 + "\t\tif( (m_" + descriptor.FieldName + ".size() +1)%10 != 0 ) htmlBuff += \"</tr>\";\r\n";
-//                             str11 = str11 + "\t\thtmlBuff += \"</table></div>\";\r\n";
+                            //                             str11 = str11 + "\t\thtmlBuff += \"<li>" + descriptor.FieldName + "：</li>\\r\\n\";\r\n";
+                            //                             str11 = str11 + "\t\thtmlBuff +=\"<div style=\\\"padding-left:15px\\\"><table border=1>\\r\\n<tr>\\r\\n\";\r\n";
+                            //                             str11 = str11 + "\t\tfor( int i=0; i<(int)m_" + descriptor.FieldName + ".size(); i++){\r\n";
+                            //                             str11 = str11 + "\t\t\ttmpLine.Fmt(\"<td>%lldL</td>\\r\\n\",m_" + descriptor.FieldName + "[i]);\r\n";
+                            //                             str11 = str11 + "\t\t\thtmlBuff += tmpLine;\r\n";
+                            //                             str11 = str11 + "\t\t\tif((i+1)%10==0) htmlBuff += \"</tr>\\r\\n<tr>\";\r\n";
+                            //                             str11 = str11 + "\t\t}\r\n";
+                            //                             str11 = str11 + "\t\tif( (m_" + descriptor.FieldName + ".size() +1)%10 != 0 ) htmlBuff += \"</tr>\";\r\n";
+                            //                             str11 = str11 + "\t\thtmlBuff += \"</table></div>\";\r\n";
                         }
                         str13 = str8;
                         str8 = str13 + "\tvoid Set" + descriptor.FieldName + "( int Index, " + descriptor.ToGetFieldType() + " v )\r\n\t{\r\n";
@@ -202,13 +202,13 @@
                         else
                         {
                             //str13 = str11;
-//                             str11 = str13 + "\t\thtmlBuff += \"<li>" + descriptor.FieldName + "(" + descriptor.CNName + ") [" + descriptor.FieldType + "]：</li>\\r\\n&nbsp;&nbsp;\"\r\n";
-//                             str11 = str11 + "\t\thtmlBuff +=\"<div style=\\\"padding-left:15px\\\"><table border=1>\\r\\n\";\r\n";
-//                             str11 = str11 + "\t\tfor( int i=0; i<(int)m_" + descriptor.FieldName + ".size(); i++){\r\n";
-//                             str11 = str11 + "\t\t\ttmpLine.Fmt(\"<tr><td>\\\"%s\\\"</td></tr>\\r\\n\",m_" + descriptor.FieldName + "[i].c_str());\r\n";
-//                             str11 = str11 + "\t\t\thtmlBuff += tmpLine;\r\n";
-//                             str11 = str11 + "\t\t}\r\n";
-//                             str11 = str11 + "\t\thtmlBuff += \"</table></dir>\";\r\n";
+                            //                             str11 = str13 + "\t\thtmlBuff += \"<li>" + descriptor.FieldName + "(" + descriptor.CNName + ") [" + descriptor.FieldType + "]：</li>\\r\\n&nbsp;&nbsp;\"\r\n";
+                            //                             str11 = str11 + "\t\thtmlBuff +=\"<div style=\\\"padding-left:15px\\\"><table border=1>\\r\\n\";\r\n";
+                            //                             str11 = str11 + "\t\tfor( int i=0; i<(int)m_" + descriptor.FieldName + ".size(); i++){\r\n";
+                            //                             str11 = str11 + "\t\t\ttmpLine.Fmt(\"<tr><td>\\\"%s\\\"</td></tr>\\r\\n\",m_" + descriptor.FieldName + "[i].c_str());\r\n";
+                            //                             str11 = str11 + "\t\t\thtmlBuff += tmpLine;\r\n";
+                            //                             str11 = str11 + "\t\t}\r\n";
+                            //                             str11 = str11 + "\t\thtmlBuff += \"</table></dir>\";\r\n";
                         }
                         str13 = str8;
                         str8 = str13 + "\tvoid Set" + descriptor.FieldName + "( int Index, const " + descriptor.ToGetFieldType() + "& v )\r\n\t{\r\n";
@@ -222,15 +222,15 @@
                     }
                     else
                     {
-//                         str11 = str11 + "\t\thtmlBuff += \"<li>" + descriptor.FieldName + "：</li>\\r\\n\";\r\n";
-//                         str13 = str11;
-//                         str11 = str13 + "\t\tif( m_" + descriptor.FieldName + ".size()>0) htmlBuff += m_" + descriptor.FieldName + "[0].HtmlDescHeader();\r\n";
-//                         str11 = str11 + "\t\thtmlBuff +=\"<div style=\\\"padding-left:15px\\\"><table border=1>\\r\\n\";\r\n";
-//                         str11 = str11 + "\t\tfor( int i=0; i<(int)m_" + descriptor.FieldName + ".size(); i++){\r\n";
-//                         str11 = str11 + "\t\t\ttmpLine.Fmt(\"%d\",i);\r\n";
-//                         str11 = str11 + "\t\t\thtmlBuff += \"<tr><td>\"+ tmpLine+\"</td><td>\"+m_" + descriptor.FieldName + "[i].ToHtml().c_str() +\"</td></tr>\";\r\n";
-//                         str11 = str11 + "\t\t}\r\n";
-//                         str11 = str11 + "\t\thtmlBuff += \"</table></div>\";\r\n";
+                        //                         str11 = str11 + "\t\thtmlBuff += \"<li>" + descriptor.FieldName + "：</li>\\r\\n\";\r\n";
+                        //                         str13 = str11;
+                        //                         str11 = str13 + "\t\tif( m_" + descriptor.FieldName + ".size()>0) htmlBuff += m_" + descriptor.FieldName + "[0].HtmlDescHeader();\r\n";
+                        //                         str11 = str11 + "\t\thtmlBuff +=\"<div style=\\\"padding-left:15px\\\"><table border=1>\\r\\n\";\r\n";
+                        //                         str11 = str11 + "\t\tfor( int i=0; i<(int)m_" + descriptor.FieldName + ".size(); i++){\r\n";
+                        //                         str11 = str11 + "\t\t\ttmpLine.Fmt(\"%d\",i);\r\n";
+                        //                         str11 = str11 + "\t\t\thtmlBuff += \"<tr><td>\"+ tmpLine+\"</td><td>\"+m_" + descriptor.FieldName + "[i].ToHtml().c_str() +\"</td></tr>\";\r\n";
+                        //                         str11 = str11 + "\t\t}\r\n";
+                        //                         str11 = str11 + "\t\thtmlBuff += \"</table></div>\";\r\n";
                         str13 = str8;
                         str8 = str13 + "\tvoid Set" + descriptor.FieldName + "( int Index, const " + descriptor.ToGetFieldType() + "& v )\r\n\t{\r\n";
                         str8 = str8 + "\t\tif(Index<0 || Index>=(int)m_" + descriptor.FieldName + ".size())\r\n\t\t{\r\n\t\t\tassert(false);\r\n\t\t\treturn;\r\n\t\t}\r\n";
@@ -268,7 +268,7 @@
             DataStruct struct4 = null;
             string clientNotify = "";
             Module.OperateType type = Module.OperateType.OP_NONE;
-            string pbClassName = "" ;
+            string pbClassName = "";
             foreach (Module.OperaterItem.SubOperaterItem item in operate.subOperateItem)
             {
                 string text1 = operate.Name + item.Name;
@@ -307,7 +307,7 @@
             string str6 = "";
             string str7 = "Request";
             string str8 = "请求";
-            
+
             if (str.Length > 0)
             {
                 str6 = "";
@@ -495,8 +495,8 @@
             }
         }
 
-        private static void GenSyncDataCode(Module m, DataStruct ds, ref string syncIds, ref string SyncOpDefine, ref string SyncOpImp, ref string SendAllFields, 
-            ref string DBCacheField,ref string BindCalc,ref string RefreshField, ref string GetField,ref string GetAttrByType,ref string CompleteData)
+        private static void GenSyncDataCode(Module m, DataStruct ds, ref string syncIds, ref string SyncOpDefine, ref string SyncOpImp, ref string SendAllFields,
+            ref string DBCacheField, ref string BindCalc, ref string RefreshField, ref string GetField, ref string GetAttrByType, ref string CompleteData)
         {
             string str = "V" + m.SyncDataVersion;
             string text1 = ds.StructName + "Wraper" + str;
@@ -513,7 +513,7 @@
                 GetField = GetField + "\tGet" + descriptor.FieldName + "();\r\n";
 
 
-                GetAttrByType +=  "\tcase SYNCID_" + m.ModuleName.ToUpper() + "_" + descriptor.FieldName.ToUpper() + ":\r\n";
+                GetAttrByType += "\tcase SYNCID_" + m.ModuleName.ToUpper() + "_" + descriptor.FieldName.ToUpper() + ":\r\n";
                 GetAttrByType += "\t\treturn Get" + descriptor.FieldName + "();\r\n";
 
                 string str8 = str3;
@@ -567,7 +567,7 @@
                     CompleteData += "\tconst vector<" + descriptor.ToGetFieldType() + ">& v" + descriptor.FieldName + " = Get" + descriptor.FieldName + "();\r\n";
                     CompleteData += "\tfor (int i = 0; i < v" + descriptor.FieldName + ".size(); ++i)\r\n";
                     CompleteData += "\t\tbase.mutable_" + descriptor.FieldName.ToLower() + "()->Add(v" + descriptor.FieldName + "[i]);\r\n";
-                    
+
                 }
                 string str5 = "SYNCID_" + m.ModuleName.ToUpper() + "_" + descriptor.FieldName.ToUpper();
                 string str6 = "Module" + m.ModuleName;
@@ -584,27 +584,23 @@
                     //SyncOpImp = str20 + "\t" + str6 + "::Instance().NotifySyncValueChanged(" + str7 + ".GetKey()," + str5 + ");\r\n";
                     //SyncOpImp = SyncOpImp + "\tSend" + descriptor.FieldName + "(false);\r\n}\r\n";
                     SyncOpImp = SyncOpImp + "\tm_ClientDataUserData.set_" + descriptor.FieldName.ToLower() + "(v);\r\n";
-                    SyncOpImp = SyncOpImp + "\tSendToClient();\r\n";
-
 
                     SyncOpImp = SyncOpImp + "\tif (g_SyncOtherProperty.IsInOtherSync(" + str5 + "))\r\n";
                     SyncOpImp = SyncOpImp + "\t{\r\n";
                     SyncOpImp = SyncOpImp + "\t\tm_OtherDataUserData.set_" + descriptor.FieldName.ToLower() + "(v);\r\n";
-                    //SyncOpImp = SyncOpImp + "\t\tSetOtherChange(true);\r\n";
-                    SyncOpImp = SyncOpImp + "\t\tSendToOtherClient();\r\n";
+                    SyncOpImp = SyncOpImp + "\t\tSetOtherChange(true);\r\n";
                     SyncOpImp = SyncOpImp + "\t}\r\n";
-                    //SyncOpImp = SyncOpImp + "\tSetChange(true);\r\n}\r\n";
-                    SyncOpImp = SyncOpImp + "}\r\n";
+
+                    SyncOpImp = SyncOpImp + "\tSetChange(true);\r\n}\r\n";
                     string str21 = SyncOpImp;
                     SyncOpImp = str21 + descriptor.ToGetFieldType() + " " + str2 + "::Get" + descriptor.FieldName + "()\r\n{\r\n";
                     string str22 = SyncOpImp;
                     //CalcMethodCB(SYNCID_BASEATTR_MAXHP, std::bind(&SyncDataBaseAttrV1::SetMaxHp, this, std::placeholders::_1));
-                    //SyncOpImp = str22 + "\tCalcMethodCB(" + enumKey + ",std::bind(&" + str2 + "::Set" + descriptor.FieldName + ",this,std::placeholders::_1));\r\n";
+                    SyncOpImp = str22 + "\tCalcMethodCB(" + enumKey + ",std::bind(&" + str2 + "::Set" + descriptor.FieldName + ",this,std::placeholders::_1));\r\n";
                     SyncOpImp = SyncOpImp + "\treturn " + str7 + ".Get" + descriptor.FieldName + "();\r\n}\r\n";
 
                     SyncOpImp = SyncOpImp + "void " + str2 + "::Refresh" + descriptor.FieldName + "()\r\n{\r\n";
-                    //SyncOpImp = SyncOpImp + "\tm_vCalcPropertyIds.insert(" + enumKey + ");\r\n}\r\n\r\n";
-                    SyncOpImp = SyncOpImp + "\tSet" + descriptor.FieldName + "(m_pObj->Calc" + descriptor.FieldName + "());\r\n}\r\n\r\n";
+                    SyncOpImp = SyncOpImp + "\tm_vCalcPropertyIds.insert(" + enumKey + ");\r\n}\r\n\r\n";
                     string str23 = SyncOpImp;
                     //SyncOpImp = str23 + "void " + str2 + "::Send" + descriptor.FieldName + "(bool OnlyToClient)\r\n{\r\n";
                     if (descriptor.GetTypeEnum() == 1)
@@ -1281,9 +1277,9 @@
                         str40 = string.Concat(new object[] { "#include \"", m.ModuleName, "V", m.SyncDataVersion, "Data.h\"\r\n#include \"", m.ModuleName, "V", m.SyncDataVersion, "DataWraper.h\"\r\n" });
                         str45 = string.Concat(new object[] { "#include \"", m.ModuleName, "V", m.SyncDataVersion, "DataWraper.h\"\r\n" });
                         str32 = struct5.StructName;
-                        
-                        GenSyncDataCode(m, struct5, ref syncIds, ref syncOpDefine, ref syncOpImp, ref sendAllFields, 
-                            ref dBCacheField,ref BindCalc,ref RefreshField, ref GetField,ref GetAttrByType,ref CompleteData);
+
+                        GenSyncDataCode(m, struct5, ref syncIds, ref syncOpDefine, ref syncOpImp, ref sendAllFields,
+                            ref dBCacheField, ref BindCalc, ref RefreshField, ref GetField, ref GetAttrByType, ref CompleteData);
                         GenClassWraperCode(m, struct5, ref strWraper);
                         str38 = string.Concat(new object[] { m.ModuleName, struct5.StructName, "WraperV", m.SyncDataVersion, " m_syncData", struct5.StructName, ";" });
                         strSyncDataSetWraper = "SetDataWraper( &m_syncData" + struct5.StructName + " );";
@@ -1330,8 +1326,8 @@
                         .Replace("$ModId$", m.StartIdNum.ToString())
                         .Replace("$DBCacheSyncDataHeader$", str45)
                         .Replace("$RefreshField$", RefreshField)
-                        .Replace("$BindCalc$",BindCalc)
-                        .Replace("$GetField$",GetField)
+                        .Replace("$BindCalc$", BindCalc)
+                        .Replace("$GetField$", GetField)
                         .Replace("$GetAttrByType$", GetAttrByType)
                         .Replace("$CompleteData$", CompleteData)
                         ;
@@ -1353,4 +1349,3 @@
         }
     }
 }
-
