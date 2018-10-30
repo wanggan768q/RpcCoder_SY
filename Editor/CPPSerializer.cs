@@ -584,23 +584,27 @@
                     //SyncOpImp = str20 + "\t" + str6 + "::Instance().NotifySyncValueChanged(" + str7 + ".GetKey()," + str5 + ");\r\n";
                     //SyncOpImp = SyncOpImp + "\tSend" + descriptor.FieldName + "(false);\r\n}\r\n";
                     SyncOpImp = SyncOpImp + "\tm_ClientDataUserData.set_" + descriptor.FieldName.ToLower() + "(v);\r\n";
+                    SyncOpImp = SyncOpImp + "\tSendToClient();\r\n";
+
 
                     SyncOpImp = SyncOpImp + "\tif (g_SyncOtherProperty.IsInOtherSync(" + str5 + "))\r\n";
                     SyncOpImp = SyncOpImp + "\t{\r\n";
                     SyncOpImp = SyncOpImp + "\t\tm_OtherDataUserData.set_" + descriptor.FieldName.ToLower() + "(v);\r\n";
-                    SyncOpImp = SyncOpImp + "\t\tSetOtherChange(true);\r\n";
+                    //SyncOpImp = SyncOpImp + "\t\tSetOtherChange(true);\r\n";
+                    SyncOpImp = SyncOpImp + "\t\tSendToOtherClient();\r\n";
                     SyncOpImp = SyncOpImp + "\t}\r\n";
-                    
-                    SyncOpImp = SyncOpImp + "\tSetChange(true);\r\n}\r\n";
+                    //SyncOpImp = SyncOpImp + "\tSetChange(true);\r\n}\r\n";
+                    SyncOpImp = SyncOpImp + "}\r\n";
                     string str21 = SyncOpImp;
                     SyncOpImp = str21 + descriptor.ToGetFieldType() + " " + str2 + "::Get" + descriptor.FieldName + "()\r\n{\r\n";
                     string str22 = SyncOpImp;
                     //CalcMethodCB(SYNCID_BASEATTR_MAXHP, std::bind(&SyncDataBaseAttrV1::SetMaxHp, this, std::placeholders::_1));
-                    SyncOpImp = str22 + "\tCalcMethodCB(" + enumKey + ",std::bind(&" + str2 + "::Set" + descriptor.FieldName + ",this,std::placeholders::_1));\r\n";
+                    //SyncOpImp = str22 + "\tCalcMethodCB(" + enumKey + ",std::bind(&" + str2 + "::Set" + descriptor.FieldName + ",this,std::placeholders::_1));\r\n";
                     SyncOpImp = SyncOpImp + "\treturn " + str7 + ".Get" + descriptor.FieldName + "();\r\n}\r\n";
 
                     SyncOpImp = SyncOpImp + "void " + str2 + "::Refresh" + descriptor.FieldName + "()\r\n{\r\n";
-                    SyncOpImp = SyncOpImp + "\tm_vCalcPropertyIds.insert(" + enumKey + ");\r\n}\r\n\r\n";
+                    //SyncOpImp = SyncOpImp + "\tm_vCalcPropertyIds.insert(" + enumKey + ");\r\n}\r\n\r\n";
+                    SyncOpImp = SyncOpImp + "\tSet" + descriptor.FieldName + "(m_pObj->Calc" + descriptor.FieldName + "());\r\n}\r\n\r\n";
                     string str23 = SyncOpImp;
                     //SyncOpImp = str23 + "void " + str2 + "::Send" + descriptor.FieldName + "(bool OnlyToClient)\r\n{\r\n";
                     if (descriptor.GetTypeEnum() == 1)

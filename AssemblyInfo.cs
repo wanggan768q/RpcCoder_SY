@@ -9,7 +9,7 @@
 [assembly: System.Reflection.AssemblyConfiguration("")]
 [assembly: System.Reflection.AssemblyCompany("admin")]
 [assembly: System.Runtime.CompilerServices.RuntimeCompatibility(WrapNonExceptionThrows=true)]
-[assembly: System.Reflection.AssemblyCopyright("Copyright \x00a9 admin 2012")]
+[assembly: System.Reflection.AssemblyCopyright("Copyright \x00a9 郭晓波 2017")]
 [assembly: System.Reflection.AssemblyTrademark("")]
 [assembly: System.Runtime.InteropServices.ComVisible(false)]
 [assembly: System.Runtime.InteropServices.Guid("5b01eed8-4911-4bf5-9b31-58304113e08d")]
