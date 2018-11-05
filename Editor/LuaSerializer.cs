@@ -254,7 +254,10 @@
                     OperationImplement = OperationImplement + "\tlocal function callback(_data)\r\n";
                     if (operate.Name.ToLower() != "syncdata")
                     {
-                        OperationImplement = OperationImplement + "\t\thideNetTip(self)\r\n";
+                        if (operate.Name != "Ping")
+                        {
+                            OperationImplement = OperationImplement + "\t\thideNetTip(self)\r\n";
+                        }
                     }
                     OperationImplement = OperationImplement + "\t\tif _hanlder then\r\n";
                     string str12 = OperationImplement;
@@ -272,7 +275,10 @@
                     OperationImplement = str13 + "\tMLayerMgr.SendAsk(RPC_CODE_" + m.ModuleName.ToUpper() + "_" + operate.Name.ToUpper() + "_REQUEST, pb_data, callback)\r\n";
                     if (operate.Name.ToLower() != "syncdata")
                     {
-                        OperationImplement = OperationImplement + "\tshowNetTip(self)\r\n";
+                        if (operate.Name != "Ping")
+                        {
+                            OperationImplement = OperationImplement + "\tshowNetTip(self)\r\n";
+                        }
                     }
                     OperationImplement = OperationImplement + "end\r\n";
                     TestProtocol = TestProtocol + "}\r\n";
