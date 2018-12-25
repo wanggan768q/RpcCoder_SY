@@ -691,6 +691,7 @@
                     SyncOpImp = str8 + "void " + str2 + "::Set" + descriptor.FieldName + "( const vector<" + descriptor.ToGetFieldType() + ">& v )\r\n{\r\n";
                     str8 = SyncOpImp;
                     SyncOpImp = str8 + "\t" + str7 + ".Set" + descriptor.FieldName + "(v);\r\n";
+                    SyncOpImp = SyncOpImp + "\tm_ClientDataUserData.clear_" + descriptor.FieldName.ToLower() + "();\r\n";
                     str8 = SyncOpImp;
                     SyncOpImp = SyncOpImp + "\tfor (auto iter : v)\r\n";
                     SyncOpImp = SyncOpImp + "\t{\r\n";
@@ -701,6 +702,7 @@
 
                     SyncOpImp = SyncOpImp + "\tif (g_SyncOtherProperty.IsInOtherSync(" + str5 + "))\r\n";
                     SyncOpImp = SyncOpImp + "\t{\r\n";
+                    SyncOpImp = SyncOpImp + "\t\tm_OtherDataUserData.clear_" + descriptor.FieldName.ToLower() + "();\r\n";
                     SyncOpImp = SyncOpImp + "\t\tfor (auto iter : v)\r\n";
                     SyncOpImp = SyncOpImp + "\t\t{\r\n";
                     SyncOpImp = SyncOpImp + "\t\t\tm_OtherDataUserData.add_" + descriptor.FieldName.ToLower() + "(iter);\r\n";
