@@ -1,0 +1,781 @@
+BagRpcUseItemAsk↑ UseItem请求
+	Count:int32 = -1	;数量
+	Pos:int32 = -1	;位置
+	BagType:int32 = -1	;背包类型
+
+BagRpcUseItemReply↓ UseItem回应
+	Result:int32 = -9999	;返回结果
+	Item:ItemObj	;位置
+	[ItemObj]
+		Pos:int32 = -1	;Pos
+		ItemData:ItemData	;ItemData
+		[ItemData]
+			IsLock:bool = false	;物品锁
+			OverlayCount:int32 = -1	;物品叠加数量
+			ConfigId:int32 = -1	;物品表的id
+			EquipAttr:EquipAttr	;装备属性
+			[EquipAttr]
+				BaseAttr:AttrKeyValue*	;基础属性
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				ExtraAttr:AttrKeyValue*	;高级属性
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				BattleScore:int32 = -1	;装备评分
+			IsBind:bool = true	;是否绑定
+			Guid:uint64 = 0	;物品guid
+			PetData:PetData	;宠物的数据
+			[PetData]
+				Exp:int32 = -1	;经验
+				Level:int32 = -1	;等级
+				Name:string	;名字
+				Attrs:AttrKeyValue*	;属性
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				BattleScore:int32 = -1	;战力
+				Talent:AttrKeyValue*	;资质
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				SkillList:PetSkill*	;技能列表
+				[PetSkill]
+					SkillId:int32 = -1	;技能id
+					Lock:int32 = -1	;宠物技能锁 0未加锁1加锁
+				IsActive:bool = false	;出站状态
+				TalentScore:int32 = -1	;资质评分
+			BindRule:int32 = 1	;绑定规则
+			SaleCD:int32 = 0	;交易cd
+		RedPoint:bool = false	;是否有红点
+	NowItem:ItemObj	;当前道具 
+	[ItemObj]
+		Pos:int32 = -1	;Pos
+		ItemData:ItemData	;ItemData
+		[ItemData]
+			IsLock:bool = false	;物品锁
+			OverlayCount:int32 = -1	;物品叠加数量
+			ConfigId:int32 = -1	;物品表的id
+			EquipAttr:EquipAttr	;装备属性
+			[EquipAttr]
+				BaseAttr:AttrKeyValue*	;基础属性
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				ExtraAttr:AttrKeyValue*	;高级属性
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				BattleScore:int32 = -1	;装备评分
+			IsBind:bool = true	;是否绑定
+			Guid:uint64 = 0	;物品guid
+			PetData:PetData	;宠物的数据
+			[PetData]
+				Exp:int32 = -1	;经验
+				Level:int32 = -1	;等级
+				Name:string	;名字
+				Attrs:AttrKeyValue*	;属性
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				BattleScore:int32 = -1	;战力
+				Talent:AttrKeyValue*	;资质
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				SkillList:PetSkill*	;技能列表
+				[PetSkill]
+					SkillId:int32 = -1	;技能id
+					Lock:int32 = -1	;宠物技能锁 0未加锁1加锁
+				IsActive:bool = false	;出站状态
+				TalentScore:int32 = -1	;资质评分
+			BindRule:int32 = 1	;绑定规则
+			SaleCD:int32 = 0	;交易cd
+		RedPoint:bool = false	;是否有红点
+
+BagRpcSaleItemAsk↑ SaleItem请求
+	Pos:int32 = -1	;位置
+	Count:int32 = -1	;卖出数量
+	BagType:int32 = -1	;背包类型
+
+BagRpcSaleItemReply↓ SaleItem回应
+	Result:int32 = -9999	;返回结果
+	Item:ItemObj	;位置
+	[ItemObj]
+		Pos:int32 = -1	;Pos
+		ItemData:ItemData	;ItemData
+		[ItemData]
+			IsLock:bool = false	;物品锁
+			OverlayCount:int32 = -1	;物品叠加数量
+			ConfigId:int32 = -1	;物品表的id
+			EquipAttr:EquipAttr	;装备属性
+			[EquipAttr]
+				BaseAttr:AttrKeyValue*	;基础属性
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				ExtraAttr:AttrKeyValue*	;高级属性
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				BattleScore:int32 = -1	;装备评分
+			IsBind:bool = true	;是否绑定
+			Guid:uint64 = 0	;物品guid
+			PetData:PetData	;宠物的数据
+			[PetData]
+				Exp:int32 = -1	;经验
+				Level:int32 = -1	;等级
+				Name:string	;名字
+				Attrs:AttrKeyValue*	;属性
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				BattleScore:int32 = -1	;战力
+				Talent:AttrKeyValue*	;资质
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				SkillList:PetSkill*	;技能列表
+				[PetSkill]
+					SkillId:int32 = -1	;技能id
+					Lock:int32 = -1	;宠物技能锁 0未加锁1加锁
+				IsActive:bool = false	;出站状态
+				TalentScore:int32 = -1	;资质评分
+			BindRule:int32 = 1	;绑定规则
+			SaleCD:int32 = 0	;交易cd
+		RedPoint:bool = false	;是否有红点
+
+BagRpcLockItemAsk↑ LockItem请求
+	Pos:int32 = -1	;位置
+	IsLock:bool = false	;IsLock
+	BagType:int32 = -1	;背包类型
+
+BagRpcLockItemReply↓ LockItem回应
+	Result:int32 = -9999	;返回结果
+	Item:ItemObj	;位置
+	[ItemObj]
+		Pos:int32 = -1	;Pos
+		ItemData:ItemData	;ItemData
+		[ItemData]
+			IsLock:bool = false	;物品锁
+			OverlayCount:int32 = -1	;物品叠加数量
+			ConfigId:int32 = -1	;物品表的id
+			EquipAttr:EquipAttr	;装备属性
+			[EquipAttr]
+				BaseAttr:AttrKeyValue*	;基础属性
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				ExtraAttr:AttrKeyValue*	;高级属性
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				BattleScore:int32 = -1	;装备评分
+			IsBind:bool = true	;是否绑定
+			Guid:uint64 = 0	;物品guid
+			PetData:PetData	;宠物的数据
+			[PetData]
+				Exp:int32 = -1	;经验
+				Level:int32 = -1	;等级
+				Name:string	;名字
+				Attrs:AttrKeyValue*	;属性
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				BattleScore:int32 = -1	;战力
+				Talent:AttrKeyValue*	;资质
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				SkillList:PetSkill*	;技能列表
+				[PetSkill]
+					SkillId:int32 = -1	;技能id
+					Lock:int32 = -1	;宠物技能锁 0未加锁1加锁
+				IsActive:bool = false	;出站状态
+				TalentScore:int32 = -1	;资质评分
+			BindRule:int32 = 1	;绑定规则
+			SaleCD:int32 = 0	;交易cd
+		RedPoint:bool = false	;是否有红点
+
+BagRpcDeblockingAsk↑ 解锁背包格子请求
+	BagType:int32 = -1	;背包类型
+
+BagRpcDeblockingReply↓ 解锁背包格子回应
+	Result:int32 = -9999	;返回结果
+	BagType:int32 = -1	;背包类型
+	CurCapacity:int32 = -1	;当前的容量
+
+BagRpcTakeItemAsk↑ TakeItem请求
+	FromBagType:int32 = -1	;源背包
+	ToBagType:int32 = -1	;目标背包
+	FromPos:int32 = -1	;源背包位置
+
+BagRpcTakeItemReply↓ TakeItem回应
+	Result:int32 = -9999	;返回结果
+	ToItemObj:ItemObj	;目标背包道具
+	[ItemObj]
+		Pos:int32 = -1	;Pos
+		ItemData:ItemData	;ItemData
+		[ItemData]
+			IsLock:bool = false	;物品锁
+			OverlayCount:int32 = -1	;物品叠加数量
+			ConfigId:int32 = -1	;物品表的id
+			EquipAttr:EquipAttr	;装备属性
+			[EquipAttr]
+				BaseAttr:AttrKeyValue*	;基础属性
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				ExtraAttr:AttrKeyValue*	;高级属性
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				BattleScore:int32 = -1	;装备评分
+			IsBind:bool = true	;是否绑定
+			Guid:uint64 = 0	;物品guid
+			PetData:PetData	;宠物的数据
+			[PetData]
+				Exp:int32 = -1	;经验
+				Level:int32 = -1	;等级
+				Name:string	;名字
+				Attrs:AttrKeyValue*	;属性
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				BattleScore:int32 = -1	;战力
+				Talent:AttrKeyValue*	;资质
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				SkillList:PetSkill*	;技能列表
+				[PetSkill]
+					SkillId:int32 = -1	;技能id
+					Lock:int32 = -1	;宠物技能锁 0未加锁1加锁
+				IsActive:bool = false	;出站状态
+				TalentScore:int32 = -1	;资质评分
+			BindRule:int32 = 1	;绑定规则
+			SaleCD:int32 = 0	;交易cd
+		RedPoint:bool = false	;是否有红点
+	FromItemObj:ItemObj	;源背包道具
+	[ItemObj]
+		Pos:int32 = -1	;Pos
+		ItemData:ItemData	;ItemData
+		[ItemData]
+			IsLock:bool = false	;物品锁
+			OverlayCount:int32 = -1	;物品叠加数量
+			ConfigId:int32 = -1	;物品表的id
+			EquipAttr:EquipAttr	;装备属性
+			[EquipAttr]
+				BaseAttr:AttrKeyValue*	;基础属性
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				ExtraAttr:AttrKeyValue*	;高级属性
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				BattleScore:int32 = -1	;装备评分
+			IsBind:bool = true	;是否绑定
+			Guid:uint64 = 0	;物品guid
+			PetData:PetData	;宠物的数据
+			[PetData]
+				Exp:int32 = -1	;经验
+				Level:int32 = -1	;等级
+				Name:string	;名字
+				Attrs:AttrKeyValue*	;属性
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				BattleScore:int32 = -1	;战力
+				Talent:AttrKeyValue*	;资质
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				SkillList:PetSkill*	;技能列表
+				[PetSkill]
+					SkillId:int32 = -1	;技能id
+					Lock:int32 = -1	;宠物技能锁 0未加锁1加锁
+				IsActive:bool = false	;出站状态
+				TalentScore:int32 = -1	;资质评分
+			BindRule:int32 = 1	;绑定规则
+			SaleCD:int32 = 0	;交易cd
+		RedPoint:bool = false	;是否有红点
+	FromBagType:int32 = -1	;源背包
+	ToBagType:int32 = -1	;目标背包
+
+BagRpcTidyAsk↑ 整理请求
+	BagType:int32 = -1	;背包类型
+
+BagRpcTidyReply↓ 整理回应
+	Result:int32 = -9999	;返回结果
+	Bags:BagData	;整理后的背包数据
+	[BagData]
+		Items:ItemObj*	;物品列表
+		[ItemObj]
+			Pos:int32 = -1	;Pos
+			ItemData:ItemData	;ItemData
+			[ItemData]
+				IsLock:bool = false	;物品锁
+				OverlayCount:int32 = -1	;物品叠加数量
+				ConfigId:int32 = -1	;物品表的id
+				EquipAttr:EquipAttr	;装备属性
+				[EquipAttr]
+					BaseAttr:AttrKeyValue*	;基础属性
+					[AttrKeyValue]
+						Key:int32 = -1	;属性的key
+						Value:int64 = -1	;Value
+						Quality:int32 = -1	;quality
+					ExtraAttr:AttrKeyValue*	;高级属性
+					[AttrKeyValue]
+						Key:int32 = -1	;属性的key
+						Value:int64 = -1	;Value
+						Quality:int32 = -1	;quality
+					BattleScore:int32 = -1	;装备评分
+				IsBind:bool = true	;是否绑定
+				Guid:uint64 = 0	;物品guid
+				PetData:PetData	;宠物的数据
+				[PetData]
+					Exp:int32 = -1	;经验
+					Level:int32 = -1	;等级
+					Name:string	;名字
+					Attrs:AttrKeyValue*	;属性
+					[AttrKeyValue]
+						Key:int32 = -1	;属性的key
+						Value:int64 = -1	;Value
+						Quality:int32 = -1	;quality
+					BattleScore:int32 = -1	;战力
+					Talent:AttrKeyValue*	;资质
+					[AttrKeyValue]
+						Key:int32 = -1	;属性的key
+						Value:int64 = -1	;Value
+						Quality:int32 = -1	;quality
+					SkillList:PetSkill*	;技能列表
+					[PetSkill]
+						SkillId:int32 = -1	;技能id
+						Lock:int32 = -1	;宠物技能锁 0未加锁1加锁
+					IsActive:bool = false	;出站状态
+					TalentScore:int32 = -1	;资质评分
+				BindRule:int32 = 1	;绑定规则
+				SaleCD:int32 = 0	;交易cd
+			RedPoint:bool = false	;是否有红点
+		BagType:int32 = -1	;背包类型:0背包,1仓库,2临时背包
+		CurCapacity:int32 = -1	;当前的容量
+
+BagRpcTakeAllBackBagsAsk↑ 临时背包全部取回请求
+
+BagRpcTakeAllBackBagsReply↓ 临时背包全部取回回应
+	Result:int32 = -9999	;返回结果
+	Bags:BagData*	;所有背包数据
+	[BagData]
+		Items:ItemObj*	;物品列表
+		[ItemObj]
+			Pos:int32 = -1	;Pos
+			ItemData:ItemData	;ItemData
+			[ItemData]
+				IsLock:bool = false	;物品锁
+				OverlayCount:int32 = -1	;物品叠加数量
+				ConfigId:int32 = -1	;物品表的id
+				EquipAttr:EquipAttr	;装备属性
+				[EquipAttr]
+					BaseAttr:AttrKeyValue*	;基础属性
+					[AttrKeyValue]
+						Key:int32 = -1	;属性的key
+						Value:int64 = -1	;Value
+						Quality:int32 = -1	;quality
+					ExtraAttr:AttrKeyValue*	;高级属性
+					[AttrKeyValue]
+						Key:int32 = -1	;属性的key
+						Value:int64 = -1	;Value
+						Quality:int32 = -1	;quality
+					BattleScore:int32 = -1	;装备评分
+				IsBind:bool = true	;是否绑定
+				Guid:uint64 = 0	;物品guid
+				PetData:PetData	;宠物的数据
+				[PetData]
+					Exp:int32 = -1	;经验
+					Level:int32 = -1	;等级
+					Name:string	;名字
+					Attrs:AttrKeyValue*	;属性
+					[AttrKeyValue]
+						Key:int32 = -1	;属性的key
+						Value:int64 = -1	;Value
+						Quality:int32 = -1	;quality
+					BattleScore:int32 = -1	;战力
+					Talent:AttrKeyValue*	;资质
+					[AttrKeyValue]
+						Key:int32 = -1	;属性的key
+						Value:int64 = -1	;Value
+						Quality:int32 = -1	;quality
+					SkillList:PetSkill*	;技能列表
+					[PetSkill]
+						SkillId:int32 = -1	;技能id
+						Lock:int32 = -1	;宠物技能锁 0未加锁1加锁
+					IsActive:bool = false	;出站状态
+					TalentScore:int32 = -1	;资质评分
+				BindRule:int32 = 1	;绑定规则
+				SaleCD:int32 = 0	;交易cd
+			RedPoint:bool = false	;是否有红点
+		BagType:int32 = -1	;背包类型:0背包,1仓库,2临时背包
+		CurCapacity:int32 = -1	;当前的容量
+
+BagRpcBagChangeNotify↓ 背包数据推送通知
+	Result:int32 = -9999	;返回结果
+	Bags:BagData	;所有背包数据
+	[BagData]
+		Items:ItemObj*	;物品列表
+		[ItemObj]
+			Pos:int32 = -1	;Pos
+			ItemData:ItemData	;ItemData
+			[ItemData]
+				IsLock:bool = false	;物品锁
+				OverlayCount:int32 = -1	;物品叠加数量
+				ConfigId:int32 = -1	;物品表的id
+				EquipAttr:EquipAttr	;装备属性
+				[EquipAttr]
+					BaseAttr:AttrKeyValue*	;基础属性
+					[AttrKeyValue]
+						Key:int32 = -1	;属性的key
+						Value:int64 = -1	;Value
+						Quality:int32 = -1	;quality
+					ExtraAttr:AttrKeyValue*	;高级属性
+					[AttrKeyValue]
+						Key:int32 = -1	;属性的key
+						Value:int64 = -1	;Value
+						Quality:int32 = -1	;quality
+					BattleScore:int32 = -1	;装备评分
+				IsBind:bool = true	;是否绑定
+				Guid:uint64 = 0	;物品guid
+				PetData:PetData	;宠物的数据
+				[PetData]
+					Exp:int32 = -1	;经验
+					Level:int32 = -1	;等级
+					Name:string	;名字
+					Attrs:AttrKeyValue*	;属性
+					[AttrKeyValue]
+						Key:int32 = -1	;属性的key
+						Value:int64 = -1	;Value
+						Quality:int32 = -1	;quality
+					BattleScore:int32 = -1	;战力
+					Talent:AttrKeyValue*	;资质
+					[AttrKeyValue]
+						Key:int32 = -1	;属性的key
+						Value:int64 = -1	;Value
+						Quality:int32 = -1	;quality
+					SkillList:PetSkill*	;技能列表
+					[PetSkill]
+						SkillId:int32 = -1	;技能id
+						Lock:int32 = -1	;宠物技能锁 0未加锁1加锁
+					IsActive:bool = false	;出站状态
+					TalentScore:int32 = -1	;资质评分
+				BindRule:int32 = 1	;绑定规则
+				SaleCD:int32 = 0	;交易cd
+			RedPoint:bool = false	;是否有红点
+		BagType:int32 = -1	;背包类型:0背包,1仓库,2临时背包
+		CurCapacity:int32 = -1	;当前的容量
+
+BagRpcMergeItemAsk↑ MergeItem请求
+	Pos:int32 = -1	;位置
+	BagType:int32 = -1	;背包类型
+
+BagRpcMergeItemReply↓ MergeItem回应
+	Result:int32 = -9999	;返回结果
+	Bags:BagData	;所有背包数据
+	[BagData]
+		Items:ItemObj*	;物品列表
+		[ItemObj]
+			Pos:int32 = -1	;Pos
+			ItemData:ItemData	;ItemData
+			[ItemData]
+				IsLock:bool = false	;物品锁
+				OverlayCount:int32 = -1	;物品叠加数量
+				ConfigId:int32 = -1	;物品表的id
+				EquipAttr:EquipAttr	;装备属性
+				[EquipAttr]
+					BaseAttr:AttrKeyValue*	;基础属性
+					[AttrKeyValue]
+						Key:int32 = -1	;属性的key
+						Value:int64 = -1	;Value
+						Quality:int32 = -1	;quality
+					ExtraAttr:AttrKeyValue*	;高级属性
+					[AttrKeyValue]
+						Key:int32 = -1	;属性的key
+						Value:int64 = -1	;Value
+						Quality:int32 = -1	;quality
+					BattleScore:int32 = -1	;装备评分
+				IsBind:bool = true	;是否绑定
+				Guid:uint64 = 0	;物品guid
+				PetData:PetData	;宠物的数据
+				[PetData]
+					Exp:int32 = -1	;经验
+					Level:int32 = -1	;等级
+					Name:string	;名字
+					Attrs:AttrKeyValue*	;属性
+					[AttrKeyValue]
+						Key:int32 = -1	;属性的key
+						Value:int64 = -1	;Value
+						Quality:int32 = -1	;quality
+					BattleScore:int32 = -1	;战力
+					Talent:AttrKeyValue*	;资质
+					[AttrKeyValue]
+						Key:int32 = -1	;属性的key
+						Value:int64 = -1	;Value
+						Quality:int32 = -1	;quality
+					SkillList:PetSkill*	;技能列表
+					[PetSkill]
+						SkillId:int32 = -1	;技能id
+						Lock:int32 = -1	;宠物技能锁 0未加锁1加锁
+					IsActive:bool = false	;出站状态
+					TalentScore:int32 = -1	;资质评分
+				BindRule:int32 = 1	;绑定规则
+				SaleCD:int32 = 0	;交易cd
+			RedPoint:bool = false	;是否有红点
+		BagType:int32 = -1	;背包类型:0背包,1仓库,2临时背包
+		CurCapacity:int32 = -1	;当前的容量
+
+BagRpcBagSyncAsk↑ 背包数据初始化请求
+
+BagRpcBagSyncReply↓ 背包数据初始化回应
+	Result:int32 = -1	;返回结果
+	Bags:BagData*	;Bags
+	[BagData]
+		Items:ItemObj*	;物品列表
+		[ItemObj]
+			Pos:int32 = -1	;Pos
+			ItemData:ItemData	;ItemData
+			[ItemData]
+				IsLock:bool = false	;物品锁
+				OverlayCount:int32 = -1	;物品叠加数量
+				ConfigId:int32 = -1	;物品表的id
+				EquipAttr:EquipAttr	;装备属性
+				[EquipAttr]
+					BaseAttr:AttrKeyValue*	;基础属性
+					[AttrKeyValue]
+						Key:int32 = -1	;属性的key
+						Value:int64 = -1	;Value
+						Quality:int32 = -1	;quality
+					ExtraAttr:AttrKeyValue*	;高级属性
+					[AttrKeyValue]
+						Key:int32 = -1	;属性的key
+						Value:int64 = -1	;Value
+						Quality:int32 = -1	;quality
+					BattleScore:int32 = -1	;装备评分
+				IsBind:bool = true	;是否绑定
+				Guid:uint64 = 0	;物品guid
+				PetData:PetData	;宠物的数据
+				[PetData]
+					Exp:int32 = -1	;经验
+					Level:int32 = -1	;等级
+					Name:string	;名字
+					Attrs:AttrKeyValue*	;属性
+					[AttrKeyValue]
+						Key:int32 = -1	;属性的key
+						Value:int64 = -1	;Value
+						Quality:int32 = -1	;quality
+					BattleScore:int32 = -1	;战力
+					Talent:AttrKeyValue*	;资质
+					[AttrKeyValue]
+						Key:int32 = -1	;属性的key
+						Value:int64 = -1	;Value
+						Quality:int32 = -1	;quality
+					SkillList:PetSkill*	;技能列表
+					[PetSkill]
+						SkillId:int32 = -1	;技能id
+						Lock:int32 = -1	;宠物技能锁 0未加锁1加锁
+					IsActive:bool = false	;出站状态
+					TalentScore:int32 = -1	;资质评分
+				BindRule:int32 = 1	;绑定规则
+				SaleCD:int32 = 0	;交易cd
+			RedPoint:bool = false	;是否有红点
+		BagType:int32 = -1	;背包类型:0背包,1仓库,2临时背包
+		CurCapacity:int32 = -1	;当前的容量
+
+BagRpcAddItemNotify↓ 新加物品通知
+	Item:ItemObj*	;位置
+	[ItemObj]
+		Pos:int32 = -1	;Pos
+		ItemData:ItemData	;ItemData
+		[ItemData]
+			IsLock:bool = false	;物品锁
+			OverlayCount:int32 = -1	;物品叠加数量
+			ConfigId:int32 = -1	;物品表的id
+			EquipAttr:EquipAttr	;装备属性
+			[EquipAttr]
+				BaseAttr:AttrKeyValue*	;基础属性
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				ExtraAttr:AttrKeyValue*	;高级属性
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				BattleScore:int32 = -1	;装备评分
+			IsBind:bool = true	;是否绑定
+			Guid:uint64 = 0	;物品guid
+			PetData:PetData	;宠物的数据
+			[PetData]
+				Exp:int32 = -1	;经验
+				Level:int32 = -1	;等级
+				Name:string	;名字
+				Attrs:AttrKeyValue*	;属性
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				BattleScore:int32 = -1	;战力
+				Talent:AttrKeyValue*	;资质
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				SkillList:PetSkill*	;技能列表
+				[PetSkill]
+					SkillId:int32 = -1	;技能id
+					Lock:int32 = -1	;宠物技能锁 0未加锁1加锁
+				IsActive:bool = false	;出站状态
+				TalentScore:int32 = -1	;资质评分
+			BindRule:int32 = 1	;绑定规则
+			SaleCD:int32 = 0	;交易cd
+		RedPoint:bool = false	;是否有红点
+
+BagRpcConsumeItemAsk↑ 根据物品id使用物品请求
+	ConfigId:int32* = -1	;物品id
+	ItemData:ItemSimpleData*	;物品id
+	[ItemSimpleData]
+		ConfID:int32 = -1	;道具ConfID
+		Count:int32 = -1	;数量
+
+BagRpcConsumeItemReply↓ 根据物品id使用物品回应
+	Result:int32 = -1	;返回结果
+
+BagRpcItemChangeNotify↓ 物品改变通知
+	ItemList:ItemObj*	;改变的物品
+	[ItemObj]
+		Pos:int32 = -1	;Pos
+		ItemData:ItemData	;ItemData
+		[ItemData]
+			IsLock:bool = false	;物品锁
+			OverlayCount:int32 = -1	;物品叠加数量
+			ConfigId:int32 = -1	;物品表的id
+			EquipAttr:EquipAttr	;装备属性
+			[EquipAttr]
+				BaseAttr:AttrKeyValue*	;基础属性
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				ExtraAttr:AttrKeyValue*	;高级属性
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				BattleScore:int32 = -1	;装备评分
+			IsBind:bool = true	;是否绑定
+			Guid:uint64 = 0	;物品guid
+			PetData:PetData	;宠物的数据
+			[PetData]
+				Exp:int32 = -1	;经验
+				Level:int32 = -1	;等级
+				Name:string	;名字
+				Attrs:AttrKeyValue*	;属性
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				BattleScore:int32 = -1	;战力
+				Talent:AttrKeyValue*	;资质
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				SkillList:PetSkill*	;技能列表
+				[PetSkill]
+					SkillId:int32 = -1	;技能id
+					Lock:int32 = -1	;宠物技能锁 0未加锁1加锁
+				IsActive:bool = false	;出站状态
+				TalentScore:int32 = -1	;资质评分
+			BindRule:int32 = 1	;绑定规则
+			SaleCD:int32 = 0	;交易cd
+		RedPoint:bool = false	;是否有红点
+	BagType:int32 = -1	;背包类型
+
+BagRpcClickItemAsk↑ 点击物品请求
+	Guid:uint64 = 0	;物品GUID
+
+BagRpcClickItemReply↓ 点击物品回应
+	Result:int32 = -1	;返回结果
+	Item:ItemObj	;位置
+	[ItemObj]
+		Pos:int32 = -1	;Pos
+		ItemData:ItemData	;ItemData
+		[ItemData]
+			IsLock:bool = false	;物品锁
+			OverlayCount:int32 = -1	;物品叠加数量
+			ConfigId:int32 = -1	;物品表的id
+			EquipAttr:EquipAttr	;装备属性
+			[EquipAttr]
+				BaseAttr:AttrKeyValue*	;基础属性
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				ExtraAttr:AttrKeyValue*	;高级属性
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				BattleScore:int32 = -1	;装备评分
+			IsBind:bool = true	;是否绑定
+			Guid:uint64 = 0	;物品guid
+			PetData:PetData	;宠物的数据
+			[PetData]
+				Exp:int32 = -1	;经验
+				Level:int32 = -1	;等级
+				Name:string	;名字
+				Attrs:AttrKeyValue*	;属性
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				BattleScore:int32 = -1	;战力
+				Talent:AttrKeyValue*	;资质
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				SkillList:PetSkill*	;技能列表
+				[PetSkill]
+					SkillId:int32 = -1	;技能id
+					Lock:int32 = -1	;宠物技能锁 0未加锁1加锁
+				IsActive:bool = false	;出站状态
+				TalentScore:int32 = -1	;资质评分
+			BindRule:int32 = 1	;绑定规则
+			SaleCD:int32 = 0	;交易cd
+		RedPoint:bool = false	;是否有红点
+

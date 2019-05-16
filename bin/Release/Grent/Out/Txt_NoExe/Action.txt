@@ -1,0 +1,289 @@
+ActionSkillInfo
+	Name:string = Action	;Name
+	CommandList:CommandInfo*	;CommandList
+	[CommandInfo]
+		CommandType:int32 = -1	;CommandType
+		StartTime:float = 0	;StartTime
+		DurationTime:float = 0	;DurationTime
+		AnimationTriggerCondition:int32 = 0	;AnimationTriggerCondition
+		EffectName:string	;EffectName
+		EffectBoneHook:int32 = 0	;EffectBoneHook
+		EffectPositionOffset:V3	;EffectPositionOffset
+		[V3]
+			X:float = 0	;X
+			Y:float = 0	;Y
+			Z:float = 0	;Z
+		EffectStayInLocalSpace:bool = false	;EffectStayInLocalSpace
+		EffectControlObjectId:int32 = 0	;EffectControlObjectId
+		TranslateControlId:int32 = 0	;TranslateControlId
+		TranslateOffset:V3	;TranslateOffset
+		[V3]
+			X:float = 0	;X
+			Y:float = 0	;Y
+			Z:float = 0	;Z
+		ActorAttackPart:int32* = 0	;ActorAttackPart
+		TranslateEase:int32 = 1	;TranslateEase
+		AttackShowHitEffect:bool = false	;AttackShowHitEffect
+		AttackHitEffectName:string	;AttackHitEffectName
+		AttackHitEffectDuration:float = 1.6	;AttackHitEffectDuration
+		AttackFragmentCount:int32 = 1	;分段数
+		AttackFragmentIntervalTime:float = 0	;分段间隔时间
+		AttackDamageRadio:float = 1	;AttackDamageRadio
+		BuffSelfActive:bool = false	;BuffSelfActive
+		BuffTargetActive:bool = false	;BuffTargetActive
+		AttackBehaviourBackDistance:float = 0	;AttackBehaviourBackDistance
+		AttackBehaviourAirHeight:float = 0	;AttackBehaviourAirHeight
+		EffectRotationOffset:V3	;EffectRotationOffset
+		[V3]
+			X:float = 0	;X
+			Y:float = 0	;Y
+			Z:float = 0	;Z
+		FlashControlObjectId:int32 = 0	;FlashControlObjectId
+		AttackStiffTime:float = 0	;AttackStiffTime
+		AttackShake:bool = false	;AttackShake
+		AttackFlash:bool = false	;AttackFlash
+		AttackBehaviourBackSpeed:float = 1	;AttackBehaviourBackSpeed
+		AttackBehaviourAirSpeed:float = 1	;AttackBehaviourAirSpped
+		AttackBehaviourBack:bool = false	;AttackBehaviourBack
+		AttackBehaviourAir:bool = false	;AttackBehaviourAir
+		AttackBehaviourZoom:bool = false	;AttackBehaviourZoom
+		SoundName:string	;SoundName
+		Trigger:bool = false	;Trigger
+		TriggerIndex:int32 = 1	;TriggerIndex
+		AttackHitDummy:int32 = 0	;受击挂载点 1原点 2头 3 胸
+		AttackHitSound:string	;受击音效
+		HitShakeCameraXRange:float = 0	;受击震动X范围
+		HitShakeCameraYRange:float = 0	;受击震动Y范围
+		HitShakeCameraCount:int32 = 1	;震屏次数
+		HitShakeCameraDurationTime:float = 0.1	;震屏时长
+		HiddenWeaponMode:int32 = 0	;隐藏武器
+		NextActionName:string	;下个技能名字
+		TranslateWrapMode:int32 = 0	;位移类型
+		IsTriggerSecondAttack:bool = false	;是否触发触发器
+		IsHitGround:bool = false	;受击是否倒地
+		SkillActionName:string	;技能编辑文件名字
+		WarningRes1:string	;预警资源1
+		WarningRes2:string	;预警资源2
+		WarningMaxScale:V3	;预警最大缩放
+		[V3]
+			X:float = 0	;X
+			Y:float = 0	;Y
+			Z:float = 0	;Z
+		WarningScaleMode:int32 = 0	;预警缩放模式
+		WarningLockAxle:int32 = 0	;锁定轴向
+		WarningPositionOffset:V3	;预警偏移
+		[V3]
+			X:float = 0	;X
+			Y:float = 0	;Y
+			Z:float = 0	;Z
+		IsEffectFollow:bool = false	;是否跟随旋转
+		IsWarningTarget:bool = false	;预警是否需要目标
+		AttackBehaviourAirDurationTime:float = 0	;浮空 空中持续时间
+		IsColliderDestroy:bool = false	;特效碰撞之后是否删除
+		IsAttackRangeFollow:bool = false	;攻击范围是否跟随移动
+		IsAnimationLoop:bool = false	;动画是否循环
+		TranslateAngle:float = 0	;运动角度（0-360）
+		IsAttackRangeShade:bool = false	;是否是遮罩范围
+		AttackInterval:float = 0	;攻击间隔时间
+		IsShowAttackRect:bool = false	;是否显示攻击矩形
+		EffectBulletLaunchAngle:float = 0	;子弹发射角度
+		EffectBulletSpeed:float = 0	;子弹速度
+		EffectBulletLaunchTimeIntervalRange:Range	;每个弹道子弹发射时间间隔
+		[Range]
+			MinValue:float = 0	;最小数
+			MaxValue:float = 0	;最大数
+		EffectBulletMaxCout:int32 = 0	;子弹总数量
+		EffectBulletLifeTimeInteralRange:Range	;子弹存活时间间隔
+		[Range]
+			MinValue:float = 0	;最小数
+			MaxValue:float = 0	;最大数
+		EffectBulletType:int32 = 0	;子弹类型
+		EffectBulletInitPosList:V3*	;子弹初始位置
+		[V3]
+			X:float = 0	;X
+			Y:float = 0	;Y
+			Z:float = 0	;Z
+		EffectBulletLaunchMaxCount:int32 = 0	;单个弹道发射最大数量
+		EffectBulletIsFollow:bool = false	;子弹是否跟随人物方向转向
+		AttackBehaviourAirDownSpeed:float = 0	;浮空降落速度
+		EffectDirectionLockType:int32 = 0	;特效方向锁定类型
+		IsIrregularityEffect:bool = false	;是否是不规则特效
+		EffectSize:V3	;特效size
+		[V3]
+			X:float = 0	;X
+			Y:float = 0	;Y
+			Z:float = 0	;Z
+		AttackRangePostion:V3	;攻击范围起点(右上点)
+		[V3]
+			X:float = 0	;X
+			Y:float = 0	;Y
+			Z:float = 0	;Z
+		AttackRangeSize:V3	;攻击范围的宽高
+		[V3]
+			X:float = 0	;X
+			Y:float = 0	;Y
+			Z:float = 0	;Z
+		AttackShape:int32 = 0	;攻击形状
+		AttackCircleOrigin:V3	;圆形攻击形状原点
+		[V3]
+			X:float = 0	;X
+			Y:float = 0	;Y
+			Z:float = 0	;Z
+		AttackCircleRadius:float = 0	;半径
+		AttackCircleAngle:float = 0	;角度
+		IsUseEffectPos:bool = false	;特效是否使用目标位置
+		TranslateTargetType:int32 = 0	;位置类型
+		HitShakeCameraZRange:float = 0	;震屏z
+	TotalTime:float = 0	;TotalTime
+	IsSing:bool = false	;IsSing
+	SingTime:float = 0	;SingTime
+
+ActionCommandInfo
+	CommandType:int32 = -1	;CommandType
+	StartTime:float = 0	;StartTime
+	DurationTime:float = 0	;DurationTime
+	AnimationTriggerCondition:int32 = 0	;AnimationTriggerCondition
+	EffectName:string	;EffectName
+	EffectBoneHook:int32 = 0	;EffectBoneHook
+	EffectPositionOffset:V3	;EffectPositionOffset
+	[V3]
+		X:float = 0	;X
+		Y:float = 0	;Y
+		Z:float = 0	;Z
+	EffectStayInLocalSpace:bool = false	;EffectStayInLocalSpace
+	EffectControlObjectId:int32 = 0	;EffectControlObjectId
+	TranslateControlId:int32 = 0	;TranslateControlId
+	TranslateOffset:V3	;TranslateOffset
+	[V3]
+		X:float = 0	;X
+		Y:float = 0	;Y
+		Z:float = 0	;Z
+	ActorAttackPart:int32* = 0	;ActorAttackPart
+	TranslateEase:int32 = 1	;TranslateEase
+	AttackShowHitEffect:bool = false	;AttackShowHitEffect
+	AttackHitEffectName:string	;AttackHitEffectName
+	AttackHitEffectDuration:float = 1.6	;AttackHitEffectDuration
+	AttackFragmentCount:int32 = 1	;分段数
+	AttackFragmentIntervalTime:float = 0	;分段间隔时间
+	AttackDamageRadio:float = 1	;AttackDamageRadio
+	BuffSelfActive:bool = false	;BuffSelfActive
+	BuffTargetActive:bool = false	;BuffTargetActive
+	AttackBehaviourBackDistance:float = 0	;AttackBehaviourBackDistance
+	AttackBehaviourAirHeight:float = 0	;AttackBehaviourAirHeight
+	EffectRotationOffset:V3	;EffectRotationOffset
+	[V3]
+		X:float = 0	;X
+		Y:float = 0	;Y
+		Z:float = 0	;Z
+	FlashControlObjectId:int32 = 0	;FlashControlObjectId
+	AttackStiffTime:float = 0	;AttackStiffTime
+	AttackShake:bool = false	;AttackShake
+	AttackFlash:bool = false	;AttackFlash
+	AttackBehaviourBackSpeed:float = 1	;AttackBehaviourBackSpeed
+	AttackBehaviourAirSpeed:float = 1	;AttackBehaviourAirSpped
+	AttackBehaviourBack:bool = false	;AttackBehaviourBack
+	AttackBehaviourAir:bool = false	;AttackBehaviourAir
+	AttackBehaviourZoom:bool = false	;AttackBehaviourZoom
+	SoundName:string	;SoundName
+	Trigger:bool = false	;Trigger
+	TriggerIndex:int32 = 1	;TriggerIndex
+	AttackHitDummy:int32 = 0	;受击挂载点 1原点 2头 3 胸
+	AttackHitSound:string	;受击音效
+	HitShakeCameraXRange:float = 0	;受击震动X范围
+	HitShakeCameraYRange:float = 0	;受击震动Y范围
+	HitShakeCameraCount:int32 = 1	;震屏次数
+	HitShakeCameraDurationTime:float = 0.1	;震屏时长
+	HiddenWeaponMode:int32 = 0	;隐藏武器
+	NextActionName:string	;下个技能名字
+	TranslateWrapMode:int32 = 0	;位移类型
+	IsTriggerSecondAttack:bool = false	;是否触发触发器
+	IsHitGround:bool = false	;受击是否倒地
+	SkillActionName:string	;技能编辑文件名字
+	WarningRes1:string	;预警资源1
+	WarningRes2:string	;预警资源2
+	WarningMaxScale:V3	;预警最大缩放
+	[V3]
+		X:float = 0	;X
+		Y:float = 0	;Y
+		Z:float = 0	;Z
+	WarningScaleMode:int32 = 0	;预警缩放模式
+	WarningLockAxle:int32 = 0	;锁定轴向
+	WarningPositionOffset:V3	;预警偏移
+	[V3]
+		X:float = 0	;X
+		Y:float = 0	;Y
+		Z:float = 0	;Z
+	IsEffectFollow:bool = false	;是否跟随旋转
+	IsWarningTarget:bool = false	;预警是否需要目标
+	AttackBehaviourAirDurationTime:float = 0	;浮空 空中持续时间
+	IsColliderDestroy:bool = false	;特效碰撞之后是否删除
+	IsAttackRangeFollow:bool = false	;攻击范围是否跟随移动
+	IsAnimationLoop:bool = false	;动画是否循环
+	TranslateAngle:float = 0	;运动角度（0-360）
+	IsAttackRangeShade:bool = false	;是否是遮罩范围
+	AttackInterval:float = 0	;攻击间隔时间
+	IsShowAttackRect:bool = false	;是否显示攻击矩形
+	EffectBulletLaunchAngle:float = 0	;子弹发射角度
+	EffectBulletSpeed:float = 0	;子弹速度
+	EffectBulletLaunchTimeIntervalRange:Range	;每个弹道子弹发射时间间隔
+	[Range]
+		MinValue:float = 0	;最小数
+		MaxValue:float = 0	;最大数
+	EffectBulletMaxCout:int32 = 0	;子弹总数量
+	EffectBulletLifeTimeInteralRange:Range	;子弹存活时间间隔
+	[Range]
+		MinValue:float = 0	;最小数
+		MaxValue:float = 0	;最大数
+	EffectBulletType:int32 = 0	;子弹类型
+	EffectBulletInitPosList:V3*	;子弹初始位置
+	[V3]
+		X:float = 0	;X
+		Y:float = 0	;Y
+		Z:float = 0	;Z
+	EffectBulletLaunchMaxCount:int32 = 0	;单个弹道发射最大数量
+	EffectBulletIsFollow:bool = false	;子弹是否跟随人物方向转向
+	AttackBehaviourAirDownSpeed:float = 0	;浮空降落速度
+	EffectDirectionLockType:int32 = 0	;特效方向锁定类型
+	IsIrregularityEffect:bool = false	;是否是不规则特效
+	EffectSize:V3	;特效size
+	[V3]
+		X:float = 0	;X
+		Y:float = 0	;Y
+		Z:float = 0	;Z
+	AttackRangePostion:V3	;攻击范围起点(右上点)
+	[V3]
+		X:float = 0	;X
+		Y:float = 0	;Y
+		Z:float = 0	;Z
+	AttackRangeSize:V3	;攻击范围的宽高
+	[V3]
+		X:float = 0	;X
+		Y:float = 0	;Y
+		Z:float = 0	;Z
+	AttackShape:int32 = 0	;攻击形状
+	AttackCircleOrigin:V3	;圆形攻击形状原点
+	[V3]
+		X:float = 0	;X
+		Y:float = 0	;Y
+		Z:float = 0	;Z
+	AttackCircleRadius:float = 0	;半径
+	AttackCircleAngle:float = 0	;角度
+	IsUseEffectPos:bool = false	;特效是否使用目标位置
+	TranslateTargetType:int32 = 0	;位置类型
+	HitShakeCameraZRange:float = 0	;震屏z
+
+ActionUseless
+
+ActionV2
+	X:float = 0	;X
+	Y:float = 0	;Y
+
+ActionV3
+	X:float = 0	;X
+	Y:float = 0	;Y
+	Z:float = 0	;Z
+
+ActionRange
+	MinValue:float = 0	;最小数
+	MaxValue:float = 0	;最大数
+

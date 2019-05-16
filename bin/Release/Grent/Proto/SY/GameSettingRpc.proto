@@ -1,0 +1,30 @@
+message  GameSettingRpcSyncGameSettingAsk
+{
+
+}
+
+message  GameSettingRpcSyncGameSettingReply
+{
+	optional int32 Result = 1;
+	optional string GameSetting = 2;
+
+}
+
+message  GameSettingRpcSettingAsk
+{
+	optional string GameSetting = 1;
+
+}
+
+message  GameSettingRpcSettingReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  GameSettingRpcGameSettingNotifyNotify
+{
+	optional string GameSetting = 1;
+
+}
+

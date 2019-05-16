@@ -1,0 +1,292 @@
+import "PublicStruct.proto";
+
+//进入场景请求
+message  WorldServerRpcEnterSceneAsk
+{
+	optional uint64 RoleId = 1[default=0];	//角色id
+	optional CharacterLocation Location = 6;	//玩家位置信息
+}
+
+//进入场景回应
+message  WorldServerRpcEnterSceneReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+}
+
+//Login请求
+message  WorldServerRpcLoginGameServerAsk
+{
+	optional TeamInfo Team = 1;	//Team
+	optional OnlineUserInfo RoleInfo = 4;	//RoleInfo
+	optional CharacterLocation Location = 5;	//玩家位置信息
+}
+
+//Login回应
+message  WorldServerRpcLogoutGameServerAsk
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	optional OnlineUserInfo RoleInfo = 2;	//RoleInfo
+}
+
+//UpdateRoleInfo请求
+message  WorldServerRpcUpdateRoleInfoAsk
+{
+	optional OnlineUserInfo RoleInfo = 1;	//RoleInfo
+}
+
+//UpdateRoleInfo回应
+message  WorldServerRpcUpdateRoleInfoReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+}
+
+//CreateDungeonNotify请求
+message  WorldServerRpcCreateDungeonNotifyAsk
+{
+	optional int32 CurSceneId = 1[default=-1];	//场景id
+	optional uint64 RoleId = 2[default=0];	//玩家的唯一id
+	optional int32 TargetSceneId = 5[default=-1];	//场景id
+}
+
+//CreateDungeonNotify回应
+message  WorldServerRpcCreateDungeonNotifyReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+}
+
+//ExitDungeon请求
+message  WorldServerRpcExitDungeonAsk
+{
+	optional uint64 RoleId = 1[default=0];	//玩家的唯一id
+}
+
+//ExitDungeon回应
+message  WorldServerRpcExitDungeonReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+}
+
+//UpdateTeamInfo请求
+message  WorldServerRpcUpdateTeamInfoAsk
+{
+	optional TeamMemberInfo TeamMember = 1;	//TeamMember
+	optional uint64 RoleId = 2[default=0];	//MemId
+	optional TeamInfo Team = 4;	//队伍信息
+	optional int32 TeamType = 5[default=-1];	//队伍类型
+}
+
+//UpdateTeamInfo回应
+message  WorldServerRpcUpdateTeamInfoReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+}
+
+//播放动画 队伍请求
+message  WorldServerRpcPlayCgTeamAsk
+{
+	optional uint64 PlayRoleId = 1[default=0];	//角色ID
+	optional int32 CgId = 2[default=-1];	//动画ID
+	/*
+	状态
+	0 ： 开始  1：结束
+	*/
+	optional int32 State = 3[default=-1];
+	optional uint64 RoleId = 4[default=0];	//处理消息的roleID
+}
+
+//播放动画 队伍回应
+message  WorldServerRpcPlayCgTeamReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//发送邮件请求
+message  WorldServerRpcSendMailAsk
+{
+	optional MailInfo Mail = 1;	//邮件列表
+	optional uint64 GlobalMailID = 2[default=0];	//全服邮件ID
+}
+
+//发送邮件回应
+message  WorldServerRpcSendMailReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//改变队伍类型请求
+message  WorldServerRpcChangeTeamTypeAsk
+{
+	optional uint64 TeamId = 1[default=0];	//队伍id
+	optional uint64 RoleId = 2[default=0];	//玩家id
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 3[default=-1];
+	optional int32 TeamType = 4[default=-1];	//队伍类型
+	optional TeamTarget Target = 5;	//目标
+}
+
+//改变队伍类型回应
+message  WorldServerRpcChangeTeamTypeReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//自动匹配请求
+message  WorldServerRpcAutoMatchAsk
+{
+	optional TeamMemberInfo MemberInfo = 1;	//玩家队伍信息
+	optional PlayerMatchData MatchInfo = 3;	//匹配信息
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 4[default=-1];
+}
+
+//自动匹配回应
+message  WorldServerRpcAutoMatchReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//取消匹配请求
+message  WorldServerRpcCancelMatchAsk
+{
+	optional uint64 RoleId = 1[default=0];	//被拒绝RoleId
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 2[default=-1];
+	optional int32 IsNotify = 3[default=0];	//是否是通知
+}
+
+//取消匹配回应
+message  WorldServerRpcCancelMatchReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//登录服务器回应
+message  WorldServerRpcLoginGameServerReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional TeamInfo Team = 2;	//Team
+	optional OnlineUserInfo RoleInfo = 3;	//RoleInfo
+	optional CharacterLocation Location = 4;	//玩家位置信息
+}
+
+//LoginGameServer回应
+message  WorldServerRpcLogoutGameServerReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//获取玩家信息请求
+message  WorldServerRpcGetPlayerInfoAsk
+{
+	optional uint64 Player_guid = 1[default=0];	//玩家guid
+}
+
+//获取玩家信息回应
+message  WorldServerRpcGetPlayerInfoReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional string Player_name = 2;	//玩家名字
+	optional uint64 Player_guid = 3[default=0];	//玩家GUID
+	optional int32 Avatar_id = 4[default=-1];	//头像ID
+	optional int32 Player_level = 5[default=-1];	//等级
+	optional int32 Avatar_frame_id = 6[default=-1];	//头像框ID
+	optional int32 Config_id = 7[default=-1];	//角色配置ID
+	optional uint64 Guild_id = 8[default=0];	//公会id
+	optional string Guild_name = 9;	//公会名字
+	repeated ItemData Equip_data = 10;	//装备信息
+	repeated SuitInfo Suit_infos = 11;	//Suit_infos
+	repeated EquipSlotInfo EquipSlotData = 12;	//装备槽信息
+	repeated EquipSlotStarInfo EquipSlotStarList = 13;	//装备槽星级列表
+	repeated JewelInfo JewelInfos = 14;	//宝石信息
+	optional int32 BattleScore = 16[default=-1];	//战斗力
+	optional ItemData Pet_item_data = 18;	//宠物数据
+	optional int32 TreasureHair = 19[default=-1];	//头发时装ID
+	optional int32 TreasureHead = 20[default=-1];	//头部时装ID
+	optional int32 TreasureBody = 21[default=-1];	//身体时装
+	optional int32 TreasureWeapon = 22[default=-1];	//武器时装
+	optional int32 TreasureWing = 23[default=-1];	//翅膀时装
+	optional uint64 TeamId = 24[default=0];	//队伍id
+}
+

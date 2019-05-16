@@ -1,0 +1,182 @@
+import "PublicStruct.proto";
+
+//累计登陆福利请求
+message  WelfareRpcAccumulateSignInAsk
+{
+}
+
+//累计登陆福利回应
+message  WelfareRpcAccumulateSignInReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated AccumulateSignInfo AccumulateList = 2;	//累计登陆信息
+	optional int32 AccumulateDays = 3[default=-1];	//累计登陆天数
+}
+
+//领取累计登陆奖励请求
+message  WelfareRpcAccumulateGetRewardAsk
+{
+	optional int32 ID = 1[default=-1];	//ID
+}
+
+//领取累计登陆奖励回应
+message  WelfareRpcAccumulateGetRewardReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional int32 RewardID = 2[default=-1];	//奖励ID
+}
+
+//今日在线福利请求
+message  WelfareRpcOnlineBonusAsk
+{
+}
+
+//今日在线福利回应
+message  WelfareRpcOnlineBonusReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated OnlineInfo OnlineBonusList = 2;	//今日在线福利信息
+	optional int32 TodayOnlineTime = 3[default=-1];	//今日在线时间
+}
+
+//领取今日在线奖励请求
+message  WelfareRpcOnlineGetRewardAsk
+{
+	optional int32 ID = 1[default=-1];	//ID
+}
+
+//领取今日在线奖励回应
+message  WelfareRpcOnlineGetRewardReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional int32 RewardID = 3[default=-1];	//奖励ID
+}
+
+//等级福利请求
+message  WelfareRpcLevelBonusAsk
+{
+}
+
+//等级福利回应
+message  WelfareRpcLevelBonusReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated LevelInfo LevelBonusList = 2;	//等级福利信息
+}
+
+//领取等级福利奖励请求
+message  WelfareRpcLevelBonusRewardAsk
+{
+	optional int32 ID = 1[default=-1];	//ID
+}
+
+//领取等级福利奖励回应
+message  WelfareRpcLevelBonusRewardReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional int32 RewardID = 2[default=-1];	//奖励ID
+}
+
+//签到福利请求
+message  WelfareRpcMonthSignInBonusAsk
+{
+}
+
+//签到福利回应
+message  WelfareRpcMonthSignInBonusReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional int32 Year = 2[default=-1];	//年
+	optional int32 Month = 3[default=-1];	//月
+	optional int32 Date = 4[default=-1];	//日
+	optional int32 FixSignInTimes = 5[default=-1];	//补签剩余次数
+	repeated MonthSignInInfo MonthSignInList = 6;	//签到福利信息
+	optional int32 Day = 7[default=-1];	//周几
+	optional bool TodaySignIn = 8[default=false];	//今天是否签到
+	optional int32 FixSignInDays = 9[default=-1];	//可补签的最后一天
+}
+
+//签到请求
+message  WelfareRpcMonthSignInRewardAsk
+{
+	optional int32 ID = 1[default=-1];	//ID
+}
+
+//签到回应
+message  WelfareRpcMonthSignInRewardReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional int32 RewardID = 2[default=-1];	//奖励ID
+	optional int32 FixSignInTimes = 3[default=-1];	//可补签天数
+}
+
+//今日签到提醒通知
+message  WelfareRpcTodaySignInNotify
+{
+	optional bool TodaySignIn = 2[default=false];	//今日是否已签到
+}
+
+//运营登录活动通知
+message  WelfareRpcSpecLoginNotify
+{
+	repeated SpecLoginInfo SpecLogin = 1;	//运营登录活动消息
+}
+
+//运营登录活动领取奖励请求
+message  WelfareRpcSpecLoginRewardAsk
+{
+	optional int32 Id = 1[default=-1];	//活动id
+	optional int32 Index = 3[default=-1];	//索引
+}
+
+//运营登录活动领取奖励回应
+message  WelfareRpcSpecLoginRewardReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+

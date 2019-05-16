@@ -1,0 +1,88 @@
+message  MedicamentRpcFillHpAsk
+{
+	optional ItemSimpleData ItemData = 1;
+
+}
+
+message  MedicamentRpcFillHpReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  MedicamentRpcOneStepFillHpAsk
+{
+	repeated ItemSimpleData ItemData = 3;
+
+}
+
+message  MedicamentRpcOneStepFillHpReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  MedicamentRpcClientRefreshMedicamentAsk
+{
+	optional RecoverMedicament Medicament = 1;
+
+}
+
+message  MedicamentRpcClientRefreshMedicamentReply
+{
+	optional int32 Result = 1;
+	optional RecoverMedicament Medicament = 2;
+
+}
+
+message  MedicamentRpcServerRefreshMedicamentNotify
+{
+	optional RecoverMedicament Medicament = 1;
+
+}
+
+message  MedicamentRpcSyncMedicamentDataAsk
+{
+
+}
+
+message  MedicamentRpcSyncMedicamentDataReply
+{
+	optional int32 Result = 1;
+	optional RecoverMedicament Medicament = 2;
+
+}
+
+message  MedicamentRpcMedicamentCDAsk
+{
+
+}
+
+message  MedicamentRpcMedicamentCDReply
+{
+	optional int32 Result = 1;
+	optional int32 LeftTime = 2;
+
+}
+
+message  MedicamentRpcMedicamentCDNotifyNotify
+{
+	optional int32 LeftTime = 1;
+
+}
+
+message  ItemSimpleData
+{
+	optional int32 ConfID = 1[default=-1];
+	optional int32 Count = 2[default=-1];
+
+}
+
+message  RecoverMedicament
+{
+	repeated int32 HpMedicamentList = 1;
+	optional int32 AutoHpMedicament = 2[default=-1];
+	optional int32 HpPercentage = 3[default=-1];
+
+}
+

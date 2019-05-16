@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<Root Module="Dungeon" CName="副本" MsgNumStart="6" SyncDataVersion="1" Comment="">
+    <Operate Name="CreateDungeon" CName="CreateDungeon" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="6" DataStruct="RpcCreateDungeonAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="7" DataStruct="RpcCreateDungeonReply" Comment="" />
+    </Operate>
+    <Operate Name="ExitDungeon" CName="退出副本" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="8" DataStruct="RpcExitDungeonAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="9" DataStruct="RpcExitDungeonReply" Comment="" />
+    </Operate>
+    <Operate Name="EnterDungeon" CName="进入副本通知" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="10" DataStruct="RpcEnterDungeonAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="11" DataStruct="RpcEnterDungeonReply" Comment="" />
+    </Operate>
+    <Operate Name="InformCreateDungeon" CName="队长创建副本以后通知我" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="12" DataStruct="RpcInformCreateDungeonAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="13" DataStruct="RpcInformCreateDungeonReply" Comment="" />
+    </Operate>
+    <Operate Name="Settlement" CName="Settlement" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="14" DataStruct="RpcSettlementNotify" Comment="" />
+    </Operate>
+    <Operate Name="DungeonData" CName="战况信息" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="15" DataStruct="RpcDungeonDataNotify" Comment="" />
+    </Operate>
+    <Operate Name="DungeonSync" CName="副本数据请求" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="16" DataStruct="RpcDungeonSyncAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="17" DataStruct="RpcDungeonSyncReply" Comment="" />
+    </Operate>
+    <Operate Name="DungeonListInfo" CName="副本挑战信息" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="18" DataStruct="RpcDungeonListInfoAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="19" DataStruct="RpcDungeonListInfoReply" Comment="" />
+    </Operate>
+    <Operate Name="CreateTutorial" CName="创建序章副本" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="20" DataStruct="RpcCreateTutorialAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="21" DataStruct="RpcCreateTutorialReply" Comment="" />
+    </Operate>
+    <Operate Name="QuitTutorial" CName="强制退出序章" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="22" DataStruct="RpcQuitTutorialAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="23" DataStruct="RpcQuitTutorialReply" Comment="" />
+    </Operate>
+    <Operate Name="DungeonTarget" CName="副本目标" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="24" DataStruct="RpcDungeonTargetNotify" Comment="" />
+    </Operate>
+    <Operate Name="TargetContentChange" CName="副本子任务完成情况" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="25" DataStruct="RpcTargetContentChangeNotify" Comment="" />
+    </Operate>
+    <Operate Name="Dungeon_Notify" CName="副本提示" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="26" DataStruct="RpcDungeon_NotifyNotify" Comment="" />
+    </Operate>
+    <Struct Name="RpcCreateDungeonAsk" CName="CreateDungeon请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="RoleId" CName="HumanRoleId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="DungeonConfigId" CName="副本配置id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcCreateDungeonReply" CName="CreateDungeon回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="DungeonConfigId" CName="副本配置id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="SceneConfigId" CName="场景id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcExitDungeonAsk" CName="退出副本请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="RoleId" CName="HumanRoleId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="SceneId" CName="场景id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcExitDungeonReply" CName="退出副本回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="SceneConfigId" CName="SceneConfigId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="SceneId" CName="场景id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcInformCreateDungeonAsk" CName="队长创建副本以后通知我请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="6">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="RoleId" CName="玩家的唯一id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="TargetSceneId" CName="目标场景id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="DungeonConfigId" CName="副本配置id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="4" Name="CurSceneId" CName="队员当前场景" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="5" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="uint64" FieldId="6" Name="RoleIds" CName="玩家的唯一id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcInformCreateDungeonReply" CName="队长创建副本以后通知我回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcSettlementNotify" CName="Settlement通知" ProtoType="RpcProto" Comment="副本结算" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="SettlementResult" CName="SettlementResult" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="结算结果:0成功,1失败" />
+    </Struct>
+    <Struct Name="RpcEnterDungeonAsk" CName="进入副本通知请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="SceneId" CName="场景id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="DungeonConfigId" CName="副本配置id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcEnterDungeonReply" CName="进入副本通知回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcDungeonDataNotify" CName="战况信息通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="BeginTime" CName="副本开始时间" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcDungeonSyncAsk" CName="副本数据请求请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcDungeonSyncReply" CName="副本数据请求回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="DungeonData" FieldId="2" Name="Data" CName="副本数据" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcDungeonListInfoAsk" CName="副本挑战信息请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcDungeonListInfoReply" CName="副本挑战信息回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="DungeonBossInfo" FieldId="3" Name="DungeonBossData" CName="副本BOSS挑战数据" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcCreateTutorialAsk" CName="创建序章副本请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="RoleId" CName="HumanRoleId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="DungeonConfigId" CName="副本配置id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcCreateTutorialReply" CName="创建序章副本回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="DungeonConfigId" CName="副本配置id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="4" Name="SceneConfigId" CName="场景id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcQuitTutorialAsk" CName="强制退出序章请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcQuitTutorialReply" CName="强制退出序章回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcDungeonTargetNotify" CName="副本目标通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="repeated" FieldType="DungeonTarget" FieldId="1" Name="DungeonTarget" CName="DungeonTarget" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcTargetContentChangeNotify" CName="副本子任务完成情况通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Index" CName="目标序号" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="SubIndex" CName="子任务序号" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="CurCount" CName="当前完成情况" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcDungeon_NotifyNotify" CName="副本提示通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="TextId" CName="副本提示id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+</Root>

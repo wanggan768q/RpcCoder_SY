@@ -1,0 +1,96 @@
+import "PublicStruct.proto";
+
+//玩法开启规则通知
+message  ClimTowerRpcOpenRuleNotify
+{
+}
+
+//挑战请求
+message  ClimTowerRpcChallengeAsk
+{
+	optional int32 Layer = 1[default=1];	//挑战层
+}
+
+//挑战回应
+message  ClimTowerRpcChallengeReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional int32 DungeonId = 2[default=-1];	//副本id
+	optional int32 SceneId = 3[default=-1];	//场景id
+	optional int32 WayPoint = 4[default=-1];	//路点
+}
+
+//进入爬塔活动请求
+message  ClimTowerRpcEnterAsk
+{
+}
+
+//进入爬塔活动回应
+message  ClimTowerRpcEnterReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional ClimTowerInfo EnterInfo = 2;	//进入爬塔挑战
+	optional int32 RemainTimes = 3[default=0];	//剩余挑战次数
+}
+
+//获取排行榜信息请求
+message  ClimTowerRpcRankAsk
+{
+}
+
+//获取排行榜信息回应
+message  ClimTowerRpcRankReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//首次通关奖励领奖请求
+message  ClimTowerRpcFirstVicRewardAsk
+{
+	optional int32 Layer = 1[default=-1];	//领取哪一层奖励
+}
+
+//首次通关奖励领奖回应
+message  ClimTowerRpcFirstVicRewardReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//下一层通知通知
+message  ClimTowerRpcNextLayerNotify
+{
+	optional int32 CurLayer = 1[default=-1];	//当前层
+}
+
+//挑战结束通知
+message  ClimTowerRpcChallengeEndNotify
+{
+}
+
+//每波怪物刷新通知通知
+message  ClimTowerRpcWaveRefreshNotify
+{
+	optional int32 AllWaves = 1[default=-1];	//总共几波怪物
+	optional int32 CurWave = 2[default=-1];	//当前怪物波数
+}
+

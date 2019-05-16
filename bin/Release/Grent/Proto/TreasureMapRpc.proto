@@ -1,0 +1,27 @@
+import "PublicStruct.proto";
+
+//同步请求
+message  TreasureMapRpcTreasureMapSyncAsk
+{
+}
+
+//同步回应
+message  TreasureMapRpcTreasureMapSyncReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional int32 TreasureMapId = 2[default=-1];	//藏宝图ID
+	optional int32 HighTreasureMapId = 3[default=-1];	//高级藏宝图ID
+}
+
+//变化通知
+message  TreasureMapRpcTreasureMapChangeNotify
+{
+	optional int32 TreasureMapId = 1[default=-1];	//id
+	optional int32 HighTreasureMapId = 2[default=-1];	//高级藏宝图ID
+}
+

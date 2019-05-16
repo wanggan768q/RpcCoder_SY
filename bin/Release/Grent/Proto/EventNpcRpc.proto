@@ -1,0 +1,42 @@
+import "PublicStruct.proto";
+
+//开始交互请求
+message  EventNpcRpcBeginEventAsk
+{
+	optional int32 EventIndex = 1[default=-1];	//索引
+}
+
+//开始交互回应
+message  EventNpcRpcBeginEventReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//交互结束请求
+message  EventNpcRpcEndEventAsk
+{
+}
+
+//交互结束回应
+message  EventNpcRpcEndEventReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//活动开始通知
+message  EventNpcRpcActivityBeginNotify
+{
+	optional int32 StartTime = 1[default=-1];	//开始时间
+	optional int32 WayPoint = 4[default=-1];	//路点ID
+}
+

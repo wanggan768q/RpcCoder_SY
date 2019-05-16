@@ -1246,7 +1246,7 @@
                 }
                 foreach (Module.OperaterItem item in m.operateItem)
                 {
-                    Console.WriteLine(ModuleAllName);
+                    //Console.WriteLine(ModuleAllName);
                     GenRpcCode(m, item, ref msgId, ref ModuleAllName, ref operationDeclare, ref operationImpl, ref operationImplement, ref num5, ref num6, ref defMessageIdT);
                 }
                 ArrayList list6 = XMLSerializer.OrderDataStruct(m.moduleDataStruct);

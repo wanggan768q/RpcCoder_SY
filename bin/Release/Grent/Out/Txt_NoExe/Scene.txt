@@ -1,0 +1,99 @@
+SceneRpcLoadSceneCompleteAsk↑ 进入场景完成请求
+	RoleId:uint64 = 0	;角色id
+	SceneId:int32 = -1	;场景id
+
+SceneRpcLoadSceneCompleteReply↓ 进入场景完成回应
+	Result:int32 = -9999	;返回结果
+	RoleInfo:CharacterInfo	;人物信息
+	[CharacterInfo]
+		RoleId:uint64 = 0	;roleID
+		Nickname:string	;昵称
+		ConfigId:int32 = -1	;配置表id
+		Hp:int32 = -1	;血量
+		HpMax:int32 = -1	;血量上限
+		Level:int32 = -1	;Level
+	ObjId:int32 = -1	;玩家objid
+	Pos:V3	;位置
+	[V3]
+		X:float = -1	;x
+		Y:float = -1	;y
+		Z:float = -1	;z
+	Dir:float = -1	;方向
+
+SceneRpcDeletePlayerNotify↓ 删除玩家通知
+	ObjId:int32 = -1	;obj id
+	SceneId:int32 = -1	;场景id
+
+SceneRpcConnectGameServerAsk↑ 连接场景服务器请求
+	RoleId:uint64 = 0	;角色id
+	Key:string	;key
+
+SceneRpcConnectGameServerReply↓ 连接场景服务器回应
+	Result:int32 = -9999	;返回结果
+	RoleId:uint64 = 0	;角色id
+	SceneId:int32 = -1	;SceneId
+
+SceneRpcChangeSceneAsk↑ 多线程移除场景上的玩家请求
+	RoleId:uint64 = 0	;玩家的唯一id
+	CurSceneId:int32 = -1	;场景id
+	TargetSceneId:int32 = -1	;目标场景id
+
+SceneRpcChangeSceneReply↓ 多线程移除场景上的玩家回应
+	Result:int32 = -9999	;返回结果
+	RoleId:uint64 = 0	;玩家的唯一id
+	CurSceneId:int32 = -1	;场景id
+	TargetSceneId:int32 = -1	;目标场景id
+
+SceneRpcCreateObjNotify↓ 创建物体通知
+	ObjId:int32 = -1	;id
+	Pos:V3	;位置
+	[V3]
+		X:float = -1	;x
+		Y:float = -1	;y
+		Z:float = -1	;z
+	Dir:float = -1	;方向
+	ObjType:int32 = -1	;类型
+	ConfigId:int32 = -1	;config id
+	Status:int32 = -1	;状态
+	MoveSpeed:float = -1	;MoveSpeed
+	RoleId:uint64 = 0	;玩家唯一id
+	NickName:string	;名字昵称
+	Hp:int32 = -1	;血量
+	TargetPos:V3	;目标点（针对npc）
+	[V3]
+		X:float = -1	;x
+		Y:float = -1	;y
+		Z:float = -1	;z
+	HpMax:sint64 = -1	;血量上限
+
+SceneRpcSurroundingHumanAsk↑ SurroundingHuman请求
+
+SceneRpcSurroundingHumanReply↓ SurroundingHuman回应
+	Result:int32 = -9999	;返回结果
+	RoleList:CharacterInfo*	;RoleList
+	[CharacterInfo]
+		RoleId:uint64 = 0	;roleID
+		Nickname:string	;昵称
+		ConfigId:int32 = -1	;配置表id
+		Hp:int32 = -1	;血量
+		HpMax:int32 = -1	;血量上限
+		Level:int32 = -1	;Level
+
+SceneRpcCEnterSceneNotify↑ 进入场景通知
+	SceneId:int32 = -1	;场景id
+	MapId:int32 = -1	;表当中的mapid
+
+SceneRpcSEnterSceneNotify↓ 进入场景返回通知
+	Result:int32 = -9999	;返回结果
+	SceneId:int32 = -1	;当返回不能进入，用这个来重新进入
+	SceneConfigId:int32 = -1	;SceneConfigId
+	MapId:int32 = -1	;表当中的mapid
+	RoleId:uint64 = 0	;roleID
+	DungeonConfigId:int32 = -1	;DungeonConfigId
+
+SceneRpcObjDieNotify↓ ObjDie通知
+	ObjId:int32 = -1	;ObjId
+	RespawnTime:int32 = -1	;Respawn
+	ConfigId:int32 = -1	;ConfigId
+	ObjType:int32 = -1	;ObjType
+

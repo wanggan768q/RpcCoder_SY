@@ -1,0 +1,192 @@
+message  WelfareRpcAccumulateSignInAsk
+{
+
+}
+
+message  WelfareRpcAccumulateSignInReply
+{
+	optional int32 Result = 1;
+	repeated AccumulateSignInfo AccumulateList = 2;
+	optional int32 AccumulateDays = 3;
+
+}
+
+message  WelfareRpcAccumulateGetRewardAsk
+{
+	optional int32 ID = 1;
+
+}
+
+message  WelfareRpcAccumulateGetRewardReply
+{
+	optional int32 Result = 1;
+	optional int32 RewardID = 2;
+
+}
+
+message  WelfareRpcOnlineBonusAsk
+{
+
+}
+
+message  WelfareRpcOnlineBonusReply
+{
+	optional int32 Result = 1;
+	repeated OnlineInfo OnlineBonusList = 2;
+	optional int32 TodayOnlineTime = 3;
+
+}
+
+message  WelfareRpcOnlineGetRewardAsk
+{
+	optional int32 ID = 1;
+
+}
+
+message  WelfareRpcOnlineGetRewardReply
+{
+	optional int32 Result = 1;
+	optional int32 RewardID = 3;
+
+}
+
+message  WelfareRpcLevelBonusAsk
+{
+
+}
+
+message  WelfareRpcLevelBonusReply
+{
+	optional int32 Result = 1;
+	repeated LevelInfo LevelBonusList = 2;
+
+}
+
+message  WelfareRpcLevelBonusRewardAsk
+{
+	optional int32 ID = 1;
+
+}
+
+message  WelfareRpcLevelBonusRewardReply
+{
+	optional int32 Result = 1;
+	optional int32 RewardID = 2;
+
+}
+
+message  WelfareRpcMonthSignInBonusAsk
+{
+
+}
+
+message  WelfareRpcMonthSignInBonusReply
+{
+	optional int32 Result = 1;
+	optional int32 Year = 2;
+	optional int32 Month = 3;
+	optional int32 Date = 4;
+	optional int32 FixSignInTimes = 5;
+	repeated MonthSignInInfo MonthSignInList = 6;
+	optional int32 Day = 7;
+	optional bool TodaySignIn = 8[default=false];
+	optional int32 FixSignInDays = 9;
+
+}
+
+message  WelfareRpcMonthSignInRewardAsk
+{
+	optional int32 ID = 1;
+
+}
+
+message  WelfareRpcMonthSignInRewardReply
+{
+	optional int32 Result = 1;
+	optional int32 RewardID = 2;
+	optional int32 FixSignInTimes = 3;
+
+}
+
+message  WelfareRpcTodaySignInNotify
+{
+	optional bool TodaySignIn = 2[default=false];
+
+}
+
+message  WelfareRpcSpecLoginNotify
+{
+	repeated SpecLoginInfo SpecLogin = 1;
+
+}
+
+message  WelfareRpcSpecLoginRewardAsk
+{
+	optional int32 Id = 1;
+	optional int32 Index = 3;
+
+}
+
+message  WelfareRpcSpecLoginRewardReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  AccumulateSignInfo
+{
+	optional int32 ID = 1[default=-1];
+	optional bool State = 2[default=false];
+	optional WelfareReward RewardInfo = 3;
+
+}
+
+message  OnlineInfo
+{
+	optional int32 ID = 1[default=-1];
+	optional bool State = 2[default=false];
+	optional WelfareReward RewardInfo = 3;
+
+}
+
+message  LevelInfo
+{
+	optional int32 ID = 2[default=-1];
+	optional bool State = 3[default=false];
+	repeated WelfareReward RewardInfo = 4;
+
+}
+
+message  MonthSignInInfo
+{
+	optional int32 ID = 1[default=-1];
+	optional bool State = 2[default=false];
+	optional WelfareReward RewardInfo = 3;
+
+}
+
+message  SpecLoginInfo
+{
+	optional int32 Id = 1[default=-1];
+	optional int64 BeginTime = 2[default=-1];
+	optional int64 EndTime = 3[default=-1];
+	repeated SpecLoginReward RewardInfo = 4;
+	optional int32 State = 5[default=-1];
+
+}
+
+message  WelfareReward
+{
+	optional int32 RewardID = 1[default=-1];
+	optional int32 RewardNum = 2[default=-1];
+
+}
+
+message  SpecLoginReward
+{
+	optional int32 Index = 1[default=-1];
+	optional int32 Get = 2[default=-1];
+	optional int64 SetTime = 3[default=-1];
+
+}
+

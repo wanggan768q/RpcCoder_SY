@@ -1,0 +1,105 @@
+message  ActivityRpcEliteMonsterInfoNotify
+{
+	optional int32 State = 2;
+	optional EliteMonsterInfo Info = 3;
+
+}
+
+message  ActivityRpcCreateObjAsk
+{
+	optional int32 CommonId = 1;
+
+}
+
+message  ActivityRpcCreateObjReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  ActivityRpcOpenActivityNotify
+{
+	optional int32 ActId = 1;
+	optional int32 DiffTm = 2;
+	optional int32 SceneId = 3;
+	optional Vector3 Pos = 4;
+
+}
+
+message  ActivityRpcXingyaoAsk
+{
+	optional int32 NPCid = 1;
+
+}
+
+message  ActivityRpcXingyaoReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  ActivityRpcActivityTimeNotify
+{
+	repeated ActivityTime ActTimeList = 1;
+
+}
+
+message  ActivityRpcReqActivityTimeAsk
+{
+
+}
+
+message  ActivityRpcReqActivityTimeReply
+{
+	optional int32 Result = 1;
+	repeated ActivityTime ActTimeList = 2;
+
+}
+
+message  ActivityRpcXingyaoNPCAsk
+{
+
+}
+
+message  ActivityRpcXingyaoNPCReply
+{
+	optional int32 Result = 1;
+	optional int32 Sceneid = 2;
+	optional int32 Waypoinid = 3;
+
+}
+
+message  ActivityRpcXingyaoRewardNotify
+{
+
+}
+
+message  ActivityRpcOperationTimeNotify
+{
+	repeated ActivityTime ActTimeList = 1;
+
+}
+
+message  EliteMonsterInfo
+{
+	optional int32 FinishTime = 3[default=-1];
+	optional int32 CommonId = 4[default=-1];
+
+}
+
+message  Vector3
+{
+	optional float X = 1[default=-1];
+	optional float Y = 2[default=-1];
+	optional float Z = 3[default=-1];
+
+}
+
+message  ActivityTime
+{
+	optional int64 Begin = 1[default=-1];
+	optional int64 End = 2[default=-1];
+	optional int32 Id = 3[default=-1];
+
+}
+

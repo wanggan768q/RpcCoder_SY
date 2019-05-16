@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<Root Module="Auction" CName="拍卖行" MsgNumStart="52" SyncDataVersion="1" Comment="">
+    <Operate Name="AuctionInfo" CName="查询拍卖行信息" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="52" DataStruct="RpcAuctionInfoAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="53" DataStruct="RpcAuctionInfoReply" Comment="" />
+    </Operate>
+    <Operate Name="SellItem" CName="请求上架" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="54" DataStruct="RpcSellItemAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="55" DataStruct="RpcSellItemReply" Comment="" />
+    </Operate>
+    <Operate Name="SellAgain" CName="重新上架" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="56" DataStruct="RpcSellAgainAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="57" DataStruct="RpcSellAgainReply" Comment="" />
+    </Operate>
+    <Operate Name="Buy" CName="购买" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="58" DataStruct="RpcBuyAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="59" DataStruct="RpcBuyReply" Comment="" />
+    </Operate>
+    <Operate Name="GetItem" CName="取回拍卖道具" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="60" DataStruct="RpcGetItemAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="61" DataStruct="RpcGetItemReply" Comment="" />
+    </Operate>
+    <Operate Name="Record" CName="交易记录" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="62" DataStruct="RpcRecordAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="63" DataStruct="RpcRecordReply" Comment="" />
+    </Operate>
+    <Operate Name="ItemInfoByClass" CName="按类别查询简单信息" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="64" DataStruct="RpcItemInfoByClassAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="65" DataStruct="RpcItemInfoByClassReply" Comment="" />
+    </Operate>
+    <Operate Name="SalePrepare" CName="预上架" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="66" DataStruct="RpcSalePrepareAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="67" DataStruct="RpcSalePrepareReply" Comment="" />
+    </Operate>
+    <Operate Name="GetItemBack" CName="取回上架物品" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="68" DataStruct="RpcGetItemBackAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="69" DataStruct="RpcGetItemBackReply" Comment="" />
+    </Operate>
+    <Operate Name="GetMySaleList" CName="玩家当前拍卖列表" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="70" DataStruct="RpcGetMySaleListAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="71" DataStruct="RpcGetMySaleListReply" Comment="" />
+    </Operate>
+    <Struct Name="RpcAuctionInfoAsk" CName="级别" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="17">
+        <Field PreDefine="optional" FieldType="int32" FieldId="13" Name="ItemId" CName="道具id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="16" Name="QueueType" CName="排序类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="17" Name="CurPage" CName="当前页" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcAuctionInfoReply" CName="查询拍卖行信息回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="AuctionItem" FieldId="2" Name="AuctionItem" CName="查询到的信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="TotalPage" CName="道具总页数" ValueSet="" MinValue="1" MaxValue="10000000" DefaultValue="1" Comment="" />
+    </Struct>
+    <Struct Name="RpcSellItemAsk" CName="请求上架请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="5">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="ItemGuid" CName="出售道具guid" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="ItemId" CName="ItemId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="Price" CName="拍卖价格" ValueSet="" MinValue="1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="4" Name="Currency" CName="交易钱币类型" ValueSet="" MinValue="1" MaxValue="2" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="5" Name="Count" CName="交易数量" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcSellItemReply" CName="请求上架回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcBuyAsk" CName="购买请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="ItemGuid" CName="购买道具的guid" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="Count" CName="买入数量" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcBuyReply" CName="购买回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcSellAgainAsk" CName="重新上架请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="ItemGuid" CName="再次销售物品guid" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="Price" CName="价格" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcSellAgainReply" CName="重新上架回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcGetItemAsk" CName="取回交易记录中物品" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="repeated" FieldType="uint64" FieldId="1" Name="BuyRecGuid" CName="拍卖行的商品guid" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="repeated" FieldType="uint64" FieldId="3" Name="SaleRecGuid" CName="卖的记录guid" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcGetItemReply" CName="取回拍卖道具回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="Result" CName="结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="repeated" FieldType="AuctionRecSimple" FieldId="3" Name="Record" CName="返回道具的信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcRecordAsk" CName="交易记录请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1" />
+    <Struct Name="RpcRecordReply" CName="交易记录回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="AuctionRecSimple" FieldId="3" Name="Record" CName="交易记录简单信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcItemInfoByClassAsk" CName="按类别查询简单信息请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="6">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="ItemClass" CName="商品类别(关注，装备，道具，宠物)" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="repeated" FieldType="int32" FieldId="2" Name="ItemId" CName="关注物品的id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="ItemSubClass" CName="子类别" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="5" Name="Prof" CName="职业" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="6" Name="Level" CName="等级" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcItemInfoByClassReply" CName="按类别查询简单信息回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="AuctionItemCnt" FieldId="2" Name="ItemCount" CName="道具数量信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcSalePrepareAsk" CName="预上架请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="ItemId" CName="预上架物品ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcSalePrepareReply" CName="预上架回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="5">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="ItemId" CName="商品ID " ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="BasePrice" CName="基准价" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="repeated" FieldType="int32" FieldId="4" Name="GoldGroup" CName="GoldGroup" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="-1" Comment="" />
+        <Field PreDefine="repeated" FieldType="int32" FieldId="5" Name="DiamondGroup" CName="DiamondGroup" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcGetItemBackAsk" CName="取回上架物品请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="ItemGuid" CName="道具Guid" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcGetItemBackReply" CName="取回上架物品回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcGetMySaleListAsk" CName="玩家当前拍卖列表请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcGetMySaleListReply" CName="玩家当前拍卖列表回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="AuctionItem" FieldId="2" Name="AuctionItem" CName="道具信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+</Root>

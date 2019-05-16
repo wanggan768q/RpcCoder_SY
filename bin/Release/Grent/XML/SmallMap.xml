@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<Root Module="SmallMap" CName="小地图相关" MsgNumStart="14" SyncDataVersion="1" Comment="小地图相关">
+    <Operate Name="NewObj" CName="新的对象创建" Comment="新的对象创建">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="14" DataStruct="RpcNewObjNotify" Comment="" />
+    </Operate>
+    <Operate Name="DelObj" CName="删除obj" Comment="删除obj">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="15" DataStruct="RpcDelObjNotify" Comment="" />
+    </Operate>
+    <Struct Name="RpcNewObjNotify" CName="新的对象创建通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="ObjId" CName="objID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="DataId" CName="DataId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="Vector3" FieldId="4" Name="WorldPos" CName="位置信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcDelObjNotify" CName="删除obj通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="ObjId" CName="objId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+</Root>

@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<Root Module="BaseAttr" CName="基础数据" MsgNumStart="7" SyncDataVersion="1" Comment="">
+    <Operate Name="SyncData" CName="同步玩家数据" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="7" DataStruct="RpcSyncDataAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="8" DataStruct="RpcSyncDataReply" Comment="" />
+    </Operate>
+    <Operate Name="Sync" CName="数据推送" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="9" DataStruct="RpcSyncNotify" Comment="" />
+    </Operate>
+    <Struct Name="RpcSyncDataAsk" CName="同步玩家数据请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcSyncDataReply" CName="同步玩家数据回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="bytes" FieldId="2" Name="UpdateData" CName="同步数据" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+    </Struct>
+    <Struct Name="UserData" CName="玩家基础数据" ProtoType="SyncProto" Comment="" DataType="UserData" SaveToDB="False" SyncToClient="True" MaxFieldId="113">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Exp" CName="经验" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="Level" CName="玩家等级" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int64" FieldId="4" Name="ServerTime" CName="服务器时间" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="5" Name="RoleId" CName="人物唯一ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="7" Name="Strength" CName="力量" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="8" Name="Agility" CName="敏捷" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="9" Name="Intellectual" CName="智力" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="10" Name="Endurance" CName="耐力" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="11" Name="Spirit" CName="精神" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="12" Name="Hp" CName="生命值" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="14" Name="MaxHp" CName="生命值" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="15" Name="PhysicAttack" CName="物理攻击" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="16" Name="PhysicDefense" CName="物理防御" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="19" Name="MagicAttack" CName="魔法攻击" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="20" Name="MagicDefense" CName="魔法防御" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="21" Name="Hit" CName="命中值" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="22" Name="HitRate" CName="命中率" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="23" Name="Miss" CName="闪避值" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="24" Name="MissRate" CName="闪避率" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="25" Name="Critical" CName="暴击值" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="26" Name="CriticalRate" CName="暴击率" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="27" Name="Tenacity" CName="韧性值" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="28" Name="TenacityRate" CName="韧性率" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="29" Name="Penet" CName="穿透值" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="30" Name="PenetRate" CName="穿透率" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="31" Name="Dodg" CName="格挡值" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="32" Name="DodgRate" CName="格挡率" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="33" Name="CriticalAddition" CName="暴击加伤值" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="34" Name="CriticalAdditionRate" CName="暴击加伤率" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="35" Name="CriticalImmune" CName="暴击免伤" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="36" Name="CriticalImmuneRate" CName="暴击免伤率" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="37" Name="MissLevel" CName="闪避等级" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="38" Name="CriticalLevel" CName="暴击等级" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="39" Name="DodgLevel" CName="格挡等级" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="40" Name="MoveSpeed" CName="移动速度" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="41" Name="DizzyState" CName="眩晕状态" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="bool" FieldId="42" Name="GodState" CName="霸体状态" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="false" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="43" Name="CantMoveState" CName="不能移动状态" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="45" Name="PhysicAddition" CName="物理加伤值" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="46" Name="MagicAddition" CName="魔法加伤值" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="47" Name="PhysicOppose" CName="物理抗性" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="48" Name="MagicOppose" CName="魔法抗性" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="50" Name="AccumulateSkiEnergy" CName="技能积攒能量使用 目前只有应激技能用" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="string" FieldId="51" Name="NickName" CName="名字昵称" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="52" Name="ConfigId" CName="config id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="53" Name="ObjType" CName="类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="1.玩家 HUMAN&#xD;&#xA;2.怪物 MONSTER" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="54" Name="State" CName="EventObjStatu" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="55" Name="OwnerObjId" CName="归属obj ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="56" Name="Camp" CName="阵营" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="INVALID = 0&#xD;&#xA;COMMON = 1&#xD;&#xA;NEUTRALITY = 2&#xD;&#xA;HOSTILITY = 3" />
+        <Field PreDefine="optional" FieldType="int64" FieldId="57" Name="SilverMoney" CName="银币" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int64" FieldId="58" Name="GoldMoney" CName="金币" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int64" FieldId="59" Name="DiamondMoney" CName="钻石" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int64" FieldId="60" Name="BindingDiamondMoney" CName="绑定钻石" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="61" Name="BattleScore" CName="战力" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int64" FieldId="62" Name="Energy" CName="精力" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int64" FieldId="63" Name="GuildMoney" CName="公会资金" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="repeated" FieldType="int32" FieldId="64" Name="SkillList" CName="技能列表" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int64" FieldId="65" Name="HonorMoney" CName="HonorMoney" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int64" FieldId="66" Name="ResourcePoolHp" CName="资源池" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="67" Name="AttackAdd" CName="伤害增加" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="68" Name="InjuryAdd" CName="伤害减免" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="69" Name="FrozenState" CName="冰冻状态" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="70" Name="SilentState" CName="沉默状态" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int64" FieldId="72" Name="GuildContributeHistoryMax" CName="GuildContributeHistoryMax" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="74" Name="TeamId" CName="队伍id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="75" Name="TreasureHair" CName="头发时装ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="76" Name="TreasureHead" CName="头部时装ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="77" Name="TreasureBody" CName="身体时装" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="78" Name="TreasureWeapon" CName="武器时装" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="79" Name="TreasureWing" CName="翅膀时装" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="80" Name="GuildGuid" CName="公会ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="81" Name="TreasureRiding" CName="坐骑" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="82" Name="VechicleId" CName="载具Id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="bool" FieldId="83" Name="AnimationState" CName="动画状态" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="false" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="84" Name="RefixDmgRate" CName="修正攻击者最终伤害比率" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="85" Name="RefixDmgValue" CName="修正攻击者最终伤害值" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="86" Name="RefixHurtRate" CName="修正被攻击者最终伤害比率" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="87" Name="RefixHurtValue" CName="修正被攻击者最终伤害值" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="88" Name="RefixHealRate" CName="修正治疗者最终比例" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="89" Name="RefixHealValue" CName="修正治疗者最终值" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="90" Name="RefixCuredRate" CName="修正被治疗者最终比例" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="91" Name="RefixCuredValue" CName="修正被治疗者最终值" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int64" FieldId="92" Name="GuildContribute" CName="公会帮贡" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int64" FieldId="93" Name="PvpMoney" CName="竞技场点数" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int64" FieldId="94" Name="GuildResource" CName="公会资源" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="95" Name="CreateRoleTime" CName="创建角色时间戳" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="96" Name="UpdateRoleTime" CName="更新角色等级时间戳" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="bool" FieldId="97" Name="FightState" CName="战斗状态" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="false" Comment="" />
+        <Field PreDefine="repeated" FieldType="int32" FieldId="98" Name="AttackSkillList" CName="普攻技能列表" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="string" FieldId="99" Name="GuildName" CName="公会名称" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+        <Field PreDefine="optional" FieldType="bool" FieldId="100" Name="IsAllowSelect" CName="是否可选中" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="true" Comment="" />
+        <Field PreDefine="optional" FieldType="bool" FieldId="101" Name="GoHomeState" CName="怪物回归中" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="false" Comment="" />
+        <Field PreDefine="optional" FieldType="bool" FieldId="102" Name="CanFight" CName="怪物是否可攻击" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="true" Comment="" />
+        <Field PreDefine="optional" FieldType="int64" FieldId="103" Name="DoubleExp" CName="双倍经验" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int64" FieldId="104" Name="FriendPoint" CName="友情点" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int64" FieldId="105" Name="HisMaxHonor" CName="历史最大荣誉点" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="bool" FieldId="106" Name="HurtState" CName="受击状态" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="false" Comment="" />
+        <Field PreDefine="optional" FieldType="bool" FieldId="107" Name="HurtFlyState" CName="击飞状态" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="false" Comment="" />
+        <Field PreDefine="optional" FieldType="bool" FieldId="108" Name="HurtDownState" CName="击倒状态" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="false" Comment="" />
+        <Field PreDefine="optional" FieldType="bool" FieldId="109" Name="HurtRepelState" CName="击退" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="false" Comment="" />
+        <Field PreDefine="optional" FieldType="int64" FieldId="111" Name="TodayHornor" CName="今日获得的荣誉值" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="113" Name="CurProfession" CName="当前专精" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcSyncNotify" CName="数据推送通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="ObjId" CName="ObjId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="bytes" FieldId="3" Name="UpdateData" CName="更新数据" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+    </Struct>
+    <Struct Name="ObjData" CName="ObjData" ProtoType="SyncProto" Comment="" DataType="ItemData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="ObjType" CName="类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="1.玩家 HUMAN&#xD;&#xA;2.怪物 MONSTER" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="ConfigId" CName="config id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="State" CName="obj状态" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="4" Name="OwnerObjId" CName="拥有者" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+</Root>

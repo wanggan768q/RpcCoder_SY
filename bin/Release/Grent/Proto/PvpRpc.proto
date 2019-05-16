@@ -1,0 +1,278 @@
+import "PublicStruct.proto";
+
+//Rank请求
+message  PvpRpcRankAsk
+{
+	optional int32 PvpType = 1[default=-1];	//PvpType
+}
+
+//Rank回应
+message  PvpRpcRankReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated PvpPlayerInfo RankList = 2;	//RankList
+}
+
+//Match请求
+message  PvpRpcMatchAsk
+{
+	optional int32 PvpType = 1[default=-1];	//PvpType
+}
+
+//Match回应
+message  PvpRpcMatchReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//匹配的通知通知
+message  PvpRpcMatchNotifyNotify
+{
+}
+
+//MatchCancle请求
+message  PvpRpcMatchCancleAsk
+{
+}
+
+//MatchCancle回应
+message  PvpRpcMatchCancleReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//取消匹配通知通知
+message  PvpRpcMatchCancleNotifyNotify
+{
+	optional uint64 RoleId = 1[default=0];	//取消者的ID
+	optional string Name = 2;	//名字
+	optional int32 Reason = 3[default=-1];	//原因
+}
+
+//PlayerReady请求
+message  PvpRpcPlayerReadyAsk
+{
+	/*
+	取消或确认
+	1 准备 2 取消准备
+	*/
+	optional int32 OpreationType = 1[default=-1];
+}
+
+//PlayerReady回应
+message  PvpRpcPlayerReadyReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//玩家准备的通知通知
+message  PvpRpcPlayerReadyNotifyNotify
+{
+	optional uint64 RoleId = 1[default=0];	//角色ID
+	/*
+	操作类型
+	1 准备 2 取消
+	*/
+	optional int32 OpType = 2[default=-1];
+}
+
+//等待确认超时通知
+message  PvpRpcReadyFaildNotify
+{
+	optional int32 Reason = 1[default=-1];	//原因
+	optional uint64 RoleId = 2[default=0];	//角色ID
+}
+
+//PvpBattleStart通知
+message  PvpRpcPvpBattleStartNotify
+{
+	optional int32 LeftKill = 2[default=-1];	//左侧阵营击杀数量
+	optional int32 RightKill = 3[default=-1];	//右侧阵营击杀数量
+	optional int32 NeedKill = 4[default=-1];	//需要击杀多少人
+}
+
+//PvpBattleEnd通知
+message  PvpRpcPvpBattleEndNotify
+{
+	optional PvpBattleEndInfo BattleEndInfo = 4;	//结算信息
+}
+
+//匹配完成通知
+message  PvpRpcMatchSucessNotify
+{
+	repeated PvpPlayerInfo LeftTeam = 1;	//左边队伍
+	repeated PvpPlayerInfo RightTeam = 2;	//右侧队伍
+	/*
+	倒计时
+	秒
+	*/
+	optional int32 Time = 3[default=-1];
+}
+
+//段位变化通知
+message  PvpRpcRankChangeNotify
+{
+	optional int32 PvpType = 1[default=-1];	//类型
+	optional int32 BeforeRank = 2[default=-1];	//之前段位
+	optional int32 AfterRank = 3[default=-1];	//之后段位
+	optional int32 BeforeStar = 4[default=-1];	//星级
+	optional int32 AfterStar = 5[default=-1];	//星级
+}
+
+//返回请求
+message  PvpRpcReturnLastSceneAsk
+{
+}
+
+//返回回应
+message  PvpRpcReturnLastSceneReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//通知开始时间通知
+message  PvpRpcArenaStartTimeNotify
+{
+	optional int32 NeedTime = 1[default=-1];	//剩余时间 秒
+	optional int32 TimeStamp = 2[default=-1];	//时间戳 
+}
+
+//更新击杀数量通知
+message  PvpRpcUpdateKillCountNotify
+{
+	optional int32 LeftTeamKill = 1[default=-1];	//左方杀人数
+	optional int32 RightTeamKill = 2[default=-1];	//右侧杀人数
+}
+
+//剩余时间通知
+message  PvpRpcArenaLeftTimeNotify
+{
+	/*
+	剩余时间
+	秒
+	*/
+	optional int32 LeftTime = 1[default=-1];
+}
+
+//上个赛季的排行请求
+message  PvpRpcLastRankAsk
+{
+	optional int32 PvpType = 1[default=-1];	//类型
+}
+
+//上个赛季的排行回应
+message  PvpRpcLastRankReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated PvpPlayerInfo RankList = 2;	//排行信息
+}
+
+//新赛季通知通知
+message  PvpRpcNewSeasonNotify
+{
+	optional int32 LastRank = 1[default=-1];	//上赛季段位
+	optional int32 LastStar = 2[default=-1];	//上赛季星级
+	optional int32 LastRanking = 3[default=-1];	//上赛季排名
+	repeated PvpBattleRewardInfo RewardList = 4;	//奖励列表
+}
+
+//领取奖励请求
+message  PvpRpcGetSeasonRewardAsk
+{
+}
+
+//领取奖励回应
+message  PvpRpcGetSeasonRewardReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//请求战斗信息请求
+message  PvpRpcPvpBattleInfoSyncAsk
+{
+}
+
+//请求战斗信息回应
+message  PvpRpcPvpBattleInfoSyncReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional PvpBattleInfo BattleInfo = 2;	//战斗信息
+	optional int32 Season = 3[default=-1];	//当前赛季
+	optional int32 RankIndex = 4[default=-1];	//排名
+}
+
+//重连通知
+message  PvpRpcReconnectNotify
+{
+	optional int32 NeedKill = 1[default=-1];	//需要杀人数
+	optional int32 ArenaState = 2[default=-1];	//竞技场状态
+	optional int32 LeftTime = 3[default=-1];	//剩余时间
+	optional int32 LeftKill = 5[default=-1];	//左侧阵营击杀数量
+	optional int32 RightKill = 6[default=-1];	//右侧阵营击杀数量
+	/*
+	阵营
+	0左　1右
+	*/
+	optional int32 Camp = 7[default=-1];
+	optional int32 TimeStamp = 8[default=-1];	//时间戳
+}
+
+//获取奖励请求
+message  PvpRpcGetRewardAsk
+{
+	optional int32 PvPType = 1[default=-1];	//战斗类型
+	optional int32 Rank = 2[default=-1];	//段位
+}
+
+//获取奖励回应
+message  PvpRpcGetRewardReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated int32 RewardList = 2;	//已领过的
+}
+

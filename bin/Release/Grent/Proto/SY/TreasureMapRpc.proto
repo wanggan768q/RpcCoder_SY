@@ -1,0 +1,20 @@
+message  TreasureMapRpcTreasureMapSyncAsk
+{
+
+}
+
+message  TreasureMapRpcTreasureMapSyncReply
+{
+	optional int32 Result = 1;
+	optional int32 TreasureMapId = 2;
+	optional int32 HighTreasureMapId = 3;
+
+}
+
+message  TreasureMapRpcTreasureMapChangeNotify
+{
+	optional int32 TreasureMapId = 1;
+	optional int32 HighTreasureMapId = 2;
+
+}
+

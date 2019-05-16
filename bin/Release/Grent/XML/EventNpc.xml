@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<Root Module="EventNpc" CName="可交互的怪 " MsgNumStart="37" SyncDataVersion="1" Comment="宠物捕捉功能">
+    <Operate Name="BeginEvent" CName="开始交互" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="37" DataStruct="RpcBeginEventAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="38" DataStruct="RpcBeginEventReply" Comment="" />
+    </Operate>
+    <Operate Name="EndEvent" CName="交互结束" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="39" DataStruct="RpcEndEventAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="40" DataStruct="RpcEndEventReply" Comment="" />
+    </Operate>
+    <Operate Name="ActivityBegin" CName="活动开始" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="41" DataStruct="RpcActivityBeginNotify" Comment="" />
+    </Operate>
+    <Struct Name="RpcBeginEventAsk" CName="开始交互请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="EventIndex" CName="索引" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcBeginEventReply" CName="开始交互回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcEndEventAsk" CName="交互结束请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcEndEventReply" CName="交互结束回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcActivityBeginNotify" CName="活动开始通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="StartTime" CName="开始时间" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="4" Name="WayPoint" CName="路点ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+</Root>

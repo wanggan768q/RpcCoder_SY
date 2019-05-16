@@ -1,0 +1,29 @@
+message  DropItemRpcDropTtemsNotify
+{
+	repeated DropItem Dropitems = 6;
+	optional int32 KillObjID = 7;
+	optional int32 KillerObjID = 8;
+	optional int32 OwnerObjID = 9;
+	optional Vector3 Pos = 10;
+	optional int32 NetWorkType = 11;
+
+}
+
+message  DropItem
+{
+	optional int32 ItemType = 1[default=-1];
+	optional int32 ItemID = 2[default=-1];
+	optional int32 ItemNum = 3[default=-1];
+	optional bool Bind = 4[default=false];
+	optional bool Transit = 5[default=false];
+
+}
+
+message  Vector3
+{
+	optional float X = 1[default=-1];
+	optional float Y = 2[default=-1];
+	optional float Z = 3[default=-1];
+
+}
+

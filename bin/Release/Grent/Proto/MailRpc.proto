@@ -1,0 +1,86 @@
+import "PublicStruct.proto";
+
+//初始化邮件信息请求
+message  MailRpcInitMailAsk
+{
+}
+
+//初始化邮件信息回应
+message  MailRpcInitMailReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated MailInfo InfoList = 2;	//邮件信息列表
+}
+
+//已读邮件请求
+message  MailRpcReadMailAsk
+{
+	optional int32 Mail_type = 1[default=-1];	//邮件类型
+	optional int32 Mail_id = 2[default=-1];	//主键id
+}
+
+//已读邮件回应
+message  MailRpcReadMailReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated int32 System_mail_ids = 2;	//已读系统邮件
+	repeated int32 Private_mail_ids = 3;	//已读私有邮件
+}
+
+//删除邮件请求
+message  MailRpcDeleteMailAsk
+{
+	optional int32 Mail_type = 3[default=-1];	//邮件类型
+	optional int32 Mail_id = 4[default=-1];	//主键id
+}
+
+//删除邮件回应
+message  MailRpcDeleteMailReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated int32 System_mail_ids = 4;	//已读系统邮件
+	repeated int32 Private_mail_ids = 5;	//已读私有邮件
+}
+
+//领取邮件请求
+message  MailRpcGetMailAsk
+{
+	optional int32 Mail_type = 2[default=-1];	//邮件类型
+	optional int32 Mail_id = 3[default=-1];	//主键id
+}
+
+//领取邮件回应
+message  MailRpcGetMailReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated int32 System_mail_ids = 4;	//已读系统邮件
+	repeated int32 Private_mail_ids = 5;	//已读私有邮件
+}
+
+//同步邮件信息通知
+message  MailRpcSyncMailInfoNotify
+{
+	repeated MailInfo InfoList = 1;	//更新的邮件信息列表
+	repeated uint64 GuidList = 2;	//删除的主键id列表
+}
+

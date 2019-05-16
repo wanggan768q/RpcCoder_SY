@@ -1,0 +1,61 @@
+import "PublicStruct.proto";
+
+//EventBegin请求
+message  EventObjRpcEventBeginAsk
+{
+	optional int32 ObjId = 1[default=-1];	//id
+}
+
+//EventBegin回应
+message  EventObjRpcEventBeginReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	optional int32 ObjId = 2[default=-1];	//id
+}
+
+//EventEnd请求
+message  EventObjRpcEventEndAsk
+{
+	optional int32 ObjId = 1[default=-1];	//id
+}
+
+//EventEnd回应
+message  EventObjRpcEventEndReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	optional int32 ObjId = 2[default=-1];	//id
+}
+
+//EventStop请求
+message  EventObjRpcEventStopAsk
+{
+	optional int32 ObjId = 1[default=-1];	//id
+}
+
+//EventStop回应
+message  EventObjRpcEventStopReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional int32 ObjId = 2[default=-1];	//id
+}
+
+//交互停止通知通知
+message  EventObjRpcEventStopNotifyNotify
+{
+}
+

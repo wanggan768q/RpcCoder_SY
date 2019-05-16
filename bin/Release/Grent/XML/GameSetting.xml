@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<Root Module="GameSetting" CName="游戏设置" MsgNumStart="53" SyncDataVersion="1" Comment="">
+    <Operate Name="SyncGameSetting" CName="同步" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="53" DataStruct="RpcSyncGameSettingAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="54" DataStruct="RpcSyncGameSettingReply" Comment="" />
+    </Operate>
+    <Operate Name="Setting" CName="设置" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="55" DataStruct="RpcSettingAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="56" DataStruct="RpcSettingReply" Comment="" />
+    </Operate>
+    <Operate Name="GameSettingNotify" CName="设置 通知" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="57" DataStruct="RpcGameSettingNotifyNotify" Comment="" />
+    </Operate>
+    <Struct Name="RpcSyncGameSettingAsk" CName="同步请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcSyncGameSettingReply" CName="同步回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="string" FieldId="2" Name="GameSetting" CName="设置info" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+    </Struct>
+    <Struct Name="RpcSettingAsk" CName="设置请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="string" FieldId="1" Name="GameSetting" CName="要设置的" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+    </Struct>
+    <Struct Name="RpcSettingReply" CName="设置回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcGameSettingNotifyNotify" CName="设置 通知通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="string" FieldId="1" Name="GameSetting" CName="设置" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+    </Struct>
+</Root>

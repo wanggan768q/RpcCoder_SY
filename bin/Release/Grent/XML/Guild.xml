@@ -1,0 +1,364 @@
+<?xml version="1.0"?>
+<Root Module="Guild" CName="公会" MsgNumStart="38" SyncDataVersion="1" Comment="">
+    <Operate Name="GuildBaseInfo" CName="公会基本信息" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="38" DataStruct="RpcGuildBaseInfoAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="39" DataStruct="RpcGuildBaseInfoReply" Comment="" />
+    </Operate>
+    <Operate Name="KickMember" CName="逐出成员" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="40" DataStruct="RpcKickMemberAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="41" DataStruct="RpcKickMemberReply" Comment="" />
+    </Operate>
+    <Operate Name="KickMemberNotify" CName="逐出公会推送" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="42" DataStruct="RpcKickMemberNotifyNotify" Comment="" />
+    </Operate>
+    <Operate Name="AskVacation" CName="请假或取消申请" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="43" DataStruct="RpcAskVacationAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="44" DataStruct="RpcAskVacationReply" Comment="" />
+    </Operate>
+    <Operate Name="Vacation" CName="请假广播（广播给管理者）" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="45" DataStruct="RpcVacationNotify" Comment="" />
+    </Operate>
+    <Operate Name="ReplyVacation" CName="请假广播（广播给请假人）" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="46" DataStruct="RpcReplyVacationNotify" Comment="" />
+    </Operate>
+    <Operate Name="AskApplyList" CName="请求公会申请列表" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="47" DataStruct="RpcAskApplyListAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="48" DataStruct="RpcAskApplyListReply" Comment="" />
+    </Operate>
+    <Operate Name="ApplyGuildOperation" CName="入会操作" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="49" DataStruct="RpcApplyGuildOperationAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="50" DataStruct="RpcApplyGuildOperationReply" Comment="" />
+    </Operate>
+    <Operate Name="ApplyGuild" CName="申请入会推送（推送给申请者）" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="51" DataStruct="RpcApplyGuildNotify" Comment="" />
+    </Operate>
+    <Operate Name="ApplyLimitSetting" CName="限制入会条件" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="52" DataStruct="RpcApplyLimitSettingAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="53" DataStruct="RpcApplyLimitSettingReply" Comment="" />
+    </Operate>
+    <Operate Name="AskJurisdictionList" CName="权限列表申请" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="54" DataStruct="RpcAskJurisdictionListAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="55" DataStruct="RpcAskJurisdictionListReply" Comment="" />
+    </Operate>
+    <Operate Name="SetJurisdiction" CName="设置权限" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="56" DataStruct="RpcSetJurisdictionAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="57" DataStruct="RpcSetJurisdictionReply" Comment="" />
+    </Operate>
+    <Operate Name="AskVacationList" CName="请假审批列表" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="58" DataStruct="RpcAskVacationListAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="59" DataStruct="RpcAskVacationListReply" Comment="" />
+    </Operate>
+    <Operate Name="VacationGuildOperation" CName="请假操作" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="60" DataStruct="RpcVacationGuildOperationAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="61" DataStruct="RpcVacationGuildOperationReply" Comment="" />
+    </Operate>
+    <Operate Name="ApplyGuildToOffice" CName="申请推送（广播给管理者）" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="62" DataStruct="RpcApplyGuildToOfficeNotify" Comment="" />
+    </Operate>
+    <Operate Name="AskBuildingInfo" CName="请求公会建筑信息" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="63" DataStruct="RpcAskBuildingInfoAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="64" DataStruct="RpcAskBuildingInfoReply" Comment="" />
+    </Operate>
+    <Operate Name="BuildingLvUp" CName="公会建筑升级" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="65" DataStruct="RpcBuildingLvUpAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="66" DataStruct="RpcBuildingLvUpReply" Comment="" />
+    </Operate>
+    <Operate Name="BuildingLvSpeedUp" CName="公会建筑加速升级" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="67" DataStruct="RpcBuildingLvSpeedUpAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="68" DataStruct="RpcBuildingLvSpeedUpReply" Comment="" />
+    </Operate>
+    <Operate Name="AskBuildingContributionList" CName="建筑贡献榜请求" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="69" DataStruct="RpcAskBuildingContributionListAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="70" DataStruct="RpcAskBuildingContributionListReply" Comment="" />
+    </Operate>
+    <Operate Name="BuildingCanLvUp" CName="建筑可升级推送（推送管理者）" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="71" DataStruct="RpcBuildingCanLvUpNotify" Comment="" />
+    </Operate>
+    <Operate Name="AskGuildEventList" CName="获取公会事件列表" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="72" DataStruct="RpcAskGuildEventListAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="73" DataStruct="RpcAskGuildEventListReply" Comment="" />
+    </Operate>
+    <Operate Name="AskGuildInfoList" CName="获取公会列表" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="74" DataStruct="RpcAskGuildInfoListAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="75" DataStruct="RpcAskGuildInfoListReply" Comment="" />
+    </Operate>
+    <Operate Name="SearchGuild" CName="搜索公会" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="76" DataStruct="RpcSearchGuildAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="77" DataStruct="RpcSearchGuildReply" Comment="" />
+    </Operate>
+    <Operate Name="JoinGuild" CName="申请入会" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="78" DataStruct="RpcJoinGuildAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="79" DataStruct="RpcJoinGuildReply" Comment="" />
+    </Operate>
+    <Operate Name="CreateGuild" CName="建立公会" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="80" DataStruct="RpcCreateGuildAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="81" DataStruct="RpcCreateGuildReply" Comment="" />
+    </Operate>
+    <Operate Name="ChangeFlag" CName="更换公会旗帜" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="82" DataStruct="RpcChangeFlagAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="83" DataStruct="RpcChangeFlagReply" Comment="" />
+    </Operate>
+    <Operate Name="GuildChangeName" CName="公会改名" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="84" DataStruct="RpcGuildChangeNameAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="85" DataStruct="RpcGuildChangeNameReply" Comment="" />
+    </Operate>
+    <Operate Name="AskGuildMember" CName="获取公会成员列表" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="86" DataStruct="RpcAskGuildMemberAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="87" DataStruct="RpcAskGuildMemberReply" Comment="" />
+    </Operate>
+    <Operate Name="QuiteGuild" CName="退出公会" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="88" DataStruct="RpcQuiteGuildAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="89" DataStruct="RpcQuiteGuildReply" Comment="" />
+    </Operate>
+    <Operate Name="SetOffice" CName="设置职位" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="90" DataStruct="RpcSetOfficeAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="91" DataStruct="RpcSetOfficeReply" Comment="" />
+    </Operate>
+    <Operate Name="OfficeChange" CName="职位变化推送" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="92" DataStruct="RpcOfficeChangeNotify" Comment="" />
+    </Operate>
+    <Operate Name="ChangeCreed" CName="修改帮会宗旨" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="93" DataStruct="RpcChangeCreedAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="94" DataStruct="RpcChangeCreedReply" Comment="" />
+    </Operate>
+    <Operate Name="ForbiddenChat" CName="公会禁言" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="95" DataStruct="RpcForbiddenChatAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="96" DataStruct="RpcForbiddenChatReply" Comment="" />
+    </Operate>
+    <Operate Name="BuildLvUpComplete" CName="建筑升级完成" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="97" DataStruct="RpcBuildLvUpCompleteNotify" Comment="" />
+    </Operate>
+    <Operate Name="GuildCurrencyChange" CName="公会货币变化推送" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="98" DataStruct="RpcGuildCurrencyChangeNotify" Comment="" />
+    </Operate>
+    <Struct Name="RpcGuildBaseInfoAsk" CName="公会基本信息请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcGuildBaseInfoReply" CName="公会基本信息回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="GuildInfo" FieldId="2" Name="GuildBaseInfo" CName="公会信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcKickMemberAsk" CName="逐出成员请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Guid" CName="Guid" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="string" FieldId="2" Name="KickReason" CName="逐出理由" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="ReasonType" CName="理由枚举" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcKickMemberReply" CName="逐出成员回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="Guid" CName="Guid" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="OnlineCount" CName="在线人数" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="4" Name="MemberCount" CName="成员数量" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcKickMemberNotifyNotify" CName="逐出公会推送通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="string" FieldId="1" Name="KickReason" CName="逐出理由" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="ReasonType" CName="理由枚举" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcAskVacationAsk" CName="请假或取消请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Guid" CName="Guid" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="string" FieldId="2" Name="Reason" CName="请假理由" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="4" Name="Type" CName="请假推送类型（1请假，2取消请假）" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcAskVacationReply" CName="请假或取消回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="Guid" CName="Guid" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="Type" CName="请假推送类型（1请假，2取消请假）" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcVacationNotify" CName="请假广播通知（广播给管理者）" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="GuildVacationInfo" FieldId="2" Name="VacationInfo" CName="请假信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="Type" CName="请假推送类型（1请假，2取消请假）" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcReplyVacationNotify" CName="请假广播（广播给请假人）通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcAskApplyListAsk" CName="请求公会申请列表请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcAskApplyListReply" CName="请求公会申请列表回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="GuildMemberTinyInfo" FieldId="2" Name="GuildMemberTinyInfoList" CName="申请入会玩家简要信息列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcApplyGuildOperationAsk" CName="入会操作请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="Guid" CName="Guid" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="Operation" CName="操作信息（1同意，2拒绝，3一键同意，4一键拒绝）" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcApplyGuildOperationReply" CName="入会操作回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="6">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="Operation" CName="操作信息（1同意，2拒绝，3一键同意，4一键拒绝）" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="repeated" FieldType="GuildMemberInfo" FieldId="4" Name="MemberInfoList" CName="操作列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="5" Name="OnlineCount" CName="在线人数" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="6" Name="MemberCount" CName="成员数量" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcApplyGuildNotify" CName="申请入会推送（推送给申请者）通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="GuildID" CName="公会ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="string" FieldId="2" Name="GuildName" CName="公会名字" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+    </Struct>
+    <Struct Name="RpcApplyLimitSettingAsk" CName="限制入会条件请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="bool" FieldId="1" Name="IsAutoJoin" CName="是否允许自动入会" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="false" Comment="" />
+    </Struct>
+    <Struct Name="RpcApplyLimitSettingReply" CName="限制入会条件回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="bool" FieldId="2" Name="IsAutoJoin" CName="是否允许自动入会" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="false" Comment="" />
+    </Struct>
+    <Struct Name="RpcAskJurisdictionListAsk" CName="权限列表申请请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcAskJurisdictionListReply" CName="权限列表申请回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="GuildOfficeJurisdiction" FieldId="2" Name="JurisdictionList" CName="权限列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcSetJurisdictionAsk" CName="设置权限请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="GuildOfficeJurisdiction" FieldId="1" Name="SetList" CName="权限列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcSetJurisdictionReply" CName="设置权限回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="GuildOfficeJurisdiction" FieldId="2" Name="SetList" CName="权限列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcAskVacationListAsk" CName="请假审批列表请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcAskVacationListReply" CName="请假审批列表回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="GuildVacationInfo" FieldId="2" Name="VacationList" CName="请假列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcVacationGuildOperationAsk" CName="请假操作请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="2" Name="Guid" CName="Guid" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="Operation" CName="操作信息（1同意，2拒绝，3一键同意，4一键拒绝）" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcVacationGuildOperationReply" CName="请假操作回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="2" Name="Guid" CName="Guid" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="Operation" CName="操作信息（1同意，2拒绝，3一键同意，4一键拒绝）" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcApplyGuildToOfficeNotify" CName="申请推送（广播给管理者）通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="GuildMemberTinyInfo" FieldId="1" Name="GuildMemberTinyInfo" CName="申请入会玩家信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcAskBuildingInfoAsk" CName="请求公会建筑信息请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcAskBuildingInfoReply" CName="请求公会建筑信息回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="GuildBuildingInfo" FieldId="2" Name="BuildingInfoList" CName="公会建筑信息列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcBuildingLvUpAsk" CName="公会建筑升级请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="BuildingType" CName="建筑类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcBuildingLvUpReply" CName="公会建筑升级回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="GuildBuildingInfo" FieldId="2" Name="GuildBuildingInfo" CName="公会建筑信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="GuildMoney" CName="公会资金" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="4" Name="GuildResource" CName="公会资源" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcBuildingLvSpeedUpAsk" CName="公会建筑加速升级请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="BuildingType" CName="建筑类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="Time" CName="加速时间" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcBuildingLvSpeedUpReply" CName="公会建筑加速升级回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="GuildBuildingInfo" FieldId="2" Name="GuildBuildingInfo" CName="公会建筑信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcAskBuildingContributionListAsk" CName="建筑贡献榜请求请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="BuildingType" CName="建筑类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcAskBuildingContributionListReply" CName="建筑贡献榜请求回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="GuildBuildingContributionInfo" FieldId="2" Name="ContributionList" CName="贡献榜列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="BuildingType" CName="建筑类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcBuildingCanLvUpNotify" CName="建筑可升级推送（推送管理者）通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="BuildingType" CName="建筑类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcAskGuildEventListAsk" CName="获取公会事件列表请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcAskGuildEventListReply" CName="获取公会事件列表回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="GuildEvent" FieldId="2" Name="GuildEventList" CName="公会事件列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcAskGuildInfoListAsk" CName="获取公会列表请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="PageIndex" CName="页码（索引从1开始）" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcAskGuildInfoListReply" CName="获取公会列表回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="GuildInfo" FieldId="2" Name="GuildInfoList" CName="公会信息列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="PageIndex" CName="页码（索引从1开始）" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="4" Name="TotalGuildCount" CName="本服务器公会总数" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcSearchGuildAsk" CName="搜索公会请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="string" FieldId="1" Name="Text" CName="输入的文本" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+    </Struct>
+    <Struct Name="RpcSearchGuildReply" CName="搜索公会回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="GuildInfo" FieldId="2" Name="GuildInfoList" CName="查找后的公会列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcJoinGuildAsk" CName="申请入会请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="Guid" CName="guid" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="Type" CName="1申请，2一键加入" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcJoinGuildReply" CName="申请入会回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="2" Name="Guid" CName="guid" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcCreateGuildAsk" CName="建立公会请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="string" FieldId="1" Name="GuildName" CName="公会名称" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+        <Field PreDefine="optional" FieldType="string" FieldId="2" Name="GuildCreed" CName="公会宗旨" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+    </Struct>
+    <Struct Name="RpcCreateGuildReply" CName="建立公会回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="GuildInfo" FieldId="2" Name="GuildBaseInfo" CName="公会信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcChangeFlagAsk" CName="更换公会旗帜请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="FlagConfigID" CName="旗帜ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcChangeFlagReply" CName="更换公会旗帜回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="5">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="GuildMoney" CName="公会资金" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="GuildFlag" FieldId="5" Name="Flag" CName="公会旗帜" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcGuildChangeNameAsk" CName="公会改名请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="string" FieldId="1" Name="GuildNewName" CName="公会新名字" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+    </Struct>
+    <Struct Name="RpcGuildChangeNameReply" CName="公会改名回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="string" FieldId="2" Name="GuildNewName" CName="公会新名字" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+        <Field PreDefine="optional" FieldType="string" FieldId="3" Name="GuildOldName" CName="曾用名" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+    </Struct>
+    <Struct Name="RpcAskGuildMemberAsk" CName="获取公会成员列表请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcAskGuildMemberReply" CName="获取公会成员列表回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="GuildMemberInfo" FieldId="2" Name="GuildMemberInfoList" CName="公会成员列表信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="OnlineCount" CName="在线人数" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="4" Name="MemberCount" CName="成员数量" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcQuiteGuildAsk" CName="退出公会请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcQuiteGuildReply" CName="退出公会回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcSetOfficeAsk" CName="设置职位请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="Guid" CName="guid" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="2" Name="TargetGuid" CName="guid" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="OfficeType" CName="职位枚举" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcSetOfficeReply" CName="设置职位回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="5">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="SelfOfficeType" CName="自己的职位枚举" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="4" Name="TargetOfficeType" CName="目标人的职位枚举" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="5" Name="TargetGuid" CName="guid" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcOfficeChangeNotify" CName="职位变化推送通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="OfficeType" CName="职位枚举" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="2" Name="Optguid" CName="委任者ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="OptOfficeType" CName="委任者职位" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcChangeCreedAsk" CName="修改帮会宗旨请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="string" FieldId="1" Name="Content" CName="宗旨内容" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+    </Struct>
+    <Struct Name="RpcChangeCreedReply" CName="修改帮会宗旨回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="string" FieldId="2" Name="Content" CName="宗旨内容" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+    </Struct>
+    <Struct Name="RpcForbiddenChatAsk" CName="公会禁言请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int64" FieldId="1" Name="Playerguid" CName="playerguid" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="bool" FieldId="2" Name="IsForbidden" CName="禁言" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="false" Comment="" />
+    </Struct>
+    <Struct Name="RpcForbiddenChatReply" CName="公会禁言回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="int64" FieldId="2" Name="Playerguid" CName="playerguid" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="bool" FieldId="3" Name="IsForbidden" CName="禁言" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="false" Comment="" />
+    </Struct>
+    <Struct Name="RpcBuildLvUpCompleteNotify" CName="建筑升级完成通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="GuildBuildingInfo" FieldId="2" Name="GuildBuildingInfo" CName="公会建筑信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcGuildCurrencyChangeNotify" CName="公会货币变化推送通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="5">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="GuildProsper" CName="公会繁荣度" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="GuildMoney" CName="公会资金" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="GuildResource" CName="公会资源" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="4" Name="GuildWelfare" CName="公会福利" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="5" Name="MaintainCost" CName="维护费用" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+</Root>

@@ -1,0 +1,23 @@
+BulletScreenRpcBulletScreenOptAsk↑ 弹幕设置请求
+	BulletScreenType:int32 = -1	;弹幕设置场景(1组队 2过场)
+	OptType:int32 = -1	;关闭打开(1关闭 2打开)
+
+BulletScreenRpcBulletScreenOptReply↓ 弹幕设置回应
+	Result:int32 = -1	;返回结果
+	BulletScreenType:int32 = -1	;弹幕设置场景(1组队 2过场)
+	OptType:int32 = -1	;关闭打开(1关闭 2打开)
+
+BulletScreenRpcCGBulletScreenAsk↑ 过场动画弹幕请求请求
+	CGid:int32 = -1	;过场ID
+
+BulletScreenRpcCGBulletScreenReply↓ 过场动画弹幕请求回应
+	Result:int32 = -1	;返回结果
+	BulletScreenContent:string*	;弹幕内容
+
+BulletScreenRpcSendBulletScreenCGAsk↑ 发布过场弹幕请求
+	CGid:int32 = -1	;过场ID
+	Content:string	;发布内容
+
+BulletScreenRpcSendBulletScreenCGReply↓ 发布过场弹幕回应
+	Result:int32 = -1	;返回结果
+

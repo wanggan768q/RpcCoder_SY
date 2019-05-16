@@ -1,0 +1,287 @@
+import "PublicStruct.proto";
+
+//OnAcceptQuest通知
+message  QuestRpcOnAcceptQuestNotify
+{
+	optional QuestData AcceptQuest = 1;	//新接受的任务
+}
+
+//CompleteQuestStep请求
+message  QuestRpcCompleteQuestStepAsk
+{
+	optional int32 QuestConfigId = 1[default=-1];	//任务表的id
+	optional int32 QuestStep = 2[default=-1];	//QuestStep
+	optional int32 TargetId = 4[default=-1];	//NpcConfigId
+	optional int32 QuestStepEventType = 5[default=-1];	//事件类型
+}
+
+//CompleteQuestStep回应
+message  QuestRpcCompleteQuestStepReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+}
+
+//OnCompleteQuest通知
+message  QuestRpcOnCompleteQuestNotify
+{
+	optional QuestData QuestData = 1;	//任务数据
+}
+
+//调用客户端Lua通知
+message  QuestRpcCallClientLuaNotify
+{
+	optional string Str = 1;	//lua函数字符串
+}
+
+//更新任务通知
+message  QuestRpcUpdateQuestNotify
+{
+	optional QuestData Quest = 1;	//任务数据
+}
+
+//放弃任务请求
+message  QuestRpcGiveUpQuestAsk
+{
+	optional int32 QuestConfigId = 1[default=-1];	//任务表的id
+}
+
+//放弃任务回应
+message  QuestRpcGiveUpQuestReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+}
+
+//完成任务请求
+message  QuestRpcCompleteQuestAsk
+{
+	optional int32 QuestConfigId = 1[default=-1];	//任务表的id
+	optional int32 TargetId = 2[default=-1];	//NpcConfigId
+	optional int32 QuestEventType = 3[default=-1];	//事件类型
+}
+
+//完成任务回应
+message  QuestRpcCompleteQuestReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//完成接受任务对话框请求
+message  QuestRpcCompleteAcceptChatMenuAsk
+{
+	optional int32 QuestConfigId = 1[default=-1];	//任务表的id
+}
+
+//完成接受任务对话框回应
+message  QuestRpcCompleteAcceptChatMenuReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//客户端接受任务请求
+message  QuestRpcAcceptQuestAsk
+{
+	optional int32 Type = 1[default=-1];	//任务类型
+	optional int32 QuestConfigId = 2[default=-1];	//接受任务表
+}
+
+//客户端接受任务回应
+message  QuestRpcAcceptQuestReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//SyncQuest请求
+message  QuestRpcSyncQuestAsk
+{
+}
+
+//SyncQuest回应
+message  QuestRpcSyncQuestReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional QuestListData QuestList = 2;	//任务列表
+	repeated int32 CompleteQuestIdsList = 3;	//完成任务列表
+	repeated int32 CanAcceptQuest = 4;	//可接的任务
+}
+
+//GetReward请求
+message  QuestRpcGetRewardAsk
+{
+	optional int32 QuestConfigId = 1[default=-1];	//接受任务表
+}
+
+//GetReward回应
+message  QuestRpcGetRewardReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//上次任务通知通知
+message  QuestRpcRemoveQuestNotifyNotify
+{
+	repeated int32 QuestConfigId = 1;	//接受任务表
+}
+
+//获取某个任务数据请求
+message  QuestRpcGetQuestDataAsk
+{
+	repeated int32 QuestConfigId = 1;	//接受任务表
+}
+
+//获取某个任务数据回应
+message  QuestRpcGetQuestDataReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated QuestData QuestList = 2;	//返回给客户端的任务列表
+}
+
+//每日活动请求
+message  QuestRpcSyncDailyQuestAsk
+{
+}
+
+//每日活动回应
+message  QuestRpcSyncDailyQuestReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional DailyQuestList DailyQuestList = 2;	//DailyQuestList
+}
+
+//每日活动任务更新通知
+message  QuestRpcDailyQuestUpdateNotify
+{
+	optional DailyQuest AtivityQuestData = 1;	//每日活动数据
+}
+
+//任务消耗物品请求
+message  QuestRpcConsumeItemAsk
+{
+	optional int32 QuestConfigId = 1[default=-1];	//任务表的id
+	repeated ItemSimpleData ItemData = 2;	//物品id
+}
+
+//任务消耗物品回应
+message  QuestRpcConsumeItemReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//任务列表请求
+message  QuestRpcQuestMaxListAsk
+{
+}
+
+//任务列表回应
+message  QuestRpcQuestMaxListReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional QuestMaxQuestList QuestList = 2;	//任务列表
+}
+
+//最大类型任务通知通知
+message  QuestRpcQuestMaxListNotifyNotify
+{
+	optional QuestMaxQuestList QuestList = 1;	//任务列表
+}
+
+//完成任务id请求请求
+message  QuestRpcSyncCompleteQuestIdsAsk
+{
+}
+
+//完成任务id请求回应
+message  QuestRpcSyncCompleteQuestIdsReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional CompletedQuestList CompleteQuestIds = 2;	//完成的任务列表
+}
+
+//完成的任务列表通知
+message  QuestRpcCompleteQuestIdsNotifyNotify
+{
+	optional CompletedQuestList CompleteQuestIds = 1;	//完成的任务列表
+}
+
+//精英怪击杀次数请求
+message  QuestRpcEliteFinishCountAsk
+{
+}
+
+//精英怪击杀次数回应
+message  QuestRpcEliteFinishCountReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional int32 Count = 2[default=-1];	//精英怪击杀次数
+}
+
+//通知新可接任务通知
+message  QuestRpcSyncCanAcceptQuestNotify
+{
+	repeated int32 CanAcceptQuest = 1;	//新的可接任务
+}
+

@@ -1,0 +1,47 @@
+ClimTowerRpcOpenRuleNotify↓ 玩法开启规则通知
+
+ClimTowerRpcChallengeAsk↑ 挑战请求
+	Layer:int32 = 1	;挑战层
+
+ClimTowerRpcChallengeReply↓ 挑战回应
+	Result:int32 = -1	;返回结果
+	DungeonId:int32 = -1	;副本id
+	SceneId:int32 = -1	;场景id
+	WayPoint:int32 = -1	;路点
+
+ClimTowerRpcEnterAsk↑ 进入爬塔活动请求
+
+ClimTowerRpcEnterReply↓ 进入爬塔活动回应
+	Result:int32 = -1	;返回结果
+	EnterInfo:ClimTowerInfo	;进入爬塔挑战
+	[ClimTowerInfo]
+		LastTime:int64 = 0	;每次爬塔时间
+		CurLayer:int32 = 1	;玩家当前层
+		MaxLayer:int32 = 0	;已挑战完成最大层
+		ResetLayerTime:int64 = 0	;最高层重置时间
+		FirstGet:FirstVicGet*	;首次胜利领取奖励标识
+		[FirstVicGet]
+			Id:int32 = -1	;层数
+			Get:int32 = 0	;是否领取
+	RemainTimes:int32 = 0	;剩余挑战次数
+
+ClimTowerRpcRankAsk↑ 获取排行榜信息请求
+
+ClimTowerRpcRankReply↓ 获取排行榜信息回应
+	Result:int32 = -1	;返回结果
+
+ClimTowerRpcFirstVicRewardAsk↑ 首次通关奖励领奖请求
+	Layer:int32 = -1	;领取哪一层奖励
+
+ClimTowerRpcFirstVicRewardReply↓ 首次通关奖励领奖回应
+	Result:int32 = -1	;返回结果
+
+ClimTowerRpcNextLayerNotify↓ 下一层通知通知
+	CurLayer:int32 = -1	;当前层
+
+ClimTowerRpcChallengeEndNotify↓ 挑战结束通知
+
+ClimTowerRpcWaveRefreshNotify↓ 每波怪物刷新通知通知
+	AllWaves:int32 = -1	;总共几波怪物
+	CurWave:int32 = -1	;当前怪物波数
+

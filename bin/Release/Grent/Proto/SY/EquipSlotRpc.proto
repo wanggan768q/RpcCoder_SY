@@ -1,0 +1,89 @@
+message  EquipSlotRpcSyncEquipSlotAsk
+{
+
+}
+
+message  EquipSlotRpcSyncEquipSlotReply
+{
+	optional int32 Result = 1;
+	repeated EquipSlotInfo EquipSlotData = 2;
+
+}
+
+message  EquipSlotRpcEnhanceEquipSlotAsk
+{
+	optional int32 Slot_Type = 1;
+	repeated ItemSimpleData CostItemList = 2;
+
+}
+
+message  EquipSlotRpcEnhanceEquipSlotReply
+{
+	optional int32 Result = 1;
+	repeated EquipSlotInfo EquipSlotData = 2;
+	optional int32 Slot_Type = 3;
+
+}
+
+message  EquipSlotRpcUpStarEquipSlotAsk
+{
+	optional int32 Slot_Type = 2;
+	optional bool IsProtection = 3[default=false];
+
+}
+
+message  EquipSlotRpcUpStarEquipSlotReply
+{
+	optional int32 Result = 1;
+	repeated EquipSlotStarInfo EquipSlotStarList = 2;
+	optional int32 Slot_Type = 3;
+	optional int32 UpStarResult = 4;
+
+}
+
+message  EquipSlotRpcSyncEquipSlotStarAsk
+{
+
+}
+
+message  EquipSlotRpcSyncEquipSlotStarReply
+{
+	optional int32 Result = 1;
+	repeated EquipSlotStarInfo EquipSlotStarList = 2;
+
+}
+
+message  EquipSlotInfo
+{
+	optional int32 Enhance_Level = 1[default=-1];
+	optional int32 Enhance_Exp = 2[default=-1];
+	repeated AttrKeyValue Enhance_Attr = 3;
+	optional int32 BattleScore = 4[default=-1];
+	optional int32 Slot_Type = 5[default=-1];
+
+}
+
+message  ItemSimpleData
+{
+	optional int32 ConfID = 1[default=-1];
+	optional int32 Count = 2[default=-1];
+
+}
+
+message  EquipSlotStarInfo
+{
+	optional int32 RankUp_Level = 1[default=-1];
+	optional int32 Slot_Type = 3[default=-1];
+	optional int32 BattleScore = 4[default=-1];
+	optional int32 NextBattleScore = 6[default=-1];
+
+}
+
+message  AttrKeyValue
+{
+	optional int32 Key = 1[default=-1];
+	optional int64 Value = 2[default=-1];
+	optional int32 Quality = 3[default=-1];
+
+}
+

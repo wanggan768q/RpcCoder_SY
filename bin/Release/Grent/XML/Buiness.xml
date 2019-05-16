@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<Root Module="Buiness" CName="生活技能" MsgNumStart="22" SyncDataVersion="1" Comment="">
+    <Operate Name="BuinessSync" CName="初始化" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="22" DataStruct="RpcBuinessSyncAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="23" DataStruct="RpcBuinessSyncReply" Comment="" />
+    </Operate>
+    <Operate Name="BuinessUnlock" CName="解锁" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="24" DataStruct="RpcBuinessUnlockAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="25" DataStruct="RpcBuinessUnlockReply" Comment="" />
+    </Operate>
+    <Operate Name="BuinessStudy" CName="学习技能" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="26" DataStruct="RpcBuinessStudyAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="27" DataStruct="RpcBuinessStudyReply" Comment="" />
+    </Operate>
+    <Operate Name="BuinessMake" CName="制作" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="28" DataStruct="RpcBuinessMakeAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="29" DataStruct="RpcBuinessMakeReply" Comment="" />
+    </Operate>
+    <Struct Name="RpcBuinessSyncAsk" CName="初始化请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcBuinessSyncReply" CName="初始化回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="BuinessSkillData" FieldId="2" Name="SkillDatas" CName="生活技能列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="repeated" FieldType="BuinessUnlockInfo" FieldId="3" Name="UnLockInfos" CName="解锁剩余时间" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcBuinessUnlockAsk" CName="解锁请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="SkillID" CName="要解锁的ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcBuinessUnlockReply" CName="解锁回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="BuinessSkillData" FieldId="2" Name="ChangeSkillDatas" CName="改变的技能" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="BuinessUnlockInfo" FieldId="4" Name="UnLockInfo" CName="解锁信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcBuinessStudyAsk" CName="学习技能请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="SkillID" CName="技能ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="StudyType" CName="学习类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcBuinessStudyReply" CName="学习技能回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="BuinessSkillData" FieldId="2" Name="SkillData" CName="技能新属性" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcBuinessMakeAsk" CName="制作请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="SkillID" CName="使用哪个技能" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcBuinessMakeReply" CName="制作回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="5">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="4" Name="ItemID" CName="道具ID" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="5" Name="ItemCount" CName="数量" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+</Root>

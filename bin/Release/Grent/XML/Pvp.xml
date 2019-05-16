@@ -1,0 +1,191 @@
+<?xml version="1.0"?>
+<Root Module="Pvp" CName="Pvp" MsgNumStart="34" SyncDataVersion="1" Comment="">
+    <Operate Name="Rank" CName="Rank" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="34" DataStruct="RpcRankAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="35" DataStruct="RpcRankReply" Comment="" />
+    </Operate>
+    <Operate Name="Match" CName="匹配" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="36" DataStruct="RpcMatchAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="37" DataStruct="RpcMatchReply" Comment="" />
+    </Operate>
+    <Operate Name="MatchNotify" CName="匹配的通知" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="38" DataStruct="RpcMatchNotifyNotify" Comment="" />
+    </Operate>
+    <Operate Name="MatchCancle" CName="取消匹配" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="39" DataStruct="RpcMatchCancleAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="40" DataStruct="RpcMatchCancleReply" Comment="" />
+    </Operate>
+    <Operate Name="MatchCancleNotify" CName="取消匹配通知" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="41" DataStruct="RpcMatchCancleNotifyNotify" Comment="" />
+    </Operate>
+    <Operate Name="PvpBattleInfoSync" CName="请求战斗信息" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="42" DataStruct="RpcPvpBattleInfoSyncAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="43" DataStruct="RpcPvpBattleInfoSyncReply" Comment="" />
+    </Operate>
+    <Operate Name="PvpBattleStart" CName="PvpBattleStart" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="44" DataStruct="RpcPvpBattleStartNotify" Comment="" />
+    </Operate>
+    <Operate Name="PvpBattleEnd" CName="PvpBattleEnd" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="45" DataStruct="RpcPvpBattleEndNotify" Comment="" />
+    </Operate>
+    <Operate Name="PlayerReady" CName="PlayerReady" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="46" DataStruct="RpcPlayerReadyAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="47" DataStruct="RpcPlayerReadyReply" Comment="" />
+    </Operate>
+    <Operate Name="PlayerReadyNotify" CName="玩家准备的通知" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="48" DataStruct="RpcPlayerReadyNotifyNotify" Comment="" />
+    </Operate>
+    <Operate Name="ReadyFaild" CName="等待确认超时" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="49" DataStruct="RpcReadyFaildNotify" Comment="" />
+    </Operate>
+    <Operate Name="MatchSucess" CName="匹配完成" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="50" DataStruct="RpcMatchSucessNotify" Comment="" />
+    </Operate>
+    <Operate Name="RankChange" CName="段位变化" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="51" DataStruct="RpcRankChangeNotify" Comment="" />
+    </Operate>
+    <Operate Name="ReturnLastScene" CName="返回" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="52" DataStruct="RpcReturnLastSceneAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="53" DataStruct="RpcReturnLastSceneReply" Comment="" />
+    </Operate>
+    <Operate Name="ArenaStartTime" CName="通知开始时间" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="54" DataStruct="RpcArenaStartTimeNotify" Comment="" />
+    </Operate>
+    <Operate Name="UpdateKillCount" CName="更新击杀数量" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="55" DataStruct="RpcUpdateKillCountNotify" Comment="" />
+    </Operate>
+    <Operate Name="ArenaLeftTime" CName="剩余时间" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="56" DataStruct="RpcArenaLeftTimeNotify" Comment="" />
+    </Operate>
+    <Operate Name="LastRank" CName="上个赛季的排行" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="57" DataStruct="RpcLastRankAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="58" DataStruct="RpcLastRankReply" Comment="" />
+    </Operate>
+    <Operate Name="NewSeason" CName="新赛季通知" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="59" DataStruct="RpcNewSeasonNotify" Comment="" />
+    </Operate>
+    <Operate Name="GetSeasonReward" CName="领取奖励" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="60" DataStruct="RpcGetSeasonRewardAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="61" DataStruct="RpcGetSeasonRewardReply" Comment="" />
+    </Operate>
+    <Operate Name="Reconnect" CName="重连" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="62" DataStruct="RpcReconnectNotify" Comment="" />
+    </Operate>
+    <Operate Name="GetReward" CName="获取奖励" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="63" DataStruct="RpcGetRewardAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="64" DataStruct="RpcGetRewardReply" Comment="" />
+    </Operate>
+    <Struct Name="RpcRankAsk" CName="Rank请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="PvpType" CName="PvpType" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcRankReply" CName="Rank回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="PvpPlayerInfo" FieldId="2" Name="RankList" CName="RankList" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcMatchAsk" CName="Match请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="PvpType" CName="PvpType" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcMatchReply" CName="Match回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcMatchNotifyNotify" CName="匹配的通知通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcMatchCancleAsk" CName="MatchCancle请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcMatchCancleReply" CName="MatchCancle回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcMatchCancleNotifyNotify" CName="取消匹配通知通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="RoleId" CName="取消者的ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="string" FieldId="2" Name="Name" CName="名字" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="Reason" CName="原因" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcPlayerReadyAsk" CName="PlayerReady请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="OpreationType" CName="取消或确认" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="1 准备 2 取消准备" />
+    </Struct>
+    <Struct Name="RpcPlayerReadyReply" CName="PlayerReady回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcPlayerReadyNotifyNotify" CName="玩家准备的通知通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="RoleId" CName="角色ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="OpType" CName="操作类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="1 准备 2 取消" />
+    </Struct>
+    <Struct Name="RpcReadyFaildNotify" CName="等待确认超时通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Reason" CName="原因" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="2" Name="RoleId" CName="角色ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcPvpBattleStartNotify" CName="PvpBattleStart通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="LeftKill" CName="左侧阵营击杀数量" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="RightKill" CName="右侧阵营击杀数量" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="4" Name="NeedKill" CName="需要击杀多少人" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcPvpBattleEndNotify" CName="PvpBattleEnd通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="optional" FieldType="PvpBattleEndInfo" FieldId="4" Name="BattleEndInfo" CName="结算信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcMatchSucessNotify" CName="匹配完成通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="repeated" FieldType="PvpPlayerInfo" FieldId="1" Name="LeftTeam" CName="左边队伍" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="repeated" FieldType="PvpPlayerInfo" FieldId="2" Name="RightTeam" CName="右侧队伍" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="Time" CName="倒计时" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="秒" />
+    </Struct>
+    <Struct Name="RpcRankChangeNotify" CName="段位变化通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="5">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="PvpType" CName="类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="BeforeRank" CName="之前段位" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="AfterRank" CName="之后段位" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="4" Name="BeforeStar" CName="星级" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="5" Name="AfterStar" CName="星级" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcReturnLastSceneAsk" CName="返回请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcReturnLastSceneReply" CName="返回回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcArenaStartTimeNotify" CName="通知开始时间通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="NeedTime" CName="剩余时间 秒" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="TimeStamp" CName="时间戳 " ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcUpdateKillCountNotify" CName="更新击杀数量通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="LeftTeamKill" CName="左方杀人数" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="RightTeamKill" CName="右侧杀人数" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcArenaLeftTimeNotify" CName="剩余时间通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="LeftTime" CName="剩余时间" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="秒" />
+    </Struct>
+    <Struct Name="RpcLastRankAsk" CName="上个赛季的排行请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="PvpType" CName="类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcLastRankReply" CName="上个赛季的排行回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="PvpPlayerInfo" FieldId="2" Name="RankList" CName="排行信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcNewSeasonNotify" CName="新赛季通知通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="LastRank" CName="上赛季段位" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="LastStar" CName="上赛季星级" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="LastRanking" CName="上赛季排名" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="repeated" FieldType="PvpBattleRewardInfo" FieldId="4" Name="RewardList" CName="奖励列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcGetSeasonRewardAsk" CName="领取奖励请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcGetSeasonRewardReply" CName="领取奖励回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcPvpBattleInfoSyncAsk" CName="请求战斗信息请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcPvpBattleInfoSyncReply" CName="请求战斗信息回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="PvpBattleInfo" FieldId="2" Name="BattleInfo" CName="战斗信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="Season" CName="当前赛季" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="4" Name="RankIndex" CName="排名" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcReconnectNotify" CName="重连通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="8">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="NeedKill" CName="需要杀人数" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="ArenaState" CName="竞技场状态" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="LeftTime" CName="剩余时间" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="5" Name="LeftKill" CName="左侧阵营击杀数量" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="6" Name="RightKill" CName="右侧阵营击杀数量" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="7" Name="Camp" CName="阵营" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="0左　1右" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="8" Name="TimeStamp" CName="时间戳" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcGetRewardAsk" CName="获取奖励请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="PvPType" CName="战斗类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="Rank" CName="段位" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcGetRewardReply" CName="获取奖励回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="int32" FieldId="2" Name="RewardList" CName="已领过的" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+</Root>

@@ -1,0 +1,81 @@
+import "PublicStruct.proto";
+
+//同步装备槽相关请求
+message  EquipSlotRpcSyncEquipSlotAsk
+{
+}
+
+//同步装备槽相关回应
+message  EquipSlotRpcSyncEquipSlotReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated EquipSlotInfo EquipSlotData = 2;	//装备槽信息
+}
+
+//装备槽强化请求
+message  EquipSlotRpcEnhanceEquipSlotAsk
+{
+	optional int32 Slot_Type = 1[default=-1];	//槽类型
+	repeated ItemSimpleData CostItemList = 2;	//消耗物品列表
+}
+
+//装备槽强化回应
+message  EquipSlotRpcEnhanceEquipSlotReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated EquipSlotInfo EquipSlotData = 2;	//装备槽信息
+	optional int32 Slot_Type = 3[default=-1];	//槽类型
+}
+
+//装备槽升星请求
+message  EquipSlotRpcUpStarEquipSlotAsk
+{
+	optional int32 Slot_Type = 2[default=-1];	//槽类型
+	optional bool IsProtection = 3[default=false];	//是否保底
+}
+
+//装备槽升星回应
+message  EquipSlotRpcUpStarEquipSlotReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated EquipSlotStarInfo EquipSlotStarList = 2;	//装备槽星级列表
+	optional int32 Slot_Type = 3[default=-1];	//槽类型
+	/*
+	升星结果
+	1：成功 2：失败 3.失败掉星
+	*/
+	optional int32 UpStarResult = 4[default=-1];
+}
+
+//同步装备槽星请求
+message  EquipSlotRpcSyncEquipSlotStarAsk
+{
+}
+
+//同步装备槽星回应
+message  EquipSlotRpcSyncEquipSlotStarReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated EquipSlotStarInfo EquipSlotStarList = 2;	//装备槽星级列表
+}
+

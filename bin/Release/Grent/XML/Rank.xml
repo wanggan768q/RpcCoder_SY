@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<Root Module="Rank" CName="排行榜" MsgNumStart="56" SyncDataVersion="1" Comment="">
+    <Operate Name="Rank" CName="请求排行榜" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="56" DataStruct="RpcRankAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="57" DataStruct="RpcRankReply" Comment="" />
+    </Operate>
+    <Struct Name="RpcRankAsk" CName="请求排行榜请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="RankType" CName="排行榜类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="RankSubType" CName="子类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcRankReply" CName="请求排行榜回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="5">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="RankInfo" FieldId="2" Name="RankInfoList" CName="排行榜信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="RankIndex" CName="自己的排名" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int64" FieldId="4" Name="MyValue" CName="我的" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+</Root>

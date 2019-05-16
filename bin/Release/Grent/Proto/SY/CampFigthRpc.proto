@@ -1,0 +1,156 @@
+message  CampFigthRpcMilitaryBrokenAsk
+{
+	optional int32 RoleID = 1;
+
+}
+
+message  CampFigthRpcMilitaryBrokenReply
+{
+	optional int32 Result = 1;
+	optional int32 Rank = 2;
+	optional int32 Star = 3;
+	optional int32 Exp = 4;
+
+}
+
+message  CampFigthRpcCampFightContributionNotify
+{
+	optional int32 Camp = 1;
+	optional int32 ContributionValue = 2;
+
+}
+
+message  CampFigthRpcObjKillBroadcastNotify
+{
+	optional int32 KillerObjID = 1;
+	optional int32 KillerName = 2;
+	optional int32 DeadObjID = 3;
+	optional int32 DeadObjResID = 4;
+
+}
+
+message  CampFigthRpcNpcBirthNotify
+{
+	optional int32 Camp = 1;
+	optional int32 BirthObjID = 2;
+	optional int32 BirthObjResID = 3;
+
+}
+
+message  CampFigthRpcGetMilitaryValueAsk
+{
+	optional int32 RoleID = 1;
+
+}
+
+message  CampFigthRpcGetMilitaryValueReply
+{
+	optional int32 Result = 1;
+	optional int32 Rank = 2;
+	optional int32 Star = 3;
+	optional int32 Exp = 4;
+	optional int32 Curseason = 5;
+	optional int32 TodayHornor = 6;
+
+}
+
+message  CampFigthRpcKillDeadInfoNotify
+{
+	optional int32 KillNum = 1;
+	optional int32 DeadNum = 2;
+	optional int32 Rank = 4;
+	optional int32 Exp = 5;
+	optional int32 Star = 6;
+
+}
+
+message  CampFigthRpcWorshipAsk
+{
+	optional int32 WorshipRoleID = 1;
+
+}
+
+message  CampFigthRpcWorshipReply
+{
+	optional int32 Result = 1;
+	optional int32 WorshipRoleID = 2;
+	optional int32 WorshipCount = 3;
+
+}
+
+message  CampFigthRpcWorshipRankAsk
+{
+	optional int32 RoleID = 1;
+
+}
+
+message  CampFigthRpcWorshipRankReply
+{
+	optional int32 Result = 1;
+	repeated WorshipPlayerData RoleDatas = 2;
+
+}
+
+message  CampFigthRpcNewSeasonNotify
+{
+	optional int32 Rank = 1;
+	optional int32 Star = 2;
+	optional int32 RankIndex = 3;
+	repeated PvpBattleRewardInfo RewardList = 4;
+	optional int32 Lastseason = 5;
+
+}
+
+message  CampFigthRpcSyncRankRewardAsk
+{
+
+}
+
+message  CampFigthRpcSyncRankRewardReply
+{
+	optional int32 Result = 1;
+	repeated int32 RankRewardList = 2;
+
+}
+
+message  CampFigthRpcGetRankRewardAsk
+{
+	optional int32 Rank = 1;
+
+}
+
+message  CampFigthRpcGetRankRewardReply
+{
+	optional int32 Result = 1;
+	optional int32 Rank = 3;
+
+}
+
+message  CampFigthRpcEnterBattleSceneAsk
+{
+
+}
+
+message  CampFigthRpcEnterBattleSceneReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  WorshipPlayerData
+{
+	optional int32 Role_id = 1[default=-1];
+	optional string Role_name = 2;
+	optional int32 Rank_level = 3[default=-1];
+	optional int32 Worship_cout = 4[default=-1];
+	optional int32 Rank = 5[default=-1];
+
+}
+
+message  PvpBattleRewardInfo
+{
+	optional int32 ItemID = 1[default=-1];
+	optional int32 ItemCout = 2[default=-1];
+
+}
+

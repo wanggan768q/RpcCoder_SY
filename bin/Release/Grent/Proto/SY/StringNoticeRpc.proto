@@ -1,0 +1,7 @@
+message  StringNoticeRpcNoticeNotify
+{
+	optional int32 ConfigId = 1;
+	repeated string Param = 2;
+
+}
+

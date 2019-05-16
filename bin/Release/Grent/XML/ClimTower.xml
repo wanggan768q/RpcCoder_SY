@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<Root Module="ClimTower" CName="爬塔玩法" MsgNumStart="47" SyncDataVersion="1" Comment="">
+    <Operate Name="OpenRule" CName="玩法开启规则" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="47" DataStruct="RpcOpenRuleNotify" Comment="" />
+    </Operate>
+    <Operate Name="Enter" CName="进入爬塔活动" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="48" DataStruct="RpcEnterAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="49" DataStruct="RpcEnterReply" Comment="" />
+    </Operate>
+    <Operate Name="Challenge" CName="挑战" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="50" DataStruct="RpcChallengeAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="51" DataStruct="RpcChallengeReply" Comment="" />
+    </Operate>
+    <Operate Name="Rank" CName="获取排行榜信息" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="52" DataStruct="RpcRankAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="53" DataStruct="RpcRankReply" Comment="" />
+    </Operate>
+    <Operate Name="FirstVicReward" CName="首次通关奖励领奖" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="54" DataStruct="RpcFirstVicRewardAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="55" DataStruct="RpcFirstVicRewardReply" Comment="" />
+    </Operate>
+    <Operate Name="NextLayer" CName="下一层通知" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="56" DataStruct="RpcNextLayerNotify" Comment="" />
+    </Operate>
+    <Operate Name="ChallengeEnd" CName="挑战结束" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="57" DataStruct="RpcChallengeEndNotify" Comment="" />
+    </Operate>
+    <Operate Name="WaveRefresh" CName="每波怪物刷新通知" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="58" DataStruct="RpcWaveRefreshNotify" Comment="" />
+    </Operate>
+    <Struct Name="RpcOpenRuleNotify" CName="玩法开启规则通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcChallengeAsk" CName="挑战请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Layer" CName="挑战层" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="1" Comment="" />
+    </Struct>
+    <Struct Name="RpcChallengeReply" CName="挑战回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="5">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="DungeonId" CName="副本id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="SceneId" CName="场景id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="4" Name="WayPoint" CName="路点" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcEnterAsk" CName="进入爬塔活动请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcEnterReply" CName="进入爬塔活动回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="ClimTowerInfo" FieldId="2" Name="EnterInfo" CName="进入爬塔挑战" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="RemainTimes" CName="剩余挑战次数" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcRankAsk" CName="获取排行榜信息请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcRankReply" CName="获取排行榜信息回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcFirstVicRewardAsk" CName="首次通关奖励领奖请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Layer" CName="领取哪一层奖励" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcFirstVicRewardReply" CName="首次通关奖励领奖回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcNextLayerNotify" CName="下一层通知通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="CurLayer" CName="当前层" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcChallengeEndNotify" CName="挑战结束通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcWaveRefreshNotify" CName="每波怪物刷新通知通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="AllWaves" CName="总共几波怪物" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="CurWave" CName="当前怪物波数" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+</Root>

@@ -2,7 +2,7 @@
 <!DOCTYPE dotfuscatorMap SYSTEM "http://www.preemptive.com/dotfuscator/dtd/dotfuscatorMap_v1.2.dtd">
 <dotfuscatorMap version="1.1">
     <header>
-        <timestamp>2018-12-25T12:01:15</timestamp>
+        <timestamp>2019-05-16T16:08:23</timestamp>
         <product version="5.32.1.6167" user="XiaoBo Guo" serial="237413-391">Dotfuscator Community Edition</product>
     </header>
     <mapping>
@@ -149,6 +149,18 @@
                         <newname>a</newname>
                     </field>
                 </fieldlist>
+                <propertylist />
+                <eventlist />
+            </type>
+            <type>
+                <name>Editor.CommandAttribute</name>
+                <methodlist>
+                    <method>
+                        <signature>void(string)</signature>
+                        <name>.ctor</name>
+                    </method>
+                </methodlist>
+                <fieldlist />
                 <propertylist />
                 <eventlist />
             </type>
@@ -1106,6 +1118,11 @@
                 </methodlist>
                 <fieldlist>
                     <field>
+                        <signature>bool</signature>
+                        <name>S_COMMAND_MODE</name>
+                        <newname>e</newname>
+                    </field>
+                    <field>
                         <signature>System.IO.BinaryWriter</signature>
                         <name>bw</name>
                         <newname>a</newname>
@@ -1178,6 +1195,10 @@
                         <signature>void(object, System.EventArgs)</signature>
                         <name>Coffee_CheckedChanged</name>
                         <newname>ab</newname>
+                    </method>
+                    <method>
+                        <signature>void()</signature>
+                        <name>Command_Open</name>
                     </method>
                     <method>
                         <signature>void()</signature>
@@ -2364,7 +2385,7 @@
                 <newname>d</newname>
                 <methodlist>
                     <method>
-                        <signature>void()</signature>
+                        <signature>void(string[])</signature>
                         <name>Main</name>
                         <newname>a</newname>
                     </method>
@@ -2783,15 +2804,15 @@
     <statistics>
         <statisticline>
             <description>Total Classes</description>
-            <statistic>35</statistic>
+            <statistic>36</statistic>
         </statisticline>
         <statisticline>
             <description>Total Methods</description>
-            <statistic>334</statistic>
+            <statistic>336</statistic>
         </statisticline>
         <statisticline>
             <description>Total Fields</description>
-            <statistic>168</statistic>
+            <statistic>169</statistic>
         </statisticline>
         <statisticline>
             <description>Total Properties</description>
@@ -2804,17 +2825,17 @@
         <statisticline>
             <description>Total Classes Renamed</description>
             <statistic>13</statistic>
-            <statistic>37.14%</statistic>
+            <statistic>36.11%</statistic>
         </statisticline>
         <statisticline>
             <description>Total Methods Renamed</description>
             <statistic>135</statistic>
-            <statistic>40.42%</statistic>
+            <statistic>40.18%</statistic>
         </statisticline>
         <statisticline>
             <description>Total Fields Renamed</description>
-            <statistic>106</statistic>
-            <statistic>63.10%</statistic>
+            <statistic>107</statistic>
+            <statistic>63.31%</statistic>
         </statisticline>
         <statisticline>
             <description>Total Properties Renamed</description>
@@ -2829,37 +2850,37 @@
         <statisticline>
             <description>Methods Renamed to 'a'</description>
             <statistic>58</statistic>
-            <statistic>17.37%</statistic>
+            <statistic>17.26%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'b'</description>
             <statistic>9</statistic>
-            <statistic>2.69%</statistic>
+            <statistic>2.68%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'g'</description>
             <statistic>7</statistic>
-            <statistic>2.10%</statistic>
+            <statistic>2.08%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'h'</description>
             <statistic>5</statistic>
-            <statistic>1.50%</statistic>
+            <statistic>1.49%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'i'</description>
             <statistic>5</statistic>
-            <statistic>1.50%</statistic>
+            <statistic>1.49%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'c'</description>
             <statistic>4</statistic>
-            <statistic>1.20%</statistic>
+            <statistic>1.19%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'd'</description>
             <statistic>4</statistic>
-            <statistic>1.20%</statistic>
+            <statistic>1.19%</statistic>
         </statisticline>
     </statistics>
 </dotfuscatorMap>

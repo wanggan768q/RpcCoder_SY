@@ -1,0 +1,65 @@
+message  WorldBossRpcWorldBossInfoAsk
+{
+	optional int32 BossID = 2;
+
+}
+
+message  WorldBossRpcWorldBossInfoReply
+{
+	optional int32 Result = 1;
+	repeated WorldBossInfo WorldBossInfos = 2;
+	optional int32 BossID = 3;
+
+}
+
+message  WorldBossRpcWorldBossRankInfoAsk
+{
+	optional int32 BossID = 1;
+	optional int32 Occupation = 2;
+
+}
+
+message  WorldBossRpcWorldBossRankInfoReply
+{
+	optional int32 Result = 1;
+	repeated WorldBossRankInfo RankInfo = 2;
+	optional string LastKillName = 3;
+	optional string MaxDamageName = 4;
+	optional int32 MyRank = 5;
+	optional int32 Occupation = 6;
+	optional int32 BossID = 7;
+	optional int32 MyOccupationRank = 8;
+	optional int32 MyScore = 9;
+
+}
+
+message  WorldBossInfo
+{
+	optional int32 LineID = 1[default=-1];
+	optional int32 HPRate = 2[default=-1];
+	optional WorldBossScoreInfo LastDamage = 3;
+	optional WorldBossScoreInfo MaxDamage = 4;
+
+}
+
+message  WorldBossRankInfo
+{
+	optional int32 Rank = 1[default=-1];
+	optional string Name = 2;
+	optional int32 Level = 3[default=-1];
+	optional int32 Score = 4[default=-1];
+
+}
+
+message  WorldBossScoreInfo
+{
+	optional uint64 Playerguid = 1[default=0];
+	optional int32 Level = 2[default=-1];
+	optional string Name = 3;
+	optional int32 Occupation = 4[default=-1];
+	optional int32 RankAll = 5[default=-1];
+	optional int32 RankOccupation = 6[default=-1];
+	optional int32 Score = 7[default=-1];
+
+}
+

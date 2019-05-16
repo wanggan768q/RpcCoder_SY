@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<Root Module="RedDot" CName="红点系统" MsgNumStart="54" SyncDataVersion="1" Comment="">
+    <Operate Name="SyncRedDot" CName="同步" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="54" DataStruct="RpcSyncRedDotAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="55" DataStruct="RpcSyncRedDotReply" Comment="" />
+    </Operate>
+    <Operate Name="RemoveRedDot" CName="删除红点" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="56" DataStruct="RpcRemoveRedDotAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="57" DataStruct="RpcRemoveRedDotReply" Comment="" />
+    </Operate>
+    <Operate Name="UpdateRedDot" CName="更新" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="58" DataStruct="RpcUpdateRedDotNotify" Comment="" />
+    </Operate>
+    <Struct Name="RpcSyncRedDotAsk" CName="同步请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcSyncRedDotReply" CName="同步回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="RedDotInfo" FieldId="2" Name="RedDotInfoList" CName="红点列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcRemoveRedDotAsk" CName="删除红点请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Type" CName="类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcRemoveRedDotReply" CName="删除红点回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcUpdateRedDotNotify" CName="更新通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="RedDotInfo" FieldId="1" Name="RedDotInfo" CName="需要更新的红点信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+</Root>

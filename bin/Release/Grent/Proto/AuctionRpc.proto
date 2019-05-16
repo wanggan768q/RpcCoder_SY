@@ -1,0 +1,188 @@
+import "PublicStruct.proto";
+
+//级别
+message  AuctionRpcAuctionInfoAsk
+{
+	optional int32 ItemId = 13[default=-1];	//道具id
+	optional int32 QueueType = 16[default=-1];	//排序类型
+	optional int32 CurPage = 17[default=-1];	//当前页
+}
+
+//查询拍卖行信息回应
+message  AuctionRpcAuctionInfoReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated AuctionItem AuctionItem = 2;	//查询到的信息
+	optional int32 TotalPage = 3[default=1];	//道具总页数
+}
+
+//请求上架请求
+message  AuctionRpcSellItemAsk
+{
+	optional uint64 ItemGuid = 1[default=0];	//出售道具guid
+	optional int32 ItemId = 2[default=-1];	//ItemId
+	optional int32 Price = 3[default=0];	//拍卖价格
+	optional int32 Currency = 4[default=-1];	//交易钱币类型
+	optional int32 Count = 5[default=-1];	//交易数量
+}
+
+//请求上架回应
+message  AuctionRpcSellItemReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//购买请求
+message  AuctionRpcBuyAsk
+{
+	optional uint64 ItemGuid = 1[default=0];	//购买道具的guid
+	optional int32 Count = 2[default=-1];	//买入数量
+}
+
+//购买回应
+message  AuctionRpcBuyReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//重新上架请求
+message  AuctionRpcSellAgainAsk
+{
+	optional uint64 ItemGuid = 1[default=0];	//再次销售物品guid
+	optional int32 Price = 2[default=-1];	//价格
+}
+
+//重新上架回应
+message  AuctionRpcSellAgainReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//取回交易记录中物品
+message  AuctionRpcGetItemAsk
+{
+	repeated uint64 BuyRecGuid = 1;	//拍卖行的商品guid
+	repeated uint64 SaleRecGuid = 3;	//卖的记录guid
+}
+
+//取回拍卖道具回应
+message  AuctionRpcGetItemReply
+{
+	optional int32 Result = 2[default=-1];	//结果
+	repeated AuctionRecSimple Record = 3;	//返回道具的信息
+}
+
+//交易记录请求
+message  AuctionRpcRecordAsk
+{
+}
+
+//交易记录回应
+message  AuctionRpcRecordReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated AuctionRecSimple Record = 3;	//交易记录简单信息
+}
+
+//按类别查询简单信息请求
+message  AuctionRpcItemInfoByClassAsk
+{
+	optional int32 ItemClass = 1[default=-1];	//商品类别(关注，装备，道具，宠物)
+	repeated int32 ItemId = 2;	//关注物品的id
+	optional int32 ItemSubClass = 3[default=-1];	//子类别
+	optional int32 Prof = 5[default=-1];	//职业
+	optional int32 Level = 6[default=-1];	//等级
+}
+
+//按类别查询简单信息回应
+message  AuctionRpcItemInfoByClassReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated AuctionItemCnt ItemCount = 2;	//道具数量信息
+}
+
+//预上架请求
+message  AuctionRpcSalePrepareAsk
+{
+	optional int32 ItemId = 1[default=-1];	//预上架物品ID
+}
+
+//预上架回应
+message  AuctionRpcSalePrepareReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional int32 ItemId = 2[default=-1];	//商品ID 
+	optional int32 BasePrice = 3[default=0];	//基准价
+	repeated int32 GoldGroup = 4;	//GoldGroup
+	repeated int32 DiamondGroup = 5;	//DiamondGroup
+}
+
+//取回上架物品请求
+message  AuctionRpcGetItemBackAsk
+{
+	optional uint64 ItemGuid = 1[default=0];	//道具Guid
+}
+
+//取回上架物品回应
+message  AuctionRpcGetItemBackReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//玩家当前拍卖列表请求
+message  AuctionRpcGetMySaleListAsk
+{
+}
+
+//玩家当前拍卖列表回应
+message  AuctionRpcGetMySaleListReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated AuctionItem AuctionItem = 2;	//道具信息
+}
+

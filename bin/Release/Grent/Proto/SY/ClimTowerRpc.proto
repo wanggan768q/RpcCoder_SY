@@ -1,0 +1,91 @@
+message  ClimTowerRpcOpenRuleNotify
+{
+
+}
+
+message  ClimTowerRpcChallengeAsk
+{
+	optional int32 Layer = 1;
+
+}
+
+message  ClimTowerRpcChallengeReply
+{
+	optional int32 Result = 1;
+	optional int32 DungeonId = 2;
+	optional int32 SceneId = 3;
+	optional int32 WayPoint = 4;
+
+}
+
+message  ClimTowerRpcEnterAsk
+{
+
+}
+
+message  ClimTowerRpcEnterReply
+{
+	optional int32 Result = 1;
+	optional ClimTowerInfo EnterInfo = 2;
+	optional int32 RemainTimes = 3;
+
+}
+
+message  ClimTowerRpcRankAsk
+{
+
+}
+
+message  ClimTowerRpcRankReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  ClimTowerRpcFirstVicRewardAsk
+{
+	optional int32 Layer = 1;
+
+}
+
+message  ClimTowerRpcFirstVicRewardReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  ClimTowerRpcNextLayerNotify
+{
+	optional int32 CurLayer = 1;
+
+}
+
+message  ClimTowerRpcChallengeEndNotify
+{
+
+}
+
+message  ClimTowerRpcWaveRefreshNotify
+{
+	optional int32 AllWaves = 1;
+	optional int32 CurWave = 2;
+
+}
+
+message  ClimTowerInfo
+{
+	optional int64 LastTime = 1[default=0];
+	optional int32 CurLayer = 2[default=1];
+	optional int32 MaxLayer = 3[default=0];
+	optional int64 ResetLayerTime = 12[default=0];
+	repeated FirstVicGet FirstGet = 14;
+
+}
+
+message  FirstVicGet
+{
+	optional int32 Id = 1[default=-1];
+	optional int32 Get = 2[default=0];
+
+}
+

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<Root Module="LobbyServer" CName="大厅服务器" MsgNumStart="36" SyncDataVersion="1" Comment="">
+    <Operate Name="GetServerList" CName="获取服务器列表" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="36" DataStruct="RpcGetServerListAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="37" DataStruct="RpcGetServerListReply" Comment="" />
+    </Operate>
+    <Struct Name="RpcGetServerListAsk" CName="获取服务器列表请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="string" FieldId="1" Name="Sdk_user_id" CName="sdk_user_id" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+    </Struct>
+    <Struct Name="RpcGetServerListReply" CName="获取服务器列表回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="ServerInfo" FieldId="2" Name="Server_list" CName="服务器列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+</Root>

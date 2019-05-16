@@ -1,0 +1,401 @@
+message  WorldServerRpcEnterSceneAsk
+{
+	optional uint64 RoleId = 1[default=0];
+	optional CharacterLocation Location = 6;
+
+}
+
+message  WorldServerRpcEnterSceneReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  WorldServerRpcLoginGameServerAsk
+{
+	optional TeamInfo Team = 1;
+	optional OnlineUserInfo RoleInfo = 4;
+	optional CharacterLocation Location = 5;
+
+}
+
+message  WorldServerRpcLogoutGameServerAsk
+{
+	optional int32 Result = 1;
+	optional OnlineUserInfo RoleInfo = 2;
+
+}
+
+message  WorldServerRpcUpdateRoleInfoAsk
+{
+	optional OnlineUserInfo RoleInfo = 1;
+
+}
+
+message  WorldServerRpcUpdateRoleInfoReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  WorldServerRpcCreateDungeonNotifyAsk
+{
+	optional int32 CurSceneId = 1;
+	optional uint64 RoleId = 2[default=0];
+	optional int32 TargetSceneId = 5;
+
+}
+
+message  WorldServerRpcCreateDungeonNotifyReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  WorldServerRpcExitDungeonAsk
+{
+	optional uint64 RoleId = 1[default=0];
+
+}
+
+message  WorldServerRpcExitDungeonReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  WorldServerRpcUpdateTeamInfoAsk
+{
+	optional TeamMemberInfo TeamMember = 1;
+	optional uint64 RoleId = 2[default=0];
+	optional TeamInfo Team = 4;
+	optional int32 TeamType = 5;
+
+}
+
+message  WorldServerRpcUpdateTeamInfoReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  WorldServerRpcPlayCgTeamAsk
+{
+	optional uint64 PlayRoleId = 1[default=0];
+	optional int32 CgId = 2;
+	optional int32 State = 3;
+	optional uint64 RoleId = 4[default=0];
+
+}
+
+message  WorldServerRpcPlayCgTeamReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  WorldServerRpcSendMailAsk
+{
+	optional MailInfo Mail = 1;
+	optional uint64 GlobalMailID = 2[default=0];
+
+}
+
+message  WorldServerRpcSendMailReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  WorldServerRpcChangeTeamTypeAsk
+{
+	optional uint64 TeamId = 1[default=0];
+	optional uint64 RoleId = 2[default=0];
+	optional int32 Result = 3;
+	optional int32 TeamType = 4;
+	optional TeamTarget Target = 5;
+
+}
+
+message  WorldServerRpcChangeTeamTypeReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  WorldServerRpcAutoMatchAsk
+{
+	optional TeamMemberInfo MemberInfo = 1;
+	optional PlayerMatchData MatchInfo = 3;
+	optional int32 Result = 4;
+
+}
+
+message  WorldServerRpcAutoMatchReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  WorldServerRpcCancelMatchAsk
+{
+	optional uint64 RoleId = 1[default=0];
+	optional int32 Result = 2;
+	optional int32 IsNotify = 3;
+
+}
+
+message  WorldServerRpcCancelMatchReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  WorldServerRpcLoginGameServerReply
+{
+	optional int32 Result = 1;
+	optional TeamInfo Team = 2;
+	optional OnlineUserInfo RoleInfo = 3;
+	optional CharacterLocation Location = 4;
+
+}
+
+message  WorldServerRpcLogoutGameServerReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  WorldServerRpcGetPlayerInfoAsk
+{
+	optional uint64 Player_guid = 1[default=0];
+
+}
+
+message  WorldServerRpcGetPlayerInfoReply
+{
+	optional int32 Result = 1;
+	optional string Player_name = 2;
+	optional uint64 Player_guid = 3[default=0];
+	optional int32 Avatar_id = 4;
+	optional int32 Player_level = 5;
+	optional int32 Avatar_frame_id = 6;
+	optional int32 Config_id = 7;
+	optional uint64 Guild_id = 8[default=0];
+	optional string Guild_name = 9;
+	repeated ItemData Equip_data = 10;
+	repeated SuitInfo Suit_infos = 11;
+	repeated EquipSlotInfo EquipSlotData = 12;
+	repeated EquipSlotStarInfo EquipSlotStarList = 13;
+	repeated JewelInfo JewelInfos = 14;
+	optional int32 BattleScore = 16;
+	optional ItemData Pet_item_data = 18;
+	optional int32 TreasureHair = 19;
+	optional int32 TreasureHead = 20;
+	optional int32 TreasureBody = 21;
+	optional int32 TreasureWeapon = 22;
+	optional int32 TreasureWing = 23;
+	optional uint64 TeamId = 24[default=0];
+
+}
+
+message  CharacterLocation
+{
+	optional int32 SceneId = 2[default=-1];
+	optional Vector3 Pos = 3;
+	optional int32 MapId = 5[default=-1];
+	optional int32 DungeonConfigId = 6[default=-1];
+	optional int32 LineId = 7[default=-1];
+	optional int32 SceneConfigId = 8[default=-1];
+	optional int32 MirrorId = 9[default=-1];
+	optional int32 ServerId = 10[default=-1];
+
+}
+
+message  TeamInfo
+{
+	repeated TeamMemberInfo Members = 1;
+	optional uint64 LeaderRoleId = 2[default=0];
+	optional uint64 TeamId = 3[default=0];
+	optional int32 TeamType = 4[default=-1];
+	optional TeamTarget TeamTarget = 5;
+
+}
+
+message  OnlineUserInfo
+{
+	optional uint64 RoleId = 1[default=0];
+	optional int32 Level = 2[default=-1];
+	optional CharacterLocation Location = 5;
+	optional uint64 Guildguid = 6[default=0];
+	optional PlayerMatchData PlayerMatchData = 7;
+	optional string RoleName = 8;
+	optional int32 ConfigID = 9[default=-1];
+	optional int32 TreasureCount = 10[default=-1];
+	optional int32 TreasureLevel = 11[default=-1];
+	optional int32 PetConfigID = 12[default=-1];
+	optional int32 PetLevel = 13[default=-1];
+	optional int32 PvP3v3WinCount = 14[default=-1];
+
+}
+
+message  TeamMemberInfo
+{
+	optional uint64 RoleId = 1[default=0];
+	optional int32 Level = 3[default=0];
+	optional string Name = 4;
+	optional int32 ConfigId = 5[default=-1];
+	optional int32 Hp = 6[default=-1];
+	optional int32 Status = 8[default=-1];
+	optional int64 MaxHp = 11[default=-1];
+	optional CharacterLocation Location = 15;
+	optional int32 ProfessionId = 16[default=-1];
+	optional int32 OnLine = 17[default=1];
+	optional int32 FollowTeam = 18[default=-1];
+	repeated int32 BuffIdList = 19;
+
+}
+
+message  MailInfo
+{
+	optional int32 Mail_type = 1[default=0];
+	optional int32 Mail_id = 2[default=0];
+	optional bool IsRead = 3[default=false];
+	optional bool IsGet = 4[default=false];
+	optional string Title = 5;
+	optional string Salutation = 6;
+	optional string Content = 7;
+	optional string Sender_name = 8;
+	repeated MailItem ItemList = 9;
+	optional uint64 Sender_id = 10[default=0];
+	optional int32 Start_time = 11[default=-1];
+	optional int32 Expire_time = 12[default=-1];
+	optional uint64 Receiver_id = 13[default=0];
+
+}
+
+message  TeamTarget
+{
+	optional int32 Id = 1[default=0];
+	optional int32 MinLevel = 2[default=0];
+	optional int32 MaxLevel = 3[default=0];
+	repeated int32 Function = 4;
+	optional int32 TargetType = 5[default=0];
+
+}
+
+message  PlayerMatchData
+{
+	optional int32 MatchType = 1[default=0];
+	optional int32 Elo = 2[default=0];
+	optional int32 Auto = 3[default=0];
+
+}
+
+message  ItemData
+{
+	optional bool IsLock = 2[default=false];
+	optional int32 OverlayCount = 3[default=-1];
+	optional int32 ConfigId = 4[default=-1];
+	optional EquipAttr EquipAttr = 5;
+	optional bool IsBind = 12[default=true];
+	optional uint64 Guid = 13[default=0];
+	optional PetData PetData = 14;
+	optional int32 BindRule = 15[default=1];
+	optional int32 SaleCD = 16[default=0];
+
+}
+
+message  SuitInfo
+{
+	optional int32 Suit_id = 1[default=-1];
+	optional int32 Collect_num = 2[default=-1];
+
+}
+
+message  EquipSlotInfo
+{
+	optional int32 Enhance_Level = 1[default=-1];
+	optional int32 Enhance_Exp = 2[default=-1];
+	repeated AttrKeyValue Enhance_Attr = 3;
+	optional int32 BattleScore = 4[default=-1];
+	optional int32 Slot_Type = 5[default=-1];
+
+}
+
+message  EquipSlotStarInfo
+{
+	optional int32 RankUp_Level = 1[default=-1];
+	optional int32 Slot_Type = 3[default=-1];
+	optional int32 BattleScore = 4[default=-1];
+	optional int32 NextBattleScore = 6[default=-1];
+
+}
+
+message  JewelInfo
+{
+	optional int32 EquipSlot = 1[default=-1];
+	repeated JewelSlot JewelSlots = 2;
+
+}
+
+message  Vector3
+{
+	optional float X = 1[default=-1];
+	optional float Y = 2[default=-1];
+	optional float Z = 3[default=-1];
+
+}
+
+message  MailItem
+{
+	optional int32 ItemID = 1[default=-1];
+	optional int32 ItemCount = 2[default=-1];
+	optional bool Transit = 3[default=false];
+
+}
+
+message  EquipAttr
+{
+	repeated AttrKeyValue BaseAttr = 1;
+	repeated AttrKeyValue ExtraAttr = 2;
+	optional int32 BattleScore = 3[default=-1];
+
+}
+
+message  AttrKeyValue
+{
+	optional int32 Key = 1[default=-1];
+	optional int64 Value = 2[default=-1];
+	optional int32 Quality = 3[default=-1];
+
+}
+
+message  PetData
+{
+	optional int32 Exp = 1[default=-1];
+	optional int32 Level = 2[default=-1];
+	optional string Name = 3;
+	repeated AttrKeyValue Attrs = 5;
+	optional int32 BattleScore = 6[default=-1];
+	repeated AttrKeyValue Talent = 7;
+	repeated PetSkill SkillList = 8;
+	optional bool IsActive = 9[default=false];
+	optional int32 TalentScore = 10[default=-1];
+
+}
+
+message  PetSkill
+{
+	optional int32 SkillId = 3[default=-1];
+	optional int32 Lock = 4[default=-1];
+
+}
+
+message  JewelSlot
+{
+	optional int32 ItemId = 1[default=-1];
+	optional bool Unlocked = 2[default=false];
+
+}
+

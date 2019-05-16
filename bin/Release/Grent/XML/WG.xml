@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<Root Module="WG" CName="WG" MsgNumStart="11" SyncDataVersion="1" Comment="中心服务器到逻辑服务器">
+    <Operate Name="InformJoinTeam" CName="InformJoinTeam" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="11" DataStruct="RpcInformJoinTeamAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="12" DataStruct="RpcInformJoinTeamReply" Comment="" />
+    </Operate>
+    <Operate Name="InformLeave" CName="InformLeave" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="13" DataStruct="RpcInformLeaveAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="14" DataStruct="RpcInformLeaveReply" Comment="" />
+    </Operate>
+    <Operate Name="InformAppointTeamLeader" CName="InformAppointTeamLeader" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="15" DataStruct="RpcInformAppointTeamLeaderAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="16" DataStruct="RpcInformAppointTeamLeaderReply" Comment="" />
+    </Operate>
+    <Operate Name="InformKickTeamMember" CName="InformKickTeamMember" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="17" DataStruct="RpcInformKickTeamMemberAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="18" DataStruct="RpcInformKickTeamMemberReply" Comment="" />
+    </Operate>
+    <Operate Name="InformDissmissTeam" CName="InformDissmissTeam" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="19" DataStruct="RpcInformDissmissTeamAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="20" DataStruct="RpcInformDissmissTeamReply" Comment="" />
+    </Operate>
+    <Operate Name="InformApplyTeam" CName="InformApply" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="21" DataStruct="RpcInformApplyTeamAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="22" DataStruct="RpcInformApplyTeamReply" Comment="" />
+    </Operate>
+    <Operate Name="AgreeTeamApplicant" CName="AgreeTeamApplicant" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="23" DataStruct="RpcAgreeTeamApplicantAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="24" DataStruct="RpcAgreeTeamApplicantReply" Comment="" />
+    </Operate>
+    <Operate Name="InformLogin" CName="InformLogin" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="25" DataStruct="RpcInformLoginAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="26" DataStruct="RpcInformLoginReply" Comment="" />
+    </Operate>
+    <Struct Name="RpcInformJoinTeamAsk" CName="InformJoinTeam请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="6">
+        <Field PreDefine="optional" FieldType="TeamMemberInfo" FieldId="5" Name="Member" CName="TeamMember" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="TeamInfo" FieldId="6" Name="Team" CName="Team" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcInformJoinTeamReply" CName="InformJoinTeam回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcInformLeaveAsk" CName="InformLeave请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="RoleId" CName="RoleId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="2" Name="NewLeaderRoleId" CName="NewLeader" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcInformLeaveReply" CName="InformLeave回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcInformAppointTeamLeaderAsk" CName="InformAppointTeamLeader请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="2" Name="NewLeaderRoleId" CName="RoleId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="3" Name="OldLeaderRoleId" CName="OldLeaderRoleId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcInformAppointTeamLeaderReply" CName="InformAppointTeamLeader回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcInformKickTeamMemberAsk" CName="InformKickTeamMember请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="2" Name="KickedMemberRoleId" CName="KickMemberRoleId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="3" Name="LeaderRoleId" CName="LeaderRoleId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcInformKickTeamMemberReply" CName="InformKickTeamMember回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcInformDissmissTeamAsk" CName="InformDissmissTeam请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="2" Name="LeaderRoleId" CName="LeaderRoleId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcInformDissmissTeamReply" CName="InformDissmissTeam回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcInformApplyTeamAsk" CName="InformApply请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="TeamMemberInfo" FieldId="1" Name="TeamMember" CName="TeamMember" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="3" Name="TeamId" CName="TeamId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="队伍id" />
+    </Struct>
+    <Struct Name="RpcInformApplyTeamReply" CName="InformApply回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcAgreeTeamApplicantAsk" CName="AgreeTeamApplicant请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="TeamInfo" FieldId="2" Name="Team" CName="Team" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcAgreeTeamApplicantReply" CName="AgreeTeamApplicant回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcInformLoginAsk" CName="InformLogin请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="TeamInfo" FieldId="1" Name="Team" CName="Team" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcInformLoginReply" CName="InformLogin回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+</Root>

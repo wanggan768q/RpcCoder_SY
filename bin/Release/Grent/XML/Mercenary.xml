@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<Root Module="Mercenary" CName="佣兵" MsgNumStart="51" SyncDataVersion="1" Comment="">
+    <Operate Name="InQueue" CName="入队" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="51" DataStruct="RpcInQueueAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="52" DataStruct="RpcInQueueReply" Comment="" />
+    </Operate>
+    <Operate Name="OutQueue" CName="出队" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="53" DataStruct="RpcOutQueueAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="54" DataStruct="RpcOutQueueReply" Comment="" />
+    </Operate>
+    <Operate Name="AutoSet" CName="自动配置" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="55" DataStruct="RpcAutoSetAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="56" DataStruct="RpcAutoSetReply" Comment="" />
+    </Operate>
+    <Operate Name="Info" CName="请求佣兵信息" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="57" DataStruct="RpcInfoAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="58" DataStruct="RpcInfoReply" Comment="" />
+    </Operate>
+    <Struct Name="RpcInQueueAsk" CName="入队请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Id" CName="入队佣兵id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcInQueueReply" CName="入队回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcOutQueueAsk" CName="出队请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Id" CName="出队佣兵id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcOutQueueReply" CName="出队回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcAutoSetAsk" CName="自动配置请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcAutoSetReply" CName="自动配置回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcInfoAsk" CName="佣兵信息请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcInfoReply" CName="佣兵信息回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="MercenaryInfo" FieldId="2" Name="Mercenary" CName="佣兵信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+</Root>

@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<Root Module="Shop" CName="商店" MsgNumStart="33" SyncDataVersion="1" Comment="">
+    <Operate Name="BuyItem" CName="BuyItem" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="33" DataStruct="RpcBuyItemAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="34" DataStruct="RpcBuyItemReply" Comment="" />
+    </Operate>
+    <Operate Name="ShopInfo" CName="ShopInfo" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="35" DataStruct="RpcShopInfoAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="36" DataStruct="RpcShopInfoReply" Comment="" />
+    </Operate>
+    <Struct Name="RpcBuyItemAsk" CName="BuyItem请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="ShopItemId" CName="ShopItemId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="ItemNum" CName="ItemNum" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcBuyItemReply" CName="BuyItem回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="ShopItem" FieldId="2" Name="ItemInfo" CName="ItemInfo" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcShopInfoAsk" CName="ShopInfo请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="RoleID" CName="RoleID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcShopInfoReply" CName="ShopInfo回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="ShopItem" FieldId="2" Name="ItemInfo" CName="ItemInfo" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+</Root>

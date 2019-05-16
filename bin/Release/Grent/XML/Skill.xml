@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<Root Module="Skill" CName="技能模块" MsgNumStart="21" SyncDataVersion="1" Comment="">
+    <Operate Name="SkillInfo" CName="技能信息" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="21" DataStruct="RpcSkillInfoAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="22" DataStruct="RpcSkillInfoReply" Comment="" />
+    </Operate>
+    <Operate Name="UpdateSkillInfo" CName="更新技能信息" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="23" DataStruct="RpcUpdateSkillInfoAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="24" DataStruct="RpcUpdateSkillInfoReply" Comment="" />
+    </Operate>
+    <Operate Name="LevelUpSkillPos" CName="技能栏位升级" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="25" DataStruct="RpcLevelUpSkillPosAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="26" DataStruct="RpcLevelUpSkillPosReply" Comment="" />
+    </Operate>
+    <Operate Name="SkillLevelInfo" CName="技能栏位等级信息" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="27" DataStruct="RpcSkillLevelInfoAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="28" DataStruct="RpcSkillLevelInfoReply" Comment="" />
+    </Operate>
+    <Struct Name="RpcSkillInfoAsk" CName="技能信息请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcSkillInfoReply" CName="技能信息回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="5">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="CurUseMastery" CName="当前使用专精" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="repeated" FieldType="ProfessionInfo" FieldId="5" Name="ProfessionInfos" CName="技能信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcUpdateSkillInfoAsk" CName="更新技能信息请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="repeated" FieldType="ProfessionInfo" FieldId="3" Name="ProfessionInfos" CName="技能信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="4" Name="CurUseMastery" CName="使用中的专精" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcUpdateSkillInfoReply" CName="更新技能信息回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="CurUseMastery" CName="当前使用的专精页" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="repeated" FieldType="ProfessionInfo" FieldId="4" Name="ProfessionInfos" CName="最新的技能信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcLevelUpSkillPosAsk" CName="技能栏位升级请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="SkillPos" CName="技能栏位" ValueSet="" MinValue="0" MaxValue="6" DefaultValue="0" Comment="普通攻击到大招" />
+        <Field PreDefine="optional" FieldType="bool" FieldId="2" Name="IsAuto" CName="是否一键升级" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="false" Comment="" />
+    </Struct>
+    <Struct Name="RpcLevelUpSkillPosReply" CName="技能栏位升级回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="8">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="SkillPosInfo" FieldId="8" Name="PosInfo" CName="技能位置信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcSkillLevelInfoAsk" CName="技能栏位等级信息请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcSkillLevelInfoReply" CName="技能栏位等级信息回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="SkillPosInfo" FieldId="2" Name="PosInfo" CName="技能位置信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+</Root>

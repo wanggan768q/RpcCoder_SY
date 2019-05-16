@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<Root Module="EquipSlot" CName="装备槽" MsgNumStart="27" SyncDataVersion="1" Comment="">
+    <Operate Name="SyncEquipSlot" CName="同步装备槽相关" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="27" DataStruct="RpcSyncEquipSlotAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="28" DataStruct="RpcSyncEquipSlotReply" Comment="" />
+    </Operate>
+    <Operate Name="EnhanceEquipSlot" CName="装备槽强化" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="29" DataStruct="RpcEnhanceEquipSlotAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="30" DataStruct="RpcEnhanceEquipSlotReply" Comment="" />
+    </Operate>
+    <Operate Name="SyncEquipSlotStar" CName="同步装备槽星" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="31" DataStruct="RpcSyncEquipSlotStarAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="32" DataStruct="RpcSyncEquipSlotStarReply" Comment="" />
+    </Operate>
+    <Operate Name="UpStarEquipSlot" CName="装备槽升星" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="33" DataStruct="RpcUpStarEquipSlotAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="34" DataStruct="RpcUpStarEquipSlotReply" Comment="" />
+    </Operate>
+    <Struct Name="RpcSyncEquipSlotAsk" CName="同步装备槽相关请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcSyncEquipSlotReply" CName="同步装备槽相关回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="EquipSlotInfo" FieldId="2" Name="EquipSlotData" CName="装备槽信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcEnhanceEquipSlotAsk" CName="装备槽强化请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Slot_Type" CName="槽类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="repeated" FieldType="ItemSimpleData" FieldId="2" Name="CostItemList" CName="消耗物品列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcEnhanceEquipSlotReply" CName="装备槽强化回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="EquipSlotInfo" FieldId="2" Name="EquipSlotData" CName="装备槽信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="Slot_Type" CName="槽类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcUpStarEquipSlotAsk" CName="装备槽升星请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="Slot_Type" CName="槽类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="bool" FieldId="3" Name="IsProtection" CName="是否保底" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="false" Comment="" />
+    </Struct>
+    <Struct Name="RpcUpStarEquipSlotReply" CName="装备槽升星回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="EquipSlotStarInfo" FieldId="2" Name="EquipSlotStarList" CName="装备槽星级列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="Slot_Type" CName="槽类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="4" Name="UpStarResult" CName="升星结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="1：成功 2：失败 3.失败掉星" />
+    </Struct>
+    <Struct Name="RpcSyncEquipSlotStarAsk" CName="同步装备槽星请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcSyncEquipSlotStarReply" CName="同步装备槽星回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="EquipSlotStarInfo" FieldId="2" Name="EquipSlotStarList" CName="装备槽星级列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+</Root>

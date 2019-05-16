@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<Root Module="FunctionTutorial" CName="功能引导" MsgNumStart="45" SyncDataVersion="1" Comment="">
+    <Operate Name="SyncFunctionStep" CName="同步" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="45" DataStruct="RpcSyncFunctionStepAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="46" DataStruct="RpcSyncFunctionStepReply" Comment="" />
+    </Operate>
+    <Operate Name="FinishStep" CName="完成" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="47" DataStruct="RpcFinishStepAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="48" DataStruct="RpcFinishStepReply" Comment="" />
+    </Operate>
+    <Operate Name="ActiveStep" CName="激活步骤" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="49" DataStruct="RpcActiveStepAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="50" DataStruct="RpcActiveStepReply" Comment="" />
+    </Operate>
+    <Struct Name="RpcSyncFunctionStepAsk" CName="同步请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcSyncFunctionStepReply" CName="同步回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="int32" FieldId="2" Name="FunctionList" CName="已完成步骤Id" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="-1" Comment="" />
+        <Field PreDefine="repeated" FieldType="int32" FieldId="3" Name="ActiveFunctionList" CName="激活的" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcFinishStepAsk" CName="完成请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="FunctionID" CName="步骤ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcFinishStepReply" CName="完成回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="FunctionID" CName="完成的ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcActiveStepAsk" CName="激活步骤请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="FunctionID" CName="引导ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcActiveStepReply" CName="激活步骤回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="FunctionID" CName="引导ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+</Root>

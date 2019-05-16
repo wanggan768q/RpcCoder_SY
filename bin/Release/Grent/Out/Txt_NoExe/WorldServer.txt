@@ -1,0 +1,278 @@
+WorldServerRpcChangeSceneAsk↑ 通知世界服务器切换场景请求
+	RoleId:uint64 = 0	;玩家的唯一id
+	CurSceneId:int32 = -1	;场景id
+	TargetSceneId:int32 = -1	;目标场景id
+	MemId:int32 = -1	;玩家的内存id
+	SceneId:int32 = -1	;场景id
+
+WorldServerRpcChangeSceneReply↓ 通知世界服务器切换场景回应
+	Result:int32 = -9999	;返回结果
+	RoleId:uint64 = 0	;玩家的唯一id
+	CurSceneId:int32 = -1	;场景id
+	TargetSceneId:int32 = -1	;目标场景id
+	MemId:int32 = -1	;玩家的内存id
+
+WorldServerRpcEnterSceneAsk↑ 进入场景请求
+	RoleId:uint64 = 0	;角色id
+	SceneId:int32 = -1	;场景id
+	MemId:int32 = -1	;MemId
+
+WorldServerRpcEnterSceneReply↓ 进入场景回应
+	Result:int32 = -9999	;返回结果
+
+WorldServerRpcCreateDungeonAsk↑ 创建副本通知请求
+	RoleId:uint64 = 0	;玩家的唯一id
+	TargetSceneId:int32 = -1	;目标场景id
+	MemId:int32 = -1	;玩家的内存id
+	DungeonConfigId:int32 = -1	;副本配置id
+	CurSceneId:int32 = -1	;队员当前场景
+	Result:int32 = -9999	;返回结果
+	RoleIds:uint64* = 0	;玩家的唯一id
+
+WorldServerRpcCreateDungeonReply↓ 创建副本通知回应
+
+WorldServerRpcCreateTeamAsk↑ CreateTeam请求
+	TeamType:int32 = -1	;TeamType
+	TeamMember:TeamMemberInfo	;TeamMember
+	[TeamMemberInfo]
+		RoleId:uint64 = 0	;队员RoleId
+		SceneId:int32 = -1	;队员场景id
+		Level:int32 = -1	;队员等级
+		Name:string	;name
+		ConfigId:int32 = -1	;configid
+		Hp:int32 = -1	;生命值
+		Mp:int32 = -1	;Mp
+		Status:int32 = -1	;Status
+		MemId:int32 = -1	;MemId
+		MaxHp:sint64 = -1	;生命值
+		MaxMp:sint64 = -1	;生命值
+	Result:int32 = -9999	;返回结果
+	Team:TeamInfo	;PbTeam
+	[TeamInfo]
+		Members:TeamMemberInfo*	;Members
+		[TeamMemberInfo]
+			RoleId:uint64 = 0	;队员RoleId
+			SceneId:int32 = -1	;队员场景id
+			Level:int32 = -1	;队员等级
+			Name:string	;name
+			ConfigId:int32 = -1	;configid
+			Hp:int32 = -1	;生命值
+			Mp:int32 = -1	;Mp
+			Status:int32 = -1	;Status
+			MemId:int32 = -1	;MemId
+			MaxHp:sint64 = -1	;生命值
+			MaxMp:sint64 = -1	;生命值
+		LeaderRoleId:uint64 = 0	;LeaderRoleId
+		TeamId:int32 = -1	;TeamId
+		TeamType:int32 = -1	;TeamType
+
+WorldServerRpcCreateTeamReply↓ CreateTeam回应
+	Result:int32 = -9999	;返回结果
+
+WorldServerRpcJoinTeamAsk↑ JoinTeam请求
+	TeamId:int32 = -1	;TeamId
+	Result:int32 = -9999	;返回结果
+	TeamMember:TeamMemberInfo	;Member
+	[TeamMemberInfo]
+		RoleId:uint64 = 0	;队员RoleId
+		SceneId:int32 = -1	;队员场景id
+		Level:int32 = -1	;队员等级
+		Name:string	;name
+		ConfigId:int32 = -1	;configid
+		Hp:int32 = -1	;生命值
+		Mp:int32 = -1	;Mp
+		Status:int32 = -1	;Status
+		MemId:int32 = -1	;MemId
+		MaxHp:sint64 = -1	;生命值
+		MaxMp:sint64 = -1	;生命值
+	Team:TeamInfo	;Team
+	[TeamInfo]
+		Members:TeamMemberInfo*	;Members
+		[TeamMemberInfo]
+			RoleId:uint64 = 0	;队员RoleId
+			SceneId:int32 = -1	;队员场景id
+			Level:int32 = -1	;队员等级
+			Name:string	;name
+			ConfigId:int32 = -1	;configid
+			Hp:int32 = -1	;生命值
+			Mp:int32 = -1	;Mp
+			Status:int32 = -1	;Status
+			MemId:int32 = -1	;MemId
+			MaxHp:sint64 = -1	;生命值
+			MaxMp:sint64 = -1	;生命值
+		LeaderRoleId:uint64 = 0	;LeaderRoleId
+		TeamId:int32 = -1	;TeamId
+		TeamType:int32 = -1	;TeamType
+	TeamType:int32 = -1	;TeamType
+	MemId:int32 = -1	;MemId
+	SceneId:int32 = -1	;SceneId
+
+WorldServerRpcJoinTeamReply↓ JoinTeam回应
+	Result:int32 = -9999	;返回结果
+
+WorldServerRpcLeaveTeamAsk↑ LeaveTeam请求
+	TeamId:int32 = -1	;TeamId
+	RoleId:uint64 = 0	;RoleId
+	MemId:int32 = -1	;MemId
+	SceneId:int32 = -1	;SceneId
+	NewLeaderRoleId:uint64 = 0	;NewLeader
+	Result:int32 = -9999	;返回结果
+
+WorldServerRpcLeaveTeamReply↓ LeaveTeam回应
+	Result:int32 = -9999	;返回结果
+
+WorldServerRpcAppointTeamLeaderAsk↑ AppointTeamLeader请求
+	NewLeaderRoleId:uint64 = 0	;RoleId
+	MemId:int32 = -1	;MemId
+	SceneId:int32 = -1	;SceneId
+	CurLeaderRoleId:uint64 = 0	;CurLeaderRoleId
+	TeamId:int32 = -1	;TeamId
+	Result:int32 = -9999	;返回结果
+
+WorldServerRpcAppointTeamLeaderReply↓ AppointTeamLeader回应
+	Result:int32 = -9999	;返回结果
+
+WorldServerRpcDismissTeamAsk↑ DismissTeam请求
+	SceneId:int32 = -1	;SceneId
+	MemId:int32 = -1	;MemId
+	RoleId:uint64 = 0	;RoleId
+	TeamId:int32 = -1	;TeamId
+	Result:int32 = -9999	;返回结果
+
+WorldServerRpcDismissTeamReply↓ DismissTeam回应
+	Result:int32 = -9999	;返回结果
+
+WorldServerRpcKickMemberAsk↑ KickMember请求
+	KickMemberRoleId:uint64 = 0	;KickMemberRoleId
+	MemId:int32 = -1	;MemId
+	SceneId:int32 = -1	;SceneId
+	TeamId:int32 = -1	;TeamId
+	LeaderRoleId:uint64 = 0	;RoleId
+	Result:int32 = -9999	;返回结果
+
+WorldServerRpcKickMemberReply↓ KickMember回应
+	Result:int32 = -9999	;返回结果
+
+WorldServerRpcApplyTeamAsk↑ ApplyTeam请求
+	TeamId:int32 = -1	;TeamId
+	Result:int32 = -9999	;返回结果
+	TeamMember:TeamMemberInfo	;TeamMember
+	[TeamMemberInfo]
+		RoleId:uint64 = 0	;队员RoleId
+		SceneId:int32 = -1	;队员场景id
+		Level:int32 = -1	;队员等级
+		Name:string	;name
+		ConfigId:int32 = -1	;configid
+		Hp:int32 = -1	;生命值
+		Mp:int32 = -1	;Mp
+		Status:int32 = -1	;Status
+		MemId:int32 = -1	;MemId
+		MaxHp:sint64 = -1	;生命值
+		MaxMp:sint64 = -1	;生命值
+	MemId:int32 = -1	;MemId
+	SceneId:int32 = -1	;SceneId
+
+WorldServerRpcApplyTeamReply↓ ApplyTeam回应
+	Result:int32 = -9999	;返回结果
+
+WorldServerRpcAgreeTeamApplicantAsk↑ AgreeTeamApplicant请求
+	RoleId:uint64 = 0	;RoleId
+	LeaderRoleId:uint64 = 0	;RoleId
+	Result:int32 = -9999	;返回结果
+	MemId:int32 = -1	;MemId
+	SceneId:int32 = -1	;SceneId
+	Team:TeamInfo	;Team
+	[TeamInfo]
+		Members:TeamMemberInfo*	;Members
+		[TeamMemberInfo]
+			RoleId:uint64 = 0	;队员RoleId
+			SceneId:int32 = -1	;队员场景id
+			Level:int32 = -1	;队员等级
+			Name:string	;name
+			ConfigId:int32 = -1	;configid
+			Hp:int32 = -1	;生命值
+			Mp:int32 = -1	;Mp
+			Status:int32 = -1	;Status
+			MemId:int32 = -1	;MemId
+			MaxHp:sint64 = -1	;生命值
+			MaxMp:sint64 = -1	;生命值
+		LeaderRoleId:uint64 = 0	;LeaderRoleId
+		TeamId:int32 = -1	;TeamId
+		TeamType:int32 = -1	;TeamType
+
+WorldServerRpcAgreeTeamApplicantReply↓ AgreeTeamApplicant回应
+	Result:int32 = -9999	;返回结果
+
+WorldServerRpcLoginAsk↑ Login请求
+	Team:TeamInfo	;Team
+	[TeamInfo]
+		Members:TeamMemberInfo*	;Members
+		[TeamMemberInfo]
+			RoleId:uint64 = 0	;队员RoleId
+			SceneId:int32 = -1	;队员场景id
+			Level:int32 = -1	;队员等级
+			Name:string	;name
+			ConfigId:int32 = -1	;configid
+			Hp:int32 = -1	;生命值
+			Mp:int32 = -1	;Mp
+			Status:int32 = -1	;Status
+			MemId:int32 = -1	;MemId
+			MaxHp:sint64 = -1	;生命值
+			MaxMp:sint64 = -1	;生命值
+		LeaderRoleId:uint64 = 0	;LeaderRoleId
+		TeamId:int32 = -1	;TeamId
+		TeamType:int32 = -1	;TeamType
+	MemId:int32 = -1	;MemId
+	SceneId:int32 = -1	;SceneId
+	RoleInfo:OnlineUserInfo	;RoleInfo
+	[OnlineUserInfo]
+		RoleId:uint64 = 0	;RoleId
+		Level:int32 = -1	;level
+		Scene_id:int32 = -1	;scene_id
+		Memid:int32 = -1	;Memid
+
+WorldServerRpcLoginReply↓ Login回应
+	Result:int32 = -9999	;返回结果
+
+WorldServerRpcUpdateRoleInfoAsk↑ UpdateRoleInfo请求
+	RoleInfo:OnlineUserInfo	;RoleInfo
+	[OnlineUserInfo]
+		RoleId:uint64 = 0	;RoleId
+		Level:int32 = -1	;level
+		Scene_id:int32 = -1	;scene_id
+		Memid:int32 = -1	;Memid
+
+WorldServerRpcUpdateRoleInfoReply↓ UpdateRoleInfo回应
+	Result:int32 = -9999	;返回结果
+
+WorldServerRpcLogoutAsk↑ Logout请求
+	RoleInfo:OnlineUserInfo	;RoleInfo
+	[OnlineUserInfo]
+		RoleId:uint64 = 0	;RoleId
+		Level:int32 = -1	;level
+		Scene_id:int32 = -1	;scene_id
+		Memid:int32 = -1	;Memid
+
+WorldServerRpcLogoutReply↓ Logout回应
+	Result:int32 = -9999	;返回结果
+
+WorldServerRpcCreateDungeonNotifyAsk↑ CreateDungeonNotify请求
+	CurSceneId:int32 = -1	;场景id
+	RoleId:uint64 = 0	;玩家的唯一id
+	MemId:int32 = -1	;MemId
+	TargetSceneId:int32 = -1	;场景id
+
+WorldServerRpcCreateDungeonNotifyReply↓ CreateDungeonNotify回应
+	Result:int32 = -9999	;返回结果
+
+WorldServerRpcExitDungeonAsk↑ ExitDungeon请求
+	RoleId:uint64 = 0	;玩家的唯一id
+
+WorldServerRpcExitDungeonReply↓ ExitDungeon回应
+	Result:int32 = -9999	;返回结果
+
+WorldServerRpcReleaseDungeonAsk↑ ReleaseDungeon请求
+
+WorldServerRpcReleaseDungeonReply↓ ReleaseDungeon回应
+	Result:int32 = -9999	;返回结果
+

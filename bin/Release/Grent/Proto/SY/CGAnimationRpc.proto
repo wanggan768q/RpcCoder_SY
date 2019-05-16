@@ -1,0 +1,47 @@
+message  CGAnimationRpcCgPlayAsk
+{
+	optional int32 CgId = 1;
+
+}
+
+message  CGAnimationRpcCgPlayReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  CGAnimationRpcCgPlayNotifyNotify
+{
+	optional uint64 RoleId = 1[default=0];
+	optional int32 CgId = 2;
+
+}
+
+message  CGAnimationRpcCgOverNotifyNotify
+{
+	optional uint64 RoleId = 1[default=0];
+	optional int32 CgId = 2;
+
+}
+
+message  CGAnimationRpcCgSkipAsk
+{
+
+}
+
+message  CGAnimationRpcCgSkipReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  CGAnimationRpcScriptPlayNotify
+{
+	optional uint64 CasterGuid = 1[default=0];
+	optional string AnimantionName = 3;
+	optional float Time = 4[default=-1];
+	optional int32 IsLoop = 5;
+	optional int32 SingleTime = 6;
+
+}
+

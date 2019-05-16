@@ -1,0 +1,42 @@
+import "PublicStruct.proto";
+
+//同步请求
+message  RedDotRpcSyncRedDotAsk
+{
+}
+
+//同步回应
+message  RedDotRpcSyncRedDotReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated RedDotInfo RedDotInfoList = 2;	//红点列表
+}
+
+//删除红点请求
+message  RedDotRpcRemoveRedDotAsk
+{
+	optional int32 Type = 1[default=-1];	//类型
+}
+
+//删除红点回应
+message  RedDotRpcRemoveRedDotReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//更新通知
+message  RedDotRpcUpdateRedDotNotify
+{
+	optional RedDotInfo RedDotInfo = 1;	//需要更新的红点信息
+}
+

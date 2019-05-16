@@ -1,0 +1,204 @@
+AuctionRpcAuctionInfoAsk↑ 级别
+	ItemId:int32 = -1	;道具id
+	QueueType:int32 = -1	;排序类型
+	CurPage:int32 = -1	;当前页
+
+AuctionRpcAuctionInfoReply↓ 查询拍卖行信息回应
+	Result:int32 = -1	;返回结果
+	AuctionItem:AuctionItem*	;查询到的信息
+	[AuctionItem]
+		OwnerGuid:uint64 = 0	;拍卖商品的人guid
+		Price:int32 = 1	;拍卖报价
+		Currency:int32 = 1	;钱币种类
+		ItemData:ItemData	;道具属性
+		[ItemData]
+			IsLock:bool = false	;物品锁
+			OverlayCount:int32 = -1	;物品叠加数量
+			ConfigId:int32 = -1	;物品表的id
+			EquipAttr:EquipAttr	;装备属性
+			[EquipAttr]
+				BaseAttr:AttrKeyValue*	;基础属性
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				ExtraAttr:AttrKeyValue*	;高级属性
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				BattleScore:int32 = -1	;装备评分
+			IsBind:bool = true	;是否绑定
+			Guid:uint64 = 0	;物品guid
+			PetData:PetData	;宠物的数据
+			[PetData]
+				Exp:int32 = -1	;经验
+				Level:int32 = -1	;等级
+				Name:string	;名字
+				Attrs:AttrKeyValue*	;属性
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				BattleScore:int32 = -1	;战力
+				Talent:AttrKeyValue*	;资质
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				SkillList:PetSkill*	;技能列表
+				[PetSkill]
+					SkillId:int32 = -1	;技能id
+					Lock:int32 = -1	;宠物技能锁 0未加锁1加锁
+				IsActive:bool = false	;出站状态
+				TalentScore:int32 = -1	;资质评分
+			BindRule:int32 = 1	;绑定规则
+			SaleCD:int32 = 0	;交易cd
+		Status:int32 = 0	;道具状态
+		SaleTS:int32 = -1	;上架时间
+	TotalPage:int32 = 1	;道具总页数
+
+AuctionRpcSellItemAsk↑ 请求上架请求
+	ItemGuid:uint64 = 0	;出售道具guid
+	ItemId:int32 = -1	;ItemId
+	Price:int32 = 0	;拍卖价格
+	Currency:int32 = -1	;交易钱币类型
+	Count:int32 = -1	;交易数量
+
+AuctionRpcSellItemReply↓ 请求上架回应
+	Result:int32 = -1	;返回结果
+
+AuctionRpcBuyAsk↑ 购买请求
+	ItemGuid:uint64 = 0	;购买道具的guid
+	Count:int32 = -1	;买入数量
+
+AuctionRpcBuyReply↓ 购买回应
+	Result:int32 = -1	;返回结果
+
+AuctionRpcSellAgainAsk↑ 重新上架请求
+	ItemGuid:uint64 = 0	;再次销售物品guid
+	Price:int32 = -1	;价格
+
+AuctionRpcSellAgainReply↓ 重新上架回应
+	Result:int32 = -1	;返回结果
+
+AuctionRpcGetItemAsk↑ 取回交易记录中物品
+	BuyRecGuid:uint64* = 0	;拍卖行的商品guid
+	SaleRecGuid:uint64* = 0	;卖的记录guid
+
+AuctionRpcGetItemReply↓ 取回拍卖道具回应
+	Result:int32 = -1	;结果
+	Record:AuctionRecSimple*	;返回道具的信息
+	[AuctionRecSimple]
+		RecGuid:uint64 = 0	;物品guid
+		SoldTS:int32 = -1	;交易时间
+		ItemId:int32 = -1	;商品itemID
+		Count:int32 = -1	;数量
+		Currency:int32 = -1	;货币类型
+		Cost:int32 = -1	;货币数量
+		SoldType:int32 = -1	;交易类型
+		Tax:int32 = -1	;税
+		IsGot:bool = false	;是不是交付
+
+AuctionRpcRecordAsk↑ 交易记录请求
+
+AuctionRpcRecordReply↓ 交易记录回应
+	Result:int32 = -1	;返回结果
+	Record:AuctionRecSimple*	;交易记录简单信息
+	[AuctionRecSimple]
+		RecGuid:uint64 = 0	;物品guid
+		SoldTS:int32 = -1	;交易时间
+		ItemId:int32 = -1	;商品itemID
+		Count:int32 = -1	;数量
+		Currency:int32 = -1	;货币类型
+		Cost:int32 = -1	;货币数量
+		SoldType:int32 = -1	;交易类型
+		Tax:int32 = -1	;税
+		IsGot:bool = false	;是不是交付
+
+AuctionRpcItemInfoByClassAsk↑ 按类别查询简单信息请求
+	ItemClass:int32 = -1	;商品类别(关注，装备，道具，宠物)
+	ItemId:int32* = -1	;关注物品的id
+	ItemSubClass:int32 = -1	;子类别
+	Prof:int32 = -1	;职业
+	Level:int32 = -1	;等级
+
+AuctionRpcItemInfoByClassReply↓ 按类别查询简单信息回应
+	Result:int32 = -1	;返回结果
+	ItemCount:AuctionItemCnt*	;道具数量信息
+	[AuctionItemCnt]
+		ItemId:int32 = -1	;商品id
+		Count:int32 = -1	;商品数量
+
+AuctionRpcSalePrepareAsk↑ 预上架请求
+	ItemId:int32 = -1	;预上架物品ID
+
+AuctionRpcSalePrepareReply↓ 预上架回应
+	Result:int32 = -1	;返回结果
+	ItemId:int32 = -1	;商品ID 
+	BasePrice:int32 = 0	;基准价
+	GoldGroup:int32* = -1	;GoldGroup
+	DiamondGroup:int32* = -1	;DiamondGroup
+
+AuctionRpcGetItemBackAsk↑ 取回上架物品请求
+	ItemGuid:uint64 = 0	;道具Guid
+
+AuctionRpcGetItemBackReply↓ 取回上架物品回应
+	Result:int32 = -1	;返回结果
+
+AuctionRpcGetMySaleListAsk↑ 玩家当前拍卖列表请求
+
+AuctionRpcGetMySaleListReply↓ 玩家当前拍卖列表回应
+	Result:int32 = -1	;返回结果
+	AuctionItem:AuctionItem*	;道具信息
+	[AuctionItem]
+		OwnerGuid:uint64 = 0	;拍卖商品的人guid
+		Price:int32 = 1	;拍卖报价
+		Currency:int32 = 1	;钱币种类
+		ItemData:ItemData	;道具属性
+		[ItemData]
+			IsLock:bool = false	;物品锁
+			OverlayCount:int32 = -1	;物品叠加数量
+			ConfigId:int32 = -1	;物品表的id
+			EquipAttr:EquipAttr	;装备属性
+			[EquipAttr]
+				BaseAttr:AttrKeyValue*	;基础属性
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				ExtraAttr:AttrKeyValue*	;高级属性
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				BattleScore:int32 = -1	;装备评分
+			IsBind:bool = true	;是否绑定
+			Guid:uint64 = 0	;物品guid
+			PetData:PetData	;宠物的数据
+			[PetData]
+				Exp:int32 = -1	;经验
+				Level:int32 = -1	;等级
+				Name:string	;名字
+				Attrs:AttrKeyValue*	;属性
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				BattleScore:int32 = -1	;战力
+				Talent:AttrKeyValue*	;资质
+				[AttrKeyValue]
+					Key:int32 = -1	;属性的key
+					Value:int64 = -1	;Value
+					Quality:int32 = -1	;quality
+				SkillList:PetSkill*	;技能列表
+				[PetSkill]
+					SkillId:int32 = -1	;技能id
+					Lock:int32 = -1	;宠物技能锁 0未加锁1加锁
+				IsActive:bool = false	;出站状态
+				TalentScore:int32 = -1	;资质评分
+			BindRule:int32 = 1	;绑定规则
+			SaleCD:int32 = 0	;交易cd
+		Status:int32 = 0	;道具状态
+		SaleTS:int32 = -1	;上架时间
+

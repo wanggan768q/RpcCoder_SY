@@ -1,0 +1,187 @@
+import "PublicStruct.proto";
+
+//使用技能动作通知
+message  FightRpcUseSkillActionNotify
+{
+	optional int32 ObjId = 8[default=-1];	//ObjId
+	optional int32 ObjTargetId = 9[default=-1];	//ObjTargetId
+	optional int32 SkillId = 10[default=-1];	//SkillId
+	optional float CastingDir = 11[default=-1];	//施法方向
+	optional float X = 12[default=-1];	//X
+	optional float Y = 13[default=-1];	//Y
+	optional float Z = 14[default=-1];	//Z
+	optional int32 MomentIndex = 15[default=-1];	//技能段数
+	optional CustomSkiData CustomSkiData = 16;	//动画key 设置
+}
+
+//显示经验通知
+message  FightRpcShowExpActionNotify
+{
+	optional int32 ObjId = 1[default=-1];	//id
+	optional int32 Value = 2[default=-1];	//获取到的经验值
+}
+
+//buf通知
+message  FightRpcBuffActionNotify
+{
+	optional BuffInfo Info = 8;	//buf信息
+}
+
+/*
+状态事件通知
+NULL = 0	
+IDLE = 1,			
+	RUN = 2,		--行走	
+	SKILL = 3,		--技能	
+	DEATH = 4,		--死亡	
+	BIRTH = 5,		--出生	
+	HIT = 6,		--受击	
+	FIGHT = 7,		--战斗站立	
+	DIZZY = 8,		--眩晕状态
+*/
+message  FightRpcStateActionNotify
+{
+	optional int32 ObjId = 1[default=-1];	//id
+	/*
+	状态类型
+	NULL = 0
+	IDLE = 1
+	RUN = 2
+	SKILL = 3
+	DEATH = 4
+	BIRTH = 5
+	HIT = 6,
+	FIGHT = 7
+	DIZZY = 8
+	*/
+	optional int32 Type = 2[default=-1];
+	optional Vector3 Pos = 3;	//位置信息
+	optional int32 TargetPos = 4[default=-1];	//目标位置信息
+	/*
+	状态
+	NULL = 0
+	IDLE = 1
+	RUN = 2
+	SKILL = 3
+	DEATH = 4
+	BIRTH = 5
+	HIT = 6,
+	FIGHT = 7
+	DIZZY = 8
+	*/
+	optional int32 State = 5[default=-1];
+}
+
+//复活事件通知
+message  FightRpcReviveActionNotify
+{
+	optional int32 ObjId = 1[default=-1];	//id
+	optional Vector3 Pos = 2;	//复活后的位置
+	optional int32 CurHp = 3[default=-1];	//当前血量
+}
+
+//连击技能通知
+message  FightRpcComboSkillActionNotify
+{
+	optional int32 ObjId = 1[default=-1];	//id
+	optional int32 SkillId = 2[default=-1];	//技能id
+}
+
+//掉落通知
+message  FightRpcDropActionNotify
+{
+}
+
+//使用道具通知
+message  FightRpcUseItemActionNotify
+{
+}
+
+//血量改变通知
+message  FightRpcHpChangeActionNotify
+{
+	optional int32 ObjId = 1[default=-1];	//id
+	optional int32 IncrementHp = 2[default=0];	//增量血
+}
+
+//使用技能请求请求
+message  FightRpcUseSkillAsk
+{
+	repeated int32 ObjTargetId = 1;	//ObjTargetId
+	optional int32 SkillId = 2[default=-1];	//SkillId
+	optional float CastingDir = 3[default=-1];	//施法方向
+	optional float X = 4[default=-1];	//X
+	optional float Y = 5[default=-1];	//Y
+	optional float Z = 6[default=-1];	//Z
+	optional int32 MomentIndex = 7[default=-1];	//技能段数
+	optional CustomSkiData CustomSkiData = 9;	//动画key 设置
+}
+
+//使用技能请求回应
+message  FightRpcUseSkillReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+}
+
+//伤害事件通知
+message  FightRpcHurtActionNotify
+{
+	optional int32 ObjId = 1[default=-1];	//id
+	optional int32 SegmentIndex = 2[default=-1];	//伤害阶段
+	optional int32 SkillId = 3[default=-1];	//技能id
+	optional int32 TargetObjId = 4[default=-1];	//目标id
+	optional int32 HurtValue = 5[default=0];	//伤害的值
+	optional bool IsCritical = 6[default=false];	//是否暴击
+	optional bool IsDodge = 8[default=false];	//是否格挡
+	optional bool IsMiss = 9[default=false];	//是否闪避了
+	optional bool IsHurtState = 10[default=false];	//是否受击了
+}
+
+//战斗击 退、飞、撞、拉 通知通知
+message  FightRpcRepelActionNotify
+{
+	optional int32 ObjId = 5[default=-1];	//id
+	optional int32 SegmentIndex = 6[default=-1];	//伤害阶段
+	optional int32 SkillId = 8[default=-1];	//技能id
+	optional int32 TargetObjId = 9[default=-1];	//目标id
+	optional Vector3 SkiTargetPos = 10;	//目标位置
+	optional bool IsPlayerDiaup = 11[default=true];	//是否播放动画
+}
+
+//obj死亡通知通知
+message  FightRpcObjDeadActionNotify
+{
+	optional int32 ObjId = 1[default=-1];	//死亡的objID
+}
+
+//战斗辅助tips通知
+message  FightRpcFightTipsNotify
+{
+	optional int32 TipsID = 1[default=-1];	//tipsID
+	optional int32 Durtion = 2[default=-1];	//持续时间
+}
+
+//BuffList通知
+message  FightRpcBuffListNotify
+{
+	repeated BuffInfo BuffList = 1;	//bufflist
+}
+
+//减少cd通知
+message  FightRpcReduceCDNotify
+{
+	optional int32 SkillId = 1[default=-1];	//技能ID
+	optional int32 ModTime = 2[default=-1];	//修改的时间
+}
+
+//复活通知通知
+message  FightRpcReliveNotifyNotify
+{
+	optional int32 ObjId = 2[default=-1];	//id
+}
+

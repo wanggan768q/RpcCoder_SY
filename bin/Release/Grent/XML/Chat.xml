@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<Root Module="Chat" CName="Chat" MsgNumStart="13" SyncDataVersion="1" Comment="">
+    <Operate Name="Chat" CName="Chat" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="13" DataStruct="RpcChatAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="14" DataStruct="RpcChatReply" Comment="" />
+    </Operate>
+    <Operate Name="PushChatUpdates" CName="PushChatUpdates" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="15" DataStruct="RpcPushChatUpdatesNotify" Comment="" />
+    </Operate>
+    <Operate Name="PushMarquee" CName="推送跑马灯" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="16" DataStruct="RpcPushMarqueeNotify" Comment="" />
+    </Operate>
+    <Operate Name="Say" CName="玩家或NPC对象说话" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="17" DataStruct="RpcSayNotify" Comment="" />
+    </Operate>
+    <Struct Name="RpcChatAsk" CName="Chat请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="ChatMsg" FieldId="1" Name="Chat_msg" CName="chat_msg" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="Chat_channel" CName="Chat_channel" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="聊天频道" />
+    </Struct>
+    <Struct Name="RpcChatReply" CName="Chat回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcPushChatUpdatesNotify" CName="PushChatUpdates通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="repeated" FieldType="ChatChannelData" FieldId="1" Name="Chat_channels" CName="聊天频道列表" ValueSet="" MinValue="2" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcPushMarqueeNotify" CName="推送跑马灯通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="repeated" FieldType="string" FieldId="1" Name="Marquee" CName="跑马灯" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+    </Struct>
+    <Struct Name="RpcSayNotify" CName="玩家或NPC对象说话通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="5">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="ObjId" CName="说话人的objId" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="ChatId" CName="String_ChatMenu表id" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="Duration" CName="该聊天内容停留时间" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="4" Name="ChatType" CName="对话显示类型：0：单次显示，1：循环显示" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="5" Name="Interval" CName="循环显示类型下的两次气泡的间隔时间" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+</Root>

@@ -1,0 +1,44 @@
+message  EventObjRpcEventBeginAsk
+{
+	optional int32 ObjId = 1;
+
+}
+
+message  EventObjRpcEventBeginReply
+{
+	optional int32 Result = 1;
+	optional int32 ObjId = 2;
+
+}
+
+message  EventObjRpcEventEndAsk
+{
+	optional int32 ObjId = 1;
+
+}
+
+message  EventObjRpcEventEndReply
+{
+	optional int32 Result = 1;
+	optional int32 ObjId = 2;
+
+}
+
+message  EventObjRpcEventStopAsk
+{
+	optional int32 ObjId = 1;
+
+}
+
+message  EventObjRpcEventStopReply
+{
+	optional int32 Result = 1;
+	optional int32 ObjId = 2;
+
+}
+
+message  EventObjRpcEventStopNotifyNotify
+{
+
+}
+

@@ -1,0 +1,23 @@
+import "PublicStruct.proto";
+
+//请求排行榜请求
+message  RankRpcRankAsk
+{
+	optional int32 RankType = 1[default=-1];	//排行榜类型
+	optional int32 RankSubType = 2[default=-1];	//子类型
+}
+
+//请求排行榜回应
+message  RankRpcRankReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated RankInfo RankInfoList = 2;	//排行榜信息
+	optional int32 RankIndex = 3[default=-1];	//自己的排名
+	optional int64 MyValue = 4[default=-1];	//我的
+}
+

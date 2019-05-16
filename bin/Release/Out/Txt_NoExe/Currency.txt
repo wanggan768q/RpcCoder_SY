@@ -1,0 +1,21 @@
+CurrencyRpcTransfromAsk↑ 货币兑换请求
+	To_type:int32 = -1	;兑换目标类型
+	From_type:int32 = -1	;兑换来源类型
+	From_num:int64 = 0	;兑换来源数量
+	Diamond_bind_num:int64 = 0	;绑定钻石使用数量
+
+CurrencyRpcTransfromReply↓ 货币兑换回应
+	Result:int32 = -9999	;返回结果
+	Reward_type:int32 = -1	;获得货币类型
+	Reward_num:int64 = 0	;获得货币数量
+
+CurrencyRpcShowAsk↑ 货币展示请求
+
+CurrencyRpcShowReply↓ 货币展示回应
+	Result:int32 = -1	;返回结果
+	ShowResources:Resource*	;展示货币信息
+	[Resource]
+		Type:int32 = 0	;资源类型
+		Value:int64 = 0	;Value
+		TodayValue:int64 = -1	;当日获得的
+

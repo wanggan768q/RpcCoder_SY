@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<Root Module="PetCapture" CName="宠物捕获" MsgNumStart="44" SyncDataVersion="1" Comment="">
+    <Operate Name="Capture" CName="宠物捕获" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="44" DataStruct="RpcCaptureAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="45" DataStruct="RpcCaptureReply" Comment="" />
+    </Operate>
+    <Operate Name="CapturePet" CName="捕获到宠物广播" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="46" DataStruct="RpcCapturePetNotify" Comment="" />
+    </Operate>
+    <Operate Name="Login" CName="宠物捕获登录" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="47" DataStruct="RpcLoginNotify" Comment="" />
+    </Operate>
+    <Operate Name="PetLocation" CName="宠物npc位置" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="48" DataStruct="RpcPetLocationAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="49" DataStruct="RpcPetLocationReply" Comment="" />
+    </Operate>
+    <Struct Name="RpcCaptureAsk" CName="宠物捕获请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="BallType" CName="精灵球道具类型" ValueSet="" MinValue="1" MaxValue="2" DefaultValue="1" Comment="" />
+    </Struct>
+    <Struct Name="RpcCaptureReply" CName="宠物捕获回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="CreatureId" CName="宠物模型id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="见creature表" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="PetId" CName="掉落宠物id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="itemid" />
+    </Struct>
+    <Struct Name="RpcCapturePetNotify" CName="捕获到宠物广播通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="7">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="PetId" CName="捕获到宠物id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="string" FieldId="2" Name="NickName" CName="捕获到宠物人昵称" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="4" Name="RoleId" CName="捕获到宠物角色id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="6" Name="CreatureId" CName="宠物模型id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcLoginNotify" CName="宠物捕获登录通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="WayPoint" CName="宠物捕获npc刷新路点" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="SceneId" CName="场景id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="Vector3" FieldId="4" Name="Pos" CName="npc位置" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcPetLocationAsk" CName="宠物npc位置请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="LineId" CName="分线id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcPetLocationReply" CName="宠物npc位置回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="Vector3" FieldId="2" Name="Pos" CName="坐标" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="SceneId" CName="场景id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="4" Name="WayPoint" CName="路点" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+</Root>

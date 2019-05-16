@@ -1,0 +1,39 @@
+DungeonRpcCreateDungeonAsk↑ CreateDungeon请求
+	RoleId:uint64 = 0	;HumanRoleId
+	DungeonConfigId:int32 = -1	;副本配置id
+
+DungeonRpcCreateDungeonReply↓ CreateDungeon回应
+	Result:int32 = -9999	;返回结果
+	DungeonConfigId:int32 = -1	;副本配置id
+	SceneId:int32 = -1	;场景id
+
+DungeonRpcExitDungeonAsk↑ 退出副本请求
+	RoleId:uint64 = 0	;HumanRoleId
+	SceneId:int32 = -1	;场景id
+
+DungeonRpcExitDungeonReply↓ 退出副本回应
+	Result:int32 = -9999	;返回结果
+	SceneConfigId:int32 = -1	;SceneConfigId
+	SceneId:int32 = -1	;场景id
+
+DungeonRpcInformCreateDungeonAsk↑ 队长创建副本以后通知我请求
+	RoleId:uint64 = 0	;玩家的唯一id
+	TargetSceneId:int32 = -1	;目标场景id
+	DungeonConfigId:int32 = -1	;副本配置id
+	CurSceneId:int32 = -1	;队员当前场景
+	Result:int32 = -9999	;返回结果
+	RoleIds:uint64* = 0	;玩家的唯一id
+
+DungeonRpcInformCreateDungeonReply↓ 队长创建副本以后通知我回应
+	Result:int32 = -9999	;返回结果
+
+DungeonRpcSettlementNotify↓ Settlement通知
+	SettlementResult:int32 = -1	;SettlementResult
+
+DungeonRpcEnterDungeonAsk↑ 进入副本通知请求
+	SceneId:int32 = -1	;场景id
+	DungeonConfigId:int32 = -1	;副本配置id
+
+DungeonRpcEnterDungeonReply↓ 进入副本通知回应
+	Result:int32 = -9999	;返回结果
+

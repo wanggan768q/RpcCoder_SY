@@ -1,0 +1,56 @@
+import "PublicStruct.proto";
+
+//同步请求
+message  FunctionTutorialRpcSyncFunctionStepAsk
+{
+}
+
+//同步回应
+message  FunctionTutorialRpcSyncFunctionStepReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated int32 FunctionList = 2;	//已完成步骤Id
+	repeated int32 ActiveFunctionList = 3;	//激活的
+}
+
+//完成请求
+message  FunctionTutorialRpcFinishStepAsk
+{
+	optional int32 FunctionID = 1[default=-1];	//步骤ID
+}
+
+//完成回应
+message  FunctionTutorialRpcFinishStepReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional int32 FunctionID = 3[default=-1];	//完成的ID
+}
+
+//激活步骤请求
+message  FunctionTutorialRpcActiveStepAsk
+{
+	optional int32 FunctionID = 1[default=-1];	//引导ID
+}
+
+//激活步骤回应
+message  FunctionTutorialRpcActiveStepReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional int32 FunctionID = 2[default=-1];	//引导ID
+}
+

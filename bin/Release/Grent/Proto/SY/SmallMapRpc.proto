@@ -1,0 +1,22 @@
+message  SmallMapRpcNewObjNotify
+{
+	optional int32 ObjId = 2;
+	optional int32 DataId = 3;
+	optional Vector3 WorldPos = 4;
+
+}
+
+message  SmallMapRpcDelObjNotify
+{
+	optional int32 ObjId = 1;
+
+}
+
+message  Vector3
+{
+	optional float X = 1[default=-1];
+	optional float Y = 2[default=-1];
+	optional float Z = 3[default=-1];
+
+}
+

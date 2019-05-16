@@ -1,0 +1,303 @@
+import "PublicStruct.proto";
+
+//装备请求
+message  EquipmentRpcEquipAsk
+{
+	optional int32 Pos = 1[default=-1];	//背包位置
+}
+
+//装备回应
+message  EquipmentRpcEquipReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	repeated ItemData Equip_data = 2;	//更新背包
+	repeated SuitInfo Suit_infos = 3;	//Suit_infos
+	optional int32 SlotType = 4[default=-1];	//SlotType
+}
+
+//卸载装备请求
+message  EquipmentRpcUnEquipAsk
+{
+	optional int32 SlotType = 1[default=-1];	//装备槽类型
+}
+
+//卸载装备回应
+message  EquipmentRpcUnEquipReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	repeated ItemData Equip_data = 2;	//更新背包s
+	repeated SuitInfo Suit_infos = 3;	//Suit_infos
+	optional int32 SlotType = 4[default=-1];	//SlotType
+}
+
+//切换装备套装请求
+message  EquipmentRpcSwitchEquipSetAsk
+{
+	optional int32 To_index = 1[default=-1];	//切换为几号套装
+}
+
+//切换装备套装回应
+message  EquipmentRpcSwitchEquipSetReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	repeated ItemData Equip_data = 2;	//更新背包
+}
+
+//同步装备套装请求
+message  EquipmentRpcSyncEquipAsk
+{
+}
+
+//同步装备套装回应
+message  EquipmentRpcSyncEquipReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	repeated ItemData Equip_data = 3;	//装备信息
+	repeated SuitInfo Suit_infos = 4;	//Suit_infos
+}
+
+//激活共鸣请求
+message  EquipmentRpcResonanceUnlockAsk
+{
+	optional int32 ConfId = 1[default=-1];	//ID
+}
+
+//激活共鸣回应
+message  EquipmentRpcResonanceUnlockReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional EquipResonanceInfo ResonanceInfo = 2;	//数据
+}
+
+//共鸣洗练请求
+message  EquipmentRpcEquipDoResonanceAsk
+{
+	optional int32 ConfId = 1[default=-1];	//Id
+}
+
+//共鸣洗练回应
+message  EquipmentRpcEquipDoResonanceReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional EquipResonanceInfo AddAttr = 2;	//增加的属性
+}
+
+//保存共鸣属性请求
+message  EquipmentRpcEquipResonanceSaveAsk
+{
+	optional int32 ConfId = 1[default=-1];	//Id
+}
+
+//保存共鸣属性回应
+message  EquipmentRpcEquipResonanceSaveReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional EquipResonanceInfo ResonanceInfo = 2;	//最新的数据
+}
+
+//初始化请求
+message  EquipmentRpcEquipResonanceSyncAsk
+{
+}
+
+//初始化回应
+message  EquipmentRpcEquipResonanceSyncReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional EquipResonanceData ResonanceData = 2;	//数据
+}
+
+//初始化洗练数据请求
+message  EquipmentRpcEquipWashSyncAsk
+{
+}
+
+//初始化洗练数据回应
+message  EquipmentRpcEquipWashSyncReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional EquipWashData EquipWashData = 2;	//洗练数据
+}
+
+//请求洗练请求
+message  EquipmentRpcEquipWashAsk
+{
+	optional uint64 Guid = 1[default=0];	//唯一id
+	repeated int32 LockedIndex = 2;	//锁的条目
+}
+
+//请求洗练回应
+message  EquipmentRpcEquipWashReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional EquipWashInfo EquipWashInfo = 2;	//洗练数据
+	optional int32 LeftTimes = 3[default=-1];	//剩余次数
+}
+
+//保存请求
+message  EquipmentRpcEquipWashSaveAsk
+{
+	optional uint64 Guid = 1[default=0];	//装备GUID
+}
+
+//保存回应
+message  EquipmentRpcEquipWashSaveReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional ItemData ItemData = 2;	//保存后的道具数据
+	repeated int32 LockedIndex = 3;	//锁定索引
+}
+
+//装备打造请求
+message  EquipmentRpcEquipBuildSyncAsk
+{
+}
+
+//装备打造回应
+message  EquipmentRpcEquipBuildSyncReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated EquipBuildAtf Atf_list = 2;	//神器值列表
+}
+
+//打造请求请求
+message  EquipmentRpcEquipBuildAsk
+{
+	optional int32 Level = 1[default=-1];	//等级
+	optional int32 Occupation = 2[default=-1];	//职业
+	optional int32 Slot_type = 3[default=-1];	//整备类型
+}
+
+//打造请求回应
+message  EquipmentRpcEquipBuildReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional EquipBuildAtf EquipBuildAtf = 2;	//打造后的神器值
+	optional ItemObj Equip = 3;	//打造出的装备
+}
+
+//获取其他玩家信息请求
+message  EquipmentRpcGetPlayerInfoAsk
+{
+	optional uint64 Player_guid = 1[default=0];	//玩家guid
+}
+
+//获取其他玩家信息回应
+message  EquipmentRpcGetPlayerInfoReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional string Player_name = 2;	//玩家名字
+	optional uint64 Player_guid = 3[default=0];	//玩家GUID
+	optional int32 Avatar_id = 4[default=-1];	//头像ID
+	optional int32 Player_level = 5[default=-1];	//等级
+	optional int32 Avatar_frame_id = 6[default=-1];	//头像框ID
+	optional int32 Config_id = 7[default=-1];	//角色配置ID
+	optional uint64 Guild_id = 8[default=0];	//公会id
+	optional string Guild_name = 9;	//公会名字
+	repeated ItemData Equip_data = 10;	//装备信息
+	repeated SuitInfo Suit_infos = 11;	//Suit_infos
+	repeated EquipSlotInfo EquipSlotData = 12;	//装备槽信息
+	repeated EquipSlotStarInfo EquipSlotStarList = 13;	//装备槽星级列表
+	repeated JewelInfo JewelInfos = 14;	//宝石信息
+	optional int32 BattleScore = 16[default=-1];	//战斗力
+	optional ItemData Pet_item_data = 18;	//宠物数据
+	optional int32 TreasureHair = 19[default=-1];	//头发时装ID
+	optional int32 TreasureHead = 20[default=-1];	//头部时装ID
+	optional int32 TreasureBody = 21[default=-1];	//身体时装
+	optional int32 TreasureWeapon = 22[default=-1];	//武器时装
+	optional int32 TreasureWing = 23[default=-1];	//翅膀时装
+	optional uint64 TeamId = 24[default=0];	//队伍id
+}
+
+//装备继承请求
+message  EquipmentRpcEquipInheritAsk
+{
+	optional uint64 ToGuid = 1[default=0];	//被继承的装备GUID
+	optional uint64 FromGuid = 2[default=0];	//从哪个装备继承
+}
+
+//装备继承回应
+message  EquipmentRpcEquipInheritReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional ItemData NewEquip = 4;	//新装备
+	repeated ItemData EquipData = 5;	//装备信息
+	repeated SuitInfo SuitInfos = 6;	//套装信息
+	optional uint64 FromGuid = 7[default=0];	//FromGuid
+}
+

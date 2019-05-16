@@ -1,0 +1,34 @@
+message  RankRpcRankAsk
+{
+	optional int32 RankType = 1;
+	optional int32 RankSubType = 2;
+
+}
+
+message  RankRpcRankReply
+{
+	optional int32 Result = 1;
+	repeated RankInfo RankInfoList = 2;
+	optional int32 RankIndex = 3;
+	optional int64 MyValue = 4[default=-1];
+
+}
+
+message  RankInfo
+{
+	optional uint64 RoleID = 1[default=0];
+	optional string RoleName = 2;
+	optional int32 ConfigID = 3[default=-1];
+	optional uint64 GuildID = 4[default=0];
+	optional string GuildName = 5;
+	optional int32 PetID = 6[default=-1];
+	optional int32 PetLevel = 7[default=-1];
+	optional int32 TreasureCount = 8[default=-1];
+	optional int32 TreasureLevel = 9[default=-1];
+	optional int32 Score = 10[default=-1];
+	optional int32 Level = 11[default=-1];
+	optional int32 GuildFlagID = 12[default=-1];
+	optional int32 WinCount = 13[default=-1];
+
+}
+

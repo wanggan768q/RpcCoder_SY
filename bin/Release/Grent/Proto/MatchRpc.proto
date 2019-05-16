@@ -1,0 +1,96 @@
+import "PublicStruct.proto";
+
+//匹配请求
+message  MatchRpcAutoMatchAsk
+{
+	optional PlayerMatchData MatchInfo = 1;	//匹配参数
+}
+
+//匹配回应
+message  MatchRpcAutoMatchReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional PlayerMatchData MatchInfo = 2;	//匹配参数
+}
+
+//取消匹配请求
+message  MatchRpcCancelMatchAsk
+{
+}
+
+//取消匹配回应
+message  MatchRpcCancelMatchReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//取消匹配通知通知
+message  MatchRpcCancelMatchNotifyNotify
+{
+}
+
+//开始准备进入房间通知
+message  MatchRpcPrepareRoomNotify
+{
+	optional PBMatchRoom ReadyRoom = 1;	//准备界面
+}
+
+//准备请求
+message  MatchRpcReadyAsk
+{
+	optional int32 MatchType = 1[default=-1];	//匹配类型
+	optional uint64 RoomId = 2[default=0];	//房间的id
+}
+
+//准备回应
+message  MatchRpcReadyReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional uint64 RoleId = 2[default=0];	//玩家id
+}
+
+//取消准备请求
+message  MatchRpcCancelReadyAsk
+{
+	optional int32 MatchType = 1[default=-1];	//匹配类型
+	optional uint64 RoomId = 2[default=0];	//房间的id
+}
+
+//取消准备回应
+message  MatchRpcCancelReadyReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional uint64 RoleId = 2[default=0];	//玩家Id
+}
+
+//房间取消通知
+message  MatchRpcRoomCancelNotify
+{
+}
+
+//成员准备通知
+message  MatchRpcMemberReadyNotify
+{
+	optional uint64 RoleId = 1[default=0];	//准备的玩家
+}
+

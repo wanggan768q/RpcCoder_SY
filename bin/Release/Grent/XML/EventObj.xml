@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<Root Module="EventObj" CName="EventObj" MsgNumStart="16" SyncDataVersion="1" Comment="">
+    <Operate Name="EventBegin" CName="EventBegin" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="16" DataStruct="RpcEventBeginAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="17" DataStruct="RpcEventBeginReply" Comment="" />
+    </Operate>
+    <Operate Name="EventEnd" CName="EventEnd" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="18" DataStruct="RpcEventEndAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="19" DataStruct="RpcEventEndReply" Comment="" />
+    </Operate>
+    <Operate Name="EventStop" CName="EventStop" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="20" DataStruct="RpcEventStopAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="21" DataStruct="RpcEventStopReply" Comment="" />
+    </Operate>
+    <Operate Name="EventStopNotify" CName="交互停止通知" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="22" DataStruct="RpcEventStopNotifyNotify" Comment="" />
+    </Operate>
+    <Struct Name="RpcEventBeginAsk" CName="EventBegin请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="ObjId" CName="id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcEventBeginReply" CName="EventBegin回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="ObjId" CName="id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcEventEndAsk" CName="EventEnd请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="ObjId" CName="id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcEventEndReply" CName="EventEnd回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="ObjId" CName="id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcEventStopAsk" CName="EventStop请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="ObjId" CName="id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcEventStopReply" CName="EventStop回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="ObjId" CName="id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcEventStopNotifyNotify" CName="交互停止通知通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+</Root>

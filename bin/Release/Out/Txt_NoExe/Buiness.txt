@@ -1,0 +1,55 @@
+BuinessRpcBuinessSyncAsk↑ 初始化请求
+
+BuinessRpcBuinessSyncReply↓ 初始化回应
+	Result:int32 = -1	;返回结果
+	SkillDatas:BuinessSkillData*	;生活技能列表
+	[BuinessSkillData]
+		SkillID:int32 = -1	;生活技能ID
+		SkillLv:int32 = -1	;等级
+		Locked:int32 = -1	;是否锁
+		SkillExp:int32 = -1	;当前经验
+		UseCount:int32 = -1	;使用技能书的次数
+	UnLockInfos:BuinessUnlockInfo*	;解锁剩余时间
+	[BuinessUnlockInfo]
+		Mutual:int32 = -1	;互斥类型
+		EndTime:int64 = -1	;解锁的结束时间
+
+BuinessRpcBuinessUnlockAsk↑ 解锁请求
+	SkillID:int32 = -1	;要解锁的ID
+
+BuinessRpcBuinessUnlockReply↓ 解锁回应
+	Result:int32 = -1	;返回结果
+	ChangeSkillDatas:BuinessSkillData*	;改变的技能
+	[BuinessSkillData]
+		SkillID:int32 = -1	;生活技能ID
+		SkillLv:int32 = -1	;等级
+		Locked:int32 = -1	;是否锁
+		SkillExp:int32 = -1	;当前经验
+		UseCount:int32 = -1	;使用技能书的次数
+	UnLockInfo:BuinessUnlockInfo	;解锁信息
+	[BuinessUnlockInfo]
+		Mutual:int32 = -1	;互斥类型
+		EndTime:int64 = -1	;解锁的结束时间
+
+BuinessRpcBuinessStudyAsk↑ 学习技能请求
+	SkillID:int32 = -1	;技能ID
+	StudyType:int32 = -1	;学习类型
+
+BuinessRpcBuinessStudyReply↓ 学习技能回应
+	Result:int32 = -1	;返回结果
+	SkillData:BuinessSkillData	;技能新属性
+	[BuinessSkillData]
+		SkillID:int32 = -1	;生活技能ID
+		SkillLv:int32 = -1	;等级
+		Locked:int32 = -1	;是否锁
+		SkillExp:int32 = -1	;当前经验
+		UseCount:int32 = -1	;使用技能书的次数
+
+BuinessRpcBuinessMakeAsk↑ 制作请求
+	SkillID:int32 = -1	;使用哪个技能
+
+BuinessRpcBuinessMakeReply↓ 制作回应
+	Result:int32 = -1	;返回结果
+	ItemID:int32 = -1	;道具ID
+	ItemCount:int32 = -1	;数量
+

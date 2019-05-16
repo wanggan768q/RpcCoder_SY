@@ -1,0 +1,54 @@
+import "PublicStruct.proto";
+
+//ObjMove通知
+message  EventRpcMoveNotify
+{
+	optional int32 ObjId = 1[default=-1];	//obj id
+	optional Vector3 Pos = 2;	//位置
+	optional float Dir = 3[default=-1];	//方向
+}
+
+//ObjStopMove通知
+message  EventRpcStopMoveNotify
+{
+	optional int32 ObjId = 1[default=-1];	//obj id
+	optional Vector3Int Pos = 2;	//位置
+	optional float Dir = 3[default=-1];	//方向
+	/*
+	类型
+	1.传送
+	*/
+	optional int32 Type = 5[default=-1];
+}
+
+//属性改变通知
+message  EventRpcObjAttrChangeNotify
+{
+	optional float Speed = 1[default=-1];	//speed
+	optional int64 Hp = 2[default=-1];	//Hp
+	optional int32 Status = 3[default=-1];	//状态
+	optional int32 ConfigId = 4[default=-1];	//NpcId改变
+	optional int32 ObjId = 5[default=-1];	//对象id
+}
+
+//货币的变化通知通知
+message  EventRpcCoinChangeNotify
+{
+	/*
+	类型
+	0:经验
+	*/
+	optional int32 Type = 1[default=-1];
+	optional int32 Value = 2[default=-1];	//值
+}
+
+//按点移动通知
+message  EventRpcMovePosNotify
+{
+	optional int32 ObjId = 1[default=-1];	//obj id
+	repeated Vector3Int PosList = 3;	//要移动的位置
+	optional float Dir = 4[default=-1];	//Dir
+	optional bool IsAllowChangeRunAnimation = 5[default=true];	//是否允许切换Run动画
+	optional int32 Follow = 6[default=-1];	//是否跟随状态
+}
+

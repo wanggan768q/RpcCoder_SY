@@ -1,0 +1,118 @@
+message  MatchRpcAutoMatchAsk
+{
+	optional PlayerMatchData MatchInfo = 1;
+
+}
+
+message  MatchRpcAutoMatchReply
+{
+	optional int32 Result = 1;
+	optional PlayerMatchData MatchInfo = 2;
+
+}
+
+message  MatchRpcCancelMatchAsk
+{
+
+}
+
+message  MatchRpcCancelMatchReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  MatchRpcCancelMatchNotifyNotify
+{
+
+}
+
+message  MatchRpcPrepareRoomNotify
+{
+	optional PBMatchRoom ReadyRoom = 1;
+
+}
+
+message  MatchRpcReadyAsk
+{
+	optional int32 MatchType = 1;
+	optional uint64 RoomId = 2[default=0];
+
+}
+
+message  MatchRpcReadyReply
+{
+	optional int32 Result = 1;
+	optional uint64 RoleId = 2[default=0];
+
+}
+
+message  MatchRpcCancelReadyAsk
+{
+	optional int32 MatchType = 1;
+	optional uint64 RoomId = 2[default=0];
+
+}
+
+message  MatchRpcCancelReadyReply
+{
+	optional int32 Result = 1;
+	optional uint64 RoleId = 2[default=0];
+
+}
+
+message  MatchRpcRoomCancelNotify
+{
+
+}
+
+message  MatchRpcMemberReadyNotify
+{
+	optional uint64 RoleId = 1[default=0];
+
+}
+
+message  PlayerMatchData
+{
+	optional int32 MatchType = 1[default=0];
+	optional int32 Elo = 2[default=0];
+	optional int32 Auto = 3[default=0];
+
+}
+
+message  PBMatchRoom
+{
+	repeated MatchRoomCamps Camps = 1;
+	optional MatchTargetInfo MatchTarget = 6;
+	optional uint64 RoomId = 7[default=0];
+	optional int32 MatchType = 8[default=-1];
+
+}
+
+message  MatchRoomCamps
+{
+	repeated MatchInfo Players = 1;
+
+}
+
+message  MatchInfo
+{
+	optional uint64 RoleId = 1[default=0];
+	optional int32 Level = 2[default=0];
+	optional int32 ConfigId = 3[default=-1];
+	optional int32 ProfessionId = 4[default=-1];
+	optional string Name = 5;
+	optional int32 Ready = 6[default=-1];
+	optional int32 Camp = 7[default=0];
+	optional int32 Integral = 12[default=0];
+	optional int32 Section = 13[default=0];
+
+}
+
+message  MatchTargetInfo
+{
+	optional int32 DungeonConfigId = 1[default=-1];
+	optional int32 SceneConfigId = 2[default=-1];
+
+}
+

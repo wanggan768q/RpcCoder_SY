@@ -1,0 +1,187 @@
+message  DungeonRpcCreateDungeonAsk
+{
+	optional uint64 RoleId = 1[default=0];
+	optional int32 DungeonConfigId = 2;
+
+}
+
+message  DungeonRpcCreateDungeonReply
+{
+	optional int32 Result = 1;
+	optional int32 DungeonConfigId = 2;
+	optional int32 SceneConfigId = 3;
+
+}
+
+message  DungeonRpcExitDungeonAsk
+{
+	optional uint64 RoleId = 1[default=0];
+	optional int32 SceneId = 2;
+
+}
+
+message  DungeonRpcExitDungeonReply
+{
+	optional int32 Result = 1;
+	optional int32 SceneConfigId = 2;
+	optional int32 SceneId = 3;
+
+}
+
+message  DungeonRpcInformCreateDungeonAsk
+{
+	optional uint64 RoleId = 1[default=0];
+	optional int32 TargetSceneId = 2;
+	optional int32 DungeonConfigId = 3;
+	optional int32 CurSceneId = 4;
+	optional int32 Result = 5;
+	repeated uint64 RoleIds = 6;
+
+}
+
+message  DungeonRpcInformCreateDungeonReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  DungeonRpcSettlementNotify
+{
+	optional int32 SettlementResult = 1;
+
+}
+
+message  DungeonRpcEnterDungeonAsk
+{
+	optional int32 SceneId = 1;
+	optional int32 DungeonConfigId = 2;
+
+}
+
+message  DungeonRpcEnterDungeonReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  DungeonRpcDungeonDataNotify
+{
+	optional int32 BeginTime = 1;
+
+}
+
+message  DungeonRpcDungeonSyncAsk
+{
+
+}
+
+message  DungeonRpcDungeonSyncReply
+{
+	optional int32 Result = 1;
+	optional DungeonData Data = 2;
+
+}
+
+message  DungeonRpcDungeonListInfoAsk
+{
+
+}
+
+message  DungeonRpcDungeonListInfoReply
+{
+	optional int32 Result = 1;
+	repeated DungeonBossInfo DungeonBossData = 3;
+
+}
+
+message  DungeonRpcCreateTutorialAsk
+{
+	optional uint64 RoleId = 1[default=0];
+	optional int32 DungeonConfigId = 2;
+
+}
+
+message  DungeonRpcCreateTutorialReply
+{
+	optional int32 Result = 1;
+	optional int32 DungeonConfigId = 3;
+	optional int32 SceneConfigId = 4;
+
+}
+
+message  DungeonRpcQuitTutorialAsk
+{
+
+}
+
+message  DungeonRpcQuitTutorialReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  DungeonRpcDungeonTargetNotify
+{
+	repeated DungeonTarget DungeonTarget = 1;
+
+}
+
+message  DungeonRpcTargetContentChangeNotify
+{
+	optional int32 Index = 1;
+	optional int32 SubIndex = 2;
+	optional int32 CurCount = 3;
+
+}
+
+message  DungeonRpcDungeon_NotifyNotify
+{
+	optional int32 TextId = 1;
+
+}
+
+message  DungeonData
+{
+	repeated DungeonSituationData Data = 1;
+	optional int64 DurationMentTime = 2[default=-1];
+	optional int64 ConclusionTime = 3[default=-1];
+	optional int32 PrepareTime = 4[default=-1];
+
+}
+
+message  DungeonBossInfo
+{
+	optional int32 Bossid = 1[default=-1];
+	optional int32 Number = 2[default=-1];
+	optional int32 Dungeonid = 3[default=-1];
+	optional int32 MaxNumber = 4[default=-1];
+	optional int32 RefreshType = 5[default=-1];
+
+}
+
+message  DungeonTarget
+{
+	optional int32 TypeId = 1[default=-1];
+	optional int32 Index = 2[default=-1];
+	repeated DungeonTargetContent TargetContent = 3;
+	optional int32 Description = 4[default=-1];
+
+}
+
+message  DungeonSituationData
+{
+	optional int32 Name = 1[default=-1];
+	repeated int32 PlayerData = 2;
+
+}
+
+message  DungeonTargetContent
+{
+	optional int32 Index = 1[default=-1];
+	optional int32 TemplateId = 2[default=-1];
+	optional int32 MaxCount = 3[default=-1];
+	optional int32 CurCount = 4[default=-1];
+	optional int32 Description = 5[default=-1];
+
+}
+

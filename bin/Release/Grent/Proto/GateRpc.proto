@@ -1,0 +1,20 @@
+import "PublicStruct.proto";
+
+//Ping请求
+message  GateRpcPingAsk
+{
+	optional uint64 Sequence = 1[default=0];	//序列
+}
+
+//Ping回应
+message  GateRpcPingReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional uint64 Sequence = 2[default=0];	//序列
+}
+

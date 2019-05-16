@@ -13,9 +13,12 @@
         private static bool isSToC = false;
         private static ArrayList saves = new ArrayList();
 
+        public static bool S_COMMAND_MODE = false;
+
         public static void Draw(Module m)
         {
-            //return;
+            if(DrawPic.S_COMMAND_MODE)
+                return;
             try
             {
                 bw = new BinaryWriter(new FileStream(m.ModuleName + ".pic", FileMode.Create));

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<Root Module="Currency" CName="货币" MsgNumStart="19" SyncDataVersion="1" Comment="">
+    <Operate Name="Transfrom" CName="货币兑换" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="19" DataStruct="RpcTransfromAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="20" DataStruct="RpcTransfromReply" Comment="" />
+    </Operate>
+    <Operate Name="Show" CName="货币展示" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="21" DataStruct="RpcShowAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="22" DataStruct="RpcShowReply" Comment="" />
+    </Operate>
+    <Struct Name="RpcTransfromAsk" CName="货币兑换请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="To_type" CName="兑换目标类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="From_type" CName="兑换来源类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int64" FieldId="3" Name="From_num" CName="兑换来源数量" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int64" FieldId="4" Name="Diamond_bind_num" CName="绑定钻石使用数量" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcTransfromReply" CName="货币兑换回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="Reward_type" CName="获得货币类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int64" FieldId="3" Name="Reward_num" CName="获得货币数量" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcShowAsk" CName="货币展示请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcShowReply" CName="货币展示回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="Resource" FieldId="2" Name="ShowResources" CName="展示货币信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+</Root>

@@ -1,0 +1,164 @@
+message  WGRpcInformJoinTeamAsk
+{
+	optional TeamMemberInfo Member = 5;
+	optional TeamInfo Team = 6;
+
+}
+
+message  WGRpcInformJoinTeamReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  WGRpcInformLeaveAsk
+{
+	optional uint64 RoleId = 1[default=0];
+	optional uint64 NewLeaderRoleId = 2[default=0];
+	optional int32 Result = 3;
+
+}
+
+message  WGRpcInformLeaveReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  WGRpcInformAppointTeamLeaderAsk
+{
+	optional int32 Result = 1;
+	optional uint64 NewLeaderRoleId = 2[default=0];
+	optional uint64 OldLeaderRoleId = 3[default=0];
+
+}
+
+message  WGRpcInformAppointTeamLeaderReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  WGRpcInformKickTeamMemberAsk
+{
+	optional int32 Result = 1;
+	optional uint64 KickedMemberRoleId = 2[default=0];
+	optional uint64 LeaderRoleId = 3[default=0];
+
+}
+
+message  WGRpcInformKickTeamMemberReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  WGRpcInformDissmissTeamAsk
+{
+	optional int32 Result = 1;
+	optional uint64 LeaderRoleId = 2[default=0];
+
+}
+
+message  WGRpcInformDissmissTeamReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  WGRpcInformApplyTeamAsk
+{
+	optional TeamMemberInfo TeamMember = 1;
+	optional int32 Result = 2;
+	optional uint64 TeamId = 3[default=0];
+
+}
+
+message  WGRpcInformApplyTeamReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  WGRpcAgreeTeamApplicantAsk
+{
+	optional TeamInfo Team = 2;
+
+}
+
+message  WGRpcAgreeTeamApplicantReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  WGRpcInformLoginAsk
+{
+	optional TeamInfo Team = 1;
+
+}
+
+message  WGRpcInformLoginReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  TeamMemberInfo
+{
+	optional uint64 RoleId = 1[default=0];
+	optional int32 Level = 3[default=0];
+	optional string Name = 4;
+	optional int32 ConfigId = 5[default=-1];
+	optional int32 Hp = 6[default=-1];
+	optional int32 Status = 8[default=-1];
+	optional int64 MaxHp = 11[default=-1];
+	optional CharacterLocation Location = 15;
+	optional int32 ProfessionId = 16[default=-1];
+	optional int32 OnLine = 17[default=1];
+	optional int32 FollowTeam = 18[default=-1];
+	repeated int32 BuffIdList = 19;
+
+}
+
+message  TeamInfo
+{
+	repeated TeamMemberInfo Members = 1;
+	optional uint64 LeaderRoleId = 2[default=0];
+	optional uint64 TeamId = 3[default=0];
+	optional int32 TeamType = 4[default=-1];
+	optional TeamTarget TeamTarget = 5;
+
+}
+
+message  CharacterLocation
+{
+	optional int32 SceneId = 2[default=-1];
+	optional Vector3 Pos = 3;
+	optional int32 MapId = 5[default=-1];
+	optional int32 DungeonConfigId = 6[default=-1];
+	optional int32 LineId = 7[default=-1];
+	optional int32 SceneConfigId = 8[default=-1];
+	optional int32 MirrorId = 9[default=-1];
+	optional int32 ServerId = 10[default=-1];
+
+}
+
+message  Vector3
+{
+	optional float X = 1[default=-1];
+	optional float Y = 2[default=-1];
+	optional float Z = 3[default=-1];
+
+}
+
+message  TeamTarget
+{
+	optional int32 Id = 1[default=0];
+	optional int32 MinLevel = 2[default=0];
+	optional int32 MaxLevel = 3[default=0];
+	repeated int32 Function = 4;
+	optional int32 TargetType = 5[default=0];
+
+}
+

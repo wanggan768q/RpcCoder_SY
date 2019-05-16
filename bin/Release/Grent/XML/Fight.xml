@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<Root Module="Fight" CName="战斗" MsgNumStart="9" SyncDataVersion="1" Comment="">
+    <Operate Name="UseSkillAction" CName="使用技能动作" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="9" DataStruct="RpcUseSkillActionNotify" Comment="" />
+    </Operate>
+    <Operate Name="ShowExpAction" CName="显示经验" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="10" DataStruct="RpcShowExpActionNotify" Comment="" />
+    </Operate>
+    <Operate Name="BuffAction" CName="buf" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="11" DataStruct="RpcBuffActionNotify" Comment="" />
+    </Operate>
+    <Operate Name="StateAction" CName="状态事件" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="12" DataStruct="RpcStateActionNotify" Comment="" />
+    </Operate>
+    <Operate Name="ReviveAction" CName="复活事件" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="13" DataStruct="RpcReviveActionNotify" Comment="" />
+    </Operate>
+    <Operate Name="ComboSkillAction" CName="连击技能" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="14" DataStruct="RpcComboSkillActionNotify" Comment="" />
+    </Operate>
+    <Operate Name="DropAction" CName="掉落" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="15" DataStruct="RpcDropActionNotify" Comment="" />
+    </Operate>
+    <Operate Name="UseItemAction" CName="使用道具" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="16" DataStruct="RpcUseItemActionNotify" Comment="" />
+    </Operate>
+    <Operate Name="HpChangeAction" CName="血量改变" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="17" DataStruct="RpcHpChangeActionNotify" Comment="" />
+    </Operate>
+    <Operate Name="UseSkill" CName="使用技能请求" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="18" DataStruct="RpcUseSkillAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="19" DataStruct="RpcUseSkillReply" Comment="" />
+    </Operate>
+    <Operate Name="HurtAction" CName="伤害事件" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="20" DataStruct="RpcHurtActionNotify" Comment="" />
+    </Operate>
+    <Operate Name="RepelAction" CName="战斗击 退、飞、撞、拉 通知" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="21" DataStruct="RpcRepelActionNotify" Comment="" />
+    </Operate>
+    <Operate Name="ObjDeadAction" CName="obj死亡通知" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="22" DataStruct="RpcObjDeadActionNotify" Comment="" />
+    </Operate>
+    <Operate Name="FightTips" CName="战斗辅助tips" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="23" DataStruct="RpcFightTipsNotify" Comment="" />
+    </Operate>
+    <Operate Name="BuffList" CName="BuffList" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="24" DataStruct="RpcBuffListNotify" Comment="" />
+    </Operate>
+    <Operate Name="ReduceCD" CName="减少cd" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="25" DataStruct="RpcReduceCDNotify" Comment="" />
+    </Operate>
+    <Operate Name="ReliveNotify" CName="复活通知" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="26" DataStruct="RpcReliveNotifyNotify" Comment="" />
+    </Operate>
+    <Struct Name="RpcUseSkillActionNotify" CName="使用技能动作通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="16">
+        <Field PreDefine="optional" FieldType="int32" FieldId="8" Name="ObjId" CName="ObjId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="9" Name="ObjTargetId" CName="ObjTargetId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="10" Name="SkillId" CName="SkillId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="11" Name="CastingDir" CName="施法方向" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="12" Name="X" CName="X" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="13" Name="Y" CName="Y" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="14" Name="Z" CName="Z" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="15" Name="MomentIndex" CName="技能段数" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="CustomSkiData" FieldId="16" Name="CustomSkiData" CName="动画key 设置" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcShowExpActionNotify" CName="显示经验通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="ObjId" CName="id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="Value" CName="获取到的经验值" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcBuffActionNotify" CName="buf通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="8">
+        <Field PreDefine="optional" FieldType="BuffInfo" FieldId="8" Name="Info" CName="buf信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcStateActionNotify" CName="状态事件通知" ProtoType="RpcProto" Comment="NULL = 0&#xD;&#xA;IDLE = 1,		&#xD;&#xA;	RUN = 2,		--行走&#xD;&#xA;	SKILL = 3,		--技能&#xD;&#xA;	DEATH = 4,		--死亡&#xD;&#xA;	BIRTH = 5,		--出生&#xD;&#xA;	HIT = 6,		--受击&#xD;&#xA;	FIGHT = 7,		--战斗站立&#xD;&#xA;	DIZZY = 8,		--眩晕状态" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="5">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="ObjId" CName="id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="Type" CName="状态类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="NULL = 0&#xD;&#xA;IDLE = 1&#xD;&#xA;RUN = 2&#xD;&#xA;SKILL = 3&#xD;&#xA;DEATH = 4&#xD;&#xA;BIRTH = 5&#xD;&#xA;HIT = 6,&#xD;&#xA;FIGHT = 7&#xD;&#xA;DIZZY = 8" />
+        <Field PreDefine="optional" FieldType="Vector3" FieldId="3" Name="Pos" CName="位置信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="4" Name="TargetPos" CName="目标位置信息" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="5" Name="State" CName="状态" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="NULL = 0&#xD;&#xA;IDLE = 1&#xD;&#xA;RUN = 2&#xD;&#xA;SKILL = 3&#xD;&#xA;DEATH = 4&#xD;&#xA;BIRTH = 5&#xD;&#xA;HIT = 6,&#xD;&#xA;FIGHT = 7&#xD;&#xA;DIZZY = 8" />
+    </Struct>
+    <Struct Name="RpcReviveActionNotify" CName="复活事件通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="ObjId" CName="id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="Vector3" FieldId="2" Name="Pos" CName="复活后的位置" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="CurHp" CName="当前血量" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcComboSkillActionNotify" CName="连击技能通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="ObjId" CName="id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="SkillId" CName="技能id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcDropActionNotify" CName="掉落通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcUseItemActionNotify" CName="使用道具通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcHpChangeActionNotify" CName="血量改变通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="5">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="ObjId" CName="id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="IncrementHp" CName="增量血" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcUseSkillAsk" CName="使用技能请求请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="9">
+        <Field PreDefine="repeated" FieldType="int32" FieldId="1" Name="ObjTargetId" CName="ObjTargetId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="SkillId" CName="SkillId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="3" Name="CastingDir" CName="施法方向" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="4" Name="X" CName="X" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="5" Name="Y" CName="Y" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="6" Name="Z" CName="Z" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="7" Name="MomentIndex" CName="技能段数" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="CustomSkiData" FieldId="9" Name="CustomSkiData" CName="动画key 设置" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcUseSkillReply" CName="使用技能请求回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcHurtActionNotify" CName="伤害事件通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="10">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="ObjId" CName="id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="SegmentIndex" CName="伤害阶段" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="SkillId" CName="技能id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="4" Name="TargetObjId" CName="目标id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="5" Name="HurtValue" CName="伤害的值" ValueSet="" MinValue="0" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="bool" FieldId="6" Name="IsCritical" CName="是否暴击" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="false" Comment="" />
+        <Field PreDefine="optional" FieldType="bool" FieldId="8" Name="IsDodge" CName="是否格挡" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="false" Comment="" />
+        <Field PreDefine="optional" FieldType="bool" FieldId="9" Name="IsMiss" CName="是否闪避了" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="false" Comment="" />
+        <Field PreDefine="optional" FieldType="bool" FieldId="10" Name="IsHurtState" CName="是否受击了" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="false" Comment="" />
+    </Struct>
+    <Struct Name="RpcRepelActionNotify" CName="战斗击 退、飞、撞、拉 通知通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="11">
+        <Field PreDefine="optional" FieldType="int32" FieldId="5" Name="ObjId" CName="id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="6" Name="SegmentIndex" CName="伤害阶段" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="8" Name="SkillId" CName="技能id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="9" Name="TargetObjId" CName="目标id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="Vector3" FieldId="10" Name="SkiTargetPos" CName="目标位置" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="bool" FieldId="11" Name="IsPlayerDiaup" CName="是否播放动画" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="true" Comment="" />
+    </Struct>
+    <Struct Name="RpcObjDeadActionNotify" CName="obj死亡通知通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="ObjId" CName="死亡的objID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcFightTipsNotify" CName="战斗辅助tips通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="TipsID" CName="tipsID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="Durtion" CName="持续时间" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcBuffListNotify" CName="BuffList通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="repeated" FieldType="BuffInfo" FieldId="1" Name="BuffList" CName="bufflist" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcReduceCDNotify" CName="减少cd通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="SkillId" CName="技能ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="ModTime" CName="修改的时间" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcReliveNotifyNotify" CName="复活通知通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="ObjId" CName="id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+</Root>

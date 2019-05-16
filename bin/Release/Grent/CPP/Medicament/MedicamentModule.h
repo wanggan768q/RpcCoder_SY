@@ -1,0 +1,174 @@
+/********************************************************************************************
+* Copyright (C), 2011-2025, AGAN Tech. Co., Ltd.
+* FileName:     ModuleMedicament.h
+* Author:       甘业清
+* Description:  药剂类，包含以下内容
+*               ★模块基本信息函数
+*               ★初始化结束回调函数
+*               ★时间相当回调函数
+*               ★用户创建上下线回调函数
+*               ★模块数据修改及同步回调函数
+*               ★服务器后台RPC函数
+*               ★客户端RPC函数
+* Version:      1.0
+* History:
+* <author>  <time>   <version >   <desc>
+* 
+********************************************************************************************/
+
+#ifndef __MODULE_MEDICAMENT_H
+#define __MODULE_MEDICAMENT_H
+
+
+#include "ModuleBase.h"
+#include "MedicamentRpcWraper.h"
+
+
+
+
+//药剂实现类
+class ModuleMedicament : public ModuleBase
+{
+	DECLARE_INSTANCE(ModuleMedicament);
+public:
+	friend class			ModuleMgr;
+
+public:
+	//药剂实现类构造函数
+	ModuleMedicament();
+	
+	//药剂实现类析构函数
+	virtual					~ModuleMedicament();
+
+	//获取模块ID
+	virtual	UINT8			GetModuleId();
+	
+	//获取模块名字
+	virtual	TStr			GetModuleName();
+	
+	//获取模块同步(保存)数据版本及类名
+	virtual map<INT32,TStr>	GetModuleDataVersionName();
+	
+	//模块数据保存类型
+	virtual SavedDataTypeE	GetSavedDataType();
+
+	//获取初始化顺序
+	virtual int				GetInitializeOrder();
+	
+	//获取结束退出顺序
+	virtual int				GetFinalizeOrder();
+	
+	//初始化
+	virtual bool			Initialize();
+	
+	//结束退出
+	virtual void			Finalize();
+
+	//毫秒级Tick回调
+	virtual void			OnTick( INT64 currentMiliSecond );
+	
+	//秒级Tick回调
+	virtual void			OnSecondTick( time_t currentSecond );
+	
+	//分钟改变回调
+	virtual void			OnMinuteChange( time_t currentSecond);
+	
+	//小时改变回调
+	virtual void			OnHourChange( time_t currentSecond );
+	
+	//天改变回调
+	virtual void			OnDayChange( time_t currentSecond );
+
+	//创建用户回调
+	virtual void			OnUserCreate( INT64 userId, const TStr& userName );
+	
+	//用户上线回调
+	virtual void			OnUserOnline( INT64 userId, time_t lastLogoutTime );
+	
+	//用户下线回调
+	virtual void			OnUserOffline( INT64 userId );
+
+	//是否要同步数据到客户端
+	virtual bool			NotSyncToClient( UINT16 usSyncId );
+	
+	//同步数据修改后回调
+	virtual void			NotifySyncValueChanged(INT64 Key,UINT16 usSyncId, int nIndex=-1);
+
+public:
+	/********************************************************************************************
+	* Function:       RpcFillHp
+	* Description:    药剂-->使用物品填充hp池同步调用操作函数
+	* Input:          MedicamentRpcFillHpAskWraper& Ask 使用物品填充hp池请求
+	* Output:         MedicamentRpcFillHpReplyWraper& Reply 使用物品填充hp池回应
+	* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+	*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+	********************************************************************************************/
+	static int RpcFillHp( CPlayer* pPlayer, CPacket* pPacket );
+
+	/********************************************************************************************
+	* Function:       RpcOneStepFillHp
+	* Description:    药剂-->一键添加同步调用操作函数
+	* Input:          MedicamentRpcOneStepFillHpAskWraper& Ask 一键添加请求
+	* Output:         MedicamentRpcOneStepFillHpReplyWraper& Reply 一键添加回应
+	* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+	*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+	********************************************************************************************/
+	static int RpcOneStepFillHp( CPlayer* pPlayer, CPacket* pPacket );
+
+	/********************************************************************************************
+	* Function:       RpcClientRefreshMedicament
+	* Description:    药剂-->客户端刷新药剂同步调用操作函数
+	* Input:          MedicamentRpcClientRefreshMedicamentAskWraper& Ask 客户端刷新药剂请求
+	* Output:         MedicamentRpcClientRefreshMedicamentReplyWraper& Reply 客户端刷新药剂回应
+	* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+	*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+	********************************************************************************************/
+	static int RpcClientRefreshMedicament( CPlayer* pPlayer, CPacket* pPacket );
+
+	/********************************************************************************************
+	* Function:       SendToClientServerRefreshMedicament
+	* Description:    药剂-->服务器刷新药剂异步通知操作函数
+	* Input:          MedicamentRpcServerRefreshMedicamentNotifyWraper& Notify 服务器刷新药剂通知
+	* Input:          INT64 UserId 需要通知到的用户ID
+	* Output:         无
+	* Return:         无
+	********************************************************************************************/
+	//virtual void SendToClientServerRefreshMedicament( INT64 UserId, MedicamentRpcServerRefreshMedicamentNotifyWraper& Notify );
+
+	/********************************************************************************************
+	* Function:       RpcSyncMedicamentData
+	* Description:    药剂-->请求数据同步调用操作函数
+	* Input:          MedicamentRpcSyncMedicamentDataAskWraper& Ask 请求数据请求
+	* Output:         MedicamentRpcSyncMedicamentDataReplyWraper& Reply 请求数据回应
+	* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+	*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+	********************************************************************************************/
+	static int RpcSyncMedicamentData( CPlayer* pPlayer, CPacket* pPacket );
+
+	/********************************************************************************************
+	* Function:       RpcMedicamentCD
+	* Description:    药剂-->药剂CD同步调用操作函数
+	* Input:          MedicamentRpcMedicamentCDAskWraper& Ask 药剂CD请求
+	* Output:         MedicamentRpcMedicamentCDReplyWraper& Reply 药剂CD回应
+	* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+	*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+	********************************************************************************************/
+	static int RpcMedicamentCD( CPlayer* pPlayer, CPacket* pPacket );
+
+	/********************************************************************************************
+	* Function:       SendToClientMedicamentCDNotify
+	* Description:    药剂-->通知CD异步通知操作函数
+	* Input:          MedicamentRpcMedicamentCDNotifyNotifyWraper& Notify 通知CD通知
+	* Input:          INT64 UserId 需要通知到的用户ID
+	* Output:         无
+	* Return:         无
+	********************************************************************************************/
+	//virtual void SendToClientMedicamentCDNotify( INT64 UserId, MedicamentRpcMedicamentCDNotifyNotifyWraper& Notify );
+
+
+
+private:
+	 map<INT32,TStr>		m_mapSyncDataVersionName;
+};
+
+#endif

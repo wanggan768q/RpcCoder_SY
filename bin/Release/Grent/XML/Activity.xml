@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<Root Module="Activity" CName="活动" MsgNumStart="24" SyncDataVersion="1" Comment="">
+    <Operate Name="EliteMonsterInfo" CName="精英怪信息" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="24" DataStruct="RpcEliteMonsterInfoNotify" Comment="" />
+    </Operate>
+    <Operate Name="CreateObj" CName="生成对象" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="25" DataStruct="RpcCreateObjAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="26" DataStruct="RpcCreateObjReply" Comment="" />
+    </Operate>
+    <Operate Name="OpenActivity" CName="活动开启前通知" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="27" DataStruct="RpcOpenActivityNotify" Comment="" />
+    </Operate>
+    <Operate Name="Xingyao" CName="星耀王座进入" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="28" DataStruct="RpcXingyaoAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="29" DataStruct="RpcXingyaoReply" Comment="" />
+    </Operate>
+    <Operate Name="ActivityTime" CName="活动时间信息" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="30" DataStruct="RpcActivityTimeNotify" Comment="" />
+    </Operate>
+    <Operate Name="ReqActivityTime" CName="请求获取活动时间" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="31" DataStruct="RpcReqActivityTimeAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="32" DataStruct="RpcReqActivityTimeReply" Comment="" />
+    </Operate>
+    <Operate Name="XingyaoNPC" CName="星耀NPC" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="33" DataStruct="RpcXingyaoNPCAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="34" DataStruct="RpcXingyaoNPCReply" Comment="" />
+    </Operate>
+    <Operate Name="XingyaoReward" CName="星耀高额奖励" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="35" DataStruct="RpcXingyaoRewardNotify" Comment="" />
+    </Operate>
+    <Operate Name="OperationTime" CName="operation活动表时间" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="36" DataStruct="RpcOperationTimeNotify" Comment="" />
+    </Operate>
+    <Struct Name="RpcEliteMonsterInfoNotify" CName="精英怪信息通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="State" CName="状态" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="EliteMonsterInfo" FieldId="3" Name="Info" CName="信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcCreateObjAsk" CName="生成对象请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="CommonId" CName="当前id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcCreateObjReply" CName="生成对象回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcOpenActivityNotify" CName="活动开启前通知通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="ActId" CName="活动id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="DiffTm" CName="活动开启前时间" ValueSet="" MinValue="-1" MaxValue="86400" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="SceneId" CName="场景id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="Vector3" FieldId="4" Name="Pos" CName="传送位置" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcXingyaoAsk" CName="星耀王座进入请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="NPCid" CName="NPC" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcXingyaoReply" CName="星耀王座回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcActivityTimeNotify" CName="活动时间信息通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="repeated" FieldType="ActivityTime" FieldId="1" Name="ActTimeList" CName="活动时间信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcReqActivityTimeAsk" CName="请求获取活动时间请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcReqActivityTimeReply" CName="请求获取活动时间回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="ActivityTime" FieldId="2" Name="ActTimeList" CName="活动时间信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcXingyaoNPCAsk" CName="星耀NPC请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcXingyaoNPCReply" CName="星耀NPC回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="Sceneid" CName="场景ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="Waypoinid" CName="路点ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcXingyaoRewardNotify" CName="星耀高额奖励通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcOperationTimeNotify" CName="operation活动表时间通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="repeated" FieldType="ActivityTime" FieldId="1" Name="ActTimeList" CName="活动时间信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+</Root>

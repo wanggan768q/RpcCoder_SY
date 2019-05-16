@@ -1,0 +1,26 @@
+CGAnimationRpcCgPlayAsk↑ 动画开始播放请求
+	CgId:int32 = -1	;动画ID
+
+CGAnimationRpcCgPlayReply↓ 动画开始播放回应
+	Result:int32 = -1	;返回结果
+
+CGAnimationRpcCgPlayNotifyNotify↓ 通知通知
+	RoleId:uint64 = 0	;角色ID
+	CgId:int32 = -1	;动画ID
+
+CGAnimationRpcCgOverNotifyNotify↓ 结束通知通知
+	RoleId:uint64 = 0	;角色Id
+	CgId:int32 = -1	;动画Id
+
+CGAnimationRpcCgSkipAsk↑ 跳过CG请求
+
+CGAnimationRpcCgSkipReply↓ 跳过CG回应
+	Result:int32 = -1	;返回结果
+
+CGAnimationRpcScriptPlayNotify↓ 脚本播放通知
+	CasterGuid:uint64 = 0	;释放者
+	AnimantionName:string	;动画名称
+	Time:float = -1	;总时长
+	IsLoop:int32 = -1	;是否循环
+	SingleTime:int32 = -1	;单个时长
+

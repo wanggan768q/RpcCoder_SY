@@ -1,0 +1,54 @@
+message  PetCaptureRpcCaptureAsk
+{
+	optional int32 BallType = 1;
+
+}
+
+message  PetCaptureRpcCaptureReply
+{
+	optional int32 Result = 1;
+	optional int32 CreatureId = 2;
+	optional int32 PetId = 3;
+
+}
+
+message  PetCaptureRpcCapturePetNotify
+{
+	optional int32 PetId = 1;
+	optional string NickName = 2;
+	optional int32 RoleId = 4;
+	optional int32 CreatureId = 6;
+
+}
+
+message  PetCaptureRpcLoginNotify
+{
+	optional int32 WayPoint = 2;
+	optional int32 SceneId = 3;
+	optional Vector3 Pos = 4;
+
+}
+
+message  PetCaptureRpcPetLocationAsk
+{
+	optional int32 LineId = 1;
+
+}
+
+message  PetCaptureRpcPetLocationReply
+{
+	optional int32 Result = 1;
+	optional Vector3 Pos = 2;
+	optional int32 SceneId = 3;
+	optional int32 WayPoint = 4;
+
+}
+
+message  Vector3
+{
+	optional float X = 1[default=-1];
+	optional float Y = 2[default=-1];
+	optional float Z = 3[default=-1];
+
+}
+

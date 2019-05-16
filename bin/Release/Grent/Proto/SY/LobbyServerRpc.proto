@@ -1,0 +1,25 @@
+message  LobbyServerRpcGetServerListAsk
+{
+	optional string Sdk_user_id = 1;
+
+}
+
+message  LobbyServerRpcGetServerListReply
+{
+	optional int32 Result = 1;
+	repeated ServerInfo Server_list = 2;
+
+}
+
+message  ServerInfo
+{
+	optional int32 Id = 1[default=-1];
+	optional string Name = 2;
+	optional int32 Region = 3[default=-1];
+	optional int32 Status = 4[default=-1];
+	optional int32 Promo = 5[default=-1];
+	optional string Ip = 6;
+	optional int32 Port = 7[default=-1];
+
+}
+

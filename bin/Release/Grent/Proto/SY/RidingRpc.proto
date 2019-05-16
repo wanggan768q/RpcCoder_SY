@@ -1,0 +1,22 @@
+message  RidingRpcRidingAsk
+{
+
+}
+
+message  RidingRpcRidingReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  RidingRpcUnRidingAsk
+{
+
+}
+
+message  RidingRpcUnRidingReply
+{
+	optional int32 Result = 1;
+
+}
+

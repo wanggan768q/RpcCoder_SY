@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<Root Module="WorldBoss" CName="世界BOSS模块" MsgNumStart="23" SyncDataVersion="1" Comment="">
+    <Operate Name="WorldBossInfo" CName="世界BOSS信息" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="23" DataStruct="RpcWorldBossInfoAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="24" DataStruct="RpcWorldBossInfoReply" Comment="" />
+    </Operate>
+    <Operate Name="WorldBossRankInfo" CName="世界BOSS排行榜信息" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="25" DataStruct="RpcWorldBossRankInfoAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="26" DataStruct="RpcWorldBossRankInfoReply" Comment="" />
+    </Operate>
+    <Struct Name="RpcWorldBossInfoAsk" CName="世界BOSS信息请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="BossID" CName="世界BOSSID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcWorldBossInfoReply" CName="世界BOSS信息回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="WorldBossInfo" FieldId="2" Name="WorldBossInfos" CName="世界BOSS信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="BossID" CName="bossID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcWorldBossRankInfoAsk" CName="世界BOSS伤害排行信息请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="BossID" CName="BossID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="Occupation" CName="职业" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcWorldBossRankInfoReply" CName="世界BOSS伤害排行信息回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="9">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="WorldBossRankInfo" FieldId="2" Name="RankInfo" CName="排行榜信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="string" FieldId="3" Name="LastKillName" CName="最后一击玩家名字" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+        <Field PreDefine="optional" FieldType="string" FieldId="4" Name="MaxDamageName" CName="最大伤害玩家名字" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="5" Name="MyRank" CName="个人排名" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="6" Name="Occupation" CName="职业" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="7" Name="BossID" CName="BossID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="8" Name="MyOccupationRank" CName="个人职业排名" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="9" Name="MyScore" CName="个人积分" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+</Root>

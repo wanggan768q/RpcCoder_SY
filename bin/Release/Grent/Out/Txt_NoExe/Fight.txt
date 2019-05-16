@@ -1,0 +1,73 @@
+FightRpcUseSkillActionNotify↓ 使用技能动作通知
+	ObjId:int32 = -1	;ObjId
+	ObjTargetId:int32 = -1	;ObjTargetId
+	SkillId:int32 = -1	;SkillId
+	CastingDir:float = -1	;施法方向
+	X:float = -1	;X
+	Y:float = -1	;Y
+	Z:float = -1	;Z
+
+FightRpcShowExpActionNotify↓ 显示经验通知
+	ObjId:int32 = -1	;id
+	Value:int32 = -1	;获取到的经验值
+
+FightRpcBuffActionNotify↓ buf通知
+	ObjId:int32 = -1	;id
+	TargetId:int32 = -1	;目标id
+	OpType:int32 = -1	;操作类型
+	BufId:int32 = -1	;bufid
+	RemainTime:int32 = -1	;剩余时间
+	BuffLv:int32 = -1	;buf 等级
+	Sn:int32 = -1	;buff序列号
+
+FightRpcStateActionNotify↓ 状态事件通知
+	ObjId:int32 = -1	;id
+	Type:int32 = -1	;状态类型
+	Pos:V3	;位置信息
+	[V3]
+		X:float = -1	;x
+		Y:float = -1	;y
+		Z:float = -1	;z
+	TargetPos:int32 = -1	;目标位置信息
+
+FightRpcReviveActionNotify↓ 复活事件通知
+	ObjId:int32 = -1	;id
+	Pos:V3	;复活后的位置
+	[V3]
+		X:float = -1	;x
+		Y:float = -1	;y
+		Z:float = -1	;z
+	CurHp:int32 = -1	;当前血量
+
+FightRpcComboSkillActionNotify↓ 连击技能通知
+	ObjId:int32 = -1	;id
+	SkillId:int32 = -1	;技能id
+
+FightRpcDropActionNotify↓ 掉落通知
+
+FightRpcUseItemActionNotify↓ 使用道具通知
+
+FightRpcHpChangeActionNotify↓ 血量改变通知
+	ObjId:int32 = -1	;id
+	CurHp:int32 = -1	;当前血
+	MaxHp:int32 = -1	;最大血
+
+FightRpcUseSkillAsk↑ 使用技能请求请求
+	ObjTargetId:int32 = -1	;ObjTargetId
+	SkillId:int32 = -1	;SkillId
+	CastingDir:float = -1	;施法方向
+	X:float = -1	;X
+	Y:float = -1	;Y
+	Z:float = -1	;Z
+
+FightRpcUseSkillReply↓ 使用技能请求回应
+	Result:int32 = -9999	;返回结果
+
+FightRpcHurtActionNotify↓ 伤害事件通知
+	ObjId:int32 = -1	;id
+	SegmentIndex:int32 = -1	;伤害阶段
+	SkillId:int32 = -1	;技能id
+	TargetObjId:int32 = -1	;目标id
+	HurtValue:int32 = 0	;伤害的值
+	Critical:int32 = -1	;是否暴击
+

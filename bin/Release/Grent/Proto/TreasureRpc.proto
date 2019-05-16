@@ -1,0 +1,179 @@
+import "PublicStruct.proto";
+
+//珍宝阁数据请求
+message  TreasureRpcTreasureDepotInfoAsk
+{
+}
+
+//珍宝阁数据回应
+message  TreasureRpcTreasureDepotInfoReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional int32 Level = 2[default=1];	//珍宝阁等级
+	optional int32 Point = 3[default=0];	//珍宝阁点数
+}
+
+//珍宝数据请求
+message  TreasureRpcTreasureInfoAsk
+{
+	optional int32 Type = 1[default=-1];	//珍宝类型
+}
+
+//珍宝数据回应
+message  TreasureRpcTreasureInfoReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated TreasureData Treasure_Info = 2;	//珍宝数据
+	optional int32 Type = 3[default=-1];	//珍宝类型
+}
+
+//珍宝解锁请求
+message  TreasureRpcTreasureUnlockAsk
+{
+	optional int32 Id = 1[default=-1];	//珍宝ID
+	optional int32 Color_Type = 2[default=-1];	//附加颜色类型
+	optional int32 Time_Type = 3[default=-1];	//时限类型
+}
+
+//珍宝解锁回应
+message  TreasureRpcTreasureUnlockReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional TreasureData TreasureUnLocked = 2;	//已解锁的珍宝
+	optional int32 Points = 3[default=-1];	//珍宝阁点数
+}
+
+//珍宝穿戴请求
+message  TreasureRpcTreasureEquipAsk
+{
+	optional int32 Id = 1[default=-1];	//珍宝ID
+	optional int32 Color_Type = 2[default=-1];	//珍宝颜色类型
+	optional int32 Time_Type = 3[default=-1];	//时限类型
+}
+
+//珍宝穿戴回应
+message  TreasureRpcTreasureEquipReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional TreasureData TreasureEquiped = 2;	//穿戴的珍宝
+	optional TreasureData TreasureUnequiped = 4;	//脱掉的珍宝
+}
+
+//穿戴的珍宝请求
+message  TreasureRpcTreasureEquipSycAsk
+{
+}
+
+//穿戴的珍宝回应
+message  TreasureRpcTreasureEquipSycReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated TreasureData TreasueEquiped = 2;	//穿戴的珍宝信息
+}
+
+//珍宝阁升级请求
+message  TreasureRpcTreasureDepotLvUpAsk
+{
+}
+
+//珍宝阁升级回应
+message  TreasureRpcTreasureDepotLvUpReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional int32 Level = 2[default=-1];	//珍宝阁等级
+	optional int32 Point = 3[default=-1];	//珍宝阁点数
+}
+
+//卸下珍宝请求
+message  TreasureRpcTreasureUnEquipAsk
+{
+	optional int32 Id = 1[default=-1];	//珍宝ID
+	optional int32 Color_Type = 2[default=-1];	//颜色类型
+	optional int32 Time_Type = 3[default=-1];	//时限类型
+}
+
+//卸下珍宝回应
+message  TreasureRpcTreasureUnEquipReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional TreasureData TreasureUnequiped = 2;	//卸下的珍宝
+	optional TreasureData TreasureEquiped = 3;	//穿上的默认时装
+}
+
+//已装备时装ID通知
+message  TreasureRpcTreasureEquipedIDNotify
+{
+	optional TreasureEquipedID TreasureID = 1;	//装备的时装ID
+	optional int32 ObjID = 2[default=-1];	//objid
+}
+
+//续期请求
+message  TreasureRpcTreasureDelayTimeAsk
+{
+	optional int32 Id = 1[default=-1];	//珍宝ID
+	optional int32 Color_Type = 2[default=-1];	//附加颜色类型
+	optional int32 Time_Type = 3[default=-1];	//时限类型
+}
+
+//续期回应
+message  TreasureRpcTreasureDelayTimeReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional TreasureData TreasureUnLocked = 2;	//已解锁的珍宝
+	optional int32 Points = 3[default=-1];	//珍宝阁点数
+}
+
+//解锁并穿戴通知
+message  TreasureRpcTreasureUnlockEquipNotify
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional TreasureData TreasureEquiped = 2;	//穿戴的珍宝
+	optional TreasureData TreasureUnequiped = 3;	//脱掉的珍宝
+	optional int32 Points = 4[default=-1];	//珍宝阁点数
+}
+

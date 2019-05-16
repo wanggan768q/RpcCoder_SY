@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<Root Module="Quest" CName="Quest" MsgNumStart="15" SyncDataVersion="1" Comment="">
+    <Operate Name="OnAcceptQuest" CName="OnAcceptQuest" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="15" DataStruct="RpcOnAcceptQuestNotify" Comment="" />
+    </Operate>
+    <Operate Name="CompleteQuestStep" CName="CompleteQuestStep" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="16" DataStruct="RpcCompleteQuestStepAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="17" DataStruct="RpcCompleteQuestStepReply" Comment="" />
+    </Operate>
+    <Operate Name="OnCompleteQuest" CName="OnCompleteQuest" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="18" DataStruct="RpcOnCompleteQuestNotify" Comment="" />
+    </Operate>
+    <Operate Name="UpdateQuest" CName="更新任务" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="19" DataStruct="RpcUpdateQuestNotify" Comment="" />
+    </Operate>
+    <Operate Name="GiveUpQuest" CName="放弃任务" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="20" DataStruct="RpcGiveUpQuestAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="21" DataStruct="RpcGiveUpQuestReply" Comment="" />
+    </Operate>
+    <Operate Name="CompleteQuest" CName="完成任务" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="22" DataStruct="RpcCompleteQuestAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="23" DataStruct="RpcCompleteQuestReply" Comment="" />
+    </Operate>
+    <Operate Name="CompleteAcceptChatMenu" CName="完成接受任务对话框" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="24" DataStruct="RpcCompleteAcceptChatMenuAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="25" DataStruct="RpcCompleteAcceptChatMenuReply" Comment="" />
+    </Operate>
+    <Operate Name="AcceptQuest" CName="客户端接受任务" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="26" DataStruct="RpcAcceptQuestAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="27" DataStruct="RpcAcceptQuestReply" Comment="" />
+    </Operate>
+    <Operate Name="SyncQuest" CName="SyncQuest" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="28" DataStruct="RpcSyncQuestAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="29" DataStruct="RpcSyncQuestReply" Comment="" />
+    </Operate>
+    <Operate Name="GetReward" CName="GetReward" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="30" DataStruct="RpcGetRewardAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="31" DataStruct="RpcGetRewardReply" Comment="" />
+    </Operate>
+    <Operate Name="RemoveQuestNotify" CName="上次任务通知" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="32" DataStruct="RpcRemoveQuestNotifyNotify" Comment="" />
+    </Operate>
+    <Operate Name="GetQuestData" CName="获取某个任务数据" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="33" DataStruct="RpcGetQuestDataAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="34" DataStruct="RpcGetQuestDataReply" Comment="" />
+    </Operate>
+    <Operate Name="SyncDailyQuest" CName="每日活动" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="35" DataStruct="RpcSyncDailyQuestAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="36" DataStruct="RpcSyncDailyQuestReply" Comment="" />
+    </Operate>
+    <Operate Name="DailyQuestUpdate" CName="每日活动任务更新" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="37" DataStruct="RpcDailyQuestUpdateNotify" Comment="" />
+    </Operate>
+    <Operate Name="ConsumeItem" CName="任务消耗物品" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="38" DataStruct="RpcConsumeItemAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="39" DataStruct="RpcConsumeItemReply" Comment="" />
+    </Operate>
+    <Operate Name="SyncCompleteQuestIds" CName="完成任务id请求" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="40" DataStruct="RpcSyncCompleteQuestIdsAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="41" DataStruct="RpcSyncCompleteQuestIdsReply" Comment="" />
+    </Operate>
+    <Operate Name="CompleteQuestIdsNotify" CName="完成的任务列表" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="42" DataStruct="RpcCompleteQuestIdsNotifyNotify" Comment="" />
+    </Operate>
+    <Operate Name="EliteFinishCount" CName="精英怪击杀次数" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="43" DataStruct="RpcEliteFinishCountAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="44" DataStruct="RpcEliteFinishCountReply" Comment="" />
+    </Operate>
+    <Operate Name="SyncCanAcceptQuest" CName="通知新可接任务" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="45" DataStruct="RpcSyncCanAcceptQuestNotify" Comment="" />
+    </Operate>
+    <Struct Name="RpcOnAcceptQuestNotify" CName="OnAcceptQuest通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="QuestData" FieldId="1" Name="AcceptQuest" CName="新接受的任务" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcCompleteQuestStepAsk" CName="CompleteQuestStep请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="5">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="QuestConfigId" CName="任务表的id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="QuestStep" CName="QuestStep" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="4" Name="TargetId" CName="NpcConfigId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="5" Name="QuestStepEventType" CName="事件类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcCompleteQuestStepReply" CName="CompleteQuestStep回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcOnCompleteQuestNotify" CName="OnCompleteQuest通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="QuestData" FieldId="1" Name="QuestData" CName="任务数据" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcCallClientLuaNotify" CName="调用客户端Lua通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="string" FieldId="1" Name="Str" CName="lua函数字符串" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+    </Struct>
+    <Struct Name="RpcUpdateQuestNotify" CName="更新任务通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="QuestData" FieldId="1" Name="Quest" CName="任务数据" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcGiveUpQuestAsk" CName="放弃任务请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="QuestConfigId" CName="任务表的id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcGiveUpQuestReply" CName="放弃任务回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcCompleteQuestAsk" CName="完成任务请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="QuestConfigId" CName="任务表的id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="TargetId" CName="NpcConfigId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="QuestEventType" CName="事件类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcCompleteQuestReply" CName="完成任务回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcCompleteAcceptChatMenuAsk" CName="完成接受任务对话框请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="QuestConfigId" CName="任务表的id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcCompleteAcceptChatMenuReply" CName="完成接受任务对话框回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcAcceptQuestAsk" CName="客户端接受任务请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Type" CName="任务类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="QuestConfigId" CName="接受任务表" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcAcceptQuestReply" CName="客户端接受任务回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcSyncQuestAsk" CName="SyncQuest请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcSyncQuestReply" CName="SyncQuest回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="QuestListData" FieldId="2" Name="QuestList" CName="任务列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="repeated" FieldType="int32" FieldId="3" Name="CompleteQuestIdsList" CName="完成任务列表" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="repeated" FieldType="int32" FieldId="4" Name="CanAcceptQuest" CName="可接的任务" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcGetRewardAsk" CName="GetReward请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="QuestConfigId" CName="接受任务表" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcGetRewardReply" CName="GetReward回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcRemoveQuestNotifyNotify" CName="上次任务通知通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="repeated" FieldType="int32" FieldId="1" Name="QuestConfigId" CName="接受任务表" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcGetQuestDataAsk" CName="获取某个任务数据请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="repeated" FieldType="int32" FieldId="1" Name="QuestConfigId" CName="接受任务表" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcGetQuestDataReply" CName="获取某个任务数据回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="QuestData" FieldId="2" Name="QuestList" CName="返回给客户端的任务列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcSyncDailyQuestAsk" CName="每日活动请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcSyncDailyQuestReply" CName="每日活动回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="DailyQuestList" FieldId="2" Name="DailyQuestList" CName="DailyQuestList" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcDailyQuestUpdateNotify" CName="每日活动任务更新通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="DailyQuest" FieldId="1" Name="AtivityQuestData" CName="每日活动数据" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcConsumeItemAsk" CName="任务消耗物品请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="QuestConfigId" CName="任务表的id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="repeated" FieldType="ItemSimpleData" FieldId="2" Name="ItemData" CName="物品id" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcConsumeItemReply" CName="任务消耗物品回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcQuestMaxListAsk" CName="任务列表请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcQuestMaxListReply" CName="任务列表回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="QuestMaxQuestList" FieldId="2" Name="QuestList" CName="任务列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcQuestMaxListNotifyNotify" CName="最大类型任务通知通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="QuestMaxQuestList" FieldId="1" Name="QuestList" CName="任务列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcSyncCompleteQuestIdsAsk" CName="完成任务id请求请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcSyncCompleteQuestIdsReply" CName="完成任务id请求回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="CompletedQuestList" FieldId="2" Name="CompleteQuestIds" CName="完成的任务列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcCompleteQuestIdsNotifyNotify" CName="完成的任务列表通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="CompletedQuestList" FieldId="1" Name="CompleteQuestIds" CName="完成的任务列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcEliteFinishCountAsk" CName="精英怪击杀次数请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcEliteFinishCountReply" CName="精英怪击杀次数回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="Count" CName="精英怪击杀次数" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcSyncCanAcceptQuestNotify" CName="通知新可接任务通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="repeated" FieldType="int32" FieldId="1" Name="CanAcceptQuest" CName="新的可接任务" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+</Root>

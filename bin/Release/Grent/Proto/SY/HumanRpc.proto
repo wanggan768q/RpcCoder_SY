@@ -1,0 +1,143 @@
+message  HumanRpcMoveAsk
+{
+	optional float Dir = 2[default=-1];
+	optional float X = 3[default=-1];
+	optional float Z = 4[default=-1];
+	optional int32 ObjId = 5;
+
+}
+
+message  HumanRpcMoveReply
+{
+	optional int32 Result = 1;
+	optional Vector3 Pos = 2;
+	optional float Dir = 3[default=-1];
+	optional int32 ObjId = 4;
+
+}
+
+message  HumanRpcStopMoveAsk
+{
+	optional float Dir = 2[default=-1];
+	optional int32 X = 3;
+	optional int32 Z = 4;
+	optional int32 ObjId = 5;
+
+}
+
+message  HumanRpcStopMoveReply
+{
+	optional int32 Result = 1;
+	optional Vector3Int Pos = 2;
+	optional float Dir = 3[default=-1];
+	optional int32 ObjId = 4;
+
+}
+
+message  HumanRpcMoveCheckNotify
+{
+	optional int32 ObjId = 1;
+	optional float Dir = 3[default=-1];
+	optional float X = 4[default=-1];
+	optional float Y = 5[default=-1];
+
+}
+
+message  HumanRpcRespawnAsk
+{
+	optional int32 ReviveType = 1;
+
+}
+
+message  HumanRpcRespawnReply
+{
+	optional int32 Result = 1;
+	optional int32 ReviveType = 2;
+
+}
+
+message  HumanRpcRespawnOtherNotify
+{
+	optional int32 ObjId = 1;
+
+}
+
+message  HumanRpcMovePosAsk
+{
+	repeated Vector3Int PosList = 1;
+	optional float Dir = 2[default=-1];
+	optional int32 ObjId = 3;
+	optional bool IsAllowChangeRunAnimation = 4[default=true];
+
+}
+
+message  HumanRpcMovePosReply
+{
+	optional int32 Result = 1;
+	optional Vector3Int Pos = 2;
+	optional float Dir = 3[default=-1];
+	optional int32 ObjId = 4;
+
+}
+
+message  HumanRpcRoleDieNotify
+{
+	optional int64 KillerGuid = 1[default=-1];
+	optional string KillerName = 2;
+	optional int32 KillerType = 3;
+	optional int32 RevieCDTime = 4;
+
+}
+
+message  HumanRpcChangeAnimationStateNotify
+{
+	optional bool AnimationState = 1[default=false];
+
+}
+
+message  HumanRpcFuncNoticeAsk
+{
+
+}
+
+message  HumanRpcFuncNoticeReply
+{
+	optional int32 Result = 1;
+	optional int32 FuncIndex = 2;
+
+}
+
+message  HumanRpcFuncNoticeChangeAsk
+{
+
+}
+
+message  HumanRpcFuncNoticeChangeReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  HumanRpcClientAttributesNotify
+{
+	optional int32 ObjId = 2;
+	optional bool IsTouchJoyStick = 6[default=false];
+	optional bool IsHold = 7[default=false];
+
+}
+
+message  Vector3
+{
+	optional float X = 1[default=-1];
+	optional float Y = 2[default=-1];
+	optional float Z = 3[default=-1];
+
+}
+
+message  Vector3Int
+{
+	optional int32 X = 1[default=-1];
+	optional int32 Z = 2[default=-1];
+
+}
+

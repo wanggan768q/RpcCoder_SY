@@ -1,0 +1,90 @@
+message  MailRpcInitMailAsk
+{
+
+}
+
+message  MailRpcInitMailReply
+{
+	optional int32 Result = 1;
+	repeated MailInfo InfoList = 2;
+
+}
+
+message  MailRpcReadMailAsk
+{
+	optional int32 Mail_type = 1;
+	optional int32 Mail_id = 2;
+
+}
+
+message  MailRpcReadMailReply
+{
+	optional int32 Result = 1;
+	repeated int32 System_mail_ids = 2;
+	repeated int32 Private_mail_ids = 3;
+
+}
+
+message  MailRpcDeleteMailAsk
+{
+	optional int32 Mail_type = 3;
+	optional int32 Mail_id = 4;
+
+}
+
+message  MailRpcDeleteMailReply
+{
+	optional int32 Result = 1;
+	repeated int32 System_mail_ids = 4;
+	repeated int32 Private_mail_ids = 5;
+
+}
+
+message  MailRpcGetMailAsk
+{
+	optional int32 Mail_type = 2;
+	optional int32 Mail_id = 3;
+
+}
+
+message  MailRpcGetMailReply
+{
+	optional int32 Result = 1;
+	repeated int32 System_mail_ids = 4;
+	repeated int32 Private_mail_ids = 5;
+
+}
+
+message  MailRpcSyncMailInfoNotify
+{
+	repeated MailInfo InfoList = 1;
+	repeated uint64 GuidList = 2;
+
+}
+
+message  MailInfo
+{
+	optional int32 Mail_type = 1[default=0];
+	optional int32 Mail_id = 2[default=0];
+	optional bool IsRead = 3[default=false];
+	optional bool IsGet = 4[default=false];
+	optional string Title = 5;
+	optional string Salutation = 6;
+	optional string Content = 7;
+	optional string Sender_name = 8;
+	repeated MailItem ItemList = 9;
+	optional uint64 Sender_id = 10[default=0];
+	optional int32 Start_time = 11[default=-1];
+	optional int32 Expire_time = 12[default=-1];
+	optional uint64 Receiver_id = 13[default=0];
+
+}
+
+message  MailItem
+{
+	optional int32 ItemID = 1[default=-1];
+	optional int32 ItemCount = 2[default=-1];
+	optional bool Transit = 3[default=false];
+
+}
+

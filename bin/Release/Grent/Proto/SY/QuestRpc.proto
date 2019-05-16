@@ -1,0 +1,286 @@
+message  QuestRpcOnAcceptQuestNotify
+{
+	optional QuestData AcceptQuest = 1;
+
+}
+
+message  QuestRpcCompleteQuestStepAsk
+{
+	optional int32 QuestConfigId = 1;
+	optional int32 QuestStep = 2;
+	optional int32 TargetId = 4;
+	optional int32 QuestStepEventType = 5;
+
+}
+
+message  QuestRpcCompleteQuestStepReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  QuestRpcOnCompleteQuestNotify
+{
+	optional QuestData QuestData = 1;
+
+}
+
+message  QuestRpcCallClientLuaNotify
+{
+	optional string Str = 1;
+
+}
+
+message  QuestRpcUpdateQuestNotify
+{
+	optional QuestData Quest = 1;
+
+}
+
+message  QuestRpcGiveUpQuestAsk
+{
+	optional int32 QuestConfigId = 1;
+
+}
+
+message  QuestRpcGiveUpQuestReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  QuestRpcCompleteQuestAsk
+{
+	optional int32 QuestConfigId = 1;
+	optional int32 TargetId = 2;
+	optional int32 QuestEventType = 3;
+
+}
+
+message  QuestRpcCompleteQuestReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  QuestRpcCompleteAcceptChatMenuAsk
+{
+	optional int32 QuestConfigId = 1;
+
+}
+
+message  QuestRpcCompleteAcceptChatMenuReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  QuestRpcAcceptQuestAsk
+{
+	optional int32 Type = 1;
+	optional int32 QuestConfigId = 2;
+
+}
+
+message  QuestRpcAcceptQuestReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  QuestRpcSyncQuestAsk
+{
+
+}
+
+message  QuestRpcSyncQuestReply
+{
+	optional int32 Result = 1;
+	optional QuestListData QuestList = 2;
+	repeated int32 CompleteQuestIdsList = 3;
+	repeated int32 CanAcceptQuest = 4;
+
+}
+
+message  QuestRpcGetRewardAsk
+{
+	optional int32 QuestConfigId = 1;
+
+}
+
+message  QuestRpcGetRewardReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  QuestRpcRemoveQuestNotifyNotify
+{
+	repeated int32 QuestConfigId = 1;
+
+}
+
+message  QuestRpcGetQuestDataAsk
+{
+	repeated int32 QuestConfigId = 1;
+
+}
+
+message  QuestRpcGetQuestDataReply
+{
+	optional int32 Result = 1;
+	repeated QuestData QuestList = 2;
+
+}
+
+message  QuestRpcSyncDailyQuestAsk
+{
+
+}
+
+message  QuestRpcSyncDailyQuestReply
+{
+	optional int32 Result = 1;
+	optional DailyQuestList DailyQuestList = 2;
+
+}
+
+message  QuestRpcDailyQuestUpdateNotify
+{
+	optional DailyQuest AtivityQuestData = 1;
+
+}
+
+message  QuestRpcConsumeItemAsk
+{
+	optional int32 QuestConfigId = 1;
+	repeated ItemSimpleData ItemData = 2;
+
+}
+
+message  QuestRpcConsumeItemReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  QuestRpcQuestMaxListAsk
+{
+
+}
+
+message  QuestRpcQuestMaxListReply
+{
+	optional int32 Result = 1;
+	optional QuestMaxQuestList QuestList = 2;
+
+}
+
+message  QuestRpcQuestMaxListNotifyNotify
+{
+	optional QuestMaxQuestList QuestList = 1;
+
+}
+
+message  QuestRpcSyncCompleteQuestIdsAsk
+{
+
+}
+
+message  QuestRpcSyncCompleteQuestIdsReply
+{
+	optional int32 Result = 1;
+	optional CompletedQuestList CompleteQuestIds = 2;
+
+}
+
+message  QuestRpcCompleteQuestIdsNotifyNotify
+{
+	optional CompletedQuestList CompleteQuestIds = 1;
+
+}
+
+message  QuestRpcEliteFinishCountAsk
+{
+
+}
+
+message  QuestRpcEliteFinishCountReply
+{
+	optional int32 Result = 1;
+	optional int32 Count = 2;
+
+}
+
+message  QuestRpcSyncCanAcceptQuestNotify
+{
+	repeated int32 CanAcceptQuest = 1;
+
+}
+
+message  QuestData
+{
+	optional int32 ConfigId = 1[default=-1];
+	optional int32 Status = 2[default=-1];
+	repeated QuestStepData QuestSteps = 4;
+	optional int32 QuestIndex = 6[default=-1];
+	optional int32 QuestMaxIndex = 7[default=-1];
+	optional int64 QuestBeginTime = 8[default=-1];
+
+}
+
+message  QuestListData
+{
+	repeated QuestData QuestsList = 1;
+
+}
+
+message  DailyQuestList
+{
+	repeated DailyQuest DailyQuestList = 1;
+
+}
+
+message  DailyQuest
+{
+	optional QuestData MainQuest = 1;
+	optional QuestData AtivityQuest = 2;
+	optional int32 RewardTimes = 3[default=-1];
+	optional int32 ActivityId = 4[default=-1];
+
+}
+
+message  ItemSimpleData
+{
+	optional int32 ConfID = 1[default=-1];
+	optional int32 Count = 2[default=-1];
+
+}
+
+message  QuestMaxQuestList
+{
+	repeated CompletedQuestList QuestList = 1;
+
+}
+
+message  CompletedQuestList
+{
+	repeated int32 IdList = 1;
+	repeated MaxQuestCompleteId MaxCompleteIdList = 2;
+
+}
+
+message  QuestStepData
+{
+	optional int32 Status = 2[default=-1];
+	optional int32 Progress  = 3[default=-1];
+
+}
+
+message  MaxQuestCompleteId
+{
+	optional int32 QuestType = 1[default=-1];
+	optional int32 MaxConfigId = 2[default=-1];
+
+}
+

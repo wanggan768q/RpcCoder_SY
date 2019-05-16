@@ -1,0 +1,19 @@
+message  BaseAttrRpcSyncDataAsk
+{
+
+}
+
+message  BaseAttrRpcSyncDataReply
+{
+	optional int32 Result = 1;
+	optional bytes UpdateData = 2;
+
+}
+
+message  BaseAttrRpcSyncNotify
+{
+	optional int32 ObjId = 2;
+	optional bytes UpdateData = 3;
+
+}
+

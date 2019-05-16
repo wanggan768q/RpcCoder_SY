@@ -1,0 +1,146 @@
+import "PublicStruct.proto";
+
+//登录请求
+message  LoginRpcLoginAsk
+{
+	optional string Username = 1;	//用户名
+	optional string Passwd = 2;	//密码
+	optional string SnId = 3;	//渠道号
+	/*
+	GameId
+	iOS : 510075 安卓:520075
+	*/
+	optional string GameId = 4;
+	/*
+	mac地址
+	安卓 和 ios 的Mac地址
+	*/
+	optional string Mac = 5;
+	optional string Token = 6;	//Token
+}
+
+//登录回应
+message  LoginRpcLoginReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	optional uint64 RoleId = 2[default=0];	//用户ID
+	optional Vector3 Pos = 3;	//测试引用
+	repeated CharacterInfo CharacterList = 4;	//所有角色信息
+	optional uint64 LastSelectRoleId = 5[default=0];	//最后一次选择的角色ID
+}
+
+//选择角色请求
+message  LoginRpcSelectCharacterAsk
+{
+	optional uint64 RoleId = 1[default=0];	//id
+}
+
+//选择角色回应
+message  LoginRpcSelectCharacterReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	optional uint64 RoleId = 2[default=0];	//id
+	optional int32 LastSceneID = 5[default=-1];	//LastSceneID
+	optional string Ban_Reason = 6;	//禁止理由
+	optional int32 LineId = 7[default=-1];	//线id
+	optional int32 Ban_EndTime = 8[default=-1];	//解封时间戳
+}
+
+//创建角色请求
+message  LoginRpcCreateCharacterAsk
+{
+	optional string Nickname = 1;	//昵称
+	optional int32 ConfigId = 2[default=-1];	//配置表id
+}
+
+//创建角色回应
+message  LoginRpcCreateCharacterReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	optional uint64 RoleId = 2[default=0];	//角色id
+	optional int32 TimeStamp = 3[default=0];	//创建角色时间
+}
+
+//删除角色请求
+message  LoginRpcDeleteCharacterAsk
+{
+	optional uint64 RoleId = 1[default=0];	//id
+}
+
+//删除角色回应
+message  LoginRpcDeleteCharacterReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+}
+
+//Test请求
+message  LoginRpcTestAsk
+{
+	repeated int64 A = 1;	//A
+	repeated uint64 B = 3;	//B
+}
+
+//Test回应
+message  LoginRpcTestReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated int64 A = 2;	//A
+	repeated uint64 B = 3;	//B
+}
+
+//Test1请求
+message  LoginRpcTest1Ask
+{
+	repeated uint64 B = 1;	//B
+}
+
+//Test1回应
+message  LoginRpcTest1Reply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//登录 排队通知通知
+message  LoginRpcLoginLineUpNotify
+{
+	optional int32 LineUpIndex = 1[default=-1];	//排队索引
+}
+
+//可以登录服务器的通知通知
+message  LoginRpcLoginEnterGameNotify
+{
+	optional uint64 RoleID = 1[default=0];	//角色ID
+	optional int32 LastSceneID = 2[default=-1];	//最后场景
+	optional int32 LineID = 3[default=-1];	//线
+}
+

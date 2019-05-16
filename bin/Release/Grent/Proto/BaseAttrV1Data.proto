@@ -1,0 +1,135 @@
+import "PublicStruct.proto";
+
+//玩家基础数据
+message  BaseAttrUserDataV1
+{
+	optional int32 Exp = 1[default=0];	//经验
+	optional int32 Level = 3[default=0];	//玩家等级
+	optional int64 ServerTime = 4[default=-1];	//服务器时间
+	optional uint64 RoleId = 5[default=0];	//人物唯一ID
+	optional int32 Strength = 7[default=0];	//力量
+	optional int32 Agility = 8[default=0];	//敏捷
+	optional int32 Intellectual = 9[default=0];	//智力
+	optional int32 Endurance = 10[default=0];	//耐力
+	optional int32 Spirit = 11[default=0];	//精神
+	optional int32 Hp = 12[default=0];	//生命值
+	optional int32 MaxHp = 14[default=0];	//生命值
+	optional int32 PhysicAttack = 15[default=0];	//物理攻击
+	optional int32 PhysicDefense = 16[default=0];	//物理防御
+	optional int32 MagicAttack = 19[default=0];	//魔法攻击
+	optional int32 MagicDefense = 20[default=0];	//魔法防御
+	optional int32 Hit = 21[default=0];	//命中值
+	optional float HitRate = 22[default=0];	//命中率
+	optional int32 Miss = 23[default=0];	//闪避值
+	optional float MissRate = 24[default=0];	//闪避率
+	optional int32 Critical = 25[default=0];	//暴击值
+	optional float CriticalRate = 26[default=0];	//暴击率
+	optional int32 Tenacity = 27[default=0];	//韧性值
+	optional float TenacityRate = 28[default=0];	//韧性率
+	optional int32 Penet = 29[default=0];	//穿透值
+	optional float PenetRate = 30[default=0];	//穿透率
+	optional int32 Dodg = 31[default=0];	//格挡值
+	optional float DodgRate = 32[default=0];	//格挡率
+	optional int32 CriticalAddition = 33[default=0];	//暴击加伤值
+	optional float CriticalAdditionRate = 34[default=0];	//暴击加伤率
+	optional int32 CriticalImmune = 35[default=0];	//暴击免伤
+	optional float CriticalImmuneRate = 36[default=0];	//暴击免伤率
+	optional int32 MissLevel = 37[default=0];	//闪避等级
+	optional int32 CriticalLevel = 38[default=0];	//暴击等级
+	optional int32 DodgLevel = 39[default=0];	//格挡等级
+	optional float MoveSpeed = 40[default=0];	//移动速度
+	optional int32 DizzyState = 41[default=0];	//眩晕状态
+	optional bool GodState = 42[default=false];	//霸体状态
+	optional int32 CantMoveState = 43[default=0];	//不能移动状态
+	optional float PhysicAddition = 45[default=0];	//物理加伤值
+	optional float MagicAddition = 46[default=0];	//魔法加伤值
+	optional float PhysicOppose = 47[default=0];	//物理抗性
+	optional float MagicOppose = 48[default=0];	//魔法抗性
+	optional float AccumulateSkiEnergy = 50[default=0];	//技能积攒能量使用 目前只有应激技能用
+	optional string NickName = 51;	//名字昵称
+	optional int32 ConfigId = 52[default=-1];	//config id
+	/*
+	类型
+	1.玩家 HUMAN
+	2.怪物 MONSTER
+	*/
+	optional int32 ObjType = 53[default=-1];
+	optional int32 State = 54[default=-1];	//EventObjStatu
+	optional int32 OwnerObjId = 55[default=-1];	//归属obj ID
+	/*
+	阵营
+	INVALID = 0
+	COMMON = 1
+	NEUTRALITY = 2
+	HOSTILITY = 3
+	*/
+	optional int32 Camp = 56[default=-1];
+	optional int64 SilverMoney = 57[default=0];	//银币
+	optional int64 GoldMoney = 58[default=0];	//金币
+	optional int64 DiamondMoney = 59[default=0];	//钻石
+	optional int64 BindingDiamondMoney = 60[default=0];	//绑定钻石
+	optional int32 BattleScore = 61[default=-1];	//战力
+	optional int64 Energy = 62[default=-1];	//精力
+	optional int64 GuildMoney = 63[default=-1];	//公会资金
+	repeated int32 SkillList = 64;	//技能列表
+	optional int64 HonorMoney = 65[default=-1];	//HonorMoney
+	optional int64 ResourcePoolHp = 66[default=-1];	//资源池
+	optional int32 AttackAdd = 67[default=0];	//伤害增加
+	optional int32 InjuryAdd = 68[default=0];	//伤害减免
+	optional int32 FrozenState = 69[default=-1];	//冰冻状态
+	optional int32 SilentState = 70[default=-1];	//沉默状态
+	optional int64 GuildContributeHistoryMax = 72[default=-1];	//GuildContributeHistoryMax
+	optional uint64 TeamId = 74[default=0];	//队伍id
+	optional int32 TreasureHair = 75[default=-1];	//头发时装ID
+	optional int32 TreasureHead = 76[default=-1];	//头部时装ID
+	optional int32 TreasureBody = 77[default=-1];	//身体时装
+	optional int32 TreasureWeapon = 78[default=-1];	//武器时装
+	optional int32 TreasureWing = 79[default=-1];	//翅膀时装
+	optional uint64 GuildGuid = 80[default=0];	//公会ID
+	optional int32 TreasureRiding = 81[default=-1];	//坐骑
+	optional int32 VechicleId = 82[default=-1];	//载具Id
+	optional bool AnimationState = 83[default=false];	//动画状态
+	optional float RefixDmgRate = 84[default=0];	//修正攻击者最终伤害比率
+	optional int32 RefixDmgValue = 85[default=0];	//修正攻击者最终伤害值
+	optional float RefixHurtRate = 86[default=0];	//修正被攻击者最终伤害比率
+	optional int32 RefixHurtValue = 87[default=0];	//修正被攻击者最终伤害值
+	optional float RefixHealRate = 88[default=0];	//修正治疗者最终比例
+	optional int32 RefixHealValue = 89[default=0];	//修正治疗者最终值
+	optional float RefixCuredRate = 90[default=0];	//修正被治疗者最终比例
+	optional int32 RefixCuredValue = 91[default=0];	//修正被治疗者最终值
+	optional int64 GuildContribute = 92[default=-1];	//公会帮贡
+	optional int64 PvpMoney = 93[default=-1];	//竞技场点数
+	optional int64 GuildResource = 94[default=-1];	//公会资源
+	optional int32 CreateRoleTime = 95[default=0];	//创建角色时间戳
+	optional int32 UpdateRoleTime = 96[default=0];	//更新角色等级时间戳
+	optional bool FightState = 97[default=false];	//战斗状态
+	repeated int32 AttackSkillList = 98;	//普攻技能列表
+	optional string GuildName = 99;	//公会名称
+	optional bool IsAllowSelect = 100[default=true];	//是否可选中
+	optional bool GoHomeState = 101[default=false];	//怪物回归中
+	optional bool CanFight = 102[default=true];	//怪物是否可攻击
+	optional int64 DoubleExp = 103[default=-1];	//双倍经验
+	optional int64 FriendPoint = 104[default=-1];	//友情点
+	optional int64 HisMaxHonor = 105[default=-1];	//历史最大荣誉点
+	optional bool HurtState = 106[default=false];	//受击状态
+	optional bool HurtFlyState = 107[default=false];	//击飞状态
+	optional bool HurtDownState = 108[default=false];	//击倒状态
+	optional bool HurtRepelState = 109[default=false];	//击退
+	optional int64 TodayHornor = 111[default=-1];	//今日获得的荣誉值
+	optional int32 CurProfession = 113[default=-1];	//当前专精
+}
+
+//ObjData
+message  BaseAttrObjDataV1
+{
+	/*
+	类型
+	1.玩家 HUMAN
+	2.怪物 MONSTER
+	*/
+	optional int32 ObjType = 1[default=-1];
+	optional int32 ConfigId = 2[default=-1];	//config id
+	optional int32 State = 3[default=-1];	//obj状态
+	optional int32 OwnerObjId = 4[default=-1];	//拥有者
+}
+

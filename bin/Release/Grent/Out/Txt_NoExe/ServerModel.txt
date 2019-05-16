@@ -1,0 +1,8 @@
+ServerModelRpcLoginAsk↑ 服务器使用登录请求
+	Result:int32 = -1	;1111
+	Type:int32 = -1	;连接类型
+	TestString:string	;TestString
+
+ServerModelRpcLoginReply↓ 服务器使用登录回应
+	Result:int32 = -9999	;返回结果
+

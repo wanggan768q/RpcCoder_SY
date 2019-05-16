@@ -889,6 +889,7 @@
                             CSSerializer.Serialize(tag, dir, this.label1);
                             CPPSerializer.Serialize(tag, ref moduleAllName, dir, this.label1);
                             //CoffeeSerializer.Serialize(tag, dir, this.label1);
+                            Console.WriteLine("正在生成 " + tag.ModuleName);
                         }
                         str3 = (((((str3 + moduleAllName) + "\n}\n" + "string GetModuleValue(int id)\n") + "{\n" + "\tmap<int, string>::iterator iter = ModuleValue.find(id);\n") + "\tif (iter != ModuleValue.end())\n" + "\t{\n") + "\t\treturn iter->second;\n" + "\t}\n") + "\treturn \"未知\";\n" + "}\n";
                         str2 = str2 + "\n#endif";
@@ -2272,6 +2273,37 @@
         private void LUA_CheckedChanged(object sender, EventArgs e)
         {
             GenLangFlags.LUA = this.LUA.Checked;
+        }
+
+        [Command("-g")]
+        public void Command_Open()
+        {
+            DrawPic.S_COMMAND_MODE = true;
+            Form1_Load(null,null);
+            this.treeView1.Nodes[0].Nodes.Clear();
+            this.treeView1.Nodes[1].Nodes.Clear();
+            DataStructConverter.CommDataStruct.Clear();
+            Editor.Module.ModuleDic.Clear();
+            DataStruct.DataStructDic.Clear();
+            Editor.Module.errorDic.Clear();
+            string selectedPath = this.lastDir;
+            this.loadXML(selectedPath);
+            ErrorSerializer.DeserializeErrorTab(selectedPath);
+            this.isChanged = false;
+            if (this.lastDir == "")
+            {
+                this.lastDir = selectedPath;
+            }
+            if (this.isDisableBuildBtn())
+            {
+                this.btnBuild.Enabled = false;
+            }
+            else
+            {
+                this.btnBuild.Enabled = true;
+            }
+            this.button2.Enabled = false;
+            this.doSerialize(selectedPath);
         }
 
         private void Open()

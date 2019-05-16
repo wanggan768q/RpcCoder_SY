@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<Root Module="DropItem" CName="掉落" MsgNumStart="20" SyncDataVersion="1" Comment="">
+    <Operate Name="DropTtems" CName="掉落通知" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="20" DataStruct="RpcDropTtemsNotify" Comment="" />
+    </Operate>
+    <Struct Name="RpcDropTtemsNotify" CName="掉落通知通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="11">
+        <Field PreDefine="repeated" FieldType="DropItem" FieldId="6" Name="Dropitems" CName="掉落物品" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="7" Name="KillObjID" CName="死亡怪物ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="8" Name="KillerObjID" CName="主角ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="9" Name="OwnerObjID" CName="所属ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="Vector3" FieldId="10" Name="Pos" CName="Pos" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="11" Name="NetWorkType" CName="掉落广播类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+</Root>

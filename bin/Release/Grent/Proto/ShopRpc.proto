@@ -1,0 +1,39 @@
+import "PublicStruct.proto";
+
+//BuyItem请求
+message  ShopRpcBuyItemAsk
+{
+	optional int32 ShopItemId = 1[default=-1];	//ShopItemId
+	optional int32 ItemNum = 2[default=-1];	//ItemNum
+}
+
+//BuyItem回应
+message  ShopRpcBuyItemReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional ShopItem ItemInfo = 2;	//ItemInfo
+}
+
+//ShopInfo请求
+message  ShopRpcShopInfoAsk
+{
+	optional int32 RoleID = 1[default=-1];	//RoleID
+}
+
+//ShopInfo回应
+message  ShopRpcShopInfoReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated ShopItem ItemInfo = 2;	//ItemInfo
+}
+

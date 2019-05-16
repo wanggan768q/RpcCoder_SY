@@ -1,0 +1,46 @@
+import "PublicStruct.proto";
+
+//Chat请求
+message  ChatRpcChatAsk
+{
+	optional ChatMsg Chat_msg = 1;	//chat_msg
+	/*
+	Chat_channel
+	聊天频道
+	*/
+	optional int32 Chat_channel = 2[default=-1];
+}
+
+//Chat回应
+message  ChatRpcChatReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+}
+
+//PushChatUpdates通知
+message  ChatRpcPushChatUpdatesNotify
+{
+	repeated ChatChannelData Chat_channels = 1;	//聊天频道列表
+}
+
+//推送跑马灯通知
+message  ChatRpcPushMarqueeNotify
+{
+	repeated string Marquee = 1;	//跑马灯
+}
+
+//玩家或NPC对象说话通知
+message  ChatRpcSayNotify
+{
+	optional int32 ObjId = 1[default=0];	//说话人的objId
+	optional int32 ChatId = 2[default=0];	//String_ChatMenu表id
+	optional int32 Duration = 3[default=0];	//该聊天内容停留时间
+	optional int32 ChatType = 4[default=0];	//对话显示类型：0：单次显示，1：循环显示
+	optional int32 Interval = 5[default=0];	//循环显示类型下的两次气泡的间隔时间
+}
+

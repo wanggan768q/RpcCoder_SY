@@ -1,0 +1,17 @@
+BaseAttrRpcSyncDataAsk↑ 同步玩家数据请求
+
+BaseAttrRpcSyncDataReply↓ 同步玩家数据回应
+	Result:int32 = -9999	;返回结果
+
+BaseAttrUserData
+	Exp:int32 = -1	;经验
+	Level:int32 = -1	;玩家等级
+	ServerTime:int32 = -1	;服务器时间
+	RoleId:int32* = -1	;人物唯一ID
+	RoleTestData:RoleData	;r
+	[RoleData]
+		Name:string	;asd
+
+BaseAttrRoleData
+	Name:string	;asd
+

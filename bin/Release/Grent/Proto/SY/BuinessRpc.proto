@@ -1,0 +1,72 @@
+message  BuinessRpcBuinessSyncAsk
+{
+
+}
+
+message  BuinessRpcBuinessSyncReply
+{
+	optional int32 Result = 1;
+	repeated BuinessSkillData SkillDatas = 2;
+	repeated BuinessUnlockInfo UnLockInfos = 3;
+
+}
+
+message  BuinessRpcBuinessUnlockAsk
+{
+	optional int32 SkillID = 1;
+
+}
+
+message  BuinessRpcBuinessUnlockReply
+{
+	optional int32 Result = 1;
+	repeated BuinessSkillData ChangeSkillDatas = 2;
+	optional BuinessUnlockInfo UnLockInfo = 4;
+
+}
+
+message  BuinessRpcBuinessStudyAsk
+{
+	optional int32 SkillID = 1;
+	optional int32 StudyType = 2;
+
+}
+
+message  BuinessRpcBuinessStudyReply
+{
+	optional int32 Result = 1;
+	optional BuinessSkillData SkillData = 2;
+
+}
+
+message  BuinessRpcBuinessMakeAsk
+{
+	optional int32 SkillID = 1;
+
+}
+
+message  BuinessRpcBuinessMakeReply
+{
+	optional int32 Result = 1;
+	optional int32 ItemID = 4;
+	optional int32 ItemCount = 5;
+
+}
+
+message  BuinessSkillData
+{
+	optional int32 SkillID = 1[default=-1];
+	optional int32 SkillLv = 2[default=-1];
+	optional int32 Locked = 3[default=-1];
+	optional int32 SkillExp = 4[default=-1];
+	optional int32 UseCount = 5[default=-1];
+
+}
+
+message  BuinessUnlockInfo
+{
+	optional int32 Mutual = 1[default=-1];
+	optional int64 EndTime = 2[default=-1];
+
+}
+

@@ -1,0 +1,281 @@
+import "PublicStruct.proto";
+
+//进入场景完成请求
+message  SceneRpcLoadSceneCompleteAsk
+{
+	optional uint64 RoleId = 1[default=0];	//角色id
+	optional int32 SceneId = 2[default=-1];	//场景id
+}
+
+//进入场景完成回应
+message  SceneRpcLoadSceneCompleteReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	optional int32 ObjId = 3[default=-1];	//玩家objid
+	optional Vector3 Pos = 4;	//位置
+	optional float Dir = 5[default=-1];	//方向
+	optional bytes ObjData = 6;	//Obj 数据
+}
+
+//删除玩家通知
+message  SceneRpcDeletePlayerNotify
+{
+	repeated ObjDeleteInfo Delete_list = 4;	//删除信息列表
+}
+
+//连接场景服务器请求
+message  SceneRpcConnectGameServerAsk
+{
+	optional uint64 RoleId = 1[default=0];	//角色id
+	optional string Key = 2;	//key
+	optional int32 SceneID = 3[default=-1];	//SceneID
+	optional int32 LineID = 4[default=-1];	//LineID
+}
+
+//连接场景服务器回应
+message  SceneRpcConnectGameServerReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	optional uint64 RoleId = 2[default=0];	//角色id
+	optional int32 SceneId = 3[default=-1];	//SceneId
+	optional int32 MapId = 5[default=-1];	//表当中的mapid
+}
+
+//创建物体通知
+message  SceneRpcCreateObjNotify
+{
+	repeated ObjCreateInfo Create_list = 14;	//创建信息列表
+}
+
+//SurroundingHuman请求
+message  SceneRpcSurroundingHumanAsk
+{
+}
+
+//SurroundingHuman回应
+message  SceneRpcSurroundingHumanReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	repeated CharacterInfo RoleList = 2;	//RoleList
+}
+
+//进入场景通知
+message  SceneRpcCEnterSceneNotify
+{
+	optional int32 SceneId = 3[default=-1];	//场景id
+	optional int32 MapId = 6[default=-1];	//表当中的mapid
+	optional int32 LineId = 7[default=-1];	//LineId
+}
+
+//进入场景返回通知
+message  SceneRpcSEnterSceneNotify
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	optional int32 SceneId = 8[default=-1];	//当返回不能进入，用这个来重新进入
+	optional int32 SceneConfigId = 9[default=-1];	//SceneConfigId
+	optional int32 MapId = 10[default=-1];	//表当中的mapid
+	optional uint64 RoleId = 11[default=0];	//roleID
+	optional int32 DungeonConfigId = 12[default=-1];	//DungeonConfigId
+	optional int32 LineId = 14[default=-1];	//LineId
+	/*
+	key是场景类型，value配置表
+	0:普通场景1：副本2：镜像
+	*/
+	repeated IntPair TypeConfig = 18;
+}
+
+//ObjDie通知
+message  SceneRpcObjDieNotify
+{
+	optional int32 ObjId = 1[default=-1];	//ObjId
+	optional int32 RespawnTime = 2[default=-1];	//Respawn
+	optional int32 ConfigId = 3[default=-1];	//ConfigId
+	optional int32 ObjType = 4[default=-1];	//ObjType
+}
+
+//collide请求
+message  SceneRpcCollide_ChangeSceneAsk
+{
+	optional int32 Collide_id = 1[default=-1];	//碰撞点的ID
+}
+
+//collide回应
+message  SceneRpcCollide_ChangeSceneReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+}
+
+//进入镜像请求
+message  SceneRpcEnterMirrorAsk
+{
+	optional int32 MirrorID = 1[default=-1];	//镜像ID
+}
+
+//进入镜像回应
+message  SceneRpcEnterMirrorReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//进入镜像场景通知
+message  SceneRpcSEnterMirrorSceneNotify
+{
+	optional int32 MapID = 1[default=-1];	//地图ID
+	optional int32 MirrorID = 2[default=-1];	//镜像ID
+}
+
+//退出镜像请求
+message  SceneRpcExitMirrorSceneAsk
+{
+}
+
+//退出镜像回应
+message  SceneRpcExitMirrorSceneReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//ChangeSceneLeave通知
+message  SceneRpcChangeSceneLeaveNotify
+{
+	optional int32 TargetLineID = 1[default=-1];	//TargetLineID
+	optional int32 TargetMapID = 2[default=-1];	//TargetMapID
+	optional uint64 RoleID = 4[default=0];	//RoleID
+	optional int32 CopyID = 5[default=-1];	//CopyID
+}
+
+//ChangeLine请求
+message  SceneRpcChangeLineAsk
+{
+	optional int32 LineID = 1[default=-1];	//LineID
+	optional int32 MapID = 2[default=-1];	//MapID
+}
+
+//ChangeLine回应
+message  SceneRpcChangeLineReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional int32 LineID = 2[default=-1];	//LineID
+	optional int32 MapID = 3[default=-1];	//MapID
+	optional uint64 RoleID = 4[default=0];	//RoleID
+}
+
+//ping请求
+message  SceneRpcPingAsk
+{
+}
+
+//ping回应
+message  SceneRpcPingReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//同步场景分线繁忙状态通知
+message  SceneRpcSyncSceneLineStatsNotify
+{
+	optional SceneStats Scene_stats = 1;	//场景状态
+	optional int32 Player_lineId = 2[default=-1];	//玩家所在线Id
+}
+
+//离开GameServer请求
+message  SceneRpcLogOutGameAsk
+{
+}
+
+//离开GameServer回应
+message  SceneRpcLogOutGameReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//被提出场景通知
+message  SceneRpcKickOutGameNotify
+{
+	optional string Kick_reason = 1;	//原因
+	optional int32 Reason_id = 2[default=-1];	//踢人原因id
+}
+
+//前端通知后端剧情动画播放完毕请求
+message  SceneRpcShowFilmFinishAsk
+{
+}
+
+//前端通知后端剧情动画播放完毕回应
+message  SceneRpcShowFilmFinishReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//SpecObjPos请求
+message  SceneRpcSpecObjPosAsk
+{
+}
+
+//SpecObjPos回应
+message  SceneRpcSpecObjPosReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated ObjPosInfo PosInfos = 2;	//PosInfs
+}
+

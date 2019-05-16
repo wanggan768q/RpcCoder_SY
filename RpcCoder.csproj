@@ -51,8 +51,12 @@
   <PropertyGroup>
     <ApplicationIcon>RpcCoder.ico</ApplicationIcon>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
+    <Compile Include="Editor\CommandAttribute.cs" />
     <Compile Include="Editor\RunBat.cs" />
     <Compile Include="RpcCoder\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

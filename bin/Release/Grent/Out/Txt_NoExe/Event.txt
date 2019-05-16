@@ -1,0 +1,25 @@
+EventRpcMoveNotify↓ ObjMove通知
+	ObjId:int32 = -1	;obj id
+	Pos:V3	;位置
+	[V3]
+		X:float = -1	;x
+		Y:float = -1	;y
+		Z:float = -1	;z
+	Dir:float = -1	;方向
+
+EventRpcStopMoveNotify↓ ObjStopMove通知
+	ObjId:int32 = -1	;obj id
+	Pos:V3	;位置
+	[V3]
+		X:float = -1	;x
+		Y:float = -1	;y
+		Z:float = -1	;z
+	Dir:float = -1	;方向
+
+EventRpcObjAttrChangeNotify↓ 属性改变通知
+	Speed:float = -1	;speed
+	Hp:sint64 = -1	;Hp
+	Status:int32 = -1	;状态
+	ConfigId:int32 = -1	;NpcId改变
+	ObjId:int32 = -1	;对象id
+

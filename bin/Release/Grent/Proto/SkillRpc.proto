@@ -1,0 +1,80 @@
+import "PublicStruct.proto";
+
+//技能信息请求
+message  SkillRpcSkillInfoAsk
+{
+}
+
+//技能信息回应
+message  SkillRpcSkillInfoReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional int32 CurUseMastery = 2[default=-1];	//当前使用专精
+	repeated ProfessionInfo ProfessionInfos = 5;	//技能信息
+}
+
+//更新技能信息请求
+message  SkillRpcUpdateSkillInfoAsk
+{
+	repeated ProfessionInfo ProfessionInfos = 3;	//技能信息
+	optional int32 CurUseMastery = 4[default=-1];	//使用中的专精
+}
+
+//更新技能信息回应
+message  SkillRpcUpdateSkillInfoReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional int32 CurUseMastery = 2[default=-1];	//当前使用的专精页
+	repeated ProfessionInfo ProfessionInfos = 4;	//最新的技能信息
+}
+
+//技能栏位升级请求
+message  SkillRpcLevelUpSkillPosAsk
+{
+	/*
+	技能栏位
+	普通攻击到大招
+	*/
+	optional int32 SkillPos = 1[default=0];
+	optional bool IsAuto = 2[default=false];	//是否一键升级
+}
+
+//技能栏位升级回应
+message  SkillRpcLevelUpSkillPosReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated SkillPosInfo PosInfo = 8;	//技能位置信息
+}
+
+//技能栏位等级信息请求
+message  SkillRpcSkillLevelInfoAsk
+{
+}
+
+//技能栏位等级信息回应
+message  SkillRpcSkillLevelInfoReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated SkillPosInfo PosInfo = 2;	//技能位置信息
+}
+

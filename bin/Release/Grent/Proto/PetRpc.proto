@@ -1,0 +1,212 @@
+import "PublicStruct.proto";
+
+//同步请求
+message  PetRpcPetSyncAsk
+{
+}
+
+//同步回应
+message  PetRpcPetSyncReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional ItemData ItemData = 2;	//宠物数据
+}
+
+//召回请求
+message  PetRpcUnSummonAsk
+{
+}
+
+//召回回应
+message  PetRpcUnSummonReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional ItemObj ItemObj = 2;	//ItemObj
+}
+
+//升级请求
+message  PetRpcLevelUpgradeAsk
+{
+	/*
+	Guid
+	道具GUID
+	*/
+	optional uint64 Guid = 2[default=0];
+	repeated int32 ItemCount = 3;	//各类型道具数量
+}
+
+//升级回应
+message  PetRpcLevelUpgradeReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional ItemData ItemData = 2;	//道具属性
+}
+
+//升星请求
+message  PetRpcStarUpgradeAsk
+{
+	optional uint64 Guid = 1[default=0];	//Guid
+	optional uint64 UseGuid = 2[default=0];	//使用素材的GUID
+}
+
+//升星回应
+message  PetRpcStarUpgradeReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional ItemData ItemData = 2;	//道具数据
+}
+
+//改名请求
+message  PetRpcChangeNameAsk
+{
+	optional uint64 Guid = 1[default=0];	//GUID
+	optional string NewName = 2;	//新名字
+}
+
+//改名回应
+message  PetRpcChangeNameReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional string Name = 2;	//名字
+}
+
+//传承请求
+message  PetRpcInheritAsk
+{
+	optional uint64 Guid = 1[default=0];	//要操作的道具GUid
+	optional uint64 UseGuid = 2[default=0];	//使用道具的GUid
+}
+
+//传承回应
+message  PetRpcInheritReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional ItemData ItemData = 2;	//道具属性
+}
+
+//技能继承请求
+message  PetRpcSkillInheritAsk
+{
+	optional uint64 Guid = 1[default=0];	//要操作的道具GUid
+	optional uint64 UseGuid = 2[default=0];	//使用道具的GUid
+}
+
+//技能继承回应
+message  PetRpcSkillInheritReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional ItemData ItemData = 2;	//道具属性
+}
+
+//宠物被动技能列表请求
+message  PetRpcPassiveSkillsAsk
+{
+	optional uint64 Guid = 2[default=0];	//宠物唯一id
+}
+
+//宠物被动技能列表回应
+message  PetRpcPassiveSkillsReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated PetSkill Skills = 2;	//宠物被动技能列表
+}
+
+//学习被动技能请求
+message  PetRpcStudySkillAsk
+{
+	optional uint64 Guid = 2[default=0];	//物品唯一id
+	optional int32 ItemId = 3[default=-1];	//道具id
+}
+
+//学习被动技能回应
+message  PetRpcStudySkillReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional ItemData ItemData = 2;	//道具属性
+	optional int32 ReplacedSkillId = 3[default=-1];	//替换掉的技能id
+	optional int32 Index = 4[default=-1];	//学习技能id
+}
+
+//锁住技能请求
+message  PetRpcLockSkillAsk
+{
+	optional uint64 Guid = 2[default=0];	//物品唯一id
+	optional int32 SkillId = 3[default=-1];	//锁住的技能id
+}
+
+//锁住技能回应
+message  PetRpcLockSkillReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional ItemData ItemData = 2;	//道具属性
+}
+
+//解除技能锁定请求
+message  PetRpcUnLockSkillAsk
+{
+	optional uint64 Guid = 2[default=0];	//物品唯一id
+	optional int32 SkillId = 3[default=-1];	//技能唯一id
+}
+
+//解除技能锁定回应
+message  PetRpcUnLockSkillReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional ItemData ItemData = 2;	//道具属性
+}
+

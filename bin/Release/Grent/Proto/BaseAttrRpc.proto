@@ -1,0 +1,26 @@
+import "PublicStruct.proto";
+
+//同步玩家数据请求
+message  BaseAttrRpcSyncDataAsk
+{
+}
+
+//同步玩家数据回应
+message  BaseAttrRpcSyncDataReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	optional bytes UpdateData = 2;	//同步数据
+}
+
+//数据推送通知
+message  BaseAttrRpcSyncNotify
+{
+	optional int32 ObjId = 2[default=-1];	//ObjId
+	optional bytes UpdateData = 3;	//更新数据
+}
+

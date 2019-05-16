@@ -1,0 +1,569 @@
+import "PublicStruct.proto";
+
+//添加好友请求
+message  ContactRpcAddFriendAsk
+{
+	optional uint64 RoleId = 1[default=0];	//新加朋友的id
+}
+
+//添加好友回应
+message  ContactRpcAddFriendReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional ContactData NewFriendData = 3;	//新玩家数据
+	optional ContactGroup MyFriendGroup = 4;	//好友分组
+}
+
+//删除好友请求
+message  ContactRpcCancelRelationShipAsk
+{
+	optional uint64 RoleId = 1[default=0];	//删除的好友
+}
+
+//删除好友回应
+message  ContactRpcCancelRelationShipReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional uint64 DeleteRoleId = 2[default=0];	//删除的数据
+	repeated ContactGroup ContactGroups = 3;	//改变的分组
+}
+
+//加入黑名单请求
+message  ContactRpcAddBlackListAsk
+{
+	optional uint64 RoleId = 1[default=0];	//删除的好友
+}
+
+//加入黑名单回应
+message  ContactRpcAddBlackListReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated ContactGroup ContactGroups = 2;	//改变的分组
+	optional uint64 RoleId = 3[default=0];	//删除的数据
+}
+
+//通讯录数据请求
+message  ContactRpcSyncAddressBookAsk
+{
+}
+
+//通讯录数据回应
+message  ContactRpcSyncAddressBookReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional AddressBook AddressBock = 2;	//通讯录数据
+}
+
+//联系人设置请求
+message  ContactRpcContactSettingAsk
+{
+	optional ContactSetting NewSetting = 1;	//新设置
+}
+
+//联系人设置回应
+message  ContactRpcContactSettingReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional ContactSetting NewSetting = 2;	//新设置
+}
+
+//创建好友分组请求
+message  ContactRpcCreateFriendGroupAsk
+{
+	optional string GroupName = 1;	//分组名字
+	repeated uint64 RoleIds = 2;	//分组玩家id
+}
+
+//创建好友分组回应
+message  ContactRpcCreateFriendGroupReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated ContactGroup ContactGroups = 2;	//改变的分组
+	repeated int32 GroupIds = 3;	//排序分组id
+}
+
+//移动到分组请求
+message  ContactRpcMoveToFriendGroupAsk
+{
+	repeated uint64 RoleIds = 1;	//玩家Id
+	optional int32 FromGroupId = 2[default=-1];	//源组ID
+	optional int32 ToGroupId = 3[default=-1];	//目标组
+}
+
+//移动到分组回应
+message  ContactRpcMoveToFriendGroupReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated ContactGroup ChangeGroup = 2;	//移动来源组
+}
+
+//删除好友分组请求
+message  ContactRpcRemoveFriendGroupAsk
+{
+	optional int32 RemoveGroupId = 1[default=-1];	//源组ID
+}
+
+//删除好友分组回应
+message  ContactRpcRemoveFriendGroupReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional ContactGroup MyFriendGroup = 3;	//移动来源组
+	optional int32 RemoveGroupId = 4[default=-1];	//源组ID
+	repeated int32 GroupIds = 5;	//排序分组id
+}
+
+//重命名分组请求
+message  ContactRpcRenameGroupAsk
+{
+	optional string Name = 1;	//设置名字
+	optional int32 GroupId = 2[default=-1];	//重命名分组
+}
+
+//重命名分组回应
+message  ContactRpcRenameGroupReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional ContactGroup DefineGroup = 2;	//重命名的分组
+}
+
+//同意申请加为好友请求
+message  ContactRpcAgreeApplicationAsk
+{
+	optional uint64 RoleId = 1[default=0];	//玩家ID
+}
+
+//同意申请加为好友回应
+message  ContactRpcAgreeApplicationReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional ContactData NewFriendData = 2;	//新玩家数据
+	repeated ContactGroup MyFriendGroup = 3;	//移动来源组
+}
+
+//同意申请通知通知
+message  ContactRpcAgreeApplicationNotifyNotify
+{
+	repeated ContactGroup MyFriendGroup = 1;	//分组信息
+	optional ContactData NewFriendData = 2;	//新玩家数据
+}
+
+//设置分组请求
+message  ContactRpcSetFriendGroupAsk
+{
+	optional int32 GroupId = 1[default=-1];	//分组ID
+	optional int32 RoleIds = 2[default=-1];	//好友id
+	optional bytes GroupName = 3;	//分组名字
+}
+
+//设置分组回应
+message  ContactRpcSetFriendGroupReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated ContactGroup FriendGroups = 2;	//分组信息
+}
+
+//新联系人通知,不是朋友
+message  ContactRpcNewFriendNotify
+{
+	optional ContactData NewFriendData = 1;	//新的联系人数据
+	optional ContactGroup MyFriendGroup = 2;	//新的联系人改变的组
+}
+
+//申请列表通知
+message  ContactRpcApplyListNotify
+{
+	optional ContactData ApplyFriendData = 1;	//新玩家数据
+	repeated ContactGroup ApplyGroups = 5;	//分组信息
+}
+
+//拒绝申请请求
+message  ContactRpcRejectApplyAsk
+{
+	optional uint64 RoleId = 2[default=0];	//玩家ID
+}
+
+//拒绝申请回应
+message  ContactRpcRejectApplyReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated ContactGroup ContactGroups = 8;	//改变的分组
+	optional uint64 DeleteRoleId = 9[default=0];	//删除的id
+}
+
+//被拒绝通知
+message  ContactRpcBeRejectApplyNotify
+{
+	optional ContactData DeleteFriendData = 1;	//被拒绝的人信息,不要加到role data里面
+}
+
+//被删除好友通知
+message  ContactRpcBeCancelRelationShipNotify
+{
+	optional uint64 DeleteRoleId = 1[default=0];	//删除的数据
+	repeated ContactGroup ContactGroups = 2;	//改变的分组
+}
+
+//被加入黑名单通知
+message  ContactRpcBeAddBlackListNotify
+{
+	optional uint64 RoleId = 1[default=0];	//删除的数据
+	repeated ContactGroup ContactGroups = 2;	//改变的分组
+}
+
+//推荐联系人请求
+message  ContactRpcRecommendContactAsk
+{
+}
+
+//推荐联系人回应
+message  ContactRpcRecommendContactReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated ContactData Contact = 2;	//推荐的人
+	repeated uint64 ApplyedListId = 3;	//已经申请过的人的id
+}
+
+//拒绝所有申请请求
+message  ContactRpcRejectAllAsk
+{
+}
+
+//拒绝所有申请回应
+message  ContactRpcRejectAllReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated ContactGroup ContactGroups = 2;	//改变的分组
+	repeated uint64 DeleteRoleIds = 3;	//删除的id
+}
+
+//添加好友度请求
+message  ContactRpcAddFriendShipPointAsk
+{
+	optional uint64 FriendRoleId = 1[default=0];	//好友Guid
+	repeated ItemSimpleData ItemData = 2;	//物品id
+}
+
+//添加好友度回应
+message  ContactRpcAddFriendShipPointReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional ContactData Contact = 2;	//更新的人
+}
+
+//玩家数据更新通知
+message  ContactRpcRoleDataUpdateNotify
+{
+	optional ContactData Contact = 1;	//更新的人
+}
+
+//联系人登录通知
+message  ContactRpcContactLoginNotify
+{
+	optional ContactData Contact = 1;	//更新的人
+	repeated int32 GroupIds = 2;	//改变的分组
+}
+
+//联系人退出游戏通知
+message  ContactRpcContactLogoutNotify
+{
+	optional ContactData Contact = 1;	//更新的人
+	repeated int32 GroupIds = 2;	//改变的分组
+}
+
+//删除联系人数据通知
+message  ContactRpcDeleteRoleDataNotify
+{
+	optional uint64 RoleId = 2[default=0];	//删除的玩家id
+}
+
+//排序分组请求
+message  ContactRpcSortGroupAsk
+{
+	repeated int32 GroupIds = 1;	//分组id
+}
+
+//排序分组回应
+message  ContactRpcSortGroupReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated int32 GroupIds = 2;	//分组id
+}
+
+//设置好友名字请求
+message  ContactRpcSetFriendAliasAsk
+{
+	optional string Name = 1;	//名字
+	optional uint64 RoleId = 2[default=0];	//设置的玩家Id
+}
+
+//设置好友名字回应
+message  ContactRpcSetFriendAliasReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional ContactData Contact = 2;	//更新的人
+}
+
+//发送好友点请求
+message  ContactRpcSendFriendGiftPointAsk
+{
+	optional uint64 SendRoleId = 1[default=0];	//给谁送
+	optional int32 Point = 2[default=-1];	//友情点
+}
+
+//发送好友点回应
+message  ContactRpcSendFriendGiftPointReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated FriendGiftPoint SentGiftList = 2;	//已经赠送列表
+}
+
+//获取点数请求
+message  ContactRpcAcquireGiftPointAsk
+{
+	optional uint64 AcquireRoleId = 1[default=0];	//给谁送
+}
+
+//获取点数回应
+message  ContactRpcAcquireGiftPointReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated FriendGiftPoint AcquireGiftList = 2;	//已经收取列表
+	repeated FriendGiftPoint UnAcquireGiftList = 3;	//未收取赠送列表
+}
+
+//刷新未获取点数通知
+message  ContactRpcUnAcquireGiftPointNotify
+{
+	repeated FriendGiftPoint UnAcquireGiftList = 1;	//未收取赠送列表
+}
+
+//一键赠送请求
+message  ContactRpcSendAllFriendGiftPointAsk
+{
+}
+
+//一键赠送回应
+message  ContactRpcSendAllFriendGiftPointReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated FriendGiftPoint SentGiftList = 2;	//已经赠送列表
+}
+
+//一键收取请求
+message  ContactRpcAcquireAllGiftPointAsk
+{
+}
+
+//一键收取回应
+message  ContactRpcAcquireAllGiftPointReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated FriendGiftPoint AcquireGiftList = 2;	//已经收取列表
+	repeated FriendGiftPoint UnAcquireGiftList = 3;	//未收取赠送列表
+}
+
+//移出列表请求
+message  ContactRpcDeleteGroupRoleAsk
+{
+	optional int32 GroupId = 1[default=-1];	//分组Id
+	optional uint64 RoleId = 2[default=0];	//玩家id
+}
+
+//移出列表回应
+message  ContactRpcDeleteGroupRoleReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated ContactGroup ContactGroups = 3;	//改变的分组
+}
+
+//新加玩家数据通知
+message  ContactRpcAddRoleDataNotify
+{
+	optional ContactData NewRoleData = 1;	//新的联系人数据
+}
+
+//设置友情点数据通知
+message  ContactRpcSetGiftPointNotify
+{
+	repeated FriendGiftPoint AcquireGiftList = 1;	//已经收取列表
+	repeated FriendGiftPoint UnAcquireGiftList = 2;	//未收取赠送列表
+	repeated FriendGiftPoint SentGiftList = 3;	//已经赠送列表
+}
+
+//刷新组通知
+message  ContactRpcContactsGroupsNotify
+{
+	repeated ContactGroup MyFriendGroup = 1;	//分组信息
+}
+
+//同意所有申请请求
+message  ContactRpcAgreeAllApplicationAsk
+{
+}
+
+//同意所有申请回应
+message  ContactRpcAgreeAllApplicationReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated ContactData NewFriendData = 2;	//新玩家数据
+	repeated ContactGroup MyFriendGroup = 3;	//移动来源组
+}
+
+//聊天请求
+message  ContactRpcChatToAsk
+{
+	optional uint64 RoleId = 1[default=0];	//需要发送信息的人的唯一id
+	optional ChatMsg ChatMsg = 2;	//聊天信息
+}
+
+//聊天回应
+message  ContactRpcChatToReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//新的聊天信息通知
+message  ContactRpcNewChatMsgNotify
+{
+	optional ChatInfo ChatMsg = 1;	//新的聊天信息
+	optional uint64 RoleId = 2[default=0];	//聊天Id
+}
+
+//读取信息请求
+message  ContactRpcReadMsgAsk
+{
+	optional uint64 RoleId = 1[default=0];	//已读玩家id
+}
+
+//读取信息回应
+message  ContactRpcReadMsgReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional uint64 RoleId = 2[default=0];	//已读玩家id
+}
+

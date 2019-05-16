@@ -1,0 +1,11 @@
+message  VechicleRpcQuitVechileAsk
+{
+
+}
+
+message  VechicleRpcQuitVechileReply
+{
+	optional int32 Result = 1;
+
+}
+

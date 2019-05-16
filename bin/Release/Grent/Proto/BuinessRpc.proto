@@ -1,0 +1,77 @@
+import "PublicStruct.proto";
+
+//初始化请求
+message  BuinessRpcBuinessSyncAsk
+{
+}
+
+//初始化回应
+message  BuinessRpcBuinessSyncReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated BuinessSkillData SkillDatas = 2;	//生活技能列表
+	repeated BuinessUnlockInfo UnLockInfos = 3;	//解锁剩余时间
+}
+
+//解锁请求
+message  BuinessRpcBuinessUnlockAsk
+{
+	optional int32 SkillID = 1[default=-1];	//要解锁的ID
+}
+
+//解锁回应
+message  BuinessRpcBuinessUnlockReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated BuinessSkillData ChangeSkillDatas = 2;	//改变的技能
+	optional BuinessUnlockInfo UnLockInfo = 4;	//解锁信息
+}
+
+//学习技能请求
+message  BuinessRpcBuinessStudyAsk
+{
+	optional int32 SkillID = 1[default=-1];	//技能ID
+	optional int32 StudyType = 2[default=-1];	//学习类型
+}
+
+//学习技能回应
+message  BuinessRpcBuinessStudyReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional BuinessSkillData SkillData = 2;	//技能新属性
+}
+
+//制作请求
+message  BuinessRpcBuinessMakeAsk
+{
+	optional int32 SkillID = 1[default=-1];	//使用哪个技能
+}
+
+//制作回应
+message  BuinessRpcBuinessMakeReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional int32 ItemID = 4[default=-1];	//道具ID
+	optional int32 ItemCount = 5[default=-1];	//数量
+}
+

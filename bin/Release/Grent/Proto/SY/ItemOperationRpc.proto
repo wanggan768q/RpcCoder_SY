@@ -1,0 +1,78 @@
+message  ItemOperationRpcItemResolveSettingSyncAsk
+{
+
+}
+
+message  ItemOperationRpcItemResolveSettingSyncReply
+{
+	optional int32 Result = 1;
+	repeated ItemResolveData Setting = 2;
+
+}
+
+message  ItemOperationRpcItemResolveAsk
+{
+	optional int32 ItemPos = 1;
+	optional int32 Count = 2;
+
+}
+
+message  ItemOperationRpcItemResolveReply
+{
+	optional int32 Result = 1;
+	optional int32 ItemID = 2;
+	repeated ItemSimpleData ItemSimpleDataList = 3;
+
+}
+
+message  ItemOperationRpcChangeSettingAsk
+{
+	repeated ItemResolveData SettingList = 1;
+
+}
+
+message  ItemOperationRpcChangeSettingReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  ItemOperationRpcBatchResolveAsk
+{
+	optional int32 Qulity = 1;
+
+}
+
+message  ItemOperationRpcBatchResolveReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  ItemOperationRpcItemCompoundAsk
+{
+	optional int32 ItemConfID = 1;
+
+}
+
+message  ItemOperationRpcItemCompoundReply
+{
+	optional int32 Result = 1;
+	optional int32 ItemConfID = 2;
+
+}
+
+message  ItemResolveData
+{
+	optional int32 Qulity = 1[default=-1];
+	optional int32 IsResolve = 2[default=0];
+
+}
+
+message  ItemSimpleData
+{
+	optional int32 ConfID = 1[default=-1];
+	optional int32 Count = 2[default=-1];
+
+}
+

@@ -1,0 +1,241 @@
+import "PublicStruct.proto";
+
+//UseItem请求
+message  BagRpcUseItemAsk
+{
+	optional int32 Count = 1[default=-1];	//数量
+	optional int32 Pos = 2[default=-1];	//位置
+	optional int32 BagType = 3[default=-1];	//背包类型
+}
+
+//UseItem回应
+message  BagRpcUseItemReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	optional ItemObj Item = 2;	//位置
+	/*
+	当前道具 
+	宠物模块使用
+	*/
+	optional ItemObj NowItem = 4;
+}
+
+//SaleItem请求
+message  BagRpcSaleItemAsk
+{
+	optional int32 Pos = 5[default=-1];	//位置
+	optional int32 Count = 6[default=-1];	//卖出数量
+	optional int32 BagType = 7[default=-1];	//背包类型
+}
+
+//SaleItem回应
+message  BagRpcSaleItemReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	optional ItemObj Item = 4;	//位置
+}
+
+//LockItem请求
+message  BagRpcLockItemAsk
+{
+	optional int32 Pos = 1[default=-1];	//位置
+	optional bool IsLock = 3[default=false];	//IsLock
+	optional int32 BagType = 4[default=-1];	//背包类型
+}
+
+//LockItem回应
+message  BagRpcLockItemReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	optional ItemObj Item = 5;	//位置
+}
+
+//解锁背包格子请求
+message  BagRpcDeblockingAsk
+{
+	optional int32 BagType = 1[default=-1];	//背包类型
+}
+
+//解锁背包格子回应
+message  BagRpcDeblockingReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	optional int32 BagType = 2[default=-1];	//背包类型
+	optional int32 CurCapacity = 3[default=-1];	//当前的容量
+}
+
+//TakeItem请求
+message  BagRpcTakeItemAsk
+{
+	optional int32 FromBagType = 1[default=-1];	//源背包
+	optional int32 ToBagType = 2[default=-1];	//目标背包
+	optional int32 FromPos = 3[default=-1];	//源背包位置
+}
+
+//TakeItem回应
+message  BagRpcTakeItemReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	optional ItemObj ToItemObj = 2;	//目标背包道具
+	optional ItemObj FromItemObj = 3;	//源背包道具
+	optional int32 FromBagType = 4[default=-1];	//源背包
+	optional int32 ToBagType = 5[default=-1];	//目标背包
+}
+
+//整理请求
+message  BagRpcTidyAsk
+{
+	optional int32 BagType = 2[default=-1];	//背包类型
+}
+
+//整理回应
+message  BagRpcTidyReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	optional BagData Bags = 3;	//整理后的背包数据
+}
+
+//临时背包全部取回请求
+message  BagRpcTakeAllBackBagsAsk
+{
+}
+
+//临时背包全部取回回应
+message  BagRpcTakeAllBackBagsReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	repeated BagData Bags = 2;	//所有背包数据
+}
+
+//背包数据推送通知
+message  BagRpcBagChangeNotify
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	optional BagData Bags = 2;	//所有背包数据
+}
+
+//MergeItem请求
+message  BagRpcMergeItemAsk
+{
+	optional int32 Pos = 1[default=-1];	//位置
+	optional int32 BagType = 2[default=-1];	//背包类型
+}
+
+//MergeItem回应
+message  BagRpcMergeItemReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	optional BagData Bags = 2;	//所有背包数据
+}
+
+//背包数据初始化请求
+message  BagRpcBagSyncAsk
+{
+}
+
+//背包数据初始化回应
+message  BagRpcBagSyncReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated BagData Bags = 2;	//Bags
+}
+
+//新加物品通知
+message  BagRpcAddItemNotify
+{
+	repeated ItemObj Item = 1;	//位置
+}
+
+//根据物品id使用物品请求
+message  BagRpcConsumeItemAsk
+{
+	repeated int32 ConfigId = 1;	//物品id
+	repeated ItemSimpleData ItemData = 3;	//物品id
+}
+
+//根据物品id使用物品回应
+message  BagRpcConsumeItemReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//物品改变通知
+message  BagRpcItemChangeNotify
+{
+	repeated ItemObj ItemList = 1;	//改变的物品
+	optional int32 BagType = 2[default=-1];	//背包类型
+}
+
+//点击物品请求
+message  BagRpcClickItemAsk
+{
+	optional uint64 Guid = 1[default=0];	//物品GUID
+}
+
+//点击物品回应
+message  BagRpcClickItemReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional ItemObj Item = 2;	//位置
+}
+

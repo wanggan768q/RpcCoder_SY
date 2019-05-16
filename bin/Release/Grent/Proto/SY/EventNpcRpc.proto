@@ -1,0 +1,30 @@
+message  EventNpcRpcBeginEventAsk
+{
+	optional int32 EventIndex = 1;
+
+}
+
+message  EventNpcRpcBeginEventReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  EventNpcRpcEndEventAsk
+{
+
+}
+
+message  EventNpcRpcEndEventReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  EventNpcRpcActivityBeginNotify
+{
+	optional int32 StartTime = 1;
+	optional int32 WayPoint = 4;
+
+}
+

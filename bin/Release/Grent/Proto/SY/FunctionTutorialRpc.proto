@@ -1,0 +1,39 @@
+message  FunctionTutorialRpcSyncFunctionStepAsk
+{
+
+}
+
+message  FunctionTutorialRpcSyncFunctionStepReply
+{
+	optional int32 Result = 1;
+	repeated int32 FunctionList = 2;
+	repeated int32 ActiveFunctionList = 3;
+
+}
+
+message  FunctionTutorialRpcFinishStepAsk
+{
+	optional int32 FunctionID = 1;
+
+}
+
+message  FunctionTutorialRpcFinishStepReply
+{
+	optional int32 Result = 1;
+	optional int32 FunctionID = 3;
+
+}
+
+message  FunctionTutorialRpcActiveStepAsk
+{
+	optional int32 FunctionID = 1;
+
+}
+
+message  FunctionTutorialRpcActiveStepReply
+{
+	optional int32 Result = 1;
+	optional int32 FunctionID = 2;
+
+}
+

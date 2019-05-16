@@ -1,0 +1,271 @@
+message  PvpRpcRankAsk
+{
+	optional int32 PvpType = 1;
+
+}
+
+message  PvpRpcRankReply
+{
+	optional int32 Result = 1;
+	repeated PvpPlayerInfo RankList = 2;
+
+}
+
+message  PvpRpcMatchAsk
+{
+	optional int32 PvpType = 1;
+
+}
+
+message  PvpRpcMatchReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  PvpRpcMatchNotifyNotify
+{
+
+}
+
+message  PvpRpcMatchCancleAsk
+{
+
+}
+
+message  PvpRpcMatchCancleReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  PvpRpcMatchCancleNotifyNotify
+{
+	optional uint64 RoleId = 1[default=0];
+	optional string Name = 2;
+	optional int32 Reason = 3;
+
+}
+
+message  PvpRpcPlayerReadyAsk
+{
+	optional int32 OpreationType = 1;
+
+}
+
+message  PvpRpcPlayerReadyReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  PvpRpcPlayerReadyNotifyNotify
+{
+	optional uint64 RoleId = 1[default=0];
+	optional int32 OpType = 2;
+
+}
+
+message  PvpRpcReadyFaildNotify
+{
+	optional int32 Reason = 1;
+	optional uint64 RoleId = 2[default=0];
+
+}
+
+message  PvpRpcPvpBattleStartNotify
+{
+	optional int32 LeftKill = 2;
+	optional int32 RightKill = 3;
+	optional int32 NeedKill = 4;
+
+}
+
+message  PvpRpcPvpBattleEndNotify
+{
+	optional PvpBattleEndInfo BattleEndInfo = 4;
+
+}
+
+message  PvpRpcMatchSucessNotify
+{
+	repeated PvpPlayerInfo LeftTeam = 1;
+	repeated PvpPlayerInfo RightTeam = 2;
+	optional int32 Time = 3;
+
+}
+
+message  PvpRpcRankChangeNotify
+{
+	optional int32 PvpType = 1;
+	optional int32 BeforeRank = 2;
+	optional int32 AfterRank = 3;
+	optional int32 BeforeStar = 4;
+	optional int32 AfterStar = 5;
+
+}
+
+message  PvpRpcReturnLastSceneAsk
+{
+
+}
+
+message  PvpRpcReturnLastSceneReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  PvpRpcArenaStartTimeNotify
+{
+	optional int32 NeedTime = 1;
+	optional int32 TimeStamp = 2;
+
+}
+
+message  PvpRpcUpdateKillCountNotify
+{
+	optional int32 LeftTeamKill = 1;
+	optional int32 RightTeamKill = 2;
+
+}
+
+message  PvpRpcArenaLeftTimeNotify
+{
+	optional int32 LeftTime = 1;
+
+}
+
+message  PvpRpcLastRankAsk
+{
+	optional int32 PvpType = 1;
+
+}
+
+message  PvpRpcLastRankReply
+{
+	optional int32 Result = 1;
+	repeated PvpPlayerInfo RankList = 2;
+
+}
+
+message  PvpRpcNewSeasonNotify
+{
+	optional int32 LastRank = 1;
+	optional int32 LastStar = 2;
+	optional int32 LastRanking = 3;
+	repeated PvpBattleRewardInfo RewardList = 4;
+
+}
+
+message  PvpRpcGetSeasonRewardAsk
+{
+
+}
+
+message  PvpRpcGetSeasonRewardReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  PvpRpcPvpBattleInfoSyncAsk
+{
+
+}
+
+message  PvpRpcPvpBattleInfoSyncReply
+{
+	optional int32 Result = 1;
+	optional PvpBattleInfo BattleInfo = 2;
+	optional int32 Season = 3;
+	optional int32 RankIndex = 4;
+
+}
+
+message  PvpRpcReconnectNotify
+{
+	optional int32 NeedKill = 1;
+	optional int32 ArenaState = 2;
+	optional int32 LeftTime = 3;
+	optional int32 LeftKill = 5;
+	optional int32 RightKill = 6;
+	optional int32 Camp = 7;
+	optional int32 TimeStamp = 8;
+
+}
+
+message  PvpRpcGetRewardAsk
+{
+	optional int32 PvPType = 1;
+	optional int32 Rank = 2;
+
+}
+
+message  PvpRpcGetRewardReply
+{
+	optional int32 Result = 1;
+	repeated int32 RewardList = 2;
+
+}
+
+message  PvpPlayerInfo
+{
+	optional uint64 RoleID = 1[default=0];
+	optional string RoleName = 2;
+	optional int32 Level = 3[default=-1];
+	optional int32 Rank = 5[default=-1];
+	optional PvpBattleInfo PvpInfo = 6;
+	optional string GuildName = 7;
+	optional int32 ConfigID = 8[default=-1];
+
+}
+
+message  PvpBattleEndInfo
+{
+	optional int32 WinState = 1[default=-1];
+	optional int32 BeforeRank = 2[default=-1];
+	optional int32 BeforeStar = 3[default=-1];
+	optional int32 AfterRank = 4[default=-1];
+	optional int32 AfterStar = 5[default=-1];
+	repeated PvpBattleRewardInfo RewardList = 7;
+	repeated PvpEndPlayer LeftPlayerList = 8;
+	repeated PvpEndPlayer RightPlayerList = 9;
+	optional int32 BattleTime = 10[default=-1];
+
+}
+
+message  PvpBattleRewardInfo
+{
+	optional int32 ItemID = 1[default=-1];
+	optional int32 ItemCout = 2[default=-1];
+
+}
+
+message  PvpBattleInfo
+{
+	optional int32 WinCount = 1[default=-1];
+	optional int32 LoseCount = 2[default=-1];
+	optional int32 DrawCount = 3[default=-1];
+	optional int32 ContinuityWinCount = 4[default=-1];
+	optional int32 Rank = 5[default=-1];
+	optional int32 Star = 6[default=-1];
+	optional int32 Elo = 7[default=-1];
+	optional int32 BattleCount = 8[default=-1];
+	repeated int32 RewardList = 9;
+	optional int32 HistoryRank = 10[default=-1];
+
+}
+
+message  PvpEndPlayer
+{
+	optional uint64 RoleID = 1[default=0];
+	optional string RoleName = 2;
+	optional int32 DeadCount = 3[default=-1];
+	optional int32 KillCount = 4[default=-1];
+	optional int32 LiveCount = 5[default=-1];
+	optional int32 ConfigId = 6[default=-1];
+	optional int32 DamageCount = 7[default=-1];
+
+}
+

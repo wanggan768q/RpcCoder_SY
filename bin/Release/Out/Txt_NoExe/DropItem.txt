@@ -1,0 +1,18 @@
+DropItemRpcDropTtemsNotify↓ 掉落通知通知
+	Dropitems:DropItem*	;掉落物品
+	[DropItem]
+		ItemType:int32 = -1	;物品类型
+		ItemID:int32 = -1	;物品编号
+		ItemNum:int32 = -1	;物品数量
+		Bind:bool = false	;是否绑定
+		Transit:bool = false	;transit
+	KillObjID:int32 = -1	;死亡怪物ID
+	KillerObjID:int32 = -1	;主角ID
+	OwnerObjID:int32 = -1	;所属ID
+	Pos:Vector3	;Pos
+	[Vector3]
+		X:float = -1	;x
+		Y:float = -1	;y
+		Z:float = -1	;z
+	NetWorkType:int32 = -1	;掉落广播类型
+

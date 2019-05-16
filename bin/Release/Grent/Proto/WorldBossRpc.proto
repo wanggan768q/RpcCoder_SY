@@ -1,0 +1,47 @@
+import "PublicStruct.proto";
+
+//世界BOSS信息请求
+message  WorldBossRpcWorldBossInfoAsk
+{
+	optional int32 BossID = 2[default=-1];	//世界BOSSID
+}
+
+//世界BOSS信息回应
+message  WorldBossRpcWorldBossInfoReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated WorldBossInfo WorldBossInfos = 2;	//世界BOSS信息
+	optional int32 BossID = 3[default=-1];	//bossID
+}
+
+//世界BOSS伤害排行信息请求
+message  WorldBossRpcWorldBossRankInfoAsk
+{
+	optional int32 BossID = 1[default=-1];	//BossID
+	optional int32 Occupation = 2[default=-1];	//职业
+}
+
+//世界BOSS伤害排行信息回应
+message  WorldBossRpcWorldBossRankInfoReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated WorldBossRankInfo RankInfo = 2;	//排行榜信息
+	optional string LastKillName = 3;	//最后一击玩家名字
+	optional string MaxDamageName = 4;	//最大伤害玩家名字
+	optional int32 MyRank = 5[default=-1];	//个人排名
+	optional int32 Occupation = 6[default=-1];	//职业
+	optional int32 BossID = 7[default=-1];	//BossID
+	optional int32 MyOccupationRank = 8[default=-1];	//个人职业排名
+	optional int32 MyScore = 9[default=-1];	//个人积分
+}
+

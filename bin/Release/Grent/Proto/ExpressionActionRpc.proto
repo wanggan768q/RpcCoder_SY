@@ -1,0 +1,63 @@
+import "PublicStruct.proto";
+
+//数据同步请求
+message  ExpressionActionRpcSyncAsk
+{
+}
+
+//数据同步回应
+message  ExpressionActionRpcSyncReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated ExpressionActionInfo ExpressionActionList = 2;	//表情信息
+	repeated int32 ExpressionWheelList = 3;	//轮盘
+}
+
+//设置轮盘请求
+message  ExpressionActionRpcSetWheelAsk
+{
+	optional int32 Index = 1[default=-1];	//索引
+	optional int32 ActionId = 2[default=-1];	//表情ID
+}
+
+//设置轮盘回应
+message  ExpressionActionRpcSetWheelReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated int32 WheelList = 2;	//轮盘信息
+}
+
+//使用表情请求
+message  ExpressionActionRpcUseActionAsk
+{
+	optional int32 ActionId = 1[default=-1];	//表情ID
+}
+
+//使用表情回应
+message  ExpressionActionRpcUseActionReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//使用表情通知通知
+message  ExpressionActionRpcUseActionNotifyNotify
+{
+	optional int32 ObjId = 1[default=-1];	//角色Id
+	optional int32 ActionId = 2[default=-1];	//动作ID
+}
+

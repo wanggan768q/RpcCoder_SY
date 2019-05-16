@@ -1,0 +1,62 @@
+ActivityRpcEliteMonsterInfoNotify↓ 精英怪信息通知
+	State:int32 = -1	;状态
+	Info:EliteMonsterInfo	;信息
+	[EliteMonsterInfo]
+		FinishTime:int32 = -1	;完成次数
+		CommonId:int32 = -1	;当前精英怪任务id
+
+ActivityRpcCreateObjAsk↑ 生成对象请求
+	CommonId:int32 = -1	;当前id
+
+ActivityRpcCreateObjReply↓ 生成对象回应
+	Result:int32 = -1	;返回结果
+
+ActivityRpcOpenActivityNotify↓ 活动开启前通知通知
+	ActId:int32 = -1	;活动id
+	DiffTm:int32 = -1	;活动开启前时间
+	SceneId:int32 = -1	;场景id
+	Pos:Vector3	;传送位置
+	[Vector3]
+		X:float = -1	;x
+		Y:float = -1	;y
+		Z:float = -1	;z
+
+ActivityRpcXingyaoAsk↑ 星耀王座进入请求
+	NPCid:int32 = -1	;NPC
+
+ActivityRpcXingyaoReply↓ 星耀王座回应
+	Result:int32 = -1	;返回结果
+
+ActivityRpcActivityTimeNotify↓ 活动时间信息通知
+	ActTimeList:ActivityTime*	;活动时间信息
+	[ActivityTime]
+		Begin:int64 = -1	;活动开始时间
+		End:int64 = -1	;活动结束时间
+		Id:int32 = -1	;活动id
+
+ActivityRpcReqActivityTimeAsk↑ 请求获取活动时间请求
+
+ActivityRpcReqActivityTimeReply↓ 请求获取活动时间回应
+	Result:int32 = -1	;返回结果
+	ActTimeList:ActivityTime*	;活动时间信息
+	[ActivityTime]
+		Begin:int64 = -1	;活动开始时间
+		End:int64 = -1	;活动结束时间
+		Id:int32 = -1	;活动id
+
+ActivityRpcXingyaoNPCAsk↑ 星耀NPC请求
+
+ActivityRpcXingyaoNPCReply↓ 星耀NPC回应
+	Result:int32 = -1	;返回结果
+	Sceneid:int32 = -1	;场景ID
+	Waypoinid:int32 = -1	;路点ID
+
+ActivityRpcXingyaoRewardNotify↓ 星耀高额奖励通知
+
+ActivityRpcOperationTimeNotify↓ operation活动表时间通知
+	ActTimeList:ActivityTime*	;活动时间信息
+	[ActivityTime]
+		Begin:int64 = -1	;活动开始时间
+		End:int64 = -1	;活动结束时间
+		Id:int32 = -1	;活动id
+

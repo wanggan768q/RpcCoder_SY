@@ -1,0 +1,65 @@
+message  ChatRpcChatAsk
+{
+	optional ChatMsg Chat_msg = 1;
+	optional int32 Chat_channel = 2;
+
+}
+
+message  ChatRpcChatReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  ChatRpcPushChatUpdatesNotify
+{
+	repeated ChatChannelData Chat_channels = 1;
+
+}
+
+message  ChatRpcPushMarqueeNotify
+{
+	repeated string Marquee = 1;
+
+}
+
+message  ChatRpcSayNotify
+{
+	optional int32 ObjId = 1;
+	optional int32 ChatId = 2;
+	optional int32 Duration = 3;
+	optional int32 ChatType = 4;
+	optional int32 Interval = 5;
+
+}
+
+message  ChatMsg
+{
+	optional string Chat_content = 1;
+	optional string Chat_voice_url = 2;
+	optional int32 Chat_voice_secs = 3[default=-1];
+
+}
+
+message  ChatChannelData
+{
+	optional int32 Chat_channel = 1[default=-1];
+	repeated ChatInfo Chat_infos = 2;
+
+}
+
+message  ChatInfo
+{
+	optional string Player_name = 1;
+	optional uint64 Player_guid = 2[default=0];
+	optional int32 Avatar_id = 3[default=-1];
+	optional int32 Player_level = 4[default=-1];
+	optional int32 Avatar_frame_id = 5[default=-1];
+	optional int32 Config_id = 6[default=-1];
+	optional uint64 Timestamp = 7[default=0];
+	optional ChatMsg Chat_msg = 8;
+	optional uint64 Team_id = 9[default=0];
+	optional uint64 Guild_guid = 10[default=0];
+
+}
+

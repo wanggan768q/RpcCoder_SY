@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<Root Module="Medicament" CName="药剂" MsgNumStart="28" SyncDataVersion="1" Comment="">
+    <Operate Name="FillHp" CName="使用物品填充hp池" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="28" DataStruct="RpcFillHpAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="29" DataStruct="RpcFillHpReply" Comment="" />
+    </Operate>
+    <Operate Name="OneStepFillHp" CName="一键添加" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="30" DataStruct="RpcOneStepFillHpAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="31" DataStruct="RpcOneStepFillHpReply" Comment="" />
+    </Operate>
+    <Operate Name="ClientRefreshMedicament" CName="客户端刷新药剂" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="32" DataStruct="RpcClientRefreshMedicamentAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="33" DataStruct="RpcClientRefreshMedicamentReply" Comment="" />
+    </Operate>
+    <Operate Name="ServerRefreshMedicament" CName="服务器刷新药剂" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="34" DataStruct="RpcServerRefreshMedicamentNotify" Comment="" />
+    </Operate>
+    <Operate Name="SyncMedicamentData" CName="请求数据" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="35" DataStruct="RpcSyncMedicamentDataAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="36" DataStruct="RpcSyncMedicamentDataReply" Comment="" />
+    </Operate>
+    <Operate Name="MedicamentCD" CName="药剂CD" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="37" DataStruct="RpcMedicamentCDAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="38" DataStruct="RpcMedicamentCDReply" Comment="" />
+    </Operate>
+    <Operate Name="MedicamentCDNotify" CName="通知CD" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="39" DataStruct="RpcMedicamentCDNotifyNotify" Comment="" />
+    </Operate>
+    <Struct Name="RpcFillHpAsk" CName="使用物品填充hp池请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="ItemSimpleData" FieldId="1" Name="ItemData" CName="物品id" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcFillHpReply" CName="使用物品填充hp池回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcOneStepFillHpAsk" CName="一键添加请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="repeated" FieldType="ItemSimpleData" FieldId="3" Name="ItemData" CName="物品id" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcOneStepFillHpReply" CName="一键添加回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcClientRefreshMedicamentAsk" CName="客户端刷新药剂请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="RecoverMedicament" FieldId="1" Name="Medicament" CName="药剂" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcClientRefreshMedicamentReply" CName="客户端刷新药剂回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="RecoverMedicament" FieldId="2" Name="Medicament" CName="药剂" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcServerRefreshMedicamentNotify" CName="服务器刷新药剂通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="RecoverMedicament" FieldId="1" Name="Medicament" CName="药剂" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcSyncMedicamentDataAsk" CName="请求数据请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcSyncMedicamentDataReply" CName="请求数据回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="RecoverMedicament" FieldId="2" Name="Medicament" CName="药剂" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcMedicamentCDAsk" CName="药剂CD请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcMedicamentCDReply" CName="药剂CD回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="LeftTime" CName="剩余时间" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcMedicamentCDNotifyNotify" CName="通知CD通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="LeftTime" CName="剩余时间" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+</Root>

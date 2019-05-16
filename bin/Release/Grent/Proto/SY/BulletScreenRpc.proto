@@ -1,0 +1,41 @@
+message  BulletScreenRpcBulletScreenOptAsk
+{
+	optional int32 BulletScreenType = 1;
+	optional int32 OptType = 2;
+
+}
+
+message  BulletScreenRpcBulletScreenOptReply
+{
+	optional int32 Result = 1;
+	optional int32 BulletScreenType = 2;
+	optional int32 OptType = 3;
+
+}
+
+message  BulletScreenRpcCGBulletScreenAsk
+{
+	optional int32 CGid = 1;
+
+}
+
+message  BulletScreenRpcCGBulletScreenReply
+{
+	optional int32 Result = 1;
+	repeated string BulletScreenContent = 2;
+
+}
+
+message  BulletScreenRpcSendBulletScreenCGAsk
+{
+	optional int32 CGid = 1;
+	optional string Content = 2;
+
+}
+
+message  BulletScreenRpcSendBulletScreenCGReply
+{
+	optional int32 Result = 1;
+
+}
+

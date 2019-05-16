@@ -1,0 +1,53 @@
+message  ExpressionActionRpcSyncAsk
+{
+
+}
+
+message  ExpressionActionRpcSyncReply
+{
+	optional int32 Result = 1;
+	repeated ExpressionActionInfo ExpressionActionList = 2;
+	repeated int32 ExpressionWheelList = 3;
+
+}
+
+message  ExpressionActionRpcSetWheelAsk
+{
+	optional int32 Index = 1;
+	optional int32 ActionId = 2;
+
+}
+
+message  ExpressionActionRpcSetWheelReply
+{
+	optional int32 Result = 1;
+	repeated int32 WheelList = 2;
+
+}
+
+message  ExpressionActionRpcUseActionAsk
+{
+	optional int32 ActionId = 1;
+
+}
+
+message  ExpressionActionRpcUseActionReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  ExpressionActionRpcUseActionNotifyNotify
+{
+	optional int32 ObjId = 1;
+	optional int32 ActionId = 2;
+
+}
+
+message  ExpressionActionInfo
+{
+	optional int32 ActionId = 1[default=-1];
+	optional bool UnLock = 2[default=false];
+
+}
+

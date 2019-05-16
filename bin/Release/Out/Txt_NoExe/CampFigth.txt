@@ -1,0 +1,91 @@
+CampFigthRpcMilitaryBrokenAsk↑ MilitaryBroken请求
+	RoleID:int32 = -1	;roleid
+
+CampFigthRpcMilitaryBrokenReply↓ MilitaryBroken回应
+	Result:int32 = -1	;返回结果
+	Rank:int32 = -1	;Rank
+	Star:int32 = -1	;Star
+	Exp:int32 = -1	;Exp
+
+CampFigthRpcCampFightContributionNotify↓ CampFightContribution通知
+	Camp:int32 = -1	;Camp
+	ContributionValue:int32 = -1	;ContributionValue
+
+CampFigthRpcObjKillBroadcastNotify↓ ObjKillBroadcast通知
+	KillerObjID:int32 = -1	;KillerObjID
+	KillerName:int32 = -1	;KillerName
+	DeadObjID:int32 = -1	;DeadObjID
+	DeadObjResID:int32 = -1	;DeadObjResID
+
+CampFigthRpcNpcBirthNotify↓ NpcBirth通知
+	Camp:int32 = -1	;Camp
+	BirthObjID:int32 = -1	;BirthObjID
+	BirthObjResID:int32 = -1	;BirthObjResID
+
+CampFigthRpcGetMilitaryValueAsk↑ GetMilitaryValue请求
+	RoleID:int32 = -1	;RoleID
+
+CampFigthRpcGetMilitaryValueReply↓ GetMilitaryValue回应
+	Result:int32 = -1	;返回结果
+	Rank:int32 = -1	;Rank
+	Star:int32 = -1	;Star
+	Exp:int32 = -1	;Exp
+	Curseason:int32 = -1	;当前赛季
+	TodayHornor:int32 = -1	;今日获得荣誉值
+
+CampFigthRpcKillDeadInfoNotify↓ KillDeadInfo通知
+	KillNum:int32 = -1	;KillNum
+	DeadNum:int32 = -1	;DeadNum
+	Rank:int32 = -1	;Rank
+	Exp:int32 = -1	;Exp
+	Star:int32 = -1	;Star
+
+CampFigthRpcWorshipAsk↑ Worship请求
+	WorshipRoleID:int32 = -1	;WorshipRoleID
+
+CampFigthRpcWorshipReply↓ Worship回应
+	Result:int32 = -1	;返回结果
+	WorshipRoleID:int32 = -1	;WorshipRoleID
+	WorshipCount:int32 = -1	;WorshipCount
+
+CampFigthRpcWorshipRankAsk↑ WorshipRank请求
+	RoleID:int32 = -1	;RoleID
+
+CampFigthRpcWorshipRankReply↓ WorshipRank回应
+	Result:int32 = -1	;返回结果
+	RoleDatas:WorshipPlayerData*	;RoleDatas
+	[WorshipPlayerData]
+		Role_id:int32 = -1	;role_id
+		Role_name:string	;Role_name
+		Rank_level:int32 = -1	;Rank_level
+		Worship_cout:int32 = -1	;Worship_cout
+		Rank:int32 = -1	;Rank
+
+CampFigthRpcNewSeasonNotify↓ 新赛季通知
+	Rank:int32 = -1	;段位
+	Star:int32 = -1	;星级
+	RankIndex:int32 = -1	;排名
+	RewardList:PvpBattleRewardInfo*	;奖励列表
+	[PvpBattleRewardInfo]
+		ItemID:int32 = -1	;道具ID
+		ItemCout:int32 = -1	;道具数量
+	Lastseason:int32 = -1	;上一赛季
+
+CampFigthRpcSyncRankRewardAsk↑ 同步段位奖励请求
+
+CampFigthRpcSyncRankRewardReply↓ 同步段位奖励回应
+	Result:int32 = -1	;返回结果
+	RankRewardList:int32* = -1	;已领取的奖励
+
+CampFigthRpcGetRankRewardAsk↑ 获取段位奖励请求
+	Rank:int32 = -1	;段位
+
+CampFigthRpcGetRankRewardReply↓ 获取段位奖励回应
+	Result:int32 = -1	;返回结果
+	Rank:int32 = -1	;领取的段位
+
+CampFigthRpcEnterBattleSceneAsk↑ 进入战场请求
+
+CampFigthRpcEnterBattleSceneReply↓ 进入战场回应
+	Result:int32 = -1	;返回结果
+

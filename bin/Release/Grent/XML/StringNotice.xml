@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<Root Module="StringNotice" CName="文本提示" MsgNumStart="55" SyncDataVersion="1" Comment="">
+    <Operate Name="Notice" CName="通知" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="55" DataStruct="RpcNoticeNotify" Comment="" />
+    </Operate>
+    <Struct Name="RpcNoticeNotify" CName="通知通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="ConfigId" CName="文本ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="repeated" FieldType="string" FieldId="2" Name="Param" CName="参数" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+    </Struct>
+</Root>

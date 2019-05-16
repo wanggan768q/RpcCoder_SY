@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<Root Module="ExpressionAction" CName="表情动作" MsgNumStart="49" SyncDataVersion="1" Comment="">
+    <Operate Name="Sync" CName="数据同步" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="49" DataStruct="RpcSyncAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="50" DataStruct="RpcSyncReply" Comment="" />
+    </Operate>
+    <Operate Name="SetWheel" CName="设置轮盘" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="51" DataStruct="RpcSetWheelAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="52" DataStruct="RpcSetWheelReply" Comment="" />
+    </Operate>
+    <Operate Name="UseAction" CName="使用表情" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="53" DataStruct="RpcUseActionAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="54" DataStruct="RpcUseActionReply" Comment="" />
+    </Operate>
+    <Operate Name="UseActionNotify" CName="使用表情通知" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="55" DataStruct="RpcUseActionNotifyNotify" Comment="" />
+    </Operate>
+    <Struct Name="RpcSyncAsk" CName="数据同步请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcSyncReply" CName="数据同步回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="ExpressionActionInfo" FieldId="2" Name="ExpressionActionList" CName="表情信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="repeated" FieldType="int32" FieldId="3" Name="ExpressionWheelList" CName="轮盘" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcSetWheelAsk" CName="设置轮盘请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Index" CName="索引" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="ActionId" CName="表情ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcSetWheelReply" CName="设置轮盘回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="int32" FieldId="2" Name="WheelList" CName="轮盘信息" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcUseActionAsk" CName="使用表情请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="ActionId" CName="表情ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcUseActionReply" CName="使用表情回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcUseActionNotifyNotify" CName="使用表情通知通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="ObjId" CName="角色Id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="ActionId" CName="动作ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+</Root>

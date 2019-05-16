@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<xml>
+    <module>
+        <sub_module name="Activity" cname="活动" fileName="Activity.xml" />
+        <sub_module name="Auction" cname="拍卖行" fileName="Auction.xml" />
+        <sub_module name="Bag" cname="Bag" fileName="Bag.xml" />
+        <sub_module name="BaseAttr" cname="基础数据" fileName="BaseAttr.xml" />
+        <sub_module name="Buiness" cname="生活技能" fileName="Buiness.xml" />
+        <sub_module name="BulletScreen" cname="弹幕" fileName="BulletScreen.xml" />
+        <sub_module name="CampFigth" cname="CampFigth" fileName="CampFigth.xml" />
+        <sub_module name="CGAnimation" cname="动画播放模块" fileName="CGAnimation.xml" />
+        <sub_module name="Chat" cname="Chat" fileName="Chat.xml" />
+        <sub_module name="ClimTower" cname="爬塔玩法" fileName="ClimTower.xml" />
+        <sub_module name="Config" cname="Config" fileName="Config.xml" />
+        <sub_module name="Contact" cname="联系人" fileName="Contact.xml" />
+        <sub_module name="Currency" cname="货币" fileName="Currency.xml" />
+        <sub_module name="DropItem" cname="掉落" fileName="DropItem.xml" />
+        <sub_module name="Dungeon" cname="副本" fileName="Dungeon.xml" />
+        <sub_module name="Equipment" cname="装备" fileName="Equipment.xml" />
+        <sub_module name="EquipSlot" cname="装备槽" fileName="EquipSlot.xml" />
+        <sub_module name="Event" cname="事件模块" fileName="Event.xml" />
+        <sub_module name="EventNpc" cname="可交互的怪 " fileName="EventNpc.xml" />
+        <sub_module name="EventObj" cname="EventObj" fileName="EventObj.xml" />
+        <sub_module name="ExpressionAction" cname="表情动作" fileName="ExpressionAction.xml" />
+        <sub_module name="Fight" cname="战斗" fileName="Fight.xml" />
+        <sub_module name="FunctionTutorial" cname="功能引导" fileName="FunctionTutorial.xml" />
+        <sub_module name="GameSetting" cname="游戏设置" fileName="GameSetting.xml" />
+        <sub_module name="Gate" cname="网关模块" fileName="Gate.xml" />
+        <sub_module name="Guild" cname="公会" fileName="Guild.xml" />
+        <sub_module name="Human" cname="玩家模块" fileName="Human.xml" />
+        <sub_module name="ItemOperation" cname="道具操作" fileName="ItemOperation.xml" />
+        <sub_module name="Jewel" cname="宝石模块" fileName="Jewel.xml" />
+        <sub_module name="LobbyServer" cname="大厅服务器" fileName="LobbyServer.xml" />
+        <sub_module name="Login" cname="登录模块" fileName="Login.xml" />
+        <sub_module name="Mail" cname="邮件" fileName="Mail.xml" />
+        <sub_module name="Match" cname="匹配模块" fileName="Match.xml" />
+        <sub_module name="Medicament" cname="药剂" fileName="Medicament.xml" />
+        <sub_module name="Mercenary" cname="佣兵" fileName="Mercenary.xml" />
+        <sub_module name="Pet" cname="宠物模块" fileName="Pet.xml" />
+        <sub_module name="PetCapture" cname="宠物捕获" fileName="PetCapture.xml" />
+        <sub_module name="Pvp" cname="Pvp" fileName="Pvp.xml" />
+        <sub_module name="Quest" cname="Quest" fileName="Quest.xml" />
+        <sub_module name="Rank" cname="排行榜" fileName="Rank.xml" />
+        <sub_module name="RedDot" cname="红点系统" fileName="RedDot.xml" />
+        <sub_module name="Riding" cname="坐骑" fileName="Riding.xml" />
+        <sub_module name="Scene" cname="场景模块" fileName="Scene.xml" />
+        <sub_module name="Shop" cname="商店" fileName="Shop.xml" />
+        <sub_module name="Skill" cname="技能模块" fileName="Skill.xml" />
+        <sub_module name="SmallMap" cname="小地图相关" fileName="SmallMap.xml" />
+        <sub_module name="StringNotice" cname="文本提示" fileName="StringNotice.xml" />
+        <sub_module name="Team" cname="Team" fileName="Team.xml" />
+        <sub_module name="Treasure" cname="珍宝阁" fileName="Treasure.xml" />
+        <sub_module name="TreasureMap" cname="藏宝图" fileName="TreasureMap.xml" />
+        <sub_module name="Vechicle" cname="载具（变身）" fileName="Vechicle.xml" />
+        <sub_module name="Welfare" cname="福利" fileName="Welfare.xml" />
+        <sub_module name="WG" cname="WG" fileName="WG.xml" />
+        <sub_module name="WorldBoss" cname="世界BOSS模块" fileName="WorldBoss.xml" />
+        <sub_module name="WorldServer" cname="世界服务器模块" fileName="WorldServer.xml" />
+    </module>
+</xml>

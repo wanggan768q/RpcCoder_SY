@@ -1,0 +1,210 @@
+message  PetRpcPetSyncAsk
+{
+
+}
+
+message  PetRpcPetSyncReply
+{
+	optional int32 Result = 1;
+	optional ItemData ItemData = 2;
+
+}
+
+message  PetRpcUnSummonAsk
+{
+
+}
+
+message  PetRpcUnSummonReply
+{
+	optional int32 Result = 1;
+	optional ItemObj ItemObj = 2;
+
+}
+
+message  PetRpcLevelUpgradeAsk
+{
+	optional uint64 Guid = 2[default=0];
+	repeated int32 ItemCount = 3;
+
+}
+
+message  PetRpcLevelUpgradeReply
+{
+	optional int32 Result = 1;
+	optional ItemData ItemData = 2;
+
+}
+
+message  PetRpcStarUpgradeAsk
+{
+	optional uint64 Guid = 1[default=0];
+	optional uint64 UseGuid = 2[default=0];
+
+}
+
+message  PetRpcStarUpgradeReply
+{
+	optional int32 Result = 1;
+	optional ItemData ItemData = 2;
+
+}
+
+message  PetRpcChangeNameAsk
+{
+	optional uint64 Guid = 1[default=0];
+	optional string NewName = 2;
+
+}
+
+message  PetRpcChangeNameReply
+{
+	optional int32 Result = 1;
+	optional string Name = 2;
+
+}
+
+message  PetRpcInheritAsk
+{
+	optional uint64 Guid = 1[default=0];
+	optional uint64 UseGuid = 2[default=0];
+
+}
+
+message  PetRpcInheritReply
+{
+	optional int32 Result = 1;
+	optional ItemData ItemData = 2;
+
+}
+
+message  PetRpcSkillInheritAsk
+{
+	optional uint64 Guid = 1[default=0];
+	optional uint64 UseGuid = 2[default=0];
+
+}
+
+message  PetRpcSkillInheritReply
+{
+	optional int32 Result = 1;
+	optional ItemData ItemData = 2;
+
+}
+
+message  PetRpcPassiveSkillsAsk
+{
+	optional uint64 Guid = 2[default=0];
+
+}
+
+message  PetRpcPassiveSkillsReply
+{
+	optional int32 Result = 1;
+	repeated PetSkill Skills = 2;
+
+}
+
+message  PetRpcStudySkillAsk
+{
+	optional uint64 Guid = 2[default=0];
+	optional int32 ItemId = 3;
+
+}
+
+message  PetRpcStudySkillReply
+{
+	optional int32 Result = 1;
+	optional ItemData ItemData = 2;
+	optional int32 ReplacedSkillId = 3;
+	optional int32 Index = 4;
+
+}
+
+message  PetRpcLockSkillAsk
+{
+	optional uint64 Guid = 2[default=0];
+	optional int32 SkillId = 3;
+
+}
+
+message  PetRpcLockSkillReply
+{
+	optional int32 Result = 1;
+	optional ItemData ItemData = 2;
+
+}
+
+message  PetRpcUnLockSkillAsk
+{
+	optional uint64 Guid = 2[default=0];
+	optional int32 SkillId = 3;
+
+}
+
+message  PetRpcUnLockSkillReply
+{
+	optional int32 Result = 1;
+	optional ItemData ItemData = 2;
+
+}
+
+message  ItemData
+{
+	optional bool IsLock = 2[default=false];
+	optional int32 OverlayCount = 3[default=-1];
+	optional int32 ConfigId = 4[default=-1];
+	optional EquipAttr EquipAttr = 5;
+	optional bool IsBind = 12[default=true];
+	optional uint64 Guid = 13[default=0];
+	optional PetData PetData = 14;
+	optional int32 BindRule = 15[default=1];
+	optional int32 SaleCD = 16[default=0];
+
+}
+
+message  ItemObj
+{
+	optional int32 Pos = 1[default=-1];
+	optional ItemData ItemData = 2;
+	optional bool RedPoint = 3[default=false];
+
+}
+
+message  PetSkill
+{
+	optional int32 SkillId = 3[default=-1];
+	optional int32 Lock = 4[default=-1];
+
+}
+
+message  EquipAttr
+{
+	repeated AttrKeyValue BaseAttr = 1;
+	repeated AttrKeyValue ExtraAttr = 2;
+	optional int32 BattleScore = 3[default=-1];
+
+}
+
+message  AttrKeyValue
+{
+	optional int32 Key = 1[default=-1];
+	optional int64 Value = 2[default=-1];
+	optional int32 Quality = 3[default=-1];
+
+}
+
+message  PetData
+{
+	optional int32 Exp = 1[default=-1];
+	optional int32 Level = 2[default=-1];
+	optional string Name = 3;
+	repeated AttrKeyValue Attrs = 5;
+	optional int32 BattleScore = 6[default=-1];
+	repeated AttrKeyValue Talent = 7;
+	repeated PetSkill SkillList = 8;
+	optional bool IsActive = 9[default=false];
+	optional int32 TalentScore = 10[default=-1];
+
+}
+

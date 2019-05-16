@@ -1,0 +1,58 @@
+import "PublicStruct.proto";
+
+//弹幕设置请求
+message  BulletScreenRpcBulletScreenOptAsk
+{
+	optional int32 BulletScreenType = 1[default=-1];	//弹幕设置场景(1组队 2过场)
+	optional int32 OptType = 2[default=-1];	//关闭打开(1关闭 2打开)
+}
+
+//弹幕设置回应
+message  BulletScreenRpcBulletScreenOptReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional int32 BulletScreenType = 2[default=-1];	//弹幕设置场景(1组队 2过场)
+	optional int32 OptType = 3[default=-1];	//关闭打开(1关闭 2打开)
+}
+
+//过场动画弹幕请求请求
+message  BulletScreenRpcCGBulletScreenAsk
+{
+	optional int32 CGid = 1[default=-1];	//过场ID
+}
+
+//过场动画弹幕请求回应
+message  BulletScreenRpcCGBulletScreenReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated string BulletScreenContent = 2;	//弹幕内容
+}
+
+//发布过场弹幕请求
+message  BulletScreenRpcSendBulletScreenCGAsk
+{
+	optional int32 CGid = 1[default=-1];	//过场ID
+	optional string Content = 2;	//发布内容
+}
+
+//发布过场弹幕回应
+message  BulletScreenRpcSendBulletScreenCGReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+

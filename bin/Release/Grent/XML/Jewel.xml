@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<Root Module="Jewel" CName="宝石模块" MsgNumStart="25" SyncDataVersion="1" Comment="">
+    <Operate Name="JewelSync" CName="同步" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="25" DataStruct="RpcJewelSyncAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="26" DataStruct="RpcJewelSyncReply" Comment="" />
+    </Operate>
+    <Operate Name="InsetJewel" CName="镶嵌" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="27" DataStruct="RpcInsetJewelAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="28" DataStruct="RpcInsetJewelReply" Comment="" />
+    </Operate>
+    <Operate Name="RemoveJewel" CName="摘除宝石" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="29" DataStruct="RpcRemoveJewelAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="30" DataStruct="RpcRemoveJewelReply" Comment="" />
+    </Operate>
+    <Operate Name="CompoundJewel" CName="合成宝石" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="31" DataStruct="RpcCompoundJewelAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="32" DataStruct="RpcCompoundJewelReply" Comment="" />
+    </Operate>
+    <Operate Name="CompoundSetJewel" CName="对已镶嵌的宝石合成" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="33" DataStruct="RpcCompoundSetJewelAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="34" DataStruct="RpcCompoundSetJewelReply" Comment="" />
+    </Operate>
+    <Operate Name="UnlockJewelSlot" CName="解锁" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="35" DataStruct="RpcUnlockJewelSlotAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="36" DataStruct="RpcUnlockJewelSlotReply" Comment="" />
+    </Operate>
+    <Operate Name="QuickCompound" CName="快速合成" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="37" DataStruct="RpcQuickCompoundAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="38" DataStruct="RpcQuickCompoundReply" Comment="" />
+    </Operate>
+    <Struct Name="RpcJewelSyncAsk" CName="同步请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcJewelSyncReply" CName="同步回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="JewelInfo" FieldId="2" Name="JewelInfos" CName="宝石信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcInsetJewelAsk" CName="镶嵌请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="EquipSlot" CName="装备位" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="JewelId" CName="宝石ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="JewelSlot" CName="宝石位" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-1 自动  0 1 2 位置" />
+    </Struct>
+    <Struct Name="RpcInsetJewelReply" CName="镶嵌回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="JewelInfo" FieldId="2" Name="JewelInfo" CName="宝石信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcRemoveJewelAsk" CName="摘除宝石请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="EquipSlot" CName="装备位" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="JewelSlot" CName="宝石位置" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcRemoveJewelReply" CName="摘除宝石回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="JewelInfo" FieldId="2" Name="JewelInfo" CName="宝石信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcCompoundJewelAsk" CName="合成宝石请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="JewelId" CName="使用的宝石ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="bool" FieldId="2" Name="UseSafeItem" CName="是否使用保底道具" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="false" Comment="" />
+    </Struct>
+    <Struct Name="RpcCompoundJewelReply" CName="合成宝石回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="JewelId" CName="宝石ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="result = true 合成的宝石 false 返还的宝石" />
+    </Struct>
+    <Struct Name="RpcCompoundSetJewelAsk" CName="对已镶嵌的宝石合成请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="EquipType" CName="装备位" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="JewelSlot" CName="宝石位" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcCompoundSetJewelReply" CName="对已镶嵌的宝石合成回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="JewelInfo" FieldId="3" Name="JewelInfo" CName="宝石信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcUnlockJewelSlotAsk" CName="解锁请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="EquipSlot" CName="装备位" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="JewelSlot" CName="槽位" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcUnlockJewelSlotReply" CName="解锁回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="JewelInfo" FieldId="2" Name="JewelInfo" CName="宝石信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcQuickCompoundAsk" CName="快速合成请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="JewelId" CName="要合成谁" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcQuickCompoundReply" CName="快速合成回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+</Root>

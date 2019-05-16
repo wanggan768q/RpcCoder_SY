@@ -1,0 +1,109 @@
+message  JewelRpcJewelSyncAsk
+{
+
+}
+
+message  JewelRpcJewelSyncReply
+{
+	optional int32 Result = 1;
+	repeated JewelInfo JewelInfos = 2;
+
+}
+
+message  JewelRpcInsetJewelAsk
+{
+	optional int32 EquipSlot = 1;
+	optional int32 JewelId = 2;
+	optional int32 JewelSlot = 3;
+
+}
+
+message  JewelRpcInsetJewelReply
+{
+	optional int32 Result = 1;
+	optional JewelInfo JewelInfo = 2;
+
+}
+
+message  JewelRpcRemoveJewelAsk
+{
+	optional int32 EquipSlot = 1;
+	optional int32 JewelSlot = 2;
+
+}
+
+message  JewelRpcRemoveJewelReply
+{
+	optional int32 Result = 1;
+	optional JewelInfo JewelInfo = 2;
+
+}
+
+message  JewelRpcCompoundJewelAsk
+{
+	optional int32 JewelId = 1;
+	optional bool UseSafeItem = 2[default=false];
+
+}
+
+message  JewelRpcCompoundJewelReply
+{
+	optional int32 Result = 1;
+	optional int32 JewelId = 2;
+
+}
+
+message  JewelRpcCompoundSetJewelAsk
+{
+	optional int32 EquipType = 2;
+	optional int32 JewelSlot = 3;
+
+}
+
+message  JewelRpcCompoundSetJewelReply
+{
+	optional int32 Result = 1;
+	optional JewelInfo JewelInfo = 3;
+
+}
+
+message  JewelRpcUnlockJewelSlotAsk
+{
+	optional int32 EquipSlot = 1;
+	optional int32 JewelSlot = 2;
+
+}
+
+message  JewelRpcUnlockJewelSlotReply
+{
+	optional int32 Result = 1;
+	optional JewelInfo JewelInfo = 2;
+
+}
+
+message  JewelRpcQuickCompoundAsk
+{
+	optional int32 JewelId = 1;
+
+}
+
+message  JewelRpcQuickCompoundReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  JewelInfo
+{
+	optional int32 EquipSlot = 1[default=-1];
+	repeated JewelSlot JewelSlots = 2;
+
+}
+
+message  JewelSlot
+{
+	optional int32 ItemId = 1[default=-1];
+	optional bool Unlocked = 2[default=false];
+
+}
+

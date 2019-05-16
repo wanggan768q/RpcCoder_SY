@@ -1,0 +1,35 @@
+message  ShopRpcBuyItemAsk
+{
+	optional int32 ShopItemId = 1;
+	optional int32 ItemNum = 2;
+
+}
+
+message  ShopRpcBuyItemReply
+{
+	optional int32 Result = 1;
+	optional ShopItem ItemInfo = 2;
+
+}
+
+message  ShopRpcShopInfoAsk
+{
+	optional int32 RoleID = 1;
+
+}
+
+message  ShopRpcShopInfoReply
+{
+	optional int32 Result = 1;
+	repeated ShopItem ItemInfo = 2;
+
+}
+
+message  ShopItem
+{
+	optional int32 ShopItemID = 1[default=-1];
+	optional int32 TotalBuyCount = 2[default=-1];
+	optional int32 BuyCount = 3[default=-1];
+
+}
+

@@ -1,0 +1,176 @@
+import "PublicStruct.proto";
+
+//MilitaryBroken请求
+message  CampFigthRpcMilitaryBrokenAsk
+{
+	optional int32 RoleID = 1[default=-1];	//roleid
+}
+
+//MilitaryBroken回应
+message  CampFigthRpcMilitaryBrokenReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional int32 Rank = 2[default=-1];	//Rank
+	optional int32 Star = 3[default=-1];	//Star
+	optional int32 Exp = 4[default=-1];	//Exp
+}
+
+//CampFightContribution通知
+message  CampFigthRpcCampFightContributionNotify
+{
+	optional int32 Camp = 1[default=-1];	//Camp
+	optional int32 ContributionValue = 2[default=-1];	//ContributionValue
+}
+
+//ObjKillBroadcast通知
+message  CampFigthRpcObjKillBroadcastNotify
+{
+	optional int32 KillerObjID = 1[default=-1];	//KillerObjID
+	optional int32 KillerName = 2[default=-1];	//KillerName
+	optional int32 DeadObjID = 3[default=-1];	//DeadObjID
+	optional int32 DeadObjResID = 4[default=-1];	//DeadObjResID
+}
+
+//NpcBirth通知
+message  CampFigthRpcNpcBirthNotify
+{
+	optional int32 Camp = 1[default=-1];	//Camp
+	optional int32 BirthObjID = 2[default=-1];	//BirthObjID
+	optional int32 BirthObjResID = 3[default=-1];	//BirthObjResID
+}
+
+//GetMilitaryValue请求
+message  CampFigthRpcGetMilitaryValueAsk
+{
+	optional int32 RoleID = 1[default=-1];	//RoleID
+}
+
+//GetMilitaryValue回应
+message  CampFigthRpcGetMilitaryValueReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional int32 Rank = 2[default=-1];	//Rank
+	optional int32 Star = 3[default=-1];	//Star
+	optional int32 Exp = 4[default=-1];	//Exp
+	optional int32 Curseason = 5[default=-1];	//当前赛季
+	optional int32 TodayHornor = 6[default=-1];	//今日获得荣誉值
+}
+
+//KillDeadInfo通知
+message  CampFigthRpcKillDeadInfoNotify
+{
+	optional int32 KillNum = 1[default=-1];	//KillNum
+	optional int32 DeadNum = 2[default=-1];	//DeadNum
+	optional int32 Rank = 4[default=-1];	//Rank
+	optional int32 Exp = 5[default=-1];	//Exp
+	optional int32 Star = 6[default=-1];	//Star
+}
+
+//Worship请求
+message  CampFigthRpcWorshipAsk
+{
+	optional int32 WorshipRoleID = 1[default=-1];	//WorshipRoleID
+}
+
+//Worship回应
+message  CampFigthRpcWorshipReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional int32 WorshipRoleID = 2[default=-1];	//WorshipRoleID
+	optional int32 WorshipCount = 3[default=-1];	//WorshipCount
+}
+
+//WorshipRank请求
+message  CampFigthRpcWorshipRankAsk
+{
+	optional int32 RoleID = 1[default=-1];	//RoleID
+}
+
+//WorshipRank回应
+message  CampFigthRpcWorshipRankReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated WorshipPlayerData RoleDatas = 2;	//RoleDatas
+}
+
+//新赛季通知
+message  CampFigthRpcNewSeasonNotify
+{
+	optional int32 Rank = 1[default=-1];	//段位
+	optional int32 Star = 2[default=-1];	//星级
+	optional int32 RankIndex = 3[default=-1];	//排名
+	repeated PvpBattleRewardInfo RewardList = 4;	//奖励列表
+	optional int32 Lastseason = 5[default=-1];	//上一赛季
+}
+
+//同步段位奖励请求
+message  CampFigthRpcSyncRankRewardAsk
+{
+}
+
+//同步段位奖励回应
+message  CampFigthRpcSyncRankRewardReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated int32 RankRewardList = 2;	//已领取的奖励
+}
+
+//获取段位奖励请求
+message  CampFigthRpcGetRankRewardAsk
+{
+	optional int32 Rank = 1[default=-1];	//段位
+}
+
+//获取段位奖励回应
+message  CampFigthRpcGetRankRewardReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional int32 Rank = 3[default=-1];	//领取的段位
+}
+
+//进入战场请求
+message  CampFigthRpcEnterBattleSceneAsk
+{
+}
+
+//进入战场回应
+message  CampFigthRpcEnterBattleSceneReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+

@@ -1,0 +1,13 @@
+message  GateRpcPingAsk
+{
+	optional uint64 Sequence = 1[default=0];
+
+}
+
+message  GateRpcPingReply
+{
+	optional int32 Result = 1;
+	optional uint64 Sequence = 2[default=0];
+
+}
+

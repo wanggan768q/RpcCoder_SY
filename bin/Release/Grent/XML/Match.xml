@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<Root Module="Match" CName="匹配模块" MsgNumStart="39" SyncDataVersion="1" Comment="">
+    <Operate Name="AutoMatch" CName="匹配" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="39" DataStruct="RpcAutoMatchAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="40" DataStruct="RpcAutoMatchReply" Comment="" />
+    </Operate>
+    <Operate Name="CancelMatch" CName="取消匹配" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="41" DataStruct="RpcCancelMatchAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="42" DataStruct="RpcCancelMatchReply" Comment="" />
+    </Operate>
+    <Operate Name="CancelMatchNotify" CName="取消匹配通知" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="43" DataStruct="RpcCancelMatchNotifyNotify" Comment="" />
+    </Operate>
+    <Operate Name="PrepareRoom" CName="开始准备进入房间" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="44" DataStruct="RpcPrepareRoomNotify" Comment="" />
+    </Operate>
+    <Operate Name="Ready" CName="准备" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="45" DataStruct="RpcReadyAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="46" DataStruct="RpcReadyReply" Comment="" />
+    </Operate>
+    <Operate Name="CancelReady" CName="取消准备" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="47" DataStruct="RpcCancelReadyAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="48" DataStruct="RpcCancelReadyReply" Comment="" />
+    </Operate>
+    <Operate Name="RoomCancel" CName="房间取消" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="49" DataStruct="RpcRoomCancelNotify" Comment="" />
+    </Operate>
+    <Operate Name="MemberReady" CName="成员准备" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="50" DataStruct="RpcMemberReadyNotify" Comment="" />
+    </Operate>
+    <Struct Name="RpcAutoMatchAsk" CName="匹配请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="PlayerMatchData" FieldId="1" Name="MatchInfo" CName="匹配参数" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcAutoMatchReply" CName="匹配回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="PlayerMatchData" FieldId="2" Name="MatchInfo" CName="匹配参数" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcCancelMatchAsk" CName="取消匹配请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcCancelMatchReply" CName="取消匹配回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcCancelMatchNotifyNotify" CName="取消匹配通知通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1" />
+    <Struct Name="RpcPrepareRoomNotify" CName="开始准备进入房间通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="PBMatchRoom" FieldId="1" Name="ReadyRoom" CName="准备界面" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcReadyAsk" CName="准备请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="MatchType" CName="匹配类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="2" Name="RoomId" CName="房间的id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcReadyReply" CName="准备回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="2" Name="RoleId" CName="玩家id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcCancelReadyAsk" CName="取消准备请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="MatchType" CName="匹配类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="2" Name="RoomId" CName="房间的id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcCancelReadyReply" CName="取消准备回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="2" Name="RoleId" CName="玩家Id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcRoomCancelNotify" CName="房间取消通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcMemberReadyNotify" CName="成员准备通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="RoleId" CName="准备的玩家" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+</Root>

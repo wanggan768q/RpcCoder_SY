@@ -1,0 +1,37 @@
+message  RedDotRpcSyncRedDotAsk
+{
+
+}
+
+message  RedDotRpcSyncRedDotReply
+{
+	optional int32 Result = 1;
+	repeated RedDotInfo RedDotInfoList = 2;
+
+}
+
+message  RedDotRpcRemoveRedDotAsk
+{
+	optional int32 Type = 1;
+
+}
+
+message  RedDotRpcRemoveRedDotReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  RedDotRpcUpdateRedDotNotify
+{
+	optional RedDotInfo RedDotInfo = 1;
+
+}
+
+message  RedDotInfo
+{
+	optional int32 Type = 1[default=-1];
+	optional int32 IsLight = 2[default=-1];
+
+}
+

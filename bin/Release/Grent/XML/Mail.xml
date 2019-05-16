@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<Root Module="Mail" CName="邮件" MsgNumStart="30" SyncDataVersion="1" Comment="">
+    <Operate Name="InitMail" CName="初始化邮件信息" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="30" DataStruct="RpcInitMailAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="31" DataStruct="RpcInitMailReply" Comment="" />
+    </Operate>
+    <Operate Name="ReadMail" CName="已读邮件" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="32" DataStruct="RpcReadMailAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="33" DataStruct="RpcReadMailReply" Comment="" />
+    </Operate>
+    <Operate Name="DeleteMail" CName="删除邮件" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="34" DataStruct="RpcDeleteMailAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="35" DataStruct="RpcDeleteMailReply" Comment="" />
+    </Operate>
+    <Operate Name="GetMail" CName="领取邮件" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="36" DataStruct="RpcGetMailAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="37" DataStruct="RpcGetMailReply" Comment="" />
+    </Operate>
+    <Operate Name="SyncMailInfo" CName="同步邮件信息" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="38" DataStruct="RpcSyncMailInfoNotify" Comment="" />
+    </Operate>
+    <Struct Name="RpcInitMailAsk" CName="初始化邮件信息请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcInitMailReply" CName="初始化邮件信息回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="MailInfo" FieldId="2" Name="InfoList" CName="邮件信息列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcReadMailAsk" CName="已读邮件请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Mail_type" CName="邮件类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="Mail_id" CName="主键id" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcReadMailReply" CName="已读邮件回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="int32" FieldId="2" Name="System_mail_ids" CName="已读系统邮件" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="repeated" FieldType="int32" FieldId="3" Name="Private_mail_ids" CName="已读私有邮件" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcDeleteMailAsk" CName="删除邮件请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="Mail_type" CName="邮件类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="4" Name="Mail_id" CName="主键id" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcDeleteMailReply" CName="删除邮件回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="5">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="int32" FieldId="4" Name="System_mail_ids" CName="已读系统邮件" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="repeated" FieldType="int32" FieldId="5" Name="Private_mail_ids" CName="已读私有邮件" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcGetMailAsk" CName="领取邮件请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="Mail_type" CName="邮件类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="Mail_id" CName="主键id" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcGetMailReply" CName="领取邮件回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="5">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="int32" FieldId="4" Name="System_mail_ids" CName="已读系统邮件" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="repeated" FieldType="int32" FieldId="5" Name="Private_mail_ids" CName="已读私有邮件" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcSyncMailInfoNotify" CName="同步邮件信息通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="repeated" FieldType="MailInfo" FieldId="1" Name="InfoList" CName="更新的邮件信息列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="repeated" FieldType="uint64" FieldId="2" Name="GuidList" CName="删除的主键id列表" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+</Root>

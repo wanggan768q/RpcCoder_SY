@@ -1,0 +1,137 @@
+message  LoginRpcLoginAsk
+{
+	optional string Username = 1;
+	optional string Passwd = 2;
+	optional string SnId = 3;
+	optional string GameId = 4;
+	optional string Mac = 5;
+	optional string Token = 6;
+
+}
+
+message  LoginRpcLoginReply
+{
+	optional int32 Result = 1;
+	optional uint64 RoleId = 2[default=0];
+	optional Vector3 Pos = 3;
+	repeated CharacterInfo CharacterList = 4;
+	optional uint64 LastSelectRoleId = 5[default=0];
+
+}
+
+message  LoginRpcSelectCharacterAsk
+{
+	optional uint64 RoleId = 1[default=0];
+
+}
+
+message  LoginRpcSelectCharacterReply
+{
+	optional int32 Result = 1;
+	optional uint64 RoleId = 2[default=0];
+	optional int32 LastSceneID = 5;
+	optional string Ban_Reason = 6;
+	optional int32 LineId = 7;
+	optional int32 Ban_EndTime = 8;
+
+}
+
+message  LoginRpcCreateCharacterAsk
+{
+	optional string Nickname = 1;
+	optional int32 ConfigId = 2;
+
+}
+
+message  LoginRpcCreateCharacterReply
+{
+	optional int32 Result = 1;
+	optional uint64 RoleId = 2[default=0];
+	optional int32 TimeStamp = 3;
+
+}
+
+message  LoginRpcDeleteCharacterAsk
+{
+	optional uint64 RoleId = 1[default=0];
+
+}
+
+message  LoginRpcDeleteCharacterReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  LoginRpcTestAsk
+{
+	repeated int64 A = 1;
+	repeated uint64 B = 3;
+
+}
+
+message  LoginRpcTestReply
+{
+	optional int32 Result = 1;
+	repeated int64 A = 2;
+	repeated uint64 B = 3;
+
+}
+
+message  LoginRpcTest1Ask
+{
+	repeated uint64 B = 1;
+
+}
+
+message  LoginRpcTest1Reply
+{
+	optional int32 Result = 1;
+
+}
+
+message  LoginRpcLoginLineUpNotify
+{
+	optional int32 LineUpIndex = 1;
+
+}
+
+message  LoginRpcLoginEnterGameNotify
+{
+	optional uint64 RoleID = 1[default=0];
+	optional int32 LastSceneID = 2;
+	optional int32 LineID = 3;
+
+}
+
+message  Vector3
+{
+	optional float X = 1[default=-1];
+	optional float Y = 2[default=-1];
+	optional float Z = 3[default=-1];
+
+}
+
+message  CharacterInfo
+{
+	optional uint64 RoleId = 1[default=0];
+	optional string Nickname = 2;
+	optional int32 ConfigId = 3[default=-1];
+	optional int32 Hp = 4[default=-1];
+	optional int32 HpMax = 5[default=-1];
+	optional int32 Level = 6[default=-1];
+	optional TreasureEquipedID TreasureEquiped = 8;
+
+}
+
+message  TreasureEquipedID
+{
+	optional int32 TreasureHair = 1[default=-1];
+	optional int32 TreasureHead = 2[default=-1];
+	optional int32 TreasureBody = 3[default=-1];
+	optional int32 TreasureWeapon = 4[default=-1];
+	optional int32 TreasureWing = 5[default=-1];
+	optional int32 TreasureRiding = 6[default=-1];
+
+}
+

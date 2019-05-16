@@ -1,0 +1,385 @@
+message  TeamRpcCreateTeamAsk
+{
+	optional int32 TeamType = 2;
+	optional TeamTarget TTarget = 6;
+
+}
+
+message  TeamRpcCreateTeamReply
+{
+	optional int32 Result = 1;
+	optional TeamInfo Team = 2;
+
+}
+
+message  TeamRpcLeaveTeamAsk
+{
+
+}
+
+message  TeamRpcLeaveTeamReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  TeamRpcAppointTeamLeaderAsk
+{
+	optional uint64 RoleId = 1[default=0];
+
+}
+
+message  TeamRpcAppointTeamLeaderReply
+{
+	optional int32 Result = 1;
+	optional uint64 NewLeaderId = 2[default=0];
+
+}
+
+message  TeamRpcNewLeaderNotify
+{
+	optional uint64 Newleaderroleid = 1[default=0];
+
+}
+
+message  TeamRpcKickMemberAsk
+{
+	optional uint64 KickMemberRoleId = 1[default=0];
+
+}
+
+message  TeamRpcKickMemberReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  TeamRpcDissmissTeamAsk
+{
+
+}
+
+message  TeamRpcDissmissTeamReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  TeamRpcAppointTeamLeaderNotify
+{
+
+}
+
+message  TeamRpcKickMemberNotifyNotify
+{
+	optional uint64 KickedMemberRoleId = 1[default=0];
+
+}
+
+message  TeamRpcLeaveTeamNotifyNotify
+{
+	optional uint64 RoleId = 1[default=0];
+	optional uint64 NewLeaderRoleId = 2[default=0];
+
+}
+
+message  TeamRpcJoinTeamNotifyNotify
+{
+	optional TeamMemberInfo TeamMember = 1;
+	optional TeamInfo Team = 2;
+
+}
+
+message  TeamRpcDissmissTeamNotifyNotify
+{
+
+}
+
+message  TeamRpcSurroundingTeamAsk
+{
+	optional int32 TargetGroupId = 2;
+	optional int32 TargetGroup = 3;
+
+}
+
+message  TeamRpcSurroundingTeamReply
+{
+	optional int32 Result = 1;
+	repeated TeamInfo TeamsInfo = 2;
+	optional int32 TargetGroupId = 5;
+	optional int32 TargetGroup = 6;
+
+}
+
+message  TeamRpcApplyTeamAsk
+{
+	optional uint64 TeamId = 1[default=0];
+
+}
+
+message  TeamRpcApplyTeamReply
+{
+	optional int32 Result = 1;
+	optional uint64 TeamId = 2[default=0];
+
+}
+
+message  TeamRpcApplyTeamNotifyNotify
+{
+	optional TeamMemberInfo TeamMember = 1;
+
+}
+
+message  TeamRpcAgreeApplicantAsk
+{
+	optional uint64 RoleId = 2[default=0];
+
+}
+
+message  TeamRpcAgreeApplicantReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  TeamRpcAgreeApplicantNotifyNotify
+{
+	optional TeamInfo Team = 1;
+
+}
+
+message  TeamRpcTeamInfoNotify
+{
+	optional TeamInfo Team = 1;
+	optional int32 FollowTeamLeader = 2;
+
+}
+
+message  TeamRpcUpdateTeamMemInfoNotify
+{
+	optional TeamMemberInfo TeamMember = 1;
+
+}
+
+message  TeamRpcFollowTeamLeaderAsk
+{
+	optional int32 FollowTeamLeader = 1;
+
+}
+
+message  TeamRpcFollowTeamLeaderReply
+{
+	optional int32 Result = 1;
+	optional int32 FollowTeamLeader = 2;
+
+}
+
+message  TeamRpcSummonMemberAsk
+{
+
+}
+
+message  TeamRpcSummonMemberReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  TeamRpcSummonMemberNotifyNotify
+{
+
+}
+
+message  TeamRpcChangeTeamTargetReply
+{
+	optional int32 Result = 1;
+	optional TeamTarget TeamTarget = 2;
+
+}
+
+message  TeamRpcChangeTeamTargetAsk
+{
+	optional int32 TargetType = 2;
+	optional int32 Id = 3;
+	optional int32 MinLevel = 4;
+	optional int32 MaxLevel = 5;
+	repeated int32 Function = 6;
+
+}
+
+message  TeamRpcChangeTeamTargetNotifyNotify
+{
+	optional TeamTarget TeamTarget = 1;
+
+}
+
+message  TeamRpcChangTeamTypeAsk
+{
+	optional int32 TeamType = 1;
+
+}
+
+message  TeamRpcChangTeamTypeReply
+{
+	optional int32 Result = 1;
+	optional int32 TeamType = 2;
+	optional TeamTarget TeamTarget = 3;
+
+}
+
+message  TeamRpcChangeTeamTypeNotifyNotify
+{
+	optional int32 TeamType = 1;
+	optional TeamTarget TeamTarget = 2;
+
+}
+
+message  TeamRpcInviteTeamMemberAsk
+{
+	repeated uint64 RoleId = 1;
+
+}
+
+message  TeamRpcInviteTeamMemberReply
+{
+	optional int32 Result = 1;
+	repeated uint64 RoleId = 2;
+
+}
+
+message  TeamRpcInviteTeamMemberNotifyNotify
+{
+	optional uint64 TeamId = 1[default=0];
+	optional int32 IsLeader = 5;
+	optional TeamMemberInfo InviteMemberInfo = 6;
+
+}
+
+message  TeamRpcApplyListNotifyNotify
+{
+	repeated TeamMemberInfo ApplyList = 1;
+
+}
+
+message  TeamRpcAgreeJoinTeamAsk
+{
+	optional uint64 TeamId = 1[default=0];
+	optional int32 IsLeader = 2;
+
+}
+
+message  TeamRpcAgreeJoinTeamReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  TeamRpcRefuseMemberAsk
+{
+	optional uint64 RoleId = 1[default=0];
+
+}
+
+message  TeamRpcRefuseMemberReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  TeamRpcClearApplyListReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  TeamRpcClearApplyListAsk
+{
+
+}
+
+message  TeamRpcNoTeamInviteAsk
+{
+	optional int32 TeamType = 1;
+	optional TeamTarget TTarget = 2;
+	optional uint64 InviteRoleId = 3[default=0];
+
+}
+
+message  TeamRpcNoTeamInviteReply
+{
+	optional int32 Result = 1;
+	optional TeamInfo Team = 2;
+
+}
+
+message  TeamRpcRejectInviteAsk
+{
+	optional uint64 RoleId = 3[default=0];
+	optional string Name = 4;
+
+}
+
+message  TeamRpcRejectInviteReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  TeamTarget
+{
+	optional int32 Id = 1[default=0];
+	optional int32 MinLevel = 2[default=0];
+	optional int32 MaxLevel = 3[default=0];
+	repeated int32 Function = 4;
+	optional int32 TargetType = 5[default=0];
+
+}
+
+message  TeamInfo
+{
+	repeated TeamMemberInfo Members = 1;
+	optional uint64 LeaderRoleId = 2[default=0];
+	optional uint64 TeamId = 3[default=0];
+	optional int32 TeamType = 4[default=-1];
+	optional TeamTarget TeamTarget = 5;
+
+}
+
+message  TeamMemberInfo
+{
+	optional uint64 RoleId = 1[default=0];
+	optional int32 Level = 3[default=0];
+	optional string Name = 4;
+	optional int32 ConfigId = 5[default=-1];
+	optional int32 Hp = 6[default=-1];
+	optional int32 Status = 8[default=-1];
+	optional int64 MaxHp = 11[default=-1];
+	optional CharacterLocation Location = 15;
+	optional int32 ProfessionId = 16[default=-1];
+	optional int32 OnLine = 17[default=1];
+	optional int32 FollowTeam = 18[default=-1];
+	repeated int32 BuffIdList = 19;
+
+}
+
+message  CharacterLocation
+{
+	optional int32 SceneId = 2[default=-1];
+	optional Vector3 Pos = 3;
+	optional int32 MapId = 5[default=-1];
+	optional int32 DungeonConfigId = 6[default=-1];
+	optional int32 LineId = 7[default=-1];
+	optional int32 SceneConfigId = 8[default=-1];
+	optional int32 MirrorId = 9[default=-1];
+	optional int32 ServerId = 10[default=-1];
+
+}
+
+message  Vector3
+{
+	optional float X = 1[default=-1];
+	optional float Y = 2[default=-1];
+	optional float Z = 3[default=-1];
+
+}
+

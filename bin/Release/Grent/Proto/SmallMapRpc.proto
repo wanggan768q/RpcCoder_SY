@@ -1,0 +1,16 @@
+import "PublicStruct.proto";
+
+//新的对象创建通知
+message  SmallMapRpcNewObjNotify
+{
+	optional int32 ObjId = 2[default=-1];	//objID
+	optional int32 DataId = 3[default=-1];	//DataId
+	optional Vector3 WorldPos = 4;	//位置信息
+}
+
+//删除obj通知
+message  SmallMapRpcDelObjNotify
+{
+	optional int32 ObjId = 1[default=-1];	//objId
+}
+

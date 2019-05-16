@@ -1,0 +1,18 @@
+import "PublicStruct.proto";
+
+//退出载具请求
+message  VechicleRpcQuitVechileAsk
+{
+}
+
+//退出载具回应
+message  VechicleRpcQuitVechileReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+

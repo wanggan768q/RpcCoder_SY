@@ -1,0 +1,190 @@
+<?xml version="1.0"?>
+<Root Module="Scene" CName="场景模块" MsgNumStart="3" SyncDataVersion="1" Comment="">
+    <Operate Name="LoadSceneComplete" CName="进入场景完成" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="3" DataStruct="RpcLoadSceneCompleteAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="4" DataStruct="RpcLoadSceneCompleteReply" Comment="" />
+    </Operate>
+    <Operate Name="DeletePlayer" CName="玩家离开视野" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="5" DataStruct="RpcDeletePlayerNotify" Comment="" />
+    </Operate>
+    <Operate Name="ConnectGameServer" CName="连接场景服务器" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="6" DataStruct="RpcConnectGameServerAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="7" DataStruct="RpcConnectGameServerReply" Comment="" />
+    </Operate>
+    <Operate Name="CreateObj" CName="创建物体" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="8" DataStruct="RpcCreateObjNotify" Comment="" />
+    </Operate>
+    <Operate Name="SurroundingHuman" CName="SurroundingHuman" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="9" DataStruct="RpcSurroundingHumanAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="10" DataStruct="RpcSurroundingHumanReply" Comment="" />
+    </Operate>
+    <Operate Name="CEnterScene" CName="进入场景" Comment="">
+        <OP_CLIENT_NOTIFY Name="Notify" CName="通知" MsgID="11" DataStruct="RpcCEnterSceneNotify" Comment="" />
+    </Operate>
+    <Operate Name="SEnterScene" CName="进入场景返回" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="12" DataStruct="RpcSEnterSceneNotify" Comment="" />
+    </Operate>
+    <Operate Name="ObjDie" CName="ObjDie" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="13" DataStruct="RpcObjDieNotify" Comment="" />
+    </Operate>
+    <Operate Name="Collide_ChangeScene" CName="collide 场景切换" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="14" DataStruct="RpcCollide_ChangeSceneAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="15" DataStruct="RpcCollide_ChangeSceneReply" Comment="" />
+    </Operate>
+    <Operate Name="EnterMirror" CName="进入镜像" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="16" DataStruct="RpcEnterMirrorAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="17" DataStruct="RpcEnterMirrorReply" Comment="" />
+    </Operate>
+    <Operate Name="SEnterMirrorScene" CName="进入镜像场景" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="18" DataStruct="RpcSEnterMirrorSceneNotify" Comment="" />
+    </Operate>
+    <Operate Name="ExitMirrorScene" CName="退出镜像" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="19" DataStruct="RpcExitMirrorSceneAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="20" DataStruct="RpcExitMirrorSceneReply" Comment="" />
+    </Operate>
+    <Operate Name="ChangeSceneLeave" CName="ChangeSceneLeave" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="21" DataStruct="RpcChangeSceneLeaveNotify" Comment="" />
+    </Operate>
+    <Operate Name="ChangeLine" CName="ChangeLine" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="22" DataStruct="RpcChangeLineAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="23" DataStruct="RpcChangeLineReply" Comment="" />
+    </Operate>
+    <Operate Name="Ping" CName="ping" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="24" DataStruct="RpcPingAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="25" DataStruct="RpcPingReply" Comment="" />
+    </Operate>
+    <Operate Name="SyncSceneLineStats" CName="同步场景分线繁忙状态" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="26" DataStruct="RpcSyncSceneLineStatsNotify" Comment="" />
+    </Operate>
+    <Operate Name="LogOutGame" CName="离开GameServer" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="27" DataStruct="RpcLogOutGameAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="28" DataStruct="RpcLogOutGameReply" Comment="" />
+    </Operate>
+    <Operate Name="KickOutGame" CName="被提出场景" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="29" DataStruct="RpcKickOutGameNotify" Comment="" />
+    </Operate>
+    <Operate Name="ShowFilmFinish" CName="前端通知后端剧情动画播放完毕" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="30" DataStruct="RpcShowFilmFinishAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="31" DataStruct="RpcShowFilmFinishReply" Comment="" />
+    </Operate>
+    <Operate Name="SpecObjPos" CName="SpecObjPos" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="32" DataStruct="RpcSpecObjPosAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="33" DataStruct="RpcSpecObjPosReply" Comment="" />
+    </Operate>
+    <Struct Name="RpcLoadSceneCompleteAsk" CName="进入场景完成请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="RoleId" CName="角色id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="SceneId" CName="场景id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcLoadSceneCompleteReply" CName="进入场景完成回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="6">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="ObjId" CName="玩家objid" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="Vector3" FieldId="4" Name="Pos" CName="位置" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="5" Name="Dir" CName="方向" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="bytes" FieldId="6" Name="ObjData" CName="Obj 数据" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+    </Struct>
+    <Struct Name="RpcDeletePlayerNotify" CName="删除玩家通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="repeated" FieldType="ObjDeleteInfo" FieldId="4" Name="Delete_list" CName="删除信息列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcConnectGameServerAsk" CName="连接场景服务器请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="RoleId" CName="角色id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="string" FieldId="2" Name="Key" CName="key" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="SceneID" CName="SceneID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="4" Name="LineID" CName="LineID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcConnectGameServerReply" CName="连接场景服务器回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="5">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="2" Name="RoleId" CName="角色id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="SceneId" CName="SceneId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="5" Name="MapId" CName="表当中的mapid" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcCreateObjNotify" CName="创建物体通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="14">
+        <Field PreDefine="repeated" FieldType="ObjCreateInfo" FieldId="14" Name="Create_list" CName="创建信息列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcSurroundingHumanAsk" CName="SurroundingHuman请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcSurroundingHumanReply" CName="SurroundingHuman回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="CharacterInfo" FieldId="2" Name="RoleList" CName="RoleList" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcCEnterSceneNotify" CName="进入场景通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="7">
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="SceneId" CName="场景id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="6" Name="MapId" CName="表当中的mapid" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="7" Name="LineId" CName="LineId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcSEnterSceneNotify" CName="进入场景返回通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="18">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="8" Name="SceneId" CName="当返回不能进入，用这个来重新进入" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="9" Name="SceneConfigId" CName="SceneConfigId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="10" Name="MapId" CName="表当中的mapid" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="11" Name="RoleId" CName="roleID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="12" Name="DungeonConfigId" CName="DungeonConfigId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="14" Name="LineId" CName="LineId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="repeated" FieldType="IntPair" FieldId="18" Name="TypeConfig" CName="key是场景类型，value配置表" ValueSet="" MinValue="6" MaxValue="128" Comment="0:普通场景1：副本2：镜像" />
+    </Struct>
+    <Struct Name="RpcObjDieNotify" CName="ObjDie通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="ObjId" CName="ObjId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="RespawnTime" CName="Respawn" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="ConfigId" CName="ConfigId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="4" Name="ObjType" CName="ObjType" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcCollide_ChangeSceneAsk" CName="collide请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Collide_id" CName="碰撞点的ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcCollide_ChangeSceneReply" CName="collide回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcEnterMirrorAsk" CName="进入镜像请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="MirrorID" CName="镜像ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcEnterMirrorReply" CName="进入镜像回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcSEnterMirrorSceneNotify" CName="进入镜像场景通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="MapID" CName="地图ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="MirrorID" CName="镜像ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcExitMirrorSceneAsk" CName="退出镜像请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcExitMirrorSceneReply" CName="退出镜像回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcChangeSceneLeaveNotify" CName="ChangeSceneLeave通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="5">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="TargetLineID" CName="TargetLineID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="TargetMapID" CName="TargetMapID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="4" Name="RoleID" CName="RoleID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="5" Name="CopyID" CName="CopyID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcChangeLineAsk" CName="ChangeLine请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="LineID" CName="LineID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="MapID" CName="MapID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcChangeLineReply" CName="ChangeLine回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="LineID" CName="LineID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="MapID" CName="MapID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="4" Name="RoleID" CName="RoleID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcPingAsk" CName="ping请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcPingReply" CName="ping回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcSyncSceneLineStatsNotify" CName="同步场景分线繁忙状态通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="SceneStats" FieldId="1" Name="Scene_stats" CName="场景状态" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="Player_lineId" CName="玩家所在线Id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcLogOutGameAsk" CName="离开GameServer请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcLogOutGameReply" CName="离开GameServer回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcKickOutGameNotify" CName="被提出场景通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="string" FieldId="1" Name="Kick_reason" CName="原因" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="Reason_id" CName="踢人原因id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcShowFilmFinishAsk" CName="前端通知后端剧情动画播放完毕请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcShowFilmFinishReply" CName="前端通知后端剧情动画播放完毕回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcSpecObjPosAsk" CName="SpecObjPos请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcSpecObjPosReply" CName="SpecObjPos回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="ObjPosInfo" FieldId="2" Name="PosInfos" CName="PosInfs" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+</Root>

@@ -1,0 +1,225 @@
+message  AuctionRpcAuctionInfoAsk
+{
+	optional int32 ItemId = 13;
+	optional int32 QueueType = 16;
+	optional int32 CurPage = 17;
+
+}
+
+message  AuctionRpcAuctionInfoReply
+{
+	optional int32 Result = 1;
+	repeated AuctionItem AuctionItem = 2;
+	optional int32 TotalPage = 3;
+
+}
+
+message  AuctionRpcSellItemAsk
+{
+	optional uint64 ItemGuid = 1[default=0];
+	optional int32 ItemId = 2;
+	optional int32 Price = 3;
+	optional int32 Currency = 4;
+	optional int32 Count = 5;
+
+}
+
+message  AuctionRpcSellItemReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  AuctionRpcBuyAsk
+{
+	optional uint64 ItemGuid = 1[default=0];
+	optional int32 Count = 2;
+
+}
+
+message  AuctionRpcBuyReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  AuctionRpcSellAgainAsk
+{
+	optional uint64 ItemGuid = 1[default=0];
+	optional int32 Price = 2;
+
+}
+
+message  AuctionRpcSellAgainReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  AuctionRpcGetItemAsk
+{
+	repeated uint64 BuyRecGuid = 1;
+	repeated uint64 SaleRecGuid = 3;
+
+}
+
+message  AuctionRpcGetItemReply
+{
+	optional int32 Result = 2;
+	repeated AuctionRecSimple Record = 3;
+
+}
+
+message  AuctionRpcRecordAsk
+{
+
+}
+
+message  AuctionRpcRecordReply
+{
+	optional int32 Result = 1;
+	repeated AuctionRecSimple Record = 3;
+
+}
+
+message  AuctionRpcItemInfoByClassAsk
+{
+	optional int32 ItemClass = 1;
+	repeated int32 ItemId = 2;
+	optional int32 ItemSubClass = 3;
+	optional int32 Prof = 5;
+	optional int32 Level = 6;
+
+}
+
+message  AuctionRpcItemInfoByClassReply
+{
+	optional int32 Result = 1;
+	repeated AuctionItemCnt ItemCount = 2;
+
+}
+
+message  AuctionRpcSalePrepareAsk
+{
+	optional int32 ItemId = 1;
+
+}
+
+message  AuctionRpcSalePrepareReply
+{
+	optional int32 Result = 1;
+	optional int32 ItemId = 2;
+	optional int32 BasePrice = 3;
+	repeated int32 GoldGroup = 4;
+	repeated int32 DiamondGroup = 5;
+
+}
+
+message  AuctionRpcGetItemBackAsk
+{
+	optional uint64 ItemGuid = 1[default=0];
+
+}
+
+message  AuctionRpcGetItemBackReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  AuctionRpcGetMySaleListAsk
+{
+
+}
+
+message  AuctionRpcGetMySaleListReply
+{
+	optional int32 Result = 1;
+	repeated AuctionItem AuctionItem = 2;
+
+}
+
+message  AuctionItem
+{
+	optional uint64 OwnerGuid = 1[default=0];
+	optional int32 Price = 2[default=1];
+	optional int32 Currency = 3[default=1];
+	optional ItemData ItemData = 4;
+	optional int32 Status = 5[default=0];
+	optional int32 SaleTS = 6[default=-1];
+
+}
+
+message  AuctionRecSimple
+{
+	optional uint64 RecGuid = 1[default=0];
+	optional int32 SoldTS = 2[default=-1];
+	optional int32 ItemId = 3[default=-1];
+	optional int32 Count = 7[default=-1];
+	optional int32 Currency = 8[default=-1];
+	optional int32 Cost = 9[default=-1];
+	optional int32 SoldType = 10[default=-1];
+	optional int32 Tax = 11[default=-1];
+	optional bool IsGot = 12[default=false];
+
+}
+
+message  AuctionItemCnt
+{
+	optional int32 ItemId = 1[default=-1];
+	optional int32 Count = 2[default=-1];
+	optional bool InShow = 3[default=false];
+
+}
+
+message  ItemData
+{
+	optional bool IsLock = 2[default=false];
+	optional int32 OverlayCount = 3[default=-1];
+	optional int32 ConfigId = 4[default=-1];
+	optional EquipAttr EquipAttr = 5;
+	optional bool IsBind = 12[default=true];
+	optional uint64 Guid = 13[default=0];
+	optional PetData PetData = 14;
+	optional int32 BindRule = 15[default=1];
+	optional int32 SaleCD = 16[default=0];
+
+}
+
+message  EquipAttr
+{
+	repeated AttrKeyValue BaseAttr = 1;
+	repeated AttrKeyValue ExtraAttr = 2;
+	optional int32 BattleScore = 3[default=-1];
+
+}
+
+message  AttrKeyValue
+{
+	optional int32 Key = 1[default=-1];
+	optional int64 Value = 2[default=-1];
+	optional int32 Quality = 3[default=-1];
+
+}
+
+message  PetData
+{
+	optional int32 Exp = 1[default=-1];
+	optional int32 Level = 2[default=-1];
+	optional string Name = 3;
+	repeated AttrKeyValue Attrs = 5;
+	optional int32 BattleScore = 6[default=-1];
+	repeated AttrKeyValue Talent = 7;
+	repeated PetSkill SkillList = 8;
+	optional bool IsActive = 9[default=false];
+	optional int32 TalentScore = 10[default=-1];
+
+}
+
+message  PetSkill
+{
+	optional int32 SkillId = 3[default=-1];
+	optional int32 Lock = 4[default=-1];
+
+}
+

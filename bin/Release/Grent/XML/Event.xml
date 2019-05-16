@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<Root Module="Event" CName="事件模块" MsgNumStart="5" SyncDataVersion="1" Comment="">
+    <Operate Name="Move" CName="ObjMove" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="5" DataStruct="RpcMoveNotify" Comment="" />
+    </Operate>
+    <Operate Name="StopMove" CName="ObjStopMove" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="6" DataStruct="RpcStopMoveNotify" Comment="" />
+    </Operate>
+    <Operate Name="ObjAttrChange" CName="属性改变" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="7" DataStruct="RpcObjAttrChangeNotify" Comment="" />
+    </Operate>
+    <Operate Name="CoinChange" CName="货币的变化通知" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="8" DataStruct="RpcCoinChangeNotify" Comment="" />
+    </Operate>
+    <Operate Name="MovePos" CName="按点移动" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="9" DataStruct="RpcMovePosNotify" Comment="" />
+    </Operate>
+    <Struct Name="RpcMoveNotify" CName="ObjMove通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="ObjId" CName="obj id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="Vector3" FieldId="2" Name="Pos" CName="位置" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="3" Name="Dir" CName="方向" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcStopMoveNotify" CName="ObjStopMove通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="5">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="ObjId" CName="obj id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="Vector3Int" FieldId="2" Name="Pos" CName="位置" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="3" Name="Dir" CName="方向" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="5" Name="Type" CName="类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="1.传送" />
+    </Struct>
+    <Struct Name="RpcObjAttrChangeNotify" CName="属性改变通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="5">
+        <Field PreDefine="optional" FieldType="float" FieldId="1" Name="Speed" CName="speed" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int64" FieldId="2" Name="Hp" CName="Hp" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="Status" CName="状态" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="4" Name="ConfigId" CName="NpcId改变" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="5" Name="ObjId" CName="对象id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcCoinChangeNotify" CName="货币的变化通知通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Type" CName="类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="0:经验" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="Value" CName="值" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcMovePosNotify" CName="按点移动通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="6">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="ObjId" CName="obj id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="repeated" FieldType="Vector3Int" FieldId="3" Name="PosList" CName="要移动的位置" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="4" Name="Dir" CName="Dir" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="bool" FieldId="5" Name="IsAllowChangeRunAnimation" CName="是否允许切换Run动画" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="true" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="6" Name="Follow" CName="是否跟随状态" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+</Root>

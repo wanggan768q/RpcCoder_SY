@@ -1,0 +1,538 @@
+message  ContactRpcAddFriendAsk
+{
+	optional uint64 RoleId = 1[default=0];
+
+}
+
+message  ContactRpcAddFriendReply
+{
+	optional int32 Result = 1;
+	optional ContactData NewFriendData = 3;
+	optional ContactGroup MyFriendGroup = 4;
+
+}
+
+message  ContactRpcCancelRelationShipAsk
+{
+	optional uint64 RoleId = 1[default=0];
+
+}
+
+message  ContactRpcCancelRelationShipReply
+{
+	optional int32 Result = 1;
+	optional uint64 DeleteRoleId = 2[default=0];
+	repeated ContactGroup ContactGroups = 3;
+
+}
+
+message  ContactRpcAddBlackListAsk
+{
+	optional uint64 RoleId = 1[default=0];
+
+}
+
+message  ContactRpcAddBlackListReply
+{
+	optional int32 Result = 1;
+	repeated ContactGroup ContactGroups = 2;
+	optional uint64 RoleId = 3[default=0];
+
+}
+
+message  ContactRpcSyncAddressBookAsk
+{
+
+}
+
+message  ContactRpcSyncAddressBookReply
+{
+	optional int32 Result = 1;
+	optional AddressBook AddressBock = 2;
+
+}
+
+message  ContactRpcContactSettingAsk
+{
+	optional ContactSetting NewSetting = 1;
+
+}
+
+message  ContactRpcContactSettingReply
+{
+	optional int32 Result = 1;
+	optional ContactSetting NewSetting = 2;
+
+}
+
+message  ContactRpcCreateFriendGroupAsk
+{
+	optional string GroupName = 1;
+	repeated uint64 RoleIds = 2;
+
+}
+
+message  ContactRpcCreateFriendGroupReply
+{
+	optional int32 Result = 1;
+	repeated ContactGroup ContactGroups = 2;
+	repeated int32 GroupIds = 3;
+
+}
+
+message  ContactRpcMoveToFriendGroupAsk
+{
+	repeated uint64 RoleIds = 1;
+	optional int32 FromGroupId = 2;
+	optional int32 ToGroupId = 3;
+
+}
+
+message  ContactRpcMoveToFriendGroupReply
+{
+	optional int32 Result = 1;
+	repeated ContactGroup ChangeGroup = 2;
+
+}
+
+message  ContactRpcRemoveFriendGroupAsk
+{
+	optional int32 RemoveGroupId = 1;
+
+}
+
+message  ContactRpcRemoveFriendGroupReply
+{
+	optional int32 Result = 1;
+	optional ContactGroup MyFriendGroup = 3;
+	optional int32 RemoveGroupId = 4;
+	repeated int32 GroupIds = 5;
+
+}
+
+message  ContactRpcRenameGroupAsk
+{
+	optional string Name = 1;
+	optional int32 GroupId = 2;
+
+}
+
+message  ContactRpcRenameGroupReply
+{
+	optional int32 Result = 1;
+	optional ContactGroup DefineGroup = 2;
+
+}
+
+message  ContactRpcAgreeApplicationAsk
+{
+	optional uint64 RoleId = 1[default=0];
+
+}
+
+message  ContactRpcAgreeApplicationReply
+{
+	optional int32 Result = 1;
+	optional ContactData NewFriendData = 2;
+	repeated ContactGroup MyFriendGroup = 3;
+
+}
+
+message  ContactRpcAgreeApplicationNotifyNotify
+{
+	repeated ContactGroup MyFriendGroup = 1;
+	optional ContactData NewFriendData = 2;
+
+}
+
+message  ContactRpcSetFriendGroupAsk
+{
+	optional int32 GroupId = 1;
+	optional int32 RoleIds = 2;
+	optional bytes GroupName = 3;
+
+}
+
+message  ContactRpcSetFriendGroupReply
+{
+	optional int32 Result = 1;
+	repeated ContactGroup FriendGroups = 2;
+
+}
+
+message  ContactRpcNewFriendNotify
+{
+	optional ContactData NewFriendData = 1;
+	optional ContactGroup MyFriendGroup = 2;
+
+}
+
+message  ContactRpcApplyListNotify
+{
+	optional ContactData ApplyFriendData = 1;
+	repeated ContactGroup ApplyGroups = 5;
+
+}
+
+message  ContactRpcRejectApplyAsk
+{
+	optional uint64 RoleId = 2[default=0];
+
+}
+
+message  ContactRpcRejectApplyReply
+{
+	optional int32 Result = 1;
+	repeated ContactGroup ContactGroups = 8;
+	optional uint64 DeleteRoleId = 9[default=0];
+
+}
+
+message  ContactRpcBeRejectApplyNotify
+{
+	optional ContactData DeleteFriendData = 1;
+
+}
+
+message  ContactRpcBeCancelRelationShipNotify
+{
+	optional uint64 DeleteRoleId = 1[default=0];
+	repeated ContactGroup ContactGroups = 2;
+
+}
+
+message  ContactRpcBeAddBlackListNotify
+{
+	optional uint64 RoleId = 1[default=0];
+	repeated ContactGroup ContactGroups = 2;
+
+}
+
+message  ContactRpcRecommendContactAsk
+{
+
+}
+
+message  ContactRpcRecommendContactReply
+{
+	optional int32 Result = 1;
+	repeated ContactData Contact = 2;
+	repeated uint64 ApplyedListId = 3;
+
+}
+
+message  ContactRpcRejectAllAsk
+{
+
+}
+
+message  ContactRpcRejectAllReply
+{
+	optional int32 Result = 1;
+	repeated ContactGroup ContactGroups = 2;
+	repeated uint64 DeleteRoleIds = 3;
+
+}
+
+message  ContactRpcAddFriendShipPointAsk
+{
+	optional uint64 FriendRoleId = 1[default=0];
+	repeated ItemSimpleData ItemData = 2;
+
+}
+
+message  ContactRpcAddFriendShipPointReply
+{
+	optional int32 Result = 1;
+	optional ContactData Contact = 2;
+
+}
+
+message  ContactRpcRoleDataUpdateNotify
+{
+	optional ContactData Contact = 1;
+
+}
+
+message  ContactRpcContactLoginNotify
+{
+	optional ContactData Contact = 1;
+	repeated int32 GroupIds = 2;
+
+}
+
+message  ContactRpcContactLogoutNotify
+{
+	optional ContactData Contact = 1;
+	repeated int32 GroupIds = 2;
+
+}
+
+message  ContactRpcDeleteRoleDataNotify
+{
+	optional uint64 RoleId = 2[default=0];
+
+}
+
+message  ContactRpcSortGroupAsk
+{
+	repeated int32 GroupIds = 1;
+
+}
+
+message  ContactRpcSortGroupReply
+{
+	optional int32 Result = 1;
+	repeated int32 GroupIds = 2;
+
+}
+
+message  ContactRpcSetFriendAliasAsk
+{
+	optional string Name = 1;
+	optional uint64 RoleId = 2[default=0];
+
+}
+
+message  ContactRpcSetFriendAliasReply
+{
+	optional int32 Result = 1;
+	optional ContactData Contact = 2;
+
+}
+
+message  ContactRpcSendFriendGiftPointAsk
+{
+	optional uint64 SendRoleId = 1[default=0];
+	optional int32 Point = 2;
+
+}
+
+message  ContactRpcSendFriendGiftPointReply
+{
+	optional int32 Result = 1;
+	repeated FriendGiftPoint SentGiftList = 2;
+
+}
+
+message  ContactRpcAcquireGiftPointAsk
+{
+	optional uint64 AcquireRoleId = 1[default=0];
+
+}
+
+message  ContactRpcAcquireGiftPointReply
+{
+	optional int32 Result = 1;
+	repeated FriendGiftPoint AcquireGiftList = 2;
+	repeated FriendGiftPoint UnAcquireGiftList = 3;
+
+}
+
+message  ContactRpcUnAcquireGiftPointNotify
+{
+	repeated FriendGiftPoint UnAcquireGiftList = 1;
+
+}
+
+message  ContactRpcSendAllFriendGiftPointAsk
+{
+
+}
+
+message  ContactRpcSendAllFriendGiftPointReply
+{
+	optional int32 Result = 1;
+	repeated FriendGiftPoint SentGiftList = 2;
+
+}
+
+message  ContactRpcAcquireAllGiftPointAsk
+{
+
+}
+
+message  ContactRpcAcquireAllGiftPointReply
+{
+	optional int32 Result = 1;
+	repeated FriendGiftPoint AcquireGiftList = 2;
+	repeated FriendGiftPoint UnAcquireGiftList = 3;
+
+}
+
+message  ContactRpcDeleteGroupRoleAsk
+{
+	optional int32 GroupId = 1;
+	optional uint64 RoleId = 2[default=0];
+
+}
+
+message  ContactRpcDeleteGroupRoleReply
+{
+	optional int32 Result = 1;
+	repeated ContactGroup ContactGroups = 3;
+
+}
+
+message  ContactRpcAddRoleDataNotify
+{
+	optional ContactData NewRoleData = 1;
+
+}
+
+message  ContactRpcSetGiftPointNotify
+{
+	repeated FriendGiftPoint AcquireGiftList = 1;
+	repeated FriendGiftPoint UnAcquireGiftList = 2;
+	repeated FriendGiftPoint SentGiftList = 3;
+
+}
+
+message  ContactRpcContactsGroupsNotify
+{
+	repeated ContactGroup MyFriendGroup = 1;
+
+}
+
+message  ContactRpcAgreeAllApplicationAsk
+{
+
+}
+
+message  ContactRpcAgreeAllApplicationReply
+{
+	optional int32 Result = 1;
+	repeated ContactData NewFriendData = 2;
+	repeated ContactGroup MyFriendGroup = 3;
+
+}
+
+message  ContactRpcChatToAsk
+{
+	optional uint64 RoleId = 1[default=0];
+	optional ChatMsg ChatMsg = 2;
+
+}
+
+message  ContactRpcChatToReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  ContactRpcNewChatMsgNotify
+{
+	optional ChatInfo ChatMsg = 1;
+	optional uint64 RoleId = 2[default=0];
+
+}
+
+message  ContactRpcReadMsgAsk
+{
+	optional uint64 RoleId = 1[default=0];
+
+}
+
+message  ContactRpcReadMsgReply
+{
+	optional int32 Result = 1;
+	optional uint64 RoleId = 2[default=0];
+
+}
+
+message  ContactData
+{
+	optional uint64 RoleId = 1[default=0];
+	optional uint64 TeamId = 2[default=0];
+	optional string Nickname = 3;
+	optional int32 ConfigId = 4[default=-1];
+	optional int32 Level = 5[default=1];
+	optional int32 ResourceId = 6[default=-1];
+	optional string Alias = 8;
+	optional int32 FamiliarPoint = 10[default=0];
+	optional int32 OnLine = 11[default=0];
+	optional int32 CombatValue = 12[default=-1];
+	optional int64 LastLoginTime = 13[default=-1];
+
+}
+
+message  ContactGroup
+{
+	optional string GroupName = 1;
+	repeated uint64 GroupRoleIds = 2;
+	optional int32 GroupId = 3[default=-1];
+
+}
+
+message  AddressBook
+{
+	repeated ContactData ContactDataList = 1;
+	repeated ContactGroup ContactGroups = 2;
+	optional ContactSetting Setting = 3;
+	optional ContactData MyRoleData = 4;
+	repeated int32 SortGroupId = 5;
+	optional FriendGifPointList GiftPointList = 6;
+	repeated ContactsChatMsg ChatMsgList = 7;
+
+}
+
+message  ContactSetting
+{
+	optional int32 CloseApplyFriend = 1[default=-1];
+	optional int32 ClearFirend = 2[default=-1];
+
+}
+
+message  ItemSimpleData
+{
+	optional int32 ConfID = 1[default=-1];
+	optional int32 Count = 2[default=-1];
+
+}
+
+message  FriendGiftPoint
+{
+	optional uint64 Guid = 1[default=0];
+	optional int32 Point = 2[default=0];
+
+}
+
+message  ChatMsg
+{
+	optional string Chat_content = 1;
+	optional string Chat_voice_url = 2;
+	optional int32 Chat_voice_secs = 3[default=-1];
+
+}
+
+message  ChatInfo
+{
+	optional string Player_name = 1;
+	optional uint64 Player_guid = 2[default=0];
+	optional int32 Avatar_id = 3[default=-1];
+	optional int32 Player_level = 4[default=-1];
+	optional int32 Avatar_frame_id = 5[default=-1];
+	optional int32 Config_id = 6[default=-1];
+	optional uint64 Timestamp = 7[default=0];
+	optional ChatMsg Chat_msg = 8;
+	optional uint64 Team_id = 9[default=0];
+	optional uint64 Guild_guid = 10[default=0];
+
+}
+
+message  FriendGifPointList
+{
+	repeated FriendGiftPoint SentGiftList = 1;
+	repeated FriendGiftPoint AcquireGiftList = 2;
+	repeated FriendGiftPoint UnAcquireGiftList = 3;
+
+}
+
+message  ContactsChatMsg
+{
+	optional uint64 RoleId = 1[default=0];
+	optional bool HasNewMsg = 2[default=false];
+	repeated ChatInfo CharInfoList = 3;
+
+}
+

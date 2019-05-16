@@ -1,0 +1,249 @@
+message  BagRpcUseItemAsk
+{
+	optional int32 Count = 1;
+	optional int32 Pos = 2;
+	optional int32 BagType = 3;
+
+}
+
+message  BagRpcUseItemReply
+{
+	optional int32 Result = 1;
+	optional ItemObj Item = 2;
+	optional ItemObj NowItem = 4;
+
+}
+
+message  BagRpcSaleItemAsk
+{
+	optional int32 Pos = 5;
+	optional int32 Count = 6;
+	optional int32 BagType = 7;
+
+}
+
+message  BagRpcSaleItemReply
+{
+	optional int32 Result = 1;
+	optional ItemObj Item = 4;
+
+}
+
+message  BagRpcLockItemAsk
+{
+	optional int32 Pos = 1;
+	optional bool IsLock = 3[default=false];
+	optional int32 BagType = 4;
+
+}
+
+message  BagRpcLockItemReply
+{
+	optional int32 Result = 1;
+	optional ItemObj Item = 5;
+
+}
+
+message  BagRpcDeblockingAsk
+{
+	optional int32 BagType = 1;
+
+}
+
+message  BagRpcDeblockingReply
+{
+	optional int32 Result = 1;
+	optional int32 BagType = 2;
+	optional int32 CurCapacity = 3;
+
+}
+
+message  BagRpcTakeItemAsk
+{
+	optional int32 FromBagType = 1;
+	optional int32 ToBagType = 2;
+	optional int32 FromPos = 3;
+
+}
+
+message  BagRpcTakeItemReply
+{
+	optional int32 Result = 1;
+	optional ItemObj ToItemObj = 2;
+	optional ItemObj FromItemObj = 3;
+	optional int32 FromBagType = 4;
+	optional int32 ToBagType = 5;
+
+}
+
+message  BagRpcTidyAsk
+{
+	optional int32 BagType = 2;
+
+}
+
+message  BagRpcTidyReply
+{
+	optional int32 Result = 1;
+	optional BagData Bags = 3;
+
+}
+
+message  BagRpcTakeAllBackBagsAsk
+{
+
+}
+
+message  BagRpcTakeAllBackBagsReply
+{
+	optional int32 Result = 1;
+	repeated BagData Bags = 2;
+
+}
+
+message  BagRpcBagChangeNotify
+{
+	optional int32 Result = 1;
+	optional BagData Bags = 2;
+
+}
+
+message  BagRpcMergeItemAsk
+{
+	optional int32 Pos = 1;
+	optional int32 BagType = 2;
+
+}
+
+message  BagRpcMergeItemReply
+{
+	optional int32 Result = 1;
+	optional BagData Bags = 2;
+
+}
+
+message  BagRpcBagSyncAsk
+{
+
+}
+
+message  BagRpcBagSyncReply
+{
+	optional int32 Result = 1;
+	repeated BagData Bags = 2;
+
+}
+
+message  BagRpcAddItemNotify
+{
+	repeated ItemObj Item = 1;
+
+}
+
+message  BagRpcConsumeItemAsk
+{
+	repeated int32 ConfigId = 1;
+	repeated ItemSimpleData ItemData = 3;
+
+}
+
+message  BagRpcConsumeItemReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  BagRpcItemChangeNotify
+{
+	repeated ItemObj ItemList = 1;
+	optional int32 BagType = 2;
+
+}
+
+message  BagRpcClickItemAsk
+{
+	optional uint64 Guid = 1[default=0];
+
+}
+
+message  BagRpcClickItemReply
+{
+	optional int32 Result = 1;
+	optional ItemObj Item = 2;
+
+}
+
+message  ItemObj
+{
+	optional int32 Pos = 1[default=-1];
+	optional ItemData ItemData = 2;
+	optional bool RedPoint = 3[default=false];
+
+}
+
+message  BagData
+{
+	repeated ItemObj Items = 1;
+	optional int32 BagType = 2[default=-1];
+	optional int32 CurCapacity = 3[default=-1];
+
+}
+
+message  ItemSimpleData
+{
+	optional int32 ConfID = 1[default=-1];
+	optional int32 Count = 2[default=-1];
+
+}
+
+message  ItemData
+{
+	optional bool IsLock = 2[default=false];
+	optional int32 OverlayCount = 3[default=-1];
+	optional int32 ConfigId = 4[default=-1];
+	optional EquipAttr EquipAttr = 5;
+	optional bool IsBind = 12[default=true];
+	optional uint64 Guid = 13[default=0];
+	optional PetData PetData = 14;
+	optional int32 BindRule = 15[default=1];
+	optional int32 SaleCD = 16[default=0];
+
+}
+
+message  EquipAttr
+{
+	repeated AttrKeyValue BaseAttr = 1;
+	repeated AttrKeyValue ExtraAttr = 2;
+	optional int32 BattleScore = 3[default=-1];
+
+}
+
+message  AttrKeyValue
+{
+	optional int32 Key = 1[default=-1];
+	optional int64 Value = 2[default=-1];
+	optional int32 Quality = 3[default=-1];
+
+}
+
+message  PetData
+{
+	optional int32 Exp = 1[default=-1];
+	optional int32 Level = 2[default=-1];
+	optional string Name = 3;
+	repeated AttrKeyValue Attrs = 5;
+	optional int32 BattleScore = 6[default=-1];
+	repeated AttrKeyValue Talent = 7;
+	repeated PetSkill SkillList = 8;
+	optional bool IsActive = 9[default=false];
+	optional int32 TalentScore = 10[default=-1];
+
+}
+
+message  PetSkill
+{
+	optional int32 SkillId = 3[default=-1];
+	optional int32 Lock = 4[default=-1];
+
+}
+

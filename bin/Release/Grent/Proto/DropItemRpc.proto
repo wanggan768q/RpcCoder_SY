@@ -1,0 +1,13 @@
+import "PublicStruct.proto";
+
+//掉落通知通知
+message  DropItemRpcDropTtemsNotify
+{
+	repeated DropItem Dropitems = 6;	//掉落物品
+	optional int32 KillObjID = 7[default=-1];	//死亡怪物ID
+	optional int32 KillerObjID = 8[default=-1];	//主角ID
+	optional int32 OwnerObjID = 9[default=-1];	//所属ID
+	optional Vector3 Pos = 10;	//Pos
+	optional int32 NetWorkType = 11[default=-1];	//掉落广播类型
+}
+

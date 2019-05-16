@@ -1,0 +1,389 @@
+<?xml version="1.0"?>
+<Root Module="Contact" CName="联系人" MsgNumStart="48" SyncDataVersion="1" Comment="">
+    <Operate Name="AddFriend" CName="添加好友" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="48" DataStruct="RpcAddFriendAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="49" DataStruct="RpcAddFriendReply" Comment="" />
+    </Operate>
+    <Operate Name="CancelRelationShip" CName="删除好友" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="50" DataStruct="RpcCancelRelationShipAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="51" DataStruct="RpcCancelRelationShipReply" Comment="" />
+    </Operate>
+    <Operate Name="AddBlackList" CName="加入黑名单" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="52" DataStruct="RpcAddBlackListAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="53" DataStruct="RpcAddBlackListReply" Comment="" />
+    </Operate>
+    <Operate Name="SyncAddressBook" CName="通讯录数据" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="54" DataStruct="RpcSyncAddressBookAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="55" DataStruct="RpcSyncAddressBookReply" Comment="" />
+    </Operate>
+    <Operate Name="ContactSetting" CName="联系人设置" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="56" DataStruct="RpcContactSettingAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="57" DataStruct="RpcContactSettingReply" Comment="" />
+    </Operate>
+    <Operate Name="CreateFriendGroup" CName="创建好友分组" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="58" DataStruct="RpcCreateFriendGroupAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="59" DataStruct="RpcCreateFriendGroupReply" Comment="" />
+    </Operate>
+    <Operate Name="MoveToFriendGroup" CName="移动到分组" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="60" DataStruct="RpcMoveToFriendGroupAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="61" DataStruct="RpcMoveToFriendGroupReply" Comment="" />
+    </Operate>
+    <Operate Name="RemoveFriendGroup" CName="删除好友分组" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="62" DataStruct="RpcRemoveFriendGroupAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="63" DataStruct="RpcRemoveFriendGroupReply" Comment="" />
+    </Operate>
+    <Operate Name="RenameGroup" CName="重命名分组" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="64" DataStruct="RpcRenameGroupAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="65" DataStruct="RpcRenameGroupReply" Comment="" />
+    </Operate>
+    <Operate Name="AgreeApplication" CName="同意申请加为好友" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="66" DataStruct="RpcAgreeApplicationAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="67" DataStruct="RpcAgreeApplicationReply" Comment="" />
+    </Operate>
+    <Operate Name="AgreeApplicationNotify" CName="同意申请通知" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="68" DataStruct="RpcAgreeApplicationNotifyNotify" Comment="" />
+    </Operate>
+    <Operate Name="SetFriendGroup" CName="设置分组" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="69" DataStruct="RpcSetFriendGroupAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="70" DataStruct="RpcSetFriendGroupReply" Comment="" />
+    </Operate>
+    <Operate Name="NewFriend" CName="新朋友" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="71" DataStruct="RpcNewFriendNotify" Comment="" />
+    </Operate>
+    <Operate Name="ApplyList" CName="申请列表" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="72" DataStruct="RpcApplyListNotify" Comment="" />
+    </Operate>
+    <Operate Name="RejectApply" CName="拒绝申请" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="73" DataStruct="RpcRejectApplyAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="74" DataStruct="RpcRejectApplyReply" Comment="" />
+    </Operate>
+    <Operate Name="BeRejectApply" CName="被拒绝" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="75" DataStruct="RpcBeRejectApplyNotify" Comment="" />
+    </Operate>
+    <Operate Name="BeCancelRelationShip" CName="被删除好友" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="76" DataStruct="RpcBeCancelRelationShipNotify" Comment="" />
+    </Operate>
+    <Operate Name="BeAddBlackList" CName="被加入黑名单" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="77" DataStruct="RpcBeAddBlackListNotify" Comment="" />
+    </Operate>
+    <Operate Name="RecommendContact" CName="推荐联系人" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="78" DataStruct="RpcRecommendContactAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="79" DataStruct="RpcRecommendContactReply" Comment="" />
+    </Operate>
+    <Operate Name="RejectAll" CName="拒绝所有申请" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="80" DataStruct="RpcRejectAllAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="81" DataStruct="RpcRejectAllReply" Comment="" />
+    </Operate>
+    <Operate Name="AddFriendShipPoint" CName="添加好友度" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="82" DataStruct="RpcAddFriendShipPointAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="83" DataStruct="RpcAddFriendShipPointReply" Comment="" />
+    </Operate>
+    <Operate Name="RoleDataUpdate" CName="玩家数据更新" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="84" DataStruct="RpcRoleDataUpdateNotify" Comment="" />
+    </Operate>
+    <Operate Name="ContactLogin" CName="联系人登录" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="85" DataStruct="RpcContactLoginNotify" Comment="" />
+    </Operate>
+    <Operate Name="ContactLogout" CName="联系人退出游戏" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="86" DataStruct="RpcContactLogoutNotify" Comment="" />
+    </Operate>
+    <Operate Name="DeleteRoleData" CName="删除联系人数据" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="87" DataStruct="RpcDeleteRoleDataNotify" Comment="" />
+    </Operate>
+    <Operate Name="SortGroup" CName="排序分组" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="88" DataStruct="RpcSortGroupAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="89" DataStruct="RpcSortGroupReply" Comment="" />
+    </Operate>
+    <Operate Name="SetFriendAlias" CName="设置好友名字" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="90" DataStruct="RpcSetFriendAliasAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="91" DataStruct="RpcSetFriendAliasReply" Comment="" />
+    </Operate>
+    <Operate Name="SendFriendGiftPoint" CName="发送好友点" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="92" DataStruct="RpcSendFriendGiftPointAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="93" DataStruct="RpcSendFriendGiftPointReply" Comment="" />
+    </Operate>
+    <Operate Name="AcquireGiftPoint" CName="获取点数" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="94" DataStruct="RpcAcquireGiftPointAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="95" DataStruct="RpcAcquireGiftPointReply" Comment="" />
+    </Operate>
+    <Operate Name="UnAcquireGiftPoint" CName="刷新未获取点数" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="96" DataStruct="RpcUnAcquireGiftPointNotify" Comment="" />
+    </Operate>
+    <Operate Name="SendAllFriendGiftPoint" CName="一键赠送" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="97" DataStruct="RpcSendAllFriendGiftPointAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="98" DataStruct="RpcSendAllFriendGiftPointReply" Comment="" />
+    </Operate>
+    <Operate Name="AcquireAllGiftPoint" CName="一键收取" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="99" DataStruct="RpcAcquireAllGiftPointAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="100" DataStruct="RpcAcquireAllGiftPointReply" Comment="" />
+    </Operate>
+    <Operate Name="DeleteGroupRole" CName="移出列表" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="101" DataStruct="RpcDeleteGroupRoleAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="102" DataStruct="RpcDeleteGroupRoleReply" Comment="" />
+    </Operate>
+    <Operate Name="AddRoleData" CName="新加玩家数据" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="103" DataStruct="RpcAddRoleDataNotify" Comment="" />
+    </Operate>
+    <Operate Name="SetGiftPoint" CName="设置友情点数据" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="104" DataStruct="RpcSetGiftPointNotify" Comment="" />
+    </Operate>
+    <Operate Name="ContactsGroups" CName="刷新组" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="105" DataStruct="RpcContactsGroupsNotify" Comment="" />
+    </Operate>
+    <Operate Name="AgreeAllApplication" CName="同意所有申请" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="106" DataStruct="RpcAgreeAllApplicationAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="107" DataStruct="RpcAgreeAllApplicationReply" Comment="" />
+    </Operate>
+    <Operate Name="ChatTo" CName="聊天" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="108" DataStruct="RpcChatToAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="109" DataStruct="RpcChatToReply" Comment="" />
+    </Operate>
+    <Operate Name="NewChatMsg" CName="新的聊天信息" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="110" DataStruct="RpcNewChatMsgNotify" Comment="" />
+    </Operate>
+    <Operate Name="ReadMsg" CName="读取信息" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="111" DataStruct="RpcReadMsgAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="112" DataStruct="RpcReadMsgReply" Comment="" />
+    </Operate>
+    <Struct Name="RpcAddFriendAsk" CName="添加好友请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="RoleId" CName="新加朋友的id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcAddFriendReply" CName="添加好友回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="ContactData" FieldId="3" Name="NewFriendData" CName="新玩家数据" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="ContactGroup" FieldId="4" Name="MyFriendGroup" CName="好友分组" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcCancelRelationShipAsk" CName="删除好友请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="RoleId" CName="删除的好友" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcCancelRelationShipReply" CName="删除好友回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="2" Name="DeleteRoleId" CName="删除的数据" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="repeated" FieldType="ContactGroup" FieldId="3" Name="ContactGroups" CName="改变的分组" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcAddBlackListAsk" CName="加入黑名单请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="RoleId" CName="删除的好友" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcAddBlackListReply" CName="加入黑名单回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="ContactGroup" FieldId="2" Name="ContactGroups" CName="改变的分组" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="3" Name="RoleId" CName="删除的数据" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcSyncAddressBookAsk" CName="通讯录数据请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcSyncAddressBookReply" CName="通讯录数据回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="AddressBook" FieldId="2" Name="AddressBock" CName="通讯录数据" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcContactSettingAsk" CName="联系人设置请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="ContactSetting" FieldId="1" Name="NewSetting" CName="新设置" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcContactSettingReply" CName="联系人设置回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="ContactSetting" FieldId="2" Name="NewSetting" CName="新设置" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcCreateFriendGroupAsk" CName="创建好友分组请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="string" FieldId="1" Name="GroupName" CName="分组名字" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+        <Field PreDefine="repeated" FieldType="uint64" FieldId="2" Name="RoleIds" CName="分组玩家id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcCreateFriendGroupReply" CName="创建好友分组回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="ContactGroup" FieldId="2" Name="ContactGroups" CName="改变的分组" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="repeated" FieldType="int32" FieldId="3" Name="GroupIds" CName="排序分组id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcMoveToFriendGroupAsk" CName="移动到分组请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="repeated" FieldType="uint64" FieldId="1" Name="RoleIds" CName="玩家Id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="FromGroupId" CName="源组ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="ToGroupId" CName="目标组" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcMoveToFriendGroupReply" CName="移动到分组回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="ContactGroup" FieldId="2" Name="ChangeGroup" CName="移动来源组" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcRemoveFriendGroupAsk" CName="删除好友分组请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="RemoveGroupId" CName="源组ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcRemoveFriendGroupReply" CName="删除好友分组回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="5">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="ContactGroup" FieldId="3" Name="MyFriendGroup" CName="移动来源组" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="4" Name="RemoveGroupId" CName="源组ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="repeated" FieldType="int32" FieldId="5" Name="GroupIds" CName="排序分组id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcRenameGroupAsk" CName="重命名分组请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="string" FieldId="1" Name="Name" CName="设置名字" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="GroupId" CName="重命名分组" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcRenameGroupReply" CName="重命名分组回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="ContactGroup" FieldId="2" Name="DefineGroup" CName="重命名的分组" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcAgreeApplicationAsk" CName="同意申请加为好友请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="RoleId" CName="玩家ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcAgreeApplicationReply" CName="同意申请加为好友回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="ContactData" FieldId="2" Name="NewFriendData" CName="新玩家数据" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="repeated" FieldType="ContactGroup" FieldId="3" Name="MyFriendGroup" CName="移动来源组" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcAgreeApplicationNotifyNotify" CName="同意申请通知通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="repeated" FieldType="ContactGroup" FieldId="1" Name="MyFriendGroup" CName="分组信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="ContactData" FieldId="2" Name="NewFriendData" CName="新玩家数据" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcSetFriendGroupAsk" CName="设置分组请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="GroupId" CName="分组ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="RoleIds" CName="好友id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="bytes" FieldId="3" Name="GroupName" CName="分组名字" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+    </Struct>
+    <Struct Name="RpcSetFriendGroupReply" CName="设置分组回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="ContactGroup" FieldId="2" Name="FriendGroups" CName="分组信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcNewFriendNotify" CName="新联系人通知,不是朋友" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="ContactData" FieldId="1" Name="NewFriendData" CName="新的联系人数据" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="ContactGroup" FieldId="2" Name="MyFriendGroup" CName="新的联系人改变的组" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcApplyListNotify" CName="申请列表通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="5">
+        <Field PreDefine="optional" FieldType="ContactData" FieldId="1" Name="ApplyFriendData" CName="新玩家数据" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="repeated" FieldType="ContactGroup" FieldId="5" Name="ApplyGroups" CName="分组信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcRejectApplyAsk" CName="拒绝申请请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="2" Name="RoleId" CName="玩家ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcRejectApplyReply" CName="拒绝申请回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="9">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="ContactGroup" FieldId="8" Name="ContactGroups" CName="改变的分组" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="9" Name="DeleteRoleId" CName="删除的id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcBeRejectApplyNotify" CName="被拒绝通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="ContactData" FieldId="1" Name="DeleteFriendData" CName="被拒绝的人信息,不要加到role data里面" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcBeCancelRelationShipNotify" CName="被删除好友通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="DeleteRoleId" CName="删除的数据" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="repeated" FieldType="ContactGroup" FieldId="2" Name="ContactGroups" CName="改变的分组" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcBeAddBlackListNotify" CName="被加入黑名单通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="RoleId" CName="删除的数据" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="repeated" FieldType="ContactGroup" FieldId="2" Name="ContactGroups" CName="改变的分组" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcRecommendContactAsk" CName="推荐联系人请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcRecommendContactReply" CName="推荐联系人回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="ContactData" FieldId="2" Name="Contact" CName="推荐的人" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="repeated" FieldType="uint64" FieldId="3" Name="ApplyedListId" CName="已经申请过的人的id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcRejectAllAsk" CName="拒绝所有申请请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcRejectAllReply" CName="拒绝所有申请回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="ContactGroup" FieldId="2" Name="ContactGroups" CName="改变的分组" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="repeated" FieldType="uint64" FieldId="3" Name="DeleteRoleIds" CName="删除的id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcAddFriendShipPointAsk" CName="添加好友度请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="FriendRoleId" CName="好友Guid" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="repeated" FieldType="ItemSimpleData" FieldId="2" Name="ItemData" CName="物品id" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcAddFriendShipPointReply" CName="添加好友度回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="ContactData" FieldId="2" Name="Contact" CName="更新的人" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcRoleDataUpdateNotify" CName="玩家数据更新通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="ContactData" FieldId="1" Name="Contact" CName="更新的人" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcContactLoginNotify" CName="联系人登录通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="ContactData" FieldId="1" Name="Contact" CName="更新的人" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="repeated" FieldType="int32" FieldId="2" Name="GroupIds" CName="改变的分组" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcContactLogoutNotify" CName="联系人退出游戏通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="ContactData" FieldId="1" Name="Contact" CName="更新的人" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="repeated" FieldType="int32" FieldId="2" Name="GroupIds" CName="改变的分组" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcDeleteRoleDataNotify" CName="删除联系人数据通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="2" Name="RoleId" CName="删除的玩家id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcSortGroupAsk" CName="排序分组请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="repeated" FieldType="int32" FieldId="1" Name="GroupIds" CName="分组id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcSortGroupReply" CName="排序分组回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="int32" FieldId="2" Name="GroupIds" CName="分组id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcSetFriendAliasAsk" CName="设置好友名字请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="string" FieldId="1" Name="Name" CName="名字" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="2" Name="RoleId" CName="设置的玩家Id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcSetFriendAliasReply" CName="设置好友名字回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="ContactData" FieldId="2" Name="Contact" CName="更新的人" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcSendFriendGiftPointAsk" CName="发送好友点请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="SendRoleId" CName="给谁送" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="Point" CName="友情点" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcSendFriendGiftPointReply" CName="发送好友点回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="FriendGiftPoint" FieldId="2" Name="SentGiftList" CName="已经赠送列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcAcquireGiftPointAsk" CName="获取点数请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="AcquireRoleId" CName="给谁送" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcAcquireGiftPointReply" CName="获取点数回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="FriendGiftPoint" FieldId="2" Name="AcquireGiftList" CName="已经收取列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="repeated" FieldType="FriendGiftPoint" FieldId="3" Name="UnAcquireGiftList" CName="未收取赠送列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcUnAcquireGiftPointNotify" CName="刷新未获取点数通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="repeated" FieldType="FriendGiftPoint" FieldId="1" Name="UnAcquireGiftList" CName="未收取赠送列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcSendAllFriendGiftPointAsk" CName="一键赠送请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcSendAllFriendGiftPointReply" CName="一键赠送回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="FriendGiftPoint" FieldId="2" Name="SentGiftList" CName="已经赠送列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcAcquireAllGiftPointAsk" CName="一键收取请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcAcquireAllGiftPointReply" CName="一键收取回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="FriendGiftPoint" FieldId="2" Name="AcquireGiftList" CName="已经收取列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="repeated" FieldType="FriendGiftPoint" FieldId="3" Name="UnAcquireGiftList" CName="未收取赠送列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcDeleteGroupRoleAsk" CName="移出列表请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="GroupId" CName="分组Id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="2" Name="RoleId" CName="玩家id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcDeleteGroupRoleReply" CName="移出列表回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="ContactGroup" FieldId="3" Name="ContactGroups" CName="改变的分组" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcAddRoleDataNotify" CName="新加玩家数据通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="ContactData" FieldId="1" Name="NewRoleData" CName="新的联系人数据" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcSetGiftPointNotify" CName="设置友情点数据通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="repeated" FieldType="FriendGiftPoint" FieldId="1" Name="AcquireGiftList" CName="已经收取列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="repeated" FieldType="FriendGiftPoint" FieldId="2" Name="UnAcquireGiftList" CName="未收取赠送列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="repeated" FieldType="FriendGiftPoint" FieldId="3" Name="SentGiftList" CName="已经赠送列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcContactsGroupsNotify" CName="刷新组通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="repeated" FieldType="ContactGroup" FieldId="1" Name="MyFriendGroup" CName="分组信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcAgreeAllApplicationAsk" CName="同意所有申请请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcAgreeAllApplicationReply" CName="同意所有申请回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="ContactData" FieldId="2" Name="NewFriendData" CName="新玩家数据" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="repeated" FieldType="ContactGroup" FieldId="3" Name="MyFriendGroup" CName="移动来源组" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcChatToAsk" CName="聊天请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="RoleId" CName="需要发送信息的人的唯一id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="ChatMsg" FieldId="2" Name="ChatMsg" CName="聊天信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcChatToReply" CName="聊天回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcNewChatMsgNotify" CName="新的聊天信息通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="ChatInfo" FieldId="1" Name="ChatMsg" CName="新的聊天信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="2" Name="RoleId" CName="聊天Id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcReadMsgAsk" CName="读取信息请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="RoleId" CName="已读玩家id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcReadMsgReply" CName="读取信息回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="2" Name="RoleId" CName="已读玩家id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+</Root>

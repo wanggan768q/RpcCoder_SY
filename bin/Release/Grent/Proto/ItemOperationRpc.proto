@@ -1,0 +1,91 @@
+import "PublicStruct.proto";
+
+//道具分解界面初始化请求
+message  ItemOperationRpcItemResolveSettingSyncAsk
+{
+}
+
+//道具分解界面初始化回应
+message  ItemOperationRpcItemResolveSettingSyncReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	repeated ItemResolveData Setting = 2;	//设置列表
+}
+
+//道具分解请求
+message  ItemOperationRpcItemResolveAsk
+{
+	optional int32 ItemPos = 1[default=-1];	//道具的位置
+	optional int32 Count = 2[default=-1];	//分解道具数量
+}
+
+//道具分解回应
+message  ItemOperationRpcItemResolveReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	optional int32 ItemID = 2[default=-1];	//道具唯一ID
+	repeated ItemSimpleData ItemSimpleDataList = 3;	//道具简易数据列表
+}
+
+//更改设置请求
+message  ItemOperationRpcChangeSettingAsk
+{
+	repeated ItemResolveData SettingList = 1;	//设置列表
+}
+
+//更改设置回应
+message  ItemOperationRpcChangeSettingReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+}
+
+//一键分解请求
+message  ItemOperationRpcBatchResolveAsk
+{
+	optional int32 Qulity = 1[default=-1];	//一键分解的品质类别
+}
+
+//一键分解回应
+message  ItemOperationRpcBatchResolveReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+}
+
+//道具合成请求
+message  ItemOperationRpcItemCompoundAsk
+{
+	optional int32 ItemConfID = 1[default=-1];	//合成道具的confID
+}
+
+//道具合成回应
+message  ItemOperationRpcItemCompoundReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	optional int32 ItemConfID = 2[default=-1];	//合成道具的confID
+}
+

@@ -1,0 +1,66 @@
+import "PublicStruct.proto";
+
+//宠物捕获请求
+message  PetCaptureRpcCaptureAsk
+{
+	optional int32 BallType = 1[default=1];	//精灵球道具类型
+}
+
+//宠物捕获回应
+message  PetCaptureRpcCaptureReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	/*
+	宠物模型id
+	见creature表
+	*/
+	optional int32 CreatureId = 2[default=-1];
+	/*
+	掉落宠物id
+	itemid
+	*/
+	optional int32 PetId = 3[default=-1];
+}
+
+//捕获到宠物广播通知
+message  PetCaptureRpcCapturePetNotify
+{
+	optional int32 PetId = 1[default=-1];	//捕获到宠物id
+	optional string NickName = 2;	//捕获到宠物人昵称
+	optional int32 RoleId = 4[default=-1];	//捕获到宠物角色id
+	optional int32 CreatureId = 6[default=-1];	//宠物模型id
+}
+
+//宠物捕获登录通知
+message  PetCaptureRpcLoginNotify
+{
+	optional int32 WayPoint = 2[default=-1];	//宠物捕获npc刷新路点
+	optional int32 SceneId = 3[default=-1];	//场景id
+	optional Vector3 Pos = 4;	//npc位置
+}
+
+//宠物npc位置请求
+message  PetCaptureRpcPetLocationAsk
+{
+	optional int32 LineId = 1[default=-1];	//分线id
+}
+
+//宠物npc位置回应
+message  PetCaptureRpcPetLocationReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional Vector3 Pos = 2;	//坐标
+	optional int32 SceneId = 3[default=-1];	//场景id
+	optional int32 WayPoint = 4[default=-1];	//路点
+}
+

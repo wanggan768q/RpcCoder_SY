@@ -1,0 +1,284 @@
+<?xml version="1.0"?>
+<Root Module="Team" CName="Team" MsgNumStart="10" SyncDataVersion="1" Comment="组队模块">
+    <Operate Name="LeaveTeam" CName="LeaveTeam" Comment="离开队伍">
+        <OP_ASK Name="Ask" CName="请求" MsgID="10" DataStruct="RpcLeaveTeamAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="11" DataStruct="RpcLeaveTeamReply" Comment="" />
+    </Operate>
+    <Operate Name="AppointTeamLeader" CName="AppointTeamLeader" Comment="提升队长">
+        <OP_ASK Name="Ask" CName="请求" MsgID="12" DataStruct="RpcAppointTeamLeaderAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="13" DataStruct="RpcAppointTeamLeaderReply" Comment="" />
+    </Operate>
+    <Operate Name="CreateTeam" CName="CreateTeam" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="14" DataStruct="RpcCreateTeamAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="15" DataStruct="RpcCreateTeamReply" Comment="" />
+    </Operate>
+    <Operate Name="DissmissTeam" CName="DissmissTeam" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="16" DataStruct="RpcDissmissTeamAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="17" DataStruct="RpcDissmissTeamReply" Comment="" />
+    </Operate>
+    <Operate Name="NewLeader" CName="NewLeader" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="18" DataStruct="RpcNewLeaderNotify" Comment="" />
+    </Operate>
+    <Operate Name="KickMember" CName="KickMember" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="19" DataStruct="RpcKickMemberAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="20" DataStruct="RpcKickMemberReply" Comment="" />
+    </Operate>
+    <Operate Name="DissmissTeamNotify" CName="DissmissTeamNotify" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="21" DataStruct="RpcDissmissTeamNotifyNotify" Comment="" />
+    </Operate>
+    <Operate Name="JoinTeamNotify" CName="JoinTeamNotify" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="22" DataStruct="RpcJoinTeamNotifyNotify" Comment="" />
+    </Operate>
+    <Operate Name="KickMemberNotify" CName="KickMemberNotify" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="23" DataStruct="RpcKickMemberNotifyNotify" Comment="" />
+    </Operate>
+    <Operate Name="LeaveTeamNotify" CName="LeaveTeam" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="24" DataStruct="RpcLeaveTeamNotifyNotify" Comment="" />
+    </Operate>
+    <Operate Name="SurroundingTeam" CName="SurroundingTeam" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="25" DataStruct="RpcSurroundingTeamAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="26" DataStruct="RpcSurroundingTeamReply" Comment="" />
+    </Operate>
+    <Operate Name="ApplyTeam" CName="ApplyTeam" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="27" DataStruct="RpcApplyTeamAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="28" DataStruct="RpcApplyTeamReply" Comment="" />
+    </Operate>
+    <Operate Name="ApplyTeamNotify" CName="ApplyTeamNotify" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="29" DataStruct="RpcApplyTeamNotifyNotify" Comment="" />
+    </Operate>
+    <Operate Name="AgreeApplicant" CName="AgreeApplicant" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="30" DataStruct="RpcAgreeApplicantAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="31" DataStruct="RpcAgreeApplicantReply" Comment="" />
+    </Operate>
+    <Operate Name="AgreeApplicantNotify" CName="AgreeApplicantNotify" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="32" DataStruct="RpcAgreeApplicantNotifyNotify" Comment="" />
+    </Operate>
+    <Operate Name="TeamInfo" CName="TeamInfo" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="33" DataStruct="RpcTeamInfoNotify" Comment="" />
+    </Operate>
+    <Operate Name="UpdateTeamMemInfo" CName="UpdateTeamMemInfo" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="34" DataStruct="RpcUpdateTeamMemInfoNotify" Comment="" />
+    </Operate>
+    <Operate Name="FollowTeamLeader" CName="跟随队长" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="35" DataStruct="RpcFollowTeamLeaderAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="36" DataStruct="RpcFollowTeamLeaderReply" Comment="" />
+    </Operate>
+    <Operate Name="SummonMember" CName="召唤队员" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="37" DataStruct="RpcSummonMemberAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="38" DataStruct="RpcSummonMemberReply" Comment="" />
+    </Operate>
+    <Operate Name="SummonMemberNotify" CName="召唤队员" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="39" DataStruct="RpcSummonMemberNotifyNotify" Comment="" />
+    </Operate>
+    <Operate Name="ChangeTeamTarget" CName="改变队伍目标" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="40" DataStruct="RpcChangeTeamTargetAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="41" DataStruct="RpcChangeTeamTargetReply" Comment="" />
+    </Operate>
+    <Operate Name="ChangeTeamTargetNotify" CName="设置服务器目标" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="42" DataStruct="RpcChangeTeamTargetNotifyNotify" Comment="" />
+    </Operate>
+    <Operate Name="ChangTeamType" CName="转换队伍团队" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="43" DataStruct="RpcChangTeamTypeAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="44" DataStruct="RpcChangTeamTypeReply" Comment="" />
+    </Operate>
+    <Operate Name="ChangeTeamTypeNotify" CName="转换队伍团队协议" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="45" DataStruct="RpcChangeTeamTypeNotifyNotify" Comment="" />
+    </Operate>
+    <Operate Name="InviteTeamMember" CName="邀请玩家" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="46" DataStruct="RpcInviteTeamMemberAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="47" DataStruct="RpcInviteTeamMemberReply" Comment="" />
+    </Operate>
+    <Operate Name="InviteTeamMemberNotify" CName="邀请玩家广播" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="48" DataStruct="RpcInviteTeamMemberNotifyNotify" Comment="" />
+    </Operate>
+    <Operate Name="ApplyListNotify" CName="列表通知" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="49" DataStruct="RpcApplyListNotifyNotify" Comment="" />
+    </Operate>
+    <Operate Name="AgreeJoinTeam" CName="AgreeJoinTeam" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="50" DataStruct="RpcAgreeJoinTeamAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="51" DataStruct="RpcAgreeJoinTeamReply" Comment="" />
+    </Operate>
+    <Operate Name="RefuseMember" CName="拒绝申请" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="52" DataStruct="RpcRefuseMemberAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="53" DataStruct="RpcRefuseMemberReply" Comment="" />
+    </Operate>
+    <Operate Name="ClearApplyList" CName="清空申请列表" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="54" DataStruct="RpcClearApplyListAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="55" DataStruct="RpcClearApplyListReply" Comment="" />
+    </Operate>
+    <Operate Name="NoTeamInvite" CName="没有队伍邀请玩家" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="56" DataStruct="RpcNoTeamInviteAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="57" DataStruct="RpcNoTeamInviteReply" Comment="" />
+    </Operate>
+    <Operate Name="RejectInvite" CName="拒绝邀请" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="58" DataStruct="RpcRejectInviteAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="59" DataStruct="RpcRejectInviteReply" Comment="" />
+    </Operate>
+    <Struct Name="RpcCreateTeamAsk" CName="创建队伍创建副本请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="6">
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="TeamType" CName="TeamType" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="0:五人队1:十人队" />
+        <Field PreDefine="optional" FieldType="TeamTarget" FieldId="6" Name="TTarget" CName="队伍目标" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcCreateTeamReply" CName="创建队伍创建副本回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="TeamInfo" FieldId="2" Name="Team" CName="PbTeam" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcLeaveTeamAsk" CName="LeaveTeam请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1" />
+    <Struct Name="RpcLeaveTeamReply" CName="LeaveTeam回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcAppointTeamLeaderAsk" CName="AppointTeamLeader请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="RoleId" CName="RoleId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcAppointTeamLeaderReply" CName="AppointTeamLeader回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="2" Name="NewLeaderId" CName="NewLeaderId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcNewLeaderNotify" CName="NewLeader通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="Newleaderroleid" CName="newleaderroleid" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcKickMemberAsk" CName="KickMember请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="KickMemberRoleId" CName="KickMemberRoleId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcKickMemberReply" CName="KickMember回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcDissmissTeamAsk" CName="DissmissTeam请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcDissmissTeamReply" CName="DissmissTeam回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcAppointTeamLeaderNotify" CName="AppointTeamLeader通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcKickMemberNotifyNotify" CName="KickMemberNotify通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="KickedMemberRoleId" CName="KickMemberRoleId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcLeaveTeamNotifyNotify" CName="LeaveTeam通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="RoleId" CName="RoleId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="2" Name="NewLeaderRoleId" CName="NewLeader" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcJoinTeamNotifyNotify" CName="JoinTeamNotify通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="TeamMemberInfo" FieldId="1" Name="TeamMember" CName="TeamMember" ValueSet="" MinValue="6" MaxValue="128" Comment="新成员信息" />
+        <Field PreDefine="optional" FieldType="TeamInfo" FieldId="2" Name="Team" CName="PbTeam" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcDissmissTeamNotifyNotify" CName="DissmissTeamNotify通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcSurroundingTeamAsk" CName="SurroundingTeam请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="TargetGroupId" CName="队伍类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="TargetGroup" CName="副本ID or 活动ID " ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcSurroundingTeamReply" CName="SurroundingTeam回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="6">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="TeamInfo" FieldId="2" Name="TeamsInfo" CName="TeamsInfo" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="5" Name="TargetGroupId" CName="队伍类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="6" Name="TargetGroup" CName="副本ID or 活动ID " ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcApplyTeamAsk" CName="ApplyTeam请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="TeamId" CName="TeamId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="队伍id" />
+    </Struct>
+    <Struct Name="RpcApplyTeamReply" CName="ApplyTeam回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="2" Name="TeamId" CName="TeamId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="队伍id" />
+    </Struct>
+    <Struct Name="RpcApplyTeamNotifyNotify" CName="ApplyTeamNotify通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="TeamMemberInfo" FieldId="1" Name="TeamMember" CName="TeamMember" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcAgreeApplicantAsk" CName="AgreeApplicant请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="2" Name="RoleId" CName="RoleId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcAgreeApplicantReply" CName="AgreeApplicant回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-9999" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcAgreeApplicantNotifyNotify" CName="AgreeApplicantNotify通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="TeamInfo" FieldId="1" Name="Team" CName="Team" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcTeamInfoNotify" CName="TeamInfo通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="TeamInfo" FieldId="1" Name="Team" CName="Team" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="FollowTeamLeader" CName="跟随队长" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcUpdateTeamMemInfoNotify" CName="UpdateTeamMemInfo通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="TeamMemberInfo" FieldId="1" Name="TeamMember" CName="TeamMember" ValueSet="" MinValue="6" MaxValue="128" Comment="新成员信息" />
+    </Struct>
+    <Struct Name="RpcFollowTeamLeaderAsk" CName="跟随队长请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="FollowTeamLeader" CName="跟随队长" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcFollowTeamLeaderReply" CName="跟随队长回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="FollowTeamLeader" CName="跟随队长" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcSummonMemberAsk" CName="召唤队员请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcSummonMemberReply" CName="召唤队员回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcSummonMemberNotifyNotify" CName="召唤队员通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcChangeTeamTargetReply" CName="改变队伍目标" ProtoType="RpcProto" Comment="" DataType="ItemData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="TeamTarget" FieldId="2" Name="TeamTarget" CName="队伍目标" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcChangeTeamTargetAsk" CName="改变队伍目标" ProtoType="RpcProto" Comment="" DataType="ItemData" SaveToDB="False" SyncToClient="False" MaxFieldId="6">
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="TargetType" CName="目标类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="Id" CName="副本ID or 活动ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="4" Name="MinLevel" CName="最小等级" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="5" Name="MaxLevel" CName="最大等级" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="repeated" FieldType="int32" FieldId="6" Name="Function" CName="职能" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcChangeTeamTargetNotifyNotify" CName="设置服务器目标通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="TeamTarget" FieldId="1" Name="TeamTarget" CName="队伍目标" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcChangTeamTypeAsk" CName="转换队伍团队请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="TeamType" CName="队伍类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcChangTeamTypeReply" CName="转换队伍团队回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="TeamType" CName="队伍类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="TeamTarget" FieldId="3" Name="TeamTarget" CName="队伍目标" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcChangeTeamTypeNotifyNotify" CName="转换队伍团队协议通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="TeamType" CName="队伍类型" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="TeamTarget" FieldId="2" Name="TeamTarget" CName="队伍目标" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcInviteTeamMemberAsk" CName="邀请玩家请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="repeated" FieldType="uint64" FieldId="1" Name="RoleId" CName="角色ID列表" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcInviteTeamMemberReply" CName="邀请玩家回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="repeated" FieldType="uint64" FieldId="2" Name="RoleId" CName="角色ID列表" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcInviteTeamMemberNotifyNotify" CName="邀请玩家广播通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="6">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="TeamId" CName="队伍ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="5" Name="IsLeader" CName="是否队长邀请" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="TeamMemberInfo" FieldId="6" Name="InviteMemberInfo" CName="邀请人的信息" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcApplyListNotifyNotify" CName="列表通知通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="repeated" FieldType="TeamMemberInfo" FieldId="1" Name="ApplyList" CName="成员列表" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcAgreeJoinTeamAsk" CName="AgreeJoinTeam请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="TeamId" CName="TeamId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="IsLeader" CName="IsLeader" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcAgreeJoinTeamReply" CName="AgreeJoinTeam回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcRefuseMemberAsk" CName="拒绝申请请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="RoleId" CName="RoleId" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcRefuseMemberReply" CName="拒绝申请回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcClearApplyListReply" CName="清空申请列表回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcClearApplyListAsk" CName="清空申请列表请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcNoTeamInviteAsk" CName="没有队伍邀请玩家请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="TeamType" CName="TeamType" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="0:五人队1:十人队" />
+        <Field PreDefine="optional" FieldType="TeamTarget" FieldId="2" Name="TTarget" CName="队伍目标" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+        <Field PreDefine="optional" FieldType="uint64" FieldId="3" Name="InviteRoleId" CName="邀请人id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+    </Struct>
+    <Struct Name="RpcNoTeamInviteReply" CName="没有队伍邀请玩家回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="TeamInfo" FieldId="2" Name="Team" CName="PbTeam" ValueSet="" MinValue="6" MaxValue="128" Comment="" />
+    </Struct>
+    <Struct Name="RpcRejectInviteAsk" CName="拒绝邀请请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="4">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="3" Name="RoleId" CName="玩家名字" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="string" FieldId="4" Name="Name" CName="玩家名字" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+    </Struct>
+    <Struct Name="RpcRejectInviteReply" CName="拒绝邀请回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+</Root>

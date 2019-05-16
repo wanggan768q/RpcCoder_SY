@@ -1,0 +1,100 @@
+import "PublicStruct.proto";
+
+//使用物品填充hp池请求
+message  MedicamentRpcFillHpAsk
+{
+	optional ItemSimpleData ItemData = 1;	//物品id
+}
+
+//使用物品填充hp池回应
+message  MedicamentRpcFillHpReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//一键添加请求
+message  MedicamentRpcOneStepFillHpAsk
+{
+	repeated ItemSimpleData ItemData = 3;	//物品id
+}
+
+//一键添加回应
+message  MedicamentRpcOneStepFillHpReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//客户端刷新药剂请求
+message  MedicamentRpcClientRefreshMedicamentAsk
+{
+	optional RecoverMedicament Medicament = 1;	//药剂
+}
+
+//客户端刷新药剂回应
+message  MedicamentRpcClientRefreshMedicamentReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional RecoverMedicament Medicament = 2;	//药剂
+}
+
+//服务器刷新药剂通知
+message  MedicamentRpcServerRefreshMedicamentNotify
+{
+	optional RecoverMedicament Medicament = 1;	//药剂
+}
+
+//请求数据请求
+message  MedicamentRpcSyncMedicamentDataAsk
+{
+}
+
+//请求数据回应
+message  MedicamentRpcSyncMedicamentDataReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional RecoverMedicament Medicament = 2;	//药剂
+}
+
+//药剂CD请求
+message  MedicamentRpcMedicamentCDAsk
+{
+}
+
+//药剂CD回应
+message  MedicamentRpcMedicamentCDReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional int32 LeftTime = 2[default=-1];	//剩余时间
+}
+
+//通知CD通知
+message  MedicamentRpcMedicamentCDNotifyNotify
+{
+	optional int32 LeftTime = 1[default=-1];	//剩余时间
+}
+

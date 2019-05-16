@@ -1,0 +1,438 @@
+import "PublicStruct.proto";
+
+//创建队伍创建副本请求
+message  TeamRpcCreateTeamAsk
+{
+	/*
+	TeamType
+	0:五人队1:十人队
+	*/
+	optional int32 TeamType = 2[default=-1];
+	optional TeamTarget TTarget = 6;	//队伍目标
+}
+
+//创建队伍创建副本回应
+message  TeamRpcCreateTeamReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	optional TeamInfo Team = 2;	//PbTeam
+}
+
+//LeaveTeam请求
+message  TeamRpcLeaveTeamAsk
+{
+}
+
+//LeaveTeam回应
+message  TeamRpcLeaveTeamReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+}
+
+//AppointTeamLeader请求
+message  TeamRpcAppointTeamLeaderAsk
+{
+	optional uint64 RoleId = 1[default=0];	//RoleId
+}
+
+//AppointTeamLeader回应
+message  TeamRpcAppointTeamLeaderReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	optional uint64 NewLeaderId = 2[default=0];	//NewLeaderId
+}
+
+//NewLeader通知
+message  TeamRpcNewLeaderNotify
+{
+	optional uint64 Newleaderroleid = 1[default=0];	//newleaderroleid
+}
+
+//KickMember请求
+message  TeamRpcKickMemberAsk
+{
+	optional uint64 KickMemberRoleId = 1[default=0];	//KickMemberRoleId
+}
+
+//KickMember回应
+message  TeamRpcKickMemberReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+}
+
+//DissmissTeam请求
+message  TeamRpcDissmissTeamAsk
+{
+}
+
+//DissmissTeam回应
+message  TeamRpcDissmissTeamReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+}
+
+//AppointTeamLeader通知
+message  TeamRpcAppointTeamLeaderNotify
+{
+}
+
+//KickMemberNotify通知
+message  TeamRpcKickMemberNotifyNotify
+{
+	optional uint64 KickedMemberRoleId = 1[default=0];	//KickMemberRoleId
+}
+
+//LeaveTeam通知
+message  TeamRpcLeaveTeamNotifyNotify
+{
+	optional uint64 RoleId = 1[default=0];	//RoleId
+	optional uint64 NewLeaderRoleId = 2[default=0];	//NewLeader
+}
+
+//JoinTeamNotify通知
+message  TeamRpcJoinTeamNotifyNotify
+{
+	/*
+	TeamMember
+	新成员信息
+	*/
+	optional TeamMemberInfo TeamMember = 1;
+	optional TeamInfo Team = 2;	//PbTeam
+}
+
+//DissmissTeamNotify通知
+message  TeamRpcDissmissTeamNotifyNotify
+{
+}
+
+//SurroundingTeam请求
+message  TeamRpcSurroundingTeamAsk
+{
+	optional int32 TargetGroupId = 2[default=-1];	//队伍类型
+	optional int32 TargetGroup = 3[default=0];	//副本ID or 活动ID 
+}
+
+//SurroundingTeam回应
+message  TeamRpcSurroundingTeamReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	repeated TeamInfo TeamsInfo = 2;	//TeamsInfo
+	optional int32 TargetGroupId = 5[default=-1];	//队伍类型
+	optional int32 TargetGroup = 6[default=0];	//副本ID or 活动ID 
+}
+
+//ApplyTeam请求
+message  TeamRpcApplyTeamAsk
+{
+	/*
+	TeamId
+	队伍id
+	*/
+	optional uint64 TeamId = 1[default=0];
+}
+
+//ApplyTeam回应
+message  TeamRpcApplyTeamReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	/*
+	TeamId
+	队伍id
+	*/
+	optional uint64 TeamId = 2[default=0];
+}
+
+//ApplyTeamNotify通知
+message  TeamRpcApplyTeamNotifyNotify
+{
+	optional TeamMemberInfo TeamMember = 1;	//TeamMember
+}
+
+//AgreeApplicant请求
+message  TeamRpcAgreeApplicantAsk
+{
+	optional uint64 RoleId = 2[default=0];	//RoleId
+}
+
+//AgreeApplicant回应
+message  TeamRpcAgreeApplicantReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+}
+
+//AgreeApplicantNotify通知
+message  TeamRpcAgreeApplicantNotifyNotify
+{
+	optional TeamInfo Team = 1;	//Team
+}
+
+//TeamInfo通知
+message  TeamRpcTeamInfoNotify
+{
+	optional TeamInfo Team = 1;	//Team
+	optional int32 FollowTeamLeader = 2[default=-1];	//跟随队长
+}
+
+//UpdateTeamMemInfo通知
+message  TeamRpcUpdateTeamMemInfoNotify
+{
+	/*
+	TeamMember
+	新成员信息
+	*/
+	optional TeamMemberInfo TeamMember = 1;
+}
+
+//跟随队长请求
+message  TeamRpcFollowTeamLeaderAsk
+{
+	optional int32 FollowTeamLeader = 1[default=-1];	//跟随队长
+}
+
+//跟随队长回应
+message  TeamRpcFollowTeamLeaderReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional int32 FollowTeamLeader = 2[default=-1];	//跟随队长
+}
+
+//召唤队员请求
+message  TeamRpcSummonMemberAsk
+{
+}
+
+//召唤队员回应
+message  TeamRpcSummonMemberReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//召唤队员通知
+message  TeamRpcSummonMemberNotifyNotify
+{
+}
+
+//改变队伍目标
+message  TeamRpcChangeTeamTargetReply
+{
+	optional int32 Result = 1[default=-1];	//返回结果
+	optional TeamTarget TeamTarget = 2;	//队伍目标
+}
+
+//改变队伍目标
+message  TeamRpcChangeTeamTargetAsk
+{
+	optional int32 TargetType = 2[default=-1];	//目标类型
+	optional int32 Id = 3[default=-1];	//副本ID or 活动ID
+	optional int32 MinLevel = 4[default=-1];	//最小等级
+	optional int32 MaxLevel = 5[default=-1];	//最大等级
+	repeated int32 Function = 6;	//职能
+}
+
+//设置服务器目标通知
+message  TeamRpcChangeTeamTargetNotifyNotify
+{
+	optional TeamTarget TeamTarget = 1;	//队伍目标
+}
+
+//转换队伍团队请求
+message  TeamRpcChangTeamTypeAsk
+{
+	optional int32 TeamType = 1[default=-1];	//队伍类型
+}
+
+//转换队伍团队回应
+message  TeamRpcChangTeamTypeReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional int32 TeamType = 2[default=-1];	//队伍类型
+	optional TeamTarget TeamTarget = 3;	//队伍目标
+}
+
+//转换队伍团队协议通知
+message  TeamRpcChangeTeamTypeNotifyNotify
+{
+	optional int32 TeamType = 1[default=-1];	//队伍类型
+	optional TeamTarget TeamTarget = 2;	//队伍目标
+}
+
+//邀请玩家请求
+message  TeamRpcInviteTeamMemberAsk
+{
+	repeated uint64 RoleId = 1;	//角色ID列表
+}
+
+//邀请玩家回应
+message  TeamRpcInviteTeamMemberReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated uint64 RoleId = 2;	//角色ID列表
+}
+
+//邀请玩家广播通知
+message  TeamRpcInviteTeamMemberNotifyNotify
+{
+	optional uint64 TeamId = 1[default=0];	//队伍ID
+	optional int32 IsLeader = 5[default=-1];	//是否队长邀请
+	optional TeamMemberInfo InviteMemberInfo = 6;	//邀请人的信息
+}
+
+//列表通知通知
+message  TeamRpcApplyListNotifyNotify
+{
+	repeated TeamMemberInfo ApplyList = 1;	//成员列表
+}
+
+//AgreeJoinTeam请求
+message  TeamRpcAgreeJoinTeamAsk
+{
+	optional uint64 TeamId = 1[default=0];	//TeamId
+	optional int32 IsLeader = 2[default=-1];	//IsLeader
+}
+
+//AgreeJoinTeam回应
+message  TeamRpcAgreeJoinTeamReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//拒绝申请请求
+message  TeamRpcRefuseMemberAsk
+{
+	optional uint64 RoleId = 1[default=0];	//RoleId
+}
+
+//拒绝申请回应
+message  TeamRpcRefuseMemberReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//清空申请列表回应
+message  TeamRpcClearApplyListReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//清空申请列表请求
+message  TeamRpcClearApplyListAsk
+{
+}
+
+//没有队伍邀请玩家请求
+message  TeamRpcNoTeamInviteAsk
+{
+	/*
+	TeamType
+	0:五人队1:十人队
+	*/
+	optional int32 TeamType = 1[default=-1];
+	optional TeamTarget TTarget = 2;	//队伍目标
+	optional uint64 InviteRoleId = 3[default=0];	//邀请人id
+}
+
+//没有队伍邀请玩家回应
+message  TeamRpcNoTeamInviteReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional TeamInfo Team = 2;	//PbTeam
+}
+
+//拒绝邀请请求
+message  TeamRpcRejectInviteAsk
+{
+	optional uint64 RoleId = 3[default=0];	//玩家名字
+	optional string Name = 4;	//玩家名字
+}
+
+//拒绝邀请回应
+message  TeamRpcRejectInviteReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+

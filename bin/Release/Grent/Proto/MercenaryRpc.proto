@@ -1,0 +1,69 @@
+import "PublicStruct.proto";
+
+//入队请求
+message  MercenaryRpcInQueueAsk
+{
+	optional int32 Id = 1[default=-1];	//入队佣兵id
+}
+
+//入队回应
+message  MercenaryRpcInQueueReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//出队请求
+message  MercenaryRpcOutQueueAsk
+{
+	optional int32 Id = 1[default=-1];	//出队佣兵id
+}
+
+//出队回应
+message  MercenaryRpcOutQueueReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//自动配置请求
+message  MercenaryRpcAutoSetAsk
+{
+}
+
+//自动配置回应
+message  MercenaryRpcAutoSetReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//佣兵信息请求
+message  MercenaryRpcInfoAsk
+{
+}
+
+//佣兵信息回应
+message  MercenaryRpcInfoReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated MercenaryInfo Mercenary = 2;	//佣兵信息
+}
+

@@ -1,0 +1,42 @@
+ChatRpcChatAsk↑ Chat请求
+	Chat_msg:ChatMsg	;chat_msg
+	[ChatMsg]
+		Chat_content:string	;文字内容
+		Chat_voice_url:string	;音频URL
+		Chat_voice_secs:int32 = -1	;音频秒数
+	Chat_channel:int32 = -1	;Chat_channel
+
+ChatRpcChatReply↓ Chat回应
+	Result:int32 = -9999	;返回结果
+
+ChatRpcPushChatUpdatesNotify↓ PushChatUpdates通知
+	Chat_channels:ChatChannelData*	;聊天频道列表
+	[ChatChannelData]
+		Chat_channel:int32 = -1	;聊天频道
+		Chat_infos:ChatInfo*	;聊天消息列表
+		[ChatInfo]
+			Player_name:string	;玩家名字
+			Player_guid:uint64 = 0	;玩家GUID
+			Avatar_id:int32 = -1	;头像ID
+			Player_level:int32 = -1	;等级
+			Avatar_frame_id:int32 = -1	;头像框ID
+			Config_id:int32 = -1	;角色配置ID
+			Timestamp:uint64 = 0	;时间戳
+			Chat_msg:ChatMsg	;聊天消息
+			[ChatMsg]
+				Chat_content:string	;文字内容
+				Chat_voice_url:string	;音频URL
+				Chat_voice_secs:int32 = -1	;音频秒数
+			Team_id:uint64 = 0	;队伍id
+			Guild_guid:uint64 = 0	;公会id 0表示无公会
+
+ChatRpcPushMarqueeNotify↓ 推送跑马灯通知
+	Marquee:string*	;跑马灯
+
+ChatRpcSayNotify↓ 玩家或NPC对象说话通知
+	ObjId:int32 = 0	;说话人的objId
+	ChatId:int32 = 0	;String_ChatMenu表id
+	Duration:int32 = 0	;该聊天内容停留时间
+	ChatType:int32 = 0	;对话显示类型：0：单次显示，1：循环显示
+	Interval:int32 = 0	;循环显示类型下的两次气泡的间隔时间
+

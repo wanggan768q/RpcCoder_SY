@@ -1,0 +1,177 @@
+import "PublicStruct.proto";
+
+//InformJoinTeam请求
+message  WGRpcInformJoinTeamAsk
+{
+	optional TeamMemberInfo Member = 5;	//TeamMember
+	optional TeamInfo Team = 6;	//Team
+}
+
+//InformJoinTeam回应
+message  WGRpcInformJoinTeamReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+}
+
+//InformLeave请求
+message  WGRpcInformLeaveAsk
+{
+	optional uint64 RoleId = 1[default=0];	//RoleId
+	optional uint64 NewLeaderRoleId = 2[default=0];	//NewLeader
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 3[default=-9999];
+}
+
+//InformLeave回应
+message  WGRpcInformLeaveReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+}
+
+//InformAppointTeamLeader请求
+message  WGRpcInformAppointTeamLeaderAsk
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	optional uint64 NewLeaderRoleId = 2[default=0];	//RoleId
+	optional uint64 OldLeaderRoleId = 3[default=0];	//OldLeaderRoleId
+}
+
+//InformAppointTeamLeader回应
+message  WGRpcInformAppointTeamLeaderReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+}
+
+//InformKickTeamMember请求
+message  WGRpcInformKickTeamMemberAsk
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	optional uint64 KickedMemberRoleId = 2[default=0];	//KickMemberRoleId
+	optional uint64 LeaderRoleId = 3[default=0];	//LeaderRoleId
+}
+
+//InformKickTeamMember回应
+message  WGRpcInformKickTeamMemberReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+}
+
+//InformDissmissTeam请求
+message  WGRpcInformDissmissTeamAsk
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	optional uint64 LeaderRoleId = 2[default=0];	//LeaderRoleId
+}
+
+//InformDissmissTeam回应
+message  WGRpcInformDissmissTeamReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+}
+
+//InformApply请求
+message  WGRpcInformApplyTeamAsk
+{
+	optional TeamMemberInfo TeamMember = 1;	//TeamMember
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 2[default=-9999];
+	/*
+	TeamId
+	队伍id
+	*/
+	optional uint64 TeamId = 3[default=0];
+}
+
+//InformApply回应
+message  WGRpcInformApplyTeamReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+}
+
+//AgreeTeamApplicant请求
+message  WGRpcAgreeTeamApplicantAsk
+{
+	optional TeamInfo Team = 2;	//Team
+}
+
+//AgreeTeamApplicant回应
+message  WGRpcAgreeTeamApplicantReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+}
+
+//InformLogin请求
+message  WGRpcInformLoginAsk
+{
+	optional TeamInfo Team = 1;	//Team
+}
+
+//InformLogin回应
+message  WGRpcInformLoginReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+}
+

@@ -1,0 +1,59 @@
+message  EventRpcMoveNotify
+{
+	optional int32 ObjId = 1;
+	optional Vector3 Pos = 2;
+	optional float Dir = 3[default=-1];
+
+}
+
+message  EventRpcStopMoveNotify
+{
+	optional int32 ObjId = 1;
+	optional Vector3Int Pos = 2;
+	optional float Dir = 3[default=-1];
+	optional int32 Type = 5;
+
+}
+
+message  EventRpcObjAttrChangeNotify
+{
+	optional float Speed = 1[default=-1];
+	optional int64 Hp = 2[default=-1];
+	optional int32 Status = 3;
+	optional int32 ConfigId = 4;
+	optional int32 ObjId = 5;
+
+}
+
+message  EventRpcCoinChangeNotify
+{
+	optional int32 Type = 1;
+	optional int32 Value = 2;
+
+}
+
+message  EventRpcMovePosNotify
+{
+	optional int32 ObjId = 1;
+	repeated Vector3Int PosList = 3;
+	optional float Dir = 4[default=-1];
+	optional bool IsAllowChangeRunAnimation = 5[default=true];
+	optional int32 Follow = 6;
+
+}
+
+message  Vector3
+{
+	optional float X = 1[default=-1];
+	optional float Y = 2[default=-1];
+	optional float Z = 3[default=-1];
+
+}
+
+message  Vector3Int
+{
+	optional int32 X = 1[default=-1];
+	optional int32 Z = 2[default=-1];
+
+}
+

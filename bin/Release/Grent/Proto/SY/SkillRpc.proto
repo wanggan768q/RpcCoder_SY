@@ -1,0 +1,79 @@
+message  SkillRpcSkillInfoAsk
+{
+
+}
+
+message  SkillRpcSkillInfoReply
+{
+	optional int32 Result = 1;
+	optional int32 CurUseMastery = 2;
+	repeated ProfessionInfo ProfessionInfos = 5;
+
+}
+
+message  SkillRpcUpdateSkillInfoAsk
+{
+	repeated ProfessionInfo ProfessionInfos = 3;
+	optional int32 CurUseMastery = 4;
+
+}
+
+message  SkillRpcUpdateSkillInfoReply
+{
+	optional int32 Result = 1;
+	optional int32 CurUseMastery = 2;
+	repeated ProfessionInfo ProfessionInfos = 4;
+
+}
+
+message  SkillRpcLevelUpSkillPosAsk
+{
+	optional int32 SkillPos = 1;
+	optional bool IsAuto = 2[default=false];
+
+}
+
+message  SkillRpcLevelUpSkillPosReply
+{
+	optional int32 Result = 1;
+	repeated SkillPosInfo PosInfo = 8;
+
+}
+
+message  SkillRpcSkillLevelInfoAsk
+{
+
+}
+
+message  SkillRpcSkillLevelInfoReply
+{
+	optional int32 Result = 1;
+	repeated SkillPosInfo PosInfo = 2;
+
+}
+
+message  ProfessionInfo
+{
+	optional int32 Index = 1[default=-1];
+	repeated int32 SkillList = 2;
+
+}
+
+message  SkillPosInfo
+{
+	optional int32 Pos = 1[default=-1];
+	optional int32 CurLevel = 3[default=-1];
+	optional int32 NextLevel = 4[default=-1];
+	repeated AttrKeyValue CurLevelAttr = 5;
+	repeated AttrKeyValue NextLevelAttr = 6;
+
+}
+
+message  AttrKeyValue
+{
+	optional int32 Key = 1[default=-1];
+	optional int64 Value = 2[default=-1];
+	optional int32 Quality = 3[default=-1];
+
+}
+

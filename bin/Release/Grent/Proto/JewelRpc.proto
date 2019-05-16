@@ -1,0 +1,140 @@
+import "PublicStruct.proto";
+
+//同步请求
+message  JewelRpcJewelSyncAsk
+{
+}
+
+//同步回应
+message  JewelRpcJewelSyncReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated JewelInfo JewelInfos = 2;	//宝石信息
+}
+
+//镶嵌请求
+message  JewelRpcInsetJewelAsk
+{
+	optional int32 EquipSlot = 1[default=-1];	//装备位
+	optional int32 JewelId = 2[default=-1];	//宝石ID
+	/*
+	宝石位
+	-1 自动  0 1 2 位置
+	*/
+	optional int32 JewelSlot = 3[default=-1];
+}
+
+//镶嵌回应
+message  JewelRpcInsetJewelReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional JewelInfo JewelInfo = 2;	//宝石信息
+}
+
+//摘除宝石请求
+message  JewelRpcRemoveJewelAsk
+{
+	optional int32 EquipSlot = 1[default=-1];	//装备位
+	optional int32 JewelSlot = 2[default=-1];	//宝石位置
+}
+
+//摘除宝石回应
+message  JewelRpcRemoveJewelReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional JewelInfo JewelInfo = 2;	//宝石信息
+}
+
+//合成宝石请求
+message  JewelRpcCompoundJewelAsk
+{
+	optional int32 JewelId = 1[default=-1];	//使用的宝石ID
+	optional bool UseSafeItem = 2[default=false];	//是否使用保底道具
+}
+
+//合成宝石回应
+message  JewelRpcCompoundJewelReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	/*
+	宝石ID
+	result = true 合成的宝石 false 返还的宝石
+	*/
+	optional int32 JewelId = 2[default=-1];
+}
+
+//对已镶嵌的宝石合成请求
+message  JewelRpcCompoundSetJewelAsk
+{
+	optional int32 EquipType = 2[default=-1];	//装备位
+	optional int32 JewelSlot = 3[default=-1];	//宝石位
+}
+
+//对已镶嵌的宝石合成回应
+message  JewelRpcCompoundSetJewelReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional JewelInfo JewelInfo = 3;	//宝石信息
+}
+
+//解锁请求
+message  JewelRpcUnlockJewelSlotAsk
+{
+	optional int32 EquipSlot = 1[default=-1];	//装备位
+	optional int32 JewelSlot = 2[default=-1];	//槽位
+}
+
+//解锁回应
+message  JewelRpcUnlockJewelSlotReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional JewelInfo JewelInfo = 2;	//宝石信息
+}
+
+//快速合成请求
+message  JewelRpcQuickCompoundAsk
+{
+	optional int32 JewelId = 1[default=-1];	//要合成谁
+}
+
+//快速合成回应
+message  JewelRpcQuickCompoundReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+

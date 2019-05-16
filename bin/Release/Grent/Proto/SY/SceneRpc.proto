@@ -1,0 +1,294 @@
+message  SceneRpcLoadSceneCompleteAsk
+{
+	optional uint64 RoleId = 1[default=0];
+	optional int32 SceneId = 2;
+
+}
+
+message  SceneRpcLoadSceneCompleteReply
+{
+	optional int32 Result = 1;
+	optional int32 ObjId = 3;
+	optional Vector3 Pos = 4;
+	optional float Dir = 5[default=-1];
+	optional bytes ObjData = 6;
+
+}
+
+message  SceneRpcDeletePlayerNotify
+{
+	repeated ObjDeleteInfo Delete_list = 4;
+
+}
+
+message  SceneRpcConnectGameServerAsk
+{
+	optional uint64 RoleId = 1[default=0];
+	optional string Key = 2;
+	optional int32 SceneID = 3;
+	optional int32 LineID = 4;
+
+}
+
+message  SceneRpcConnectGameServerReply
+{
+	optional int32 Result = 1;
+	optional uint64 RoleId = 2[default=0];
+	optional int32 SceneId = 3;
+	optional int32 MapId = 5;
+
+}
+
+message  SceneRpcCreateObjNotify
+{
+	repeated ObjCreateInfo Create_list = 14;
+
+}
+
+message  SceneRpcSurroundingHumanAsk
+{
+
+}
+
+message  SceneRpcSurroundingHumanReply
+{
+	optional int32 Result = 1;
+	repeated CharacterInfo RoleList = 2;
+
+}
+
+message  SceneRpcCEnterSceneNotify
+{
+	optional int32 SceneId = 3;
+	optional int32 MapId = 6;
+	optional int32 LineId = 7;
+
+}
+
+message  SceneRpcSEnterSceneNotify
+{
+	optional int32 Result = 1;
+	optional int32 SceneId = 8;
+	optional int32 SceneConfigId = 9;
+	optional int32 MapId = 10;
+	optional uint64 RoleId = 11[default=0];
+	optional int32 DungeonConfigId = 12;
+	optional int32 LineId = 14;
+	repeated IntPair TypeConfig = 18;
+
+}
+
+message  SceneRpcObjDieNotify
+{
+	optional int32 ObjId = 1;
+	optional int32 RespawnTime = 2;
+	optional int32 ConfigId = 3;
+	optional int32 ObjType = 4;
+
+}
+
+message  SceneRpcCollide_ChangeSceneAsk
+{
+	optional int32 Collide_id = 1;
+
+}
+
+message  SceneRpcCollide_ChangeSceneReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  SceneRpcEnterMirrorAsk
+{
+	optional int32 MirrorID = 1;
+
+}
+
+message  SceneRpcEnterMirrorReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  SceneRpcSEnterMirrorSceneNotify
+{
+	optional int32 MapID = 1;
+	optional int32 MirrorID = 2;
+
+}
+
+message  SceneRpcExitMirrorSceneAsk
+{
+
+}
+
+message  SceneRpcExitMirrorSceneReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  SceneRpcChangeSceneLeaveNotify
+{
+	optional int32 TargetLineID = 1;
+	optional int32 TargetMapID = 2;
+	optional uint64 RoleID = 4[default=0];
+	optional int32 CopyID = 5;
+
+}
+
+message  SceneRpcChangeLineAsk
+{
+	optional int32 LineID = 1;
+	optional int32 MapID = 2;
+
+}
+
+message  SceneRpcChangeLineReply
+{
+	optional int32 Result = 1;
+	optional int32 LineID = 2;
+	optional int32 MapID = 3;
+	optional uint64 RoleID = 4[default=0];
+
+}
+
+message  SceneRpcPingAsk
+{
+
+}
+
+message  SceneRpcPingReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  SceneRpcSyncSceneLineStatsNotify
+{
+	optional SceneStats Scene_stats = 1;
+	optional int32 Player_lineId = 2;
+
+}
+
+message  SceneRpcLogOutGameAsk
+{
+
+}
+
+message  SceneRpcLogOutGameReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  SceneRpcKickOutGameNotify
+{
+	optional string Kick_reason = 1;
+	optional int32 Reason_id = 2;
+
+}
+
+message  SceneRpcShowFilmFinishAsk
+{
+
+}
+
+message  SceneRpcShowFilmFinishReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  SceneRpcSpecObjPosAsk
+{
+
+}
+
+message  SceneRpcSpecObjPosReply
+{
+	optional int32 Result = 1;
+	repeated ObjPosInfo PosInfos = 2;
+
+}
+
+message  Vector3
+{
+	optional float X = 1[default=-1];
+	optional float Y = 2[default=-1];
+	optional float Z = 3[default=-1];
+
+}
+
+message  ObjDeleteInfo
+{
+	optional int32 ObjId = 1[default=-1];
+	optional int32 SceneId = 2[default=-1];
+
+}
+
+message  ObjCreateInfo
+{
+	optional int32 ObjId = 1[default=-1];
+	optional Vector3 Pos = 2;
+	optional float Dir = 3[default=-1];
+	optional int32 Status = 4[default=-1];
+	optional Vector3 TargetPos = 5;
+	optional bytes ObjData = 6;
+
+}
+
+message  CharacterInfo
+{
+	optional uint64 RoleId = 1[default=0];
+	optional string Nickname = 2;
+	optional int32 ConfigId = 3[default=-1];
+	optional int32 Hp = 4[default=-1];
+	optional int32 HpMax = 5[default=-1];
+	optional int32 Level = 6[default=-1];
+	optional TreasureEquipedID TreasureEquiped = 8;
+
+}
+
+message  IntPair
+{
+	optional int32 Key = 1[default=-1];
+	optional int32 Value = 2[default=-1];
+
+}
+
+message  SceneStats
+{
+	repeated LineStats Lines = 1;
+	optional int32 SceneId = 2[default=-1];
+
+}
+
+message  ObjPosInfo
+{
+	optional int32 ObjId = 1[default=-1];
+	optional int32 Id = 2[default=-1];
+	optional int32 X = 3[default=-1];
+	optional int32 Z = 4[default=-1];
+
+}
+
+message  TreasureEquipedID
+{
+	optional int32 TreasureHair = 1[default=-1];
+	optional int32 TreasureHead = 2[default=-1];
+	optional int32 TreasureBody = 3[default=-1];
+	optional int32 TreasureWeapon = 4[default=-1];
+	optional int32 TreasureWing = 5[default=-1];
+	optional int32 TreasureRiding = 6[default=-1];
+
+}
+
+message  LineStats
+{
+	optional int32 LineId = 1[default=-1];
+	optional int32 LineStats = 2[default=-1];
+
+}
+

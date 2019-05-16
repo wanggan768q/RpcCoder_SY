@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<Root Module="TreasureMap" CName="藏宝图" MsgNumStart="35" SyncDataVersion="1" Comment="">
+    <Operate Name="TreasureMapSync" CName="同步" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="35" DataStruct="RpcTreasureMapSyncAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="36" DataStruct="RpcTreasureMapSyncReply" Comment="" />
+    </Operate>
+    <Operate Name="TreasureMapChange" CName="变化" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="37" DataStruct="RpcTreasureMapChangeNotify" Comment="" />
+    </Operate>
+    <Struct Name="RpcTreasureMapSyncAsk" CName="同步请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="0" />
+    <Struct Name="RpcTreasureMapSyncReply" CName="同步回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="3">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="TreasureMapId" CName="藏宝图ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="3" Name="HighTreasureMapId" CName="高级藏宝图ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcTreasureMapChangeNotify" CName="变化通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="TreasureMapId" CName="id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="HighTreasureMapId" CName="高级藏宝图ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+</Root>

@@ -1,0 +1,196 @@
+import "PublicStruct.proto";
+
+//CreateDungeon请求
+message  DungeonRpcCreateDungeonAsk
+{
+	optional uint64 RoleId = 1[default=0];	//HumanRoleId
+	optional int32 DungeonConfigId = 2[default=-1];	//副本配置id
+}
+
+//CreateDungeon回应
+message  DungeonRpcCreateDungeonReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	optional int32 DungeonConfigId = 2[default=-1];	//副本配置id
+	optional int32 SceneConfigId = 3[default=-1];	//场景id
+}
+
+//退出副本请求
+message  DungeonRpcExitDungeonAsk
+{
+	optional uint64 RoleId = 1[default=0];	//HumanRoleId
+	optional int32 SceneId = 2[default=-1];	//场景id
+}
+
+//退出副本回应
+message  DungeonRpcExitDungeonReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+	optional int32 SceneConfigId = 2[default=-1];	//SceneConfigId
+	optional int32 SceneId = 3[default=-1];	//场景id
+}
+
+//队长创建副本以后通知我请求
+message  DungeonRpcInformCreateDungeonAsk
+{
+	optional uint64 RoleId = 1[default=0];	//玩家的唯一id
+	optional int32 TargetSceneId = 2[default=-1];	//目标场景id
+	optional int32 DungeonConfigId = 3[default=-1];	//副本配置id
+	optional int32 CurSceneId = 4[default=-1];	//队员当前场景
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 5[default=-9999];
+	repeated uint64 RoleIds = 6;	//玩家的唯一id
+}
+
+//队长创建副本以后通知我回应
+message  DungeonRpcInformCreateDungeonReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+}
+
+/*
+Settlement通知
+副本结算
+*/
+message  DungeonRpcSettlementNotify
+{
+	/*
+	SettlementResult
+	结算结果:0成功,1失败
+	*/
+	optional int32 SettlementResult = 1[default=-1];
+}
+
+//进入副本通知请求
+message  DungeonRpcEnterDungeonAsk
+{
+	optional int32 SceneId = 1[default=-1];	//场景id
+	optional int32 DungeonConfigId = 2[default=-1];	//副本配置id
+}
+
+//进入副本通知回应
+message  DungeonRpcEnterDungeonReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-9999];
+}
+
+//战况信息通知
+message  DungeonRpcDungeonDataNotify
+{
+	optional int32 BeginTime = 1[default=-1];	//副本开始时间
+}
+
+//副本数据请求请求
+message  DungeonRpcDungeonSyncAsk
+{
+}
+
+//副本数据请求回应
+message  DungeonRpcDungeonSyncReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional DungeonData Data = 2;	//副本数据
+}
+
+//副本挑战信息请求
+message  DungeonRpcDungeonListInfoAsk
+{
+}
+
+//副本挑战信息回应
+message  DungeonRpcDungeonListInfoReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated DungeonBossInfo DungeonBossData = 3;	//副本BOSS挑战数据
+}
+
+//创建序章副本请求
+message  DungeonRpcCreateTutorialAsk
+{
+	optional uint64 RoleId = 1[default=0];	//HumanRoleId
+	optional int32 DungeonConfigId = 2[default=-1];	//副本配置id
+}
+
+//创建序章副本回应
+message  DungeonRpcCreateTutorialReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional int32 DungeonConfigId = 3[default=-1];	//副本配置id
+	optional int32 SceneConfigId = 4[default=-1];	//场景id
+}
+
+//强制退出序章请求
+message  DungeonRpcQuitTutorialAsk
+{
+}
+
+//强制退出序章回应
+message  DungeonRpcQuitTutorialReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//副本目标通知
+message  DungeonRpcDungeonTargetNotify
+{
+	repeated DungeonTarget DungeonTarget = 1;	//DungeonTarget
+}
+
+//副本子任务完成情况通知
+message  DungeonRpcTargetContentChangeNotify
+{
+	optional int32 Index = 1[default=-1];	//目标序号
+	optional int32 SubIndex = 2[default=-1];	//子任务序号
+	optional int32 CurCount = 3[default=-1];	//当前完成情况
+}
+
+//副本提示通知
+message  DungeonRpcDungeon_NotifyNotify
+{
+	optional int32 TextId = 1[default=-1];	//副本提示id
+}
+

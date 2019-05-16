@@ -1,0 +1,53 @@
+message  MercenaryRpcInQueueAsk
+{
+	optional int32 Id = 1;
+
+}
+
+message  MercenaryRpcInQueueReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  MercenaryRpcOutQueueAsk
+{
+	optional int32 Id = 1;
+
+}
+
+message  MercenaryRpcOutQueueReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  MercenaryRpcAutoSetAsk
+{
+
+}
+
+message  MercenaryRpcAutoSetReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  MercenaryRpcInfoAsk
+{
+
+}
+
+message  MercenaryRpcInfoReply
+{
+	optional int32 Result = 1;
+	repeated MercenaryInfo Mercenary = 2;
+
+}
+
+message  MercenaryInfo
+{
+	optional int32 Id = 1[default=-1];
+
+}
+

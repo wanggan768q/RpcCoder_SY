@@ -1,0 +1,104 @@
+import "PublicStruct.proto";
+
+//精英怪信息通知
+message  ActivityRpcEliteMonsterInfoNotify
+{
+	optional int32 State = 2[default=-1];	//状态
+	optional EliteMonsterInfo Info = 3;	//信息
+}
+
+//生成对象请求
+message  ActivityRpcCreateObjAsk
+{
+	optional int32 CommonId = 1[default=-1];	//当前id
+}
+
+//生成对象回应
+message  ActivityRpcCreateObjReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//活动开启前通知通知
+message  ActivityRpcOpenActivityNotify
+{
+	optional int32 ActId = 1[default=-1];	//活动id
+	optional int32 DiffTm = 2[default=-1];	//活动开启前时间
+	optional int32 SceneId = 3[default=-1];	//场景id
+	optional Vector3 Pos = 4;	//传送位置
+}
+
+//星耀王座进入请求
+message  ActivityRpcXingyaoAsk
+{
+	optional int32 NPCid = 1[default=-1];	//NPC
+}
+
+//星耀王座回应
+message  ActivityRpcXingyaoReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//活动时间信息通知
+message  ActivityRpcActivityTimeNotify
+{
+	repeated ActivityTime ActTimeList = 1;	//活动时间信息
+}
+
+//请求获取活动时间请求
+message  ActivityRpcReqActivityTimeAsk
+{
+}
+
+//请求获取活动时间回应
+message  ActivityRpcReqActivityTimeReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated ActivityTime ActTimeList = 2;	//活动时间信息
+}
+
+//星耀NPC请求
+message  ActivityRpcXingyaoNPCAsk
+{
+}
+
+//星耀NPC回应
+message  ActivityRpcXingyaoNPCReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional int32 Sceneid = 2[default=-1];	//场景ID
+	optional int32 Waypoinid = 3[default=-1];	//路点ID
+}
+
+//星耀高额奖励通知
+message  ActivityRpcXingyaoRewardNotify
+{
+}
+
+//operation活动表时间通知
+message  ActivityRpcOperationTimeNotify
+{
+	repeated ActivityTime ActTimeList = 1;	//活动时间信息
+}
+

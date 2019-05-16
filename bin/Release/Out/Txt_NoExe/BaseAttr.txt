@@ -1,0 +1,120 @@
+BaseAttrRpcSyncDataAsk↑ 同步玩家数据请求
+
+BaseAttrRpcSyncDataReply↓ 同步玩家数据回应
+	Result:int32 = -9999	;返回结果
+	UpdateData:bytes	;同步数据
+
+BaseAttrUserData
+	Exp:int32 = 0	;经验
+	Level:int32 = 0	;玩家等级
+	ServerTime:int64 = -1	;服务器时间
+	RoleId:uint64 = 0	;人物唯一ID
+	Strength:int32 = 0	;力量
+	Agility:int32 = 0	;敏捷
+	Intellectual:int32 = 0	;智力
+	Endurance:int32 = 0	;耐力
+	Spirit:int32 = 0	;精神
+	Hp:int32 = 0	;生命值
+	MaxHp:int32 = 0	;生命值
+	PhysicAttack:int32 = 0	;物理攻击
+	PhysicDefense:int32 = 0	;物理防御
+	MagicAttack:int32 = 0	;魔法攻击
+	MagicDefense:int32 = 0	;魔法防御
+	Hit:int32 = 0	;命中值
+	HitRate:float = 0	;命中率
+	Miss:int32 = 0	;闪避值
+	MissRate:float = 0	;闪避率
+	Critical:int32 = 0	;暴击值
+	CriticalRate:float = 0	;暴击率
+	Tenacity:int32 = 0	;韧性值
+	TenacityRate:float = 0	;韧性率
+	Penet:int32 = 0	;穿透值
+	PenetRate:float = 0	;穿透率
+	Dodg:int32 = 0	;格挡值
+	DodgRate:float = 0	;格挡率
+	CriticalAddition:int32 = 0	;暴击加伤值
+	CriticalAdditionRate:float = 0	;暴击加伤率
+	CriticalImmune:int32 = 0	;暴击免伤
+	CriticalImmuneRate:float = 0	;暴击免伤率
+	MissLevel:int32 = 0	;闪避等级
+	CriticalLevel:int32 = 0	;暴击等级
+	DodgLevel:int32 = 0	;格挡等级
+	MoveSpeed:float = 0	;移动速度
+	DizzyState:int32 = 0	;眩晕状态
+	GodState:bool = false	;霸体状态
+	CantMoveState:int32 = 0	;不能移动状态
+	PhysicAddition:float = 0	;物理加伤值
+	MagicAddition:float = 0	;魔法加伤值
+	PhysicOppose:float = 0	;物理抗性
+	MagicOppose:float = 0	;魔法抗性
+	AccumulateSkiEnergy:float = 0	;技能积攒能量使用 目前只有应激技能用
+	NickName:string	;名字昵称
+	ConfigId:int32 = -1	;config id
+	ObjType:int32 = -1	;类型
+	State:int32 = -1	;EventObjStatu
+	OwnerObjId:int32 = -1	;归属obj ID
+	Camp:int32 = -1	;阵营
+	SilverMoney:int64 = 0	;银币
+	GoldMoney:int64 = 0	;金币
+	DiamondMoney:int64 = 0	;钻石
+	BindingDiamondMoney:int64 = 0	;绑定钻石
+	BattleScore:int32 = -1	;战力
+	Energy:int64 = -1	;精力
+	GuildMoney:int64 = -1	;公会资金
+	SkillList:int32* = -1	;技能列表
+	HonorMoney:int64 = -1	;HonorMoney
+	ResourcePoolHp:int64 = -1	;资源池
+	AttackAdd:int32 = 0	;伤害增加
+	InjuryAdd:int32 = 0	;伤害减免
+	FrozenState:int32 = -1	;冰冻状态
+	SilentState:int32 = -1	;沉默状态
+	GuildContributeHistoryMax:int64 = -1	;GuildContributeHistoryMax
+	TeamId:uint64 = 0	;队伍id
+	TreasureHair:int32 = -1	;头发时装ID
+	TreasureHead:int32 = -1	;头部时装ID
+	TreasureBody:int32 = -1	;身体时装
+	TreasureWeapon:int32 = -1	;武器时装
+	TreasureWing:int32 = -1	;翅膀时装
+	GuildGuid:uint64 = 0	;公会ID
+	TreasureRiding:int32 = -1	;坐骑
+	VechicleId:int32 = -1	;载具Id
+	AnimationState:bool = false	;动画状态
+	RefixDmgRate:float = 0	;修正攻击者最终伤害比率
+	RefixDmgValue:int32 = 0	;修正攻击者最终伤害值
+	RefixHurtRate:float = 0	;修正被攻击者最终伤害比率
+	RefixHurtValue:int32 = 0	;修正被攻击者最终伤害值
+	RefixHealRate:float = 0	;修正治疗者最终比例
+	RefixHealValue:int32 = 0	;修正治疗者最终值
+	RefixCuredRate:float = 0	;修正被治疗者最终比例
+	RefixCuredValue:int32 = 0	;修正被治疗者最终值
+	GuildContribute:int64 = -1	;公会帮贡
+	PvpMoney:int64 = -1	;竞技场点数
+	GuildResource:int64 = -1	;公会资源
+	CreateRoleTime:int32 = 0	;创建角色时间戳
+	UpdateRoleTime:int32 = 0	;更新角色等级时间戳
+	FightState:bool = false	;战斗状态
+	AttackSkillList:int32* = -1	;普攻技能列表
+	GuildName:string	;公会名称
+	IsAllowSelect:bool = true	;是否可选中
+	GoHomeState:bool = false	;怪物回归中
+	CanFight:bool = true	;怪物是否可攻击
+	DoubleExp:int64 = -1	;双倍经验
+	FriendPoint:int64 = -1	;友情点
+	HisMaxHonor:int64 = -1	;历史最大荣誉点
+	HurtState:bool = false	;受击状态
+	HurtFlyState:bool = false	;击飞状态
+	HurtDownState:bool = false	;击倒状态
+	HurtRepelState:bool = false	;击退
+	TodayHornor:int64 = -1	;今日获得的荣誉值
+	CurProfession:int32 = -1	;当前专精
+
+BaseAttrRpcSyncNotify↓ 数据推送通知
+	ObjId:int32 = -1	;ObjId
+	UpdateData:bytes	;更新数据
+
+BaseAttrObjData
+	ObjType:int32 = -1	;类型
+	ConfigId:int32 = -1	;config id
+	State:int32 = -1	;obj状态
+	OwnerObjId:int32 = -1	;拥有者
+

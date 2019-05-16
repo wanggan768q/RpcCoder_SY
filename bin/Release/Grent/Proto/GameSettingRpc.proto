@@ -1,0 +1,42 @@
+import "PublicStruct.proto";
+
+//同步请求
+message  GameSettingRpcSyncGameSettingAsk
+{
+}
+
+//同步回应
+message  GameSettingRpcSyncGameSettingReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	optional string GameSetting = 2;	//设置info
+}
+
+//设置请求
+message  GameSettingRpcSettingAsk
+{
+	optional string GameSetting = 1;	//要设置的
+}
+
+//设置回应
+message  GameSettingRpcSettingReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//设置 通知通知
+message  GameSettingRpcGameSettingNotifyNotify
+{
+	optional string GameSetting = 1;	//设置
+}
+

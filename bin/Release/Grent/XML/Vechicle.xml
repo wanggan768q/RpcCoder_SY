@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<Root Module="Vechicle" CName="载具（变身）" MsgNumStart="41" SyncDataVersion="1" Comment="">
+    <Operate Name="QuitVechile" CName="退出载具" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="41" DataStruct="RpcQuitVechileAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="42" DataStruct="RpcQuitVechileReply" Comment="" />
+    </Operate>
+    <Struct Name="RpcQuitVechileAsk" CName="退出载具请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1" />
+    <Struct Name="RpcQuitVechileReply" CName="退出载具回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+</Root>

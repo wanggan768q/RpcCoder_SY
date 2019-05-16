@@ -1,0 +1,20 @@
+import "PublicStruct.proto";
+
+//获取服务器列表请求
+message  LobbyServerRpcGetServerListAsk
+{
+	optional string Sdk_user_id = 1;	//sdk_user_id
+}
+
+//获取服务器列表回应
+message  LobbyServerRpcGetServerListReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+	repeated ServerInfo Server_list = 2;	//服务器列表
+}
+

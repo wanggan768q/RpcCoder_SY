@@ -1,0 +1,34 @@
+import "PublicStruct.proto";
+
+//上马请求
+message  RidingRpcRidingAsk
+{
+}
+
+//上马回应
+message  RidingRpcRidingReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+
+//下马请求
+message  RidingRpcUnRidingAsk
+{
+}
+
+//下马回应
+message  RidingRpcUnRidingReply
+{
+	/*
+	返回结果
+	-9999 模块未启动
+	-9998 请求字段值范围出错
+	*/
+	optional int32 Result = 1[default=-1];
+}
+

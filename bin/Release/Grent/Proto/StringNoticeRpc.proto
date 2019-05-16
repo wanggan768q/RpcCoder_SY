@@ -1,0 +1,9 @@
+import "PublicStruct.proto";
+
+//通知通知
+message  StringNoticeRpcNoticeNotify
+{
+	optional int32 ConfigId = 1[default=-1];	//文本ID
+	repeated string Param = 2;	//参数
+}
+

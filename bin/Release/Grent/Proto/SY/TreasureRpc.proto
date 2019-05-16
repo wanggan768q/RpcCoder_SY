@@ -1,0 +1,159 @@
+message  TreasureRpcTreasureDepotInfoAsk
+{
+
+}
+
+message  TreasureRpcTreasureDepotInfoReply
+{
+	optional int32 Result = 1;
+	optional int32 Level = 2;
+	optional int32 Point = 3;
+
+}
+
+message  TreasureRpcTreasureInfoAsk
+{
+	optional int32 Type = 1;
+
+}
+
+message  TreasureRpcTreasureInfoReply
+{
+	optional int32 Result = 1;
+	repeated TreasureData Treasure_Info = 2;
+	optional int32 Type = 3;
+
+}
+
+message  TreasureRpcTreasureUnlockAsk
+{
+	optional int32 Id = 1;
+	optional int32 Color_Type = 2;
+	optional int32 Time_Type = 3;
+
+}
+
+message  TreasureRpcTreasureUnlockReply
+{
+	optional int32 Result = 1;
+	optional TreasureData TreasureUnLocked = 2;
+	optional int32 Points = 3;
+
+}
+
+message  TreasureRpcTreasureEquipAsk
+{
+	optional int32 Id = 1;
+	optional int32 Color_Type = 2;
+	optional int32 Time_Type = 3;
+
+}
+
+message  TreasureRpcTreasureEquipReply
+{
+	optional int32 Result = 1;
+	optional TreasureData TreasureEquiped = 2;
+	optional TreasureData TreasureUnequiped = 4;
+
+}
+
+message  TreasureRpcTreasureEquipSycAsk
+{
+
+}
+
+message  TreasureRpcTreasureEquipSycReply
+{
+	optional int32 Result = 1;
+	repeated TreasureData TreasueEquiped = 2;
+
+}
+
+message  TreasureRpcTreasureDepotLvUpAsk
+{
+
+}
+
+message  TreasureRpcTreasureDepotLvUpReply
+{
+	optional int32 Result = 1;
+	optional int32 Level = 2;
+	optional int32 Point = 3;
+
+}
+
+message  TreasureRpcTreasureUnEquipAsk
+{
+	optional int32 Id = 1;
+	optional int32 Color_Type = 2;
+	optional int32 Time_Type = 3;
+
+}
+
+message  TreasureRpcTreasureUnEquipReply
+{
+	optional int32 Result = 1;
+	optional TreasureData TreasureUnequiped = 2;
+	optional TreasureData TreasureEquiped = 3;
+
+}
+
+message  TreasureRpcTreasureEquipedIDNotify
+{
+	optional TreasureEquipedID TreasureID = 1;
+	optional int32 ObjID = 2;
+
+}
+
+message  TreasureRpcTreasureDelayTimeAsk
+{
+	optional int32 Id = 1;
+	optional int32 Color_Type = 2;
+	optional int32 Time_Type = 3;
+
+}
+
+message  TreasureRpcTreasureDelayTimeReply
+{
+	optional int32 Result = 1;
+	optional TreasureData TreasureUnLocked = 2;
+	optional int32 Points = 3;
+
+}
+
+message  TreasureRpcTreasureUnlockEquipNotify
+{
+	optional int32 Result = 1;
+	optional TreasureData TreasureEquiped = 2;
+	optional TreasureData TreasureUnequiped = 3;
+	optional int32 Points = 4;
+
+}
+
+message  TreasureData
+{
+	optional int32 ID = 1[default=-1];
+	repeated TreasureExtraInfo Extra_Info = 2;
+
+}
+
+message  TreasureEquipedID
+{
+	optional int32 TreasureHair = 1[default=-1];
+	optional int32 TreasureHead = 2[default=-1];
+	optional int32 TreasureBody = 3[default=-1];
+	optional int32 TreasureWeapon = 4[default=-1];
+	optional int32 TreasureWing = 5[default=-1];
+	optional int32 TreasureRiding = 6[default=-1];
+
+}
+
+message  TreasureExtraInfo
+{
+	optional int32 Color_Type = 1[default=-1];
+	optional int32 Time_Type = 2[default=-1];
+	optional int32 State = 3[default=0];
+	optional int64 Expier_Time = 4[default=-1];
+
+}
+

@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<Root Module="CGAnimation" CName="动画播放模块" MsgNumStart="29" SyncDataVersion="1" Comment="">
+    <Operate Name="CgPlay" CName="动画开始播放" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="29" DataStruct="RpcCgPlayAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="30" DataStruct="RpcCgPlayReply" Comment="" />
+    </Operate>
+    <Operate Name="CgPlayNotify" CName="通知" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="31" DataStruct="RpcCgPlayNotifyNotify" Comment="" />
+    </Operate>
+    <Operate Name="CgOverNotify" CName="结束通知" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="32" DataStruct="RpcCgOverNotifyNotify" Comment="" />
+    </Operate>
+    <Operate Name="CgSkip" CName="跳过CG" Comment="">
+        <OP_ASK Name="Ask" CName="请求" MsgID="33" DataStruct="RpcCgSkipAsk" Comment="" />
+        <OP_REPLY Name="Reply" CName="回应" MsgID="34" DataStruct="RpcCgSkipReply" Comment="" />
+    </Operate>
+    <Operate Name="ScriptPlay" CName="脚本播放" Comment="">
+        <OP_SERVER_NOTIFY Name="Notify" CName="通知" MsgID="35" DataStruct="RpcScriptPlayNotify" Comment="" />
+    </Operate>
+    <Struct Name="RpcCgPlayAsk" CName="动画开始播放请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="CgId" CName="动画ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcCgPlayReply" CName="动画开始播放回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcCgPlayNotifyNotify" CName="通知通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="RoleId" CName="角色ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="CgId" CName="动画ID" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcCgOverNotifyNotify" CName="结束通知通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="2">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="RoleId" CName="角色Id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="2" Name="CgId" CName="动画Id" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+    <Struct Name="RpcCgSkipAsk" CName="跳过CG请求" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1" />
+    <Struct Name="RpcCgSkipReply" CName="跳过CG回应" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="1">
+        <Field PreDefine="optional" FieldType="int32" FieldId="1" Name="Result" CName="返回结果" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="-9999 模块未启动&#xD;&#xA;-9998 请求字段值范围出错" />
+    </Struct>
+    <Struct Name="RpcScriptPlayNotify" CName="脚本播放通知" ProtoType="RpcProto" Comment="" DataType="RPCData" SaveToDB="False" SyncToClient="False" MaxFieldId="6">
+        <Field PreDefine="optional" FieldType="uint64" FieldId="1" Name="CasterGuid" CName="释放者" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="0" Comment="" />
+        <Field PreDefine="optional" FieldType="string" FieldId="3" Name="AnimantionName" CName="动画名称" ValueSet="" MinValue="6" MaxValue="128" DefaultValue="" Comment="" />
+        <Field PreDefine="optional" FieldType="float" FieldId="4" Name="Time" CName="总时长" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="5" Name="IsLoop" CName="是否循环" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+        <Field PreDefine="optional" FieldType="int32" FieldId="6" Name="SingleTime" CName="单个时长" ValueSet="" MinValue="-1" MaxValue="10000000" DefaultValue="-1" Comment="" />
+    </Struct>
+</Root>
