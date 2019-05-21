@@ -2203,6 +2203,11 @@
                                     ArrayList list3 = this.readXlsxLine(ws, 2, list.Count);
                                     ArrayList list4 = this.readXlsxLine(ws, 3, list.Count);
                                     ArrayList list5 = this.readXlsxLine(ws, 4, list.Count);
+                                    if (list2.Count < list.Count || list3.Count < list.Count || list4.Count < list.Count || list5.Count < list.Count)
+                                    {
+                                        MessageBox.Show(fileName + " 前五行数据不统一");
+                                        break;
+                                    }
                                     for (int i = 0; i < list.Count; i++)
                                     {
                                         if (file.ContainField((string) list3[i]))
