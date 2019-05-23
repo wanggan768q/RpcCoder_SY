@@ -277,7 +277,9 @@
                     {
                         if (operate.Name != "Ping")
                         {
-                            OperationImplement = OperationImplement + "\tshowNetTip(self)\r\n";
+                            string keyName = "'RPC_CODE_" + m.ModuleName.ToUpper() + "_" + operate.Name.ToUpper() + "_REQUEST'";
+                            string key = "RPC_CODE_" + m.ModuleName.ToUpper() + "_" + operate.Name.ToUpper() + "_REQUEST";
+                            OperationImplement = OperationImplement + "\tshowNetTip(self," + keyName +"," + key + ")\r\n";
                         }
                     }
                     OperationImplement = OperationImplement + "end\r\n";
