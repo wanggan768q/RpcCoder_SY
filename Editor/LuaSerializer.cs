@@ -254,9 +254,11 @@
                     OperationImplement = OperationImplement + "\tlocal function callback(_data)\r\n";
                     if (operate.Name.ToLower() != "syncdata")
                     {
-                        if (operate.Name != "Ping")
+                        //if (operate.Name != "Ping")
                         {
-                            OperationImplement = OperationImplement + "\t\thideNetTip(self)\r\n";
+                            string keyName = "'RPC_CODE_" + m.ModuleName.ToUpper() + "_" + operate.Name.ToUpper() + "_REQUEST'";
+                            string key = "RPC_CODE_" + m.ModuleName.ToUpper() + "_" + operate.Name.ToUpper() + "_REQUEST";
+                            OperationImplement = OperationImplement + "\t\thideNetTip(self," + keyName + "," + key + ")\r\n";
                         }
                     }
                     OperationImplement = OperationImplement + "\t\tif _hanlder then\r\n";
@@ -275,7 +277,7 @@
                     OperationImplement = str13 + "\tMLayerMgr.SendAsk(RPC_CODE_" + m.ModuleName.ToUpper() + "_" + operate.Name.ToUpper() + "_REQUEST, pb_data, callback)\r\n";
                     if (operate.Name.ToLower() != "syncdata")
                     {
-                        if (operate.Name != "Ping")
+                        //if (operate.Name != "Ping")
                         {
                             string keyName = "'RPC_CODE_" + m.ModuleName.ToUpper() + "_" + operate.Name.ToUpper() + "_REQUEST'";
                             string key = "RPC_CODE_" + m.ModuleName.ToUpper() + "_" + operate.Name.ToUpper() + "_REQUEST";

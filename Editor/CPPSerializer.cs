@@ -1030,6 +1030,7 @@
                                 jsonField += string.Concat(new object[] { "\t\t\t}\r\n" });
                                 */
                                 jsonField += string.Concat(new object[] { "\t\t\tJson::ValueIterator end_", field2.FieldName, " = p[\"", field2.FieldName, "\"].end();\r\n" });
+                                jsonField += string.Concat(new object[] { "\t\t\tmember.", field2.FieldName,".clear();\r\n" });
                                 jsonField += string.Concat(new object[] { "\t\t\tfor (Json::ValueIterator jt = p[\"", field2.FieldName, "\"].begin(); jt != end_", field2.FieldName, "; ++jt)\r\n" });
                                 jsonField += string.Concat(new object[] { "\t\t\t{\r\n" });
                                 jsonField += string.Concat(new object[] { "\t\t\t\tint n = (*jt).asInt();\r\n" });
@@ -1050,6 +1051,7 @@
                                 jsonField += string.Concat(new object[] { "\t\t\t}\r\n" });
                                 */
                                 jsonField += string.Concat(new object[] { "\t\t\tJson::ValueIterator end_", field2.FieldName, " = p[\"", field2.FieldName, "\"].end();\r\n" });
+                                jsonField += string.Concat(new object[] { "\t\t\tmember.", field2.FieldName, ".clear();\r\n" });
                                 jsonField += string.Concat(new object[] { "\t\t\tfor (Json::ValueIterator jt = p[\"", field2.FieldName, "\"].begin(); jt != end_", field2.FieldName, "; ++jt)\r\n" });
                                 jsonField += string.Concat(new object[] { "\t\t\t{\r\n" });
                                 jsonField += string.Concat(new object[] { "\t\t\t\tstd::string n = (*jt).asString();\r\n" });
@@ -1070,6 +1072,7 @@
                                 jsonField += string.Concat(new object[] { "\t\t\t}\r\n" });
                                 */
                                 jsonField += string.Concat(new object[] { "\t\t\tJson::ValueIterator end_", field2.FieldName, " = p[\"", field2.FieldName, "\"].end();\r\n" });
+                                jsonField += string.Concat(new object[] { "\t\t\tmember.", field2.FieldName, ".clear();\r\n" });
                                 jsonField += string.Concat(new object[] { "\t\t\tfor (Json::ValueIterator jt = p[\"", field2.FieldName, "\"].begin(); jt != end_", field2.FieldName, "; ++jt)\r\n" });
                                 jsonField += string.Concat(new object[] { "\t\t\t{\r\n" });
                                 jsonField += string.Concat(new object[] { "\t\t\t\tfloat n = (*jt).asFloat();\r\n" });
