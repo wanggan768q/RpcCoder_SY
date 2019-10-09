@@ -922,10 +922,14 @@
                 {
                     Directory.CreateDirectory(str5);
                 }
-                string str6 = "";
-                StreamReader reader = new StreamReader("./Template/ConfigTemplate.h", Encoding.GetEncoding("GBK"));
-                str6 = reader.ReadToEnd();
-                reader.Close();
+                string configHT = "";
+                StreamReader readerConfigH = new StreamReader("./Template/ConfigTemplate.h", Encoding.GetEncoding("GBK"));
+                configHT = readerConfigH.ReadToEnd();
+                readerConfigH.Close();
+
+                StreamReader readerConfigCpp = new StreamReader("./Template/ConfigTemplate.cpp", Encoding.GetEncoding("GBK"));
+                string configCppT = readerConfigCpp.ReadToEnd();
+                readerConfigCpp.Close();
                 string newValue = "";
                 string reLoadConfig = "";
                 string str8 = "";
@@ -934,7 +938,8 @@
                     newValue = newValue + "\t" + file.CfgName + "Table::Instance().Load();\r\n";
                     reLoadConfig = reLoadConfig + "\t" + file.CfgName + "Table::Instance().ReLoad();\r\n";
                     str8 = str8 + "#include \"" + file.CfgName + "Cfg.h\"\r\n";
-                    string str9 = str6;
+                    string str9 = configHT;
+                    string str10 = configCppT;
                     string fieldName = "";
                     string fieldType = "";
                     string defaultValue = "";
@@ -1102,12 +1107,27 @@
                         .Replace("$ReadBinColValue$", str15)
                         .Replace("$ReadCsvColValue$", str16)
                         .Replace("$ReadJsonValue$", jsonField);
+                    str10 = str10.Replace("$TEMPLATE$", file.CfgName.ToUpper()).Replace("$CNName$", file.CNName)
+                        .Replace("$Template$", file.CfgName)
+                        .Replace("$PrimaryKey$", fieldName)
+                        .Replace("$PrimaryType$", fieldType)
+                        .Replace("$InitPrimaryField$", str17)
+                        .Replace("$FieldDefine$", str13)
+                        .Replace("$ColCount$", num.ToString())
+                        .Replace("$CheckColName$", str14)
+                        .Replace("$ReadBinColValue$", str15)
+                        .Replace("$ReadCsvColValue$", str16)
+                        .Replace("$ReadJsonValue$", jsonField);
                     if (flag)
                     {
                         var utf8WithoutBom = new System.Text.UTF8Encoding(false);
-                        StreamWriter writer = new StreamWriter(str5 + file.CfgName + "Cfg.h", false, utf8WithoutBom);
-                        writer.Write(str9);
-                        writer.Close();
+                        StreamWriter writerH = new StreamWriter(str5 + file.CfgName + "Cfg.h", false, utf8WithoutBom);
+                        writerH.Write(str9);
+                        writerH.Close();
+
+                        StreamWriter writerCpp = new StreamWriter(str5 + file.CfgName + "Cfg.cpp", false, utf8WithoutBom);
+                        writerCpp.Write(str10);
+                        writerCpp.Close();
                     }
                 }
                 ArrayList list = new ArrayList {
