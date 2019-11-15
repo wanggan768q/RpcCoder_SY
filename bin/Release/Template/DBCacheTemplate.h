@@ -1,7 +1,7 @@
 /********************************************************************************************
-* Copyright (C), 2011-2025, AGAN Tech. Co., Ltd.
+* Copyright (C), 2011-2025, Ambition. Co., Ltd.
 * FileName:     $Template$DBCache.h
-* Author:       甘业清
+* Author:       郭晓波
 * Description:  $ModCName$数据类
 * Version:      1.0
 * History:

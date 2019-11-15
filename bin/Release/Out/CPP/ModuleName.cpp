@@ -11,6 +11,7 @@ void InitModuleValue()
 	ModuleValue[26]="CampFigth";
 	ModuleValue[29]="动画播放模块";
 	ModuleValue[13]="Chat";
+	ModuleValue[57]="作弊码";
 	ModuleValue[47]="爬塔玩法";
 	ModuleValue[1]="Config";
 	ModuleValue[48]="联系人";

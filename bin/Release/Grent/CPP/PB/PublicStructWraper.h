@@ -608,6 +608,203 @@ public:
 	}
 
 };
+//EquipAttr封装类
+class EquipAttrWraper : public DataWraperInterface 
+{
+public:
+	//构造函数
+	EquipAttrWraper()
+	{
+		
+		m_BattleScore = -1;
+
+	}
+	//赋值构造函数
+	EquipAttrWraper(const EquipAttr& v){ Init(v); }
+	//等号重载函数
+	void operator = (const EquipAttr& v){ Init(v); }
+ 	//转化成Protobuffer类型函数
+	EquipAttr ToPB() const
+	{
+		EquipAttr v;
+		v.mutable_baseattr()->Reserve(m_BaseAttr.size());
+		for (int i=0; i<(int)m_BaseAttr.size(); i++)
+		{
+			*v.add_baseattr() = m_BaseAttr[i].ToPB();
+		}
+		v.mutable_extraattr()->Reserve(m_ExtraAttr.size());
+		for (int i=0; i<(int)m_ExtraAttr.size(); i++)
+		{
+			*v.add_extraattr() = m_ExtraAttr[i].ToPB();
+		}
+		v.set_battlescore( m_BattleScore );
+
+		return v;
+	}
+	//获取Protobuffer序列化后大小函数
+	int ByteSize() const { return ToPB().ByteSize();}
+	//Protobuffer序列化到缓冲区
+	bool SerializeToArray( void* data, int size ) const
+	{
+		return ToPB().SerializeToArray(data,size);
+	}
+	//Protobuffer序列化到字符串
+	string SerializeAsString() const
+	{
+		return ToPB().SerializeAsString();
+	}
+	//Protobuffer从字符串进行反序列化
+	bool ParseFromString(const string& v)
+	{
+		return ParseFromArray(v.data(),v.size());
+	}
+	//Protobuffer从缓冲区进行反序列化
+	bool ParseFromArray(const void* data, int size)
+	{
+		EquipAttr pb;
+		if(!pb.ParseFromArray(data,size)){return false;}
+		Init(pb);
+		return true;
+	}
+
+	string HtmlDescHeader()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}
+
+	string ToHtml()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+		TStr tmpLine;
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}
+
+
+private:
+	//从Protobuffer类型初始化
+	void Init(const EquipAttr& v)
+	{
+		m_BaseAttr.clear();
+		m_BaseAttr.reserve(v.baseattr_size());
+		for( int i=0; i<v.baseattr_size(); i++)
+			m_BaseAttr.push_back(v.baseattr(i));
+		m_ExtraAttr.clear();
+		m_ExtraAttr.reserve(v.extraattr_size());
+		for( int i=0; i<v.extraattr_size(); i++)
+			m_ExtraAttr.push_back(v.extraattr(i));
+		m_BattleScore = v.battlescore();
+
+	}
+
+private:
+	//基础属性
+	vector<AttrKeyValueWraper> m_BaseAttr;
+public:
+	int SizeBaseAttr()
+	{
+		return m_BaseAttr.size();
+	}
+	const vector<AttrKeyValueWraper>& GetBaseAttr() const
+	{
+		return m_BaseAttr;
+	}
+	AttrKeyValueWraper GetBaseAttr(int Index) const
+	{
+		if(Index<0 || Index>=(int)m_BaseAttr.size())
+		{
+			assert(false);
+			return AttrKeyValueWraper();
+		}
+		return m_BaseAttr[Index];
+	}
+	void SetBaseAttr( const vector<AttrKeyValueWraper>& v )
+	{
+		m_BaseAttr=v;
+	}
+	void ClearBaseAttr( )
+	{
+		m_BaseAttr.clear();
+	}
+	void SetBaseAttr( int Index, const AttrKeyValueWraper& v )
+	{
+		if(Index<0 || Index>=(int)m_BaseAttr.size())
+		{
+			assert(false);
+			return;
+		}
+		m_BaseAttr[Index] = v;
+	}
+	void AddBaseAttr( const AttrKeyValueWraper& v )
+	{
+		m_BaseAttr.push_back(v);
+	}
+private:
+	//高级属性
+	vector<AttrKeyValueWraper> m_ExtraAttr;
+public:
+	int SizeExtraAttr()
+	{
+		return m_ExtraAttr.size();
+	}
+	const vector<AttrKeyValueWraper>& GetExtraAttr() const
+	{
+		return m_ExtraAttr;
+	}
+	AttrKeyValueWraper GetExtraAttr(int Index) const
+	{
+		if(Index<0 || Index>=(int)m_ExtraAttr.size())
+		{
+			assert(false);
+			return AttrKeyValueWraper();
+		}
+		return m_ExtraAttr[Index];
+	}
+	void SetExtraAttr( const vector<AttrKeyValueWraper>& v )
+	{
+		m_ExtraAttr=v;
+	}
+	void ClearExtraAttr( )
+	{
+		m_ExtraAttr.clear();
+	}
+	void SetExtraAttr( int Index, const AttrKeyValueWraper& v )
+	{
+		if(Index<0 || Index>=(int)m_ExtraAttr.size())
+		{
+			assert(false);
+			return;
+		}
+		m_ExtraAttr[Index] = v;
+	}
+	void AddExtraAttr( const AttrKeyValueWraper& v )
+	{
+		m_ExtraAttr.push_back(v);
+	}
+private:
+	//装备评分
+	INT32 m_BattleScore;
+public:
+	void SetBattleScore( INT32 v)
+	{
+		m_BattleScore=v;
+	}
+	INT32 GetBattleScore()
+	{
+		return m_BattleScore;
+	}
+	INT32 GetBattleScore() const
+	{
+		return m_BattleScore;
+	}
+
+};
 //v3封装类
 class Vector3Wraper : public DataWraperInterface 
 {
@@ -874,36 +1071,28 @@ public:
 	}
 
 };
-//EquipAttr封装类
-class EquipAttrWraper : public DataWraperInterface 
+//QuestStepData封装类
+class QuestStepDataWraper : public DataWraperInterface 
 {
 public:
 	//构造函数
-	EquipAttrWraper()
+	QuestStepDataWraper()
 	{
 		
-		m_BattleScore = -1;
+		m_Status = -1;
+		m_Progress  = -1;
 
 	}
 	//赋值构造函数
-	EquipAttrWraper(const EquipAttr& v){ Init(v); }
+	QuestStepDataWraper(const QuestStepData& v){ Init(v); }
 	//等号重载函数
-	void operator = (const EquipAttr& v){ Init(v); }
+	void operator = (const QuestStepData& v){ Init(v); }
  	//转化成Protobuffer类型函数
-	EquipAttr ToPB() const
+	QuestStepData ToPB() const
 	{
-		EquipAttr v;
-		v.mutable_baseattr()->Reserve(m_BaseAttr.size());
-		for (int i=0; i<(int)m_BaseAttr.size(); i++)
-		{
-			*v.add_baseattr() = m_BaseAttr[i].ToPB();
-		}
-		v.mutable_extraattr()->Reserve(m_ExtraAttr.size());
-		for (int i=0; i<(int)m_ExtraAttr.size(); i++)
-		{
-			*v.add_extraattr() = m_ExtraAttr[i].ToPB();
-		}
-		v.set_battlescore( m_BattleScore );
+		QuestStepData v;
+		v.set_status( m_Status );
+		v.set_progress ( m_Progress  );
 
 		return v;
 	}
@@ -927,7 +1116,7 @@ public:
 	//Protobuffer从缓冲区进行反序列化
 	bool ParseFromArray(const void* data, int size)
 	{
-		EquipAttr pb;
+		QuestStepData pb;
 		if(!pb.ParseFromArray(data,size)){return false;}
 		Init(pb);
 		return true;
@@ -955,119 +1144,44 @@ public:
 
 private:
 	//从Protobuffer类型初始化
-	void Init(const EquipAttr& v)
+	void Init(const QuestStepData& v)
 	{
-		m_BaseAttr.clear();
-		m_BaseAttr.reserve(v.baseattr_size());
-		for( int i=0; i<v.baseattr_size(); i++)
-			m_BaseAttr.push_back(v.baseattr(i));
-		m_ExtraAttr.clear();
-		m_ExtraAttr.reserve(v.extraattr_size());
-		for( int i=0; i<v.extraattr_size(); i++)
-			m_ExtraAttr.push_back(v.extraattr(i));
-		m_BattleScore = v.battlescore();
+		m_Status = v.status();
+		m_Progress  = v.progress ();
 
 	}
 
 private:
-	//基础属性
-	vector<AttrKeyValueWraper> m_BaseAttr;
+	//Status
+	INT32 m_Status;
 public:
-	int SizeBaseAttr()
+	void SetStatus( INT32 v)
 	{
-		return m_BaseAttr.size();
+		m_Status=v;
 	}
-	const vector<AttrKeyValueWraper>& GetBaseAttr() const
+	INT32 GetStatus()
 	{
-		return m_BaseAttr;
+		return m_Status;
 	}
-	AttrKeyValueWraper GetBaseAttr(int Index) const
+	INT32 GetStatus() const
 	{
-		if(Index<0 || Index>=(int)m_BaseAttr.size())
-		{
-			assert(false);
-			return AttrKeyValueWraper();
-		}
-		return m_BaseAttr[Index];
-	}
-	void SetBaseAttr( const vector<AttrKeyValueWraper>& v )
-	{
-		m_BaseAttr=v;
-	}
-	void ClearBaseAttr( )
-	{
-		m_BaseAttr.clear();
-	}
-	void SetBaseAttr( int Index, const AttrKeyValueWraper& v )
-	{
-		if(Index<0 || Index>=(int)m_BaseAttr.size())
-		{
-			assert(false);
-			return;
-		}
-		m_BaseAttr[Index] = v;
-	}
-	void AddBaseAttr( const AttrKeyValueWraper& v )
-	{
-		m_BaseAttr.push_back(v);
+		return m_Status;
 	}
 private:
-	//高级属性
-	vector<AttrKeyValueWraper> m_ExtraAttr;
+	//进度
+	INT32 m_Progress ;
 public:
-	int SizeExtraAttr()
+	void SetProgress ( INT32 v)
 	{
-		return m_ExtraAttr.size();
+		m_Progress =v;
 	}
-	const vector<AttrKeyValueWraper>& GetExtraAttr() const
+	INT32 GetProgress ()
 	{
-		return m_ExtraAttr;
+		return m_Progress ;
 	}
-	AttrKeyValueWraper GetExtraAttr(int Index) const
+	INT32 GetProgress () const
 	{
-		if(Index<0 || Index>=(int)m_ExtraAttr.size())
-		{
-			assert(false);
-			return AttrKeyValueWraper();
-		}
-		return m_ExtraAttr[Index];
-	}
-	void SetExtraAttr( const vector<AttrKeyValueWraper>& v )
-	{
-		m_ExtraAttr=v;
-	}
-	void ClearExtraAttr( )
-	{
-		m_ExtraAttr.clear();
-	}
-	void SetExtraAttr( int Index, const AttrKeyValueWraper& v )
-	{
-		if(Index<0 || Index>=(int)m_ExtraAttr.size())
-		{
-			assert(false);
-			return;
-		}
-		m_ExtraAttr[Index] = v;
-	}
-	void AddExtraAttr( const AttrKeyValueWraper& v )
-	{
-		m_ExtraAttr.push_back(v);
-	}
-private:
-	//装备评分
-	INT32 m_BattleScore;
-public:
-	void SetBattleScore( INT32 v)
-	{
-		m_BattleScore=v;
-	}
-	INT32 GetBattleScore()
-	{
-		return m_BattleScore;
-	}
-	INT32 GetBattleScore() const
-	{
-		return m_BattleScore;
+		return m_Progress ;
 	}
 
 };
@@ -1315,120 +1429,6 @@ public:
 	INT32 GetSaleCD() const
 	{
 		return m_SaleCD;
-	}
-
-};
-//技能对象封装类
-class SkillObjWraper : public DataWraperInterface 
-{
-public:
-	//构造函数
-	SkillObjWraper()
-	{
-		
-		m_Pos = -1;
-		m_SkillId = -1;
-
-	}
-	//赋值构造函数
-	SkillObjWraper(const SkillObj& v){ Init(v); }
-	//等号重载函数
-	void operator = (const SkillObj& v){ Init(v); }
- 	//转化成Protobuffer类型函数
-	SkillObj ToPB() const
-	{
-		SkillObj v;
-		v.set_pos( m_Pos );
-		v.set_skillid( m_SkillId );
-
-		return v;
-	}
-	//获取Protobuffer序列化后大小函数
-	int ByteSize() const { return ToPB().ByteSize();}
-	//Protobuffer序列化到缓冲区
-	bool SerializeToArray( void* data, int size ) const
-	{
-		return ToPB().SerializeToArray(data,size);
-	}
-	//Protobuffer序列化到字符串
-	string SerializeAsString() const
-	{
-		return ToPB().SerializeAsString();
-	}
-	//Protobuffer从字符串进行反序列化
-	bool ParseFromString(const string& v)
-	{
-		return ParseFromArray(v.data(),v.size());
-	}
-	//Protobuffer从缓冲区进行反序列化
-	bool ParseFromArray(const void* data, int size)
-	{
-		SkillObj pb;
-		if(!pb.ParseFromArray(data,size)){return false;}
-		Init(pb);
-		return true;
-	}
-
-	string HtmlDescHeader()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-
-	string ToHtml()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-		TStr tmpLine;
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-
-
-private:
-	//从Protobuffer类型初始化
-	void Init(const SkillObj& v)
-	{
-		m_Pos = v.pos();
-		m_SkillId = v.skillid();
-
-	}
-
-private:
-	//技能位置(0-4)
-	INT32 m_Pos;
-public:
-	void SetPos( INT32 v)
-	{
-		m_Pos=v;
-	}
-	INT32 GetPos()
-	{
-		return m_Pos;
-	}
-	INT32 GetPos() const
-	{
-		return m_Pos;
-	}
-private:
-	//技能数据
-	INT32 m_SkillId;
-public:
-	void SetSkillId( INT32 v)
-	{
-		m_SkillId=v;
-	}
-	INT32 GetSkillId()
-	{
-		return m_SkillId;
-	}
-	INT32 GetSkillId() const
-	{
-		return m_SkillId;
 	}
 
 };
@@ -1901,28 +1901,28 @@ public:
 	}
 
 };
-//QuestStepData封装类
-class QuestStepDataWraper : public DataWraperInterface 
+//技能对象封装类
+class SkillObjWraper : public DataWraperInterface 
 {
 public:
 	//构造函数
-	QuestStepDataWraper()
+	SkillObjWraper()
 	{
 		
-		m_Status = -1;
-		m_Progress  = -1;
+		m_Pos = -1;
+		m_SkillId = -1;
 
 	}
 	//赋值构造函数
-	QuestStepDataWraper(const QuestStepData& v){ Init(v); }
+	SkillObjWraper(const SkillObj& v){ Init(v); }
 	//等号重载函数
-	void operator = (const QuestStepData& v){ Init(v); }
+	void operator = (const SkillObj& v){ Init(v); }
  	//转化成Protobuffer类型函数
-	QuestStepData ToPB() const
+	SkillObj ToPB() const
 	{
-		QuestStepData v;
-		v.set_status( m_Status );
-		v.set_progress ( m_Progress  );
+		SkillObj v;
+		v.set_pos( m_Pos );
+		v.set_skillid( m_SkillId );
 
 		return v;
 	}
@@ -1946,7 +1946,7 @@ public:
 	//Protobuffer从缓冲区进行反序列化
 	bool ParseFromArray(const void* data, int size)
 	{
-		QuestStepData pb;
+		SkillObj pb;
 		if(!pb.ParseFromArray(data,size)){return false;}
 		Init(pb);
 		return true;
@@ -1974,44 +1974,44 @@ public:
 
 private:
 	//从Protobuffer类型初始化
-	void Init(const QuestStepData& v)
+	void Init(const SkillObj& v)
 	{
-		m_Status = v.status();
-		m_Progress  = v.progress ();
+		m_Pos = v.pos();
+		m_SkillId = v.skillid();
 
 	}
 
 private:
-	//Status
-	INT32 m_Status;
+	//技能位置(0-4)
+	INT32 m_Pos;
 public:
-	void SetStatus( INT32 v)
+	void SetPos( INT32 v)
 	{
-		m_Status=v;
+		m_Pos=v;
 	}
-	INT32 GetStatus()
+	INT32 GetPos()
 	{
-		return m_Status;
+		return m_Pos;
 	}
-	INT32 GetStatus() const
+	INT32 GetPos() const
 	{
-		return m_Status;
+		return m_Pos;
 	}
 private:
-	//进度
-	INT32 m_Progress ;
+	//技能数据
+	INT32 m_SkillId;
 public:
-	void SetProgress ( INT32 v)
+	void SetSkillId( INT32 v)
 	{
-		m_Progress =v;
+		m_SkillId=v;
 	}
-	INT32 GetProgress ()
+	INT32 GetSkillId()
 	{
-		return m_Progress ;
+		return m_SkillId;
 	}
-	INT32 GetProgress () const
+	INT32 GetSkillId() const
 	{
-		return m_Progress ;
+		return m_SkillId;
 	}
 
 };

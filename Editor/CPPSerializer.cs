@@ -935,8 +935,12 @@
                 string str8 = "";
                 foreach (ConfigFile file in m.configFiles)
                 {
-                    newValue = newValue + "\t" + file.CfgName + "Table::Instance().Load();\r\n";
-                    reLoadConfig = reLoadConfig + "\t" + file.CfgName + "Table::Instance().ReLoad();\r\n";
+                    //newValue = newValue + "\t" + file.CfgName + "Table::Instance().Load();\r\n";
+                    //reLoadConfig = reLoadConfig + "\t" + file.CfgName + "Table::Instance().ReLoad();\r\n";
+
+                    newValue = newValue + "\tif(!" + file.CfgName + "Table::Instance().Load()) return false;\r\n";
+                    reLoadConfig = reLoadConfig + "\tif(!" + file.CfgName + "Table::Instance().ReLoad()) return false;\r\n";
+
                     str8 = str8 + "#include \"" + file.CfgName + "Cfg.h\"\r\n";
                     string str9 = configHT;
                     string str10 = configCppT;

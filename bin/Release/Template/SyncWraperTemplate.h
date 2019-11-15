@@ -1,7 +1,7 @@
 /********************************************************************************************
-* Copyright (C), 2011-2025, AGAN Tech. Co., Ltd.
+* Copyright (C), 2011-2025, Ambition. Co., Ltd.
 * FileName:     SyncWraper$Template$.h
-* Author:       甘业清
+* Author:       郭晓波
 * Description:  $ModCName$同步数据结构的类封装
 * Version:      1.0
 * History:
@@ -12,12 +12,9 @@
 #ifndef __SYNC_WRAPER_$TEMPLATE$_H
 #define __SYNC_WRAPER_$TEMPLATE$_H
 
-#include "BASE.h"
-#include "PublicStructWraper.h"
+#include "BaseDef.h"
 #include "$Template$V$SyncDataVersion$Data.pb.h"
-#include "DataWraperInterface.h"
-#include "ModuleDataClassFactory.h"
-#include "ModuleDataInterface.h"
+using namespace std;
 
 
 $SyncClassWraper$
