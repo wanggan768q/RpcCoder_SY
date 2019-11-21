@@ -267,7 +267,7 @@
                     OperationImplement = OperationImplement + "\t\t\tret_msg:ParseFromString(_data)\r\n";
 
                     OperationImplement = OperationImplement + "\t\t\tif ret_msg.Result < 1 then\r\n";
-                    OperationImplement = OperationImplement + "\t\t\t\tEvent.Brocast(CommonE.ErrorCode,ret_msg.Result,\"[" + m.ModuleName + " => " + operate.Name + " ]\")\r\n";
+                    OperationImplement = OperationImplement + "\t\t\t\tEvent.Brocast(CommonE.ErrorCode,ret_msg,\"[" + m.ModuleName + " => " + operate.Name + " ]\")\r\n";
                     OperationImplement = OperationImplement + "\t\t\tend\r\n";
 
                     OperationImplement = OperationImplement + "\t\t\t_hanlder(ret_msg)\r\n";
