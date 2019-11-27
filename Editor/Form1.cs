@@ -190,10 +190,15 @@
                                         return;
                                     }
                                 }
-                                ArrayList list2 = this.readXlsxLine(ws, 2, list.Count);
-                                ArrayList list3 = this.readXlsxLine(ws, 3, list.Count);
-                                ArrayList list4 = this.readXlsxLine(ws, 4, list.Count);
-                                ArrayList list5 = this.readXlsxLine(ws, 5, list.Count);
+                                ArrayList list2 = this.readXlsxLine(ws, 1, list.Count, true);
+                                ArrayList list3 = this.readXlsxLine(ws, 2, list.Count);
+                                ArrayList list4 = this.readXlsxLine(ws, 3, list.Count, true);
+                                ArrayList list5 = this.readXlsxLine(ws, 4, list.Count, true);
+                                if (list2.Count < list.Count || list3.Count < list.Count || list4.Count < list.Count || list5.Count < list.Count)
+                                {
+                                    MessageBox.Show(fileName + " 前五行数据不统一 ");
+                                    return;
+                                }
 
                                 for (int i = 0; i < list.Count; i++)
                                 {
@@ -204,7 +209,7 @@
                                     }
                                     ConfigFile.ConfigField field = new ConfigFile.ConfigField();
                                     field.toSetFieldType(((string) list[i]).ToLower());
-                                    field.toSetFieldName((string)list2[i]);
+                                    field.toSetFieldName((string)list3[i]);
                                     field.toSetCnName((string) list4[i]);
                                     string str4 = (string) list5[i];
                                     if (str4 != null)
@@ -2199,13 +2204,13 @@
                                             break;
                                         }
                                     }
-                                    ArrayList list2 = this.readXlsxLine(ws, 1, list.Count);
+                                    ArrayList list2 = this.readXlsxLine(ws, 1, list.Count,true);
                                     ArrayList list3 = this.readXlsxLine(ws, 2, list.Count);
-                                    ArrayList list4 = this.readXlsxLine(ws, 3, list.Count);
-                                    ArrayList list5 = this.readXlsxLine(ws, 4, list.Count);
+                                    ArrayList list4 = this.readXlsxLine(ws, 3, list.Count,true);
+                                    ArrayList list5 = this.readXlsxLine(ws, 4, list.Count,true);
                                     if (list2.Count < list.Count || list3.Count < list.Count || list4.Count < list.Count || list5.Count < list.Count)
                                     {
-                                        MessageBox.Show(fileName + " 前五行数据不统一");
+                                        MessageBox.Show(fileName + " 前五行数据不统一 ");
                                         break;
                                     }
                                     for (int i = 0; i < list.Count; i++)
@@ -2477,7 +2482,7 @@
             return list;
         }
 
-        private ArrayList readXlsxLine(ISheet ws, int row, int colCount)
+        private ArrayList readXlsxLine(ISheet ws, int row, int colCount,bool isAllowNull = false)
         {
             ArrayList list = new ArrayList();
             if (row < ws.LastRowNum)
@@ -2507,7 +2512,24 @@
                         string obj2 = c.ToString();
                         if ((obj2 != null) || (colCount != 0))
                         {
-                            list.Add(obj2);
+                            if (isAllowNull == false)
+                            {
+                                if (!string.IsNullOrEmpty(obj2))
+                                {
+                                    list.Add(obj2);
+                                }
+                            }
+                            else
+                            {
+                                list.Add("");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (isAllowNull)
+                        {
+                            list.Add("");
                         }
                     }
                 }

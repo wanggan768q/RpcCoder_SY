@@ -2,7 +2,7 @@
 <!DOCTYPE dotfuscatorMap SYSTEM "http://www.preemptive.com/dotfuscator/dtd/dotfuscatorMap_v1.2.dtd">
 <dotfuscatorMap version="1.1">
     <header>
-        <timestamp>2019-11-20T11:56:27</timestamp>
+        <timestamp>2019-11-27T20:21:05</timestamp>
         <product version="5.32.1.6167" user="XiaoBo Guo" serial="237413-391">Dotfuscator Community Edition</product>
     </header>
     <mapping>
@@ -1513,7 +1513,7 @@
                         <newname>a</newname>
                     </method>
                     <method>
-                        <signature>System.Collections.ArrayList(NPOI.SS.UserModel.ISheet, int32, int32)</signature>
+                        <signature>System.Collections.ArrayList(NPOI.SS.UserModel.ISheet, int32, int32, bool)</signature>
                         <name>readXlsxLine</name>
                         <newname>a</newname>
                     </method>
