@@ -2512,17 +2512,11 @@
                         string obj2 = c.ToString();
                         if ((obj2 != null) || (colCount != 0))
                         {
-                            if (isAllowNull == false)
-                            {
-                                if (!string.IsNullOrEmpty(obj2))
-                                {
-                                    list.Add(obj2);
-                                }
-                            }
-                            else
-                            {
-                                list.Add("");
-                            }
+                            list.Add(obj2);
+                        }
+                        else if(isAllowNull == true)
+                        {
+                            list.Add("");
                         }
                     }
                     else
