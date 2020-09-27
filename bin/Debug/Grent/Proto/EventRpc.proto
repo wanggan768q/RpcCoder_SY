@@ -3,27 +3,73 @@ import "PublicStruct.proto";
 
 message  EventRpcMoveNotify
 {
-	optional sint32 ObjId = 1[default=-1];
-	optional V3 Pos = 2;
+	optional uint64 ObjId = 1[default=0];
+	optional Vector3 Pos = 2;
 	optional float Dir = 3[default=-1];
 
 }
 
 message  EventRpcStopMoveNotify
 {
-	optional sint32 ObjId = 1[default=-1];
-	optional V3 Pos = 2;
+	optional uint64 ObjId = 1[default=0];
+	optional Vector3Int Pos = 2;
 	optional float Dir = 3[default=-1];
+	optional int32 Type = 5;
+	optional bool BrakeRush = 6[default=false];
 
 }
 
 message  EventRpcObjAttrChangeNotify
 {
 	optional float Speed = 1[default=-1];
-	optional sint64 Hp = 2[default=-1];
-	optional sint32 Status = 3[default=-1];
-	optional sint32 ConfigId = 4[default=-1];
-	optional sint32 ObjId = 5[default=-1];
+	optional int64 Hp = 2[default=-1];
+	optional int32 Status = 3;
+	optional int32 ConfigId = 4;
+	optional uint64 ObjId = 5[default=0];
+
+}
+
+message  EventRpcCoinChangeNotify
+{
+	optional int32 Type = 1;
+	optional int32 Value = 2;
+
+}
+
+message  EventRpcMovePosNotify
+{
+	optional uint64 ObjId = 1[default=0];
+	repeated Vector3Int PosList = 3;
+	optional float Dir = 4[default=-1];
+	optional bool IsAllowChangeRunAnimation = 5[default=true];
+	optional int32 Follow = 6;
+	optional bool IsLookAtMoving = 7[default=true];
+	optional int32 FromX = 8;
+	optional int32 FromZ = 9;
+
+}
+
+message  EventRpcDirNotify
+{
+	optional uint64 ObjId = 3[default=0];
+	optional float Dir = 4[default=-1];
+
+}
+
+message  EventRpcStartFadeoutNotify
+{
+	optional uint64 ObjId = 1[default=0];
+
+}
+
+message  EventRpcCinematicStartNotify
+{
+	optional int32 Text = 1;
+
+}
+
+message  EventRpcCinematicEndNotify
+{
 
 }
 

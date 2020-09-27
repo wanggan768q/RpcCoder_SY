@@ -14,25 +14,6 @@
 
 
 /********************************************************************************************
-* Function:       RpcJoinTeam
-* Description:    Team-->加入队伍同步调用操作函数
-* Input:          TeamRpcJoinTeamAskWraper& Ask 加入队伍请求
-* Output:         TeamRpcJoinTeamReplyWraper& Reply 加入队伍回应
-* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
-*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
-********************************************************************************************/
-static int ModuleTeam::RpcJoinTeam( CPlayer* pPlayer, CPacket* pPacket)
-{
-
-	//逻辑代码
-
-
-	//设置返回结果
-	Reply.SetResult(0);
-	return 0;
-}
-
-/********************************************************************************************
 * Function:       RpcLeaveTeam
 * Description:    Team-->LeaveTeam同步调用操作函数
 * Input:          TeamRpcLeaveTeamAskWraper& Ask LeaveTeam请求
@@ -299,6 +280,428 @@ void ModuleTeam::SendToClientTeamInfo( INT64 UserId, TeamRpcTeamInfoNotifyWraper
 void ModuleTeam::SendToClientUpdateTeamMemInfo( INT64 UserId, TeamRpcUpdateTeamMemInfoNotifyWraper& Notify )
 {
 	MsgStreamMgr::Instance().SendMsg( UserId, 0, Notify );
+}
+
+/********************************************************************************************
+* Function:       RpcFollowTeamLeader
+* Description:    Team-->跟随队长同步调用操作函数
+* Input:          TeamRpcFollowTeamLeaderAskWraper& Ask 跟随队长请求
+* Output:         TeamRpcFollowTeamLeaderReplyWraper& Reply 跟随队长回应
+* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+********************************************************************************************/
+static int ModuleTeam::RpcFollowTeamLeader( CPlayer* pPlayer, CPacket* pPacket)
+{
+
+	//逻辑代码
+
+
+	//设置返回结果
+	Reply.SetResult(0);
+	return 0;
+}
+
+/********************************************************************************************
+* Function:       RpcSummonMember
+* Description:    Team-->召唤队员同步调用操作函数
+* Input:          TeamRpcSummonMemberAskWraper& Ask 召唤队员请求
+* Output:         TeamRpcSummonMemberReplyWraper& Reply 召唤队员回应
+* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+********************************************************************************************/
+static int ModuleTeam::RpcSummonMember( CPlayer* pPlayer, CPacket* pPacket)
+{
+
+	//逻辑代码
+
+
+	//设置返回结果
+	Reply.SetResult(0);
+	return 0;
+}
+
+/********************************************************************************************
+* Function:       SendToClientSummonMemberNotify
+* Description:    Team-->召唤队员异步通知操作函数
+* Input:          TeamRpcSummonMemberNotifyNotifyWraper& Notify 召唤队员通知
+* Input:          INT64 UserId 需要通知到的用户ID
+* Output:         无
+* Return:         无
+********************************************************************************************/
+void ModuleTeam::SendToClientSummonMemberNotify( INT64 UserId, TeamRpcSummonMemberNotifyNotifyWraper& Notify )
+{
+	MsgStreamMgr::Instance().SendMsg( UserId, 0, Notify );
+}
+
+/********************************************************************************************
+* Function:       RpcChangeTeamTarget
+* Description:    Team-->改变队伍目标同步调用操作函数
+* Input:          TeamRpcChangeTeamTargetAskWraper& Ask 改变队伍目标
+* Output:         TeamRpcChangeTeamTargetReplyWraper& Reply 改变队伍目标
+* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+********************************************************************************************/
+static int ModuleTeam::RpcChangeTeamTarget( CPlayer* pPlayer, CPacket* pPacket)
+{
+
+	//逻辑代码
+
+
+	//设置返回结果
+	Reply.SetResult(0);
+	return 0;
+}
+
+/********************************************************************************************
+* Function:       SendToClientChangeTeamTargetNotify
+* Description:    Team-->设置服务器目标异步通知操作函数
+* Input:          TeamRpcChangeTeamTargetNotifyNotifyWraper& Notify 设置服务器目标通知
+* Input:          INT64 UserId 需要通知到的用户ID
+* Output:         无
+* Return:         无
+********************************************************************************************/
+void ModuleTeam::SendToClientChangeTeamTargetNotify( INT64 UserId, TeamRpcChangeTeamTargetNotifyNotifyWraper& Notify )
+{
+	MsgStreamMgr::Instance().SendMsg( UserId, 0, Notify );
+}
+
+/********************************************************************************************
+* Function:       RpcChangTeamType
+* Description:    Team-->转换队伍团队同步调用操作函数
+* Input:          TeamRpcChangTeamTypeAskWraper& Ask 转换队伍团队请求
+* Output:         TeamRpcChangTeamTypeReplyWraper& Reply 转换队伍团队回应
+* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+********************************************************************************************/
+static int ModuleTeam::RpcChangTeamType( CPlayer* pPlayer, CPacket* pPacket)
+{
+
+	//逻辑代码
+
+
+	//设置返回结果
+	Reply.SetResult(0);
+	return 0;
+}
+
+/********************************************************************************************
+* Function:       SendToClientChangeTeamTypeNotify
+* Description:    Team-->转换队伍团队协议异步通知操作函数
+* Input:          TeamRpcChangeTeamTypeNotifyNotifyWraper& Notify 转换队伍团队协议通知
+* Input:          INT64 UserId 需要通知到的用户ID
+* Output:         无
+* Return:         无
+********************************************************************************************/
+void ModuleTeam::SendToClientChangeTeamTypeNotify( INT64 UserId, TeamRpcChangeTeamTypeNotifyNotifyWraper& Notify )
+{
+	MsgStreamMgr::Instance().SendMsg( UserId, 0, Notify );
+}
+
+/********************************************************************************************
+* Function:       RpcInviteTeamMember
+* Description:    Team-->邀请玩家同步调用操作函数
+* Input:          TeamRpcInviteTeamMemberAskWraper& Ask 邀请玩家请求
+* Output:         TeamRpcInviteTeamMemberReplyWraper& Reply 邀请玩家回应
+* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+********************************************************************************************/
+static int ModuleTeam::RpcInviteTeamMember( CPlayer* pPlayer, CPacket* pPacket)
+{
+
+	//逻辑代码
+
+
+	//设置返回结果
+	Reply.SetResult(0);
+	return 0;
+}
+
+/********************************************************************************************
+* Function:       SendToClientInviteTeamMemberNotify
+* Description:    Team-->邀请玩家广播异步通知操作函数
+* Input:          TeamRpcInviteTeamMemberNotifyNotifyWraper& Notify 邀请玩家广播通知
+* Input:          INT64 UserId 需要通知到的用户ID
+* Output:         无
+* Return:         无
+********************************************************************************************/
+void ModuleTeam::SendToClientInviteTeamMemberNotify( INT64 UserId, TeamRpcInviteTeamMemberNotifyNotifyWraper& Notify )
+{
+	MsgStreamMgr::Instance().SendMsg( UserId, 0, Notify );
+}
+
+/********************************************************************************************
+* Function:       SendToClientApplyListNotify
+* Description:    Team-->列表通知异步通知操作函数
+* Input:          TeamRpcApplyListNotifyNotifyWraper& Notify 列表通知通知
+* Input:          INT64 UserId 需要通知到的用户ID
+* Output:         无
+* Return:         无
+********************************************************************************************/
+void ModuleTeam::SendToClientApplyListNotify( INT64 UserId, TeamRpcApplyListNotifyNotifyWraper& Notify )
+{
+	MsgStreamMgr::Instance().SendMsg( UserId, 0, Notify );
+}
+
+/********************************************************************************************
+* Function:       RpcAgreeJoinTeam
+* Description:    Team-->AgreeJoinTeam同步调用操作函数
+* Input:          TeamRpcAgreeJoinTeamAskWraper& Ask AgreeJoinTeam请求
+* Output:         TeamRpcAgreeJoinTeamReplyWraper& Reply AgreeJoinTeam回应
+* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+********************************************************************************************/
+static int ModuleTeam::RpcAgreeJoinTeam( CPlayer* pPlayer, CPacket* pPacket)
+{
+
+	//逻辑代码
+
+
+	//设置返回结果
+	Reply.SetResult(0);
+	return 0;
+}
+
+/********************************************************************************************
+* Function:       RpcRefuseMember
+* Description:    Team-->拒绝申请同步调用操作函数
+* Input:          TeamRpcRefuseMemberAskWraper& Ask 拒绝申请请求
+* Output:         TeamRpcRefuseMemberReplyWraper& Reply 拒绝申请回应
+* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+********************************************************************************************/
+static int ModuleTeam::RpcRefuseMember( CPlayer* pPlayer, CPacket* pPacket)
+{
+
+	//逻辑代码
+
+
+	//设置返回结果
+	Reply.SetResult(0);
+	return 0;
+}
+
+/********************************************************************************************
+* Function:       RpcClearApplyList
+* Description:    Team-->清空申请列表同步调用操作函数
+* Input:          TeamRpcClearApplyListAskWraper& Ask 清空申请列表请求
+* Output:         TeamRpcClearApplyListReplyWraper& Reply 清空申请列表回应
+* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+********************************************************************************************/
+static int ModuleTeam::RpcClearApplyList( CPlayer* pPlayer, CPacket* pPacket)
+{
+
+	//逻辑代码
+
+
+	//设置返回结果
+	Reply.SetResult(0);
+	return 0;
+}
+
+/********************************************************************************************
+* Function:       RpcNoTeamInvite
+* Description:    Team-->没有队伍邀请玩家同步调用操作函数
+* Input:          TeamRpcNoTeamInviteAskWraper& Ask 没有队伍邀请玩家请求
+* Output:         TeamRpcNoTeamInviteReplyWraper& Reply 没有队伍邀请玩家回应
+* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+********************************************************************************************/
+static int ModuleTeam::RpcNoTeamInvite( CPlayer* pPlayer, CPacket* pPacket)
+{
+
+	//逻辑代码
+
+
+	//设置返回结果
+	Reply.SetResult(0);
+	return 0;
+}
+
+/********************************************************************************************
+* Function:       RpcRejectInvite
+* Description:    Team-->拒绝邀请同步调用操作函数
+* Input:          TeamRpcRejectInviteAskWraper& Ask 拒绝邀请请求
+* Output:         TeamRpcRejectInviteReplyWraper& Reply 拒绝邀请回应
+* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+********************************************************************************************/
+static int ModuleTeam::RpcRejectInvite( CPlayer* pPlayer, CPacket* pPacket)
+{
+
+	//逻辑代码
+
+
+	//设置返回结果
+	Reply.SetResult(0);
+	return 0;
+}
+
+/********************************************************************************************
+* Function:       SendToClientEnterAutoCombat
+* Description:    Team-->进入自动战斗状态异步通知操作函数
+* Input:          TeamRpcEnterAutoCombatNotifyWraper& Notify 进入自动战斗状态通知
+* Input:          INT64 UserId 需要通知到的用户ID
+* Output:         无
+* Return:         无
+********************************************************************************************/
+void ModuleTeam::SendToClientEnterAutoCombat( INT64 UserId, TeamRpcEnterAutoCombatNotifyWraper& Notify )
+{
+	MsgStreamMgr::Instance().SendMsg( UserId, 0, Notify );
+}
+
+/********************************************************************************************
+* Function:       SendToClientHangUpAutoCombat
+* Description:    Team-->挂起自动战斗异步通知操作函数
+* Input:          TeamRpcHangUpAutoCombatNotifyWraper& Notify 挂起自动战斗通知
+* Input:          INT64 UserId 需要通知到的用户ID
+* Output:         无
+* Return:         无
+********************************************************************************************/
+void ModuleTeam::SendToClientHangUpAutoCombat( INT64 UserId, TeamRpcHangUpAutoCombatNotifyWraper& Notify )
+{
+	MsgStreamMgr::Instance().SendMsg( UserId, 0, Notify );
+}
+
+/********************************************************************************************
+* Function:       SendToClientUpdateTeamHpInfo
+* Description:    Team-->更新队伍快速刷新Hp异步通知操作函数
+* Input:          TeamRpcUpdateTeamHpInfoNotifyWraper& Notify 更新队伍快速刷新Hp通知
+* Input:          INT64 UserId 需要通知到的用户ID
+* Output:         无
+* Return:         无
+********************************************************************************************/
+void ModuleTeam::SendToClientUpdateTeamHpInfo( INT64 UserId, TeamRpcUpdateTeamHpInfoNotifyWraper& Notify )
+{
+	MsgStreamMgr::Instance().SendMsg( UserId, 0, Notify );
+}
+
+/********************************************************************************************
+* Function:       SendToClientUpdateTeamPosInfo
+* Description:    Team-->更新队伍成员信息异步通知操作函数
+* Input:          TeamRpcUpdateTeamPosInfoNotifyWraper& Notify 更新队伍成员信息通知
+* Input:          INT64 UserId 需要通知到的用户ID
+* Output:         无
+* Return:         无
+********************************************************************************************/
+void ModuleTeam::SendToClientUpdateTeamPosInfo( INT64 UserId, TeamRpcUpdateTeamPosInfoNotifyWraper& Notify )
+{
+	MsgStreamMgr::Instance().SendMsg( UserId, 0, Notify );
+}
+
+/********************************************************************************************
+* Function:       SendToClientUpdateTeamBuffInfo
+* Description:    Team-->更新队伍bufflist异步通知操作函数
+* Input:          TeamRpcUpdateTeamBuffInfoNotifyWraper& Notify 更新队伍bufflist通知
+* Input:          INT64 UserId 需要通知到的用户ID
+* Output:         无
+* Return:         无
+********************************************************************************************/
+void ModuleTeam::SendToClientUpdateTeamBuffInfo( INT64 UserId, TeamRpcUpdateTeamBuffInfoNotifyWraper& Notify )
+{
+	MsgStreamMgr::Instance().SendMsg( UserId, 0, Notify );
+}
+
+/********************************************************************************************
+* Function:       RpcHangeUpFollow
+* Description:    Team-->暂停跟随同步调用操作函数
+* Input:          TeamRpcHangeUpFollowAskWraper& Ask 暂停跟随请求
+* Output:         TeamRpcHangeUpFollowReplyWraper& Reply 暂停跟随回应
+* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+********************************************************************************************/
+static int ModuleTeam::RpcHangeUpFollow( CPlayer* pPlayer, CPacket* pPacket)
+{
+
+	//逻辑代码
+
+
+	//设置返回结果
+	Reply.SetResult(0);
+	return 0;
+}
+
+/********************************************************************************************
+* Function:       RpcGoOnFollow
+* Description:    Team-->继续跟随同步调用操作函数
+* Input:          TeamRpcGoOnFollowAskWraper& Ask 继续跟随请求
+* Output:         TeamRpcGoOnFollowReplyWraper& Reply 继续跟随回应
+* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+********************************************************************************************/
+static int ModuleTeam::RpcGoOnFollow( CPlayer* pPlayer, CPacket* pPacket)
+{
+
+	//逻辑代码
+
+
+	//设置返回结果
+	Reply.SetResult(0);
+	return 0;
+}
+
+/********************************************************************************************
+* Function:       SendToClientUpdateFollowStatus
+* Description:    Team-->更新跟随状态异步通知操作函数
+* Input:          TeamRpcUpdateFollowStatusNotifyWraper& Notify 更新跟随状态通知
+* Input:          INT64 UserId 需要通知到的用户ID
+* Output:         无
+* Return:         无
+********************************************************************************************/
+void ModuleTeam::SendToClientUpdateFollowStatus( INT64 UserId, TeamRpcUpdateFollowStatusNotifyWraper& Notify )
+{
+	MsgStreamMgr::Instance().SendMsg( UserId, 0, Notify );
+}
+
+/********************************************************************************************
+* Function:       RpcRequestNoTeamMemberList
+* Description:    Team-->请求玩家列表同步调用操作函数
+* Input:          TeamRpcRequestNoTeamMemberListAskWraper& Ask 请求玩家列表请求
+* Output:         TeamRpcRequestNoTeamMemberListReplyWraper& Reply 请求玩家列表回应
+* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+********************************************************************************************/
+static int ModuleTeam::RpcRequestNoTeamMemberList( CPlayer* pPlayer, CPacket* pPacket)
+{
+
+	//逻辑代码
+
+
+	//设置返回结果
+	Reply.SetResult(0);
+	return 0;
+}
+
+/********************************************************************************************
+* Function:       SendToClientEnterTeamFollow
+* Description:    Team-->你加入了一支副本队伍，是否开启组队跟随功能，自动传送入队长所在副本异步通知操作函数
+* Input:          TeamRpcEnterTeamFollowNotifyWraper& Notify 你加入了一支副本队伍，是否开启组队跟随功能，自动传送入队长所在副本通知
+* Input:          INT64 UserId 需要通知到的用户ID
+* Output:         无
+* Return:         无
+********************************************************************************************/
+void ModuleTeam::SendToClientEnterTeamFollow( INT64 UserId, TeamRpcEnterTeamFollowNotifyWraper& Notify )
+{
+	MsgStreamMgr::Instance().SendMsg( UserId, 0, Notify );
+}
+
+/********************************************************************************************
+* Function:       RpcEnterLeaderScene
+* Description:    Team-->进入队长场景同步调用操作函数
+* Input:          TeamRpcEnterLeaderSceneAskWraper& Ask 进入队长场景请求
+* Output:         TeamRpcEnterLeaderSceneReplyWraper& Reply 进入队长场景回应
+* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+********************************************************************************************/
+static int ModuleTeam::RpcEnterLeaderScene( CPlayer* pPlayer, CPacket* pPacket)
+{
+
+	//逻辑代码
+
+
+	//设置返回结果
+	Reply.SetResult(0);
+	return 0;
 }
 
 

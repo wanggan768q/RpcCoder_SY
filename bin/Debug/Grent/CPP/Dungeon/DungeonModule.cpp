@@ -15,7 +15,7 @@
 ********************************************************************************************/
 
 #include "DungeonModule.h"
-#
+
 
 
 //初始化
@@ -23,6 +23,11 @@ bool ModuleDungeon::Initialize()
 {
 
 	
+	return OnLoad();
+}
 
-	return true;
+bool ModuleDungeon::Reinitialize()
+{
+	
+	return OnLoad();
 }

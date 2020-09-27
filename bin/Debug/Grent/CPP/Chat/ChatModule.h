@@ -21,10 +21,11 @@
 
 
 #include "PacketFactory.h"
-#include "include/PacketMgr.h"
+#include "Game/PacketMgr.h"
 #include "ChatRpc.pb.h"
 #include <memory>
-
+#include <vector>
+#include <functional>
 
 
 
@@ -45,9 +46,14 @@ public:
 	MODULE_ID_CHAT                               = 13,	//Chat模块ID
 	RPC_CODE_CHAT_CHAT_REQUEST                   = 1351,	//Chat-->Chat-->请求
 	RPC_CODE_CHAT_PUSHCHATUPDATES_NOTIFY         = 1352,	//Chat-->PushChatUpdates-->通知
+	RPC_CODE_CHAT_PUSHMARQUEE_NOTIFY             = 1353,	//Chat-->推送跑马灯-->通知
+	RPC_CODE_CHAT_SAY_NOTIFY                     = 1354,	//Chat-->玩家或NPC对象说话-->通知
+	RPC_CODE_CHAT_SERVERCHAT_NOTIFY              = 1355,	//Chat-->服务器通知-->通知
 
 	};
 
+	typedef std::function<bool()> ReloadCallback;
+	typedef std::vector<ReloadCallback> reload_vec_type;
 public:
 	//Chat实现类构造函数
 	ModuleChat()
@@ -61,14 +67,29 @@ public:
 	~ModuleChat(){}
 
 
-	static ModuleChat Instance()
+	static ModuleChat & Instance()
 	{
 		static ModuleChat sInstance;
 		return sInstance;
 	}
 	
 	bool Initialize();
+	bool Reinitialize();
 
+	void RegisterReLoadCb(const ReloadCallback &cb)
+	{
+		m_vReLoadCb.push_back(cb);
+	}
+	
+	bool OnLoad()
+	{
+		bool bRet = true;
+			for (auto it : m_vReLoadCb)
+		{
+			bRet &= it();
+		}
+		return bRet;
+	}
 public:
 	/********************************************************************************************
 	* Function:       RpcChat
@@ -90,7 +111,38 @@ public:
 	********************************************************************************************/
 	//virtual void SendToClientPushChatUpdates( INT64 UserId, ChatRpcPushChatUpdatesNotifyWraper& Notify );
 
+	/********************************************************************************************
+	* Function:       SendToClientPushMarquee
+	* Description:    Chat-->推送跑马灯异步通知操作函数
+	* Input:          ChatRpcPushMarqueeNotifyWraper& Notify 推送跑马灯通知
+	* Input:          INT64 UserId 需要通知到的用户ID
+	* Output:         无
+	* Return:         无
+	********************************************************************************************/
+	//virtual void SendToClientPushMarquee( INT64 UserId, ChatRpcPushMarqueeNotifyWraper& Notify );
 
+	/********************************************************************************************
+	* Function:       SendToClientSay
+	* Description:    Chat-->玩家或NPC对象说话异步通知操作函数
+	* Input:          ChatRpcSayNotifyWraper& Notify 玩家或NPC对象说话通知
+	* Input:          INT64 UserId 需要通知到的用户ID
+	* Output:         无
+	* Return:         无
+	********************************************************************************************/
+	//virtual void SendToClientSay( INT64 UserId, ChatRpcSayNotifyWraper& Notify );
+
+	/********************************************************************************************
+	* Function:       SendToClientServerChat
+	* Description:    Chat-->服务器通知异步通知操作函数
+	* Input:          ChatRpcServerChatNotifyWraper& Notify 服务器通知
+	* Input:          INT64 UserId 需要通知到的用户ID
+	* Output:         无
+	* Return:         无
+	********************************************************************************************/
+	//virtual void SendToClientServerChat( INT64 UserId, ChatRpcServerChatNotifyWraper& Notify );
+
+
+	reload_vec_type m_vReLoadCb;
 
 };
 

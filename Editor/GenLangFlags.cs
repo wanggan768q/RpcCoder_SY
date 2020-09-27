@@ -10,6 +10,7 @@
         public static bool CS = false;
         public static bool CSCat = false;
         public static bool LUA = false;
+        public static bool LUA_HOOK = false;
     }
 }
 

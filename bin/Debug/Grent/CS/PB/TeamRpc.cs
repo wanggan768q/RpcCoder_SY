@@ -17,12 +17,20 @@ namespace GenPB
     public TeamRpcCreateTeamAsk() {}
     
     private int _TeamType = (int)-1;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"TeamType", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"TeamType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int TeamType
     {
       get { return _TeamType; }
       set { _TeamType = value; }
+    }
+    private TeamTarget _TTarget = null;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"TTarget", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public TeamTarget TTarget
+    {
+      get { return _TTarget; }
+      set { _TTarget = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -35,75 +43,7 @@ namespace GenPB
     public TeamRpcCreateTeamReply() {}
     
     private int _Result = (int)-9999;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-9999)]
-    public int Result
-    {
-      get { return _Result; }
-      set { _Result = value; }
-    }
-    private TeamInfo _Team = null;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Team", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue(null)]
-    public TeamInfo Team
-    {
-      get { return _Team; }
-      set { _Team = value; }
-    }
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcJoinTeamAsk")]
-  public partial class TeamRpcJoinTeamAsk : global::ProtoBuf.IExtensible
-  {
-    public TeamRpcJoinTeamAsk() {}
-    
-    private int _TeamId = (int)-1;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"TeamId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-1)]
-    public int TeamId
-    {
-      get { return _TeamId; }
-      set { _TeamId = value; }
-    }
-    private int _TeamType = (int)-1;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"TeamType", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-1)]
-    public int TeamType
-    {
-      get { return _TeamType; }
-      set { _TeamType = value; }
-    }
-    private TeamInfo _Team = null;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"Team", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue(null)]
-    public TeamInfo Team
-    {
-      get { return _Team; }
-      set { _Team = value; }
-    }
-    private TeamMemberInfo _TeamMember = null;
-    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"TeamMember", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue(null)]
-    public TeamMemberInfo TeamMember
-    {
-      get { return _TeamMember; }
-      set { _TeamMember = value; }
-    }
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcJoinTeamReply")]
-  public partial class TeamRpcJoinTeamReply : global::ProtoBuf.IExtensible
-  {
-    public TeamRpcJoinTeamReply() {}
-    
-    private int _Result = (int)-9999;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-9999)]
     public int Result
     {
@@ -139,7 +79,7 @@ namespace GenPB
     public TeamRpcLeaveTeamReply() {}
     
     private int _Result = (int)-9999;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-9999)]
     public int Result
     {
@@ -175,7 +115,7 @@ namespace GenPB
     public TeamRpcAppointTeamLeaderReply() {}
     
     private int _Result = (int)-9999;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-9999)]
     public int Result
     {
@@ -237,7 +177,7 @@ namespace GenPB
     public TeamRpcKickMemberReply() {}
     
     private int _Result = (int)-9999;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-9999)]
     public int Result
     {
@@ -265,7 +205,7 @@ namespace GenPB
     public TeamRpcDissmissTeamReply() {}
     
     private int _Result = (int)-9999;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-9999)]
     public int Result
     {
@@ -344,6 +284,14 @@ namespace GenPB
       get { return _TeamMember; }
       set { _TeamMember = value; }
     }
+    private TeamInfo _Team = null;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Team", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public TeamInfo Team
+    {
+      get { return _Team; }
+      set { _Team = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -364,6 +312,22 @@ namespace GenPB
   {
     public TeamRpcSurroundingTeamAsk() {}
     
+    private int _TargetGroupId = (int)-1;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"TargetGroupId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int TargetGroupId
+    {
+      get { return _TargetGroupId; }
+      set { _TargetGroupId = value; }
+    }
+    private int _TargetGroup = (int)0;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"TargetGroup", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int TargetGroup
+    {
+      get { return _TargetGroup; }
+      set { _TargetGroup = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -375,7 +339,7 @@ namespace GenPB
     public TeamRpcSurroundingTeamReply() {}
     
     private int _Result = (int)-9999;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-9999)]
     public int Result
     {
@@ -389,6 +353,22 @@ namespace GenPB
       get { return _TeamsInfo; }
     }
   
+    private int _TargetGroupId = (int)-1;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"TargetGroupId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int TargetGroupId
+    {
+      get { return _TargetGroupId; }
+      set { _TargetGroupId = value; }
+    }
+    private int _TargetGroup = (int)0;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"TargetGroup", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int TargetGroup
+    {
+      get { return _TargetGroup; }
+      set { _TargetGroup = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -399,10 +379,10 @@ namespace GenPB
   {
     public TeamRpcApplyTeamAsk() {}
     
-    private int _TeamId = (int)-1;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"TeamId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-1)]
-    public int TeamId
+    private ulong _TeamId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"TeamId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong TeamId
     {
       get { return _TeamId; }
       set { _TeamId = value; }
@@ -418,17 +398,17 @@ namespace GenPB
     public TeamRpcApplyTeamReply() {}
     
     private int _Result = (int)-9999;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-9999)]
     public int Result
     {
       get { return _Result; }
       set { _Result = value; }
     }
-    private int _TeamId = (int)-1;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"TeamId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-1)]
-    public int TeamId
+    private ulong _TeamId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"TeamId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong TeamId
     {
       get { return _TeamId; }
       set { _TeamId = value; }
@@ -480,7 +460,7 @@ namespace GenPB
     public TeamRpcAgreeApplicantReply() {}
     
     private int _Result = (int)-9999;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-9999)]
     public int Result
     {
@@ -523,6 +503,14 @@ namespace GenPB
       get { return _Team; }
       set { _Team = value; }
     }
+    private int _FollowTeamLeader = (int)-1;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"FollowTeamLeader", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int FollowTeamLeader
+    {
+      get { return _FollowTeamLeader; }
+      set { _FollowTeamLeader = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -540,6 +528,794 @@ namespace GenPB
     {
       get { return _TeamMember; }
       set { _TeamMember = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcFollowTeamLeaderAsk")]
+  public partial class TeamRpcFollowTeamLeaderAsk : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcFollowTeamLeaderAsk() {}
+    
+    private int _FollowTeamLeader = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"FollowTeamLeader", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int FollowTeamLeader
+    {
+      get { return _FollowTeamLeader; }
+      set { _FollowTeamLeader = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcFollowTeamLeaderReply")]
+  public partial class TeamRpcFollowTeamLeaderReply : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcFollowTeamLeaderReply() {}
+    
+    private int _Result = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
+    }
+    private int _FollowTeamLeader = (int)-1;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"FollowTeamLeader", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int FollowTeamLeader
+    {
+      get { return _FollowTeamLeader; }
+      set { _FollowTeamLeader = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcSummonMemberAsk")]
+  public partial class TeamRpcSummonMemberAsk : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcSummonMemberAsk() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcSummonMemberReply")]
+  public partial class TeamRpcSummonMemberReply : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcSummonMemberReply() {}
+    
+    private int _Result = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcSummonMemberNotifyNotify")]
+  public partial class TeamRpcSummonMemberNotifyNotify : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcSummonMemberNotifyNotify() {}
+    
+    private int _StringNoticeId = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"StringNoticeId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int StringNoticeId
+    {
+      get { return _StringNoticeId; }
+      set { _StringNoticeId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcChangeTeamTargetReply")]
+  public partial class TeamRpcChangeTeamTargetReply : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcChangeTeamTargetReply() {}
+    
+    private int _Result = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
+    }
+    private TeamTarget _TeamTarget = null;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"TeamTarget", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public TeamTarget TeamTarget
+    {
+      get { return _TeamTarget; }
+      set { _TeamTarget = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcChangeTeamTargetAsk")]
+  public partial class TeamRpcChangeTeamTargetAsk : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcChangeTeamTargetAsk() {}
+    
+    private TeamTarget _Target = null;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"Target", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public TeamTarget Target
+    {
+      get { return _Target; }
+      set { _Target = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcChangeTeamTargetNotifyNotify")]
+  public partial class TeamRpcChangeTeamTargetNotifyNotify : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcChangeTeamTargetNotifyNotify() {}
+    
+    private TeamTarget _TeamTarget = null;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"TeamTarget", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public TeamTarget TeamTarget
+    {
+      get { return _TeamTarget; }
+      set { _TeamTarget = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcChangTeamTypeAsk")]
+  public partial class TeamRpcChangTeamTypeAsk : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcChangTeamTypeAsk() {}
+    
+    private int _TeamType = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"TeamType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int TeamType
+    {
+      get { return _TeamType; }
+      set { _TeamType = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcChangTeamTypeReply")]
+  public partial class TeamRpcChangTeamTypeReply : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcChangTeamTypeReply() {}
+    
+    private int _Result = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
+    }
+    private int _TeamType = (int)-1;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"TeamType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int TeamType
+    {
+      get { return _TeamType; }
+      set { _TeamType = value; }
+    }
+    private TeamTarget _TeamTarget = null;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"TeamTarget", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public TeamTarget TeamTarget
+    {
+      get { return _TeamTarget; }
+      set { _TeamTarget = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcChangeTeamTypeNotifyNotify")]
+  public partial class TeamRpcChangeTeamTypeNotifyNotify : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcChangeTeamTypeNotifyNotify() {}
+    
+    private int _TeamType = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"TeamType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int TeamType
+    {
+      get { return _TeamType; }
+      set { _TeamType = value; }
+    }
+    private TeamTarget _TeamTarget = null;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"TeamTarget", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public TeamTarget TeamTarget
+    {
+      get { return _TeamTarget; }
+      set { _TeamTarget = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcInviteTeamMemberAsk")]
+  public partial class TeamRpcInviteTeamMemberAsk : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcInviteTeamMemberAsk() {}
+    
+    private readonly global::System.Collections.Generic.List<ulong> _RoleId = new global::System.Collections.Generic.List<ulong>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"RoleId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<ulong> RoleId
+    {
+      get { return _RoleId; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcInviteTeamMemberReply")]
+  public partial class TeamRpcInviteTeamMemberReply : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcInviteTeamMemberReply() {}
+    
+    private int _Result = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
+    }
+    private readonly global::System.Collections.Generic.List<ulong> _RoleId = new global::System.Collections.Generic.List<ulong>();
+    [global::ProtoBuf.ProtoMember(2, Name=@"RoleId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<ulong> RoleId
+    {
+      get { return _RoleId; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcInviteTeamMemberNotifyNotify")]
+  public partial class TeamRpcInviteTeamMemberNotifyNotify : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcInviteTeamMemberNotifyNotify() {}
+    
+    private ulong _TeamId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"TeamId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong TeamId
+    {
+      get { return _TeamId; }
+      set { _TeamId = value; }
+    }
+    private int _IsLeader = (int)-1;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"IsLeader", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int IsLeader
+    {
+      get { return _IsLeader; }
+      set { _IsLeader = value; }
+    }
+    private TeamMemberInfo _InviteMemberInfo = null;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"InviteMemberInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public TeamMemberInfo InviteMemberInfo
+    {
+      get { return _InviteMemberInfo; }
+      set { _InviteMemberInfo = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcApplyListNotifyNotify")]
+  public partial class TeamRpcApplyListNotifyNotify : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcApplyListNotifyNotify() {}
+    
+    private readonly global::System.Collections.Generic.List<TeamMemberInfo> _ApplyList = new global::System.Collections.Generic.List<TeamMemberInfo>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"ApplyList", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<TeamMemberInfo> ApplyList
+    {
+      get { return _ApplyList; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcAgreeJoinTeamAsk")]
+  public partial class TeamRpcAgreeJoinTeamAsk : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcAgreeJoinTeamAsk() {}
+    
+    private ulong _TeamId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"TeamId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong TeamId
+    {
+      get { return _TeamId; }
+      set { _TeamId = value; }
+    }
+    private int _IsLeader = (int)-1;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"IsLeader", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int IsLeader
+    {
+      get { return _IsLeader; }
+      set { _IsLeader = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcAgreeJoinTeamReply")]
+  public partial class TeamRpcAgreeJoinTeamReply : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcAgreeJoinTeamReply() {}
+    
+    private int _Result = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcRefuseMemberAsk")]
+  public partial class TeamRpcRefuseMemberAsk : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcRefuseMemberAsk() {}
+    
+    private ulong _RoleId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"RoleId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong RoleId
+    {
+      get { return _RoleId; }
+      set { _RoleId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcRefuseMemberReply")]
+  public partial class TeamRpcRefuseMemberReply : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcRefuseMemberReply() {}
+    
+    private int _Result = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcClearApplyListReply")]
+  public partial class TeamRpcClearApplyListReply : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcClearApplyListReply() {}
+    
+    private int _Result = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcClearApplyListAsk")]
+  public partial class TeamRpcClearApplyListAsk : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcClearApplyListAsk() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcNoTeamInviteAsk")]
+  public partial class TeamRpcNoTeamInviteAsk : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcNoTeamInviteAsk() {}
+    
+    private int _TeamType = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"TeamType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int TeamType
+    {
+      get { return _TeamType; }
+      set { _TeamType = value; }
+    }
+    private TeamTarget _TTarget = null;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"TTarget", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public TeamTarget TTarget
+    {
+      get { return _TTarget; }
+      set { _TTarget = value; }
+    }
+    private ulong _InviteRoleId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"InviteRoleId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong InviteRoleId
+    {
+      get { return _InviteRoleId; }
+      set { _InviteRoleId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcNoTeamInviteReply")]
+  public partial class TeamRpcNoTeamInviteReply : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcNoTeamInviteReply() {}
+    
+    private int _Result = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
+    }
+    private TeamInfo _Team = null;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Team", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public TeamInfo Team
+    {
+      get { return _Team; }
+      set { _Team = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcRejectInviteAsk")]
+  public partial class TeamRpcRejectInviteAsk : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcRejectInviteAsk() {}
+    
+    private ulong _RoleId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"RoleId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong RoleId
+    {
+      get { return _RoleId; }
+      set { _RoleId = value; }
+    }
+    private string _Name = "";
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"Name", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Name
+    {
+      get { return _Name; }
+      set { _Name = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcRejectInviteReply")]
+  public partial class TeamRpcRejectInviteReply : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcRejectInviteReply() {}
+    
+    private int _Result = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcEnterAutoCombatNotify")]
+  public partial class TeamRpcEnterAutoCombatNotify : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcEnterAutoCombatNotify() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcHangUpAutoCombatNotify")]
+  public partial class TeamRpcHangUpAutoCombatNotify : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcHangUpAutoCombatNotify() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcUpdateTeamHpInfoNotify")]
+  public partial class TeamRpcUpdateTeamHpInfoNotify : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcUpdateTeamHpInfoNotify() {}
+    
+    private TeamMemberHpInfo _Member = null;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Member", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public TeamMemberHpInfo Member
+    {
+      get { return _Member; }
+      set { _Member = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcUpdateTeamPosInfoNotify")]
+  public partial class TeamRpcUpdateTeamPosInfoNotify : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcUpdateTeamPosInfoNotify() {}
+    
+    private TeamMemberPos _Member = null;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Member", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public TeamMemberPos Member
+    {
+      get { return _Member; }
+      set { _Member = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcUpdateTeamBuffInfoNotify")]
+  public partial class TeamRpcUpdateTeamBuffInfoNotify : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcUpdateTeamBuffInfoNotify() {}
+    
+    private TeanMemberBuff _Member = null;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Member", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public TeanMemberBuff Member
+    {
+      get { return _Member; }
+      set { _Member = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcHangeUpFollowAsk")]
+  public partial class TeamRpcHangeUpFollowAsk : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcHangeUpFollowAsk() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcHangeUpFollowReply")]
+  public partial class TeamRpcHangeUpFollowReply : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcHangeUpFollowReply() {}
+    
+    private int _Result = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
+    }
+    private int _FollowStatus = (int)-1;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"FollowStatus", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int FollowStatus
+    {
+      get { return _FollowStatus; }
+      set { _FollowStatus = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcGoOnFollowAsk")]
+  public partial class TeamRpcGoOnFollowAsk : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcGoOnFollowAsk() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcGoOnFollowReply")]
+  public partial class TeamRpcGoOnFollowReply : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcGoOnFollowReply() {}
+    
+    private int _Result = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
+    }
+    private int _FollowStatus = (int)-1;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"FollowStatus", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int FollowStatus
+    {
+      get { return _FollowStatus; }
+      set { _FollowStatus = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcUpdateFollowStatusNotify")]
+  public partial class TeamRpcUpdateFollowStatusNotify : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcUpdateFollowStatusNotify() {}
+    
+    private int _FollowStatus = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"FollowStatus", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int FollowStatus
+    {
+      get { return _FollowStatus; }
+      set { _FollowStatus = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcRequestNoTeamMemberListAsk")]
+  public partial class TeamRpcRequestNoTeamMemberListAsk : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcRequestNoTeamMemberListAsk() {}
+    
+    private int _RequestType = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"RequestType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int RequestType
+    {
+      get { return _RequestType; }
+      set { _RequestType = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcRequestNoTeamMemberListReply")]
+  public partial class TeamRpcRequestNoTeamMemberListReply : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcRequestNoTeamMemberListReply() {}
+    
+    private int _Result = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
+    }
+    private int _RequestType = (int)-1;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"RequestType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int RequestType
+    {
+      get { return _RequestType; }
+      set { _RequestType = value; }
+    }
+    private readonly global::System.Collections.Generic.List<TeamMemberInfo> _MemberList = new global::System.Collections.Generic.List<TeamMemberInfo>();
+    [global::ProtoBuf.ProtoMember(3, Name=@"MemberList", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<TeamMemberInfo> MemberList
+    {
+      get { return _MemberList; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcEnterTeamFollowNotify")]
+  public partial class TeamRpcEnterTeamFollowNotify : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcEnterTeamFollowNotify() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcEnterLeaderSceneAsk")]
+  public partial class TeamRpcEnterLeaderSceneAsk : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcEnterLeaderSceneAsk() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"TeamRpcEnterLeaderSceneReply")]
+  public partial class TeamRpcEnterLeaderSceneReply : global::ProtoBuf.IExtensible
+  {
+    public TeamRpcEnterLeaderSceneReply() {}
+    
+    private int _Result = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

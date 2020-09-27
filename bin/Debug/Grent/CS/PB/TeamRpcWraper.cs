@@ -26,6 +26,7 @@ public class TeamRpcCreateTeamAskWraper
 	public TeamRpcCreateTeamAskWraper()
 	{
 		 m_TeamType = -1;
+		 m_TTarget = new TeamTargetWraper();
 
 	}
 
@@ -33,6 +34,7 @@ public class TeamRpcCreateTeamAskWraper
 	public void ResetWraper()
 	{
 		 m_TeamType = -1;
+		 m_TTarget = new TeamTargetWraper();
 
 	}
 
@@ -41,6 +43,7 @@ public class TeamRpcCreateTeamAskWraper
 	{
 		TeamRpcCreateTeamAsk v = new TeamRpcCreateTeamAsk();
 		v.TeamType = m_TeamType;
+		v.TTarget = m_TTarget.ToPB();
 
 		return v;
 	}
@@ -51,6 +54,7 @@ public class TeamRpcCreateTeamAskWraper
         if (v == null)
             return;
 		m_TeamType = v.TeamType;
+		m_TTarget.FromPB(v.TTarget);
 
 	}
 	
@@ -76,6 +80,13 @@ public class TeamRpcCreateTeamAskWraper
 	{
 		get { return m_TeamType;}
 		set { m_TeamType = value; }
+	}
+	//队伍目标
+	public TeamTargetWraper m_TTarget;
+	public TeamTargetWraper TTarget
+	{
+		get { return m_TTarget;}
+		set { m_TTarget = value; }
 	}
 
 
@@ -145,176 +156,6 @@ public class TeamRpcCreateTeamReplyWraper
 		set { m_Result = value; }
 	}
 	//PbTeam
-	public TeamInfoWraper m_Team;
-	public TeamInfoWraper Team
-	{
-		get { return m_Team;}
-		set { m_Team = value; }
-	}
-
-
-};
-//加入队伍请求封装类
-[System.Serializable]
-public class TeamRpcJoinTeamAskWraper
-{
-
-	//构造函数
-	public TeamRpcJoinTeamAskWraper()
-	{
-		 m_TeamId = -1;
-		 m_TeamType = -1;
-		 m_Team = new TeamInfoWraper();
-		 m_TeamMember = new TeamMemberInfoWraper();
-
-	}
-
-	//重置函数
-	public void ResetWraper()
-	{
-		 m_TeamId = -1;
-		 m_TeamType = -1;
-		 m_Team = new TeamInfoWraper();
-		 m_TeamMember = new TeamMemberInfoWraper();
-
-	}
-
- 	//转化成Protobuffer类型函数
-	public TeamRpcJoinTeamAsk ToPB()
-	{
-		TeamRpcJoinTeamAsk v = new TeamRpcJoinTeamAsk();
-		v.TeamId = m_TeamId;
-		v.TeamType = m_TeamType;
-		v.Team = m_Team.ToPB();
-		v.TeamMember = m_TeamMember.ToPB();
-
-		return v;
-	}
-	
-	//从Protobuffer类型初始化
-	public void FromPB(TeamRpcJoinTeamAsk v)
-	{
-        if (v == null)
-            return;
-		m_TeamId = v.TeamId;
-		m_TeamType = v.TeamType;
-		m_Team.FromPB(v.Team);
-		m_TeamMember.FromPB(v.TeamMember);
-
-	}
-	
-	//Protobuffer序列化到MemoryStream
-	public MemoryStream ToMemoryStream()
-	{
-		MemoryStream protoMS = new MemoryStream();
-		ProtoBuf.Serializer.Serialize<TeamRpcJoinTeamAsk>(protoMS, ToPB());
-		return protoMS;
-	}
-	
-	//Protobuffer从MemoryStream进行反序列化
-	public bool FromMemoryStream(MemoryStream protoMS)
-	{
-		TeamRpcJoinTeamAsk pb = ProtoBuf.Serializer.Deserialize<TeamRpcJoinTeamAsk>(protoMS);
-		FromPB(pb);
-		return true;
-	}
-
-	//TeamId
-	public int m_TeamId;
-	public int TeamId
-	{
-		get { return m_TeamId;}
-		set { m_TeamId = value; }
-	}
-	//TeamType
-	public int m_TeamType;
-	public int TeamType
-	{
-		get { return m_TeamType;}
-		set { m_TeamType = value; }
-	}
-	//Team
-	public TeamInfoWraper m_Team;
-	public TeamInfoWraper Team
-	{
-		get { return m_Team;}
-		set { m_Team = value; }
-	}
-	//TeamMember
-	public TeamMemberInfoWraper m_TeamMember;
-	public TeamMemberInfoWraper TeamMember
-	{
-		get { return m_TeamMember;}
-		set { m_TeamMember = value; }
-	}
-
-
-};
-//加入队伍回应封装类
-[System.Serializable]
-public class TeamRpcJoinTeamReplyWraper
-{
-
-	//构造函数
-	public TeamRpcJoinTeamReplyWraper()
-	{
-		 m_Result = -9999;
-		 m_Team = new TeamInfoWraper();
-
-	}
-
-	//重置函数
-	public void ResetWraper()
-	{
-		 m_Result = -9999;
-		 m_Team = new TeamInfoWraper();
-
-	}
-
- 	//转化成Protobuffer类型函数
-	public TeamRpcJoinTeamReply ToPB()
-	{
-		TeamRpcJoinTeamReply v = new TeamRpcJoinTeamReply();
-		v.Result = m_Result;
-		v.Team = m_Team.ToPB();
-
-		return v;
-	}
-	
-	//从Protobuffer类型初始化
-	public void FromPB(TeamRpcJoinTeamReply v)
-	{
-        if (v == null)
-            return;
-		m_Result = v.Result;
-		m_Team.FromPB(v.Team);
-
-	}
-	
-	//Protobuffer序列化到MemoryStream
-	public MemoryStream ToMemoryStream()
-	{
-		MemoryStream protoMS = new MemoryStream();
-		ProtoBuf.Serializer.Serialize<TeamRpcJoinTeamReply>(protoMS, ToPB());
-		return protoMS;
-	}
-	
-	//Protobuffer从MemoryStream进行反序列化
-	public bool FromMemoryStream(MemoryStream protoMS)
-	{
-		TeamRpcJoinTeamReply pb = ProtoBuf.Serializer.Deserialize<TeamRpcJoinTeamReply>(protoMS);
-		FromPB(pb);
-		return true;
-	}
-
-	//返回结果
-	public int m_Result;
-	public int Result
-	{
-		get { return m_Result;}
-		set { m_Result = value; }
-	}
-	//Team
 	public TeamInfoWraper m_Team;
 	public TeamInfoWraper Team
 	{
@@ -1078,6 +919,7 @@ public class TeamRpcJoinTeamNotifyNotifyWraper
 	public TeamRpcJoinTeamNotifyNotifyWraper()
 	{
 		 m_TeamMember = new TeamMemberInfoWraper();
+		 m_Team = new TeamInfoWraper();
 
 	}
 
@@ -1085,6 +927,7 @@ public class TeamRpcJoinTeamNotifyNotifyWraper
 	public void ResetWraper()
 	{
 		 m_TeamMember = new TeamMemberInfoWraper();
+		 m_Team = new TeamInfoWraper();
 
 	}
 
@@ -1093,6 +936,7 @@ public class TeamRpcJoinTeamNotifyNotifyWraper
 	{
 		TeamRpcJoinTeamNotifyNotify v = new TeamRpcJoinTeamNotifyNotify();
 		v.TeamMember = m_TeamMember.ToPB();
+		v.Team = m_Team.ToPB();
 
 		return v;
 	}
@@ -1103,6 +947,7 @@ public class TeamRpcJoinTeamNotifyNotifyWraper
         if (v == null)
             return;
 		m_TeamMember.FromPB(v.TeamMember);
+		m_Team.FromPB(v.Team);
 
 	}
 	
@@ -1128,6 +973,13 @@ public class TeamRpcJoinTeamNotifyNotifyWraper
 	{
 		get { return m_TeamMember;}
 		set { m_TeamMember = value; }
+	}
+	//PbTeam
+	public TeamInfoWraper m_Team;
+	public TeamInfoWraper Team
+	{
+		get { return m_Team;}
+		set { m_Team = value; }
 	}
 
 
@@ -1192,12 +1044,16 @@ public class TeamRpcSurroundingTeamAskWraper
 	//构造函数
 	public TeamRpcSurroundingTeamAskWraper()
 	{
+		 m_TargetGroupId = -1;
+		 m_TargetGroup = 0;
 
 	}
 
 	//重置函数
 	public void ResetWraper()
 	{
+		 m_TargetGroupId = -1;
+		 m_TargetGroup = 0;
 
 	}
 
@@ -1205,6 +1061,8 @@ public class TeamRpcSurroundingTeamAskWraper
 	public TeamRpcSurroundingTeamAsk ToPB()
 	{
 		TeamRpcSurroundingTeamAsk v = new TeamRpcSurroundingTeamAsk();
+		v.TargetGroupId = m_TargetGroupId;
+		v.TargetGroup = m_TargetGroup;
 
 		return v;
 	}
@@ -1214,6 +1072,8 @@ public class TeamRpcSurroundingTeamAskWraper
 	{
         if (v == null)
             return;
+		m_TargetGroupId = v.TargetGroupId;
+		m_TargetGroup = v.TargetGroup;
 
 	}
 	
@@ -1233,6 +1093,20 @@ public class TeamRpcSurroundingTeamAskWraper
 		return true;
 	}
 
+	//队伍类型
+	public int m_TargetGroupId;
+	public int TargetGroupId
+	{
+		get { return m_TargetGroupId;}
+		set { m_TargetGroupId = value; }
+	}
+	//副本ID or 活动ID 
+	public int m_TargetGroup;
+	public int TargetGroup
+	{
+		get { return m_TargetGroup;}
+		set { m_TargetGroup = value; }
+	}
 
 
 };
@@ -1246,6 +1120,8 @@ public class TeamRpcSurroundingTeamReplyWraper
 	{
 		 m_Result = -9999;
 		m_TeamsInfo = new List<TeamInfoWraper>();
+		 m_TargetGroupId = -1;
+		 m_TargetGroup = 0;
 
 	}
 
@@ -1254,6 +1130,8 @@ public class TeamRpcSurroundingTeamReplyWraper
 	{
 		 m_Result = -9999;
 		m_TeamsInfo = new List<TeamInfoWraper>();
+		 m_TargetGroupId = -1;
+		 m_TargetGroup = 0;
 
 	}
 
@@ -1264,6 +1142,8 @@ public class TeamRpcSurroundingTeamReplyWraper
 		v.Result = m_Result;
 		for (int i=0; i<(int)m_TeamsInfo.Count; i++)
 			v.TeamsInfo.Add( m_TeamsInfo[i].ToPB());
+		v.TargetGroupId = m_TargetGroupId;
+		v.TargetGroup = m_TargetGroup;
 
 		return v;
 	}
@@ -1279,6 +1159,8 @@ public class TeamRpcSurroundingTeamReplyWraper
 			m_TeamsInfo.Add( new TeamInfoWraper());
 		for( int i=0; i<v.TeamsInfo.Count; i++)
 			m_TeamsInfo[i].FromPB(v.TeamsInfo[i]);
+		m_TargetGroupId = v.TargetGroupId;
+		m_TargetGroup = v.TargetGroup;
 
 	}
 	
@@ -1339,6 +1221,20 @@ public class TeamRpcSurroundingTeamReplyWraper
 	{
 		m_TeamsInfo.Clear();
 	}
+	//队伍类型
+	public int m_TargetGroupId;
+	public int TargetGroupId
+	{
+		get { return m_TargetGroupId;}
+		set { m_TargetGroupId = value; }
+	}
+	//副本ID or 活动ID 
+	public int m_TargetGroup;
+	public int TargetGroup
+	{
+		get { return m_TargetGroup;}
+		set { m_TargetGroup = value; }
+	}
 
 
 };
@@ -1350,14 +1246,14 @@ public class TeamRpcApplyTeamAskWraper
 	//构造函数
 	public TeamRpcApplyTeamAskWraper()
 	{
-		 m_TeamId = -1;
+		 m_TeamId = 0;
 
 	}
 
 	//重置函数
 	public void ResetWraper()
 	{
-		 m_TeamId = -1;
+		 m_TeamId = 0;
 
 	}
 
@@ -1396,8 +1292,8 @@ public class TeamRpcApplyTeamAskWraper
 	}
 
 	//TeamId
-	public int m_TeamId;
-	public int TeamId
+	public UInt64 m_TeamId;
+	public UInt64 TeamId
 	{
 		get { return m_TeamId;}
 		set { m_TeamId = value; }
@@ -1414,7 +1310,7 @@ public class TeamRpcApplyTeamReplyWraper
 	public TeamRpcApplyTeamReplyWraper()
 	{
 		 m_Result = -9999;
-		 m_TeamId = -1;
+		 m_TeamId = 0;
 
 	}
 
@@ -1422,7 +1318,7 @@ public class TeamRpcApplyTeamReplyWraper
 	public void ResetWraper()
 	{
 		 m_Result = -9999;
-		 m_TeamId = -1;
+		 m_TeamId = 0;
 
 	}
 
@@ -1470,8 +1366,8 @@ public class TeamRpcApplyTeamReplyWraper
 		set { m_Result = value; }
 	}
 	//TeamId
-	public int m_TeamId;
-	public int TeamId
+	public UInt64 m_TeamId;
+	public UInt64 TeamId
 	{
 		get { return m_TeamId;}
 		set { m_TeamId = value; }
@@ -1740,6 +1636,7 @@ public class TeamRpcTeamInfoNotifyWraper
 	public TeamRpcTeamInfoNotifyWraper()
 	{
 		 m_Team = new TeamInfoWraper();
+		 m_FollowTeamLeader = -1;
 
 	}
 
@@ -1747,6 +1644,7 @@ public class TeamRpcTeamInfoNotifyWraper
 	public void ResetWraper()
 	{
 		 m_Team = new TeamInfoWraper();
+		 m_FollowTeamLeader = -1;
 
 	}
 
@@ -1755,6 +1653,7 @@ public class TeamRpcTeamInfoNotifyWraper
 	{
 		TeamRpcTeamInfoNotify v = new TeamRpcTeamInfoNotify();
 		v.Team = m_Team.ToPB();
+		v.FollowTeamLeader = m_FollowTeamLeader;
 
 		return v;
 	}
@@ -1765,6 +1664,7 @@ public class TeamRpcTeamInfoNotifyWraper
         if (v == null)
             return;
 		m_Team.FromPB(v.Team);
+		m_FollowTeamLeader = v.FollowTeamLeader;
 
 	}
 	
@@ -1790,6 +1690,13 @@ public class TeamRpcTeamInfoNotifyWraper
 	{
 		get { return m_Team;}
 		set { m_Team = value; }
+	}
+	//跟随队长
+	public int m_FollowTeamLeader;
+	public int FollowTeamLeader
+	{
+		get { return m_FollowTeamLeader;}
+		set { m_FollowTeamLeader = value; }
 	}
 
 
@@ -1853,6 +1760,2749 @@ public class TeamRpcUpdateTeamMemInfoNotifyWraper
 	{
 		get { return m_TeamMember;}
 		set { m_TeamMember = value; }
+	}
+
+
+};
+//跟随队长请求封装类
+[System.Serializable]
+public class TeamRpcFollowTeamLeaderAskWraper
+{
+
+	//构造函数
+	public TeamRpcFollowTeamLeaderAskWraper()
+	{
+		 m_FollowTeamLeader = -1;
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_FollowTeamLeader = -1;
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcFollowTeamLeaderAsk ToPB()
+	{
+		TeamRpcFollowTeamLeaderAsk v = new TeamRpcFollowTeamLeaderAsk();
+		v.FollowTeamLeader = m_FollowTeamLeader;
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcFollowTeamLeaderAsk v)
+	{
+        if (v == null)
+            return;
+		m_FollowTeamLeader = v.FollowTeamLeader;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcFollowTeamLeaderAsk>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcFollowTeamLeaderAsk pb = ProtoBuf.Serializer.Deserialize<TeamRpcFollowTeamLeaderAsk>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//跟随队长
+	public int m_FollowTeamLeader;
+	public int FollowTeamLeader
+	{
+		get { return m_FollowTeamLeader;}
+		set { m_FollowTeamLeader = value; }
+	}
+
+
+};
+//跟随队长回应封装类
+[System.Serializable]
+public class TeamRpcFollowTeamLeaderReplyWraper
+{
+
+	//构造函数
+	public TeamRpcFollowTeamLeaderReplyWraper()
+	{
+		 m_Result = -1;
+		 m_FollowTeamLeader = -1;
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_Result = -1;
+		 m_FollowTeamLeader = -1;
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcFollowTeamLeaderReply ToPB()
+	{
+		TeamRpcFollowTeamLeaderReply v = new TeamRpcFollowTeamLeaderReply();
+		v.Result = m_Result;
+		v.FollowTeamLeader = m_FollowTeamLeader;
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcFollowTeamLeaderReply v)
+	{
+        if (v == null)
+            return;
+		m_Result = v.Result;
+		m_FollowTeamLeader = v.FollowTeamLeader;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcFollowTeamLeaderReply>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcFollowTeamLeaderReply pb = ProtoBuf.Serializer.Deserialize<TeamRpcFollowTeamLeaderReply>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//返回结果
+	public int m_Result;
+	public int Result
+	{
+		get { return m_Result;}
+		set { m_Result = value; }
+	}
+	//跟随队长
+	public int m_FollowTeamLeader;
+	public int FollowTeamLeader
+	{
+		get { return m_FollowTeamLeader;}
+		set { m_FollowTeamLeader = value; }
+	}
+
+
+};
+//召唤队员请求封装类
+[System.Serializable]
+public class TeamRpcSummonMemberAskWraper
+{
+
+	//构造函数
+	public TeamRpcSummonMemberAskWraper()
+	{
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcSummonMemberAsk ToPB()
+	{
+		TeamRpcSummonMemberAsk v = new TeamRpcSummonMemberAsk();
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcSummonMemberAsk v)
+	{
+        if (v == null)
+            return;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcSummonMemberAsk>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcSummonMemberAsk pb = ProtoBuf.Serializer.Deserialize<TeamRpcSummonMemberAsk>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+
+
+};
+//召唤队员回应封装类
+[System.Serializable]
+public class TeamRpcSummonMemberReplyWraper
+{
+
+	//构造函数
+	public TeamRpcSummonMemberReplyWraper()
+	{
+		 m_Result = -1;
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_Result = -1;
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcSummonMemberReply ToPB()
+	{
+		TeamRpcSummonMemberReply v = new TeamRpcSummonMemberReply();
+		v.Result = m_Result;
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcSummonMemberReply v)
+	{
+        if (v == null)
+            return;
+		m_Result = v.Result;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcSummonMemberReply>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcSummonMemberReply pb = ProtoBuf.Serializer.Deserialize<TeamRpcSummonMemberReply>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//返回结果
+	public int m_Result;
+	public int Result
+	{
+		get { return m_Result;}
+		set { m_Result = value; }
+	}
+
+
+};
+//召唤队员通知封装类
+[System.Serializable]
+public class TeamRpcSummonMemberNotifyNotifyWraper
+{
+
+	//构造函数
+	public TeamRpcSummonMemberNotifyNotifyWraper()
+	{
+		 m_StringNoticeId = -1;
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_StringNoticeId = -1;
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcSummonMemberNotifyNotify ToPB()
+	{
+		TeamRpcSummonMemberNotifyNotify v = new TeamRpcSummonMemberNotifyNotify();
+		v.StringNoticeId = m_StringNoticeId;
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcSummonMemberNotifyNotify v)
+	{
+        if (v == null)
+            return;
+		m_StringNoticeId = v.StringNoticeId;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcSummonMemberNotifyNotify>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcSummonMemberNotifyNotify pb = ProtoBuf.Serializer.Deserialize<TeamRpcSummonMemberNotifyNotify>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//界面上召唤的文字
+	public int m_StringNoticeId;
+	public int StringNoticeId
+	{
+		get { return m_StringNoticeId;}
+		set { m_StringNoticeId = value; }
+	}
+
+
+};
+//改变队伍目标封装类
+[System.Serializable]
+public class TeamRpcChangeTeamTargetReplyWraper
+{
+
+	//构造函数
+	public TeamRpcChangeTeamTargetReplyWraper()
+	{
+		 m_Result = -1;
+		 m_TeamTarget = new TeamTargetWraper();
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_Result = -1;
+		 m_TeamTarget = new TeamTargetWraper();
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcChangeTeamTargetReply ToPB()
+	{
+		TeamRpcChangeTeamTargetReply v = new TeamRpcChangeTeamTargetReply();
+		v.Result = m_Result;
+		v.TeamTarget = m_TeamTarget.ToPB();
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcChangeTeamTargetReply v)
+	{
+        if (v == null)
+            return;
+		m_Result = v.Result;
+		m_TeamTarget.FromPB(v.TeamTarget);
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcChangeTeamTargetReply>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcChangeTeamTargetReply pb = ProtoBuf.Serializer.Deserialize<TeamRpcChangeTeamTargetReply>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//返回结果
+	public int m_Result;
+	public int Result
+	{
+		get { return m_Result;}
+		set { m_Result = value; }
+	}
+	//队伍目标
+	public TeamTargetWraper m_TeamTarget;
+	public TeamTargetWraper TeamTarget
+	{
+		get { return m_TeamTarget;}
+		set { m_TeamTarget = value; }
+	}
+
+
+};
+//改变队伍目标封装类
+[System.Serializable]
+public class TeamRpcChangeTeamTargetAskWraper
+{
+
+	//构造函数
+	public TeamRpcChangeTeamTargetAskWraper()
+	{
+		 m_Target = new TeamTargetWraper();
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_Target = new TeamTargetWraper();
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcChangeTeamTargetAsk ToPB()
+	{
+		TeamRpcChangeTeamTargetAsk v = new TeamRpcChangeTeamTargetAsk();
+		v.Target = m_Target.ToPB();
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcChangeTeamTargetAsk v)
+	{
+        if (v == null)
+            return;
+		m_Target.FromPB(v.Target);
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcChangeTeamTargetAsk>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcChangeTeamTargetAsk pb = ProtoBuf.Serializer.Deserialize<TeamRpcChangeTeamTargetAsk>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//职能
+	public TeamTargetWraper m_Target;
+	public TeamTargetWraper Target
+	{
+		get { return m_Target;}
+		set { m_Target = value; }
+	}
+
+
+};
+//设置服务器目标通知封装类
+[System.Serializable]
+public class TeamRpcChangeTeamTargetNotifyNotifyWraper
+{
+
+	//构造函数
+	public TeamRpcChangeTeamTargetNotifyNotifyWraper()
+	{
+		 m_TeamTarget = new TeamTargetWraper();
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_TeamTarget = new TeamTargetWraper();
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcChangeTeamTargetNotifyNotify ToPB()
+	{
+		TeamRpcChangeTeamTargetNotifyNotify v = new TeamRpcChangeTeamTargetNotifyNotify();
+		v.TeamTarget = m_TeamTarget.ToPB();
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcChangeTeamTargetNotifyNotify v)
+	{
+        if (v == null)
+            return;
+		m_TeamTarget.FromPB(v.TeamTarget);
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcChangeTeamTargetNotifyNotify>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcChangeTeamTargetNotifyNotify pb = ProtoBuf.Serializer.Deserialize<TeamRpcChangeTeamTargetNotifyNotify>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//队伍目标
+	public TeamTargetWraper m_TeamTarget;
+	public TeamTargetWraper TeamTarget
+	{
+		get { return m_TeamTarget;}
+		set { m_TeamTarget = value; }
+	}
+
+
+};
+//转换队伍团队请求封装类
+[System.Serializable]
+public class TeamRpcChangTeamTypeAskWraper
+{
+
+	//构造函数
+	public TeamRpcChangTeamTypeAskWraper()
+	{
+		 m_TeamType = -1;
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_TeamType = -1;
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcChangTeamTypeAsk ToPB()
+	{
+		TeamRpcChangTeamTypeAsk v = new TeamRpcChangTeamTypeAsk();
+		v.TeamType = m_TeamType;
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcChangTeamTypeAsk v)
+	{
+        if (v == null)
+            return;
+		m_TeamType = v.TeamType;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcChangTeamTypeAsk>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcChangTeamTypeAsk pb = ProtoBuf.Serializer.Deserialize<TeamRpcChangTeamTypeAsk>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//队伍类型
+	public int m_TeamType;
+	public int TeamType
+	{
+		get { return m_TeamType;}
+		set { m_TeamType = value; }
+	}
+
+
+};
+//转换队伍团队回应封装类
+[System.Serializable]
+public class TeamRpcChangTeamTypeReplyWraper
+{
+
+	//构造函数
+	public TeamRpcChangTeamTypeReplyWraper()
+	{
+		 m_Result = -1;
+		 m_TeamType = -1;
+		 m_TeamTarget = new TeamTargetWraper();
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_Result = -1;
+		 m_TeamType = -1;
+		 m_TeamTarget = new TeamTargetWraper();
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcChangTeamTypeReply ToPB()
+	{
+		TeamRpcChangTeamTypeReply v = new TeamRpcChangTeamTypeReply();
+		v.Result = m_Result;
+		v.TeamType = m_TeamType;
+		v.TeamTarget = m_TeamTarget.ToPB();
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcChangTeamTypeReply v)
+	{
+        if (v == null)
+            return;
+		m_Result = v.Result;
+		m_TeamType = v.TeamType;
+		m_TeamTarget.FromPB(v.TeamTarget);
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcChangTeamTypeReply>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcChangTeamTypeReply pb = ProtoBuf.Serializer.Deserialize<TeamRpcChangTeamTypeReply>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//返回结果
+	public int m_Result;
+	public int Result
+	{
+		get { return m_Result;}
+		set { m_Result = value; }
+	}
+	//队伍类型
+	public int m_TeamType;
+	public int TeamType
+	{
+		get { return m_TeamType;}
+		set { m_TeamType = value; }
+	}
+	//队伍目标
+	public TeamTargetWraper m_TeamTarget;
+	public TeamTargetWraper TeamTarget
+	{
+		get { return m_TeamTarget;}
+		set { m_TeamTarget = value; }
+	}
+
+
+};
+//转换队伍团队协议通知封装类
+[System.Serializable]
+public class TeamRpcChangeTeamTypeNotifyNotifyWraper
+{
+
+	//构造函数
+	public TeamRpcChangeTeamTypeNotifyNotifyWraper()
+	{
+		 m_TeamType = -1;
+		 m_TeamTarget = new TeamTargetWraper();
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_TeamType = -1;
+		 m_TeamTarget = new TeamTargetWraper();
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcChangeTeamTypeNotifyNotify ToPB()
+	{
+		TeamRpcChangeTeamTypeNotifyNotify v = new TeamRpcChangeTeamTypeNotifyNotify();
+		v.TeamType = m_TeamType;
+		v.TeamTarget = m_TeamTarget.ToPB();
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcChangeTeamTypeNotifyNotify v)
+	{
+        if (v == null)
+            return;
+		m_TeamType = v.TeamType;
+		m_TeamTarget.FromPB(v.TeamTarget);
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcChangeTeamTypeNotifyNotify>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcChangeTeamTypeNotifyNotify pb = ProtoBuf.Serializer.Deserialize<TeamRpcChangeTeamTypeNotifyNotify>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//队伍类型
+	public int m_TeamType;
+	public int TeamType
+	{
+		get { return m_TeamType;}
+		set { m_TeamType = value; }
+	}
+	//队伍目标
+	public TeamTargetWraper m_TeamTarget;
+	public TeamTargetWraper TeamTarget
+	{
+		get { return m_TeamTarget;}
+		set { m_TeamTarget = value; }
+	}
+
+
+};
+//邀请玩家请求封装类
+[System.Serializable]
+public class TeamRpcInviteTeamMemberAskWraper
+{
+
+	//构造函数
+	public TeamRpcInviteTeamMemberAskWraper()
+	{
+		m_RoleId = new List<UInt64>();
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		m_RoleId = new List<UInt64>();
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcInviteTeamMemberAsk ToPB()
+	{
+		TeamRpcInviteTeamMemberAsk v = new TeamRpcInviteTeamMemberAsk();
+		for (int i=0; i<(int)m_RoleId.Count; i++)
+			v.RoleId.Add( m_RoleId[i]);
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcInviteTeamMemberAsk v)
+	{
+        if (v == null)
+            return;
+		m_RoleId.Clear();
+		for( int i=0; i<v.RoleId.Count; i++)
+			m_RoleId.Add(v.RoleId[i]);
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcInviteTeamMemberAsk>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcInviteTeamMemberAsk pb = ProtoBuf.Serializer.Deserialize<TeamRpcInviteTeamMemberAsk>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//角色ID列表
+	public List<UInt64> m_RoleId;
+	public int SizeRoleId()
+	{
+		return m_RoleId.Count;
+	}
+	public List<UInt64> GetRoleId()
+	{
+		return m_RoleId;
+	}
+	public UInt64 GetRoleId(int Index)
+	{
+		if(Index<0 || Index>=(int)m_RoleId.Count)
+			return 0;
+		return m_RoleId[Index];
+	}
+	public void SetRoleId( List<UInt64> v )
+	{
+		m_RoleId=v;
+	}
+	public void SetRoleId( int Index, UInt64 v )
+	{
+		if(Index<0 || Index>=(int)m_RoleId.Count)
+			return;
+		m_RoleId[Index] = v;
+	}
+	public void AddRoleId( UInt64 v=0 )
+	{
+		m_RoleId.Add(v);
+	}
+	public void ClearRoleId( )
+	{
+		m_RoleId.Clear();
+	}
+
+
+};
+//邀请玩家回应封装类
+[System.Serializable]
+public class TeamRpcInviteTeamMemberReplyWraper
+{
+
+	//构造函数
+	public TeamRpcInviteTeamMemberReplyWraper()
+	{
+		 m_Result = -1;
+		m_RoleId = new List<UInt64>();
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_Result = -1;
+		m_RoleId = new List<UInt64>();
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcInviteTeamMemberReply ToPB()
+	{
+		TeamRpcInviteTeamMemberReply v = new TeamRpcInviteTeamMemberReply();
+		v.Result = m_Result;
+		for (int i=0; i<(int)m_RoleId.Count; i++)
+			v.RoleId.Add( m_RoleId[i]);
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcInviteTeamMemberReply v)
+	{
+        if (v == null)
+            return;
+		m_Result = v.Result;
+		m_RoleId.Clear();
+		for( int i=0; i<v.RoleId.Count; i++)
+			m_RoleId.Add(v.RoleId[i]);
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcInviteTeamMemberReply>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcInviteTeamMemberReply pb = ProtoBuf.Serializer.Deserialize<TeamRpcInviteTeamMemberReply>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//返回结果
+	public int m_Result;
+	public int Result
+	{
+		get { return m_Result;}
+		set { m_Result = value; }
+	}
+	//角色ID列表
+	public List<UInt64> m_RoleId;
+	public int SizeRoleId()
+	{
+		return m_RoleId.Count;
+	}
+	public List<UInt64> GetRoleId()
+	{
+		return m_RoleId;
+	}
+	public UInt64 GetRoleId(int Index)
+	{
+		if(Index<0 || Index>=(int)m_RoleId.Count)
+			return 0;
+		return m_RoleId[Index];
+	}
+	public void SetRoleId( List<UInt64> v )
+	{
+		m_RoleId=v;
+	}
+	public void SetRoleId( int Index, UInt64 v )
+	{
+		if(Index<0 || Index>=(int)m_RoleId.Count)
+			return;
+		m_RoleId[Index] = v;
+	}
+	public void AddRoleId( UInt64 v=0 )
+	{
+		m_RoleId.Add(v);
+	}
+	public void ClearRoleId( )
+	{
+		m_RoleId.Clear();
+	}
+
+
+};
+//邀请玩家广播通知封装类
+[System.Serializable]
+public class TeamRpcInviteTeamMemberNotifyNotifyWraper
+{
+
+	//构造函数
+	public TeamRpcInviteTeamMemberNotifyNotifyWraper()
+	{
+		 m_TeamId = 0;
+		 m_IsLeader = -1;
+		 m_InviteMemberInfo = new TeamMemberInfoWraper();
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_TeamId = 0;
+		 m_IsLeader = -1;
+		 m_InviteMemberInfo = new TeamMemberInfoWraper();
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcInviteTeamMemberNotifyNotify ToPB()
+	{
+		TeamRpcInviteTeamMemberNotifyNotify v = new TeamRpcInviteTeamMemberNotifyNotify();
+		v.TeamId = m_TeamId;
+		v.IsLeader = m_IsLeader;
+		v.InviteMemberInfo = m_InviteMemberInfo.ToPB();
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcInviteTeamMemberNotifyNotify v)
+	{
+        if (v == null)
+            return;
+		m_TeamId = v.TeamId;
+		m_IsLeader = v.IsLeader;
+		m_InviteMemberInfo.FromPB(v.InviteMemberInfo);
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcInviteTeamMemberNotifyNotify>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcInviteTeamMemberNotifyNotify pb = ProtoBuf.Serializer.Deserialize<TeamRpcInviteTeamMemberNotifyNotify>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//队伍ID
+	public UInt64 m_TeamId;
+	public UInt64 TeamId
+	{
+		get { return m_TeamId;}
+		set { m_TeamId = value; }
+	}
+	//是否队长邀请
+	public int m_IsLeader;
+	public int IsLeader
+	{
+		get { return m_IsLeader;}
+		set { m_IsLeader = value; }
+	}
+	//邀请人的信息
+	public TeamMemberInfoWraper m_InviteMemberInfo;
+	public TeamMemberInfoWraper InviteMemberInfo
+	{
+		get { return m_InviteMemberInfo;}
+		set { m_InviteMemberInfo = value; }
+	}
+
+
+};
+//列表通知通知封装类
+[System.Serializable]
+public class TeamRpcApplyListNotifyNotifyWraper
+{
+
+	//构造函数
+	public TeamRpcApplyListNotifyNotifyWraper()
+	{
+		m_ApplyList = new List<TeamMemberInfoWraper>();
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		m_ApplyList = new List<TeamMemberInfoWraper>();
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcApplyListNotifyNotify ToPB()
+	{
+		TeamRpcApplyListNotifyNotify v = new TeamRpcApplyListNotifyNotify();
+		for (int i=0; i<(int)m_ApplyList.Count; i++)
+			v.ApplyList.Add( m_ApplyList[i].ToPB());
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcApplyListNotifyNotify v)
+	{
+        if (v == null)
+            return;
+		m_ApplyList.Clear();
+		for( int i=0; i<v.ApplyList.Count; i++)
+			m_ApplyList.Add( new TeamMemberInfoWraper());
+		for( int i=0; i<v.ApplyList.Count; i++)
+			m_ApplyList[i].FromPB(v.ApplyList[i]);
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcApplyListNotifyNotify>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcApplyListNotifyNotify pb = ProtoBuf.Serializer.Deserialize<TeamRpcApplyListNotifyNotify>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//成员列表
+	public List<TeamMemberInfoWraper> m_ApplyList;
+	public int SizeApplyList()
+	{
+		return m_ApplyList.Count;
+	}
+	public List<TeamMemberInfoWraper> GetApplyList()
+	{
+		return m_ApplyList;
+	}
+	public TeamMemberInfoWraper GetApplyList(int Index)
+	{
+		if(Index<0 || Index>=(int)m_ApplyList.Count)
+			return new TeamMemberInfoWraper();
+		return m_ApplyList[Index];
+	}
+	public void SetApplyList( List<TeamMemberInfoWraper> v )
+	{
+		m_ApplyList=v;
+	}
+	public void SetApplyList( int Index, TeamMemberInfoWraper v )
+	{
+		if(Index<0 || Index>=(int)m_ApplyList.Count)
+			return;
+		m_ApplyList[Index] = v;
+	}
+	public void AddApplyList( TeamMemberInfoWraper v )
+	{
+		m_ApplyList.Add(v);
+	}
+	public void ClearApplyList( )
+	{
+		m_ApplyList.Clear();
+	}
+
+
+};
+//AgreeJoinTeam请求封装类
+[System.Serializable]
+public class TeamRpcAgreeJoinTeamAskWraper
+{
+
+	//构造函数
+	public TeamRpcAgreeJoinTeamAskWraper()
+	{
+		 m_TeamId = 0;
+		 m_IsLeader = -1;
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_TeamId = 0;
+		 m_IsLeader = -1;
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcAgreeJoinTeamAsk ToPB()
+	{
+		TeamRpcAgreeJoinTeamAsk v = new TeamRpcAgreeJoinTeamAsk();
+		v.TeamId = m_TeamId;
+		v.IsLeader = m_IsLeader;
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcAgreeJoinTeamAsk v)
+	{
+        if (v == null)
+            return;
+		m_TeamId = v.TeamId;
+		m_IsLeader = v.IsLeader;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcAgreeJoinTeamAsk>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcAgreeJoinTeamAsk pb = ProtoBuf.Serializer.Deserialize<TeamRpcAgreeJoinTeamAsk>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//TeamId
+	public UInt64 m_TeamId;
+	public UInt64 TeamId
+	{
+		get { return m_TeamId;}
+		set { m_TeamId = value; }
+	}
+	//IsLeader
+	public int m_IsLeader;
+	public int IsLeader
+	{
+		get { return m_IsLeader;}
+		set { m_IsLeader = value; }
+	}
+
+
+};
+//AgreeJoinTeam回应封装类
+[System.Serializable]
+public class TeamRpcAgreeJoinTeamReplyWraper
+{
+
+	//构造函数
+	public TeamRpcAgreeJoinTeamReplyWraper()
+	{
+		 m_Result = -1;
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_Result = -1;
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcAgreeJoinTeamReply ToPB()
+	{
+		TeamRpcAgreeJoinTeamReply v = new TeamRpcAgreeJoinTeamReply();
+		v.Result = m_Result;
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcAgreeJoinTeamReply v)
+	{
+        if (v == null)
+            return;
+		m_Result = v.Result;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcAgreeJoinTeamReply>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcAgreeJoinTeamReply pb = ProtoBuf.Serializer.Deserialize<TeamRpcAgreeJoinTeamReply>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//返回结果
+	public int m_Result;
+	public int Result
+	{
+		get { return m_Result;}
+		set { m_Result = value; }
+	}
+
+
+};
+//拒绝申请请求封装类
+[System.Serializable]
+public class TeamRpcRefuseMemberAskWraper
+{
+
+	//构造函数
+	public TeamRpcRefuseMemberAskWraper()
+	{
+		 m_RoleId = 0;
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_RoleId = 0;
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcRefuseMemberAsk ToPB()
+	{
+		TeamRpcRefuseMemberAsk v = new TeamRpcRefuseMemberAsk();
+		v.RoleId = m_RoleId;
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcRefuseMemberAsk v)
+	{
+        if (v == null)
+            return;
+		m_RoleId = v.RoleId;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcRefuseMemberAsk>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcRefuseMemberAsk pb = ProtoBuf.Serializer.Deserialize<TeamRpcRefuseMemberAsk>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//RoleId
+	public UInt64 m_RoleId;
+	public UInt64 RoleId
+	{
+		get { return m_RoleId;}
+		set { m_RoleId = value; }
+	}
+
+
+};
+//拒绝申请回应封装类
+[System.Serializable]
+public class TeamRpcRefuseMemberReplyWraper
+{
+
+	//构造函数
+	public TeamRpcRefuseMemberReplyWraper()
+	{
+		 m_Result = -1;
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_Result = -1;
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcRefuseMemberReply ToPB()
+	{
+		TeamRpcRefuseMemberReply v = new TeamRpcRefuseMemberReply();
+		v.Result = m_Result;
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcRefuseMemberReply v)
+	{
+        if (v == null)
+            return;
+		m_Result = v.Result;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcRefuseMemberReply>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcRefuseMemberReply pb = ProtoBuf.Serializer.Deserialize<TeamRpcRefuseMemberReply>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//返回结果
+	public int m_Result;
+	public int Result
+	{
+		get { return m_Result;}
+		set { m_Result = value; }
+	}
+
+
+};
+//清空申请列表回应封装类
+[System.Serializable]
+public class TeamRpcClearApplyListReplyWraper
+{
+
+	//构造函数
+	public TeamRpcClearApplyListReplyWraper()
+	{
+		 m_Result = -1;
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_Result = -1;
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcClearApplyListReply ToPB()
+	{
+		TeamRpcClearApplyListReply v = new TeamRpcClearApplyListReply();
+		v.Result = m_Result;
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcClearApplyListReply v)
+	{
+        if (v == null)
+            return;
+		m_Result = v.Result;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcClearApplyListReply>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcClearApplyListReply pb = ProtoBuf.Serializer.Deserialize<TeamRpcClearApplyListReply>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//返回结果
+	public int m_Result;
+	public int Result
+	{
+		get { return m_Result;}
+		set { m_Result = value; }
+	}
+
+
+};
+//清空申请列表请求封装类
+[System.Serializable]
+public class TeamRpcClearApplyListAskWraper
+{
+
+	//构造函数
+	public TeamRpcClearApplyListAskWraper()
+	{
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcClearApplyListAsk ToPB()
+	{
+		TeamRpcClearApplyListAsk v = new TeamRpcClearApplyListAsk();
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcClearApplyListAsk v)
+	{
+        if (v == null)
+            return;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcClearApplyListAsk>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcClearApplyListAsk pb = ProtoBuf.Serializer.Deserialize<TeamRpcClearApplyListAsk>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+
+
+};
+//没有队伍邀请玩家请求封装类
+[System.Serializable]
+public class TeamRpcNoTeamInviteAskWraper
+{
+
+	//构造函数
+	public TeamRpcNoTeamInviteAskWraper()
+	{
+		 m_TeamType = -1;
+		 m_TTarget = new TeamTargetWraper();
+		 m_InviteRoleId = 0;
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_TeamType = -1;
+		 m_TTarget = new TeamTargetWraper();
+		 m_InviteRoleId = 0;
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcNoTeamInviteAsk ToPB()
+	{
+		TeamRpcNoTeamInviteAsk v = new TeamRpcNoTeamInviteAsk();
+		v.TeamType = m_TeamType;
+		v.TTarget = m_TTarget.ToPB();
+		v.InviteRoleId = m_InviteRoleId;
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcNoTeamInviteAsk v)
+	{
+        if (v == null)
+            return;
+		m_TeamType = v.TeamType;
+		m_TTarget.FromPB(v.TTarget);
+		m_InviteRoleId = v.InviteRoleId;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcNoTeamInviteAsk>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcNoTeamInviteAsk pb = ProtoBuf.Serializer.Deserialize<TeamRpcNoTeamInviteAsk>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//TeamType
+	public int m_TeamType;
+	public int TeamType
+	{
+		get { return m_TeamType;}
+		set { m_TeamType = value; }
+	}
+	//队伍目标
+	public TeamTargetWraper m_TTarget;
+	public TeamTargetWraper TTarget
+	{
+		get { return m_TTarget;}
+		set { m_TTarget = value; }
+	}
+	//邀请人id
+	public UInt64 m_InviteRoleId;
+	public UInt64 InviteRoleId
+	{
+		get { return m_InviteRoleId;}
+		set { m_InviteRoleId = value; }
+	}
+
+
+};
+//没有队伍邀请玩家回应封装类
+[System.Serializable]
+public class TeamRpcNoTeamInviteReplyWraper
+{
+
+	//构造函数
+	public TeamRpcNoTeamInviteReplyWraper()
+	{
+		 m_Result = -1;
+		 m_Team = new TeamInfoWraper();
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_Result = -1;
+		 m_Team = new TeamInfoWraper();
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcNoTeamInviteReply ToPB()
+	{
+		TeamRpcNoTeamInviteReply v = new TeamRpcNoTeamInviteReply();
+		v.Result = m_Result;
+		v.Team = m_Team.ToPB();
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcNoTeamInviteReply v)
+	{
+        if (v == null)
+            return;
+		m_Result = v.Result;
+		m_Team.FromPB(v.Team);
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcNoTeamInviteReply>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcNoTeamInviteReply pb = ProtoBuf.Serializer.Deserialize<TeamRpcNoTeamInviteReply>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//返回结果
+	public int m_Result;
+	public int Result
+	{
+		get { return m_Result;}
+		set { m_Result = value; }
+	}
+	//PbTeam
+	public TeamInfoWraper m_Team;
+	public TeamInfoWraper Team
+	{
+		get { return m_Team;}
+		set { m_Team = value; }
+	}
+
+
+};
+//拒绝邀请请求封装类
+[System.Serializable]
+public class TeamRpcRejectInviteAskWraper
+{
+
+	//构造函数
+	public TeamRpcRejectInviteAskWraper()
+	{
+		 m_RoleId = 0;
+		 m_Name = "";
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_RoleId = 0;
+		 m_Name = "";
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcRejectInviteAsk ToPB()
+	{
+		TeamRpcRejectInviteAsk v = new TeamRpcRejectInviteAsk();
+		v.RoleId = m_RoleId;
+		v.Name = m_Name;
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcRejectInviteAsk v)
+	{
+        if (v == null)
+            return;
+		m_RoleId = v.RoleId;
+		m_Name = v.Name;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcRejectInviteAsk>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcRejectInviteAsk pb = ProtoBuf.Serializer.Deserialize<TeamRpcRejectInviteAsk>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//玩家名字
+	public UInt64 m_RoleId;
+	public UInt64 RoleId
+	{
+		get { return m_RoleId;}
+		set { m_RoleId = value; }
+	}
+	//玩家名字
+	public string m_Name;
+	public string Name
+	{
+		get { return m_Name;}
+		set { m_Name = value; }
+	}
+
+
+};
+//拒绝邀请回应封装类
+[System.Serializable]
+public class TeamRpcRejectInviteReplyWraper
+{
+
+	//构造函数
+	public TeamRpcRejectInviteReplyWraper()
+	{
+		 m_Result = -1;
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_Result = -1;
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcRejectInviteReply ToPB()
+	{
+		TeamRpcRejectInviteReply v = new TeamRpcRejectInviteReply();
+		v.Result = m_Result;
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcRejectInviteReply v)
+	{
+        if (v == null)
+            return;
+		m_Result = v.Result;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcRejectInviteReply>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcRejectInviteReply pb = ProtoBuf.Serializer.Deserialize<TeamRpcRejectInviteReply>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//返回结果
+	public int m_Result;
+	public int Result
+	{
+		get { return m_Result;}
+		set { m_Result = value; }
+	}
+
+
+};
+//进入自动战斗状态通知封装类
+[System.Serializable]
+public class TeamRpcEnterAutoCombatNotifyWraper
+{
+
+	//构造函数
+	public TeamRpcEnterAutoCombatNotifyWraper()
+	{
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcEnterAutoCombatNotify ToPB()
+	{
+		TeamRpcEnterAutoCombatNotify v = new TeamRpcEnterAutoCombatNotify();
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcEnterAutoCombatNotify v)
+	{
+        if (v == null)
+            return;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcEnterAutoCombatNotify>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcEnterAutoCombatNotify pb = ProtoBuf.Serializer.Deserialize<TeamRpcEnterAutoCombatNotify>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+
+
+};
+//挂起自动战斗通知封装类
+[System.Serializable]
+public class TeamRpcHangUpAutoCombatNotifyWraper
+{
+
+	//构造函数
+	public TeamRpcHangUpAutoCombatNotifyWraper()
+	{
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcHangUpAutoCombatNotify ToPB()
+	{
+		TeamRpcHangUpAutoCombatNotify v = new TeamRpcHangUpAutoCombatNotify();
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcHangUpAutoCombatNotify v)
+	{
+        if (v == null)
+            return;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcHangUpAutoCombatNotify>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcHangUpAutoCombatNotify pb = ProtoBuf.Serializer.Deserialize<TeamRpcHangUpAutoCombatNotify>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+
+
+};
+//更新队伍快速刷新Hp通知封装类
+[System.Serializable]
+public class TeamRpcUpdateTeamHpInfoNotifyWraper
+{
+
+	//构造函数
+	public TeamRpcUpdateTeamHpInfoNotifyWraper()
+	{
+		 m_Member = new TeamMemberHpInfoWraper();
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_Member = new TeamMemberHpInfoWraper();
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcUpdateTeamHpInfoNotify ToPB()
+	{
+		TeamRpcUpdateTeamHpInfoNotify v = new TeamRpcUpdateTeamHpInfoNotify();
+		v.Member = m_Member.ToPB();
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcUpdateTeamHpInfoNotify v)
+	{
+        if (v == null)
+            return;
+		m_Member.FromPB(v.Member);
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcUpdateTeamHpInfoNotify>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcUpdateTeamHpInfoNotify pb = ProtoBuf.Serializer.Deserialize<TeamRpcUpdateTeamHpInfoNotify>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//成员信息
+	public TeamMemberHpInfoWraper m_Member;
+	public TeamMemberHpInfoWraper Member
+	{
+		get { return m_Member;}
+		set { m_Member = value; }
+	}
+
+
+};
+//更新队伍成员信息通知封装类
+[System.Serializable]
+public class TeamRpcUpdateTeamPosInfoNotifyWraper
+{
+
+	//构造函数
+	public TeamRpcUpdateTeamPosInfoNotifyWraper()
+	{
+		 m_Member = new TeamMemberPosWraper();
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_Member = new TeamMemberPosWraper();
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcUpdateTeamPosInfoNotify ToPB()
+	{
+		TeamRpcUpdateTeamPosInfoNotify v = new TeamRpcUpdateTeamPosInfoNotify();
+		v.Member = m_Member.ToPB();
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcUpdateTeamPosInfoNotify v)
+	{
+        if (v == null)
+            return;
+		m_Member.FromPB(v.Member);
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcUpdateTeamPosInfoNotify>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcUpdateTeamPosInfoNotify pb = ProtoBuf.Serializer.Deserialize<TeamRpcUpdateTeamPosInfoNotify>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//成员信息
+	public TeamMemberPosWraper m_Member;
+	public TeamMemberPosWraper Member
+	{
+		get { return m_Member;}
+		set { m_Member = value; }
+	}
+
+
+};
+//更新队伍bufflist通知封装类
+[System.Serializable]
+public class TeamRpcUpdateTeamBuffInfoNotifyWraper
+{
+
+	//构造函数
+	public TeamRpcUpdateTeamBuffInfoNotifyWraper()
+	{
+		 m_Member = new TeanMemberBuffWraper();
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_Member = new TeanMemberBuffWraper();
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcUpdateTeamBuffInfoNotify ToPB()
+	{
+		TeamRpcUpdateTeamBuffInfoNotify v = new TeamRpcUpdateTeamBuffInfoNotify();
+		v.Member = m_Member.ToPB();
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcUpdateTeamBuffInfoNotify v)
+	{
+        if (v == null)
+            return;
+		m_Member.FromPB(v.Member);
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcUpdateTeamBuffInfoNotify>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcUpdateTeamBuffInfoNotify pb = ProtoBuf.Serializer.Deserialize<TeamRpcUpdateTeamBuffInfoNotify>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//成员信息
+	public TeanMemberBuffWraper m_Member;
+	public TeanMemberBuffWraper Member
+	{
+		get { return m_Member;}
+		set { m_Member = value; }
+	}
+
+
+};
+//暂停跟随请求封装类
+[System.Serializable]
+public class TeamRpcHangeUpFollowAskWraper
+{
+
+	//构造函数
+	public TeamRpcHangeUpFollowAskWraper()
+	{
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcHangeUpFollowAsk ToPB()
+	{
+		TeamRpcHangeUpFollowAsk v = new TeamRpcHangeUpFollowAsk();
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcHangeUpFollowAsk v)
+	{
+        if (v == null)
+            return;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcHangeUpFollowAsk>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcHangeUpFollowAsk pb = ProtoBuf.Serializer.Deserialize<TeamRpcHangeUpFollowAsk>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+
+
+};
+//暂停跟随回应封装类
+[System.Serializable]
+public class TeamRpcHangeUpFollowReplyWraper
+{
+
+	//构造函数
+	public TeamRpcHangeUpFollowReplyWraper()
+	{
+		 m_Result = -1;
+		 m_FollowStatus = -1;
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_Result = -1;
+		 m_FollowStatus = -1;
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcHangeUpFollowReply ToPB()
+	{
+		TeamRpcHangeUpFollowReply v = new TeamRpcHangeUpFollowReply();
+		v.Result = m_Result;
+		v.FollowStatus = m_FollowStatus;
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcHangeUpFollowReply v)
+	{
+        if (v == null)
+            return;
+		m_Result = v.Result;
+		m_FollowStatus = v.FollowStatus;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcHangeUpFollowReply>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcHangeUpFollowReply pb = ProtoBuf.Serializer.Deserialize<TeamRpcHangeUpFollowReply>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//返回结果
+	public int m_Result;
+	public int Result
+	{
+		get { return m_Result;}
+		set { m_Result = value; }
+	}
+	//跟随timer状态
+	public int m_FollowStatus;
+	public int FollowStatus
+	{
+		get { return m_FollowStatus;}
+		set { m_FollowStatus = value; }
+	}
+
+
+};
+//继续跟随请求封装类
+[System.Serializable]
+public class TeamRpcGoOnFollowAskWraper
+{
+
+	//构造函数
+	public TeamRpcGoOnFollowAskWraper()
+	{
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcGoOnFollowAsk ToPB()
+	{
+		TeamRpcGoOnFollowAsk v = new TeamRpcGoOnFollowAsk();
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcGoOnFollowAsk v)
+	{
+        if (v == null)
+            return;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcGoOnFollowAsk>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcGoOnFollowAsk pb = ProtoBuf.Serializer.Deserialize<TeamRpcGoOnFollowAsk>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+
+
+};
+//继续跟随回应封装类
+[System.Serializable]
+public class TeamRpcGoOnFollowReplyWraper
+{
+
+	//构造函数
+	public TeamRpcGoOnFollowReplyWraper()
+	{
+		 m_Result = -1;
+		 m_FollowStatus = -1;
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_Result = -1;
+		 m_FollowStatus = -1;
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcGoOnFollowReply ToPB()
+	{
+		TeamRpcGoOnFollowReply v = new TeamRpcGoOnFollowReply();
+		v.Result = m_Result;
+		v.FollowStatus = m_FollowStatus;
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcGoOnFollowReply v)
+	{
+        if (v == null)
+            return;
+		m_Result = v.Result;
+		m_FollowStatus = v.FollowStatus;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcGoOnFollowReply>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcGoOnFollowReply pb = ProtoBuf.Serializer.Deserialize<TeamRpcGoOnFollowReply>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//返回结果
+	public int m_Result;
+	public int Result
+	{
+		get { return m_Result;}
+		set { m_Result = value; }
+	}
+	//跟随timer状态
+	public int m_FollowStatus;
+	public int FollowStatus
+	{
+		get { return m_FollowStatus;}
+		set { m_FollowStatus = value; }
+	}
+
+
+};
+//更新跟随状态通知封装类
+[System.Serializable]
+public class TeamRpcUpdateFollowStatusNotifyWraper
+{
+
+	//构造函数
+	public TeamRpcUpdateFollowStatusNotifyWraper()
+	{
+		 m_FollowStatus = -1;
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_FollowStatus = -1;
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcUpdateFollowStatusNotify ToPB()
+	{
+		TeamRpcUpdateFollowStatusNotify v = new TeamRpcUpdateFollowStatusNotify();
+		v.FollowStatus = m_FollowStatus;
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcUpdateFollowStatusNotify v)
+	{
+        if (v == null)
+            return;
+		m_FollowStatus = v.FollowStatus;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcUpdateFollowStatusNotify>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcUpdateFollowStatusNotify pb = ProtoBuf.Serializer.Deserialize<TeamRpcUpdateFollowStatusNotify>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//跟随timer状态
+	public int m_FollowStatus;
+	public int FollowStatus
+	{
+		get { return m_FollowStatus;}
+		set { m_FollowStatus = value; }
+	}
+
+
+};
+//请求玩家列表请求封装类
+[System.Serializable]
+public class TeamRpcRequestNoTeamMemberListAskWraper
+{
+
+	//构造函数
+	public TeamRpcRequestNoTeamMemberListAskWraper()
+	{
+		 m_RequestType = -1;
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_RequestType = -1;
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcRequestNoTeamMemberListAsk ToPB()
+	{
+		TeamRpcRequestNoTeamMemberListAsk v = new TeamRpcRequestNoTeamMemberListAsk();
+		v.RequestType = m_RequestType;
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcRequestNoTeamMemberListAsk v)
+	{
+        if (v == null)
+            return;
+		m_RequestType = v.RequestType;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcRequestNoTeamMemberListAsk>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcRequestNoTeamMemberListAsk pb = ProtoBuf.Serializer.Deserialize<TeamRpcRequestNoTeamMemberListAsk>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//请求类型:0附近玩家,1,我的公会,2我的好友
+	public int m_RequestType;
+	public int RequestType
+	{
+		get { return m_RequestType;}
+		set { m_RequestType = value; }
+	}
+
+
+};
+//请求玩家列表回应封装类
+[System.Serializable]
+public class TeamRpcRequestNoTeamMemberListReplyWraper
+{
+
+	//构造函数
+	public TeamRpcRequestNoTeamMemberListReplyWraper()
+	{
+		 m_Result = -1;
+		 m_RequestType = -1;
+		m_MemberList = new List<TeamMemberInfoWraper>();
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_Result = -1;
+		 m_RequestType = -1;
+		m_MemberList = new List<TeamMemberInfoWraper>();
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcRequestNoTeamMemberListReply ToPB()
+	{
+		TeamRpcRequestNoTeamMemberListReply v = new TeamRpcRequestNoTeamMemberListReply();
+		v.Result = m_Result;
+		v.RequestType = m_RequestType;
+		for (int i=0; i<(int)m_MemberList.Count; i++)
+			v.MemberList.Add( m_MemberList[i].ToPB());
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcRequestNoTeamMemberListReply v)
+	{
+        if (v == null)
+            return;
+		m_Result = v.Result;
+		m_RequestType = v.RequestType;
+		m_MemberList.Clear();
+		for( int i=0; i<v.MemberList.Count; i++)
+			m_MemberList.Add( new TeamMemberInfoWraper());
+		for( int i=0; i<v.MemberList.Count; i++)
+			m_MemberList[i].FromPB(v.MemberList[i]);
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcRequestNoTeamMemberListReply>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcRequestNoTeamMemberListReply pb = ProtoBuf.Serializer.Deserialize<TeamRpcRequestNoTeamMemberListReply>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//返回结果
+	public int m_Result;
+	public int Result
+	{
+		get { return m_Result;}
+		set { m_Result = value; }
+	}
+	//请求类型:0附近玩家,1,我的公会,2我的好友
+	public int m_RequestType;
+	public int RequestType
+	{
+		get { return m_RequestType;}
+		set { m_RequestType = value; }
+	}
+	//TeamMemberList
+	public List<TeamMemberInfoWraper> m_MemberList;
+	public int SizeMemberList()
+	{
+		return m_MemberList.Count;
+	}
+	public List<TeamMemberInfoWraper> GetMemberList()
+	{
+		return m_MemberList;
+	}
+	public TeamMemberInfoWraper GetMemberList(int Index)
+	{
+		if(Index<0 || Index>=(int)m_MemberList.Count)
+			return new TeamMemberInfoWraper();
+		return m_MemberList[Index];
+	}
+	public void SetMemberList( List<TeamMemberInfoWraper> v )
+	{
+		m_MemberList=v;
+	}
+	public void SetMemberList( int Index, TeamMemberInfoWraper v )
+	{
+		if(Index<0 || Index>=(int)m_MemberList.Count)
+			return;
+		m_MemberList[Index] = v;
+	}
+	public void AddMemberList( TeamMemberInfoWraper v )
+	{
+		m_MemberList.Add(v);
+	}
+	public void ClearMemberList( )
+	{
+		m_MemberList.Clear();
+	}
+
+
+};
+//你加入了一支副本队伍，是否开启组队跟随功能，自动传送入队长所在副本通知封装类
+[System.Serializable]
+public class TeamRpcEnterTeamFollowNotifyWraper
+{
+
+	//构造函数
+	public TeamRpcEnterTeamFollowNotifyWraper()
+	{
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcEnterTeamFollowNotify ToPB()
+	{
+		TeamRpcEnterTeamFollowNotify v = new TeamRpcEnterTeamFollowNotify();
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcEnterTeamFollowNotify v)
+	{
+        if (v == null)
+            return;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcEnterTeamFollowNotify>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcEnterTeamFollowNotify pb = ProtoBuf.Serializer.Deserialize<TeamRpcEnterTeamFollowNotify>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+
+
+};
+//进入队长场景请求封装类
+[System.Serializable]
+public class TeamRpcEnterLeaderSceneAskWraper
+{
+
+	//构造函数
+	public TeamRpcEnterLeaderSceneAskWraper()
+	{
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcEnterLeaderSceneAsk ToPB()
+	{
+		TeamRpcEnterLeaderSceneAsk v = new TeamRpcEnterLeaderSceneAsk();
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcEnterLeaderSceneAsk v)
+	{
+        if (v == null)
+            return;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcEnterLeaderSceneAsk>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcEnterLeaderSceneAsk pb = ProtoBuf.Serializer.Deserialize<TeamRpcEnterLeaderSceneAsk>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+
+
+};
+//进入队长场景回应封装类
+[System.Serializable]
+public class TeamRpcEnterLeaderSceneReplyWraper
+{
+
+	//构造函数
+	public TeamRpcEnterLeaderSceneReplyWraper()
+	{
+		 m_Result = -1;
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_Result = -1;
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public TeamRpcEnterLeaderSceneReply ToPB()
+	{
+		TeamRpcEnterLeaderSceneReply v = new TeamRpcEnterLeaderSceneReply();
+		v.Result = m_Result;
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(TeamRpcEnterLeaderSceneReply v)
+	{
+        if (v == null)
+            return;
+		m_Result = v.Result;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<TeamRpcEnterLeaderSceneReply>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		TeamRpcEnterLeaderSceneReply pb = ProtoBuf.Serializer.Deserialize<TeamRpcEnterLeaderSceneReply>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//返回结果
+	public int m_Result;
+	public int Result
+	{
+		get { return m_Result;}
+		set { m_Result = value; }
 	}
 
 

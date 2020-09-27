@@ -21,10 +21,11 @@
 
 
 #include "PacketFactory.h"
-#include "include/PacketMgr.h"
+#include "Game/PacketMgr.h"
 #include "BaseAttrRpc.pb.h"
 #include <memory>
-
+#include <vector>
+#include <functional>
 
 #include "BaseAttrV1Data.h"
 #include "BaseAttrV1DataWraper.h"
@@ -50,6 +51,8 @@ public:
 
 	};
 
+	typedef std::function<bool()> ReloadCallback;
+	typedef std::vector<ReloadCallback> reload_vec_type;
 public:
 	//基础数据实现类构造函数
 	ModuleBaseAttr()
@@ -63,14 +66,29 @@ public:
 	~ModuleBaseAttr(){}
 
 
-	static ModuleBaseAttr Instance()
+	static ModuleBaseAttr & Instance()
 	{
 		static ModuleBaseAttr sInstance;
 		return sInstance;
 	}
 	
 	bool Initialize();
+	bool Reinitialize();
 
+	void RegisterReLoadCb(const ReloadCallback &cb)
+	{
+		m_vReLoadCb.push_back(cb);
+	}
+	
+	bool OnLoad()
+	{
+		bool bRet = true;
+			for (auto it : m_vReLoadCb)
+		{
+			bRet &= it();
+		}
+		return bRet;
+	}
 public:
 	/********************************************************************************************
 	* Function:       RpcSyncData
@@ -93,6 +111,7 @@ public:
 	//virtual void SendToClientSync( INT64 UserId, BaseAttrRpcSyncNotifyWraper& Notify );
 
 
+	reload_vec_type m_vReLoadCb;
 
 };
 

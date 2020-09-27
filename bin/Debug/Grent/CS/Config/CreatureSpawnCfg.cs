@@ -9,7 +9,7 @@ using System.Collections.Generic;
 //NPC位置表配置数据类
 public class CreatureSpawnElement
 {
-	public int spawn_id;         	//序号	序号
+	public int id;               	//序号	序号
 	public int npc_entry_id;     	//NPC总表中的ENTRY ID	NPC总表中的ENTRY ID
 	public int spawn_map_id;     	//NPC所处的场景号	NPC所处的场景号
 	public float spawn_x;        	//NPC所处的场景的X坐标	NPC所处的场景的X坐标
@@ -24,7 +24,7 @@ public class CreatureSpawnElement
 	public bool IsValidate = false;
 	public CreatureSpawnElement()
 	{
-		spawn_id = -1;
+		id = -1;
 	}
 };
 
@@ -117,7 +117,7 @@ public class CreatureSpawnTable
 			Ex.Logger.Log("CreatureSpawn.csv中列数量与生成的代码不匹配!");
 			return false;
 		}
-		if(vecLine[0]!="spawn_id"){Ex.Logger.Log("CreatureSpawn.csv中字段[spawn_id]位置不对应"); return false; }
+		if(vecLine[0]!="id"){Ex.Logger.Log("CreatureSpawn.csv中字段[id]位置不对应"); return false; }
 		if(vecLine[1]!="npc_entry_id"){Ex.Logger.Log("CreatureSpawn.csv中字段[npc_entry_id]位置不对应"); return false; }
 		if(vecLine[2]!="spawn_map_id"){Ex.Logger.Log("CreatureSpawn.csv中字段[spawn_map_id]位置不对应"); return false; }
 		if(vecLine[3]!="spawn_x"){Ex.Logger.Log("CreatureSpawn.csv中字段[spawn_x]位置不对应"); return false; }
@@ -132,7 +132,7 @@ public class CreatureSpawnTable
 		for(int i=0; i<nRow; i++)
 		{
 			CreatureSpawnElement member = new CreatureSpawnElement();
-			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.spawn_id );
+			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.id );
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.npc_entry_id );
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.spawn_map_id );
 			readPos += GameAssist.ReadFloat( binContent, readPos, out member.spawn_x);
@@ -146,7 +146,7 @@ public class CreatureSpawnTable
 
 			member.IsValidate = true;
 			m_vecAllElements.Add(member);
-			m_mapElements[member.spawn_id] = member;
+			m_mapElements[member.id] = member;
 		}
 		return true;
 	}
@@ -164,7 +164,7 @@ public class CreatureSpawnTable
 			Ex.Logger.Log("CreatureSpawn.csv中列数量与生成的代码不匹配!");
 			return false;
 		}
-		if(vecLine[0]!="spawn_id"){Ex.Logger.Log("CreatureSpawn.csv中字段[spawn_id]位置不对应"); return false; }
+		if(vecLine[0]!="id"){Ex.Logger.Log("CreatureSpawn.csv中字段[id]位置不对应"); return false; }
 		if(vecLine[1]!="npc_entry_id"){Ex.Logger.Log("CreatureSpawn.csv中字段[npc_entry_id]位置不对应"); return false; }
 		if(vecLine[2]!="spawn_map_id"){Ex.Logger.Log("CreatureSpawn.csv中字段[spawn_map_id]位置不对应"); return false; }
 		if(vecLine[3]!="spawn_x"){Ex.Logger.Log("CreatureSpawn.csv中字段[spawn_x]位置不对应"); return false; }
@@ -186,7 +186,7 @@ public class CreatureSpawnTable
 				return false;
 			}
 			CreatureSpawnElement member = new CreatureSpawnElement();
-			member.spawn_id=Convert.ToInt32(vecLine[0]);
+			member.id=Convert.ToInt32(vecLine[0]);
 			member.npc_entry_id=Convert.ToInt32(vecLine[1]);
 			member.spawn_map_id=Convert.ToInt32(vecLine[2]);
 			member.spawn_x=Convert.ToSingle(vecLine[3]);
@@ -200,7 +200,7 @@ public class CreatureSpawnTable
 
 			member.IsValidate = true;
 			m_vecAllElements.Add(member);
-			m_mapElements[member.spawn_id] = member;
+			m_mapElements[member.id] = member;
 		}
 		return true;
 	}

@@ -10,7 +10,6 @@ using System.Collections.Generic;
 public class ServerListElement
 {
 	public int id;               	//id	服务器的id
-	public string comment;       	//注释	
 	public int region;           	//区域	该服务器处于哪个大区
 	public int name;             	//名称	对应文本表中的id
 	public int status;           	//状态	对应服务器的状态 0.正常 1.爆满
@@ -109,25 +108,23 @@ public class ServerListTable
             vecLine.Add(tmpStr);
             vecHeadType.Add(tmpInt);
 		}
-		if(vecLine.Count != 8)
+		if(vecLine.Count != 7)
 		{
 			Ex.Logger.Log("ServerList.csv中列数量与生成的代码不匹配!");
 			return false;
 		}
 		if(vecLine[0]!="id"){Ex.Logger.Log("ServerList.csv中字段[id]位置不对应"); return false; }
-		if(vecLine[1]!="comment"){Ex.Logger.Log("ServerList.csv中字段[comment]位置不对应"); return false; }
-		if(vecLine[2]!="region"){Ex.Logger.Log("ServerList.csv中字段[region]位置不对应"); return false; }
-		if(vecLine[3]!="name"){Ex.Logger.Log("ServerList.csv中字段[name]位置不对应"); return false; }
-		if(vecLine[4]!="status"){Ex.Logger.Log("ServerList.csv中字段[status]位置不对应"); return false; }
-		if(vecLine[5]!="promo"){Ex.Logger.Log("ServerList.csv中字段[promo]位置不对应"); return false; }
-		if(vecLine[6]!="ip"){Ex.Logger.Log("ServerList.csv中字段[ip]位置不对应"); return false; }
-		if(vecLine[7]!="port"){Ex.Logger.Log("ServerList.csv中字段[port]位置不对应"); return false; }
+		if(vecLine[1]!="region"){Ex.Logger.Log("ServerList.csv中字段[region]位置不对应"); return false; }
+		if(vecLine[2]!="name"){Ex.Logger.Log("ServerList.csv中字段[name]位置不对应"); return false; }
+		if(vecLine[3]!="status"){Ex.Logger.Log("ServerList.csv中字段[status]位置不对应"); return false; }
+		if(vecLine[4]!="promo"){Ex.Logger.Log("ServerList.csv中字段[promo]位置不对应"); return false; }
+		if(vecLine[5]!="ip"){Ex.Logger.Log("ServerList.csv中字段[ip]位置不对应"); return false; }
+		if(vecLine[6]!="port"){Ex.Logger.Log("ServerList.csv中字段[port]位置不对应"); return false; }
 
 		for(int i=0; i<nRow; i++)
 		{
 			ServerListElement member = new ServerListElement();
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.id );
-			readPos += GameAssist.ReadString( binContent, readPos, out member.comment);
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.region );
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.name );
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.status );
@@ -150,38 +147,36 @@ public class ServerListTable
 		int contentOffset = 0;
 		List<string> vecLine;
 		vecLine = GameAssist.readCsvLine( strContent, ref contentOffset );
-		if(vecLine.Count != 8)
+		if(vecLine.Count != 7)
 		{
 			Ex.Logger.Log("ServerList.csv中列数量与生成的代码不匹配!");
 			return false;
 		}
 		if(vecLine[0]!="id"){Ex.Logger.Log("ServerList.csv中字段[id]位置不对应"); return false; }
-		if(vecLine[1]!="comment"){Ex.Logger.Log("ServerList.csv中字段[comment]位置不对应"); return false; }
-		if(vecLine[2]!="region"){Ex.Logger.Log("ServerList.csv中字段[region]位置不对应"); return false; }
-		if(vecLine[3]!="name"){Ex.Logger.Log("ServerList.csv中字段[name]位置不对应"); return false; }
-		if(vecLine[4]!="status"){Ex.Logger.Log("ServerList.csv中字段[status]位置不对应"); return false; }
-		if(vecLine[5]!="promo"){Ex.Logger.Log("ServerList.csv中字段[promo]位置不对应"); return false; }
-		if(vecLine[6]!="ip"){Ex.Logger.Log("ServerList.csv中字段[ip]位置不对应"); return false; }
-		if(vecLine[7]!="port"){Ex.Logger.Log("ServerList.csv中字段[port]位置不对应"); return false; }
+		if(vecLine[1]!="region"){Ex.Logger.Log("ServerList.csv中字段[region]位置不对应"); return false; }
+		if(vecLine[2]!="name"){Ex.Logger.Log("ServerList.csv中字段[name]位置不对应"); return false; }
+		if(vecLine[3]!="status"){Ex.Logger.Log("ServerList.csv中字段[status]位置不对应"); return false; }
+		if(vecLine[4]!="promo"){Ex.Logger.Log("ServerList.csv中字段[promo]位置不对应"); return false; }
+		if(vecLine[5]!="ip"){Ex.Logger.Log("ServerList.csv中字段[ip]位置不对应"); return false; }
+		if(vecLine[6]!="port"){Ex.Logger.Log("ServerList.csv中字段[port]位置不对应"); return false; }
 
 		while(true)
 		{
 			vecLine = GameAssist.readCsvLine( strContent, ref contentOffset );
 			if((int)vecLine.Count == 0 )
 				break;
-			if((int)vecLine.Count != (int)8)
+			if((int)vecLine.Count != (int)7)
 			{
 				return false;
 			}
 			ServerListElement member = new ServerListElement();
 			member.id=Convert.ToInt32(vecLine[0]);
-			member.comment=vecLine[1];
-			member.region=Convert.ToInt32(vecLine[2]);
-			member.name=Convert.ToInt32(vecLine[3]);
-			member.status=Convert.ToInt32(vecLine[4]);
-			member.promo=Convert.ToInt32(vecLine[5]);
-			member.ip=vecLine[6];
-			member.port=Convert.ToInt32(vecLine[7]);
+			member.region=Convert.ToInt32(vecLine[1]);
+			member.name=Convert.ToInt32(vecLine[2]);
+			member.status=Convert.ToInt32(vecLine[3]);
+			member.promo=Convert.ToInt32(vecLine[4]);
+			member.ip=vecLine[5];
+			member.port=Convert.ToInt32(vecLine[6]);
 
 			member.IsValidate = true;
 			m_vecAllElements.Add(member);

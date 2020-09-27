@@ -4,66 +4,244 @@ import "PublicStruct.proto";
 message  DungeonRpcCreateDungeonAsk
 {
 	optional uint64 RoleId = 1[default=0];
-	optional sint32 DungeonConfigId = 2[default=-1];
+	optional int32 DungeonConfigId = 2;
 
 }
 
 message  DungeonRpcCreateDungeonReply
 {
-	optional sint32 Result = 1[default=-9999];
-	optional sint32 DungeonConfigId = 2[default=-1];
-	optional sint32 SceneId = 3[default=-1];
+	optional int32 Result = 1;
+	optional int32 DungeonConfigId = 2;
+	optional int32 SceneConfigId = 3;
 
 }
 
 message  DungeonRpcExitDungeonAsk
 {
 	optional uint64 RoleId = 1[default=0];
-	optional sint32 SceneId = 2[default=-1];
+	optional int32 SceneId = 2;
 
 }
 
 message  DungeonRpcExitDungeonReply
 {
-	optional sint32 Result = 1[default=-9999];
-	optional sint32 SceneConfigId = 2[default=-1];
-	optional sint32 SceneId = 3[default=-1];
+	optional int32 Result = 1;
+	optional int32 SceneConfigId = 2;
+	optional int32 SceneId = 3;
 
 }
 
 message  DungeonRpcInformCreateDungeonAsk
 {
 	optional uint64 RoleId = 1[default=0];
-	optional sint32 TargetSceneId = 2[default=-1];
-	optional sint32 DungeonConfigId = 3[default=-1];
-	optional sint32 CurSceneId = 4[default=-1];
-	optional sint32 Result = 5[default=-9999];
+	optional int32 TargetSceneId = 2;
+	optional int32 DungeonConfigId = 3;
+	optional int32 CurSceneId = 4;
+	optional int32 Result = 5;
 	repeated uint64 RoleIds = 6;
 
 }
 
 message  DungeonRpcInformCreateDungeonReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 
 }
 
 message  DungeonRpcSettlementNotify
 {
-	optional sint32 SettlementResult = 1[default=-1];
+	optional int32 SettlementResult = 1;
+	optional DungeonExploits Exploits = 2;
+	optional int32 Exp = 3;
+	repeated ItemObj UiItemInfoList = 4;
+	optional int32 Gold = 5;
+	optional int32 DungeonPassTime = 6;
+	optional int64 ForceRetreatSceneTime = 7[default=-1];
+	optional int64 RemainTime = 8[default=-1];
+	optional int32 Starbattleid = 9;
+	optional int32 SceneType = 10;
 
 }
 
 message  DungeonRpcEnterDungeonAsk
 {
-	optional sint32 SceneId = 1[default=-1];
-	optional sint32 DungeonConfigId = 2[default=-1];
+	optional int32 SceneId = 1;
+	optional int32 DungeonConfigId = 2;
 
 }
 
 message  DungeonRpcEnterDungeonReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
+
+}
+
+message  DungeonRpcDungeonDataNotify
+{
+	optional int32 BeginTime = 1;
+	optional DungeonData Data = 3;
+	optional DungeonExploits Exploits = 4;
+
+}
+
+message  DungeonRpcDungeonSyncAsk
+{
+
+}
+
+message  DungeonRpcDungeonSyncReply
+{
+	optional int32 Result = 1;
+	optional DungeonData Data = 2;
+	optional DungeonExploits Exploits = 3;
+
+}
+
+message  DungeonRpcDungeonListInfoAsk
+{
+
+}
+
+message  DungeonRpcDungeonListInfoReply
+{
+	optional int32 Result = 1;
+	repeated DungeonBossInfo DungeonBossData = 3;
+
+}
+
+message  DungeonRpcCreateTutorialAsk
+{
+	optional uint64 RoleId = 1[default=0];
+	optional int32 DungeonConfigId = 2;
+
+}
+
+message  DungeonRpcCreateTutorialReply
+{
+	optional int32 Result = 1;
+	optional int32 DungeonConfigId = 3;
+	optional int32 SceneConfigId = 4;
+
+}
+
+message  DungeonRpcQuitTutorialAsk
+{
+
+}
+
+message  DungeonRpcQuitTutorialReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  DungeonRpcDungeonTargetNotify
+{
+	repeated DungeonTarget DungeonTarget = 1;
+
+}
+
+message  DungeonRpcTargetContentChangeNotify
+{
+	optional int32 Index = 1;
+	optional int32 SubIndex = 2;
+	optional int32 CurCount = 3;
+
+}
+
+message  DungeonRpcDungeon_NotifyNotify
+{
+	optional int32 TextId = 1;
+
+}
+
+message  DungeonRpcSceneOperator1Ask
+{
+	optional int32 OpCode = 1;
+	optional int32 OpExtraParam = 2;
+
+}
+
+message  DungeonRpcSceneOperator1Reply
+{
+	optional int32 Result = 1;
+
+}
+
+message  DungeonRpcForceEnterNextDungeonLayerNotify
+{
+	optional int32 NextLayer = 1;
+	optional bool Breward = 6[default=false];
+
+}
+
+message  DungeonRpcDungeonRewardUpdateNotify
+{
+	repeated uint64 OpenRoleIdList = 1;
+	optional uint64 NewRoleId = 2[default=0];
+	optional int32 NewIndex = 3;
+
+}
+
+message  DungeonRpcVictoryOfAllLayerNotify
+{
+	optional int32 LastLayer = 1;
+
+}
+
+message  DungeonRpcLayerBeginNotify
+{
+
+}
+
+message  DungeonRpcLayerSettlementNotify
+{
+	optional int32 NextLayer = 1;
+	repeated PBUIRewardData RewardList = 2;
+
+}
+
+message  DungeonRpcSceneOperatorNNotify
+{
+	optional int32 OpCode = 1;
+
+}
+
+message  DungeonRpcEnterLayerDungeonNotify
+{
+	optional int32 CurrentLayer = 1;
+	optional int32 CurentLayerRemainTime = 2;
+
+}
+
+message  DungeonRpcDungeonExploitsNotify
+{
+	optional DungeonExploits Exploits = 1;
+
+}
+
+message  DungeonRpcCreateDungeonWithRobotAsk
+{
+	optional int32 DungeonConfigId = 1;
+	optional uint64 RoleId = 2[default=0];
+
+}
+
+message  DungeonRpcCreateDungeonWithRobotReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  DungeonRpcUseBossNumAsk
+{
+	optional bool BUse = 1[default=false];
+
+}
+
+message  DungeonRpcUseBossNumReply
+{
+	optional int32 Result = 1;
 
 }
 

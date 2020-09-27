@@ -15,7 +15,7 @@
 ********************************************************************************************/
 
 #include "WorldServerModule.h"
-#
+
 
 
 //初始化
@@ -23,6 +23,11 @@ bool ModuleWorldServer::Initialize()
 {
 
 	
+	return OnLoad();
+}
 
-	return true;
+bool ModuleWorldServer::Reinitialize()
+{
+	
+	return OnLoad();
 }

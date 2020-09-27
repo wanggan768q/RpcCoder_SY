@@ -17,6 +17,18 @@ TeamController = cc.coffee.BaseControllerExtend.extend(
         _model.SetAgreeApplicantNotifyNotifyCB(@AgreeApplicantNotifyCBNotify)
         _model.SetTeamInfoNotifyCB(@TeamInfoCBNotify)
         _model.SetUpdateTeamMemInfoNotifyCB(@UpdateTeamMemInfoCBNotify)
+        _model.SetSummonMemberNotifyNotifyCB(@SummonMemberNotifyCBNotify)
+        _model.SetChangeTeamTargetNotifyNotifyCB(@ChangeTeamTargetNotifyCBNotify)
+        _model.SetChangeTeamTypeNotifyNotifyCB(@ChangeTeamTypeNotifyCBNotify)
+        _model.SetInviteTeamMemberNotifyNotifyCB(@InviteTeamMemberNotifyCBNotify)
+        _model.SetApplyListNotifyNotifyCB(@ApplyListNotifyCBNotify)
+        _model.SetEnterAutoCombatNotifyCB(@EnterAutoCombatCBNotify)
+        _model.SetHangUpAutoCombatNotifyCB(@HangUpAutoCombatCBNotify)
+        _model.SetUpdateTeamHpInfoNotifyCB(@UpdateTeamHpInfoCBNotify)
+        _model.SetUpdateTeamPosInfoNotifyCB(@UpdateTeamPosInfoCBNotify)
+        _model.SetUpdateTeamBuffInfoNotifyCB(@UpdateTeamBuffInfoCBNotify)
+        _model.SetUpdateFollowStatusNotifyCB(@UpdateFollowStatusCBNotify)
+        _model.SetEnterTeamFollowNotifyCB(@EnterTeamFollowCBNotify)
 
         return
 
@@ -40,6 +52,30 @@ TeamController = cc.coffee.BaseControllerExtend.extend(
         cc.log "TeamInfoCBNotify Respond "
     UpdateTeamMemInfoCBNotify:(ret_msg)->
         cc.log "UpdateTeamMemInfoCBNotify Respond "
+    SummonMemberNotifyCBNotify:(ret_msg)->
+        cc.log "SummonMemberNotifyCBNotify Respond "
+    ChangeTeamTargetNotifyCBNotify:(ret_msg)->
+        cc.log "ChangeTeamTargetNotifyCBNotify Respond "
+    ChangeTeamTypeNotifyCBNotify:(ret_msg)->
+        cc.log "ChangeTeamTypeNotifyCBNotify Respond "
+    InviteTeamMemberNotifyCBNotify:(ret_msg)->
+        cc.log "InviteTeamMemberNotifyCBNotify Respond "
+    ApplyListNotifyCBNotify:(ret_msg)->
+        cc.log "ApplyListNotifyCBNotify Respond "
+    EnterAutoCombatCBNotify:(ret_msg)->
+        cc.log "EnterAutoCombatCBNotify Respond "
+    HangUpAutoCombatCBNotify:(ret_msg)->
+        cc.log "HangUpAutoCombatCBNotify Respond "
+    UpdateTeamHpInfoCBNotify:(ret_msg)->
+        cc.log "UpdateTeamHpInfoCBNotify Respond "
+    UpdateTeamPosInfoCBNotify:(ret_msg)->
+        cc.log "UpdateTeamPosInfoCBNotify Respond "
+    UpdateTeamBuffInfoCBNotify:(ret_msg)->
+        cc.log "UpdateTeamBuffInfoCBNotify Respond "
+    UpdateFollowStatusCBNotify:(ret_msg)->
+        cc.log "UpdateFollowStatusCBNotify Respond "
+    EnterTeamFollowCBNotify:(ret_msg)->
+        cc.log "EnterTeamFollowCBNotify Respond "
 
 
 )

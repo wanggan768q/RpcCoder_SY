@@ -4,24 +4,23 @@ import "PublicStruct.proto";
 message  SceneRpcLoadSceneCompleteAsk
 {
 	optional uint64 RoleId = 1[default=0];
-	optional sint32 SceneId = 2[default=-1];
+	optional int32 SceneId = 2;
 
 }
 
 message  SceneRpcLoadSceneCompleteReply
 {
-	optional sint32 Result = 1[default=-9999];
-	optional CharacterInfo RoleInfo = 2;
-	optional sint32 ObjId = 3[default=-1];
-	optional V3 Pos = 4;
+	optional int32 Result = 1;
+	optional uint64 ObjId = 3[default=0];
+	optional Vector3 Pos = 4;
 	optional float Dir = 5[default=-1];
+	optional bytes ObjData = 6;
 
 }
 
 message  SceneRpcDeletePlayerNotify
 {
-	optional sint32 ObjId = 2[default=-1];
-	optional sint32 SceneId = 3[default=-1];
+	repeated ObjDeleteInfo Delete_list = 4;
 
 }
 
@@ -29,49 +28,25 @@ message  SceneRpcConnectGameServerAsk
 {
 	optional uint64 RoleId = 1[default=0];
 	optional string Key = 2;
+	optional int32 SceneID = 3;
+	optional int32 LineID = 4;
+	optional string GameToken = 5;
 
 }
 
 message  SceneRpcConnectGameServerReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 	optional uint64 RoleId = 2[default=0];
-	optional sint32 SceneId = 3[default=-1];
-	optional sint32 MapId = 5[default=-1];
-
-}
-
-message  SceneRpcChangeSceneAsk
-{
-	optional uint64 RoleId = 1[default=0];
-	optional sint32 CurSceneId = 2[default=-1];
-	optional sint32 TargetSceneId = 3[default=-1];
-
-}
-
-message  SceneRpcChangeSceneReply
-{
-	optional sint32 Result = 1[default=-9999];
-	optional uint64 RoleId = 2[default=0];
-	optional sint32 CurSceneId = 3[default=-1];
-	optional sint32 TargetSceneId = 4[default=-1];
+	optional int32 SceneId = 3;
+	optional int32 MapId = 5;
+	optional string GameToken = 6;
 
 }
 
 message  SceneRpcCreateObjNotify
 {
-	optional sint32 ObjId = 1[default=-1];
-	optional V3 Pos = 2;
-	optional float Dir = 3[default=-1];
-	optional sint32 ObjType = 4[default=-1];
-	optional sint32 ConfigId = 5[default=-1];
-	optional sint32 Status = 6[default=-1];
-	optional float MoveSpeed = 7[default=-1];
-	optional uint64 RoleId = 8[default=0];
-	optional string NickName = 9;
-	optional sint32 Hp = 10[default=-1];
-	optional V3 TargetPos = 11;
-	optional int32 HpMax = 12;
+	repeated ObjCreateInfo Create_list = 14;
 
 }
 
@@ -82,47 +57,200 @@ message  SceneRpcSurroundingHumanAsk
 
 message  SceneRpcSurroundingHumanReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 	repeated CharacterInfo RoleList = 2;
 
 }
 
 message  SceneRpcCEnterSceneNotify
 {
-	optional sint32 SceneId = 3[default=-1];
-	optional sint32 MapId = 6[default=-1];
+	optional int32 SceneId = 3;
+	optional int32 MapId = 6;
+	optional int32 LineId = 7;
 
 }
 
 message  SceneRpcSEnterSceneNotify
 {
-	optional sint32 Result = 1[default=-9999];
-	optional sint32 SceneId = 8[default=-1];
-	optional sint32 SceneConfigId = 9[default=-1];
-	optional sint32 MapId = 10[default=-1];
+	optional int32 Result = 1;
+	optional int32 SceneId = 8;
+	optional int32 SceneConfigId = 9;
+	optional int32 MapId = 10;
 	optional uint64 RoleId = 11[default=0];
-	optional sint32 DungeonConfigId = 12[default=-1];
+	optional int32 DungeonConfigId = 12;
+	optional int32 LineId = 14;
+	repeated IntPair TypeConfig = 18;
 
 }
 
 message  SceneRpcObjDieNotify
 {
-	optional sint32 ObjId = 1[default=-1];
-	optional sint32 RespawnTime = 2[default=-1];
-	optional sint32 ConfigId = 3[default=-1];
-	optional sint32 ObjType = 4[default=-1];
+	optional uint64 ObjId = 1[default=0];
+	optional int32 RespawnTime = 2;
+	optional int32 ConfigId = 3;
+	optional int32 ObjType = 4;
 
 }
 
 message  SceneRpcCollide_ChangeSceneAsk
 {
-	optional sint32 Collide_id = 1[default=-1];
+	optional int32 Collide_id = 1;
 
 }
 
 message  SceneRpcCollide_ChangeSceneReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
+
+}
+
+message  SceneRpcEnterMirrorAsk
+{
+	optional int32 MirrorID = 1;
+
+}
+
+message  SceneRpcEnterMirrorReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  SceneRpcSEnterMirrorSceneNotify
+{
+	optional int32 MapID = 1;
+	optional int32 MirrorID = 2;
+
+}
+
+message  SceneRpcExitMirrorSceneAsk
+{
+
+}
+
+message  SceneRpcExitMirrorSceneReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  SceneRpcChangeSceneLeaveNotify
+{
+	optional int32 TargetLineID = 1;
+	optional int32 TargetMapID = 2;
+	optional uint64 RoleID = 4[default=0];
+	optional int32 CopyID = 5;
+
+}
+
+message  SceneRpcChangeLineAsk
+{
+	optional int32 LineID = 1;
+	optional int32 MapID = 2;
+
+}
+
+message  SceneRpcChangeLineReply
+{
+	optional int32 Result = 1;
+	optional int32 LineID = 2;
+	optional int32 MapID = 3;
+	optional uint64 RoleID = 4[default=0];
+
+}
+
+message  SceneRpcPingAsk
+{
+
+}
+
+message  SceneRpcPingReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  SceneRpcSyncSceneLineStatsNotify
+{
+	optional SceneStats Scene_stats = 1;
+	optional int32 Player_lineId = 2;
+
+}
+
+message  SceneRpcLogOutGameAsk
+{
+
+}
+
+message  SceneRpcLogOutGameReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  SceneRpcKickOutGameNotify
+{
+	optional AppendString Kick_reason = 1;
+	optional int32 Reason_id = 2;
+
+}
+
+message  SceneRpcShowFilmFinishAsk
+{
+
+}
+
+message  SceneRpcShowFilmFinishReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  SceneRpcSpecObjPosAsk
+{
+
+}
+
+message  SceneRpcSpecObjPosReply
+{
+	optional int32 Result = 1;
+	repeated ObjPosInfo PosInfos = 2;
+
+}
+
+message  SceneRpcDayNightChangeNotify
+{
+	optional int32 DayStage = 1;
+	optional int32 Remaining = 2;
+
+}
+
+message  SceneRpcWeatherChangeNotify
+{
+	optional int32 WeatherId = 1;
+
+}
+
+message  SceneRpcWantChangeZoneAsk
+{
+	optional int32 Zoneid = 1;
+
+}
+
+message  SceneRpcWantChangeZoneReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  SceneRpcReturnSrcServerAsk
+{
+
+}
+
+message  SceneRpcReturnSrcServerReply
+{
+	optional int32 Result = 1;
 
 }
 

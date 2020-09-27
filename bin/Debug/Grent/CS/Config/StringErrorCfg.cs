@@ -10,7 +10,7 @@ using System.Collections.Generic;
 public class StringErrorElement
 {
 	public int id;               	//序号	需要必须为负值
-	public string comment;       	//文本内容备注	文本内容备注
+	public int is_display;       	//是否显示	标示该错误码是否已文本提示框的形式显示在游戏中 0.不显示 1.显示
 	public string sc;            	//简体中文	简体中文文本
 
 	public bool IsValidate = false;
@@ -110,14 +110,14 @@ public class StringErrorTable
 			return false;
 		}
 		if(vecLine[0]!="id"){Ex.Logger.Log("StringError.csv中字段[id]位置不对应"); return false; }
-		if(vecLine[1]!="comment"){Ex.Logger.Log("StringError.csv中字段[comment]位置不对应"); return false; }
+		if(vecLine[1]!="is_display"){Ex.Logger.Log("StringError.csv中字段[is_display]位置不对应"); return false; }
 		if(vecLine[2]!="sc"){Ex.Logger.Log("StringError.csv中字段[sc]位置不对应"); return false; }
 
 		for(int i=0; i<nRow; i++)
 		{
 			StringErrorElement member = new StringErrorElement();
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.id );
-			readPos += GameAssist.ReadString( binContent, readPos, out member.comment);
+			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.is_display );
 			readPos += GameAssist.ReadString( binContent, readPos, out member.sc);
 
 			member.IsValidate = true;
@@ -141,7 +141,7 @@ public class StringErrorTable
 			return false;
 		}
 		if(vecLine[0]!="id"){Ex.Logger.Log("StringError.csv中字段[id]位置不对应"); return false; }
-		if(vecLine[1]!="comment"){Ex.Logger.Log("StringError.csv中字段[comment]位置不对应"); return false; }
+		if(vecLine[1]!="is_display"){Ex.Logger.Log("StringError.csv中字段[is_display]位置不对应"); return false; }
 		if(vecLine[2]!="sc"){Ex.Logger.Log("StringError.csv中字段[sc]位置不对应"); return false; }
 
 		while(true)
@@ -155,7 +155,7 @@ public class StringErrorTable
 			}
 			StringErrorElement member = new StringErrorElement();
 			member.id=Convert.ToInt32(vecLine[0]);
-			member.comment=vecLine[1];
+			member.is_display=Convert.ToInt32(vecLine[1]);
 			member.sc=vecLine[2];
 
 			member.IsValidate = true;

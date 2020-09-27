@@ -15,7 +15,7 @@
 ********************************************************************************************/
 
 #include "EventModule.h"
-#
+
 
 
 //初始化
@@ -23,6 +23,11 @@ bool ModuleEvent::Initialize()
 {
 
 	
+	return OnLoad();
+}
 
-	return true;
+bool ModuleEvent::Reinitialize()
+{
+	
+	return OnLoad();
 }

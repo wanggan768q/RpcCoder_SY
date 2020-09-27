@@ -1,25 +1,17 @@
 #ifndef __CAMERACONFIG_CONFIG_H
 #define __CAMERACONFIG_CONFIG_H
 
-#include "CommonDefine.h"
-#include "DK_Assertx.h"
+#include "BaseDef.h"
 
-#include <boost/property_tree/ptree.hpp>
-#include <boost/property_tree/json_parser.hpp>
-#include <boost/foreach.hpp>
-#include <boost/typeof/typeof.hpp>
 
-#include <vector>
-#include <string>
-#include <unordered_map>
+
 using namespace std;
-
 
 //摄像机配置配置数据结构
 struct CameraConfigElement
 {
 	friend class CameraConfigTable;
-	int entry_id;                	//序号	摄像机配置序号
+	int id;                      	//序号	摄像机配置序号
 	string comment;              	//备注	备注
 	vector<float> clipping;      	//摄像机剪裁	视野相关 摄像机剪裁相关 最小值|最大值
 	float field_of_view;         	//摄像机视野	视野相关 影响摄像机内视野的大小，默认70
@@ -42,227 +34,63 @@ struct CameraConfigElement
 	float camera_angle_horizontal;	//摄像机横向角度	2.5D状态下摄像机的朝向
 
 private:
-	bool m_bIsValidate;
-	void SetIsValidate(bool isValid)
-	{
-		m_bIsValidate=isValid;
-	}
+
 public:
-	bool IsValidate()
-	{
-		return m_bIsValidate;
-	}
+
 	CameraConfigElement()
 	{
-		entry_id = -1;
-		m_bIsValidate=false;
+		id = -1;
+
 	}
 };
 
 //摄像机配置配置封装类
 class CameraConfigTable
 {
-	friend class TableData;
+	public:
+	typedef std::unique_ptr<CameraConfigElement> ele_ptr_type;
+	typedef std::unordered_map<int, ele_ptr_type> MapElementMap;
+	typedef vector<int> vec_type;
+	//typedef std::set<int> set_type;
+	typedef std::function<void()> ReloadCallback;
+	typedef std::vector<ReloadCallback> reload_vec_type;
 private:
-	CameraConfigTable(){}
-	~CameraConfigTable(){}
-	typedef unordered_map<int, CameraConfigElement> MapElementMap;
+	CameraConfigTable();
+	~CameraConfigTable();
+
+	vec_type m_vElementID;
 	MapElementMap	m_mapElements;
-	vector<CameraConfigElement>	m_vecAllElements;
-	CameraConfigElement m_emptyItem;
+	reload_vec_type m_vReLoadCb;
+
 public:
-	static CameraConfigTable& Instance()
-	{
-		static CameraConfigTable sInstance;
-		return sInstance;
-	}
+	static CameraConfigTable& Instance();
 
-	const CameraConfigElement* GetElement(int key)
-	{
-		MapElementMap::iterator it = m_mapElements.find(key);
-		if (it == m_mapElements.end())
-		{
-			AssertEx(false, std::string(std::string("CameraConfigTable: ") + std::to_string(key)).c_str());
-			return NULL;
-		}
-		return &it->second;
-	}
+	void RegisterReLoadCb(const ReloadCallback &cb);
 
-	bool HasElement(int key)
-	{
-		return m_mapElements.find(key) != m_mapElements.end();
-	}
+	const CameraConfigElement* GetElement(int key);
 
-	vector<CameraConfigElement>&	GetAllElement()
-	{
-		if(!m_vecAllElements.empty()) 
-			return m_vecAllElements;
-		m_vecAllElements.reserve(m_mapElements.size());
-		for(auto iter=m_mapElements.begin(); iter != m_mapElements.end(); ++iter)
-		{
-			if(iter->second.IsValidate()) 
-				m_vecAllElements.push_back(iter->second);
-		}
-		return m_vecAllElements;
-	}
-	bool Load()
-	{
-		#ifdef CONFIG_JSON
-		return LoadJson("CameraConfig.json");
-		#else
-		string strTableContent;
-		if( LoadConfigContent("CameraConfig.csv", strTableContent ) )
-			return LoadCsv( strTableContent );
-		if( !LoadConfigContent("CameraConfig.bin", strTableContent ) )
-		{
-			printf_message("配置文件[CameraConfig.bin]未找到");
-			assert(false);
-			return false;
-		}
-		return LoadBin(strTableContent);
-		#endif
+	bool HasElement(int key);
 
-		
-	}
+	const vec_type& GetAllID() const;
 
-	bool LoadJson(const std::string& jsonFile)
-	{
-		boost::property_tree::ptree sms_array;
-		boost::property_tree::json_parser::read_json(std::string(CONFIG_PATH) + jsonFile, sms_array);
-		//boost::property_tree::ptree sms_array = parse.get_child("data");
+	const MapElementMap& GetAllElement() const;
+	bool Load();
 
-		vector<string> vecLine;
+	void NotifyCb();
 
-		
-
-		BOOST_FOREACH(boost::property_tree::ptree::value_type& v, sms_array)
-		{
-			boost::property_tree::ptree p = v.second;
-
-			CameraConfigElement	member;
-
-						member.entry_id=p.get<int>("entry_id");
-			member.comment=p.get<string>("comment");
-			boost::property_tree::ptree sms_array_childclipping = p.get_child("clipping");
-			for (BOOST_AUTO(pos, sms_array_childclipping.begin()); pos != sms_array_childclipping.end(); ++pos)
-			{
-				float n = pos->second.get_value<float>(); 
-				member.clipping.push_back(n);
-			}
-			member.field_of_view=p.get<float>("field_of_view");
-			member.fog_alpha=p.get<float>("fog_alpha");
-			member.fog_noise=p.get<float>("fog_noise");
-			member.fog_distance=p.get<float>("fog_distance");
-			member.fog_distance_fall_off=p.get<float>("fog_distance_fall_off");
-			member.fog_max_distance=p.get<float>("fog_max_distance");
-			member.fog_height=p.get<float>("fog_height");
-			member.fog_height_fall_off=p.get<float>("fog_height_fall_off");
-			member.fog_baseline_height=p.get<float>("fog_baseline_height");
-			boost::property_tree::ptree sms_array_childfog_color = p.get_child("fog_color");
-			for (BOOST_AUTO(pos, sms_array_childfog_color.begin()); pos != sms_array_childfog_color.end(); ++pos)
-			{
-				int n = pos->second.get_value<int>(); 
-				member.fog_color.push_back(n);
-			}
-			boost::property_tree::ptree sms_array_childfog_color_2 = p.get_child("fog_color_2");
-			for (BOOST_AUTO(pos, sms_array_childfog_color_2.begin()); pos != sms_array_childfog_color_2.end(); ++pos)
-			{
-				int n = pos->second.get_value<int>(); 
-				member.fog_color_2.push_back(n);
-			}
-			member.bloom_threshold=p.get<float>("bloom_threshold");
-			member.bloom_intensity=p.get<float>("bloom_intensity");
-			member.bloom_blur_size=p.get<float>("bloom_blur_size");
-			member.bloom_iteration=p.get<int>("bloom_iteration");
-			member.camera_distance=p.get<float>("camera_distance");
-			member.camera_angle_vertical=p.get<float>("camera_angle_vertical");
-			member.camera_angle_horizontal=p.get<float>("camera_angle_horizontal");
+	bool LoadJson(const std::string& jsonFile);
 
 
-			member.SetIsValidate(true);
-			m_mapElements[member.entry_id] = member;
-		}
+	bool ReLoad();
+	
 
-		return true;
-	}
+  int32_t min_table_id()const;
+  int32_t max_table_id()const;
+ private:
+   int32_t min_table_id_{INT32_MAX};
+   int32_t max_table_id_{INT32_MIN};
+   bool m_bLoad{false};
 
-	bool LoadCsv(string strContent)
-	{
-		m_vecAllElements.clear();
-		m_mapElements.clear();
-		int contentOffset = 0;
-		vector<string> vecLine;
-		vecLine = ReadCsvLine( strContent, contentOffset );
-		if(vecLine.size() != 21)
-		{
-			printf_message("CameraConfig.csv中列数量与生成的代码不匹配!");
-			assert(false);
-			return false;
-		}
-		if(vecLine[0]!="entry_id"){printf_message("CameraConfig.csv中字段[entry_id]位置不对应 ");assert(false); return false; }
-		if(vecLine[1]!="comment"){printf_message("CameraConfig.csv中字段[comment]位置不对应 ");assert(false); return false; }
-		if(vecLine[2]!="clipping"){printf_message("CameraConfig.csv中字段[clipping]位置不对应 ");assert(false); return false; }
-		if(vecLine[3]!="field_of_view"){printf_message("CameraConfig.csv中字段[field_of_view]位置不对应 ");assert(false); return false; }
-		if(vecLine[4]!="fog_alpha"){printf_message("CameraConfig.csv中字段[fog_alpha]位置不对应 ");assert(false); return false; }
-		if(vecLine[5]!="fog_noise"){printf_message("CameraConfig.csv中字段[fog_noise]位置不对应 ");assert(false); return false; }
-		if(vecLine[6]!="fog_distance"){printf_message("CameraConfig.csv中字段[fog_distance]位置不对应 ");assert(false); return false; }
-		if(vecLine[7]!="fog_distance_fall_off"){printf_message("CameraConfig.csv中字段[fog_distance_fall_off]位置不对应 ");assert(false); return false; }
-		if(vecLine[8]!="fog_max_distance"){printf_message("CameraConfig.csv中字段[fog_max_distance]位置不对应 ");assert(false); return false; }
-		if(vecLine[9]!="fog_height"){printf_message("CameraConfig.csv中字段[fog_height]位置不对应 ");assert(false); return false; }
-		if(vecLine[10]!="fog_height_fall_off"){printf_message("CameraConfig.csv中字段[fog_height_fall_off]位置不对应 ");assert(false); return false; }
-		if(vecLine[11]!="fog_baseline_height"){printf_message("CameraConfig.csv中字段[fog_baseline_height]位置不对应 ");assert(false); return false; }
-		if(vecLine[12]!="fog_color"){printf_message("CameraConfig.csv中字段[fog_color]位置不对应 ");assert(false); return false; }
-		if(vecLine[13]!="fog_color_2"){printf_message("CameraConfig.csv中字段[fog_color_2]位置不对应 ");assert(false); return false; }
-		if(vecLine[14]!="bloom_threshold"){printf_message("CameraConfig.csv中字段[bloom_threshold]位置不对应 ");assert(false); return false; }
-		if(vecLine[15]!="bloom_intensity"){printf_message("CameraConfig.csv中字段[bloom_intensity]位置不对应 ");assert(false); return false; }
-		if(vecLine[16]!="bloom_blur_size"){printf_message("CameraConfig.csv中字段[bloom_blur_size]位置不对应 ");assert(false); return false; }
-		if(vecLine[17]!="bloom_iteration"){printf_message("CameraConfig.csv中字段[bloom_iteration]位置不对应 ");assert(false); return false; }
-		if(vecLine[18]!="camera_distance"){printf_message("CameraConfig.csv中字段[camera_distance]位置不对应 ");assert(false); return false; }
-		if(vecLine[19]!="camera_angle_vertical"){printf_message("CameraConfig.csv中字段[camera_angle_vertical]位置不对应 ");assert(false); return false; }
-		if(vecLine[20]!="camera_angle_horizontal"){printf_message("CameraConfig.csv中字段[camera_angle_horizontal]位置不对应 ");assert(false); return false; }
-
-		while(true)
-		{
-			vecLine = ReadCsvLine( strContent, contentOffset );
-			if((int)vecLine.size() == 0 )
-				break;
-			if((int)vecLine.size() != (int)21)
-			{
-				assert(false);
-				return false;
-			}
-			CameraConfigElement	member;
-			member.entry_id=(int)atoi(vecLine[0].c_str());
-			member.comment=vecLine[1];
-			member.field_of_view=(float)atof(vecLine[3].c_str());
-			member.fog_alpha=(float)atof(vecLine[4].c_str());
-			member.fog_noise=(float)atof(vecLine[5].c_str());
-			member.fog_distance=(float)atof(vecLine[6].c_str());
-			member.fog_distance_fall_off=(float)atof(vecLine[7].c_str());
-			member.fog_max_distance=(float)atof(vecLine[8].c_str());
-			member.fog_height=(float)atof(vecLine[9].c_str());
-			member.fog_height_fall_off=(float)atof(vecLine[10].c_str());
-			member.fog_baseline_height=(float)atof(vecLine[11].c_str());
-			member.bloom_threshold=(float)atof(vecLine[14].c_str());
-			member.bloom_intensity=(float)atof(vecLine[15].c_str());
-			member.bloom_blur_size=(float)atof(vecLine[16].c_str());
-			member.bloom_iteration=(int)atoi(vecLine[17].c_str());
-			member.camera_distance=(float)atof(vecLine[18].c_str());
-			member.camera_angle_vertical=(float)atof(vecLine[19].c_str());
-			member.camera_angle_horizontal=(float)atof(vecLine[20].c_str());
-
-			member.SetIsValidate(true);
-			m_mapElements[member.entry_id] = member;
-		}
-		return true;
-	}
-
-	vector<string> ReadCsvLine(string strContent,int contentOffset)
-	{
-		vector<string> temp;
-		return temp;
-
-	}
 };
 
 #endif

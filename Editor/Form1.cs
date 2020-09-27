@@ -67,6 +67,7 @@
         private ToolStripMenuItem copyModelToolStripMenuItem;
         private ToolStripMenuItem copyConfigToolStripMenuItem;
         private ToolStripMenuItem copyConfigToolStripMenuItem1;
+        private CheckBox LuaHook;
         private TreeView treeView1;
 
         public Form1()
@@ -83,6 +84,7 @@
             this.C.Checked = GenLangFlags.CPP;
             //this.CS.Checked = GenLangFlags.CS;
             this.LUA.Checked = GenLangFlags.LUA;
+            this.LuaHook.Checked = GenLangFlags.LUA_HOOK;
             //this.Coffee.Checked = GenLangFlags.Coffee;
 
             //删除 c# ARPG
@@ -1089,6 +1091,7 @@
                                 GenLangFlags.CPP = this.C.Checked;
                                 GenLangFlags.LUA = this.LUA.Checked;
                                 GenLangFlags.Coffee = this.Coffee.Checked;
+                                GenLangFlags.LUA_HOOK = this.LuaHook.Checked;
                             }
                         }
                     }
@@ -1338,6 +1341,7 @@
             this.Coffee = new System.Windows.Forms.CheckBox();
             this.CSCat = new System.Windows.Forms.CheckBox();
             this.ActEditor = new System.Windows.Forms.CheckBox();
+            this.LuaHook = new System.Windows.Forms.CheckBox();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -1785,12 +1789,24 @@
             this.ActEditor.UseVisualStyleBackColor = true;
             this.ActEditor.CheckedChanged += new System.EventHandler(this.SkillEditor_CheckedChanged);
             // 
+            // LuaHook
+            // 
+            this.LuaHook.AutoSize = true;
+            this.LuaHook.Location = new System.Drawing.Point(296, 536);
+            this.LuaHook.Name = "LuaHook";
+            this.LuaHook.Size = new System.Drawing.Size(66, 16);
+            this.LuaHook.TabIndex = 24;
+            this.LuaHook.Text = "LuaHook";
+            this.LuaHook.UseVisualStyleBackColor = true;
+            this.LuaHook.CheckedChanged += new System.EventHandler(this.LUAHOOK_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(639, 740);
+            this.Controls.Add(this.LuaHook);
             this.Controls.Add(this.ActEditor);
             this.Controls.Add(this.CSCat);
             this.Controls.Add(this.Coffee);
@@ -2870,6 +2886,11 @@
         private void copyConfigToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             RunBat.Run("Copy Server Config.bat");
+        }
+
+        private void LUAHOOK_CheckedChanged(object sender, EventArgs e)
+        {
+            GenLangFlags.LUA_HOOK = this.LuaHook.Checked;
         }
     }
 }

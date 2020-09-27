@@ -45,5 +45,44 @@ void ModuleChat::SendToClientPushChatUpdates( INT64 UserId, ChatRpcPushChatUpdat
 	MsgStreamMgr::Instance().SendMsg( UserId, 0, Notify );
 }
 
+/********************************************************************************************
+* Function:       SendToClientPushMarquee
+* Description:    Chat-->推送跑马灯异步通知操作函数
+* Input:          ChatRpcPushMarqueeNotifyWraper& Notify 推送跑马灯通知
+* Input:          INT64 UserId 需要通知到的用户ID
+* Output:         无
+* Return:         无
+********************************************************************************************/
+void ModuleChat::SendToClientPushMarquee( INT64 UserId, ChatRpcPushMarqueeNotifyWraper& Notify )
+{
+	MsgStreamMgr::Instance().SendMsg( UserId, 0, Notify );
+}
+
+/********************************************************************************************
+* Function:       SendToClientSay
+* Description:    Chat-->玩家或NPC对象说话异步通知操作函数
+* Input:          ChatRpcSayNotifyWraper& Notify 玩家或NPC对象说话通知
+* Input:          INT64 UserId 需要通知到的用户ID
+* Output:         无
+* Return:         无
+********************************************************************************************/
+void ModuleChat::SendToClientSay( INT64 UserId, ChatRpcSayNotifyWraper& Notify )
+{
+	MsgStreamMgr::Instance().SendMsg( UserId, 0, Notify );
+}
+
+/********************************************************************************************
+* Function:       SendToClientServerChat
+* Description:    Chat-->服务器通知异步通知操作函数
+* Input:          ChatRpcServerChatNotifyWraper& Notify 服务器通知
+* Input:          INT64 UserId 需要通知到的用户ID
+* Output:         无
+* Return:         无
+********************************************************************************************/
+void ModuleChat::SendToClientServerChat( INT64 UserId, ChatRpcServerChatNotifyWraper& Notify )
+{
+	MsgStreamMgr::Instance().SendMsg( UserId, 0, Notify );
+}
+
 
 

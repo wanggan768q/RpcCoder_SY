@@ -13,6 +13,12 @@ SceneController = cc.coffee.BaseControllerExtend.extend(
         _model.SetCEnterSceneNotifyCB(@CEnterSceneCBNotify)
         _model.SetSEnterSceneNotifyCB(@SEnterSceneCBNotify)
         _model.SetObjDieNotifyCB(@ObjDieCBNotify)
+        _model.SetSEnterMirrorSceneNotifyCB(@SEnterMirrorSceneCBNotify)
+        _model.SetChangeSceneLeaveNotifyCB(@ChangeSceneLeaveCBNotify)
+        _model.SetSyncSceneLineStatsNotifyCB(@SyncSceneLineStatsCBNotify)
+        _model.SetKickOutGameNotifyCB(@KickOutGameCBNotify)
+        _model.SetDayNightChangeNotifyCB(@DayNightChangeCBNotify)
+        _model.SetWeatherChangeNotifyCB(@WeatherChangeCBNotify)
 
         return
 
@@ -28,6 +34,18 @@ SceneController = cc.coffee.BaseControllerExtend.extend(
         cc.log "SEnterSceneCBNotify Respond "
     ObjDieCBNotify:(ret_msg)->
         cc.log "ObjDieCBNotify Respond "
+    SEnterMirrorSceneCBNotify:(ret_msg)->
+        cc.log "SEnterMirrorSceneCBNotify Respond "
+    ChangeSceneLeaveCBNotify:(ret_msg)->
+        cc.log "ChangeSceneLeaveCBNotify Respond "
+    SyncSceneLineStatsCBNotify:(ret_msg)->
+        cc.log "SyncSceneLineStatsCBNotify Respond "
+    KickOutGameCBNotify:(ret_msg)->
+        cc.log "KickOutGameCBNotify Respond "
+    DayNightChangeCBNotify:(ret_msg)->
+        cc.log "DayNightChangeCBNotify Respond "
+    WeatherChangeCBNotify:(ret_msg)->
+        cc.log "WeatherChangeCBNotify Respond "
 
 
 )

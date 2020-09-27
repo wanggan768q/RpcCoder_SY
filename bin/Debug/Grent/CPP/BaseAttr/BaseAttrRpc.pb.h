@@ -164,7 +164,7 @@ class BaseAttrRpcSyncDataReply : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
@@ -261,10 +261,17 @@ class BaseAttrRpcSyncNotify : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional bytes UpdateData = 1;
+  // optional uint64 ObjId = 2 [default = 0];
+  inline bool has_objid() const;
+  inline void clear_objid();
+  static const int kObjIdFieldNumber = 2;
+  inline ::google::protobuf::uint64 objid() const;
+  inline void set_objid(::google::protobuf::uint64 value);
+
+  // optional bytes UpdateData = 3;
   inline bool has_updatedata() const;
   inline void clear_updatedata();
-  static const int kUpdateDataFieldNumber = 1;
+  static const int kUpdateDataFieldNumber = 3;
   inline const ::std::string& updatedata() const;
   inline void set_updatedata(const ::std::string& value);
   inline void set_updatedata(const char* value);
@@ -275,15 +282,18 @@ class BaseAttrRpcSyncNotify : public ::google::protobuf::Message {
 
   // @@protoc_insertion_point(class_scope:BaseAttrRpcSyncNotify)
  private:
+  inline void set_has_objid();
+  inline void clear_has_objid();
   inline void set_has_updatedata();
   inline void clear_has_updatedata();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
+  ::google::protobuf::uint64 objid_;
   ::std::string* updatedata_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
 
   friend void  protobuf_AddDesc_BaseAttrRpc_2eproto();
   friend void protobuf_AssignDesc_BaseAttrRpc_2eproto();
@@ -303,7 +313,7 @@ class BaseAttrRpcSyncNotify : public ::google::protobuf::Message {
 
 // BaseAttrRpcSyncDataReply
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool BaseAttrRpcSyncDataReply::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -399,15 +409,37 @@ inline void BaseAttrRpcSyncDataReply::set_allocated_updatedata(::std::string* up
 
 // BaseAttrRpcSyncNotify
 
-// optional bytes UpdateData = 1;
-inline bool BaseAttrRpcSyncNotify::has_updatedata() const {
+// optional uint64 ObjId = 2 [default = 0];
+inline bool BaseAttrRpcSyncNotify::has_objid() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void BaseAttrRpcSyncNotify::set_has_updatedata() {
+inline void BaseAttrRpcSyncNotify::set_has_objid() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void BaseAttrRpcSyncNotify::clear_has_updatedata() {
+inline void BaseAttrRpcSyncNotify::clear_has_objid() {
   _has_bits_[0] &= ~0x00000001u;
+}
+inline void BaseAttrRpcSyncNotify::clear_objid() {
+  objid_ = GOOGLE_ULONGLONG(0);
+  clear_has_objid();
+}
+inline ::google::protobuf::uint64 BaseAttrRpcSyncNotify::objid() const {
+  return objid_;
+}
+inline void BaseAttrRpcSyncNotify::set_objid(::google::protobuf::uint64 value) {
+  set_has_objid();
+  objid_ = value;
+}
+
+// optional bytes UpdateData = 3;
+inline bool BaseAttrRpcSyncNotify::has_updatedata() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void BaseAttrRpcSyncNotify::set_has_updatedata() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void BaseAttrRpcSyncNotify::clear_has_updatedata() {
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void BaseAttrRpcSyncNotify::clear_updatedata() {
   if (updatedata_ != &::google::protobuf::internal::kEmptyString) {

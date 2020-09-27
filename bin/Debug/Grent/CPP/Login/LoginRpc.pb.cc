@@ -18,24 +18,12 @@
 
 namespace {
 
-const ::google::protobuf::Descriptor* LoginRpcConnectAsk_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  LoginRpcConnectAsk_reflection_ = NULL;
-const ::google::protobuf::Descriptor* LoginRpcConnectReply_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  LoginRpcConnectReply_reflection_ = NULL;
 const ::google::protobuf::Descriptor* LoginRpcLoginAsk_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   LoginRpcLoginAsk_reflection_ = NULL;
 const ::google::protobuf::Descriptor* LoginRpcLoginReply_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   LoginRpcLoginReply_reflection_ = NULL;
-const ::google::protobuf::Descriptor* LoginRpcCharacterListAsk_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  LoginRpcCharacterListAsk_reflection_ = NULL;
-const ::google::protobuf::Descriptor* LoginRpcCharacterListReply_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  LoginRpcCharacterListReply_reflection_ = NULL;
 const ::google::protobuf::Descriptor* LoginRpcSelectCharacterAsk_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   LoginRpcSelectCharacterAsk_reflection_ = NULL;
@@ -48,18 +36,42 @@ const ::google::protobuf::internal::GeneratedMessageReflection*
 const ::google::protobuf::Descriptor* LoginRpcCreateCharacterReply_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   LoginRpcCreateCharacterReply_reflection_ = NULL;
-const ::google::protobuf::Descriptor* LoginRpcSelectSaveUserAsk_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  LoginRpcSelectSaveUserAsk_reflection_ = NULL;
-const ::google::protobuf::Descriptor* LoginRpcSelectSaveUserReply_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  LoginRpcSelectSaveUserReply_reflection_ = NULL;
 const ::google::protobuf::Descriptor* LoginRpcDeleteCharacterAsk_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   LoginRpcDeleteCharacterAsk_reflection_ = NULL;
 const ::google::protobuf::Descriptor* LoginRpcDeleteCharacterReply_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   LoginRpcDeleteCharacterReply_reflection_ = NULL;
+const ::google::protobuf::Descriptor* LoginRpcTestAsk_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  LoginRpcTestAsk_reflection_ = NULL;
+const ::google::protobuf::Descriptor* LoginRpcTestReply_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  LoginRpcTestReply_reflection_ = NULL;
+const ::google::protobuf::Descriptor* LoginRpcTest1Ask_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  LoginRpcTest1Ask_reflection_ = NULL;
+const ::google::protobuf::Descriptor* LoginRpcTest1Reply_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  LoginRpcTest1Reply_reflection_ = NULL;
+const ::google::protobuf::Descriptor* LoginRpcLoginLineUpNotify_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  LoginRpcLoginLineUpNotify_reflection_ = NULL;
+const ::google::protobuf::Descriptor* LoginRpcLoginEnterGameNotify_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  LoginRpcLoginEnterGameNotify_reflection_ = NULL;
+const ::google::protobuf::Descriptor* LoginRpcLoginQuitLineUpAsk_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  LoginRpcLoginQuitLineUpAsk_reflection_ = NULL;
+const ::google::protobuf::Descriptor* LoginRpcLoginQuitLineUpReply_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  LoginRpcLoginQuitLineUpReply_reflection_ = NULL;
+const ::google::protobuf::Descriptor* LoginRpcRemoteLoginAsk_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  LoginRpcRemoteLoginAsk_reflection_ = NULL;
+const ::google::protobuf::Descriptor* LoginRpcRemoteLoginReply_descriptor_ = NULL;
+const ::google::protobuf::internal::GeneratedMessageReflection*
+  LoginRpcRemoteLoginReply_reflection_ = NULL;
 
 }  // namespace
 
@@ -70,41 +82,15 @@ void protobuf_AssignDesc_LoginRpc_2eproto() {
     ::google::protobuf::DescriptorPool::generated_pool()->FindFileByName(
       "LoginRpc.proto");
   GOOGLE_CHECK(file != NULL);
-  LoginRpcConnectAsk_descriptor_ = file->message_type(0);
-  static const int LoginRpcConnectAsk_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcConnectAsk, type_),
-  };
-  LoginRpcConnectAsk_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      LoginRpcConnectAsk_descriptor_,
-      LoginRpcConnectAsk::default_instance_,
-      LoginRpcConnectAsk_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcConnectAsk, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcConnectAsk, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(LoginRpcConnectAsk));
-  LoginRpcConnectReply_descriptor_ = file->message_type(1);
-  static const int LoginRpcConnectReply_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcConnectReply, result_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcConnectReply, type_),
-  };
-  LoginRpcConnectReply_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      LoginRpcConnectReply_descriptor_,
-      LoginRpcConnectReply::default_instance_,
-      LoginRpcConnectReply_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcConnectReply, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcConnectReply, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(LoginRpcConnectReply));
-  LoginRpcLoginAsk_descriptor_ = file->message_type(2);
-  static const int LoginRpcLoginAsk_offsets_[2] = {
+  LoginRpcLoginAsk_descriptor_ = file->message_type(0);
+  static const int LoginRpcLoginAsk_offsets_[7] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcLoginAsk, username_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcLoginAsk, passwd_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcLoginAsk, snid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcLoginAsk, gameid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcLoginAsk, mac_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcLoginAsk, token_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcLoginAsk, version_),
   };
   LoginRpcLoginAsk_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -117,10 +103,14 @@ void protobuf_AssignDesc_LoginRpc_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(LoginRpcLoginAsk));
-  LoginRpcLoginReply_descriptor_ = file->message_type(3);
-  static const int LoginRpcLoginReply_offsets_[2] = {
+  LoginRpcLoginReply_descriptor_ = file->message_type(1);
+  static const int LoginRpcLoginReply_offsets_[6] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcLoginReply, result_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcLoginReply, roleid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcLoginReply, pos_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcLoginReply, characterlist_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcLoginReply, lastselectroleid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcLoginReply, servertime_),
   };
   LoginRpcLoginReply_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -133,39 +123,7 @@ void protobuf_AssignDesc_LoginRpc_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(LoginRpcLoginReply));
-  LoginRpcCharacterListAsk_descriptor_ = file->message_type(4);
-  static const int LoginRpcCharacterListAsk_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcCharacterListAsk, accountname_),
-  };
-  LoginRpcCharacterListAsk_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      LoginRpcCharacterListAsk_descriptor_,
-      LoginRpcCharacterListAsk::default_instance_,
-      LoginRpcCharacterListAsk_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcCharacterListAsk, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcCharacterListAsk, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(LoginRpcCharacterListAsk));
-  LoginRpcCharacterListReply_descriptor_ = file->message_type(5);
-  static const int LoginRpcCharacterListReply_offsets_[3] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcCharacterListReply, result_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcCharacterListReply, characterlist_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcCharacterListReply, lastselectroleid_),
-  };
-  LoginRpcCharacterListReply_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      LoginRpcCharacterListReply_descriptor_,
-      LoginRpcCharacterListReply::default_instance_,
-      LoginRpcCharacterListReply_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcCharacterListReply, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcCharacterListReply, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(LoginRpcCharacterListReply));
-  LoginRpcSelectCharacterAsk_descriptor_ = file->message_type(6);
+  LoginRpcSelectCharacterAsk_descriptor_ = file->message_type(2);
   static const int LoginRpcSelectCharacterAsk_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcSelectCharacterAsk, roleid_),
   };
@@ -180,12 +138,14 @@ void protobuf_AssignDesc_LoginRpc_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(LoginRpcSelectCharacterAsk));
-  LoginRpcSelectCharacterReply_descriptor_ = file->message_type(7);
-  static const int LoginRpcSelectCharacterReply_offsets_[4] = {
+  LoginRpcSelectCharacterReply_descriptor_ = file->message_type(3);
+  static const int LoginRpcSelectCharacterReply_offsets_[6] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcSelectCharacterReply, result_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcSelectCharacterReply, roleid_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcSelectCharacterReply, ip_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcSelectCharacterReply, port_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcSelectCharacterReply, lastsceneid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcSelectCharacterReply, ban_reason_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcSelectCharacterReply, lineid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcSelectCharacterReply, ban_endtime_),
   };
   LoginRpcSelectCharacterReply_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -198,10 +158,12 @@ void protobuf_AssignDesc_LoginRpc_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(LoginRpcSelectCharacterReply));
-  LoginRpcCreateCharacterAsk_descriptor_ = file->message_type(8);
-  static const int LoginRpcCreateCharacterAsk_offsets_[2] = {
+  LoginRpcCreateCharacterAsk_descriptor_ = file->message_type(4);
+  static const int LoginRpcCreateCharacterAsk_offsets_[4] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcCreateCharacterAsk, nickname_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcCreateCharacterAsk, configid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcCreateCharacterAsk, pinchdata_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcCreateCharacterAsk, pushregid_),
   };
   LoginRpcCreateCharacterAsk_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -214,10 +176,11 @@ void protobuf_AssignDesc_LoginRpc_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(LoginRpcCreateCharacterAsk));
-  LoginRpcCreateCharacterReply_descriptor_ = file->message_type(9);
-  static const int LoginRpcCreateCharacterReply_offsets_[2] = {
+  LoginRpcCreateCharacterReply_descriptor_ = file->message_type(5);
+  static const int LoginRpcCreateCharacterReply_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcCreateCharacterReply, result_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcCreateCharacterReply, roleid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcCreateCharacterReply, timestamp_),
   };
   LoginRpcCreateCharacterReply_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -230,37 +193,7 @@ void protobuf_AssignDesc_LoginRpc_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(LoginRpcCreateCharacterReply));
-  LoginRpcSelectSaveUserAsk_descriptor_ = file->message_type(10);
-  static const int LoginRpcSelectSaveUserAsk_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcSelectSaveUserAsk, roleid_),
-  };
-  LoginRpcSelectSaveUserAsk_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      LoginRpcSelectSaveUserAsk_descriptor_,
-      LoginRpcSelectSaveUserAsk::default_instance_,
-      LoginRpcSelectSaveUserAsk_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcSelectSaveUserAsk, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcSelectSaveUserAsk, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(LoginRpcSelectSaveUserAsk));
-  LoginRpcSelectSaveUserReply_descriptor_ = file->message_type(11);
-  static const int LoginRpcSelectSaveUserReply_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcSelectSaveUserReply, result_),
-  };
-  LoginRpcSelectSaveUserReply_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      LoginRpcSelectSaveUserReply_descriptor_,
-      LoginRpcSelectSaveUserReply::default_instance_,
-      LoginRpcSelectSaveUserReply_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcSelectSaveUserReply, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcSelectSaveUserReply, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(LoginRpcSelectSaveUserReply));
-  LoginRpcDeleteCharacterAsk_descriptor_ = file->message_type(12);
+  LoginRpcDeleteCharacterAsk_descriptor_ = file->message_type(6);
   static const int LoginRpcDeleteCharacterAsk_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcDeleteCharacterAsk, roleid_),
   };
@@ -275,7 +208,7 @@ void protobuf_AssignDesc_LoginRpc_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(LoginRpcDeleteCharacterAsk));
-  LoginRpcDeleteCharacterReply_descriptor_ = file->message_type(13);
+  LoginRpcDeleteCharacterReply_descriptor_ = file->message_type(7);
   static const int LoginRpcDeleteCharacterReply_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcDeleteCharacterReply, result_),
   };
@@ -290,6 +223,162 @@ void protobuf_AssignDesc_LoginRpc_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(LoginRpcDeleteCharacterReply));
+  LoginRpcTestAsk_descriptor_ = file->message_type(8);
+  static const int LoginRpcTestAsk_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcTestAsk, a_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcTestAsk, b_),
+  };
+  LoginRpcTestAsk_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      LoginRpcTestAsk_descriptor_,
+      LoginRpcTestAsk::default_instance_,
+      LoginRpcTestAsk_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcTestAsk, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcTestAsk, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(LoginRpcTestAsk));
+  LoginRpcTestReply_descriptor_ = file->message_type(9);
+  static const int LoginRpcTestReply_offsets_[3] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcTestReply, result_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcTestReply, a_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcTestReply, b_),
+  };
+  LoginRpcTestReply_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      LoginRpcTestReply_descriptor_,
+      LoginRpcTestReply::default_instance_,
+      LoginRpcTestReply_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcTestReply, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcTestReply, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(LoginRpcTestReply));
+  LoginRpcTest1Ask_descriptor_ = file->message_type(10);
+  static const int LoginRpcTest1Ask_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcTest1Ask, b_),
+  };
+  LoginRpcTest1Ask_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      LoginRpcTest1Ask_descriptor_,
+      LoginRpcTest1Ask::default_instance_,
+      LoginRpcTest1Ask_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcTest1Ask, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcTest1Ask, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(LoginRpcTest1Ask));
+  LoginRpcTest1Reply_descriptor_ = file->message_type(11);
+  static const int LoginRpcTest1Reply_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcTest1Reply, result_),
+  };
+  LoginRpcTest1Reply_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      LoginRpcTest1Reply_descriptor_,
+      LoginRpcTest1Reply::default_instance_,
+      LoginRpcTest1Reply_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcTest1Reply, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcTest1Reply, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(LoginRpcTest1Reply));
+  LoginRpcLoginLineUpNotify_descriptor_ = file->message_type(12);
+  static const int LoginRpcLoginLineUpNotify_offsets_[3] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcLoginLineUpNotify, lineupindex_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcLoginLineUpNotify, lineuprole_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcLoginLineUpNotify, lineuptime_),
+  };
+  LoginRpcLoginLineUpNotify_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      LoginRpcLoginLineUpNotify_descriptor_,
+      LoginRpcLoginLineUpNotify::default_instance_,
+      LoginRpcLoginLineUpNotify_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcLoginLineUpNotify, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcLoginLineUpNotify, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(LoginRpcLoginLineUpNotify));
+  LoginRpcLoginEnterGameNotify_descriptor_ = file->message_type(13);
+  static const int LoginRpcLoginEnterGameNotify_offsets_[3] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcLoginEnterGameNotify, roleid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcLoginEnterGameNotify, lastsceneid_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcLoginEnterGameNotify, lineid_),
+  };
+  LoginRpcLoginEnterGameNotify_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      LoginRpcLoginEnterGameNotify_descriptor_,
+      LoginRpcLoginEnterGameNotify::default_instance_,
+      LoginRpcLoginEnterGameNotify_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcLoginEnterGameNotify, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcLoginEnterGameNotify, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(LoginRpcLoginEnterGameNotify));
+  LoginRpcLoginQuitLineUpAsk_descriptor_ = file->message_type(14);
+  static const int LoginRpcLoginQuitLineUpAsk_offsets_[1] = {
+  };
+  LoginRpcLoginQuitLineUpAsk_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      LoginRpcLoginQuitLineUpAsk_descriptor_,
+      LoginRpcLoginQuitLineUpAsk::default_instance_,
+      LoginRpcLoginQuitLineUpAsk_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcLoginQuitLineUpAsk, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcLoginQuitLineUpAsk, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(LoginRpcLoginQuitLineUpAsk));
+  LoginRpcLoginQuitLineUpReply_descriptor_ = file->message_type(15);
+  static const int LoginRpcLoginQuitLineUpReply_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcLoginQuitLineUpReply, result_),
+  };
+  LoginRpcLoginQuitLineUpReply_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      LoginRpcLoginQuitLineUpReply_descriptor_,
+      LoginRpcLoginQuitLineUpReply::default_instance_,
+      LoginRpcLoginQuitLineUpReply_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcLoginQuitLineUpReply, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcLoginQuitLineUpReply, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(LoginRpcLoginQuitLineUpReply));
+  LoginRpcRemoteLoginAsk_descriptor_ = file->message_type(16);
+  static const int LoginRpcRemoteLoginAsk_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcRemoteLoginAsk, roleid_),
+  };
+  LoginRpcRemoteLoginAsk_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      LoginRpcRemoteLoginAsk_descriptor_,
+      LoginRpcRemoteLoginAsk::default_instance_,
+      LoginRpcRemoteLoginAsk_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcRemoteLoginAsk, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcRemoteLoginAsk, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(LoginRpcRemoteLoginAsk));
+  LoginRpcRemoteLoginReply_descriptor_ = file->message_type(17);
+  static const int LoginRpcRemoteLoginReply_offsets_[1] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcRemoteLoginReply, result_),
+  };
+  LoginRpcRemoteLoginReply_reflection_ =
+    new ::google::protobuf::internal::GeneratedMessageReflection(
+      LoginRpcRemoteLoginReply_descriptor_,
+      LoginRpcRemoteLoginReply::default_instance_,
+      LoginRpcRemoteLoginReply_offsets_,
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcRemoteLoginReply, _has_bits_[0]),
+      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(LoginRpcRemoteLoginReply, _unknown_fields_),
+      -1,
+      ::google::protobuf::DescriptorPool::generated_pool(),
+      ::google::protobuf::MessageFactory::generated_factory(),
+      sizeof(LoginRpcRemoteLoginReply));
 }
 
 namespace {
@@ -303,17 +392,9 @@ inline void protobuf_AssignDescriptorsOnce() {
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    LoginRpcConnectAsk_descriptor_, &LoginRpcConnectAsk::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    LoginRpcConnectReply_descriptor_, &LoginRpcConnectReply::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     LoginRpcLoginAsk_descriptor_, &LoginRpcLoginAsk::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     LoginRpcLoginReply_descriptor_, &LoginRpcLoginReply::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    LoginRpcCharacterListAsk_descriptor_, &LoginRpcCharacterListAsk::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    LoginRpcCharacterListReply_descriptor_, &LoginRpcCharacterListReply::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     LoginRpcSelectCharacterAsk_descriptor_, &LoginRpcSelectCharacterAsk::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
@@ -323,30 +404,38 @@ void protobuf_RegisterTypes(const ::std::string&) {
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     LoginRpcCreateCharacterReply_descriptor_, &LoginRpcCreateCharacterReply::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    LoginRpcSelectSaveUserAsk_descriptor_, &LoginRpcSelectSaveUserAsk::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    LoginRpcSelectSaveUserReply_descriptor_, &LoginRpcSelectSaveUserReply::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     LoginRpcDeleteCharacterAsk_descriptor_, &LoginRpcDeleteCharacterAsk::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     LoginRpcDeleteCharacterReply_descriptor_, &LoginRpcDeleteCharacterReply::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    LoginRpcTestAsk_descriptor_, &LoginRpcTestAsk::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    LoginRpcTestReply_descriptor_, &LoginRpcTestReply::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    LoginRpcTest1Ask_descriptor_, &LoginRpcTest1Ask::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    LoginRpcTest1Reply_descriptor_, &LoginRpcTest1Reply::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    LoginRpcLoginLineUpNotify_descriptor_, &LoginRpcLoginLineUpNotify::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    LoginRpcLoginEnterGameNotify_descriptor_, &LoginRpcLoginEnterGameNotify::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    LoginRpcLoginQuitLineUpAsk_descriptor_, &LoginRpcLoginQuitLineUpAsk::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    LoginRpcLoginQuitLineUpReply_descriptor_, &LoginRpcLoginQuitLineUpReply::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    LoginRpcRemoteLoginAsk_descriptor_, &LoginRpcRemoteLoginAsk::default_instance());
+  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
+    LoginRpcRemoteLoginReply_descriptor_, &LoginRpcRemoteLoginReply::default_instance());
 }
 
 }  // namespace
 
 void protobuf_ShutdownFile_LoginRpc_2eproto() {
-  delete LoginRpcConnectAsk::default_instance_;
-  delete LoginRpcConnectAsk_reflection_;
-  delete LoginRpcConnectReply::default_instance_;
-  delete LoginRpcConnectReply_reflection_;
   delete LoginRpcLoginAsk::default_instance_;
   delete LoginRpcLoginAsk_reflection_;
   delete LoginRpcLoginReply::default_instance_;
   delete LoginRpcLoginReply_reflection_;
-  delete LoginRpcCharacterListAsk::default_instance_;
-  delete LoginRpcCharacterListAsk_reflection_;
-  delete LoginRpcCharacterListReply::default_instance_;
-  delete LoginRpcCharacterListReply_reflection_;
   delete LoginRpcSelectCharacterAsk::default_instance_;
   delete LoginRpcSelectCharacterAsk_reflection_;
   delete LoginRpcSelectCharacterReply::default_instance_;
@@ -355,14 +444,30 @@ void protobuf_ShutdownFile_LoginRpc_2eproto() {
   delete LoginRpcCreateCharacterAsk_reflection_;
   delete LoginRpcCreateCharacterReply::default_instance_;
   delete LoginRpcCreateCharacterReply_reflection_;
-  delete LoginRpcSelectSaveUserAsk::default_instance_;
-  delete LoginRpcSelectSaveUserAsk_reflection_;
-  delete LoginRpcSelectSaveUserReply::default_instance_;
-  delete LoginRpcSelectSaveUserReply_reflection_;
   delete LoginRpcDeleteCharacterAsk::default_instance_;
   delete LoginRpcDeleteCharacterAsk_reflection_;
   delete LoginRpcDeleteCharacterReply::default_instance_;
   delete LoginRpcDeleteCharacterReply_reflection_;
+  delete LoginRpcTestAsk::default_instance_;
+  delete LoginRpcTestAsk_reflection_;
+  delete LoginRpcTestReply::default_instance_;
+  delete LoginRpcTestReply_reflection_;
+  delete LoginRpcTest1Ask::default_instance_;
+  delete LoginRpcTest1Ask_reflection_;
+  delete LoginRpcTest1Reply::default_instance_;
+  delete LoginRpcTest1Reply_reflection_;
+  delete LoginRpcLoginLineUpNotify::default_instance_;
+  delete LoginRpcLoginLineUpNotify_reflection_;
+  delete LoginRpcLoginEnterGameNotify::default_instance_;
+  delete LoginRpcLoginEnterGameNotify_reflection_;
+  delete LoginRpcLoginQuitLineUpAsk::default_instance_;
+  delete LoginRpcLoginQuitLineUpAsk_reflection_;
+  delete LoginRpcLoginQuitLineUpReply::default_instance_;
+  delete LoginRpcLoginQuitLineUpReply_reflection_;
+  delete LoginRpcRemoteLoginAsk::default_instance_;
+  delete LoginRpcRemoteLoginAsk_reflection_;
+  delete LoginRpcRemoteLoginReply::default_instance_;
+  delete LoginRpcRemoteLoginReply_reflection_;
 }
 
 void protobuf_AddDesc_LoginRpc_2eproto() {
@@ -373,60 +478,80 @@ void protobuf_AddDesc_LoginRpc_2eproto() {
 
   ::protobuf_AddDesc_PublicStruct_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\016LoginRpc.proto\032\022PublicStruct.proto\"&\n\022"
-    "LoginRpcConnectAsk\022\020\n\004Type\030\001 \001(\021:\002-1\">\n\024"
-    "LoginRpcConnectReply\022\025\n\006Result\030\001 \001(\021:\005-9"
-    "999\022\017\n\004Type\030\002 \001(\021:\0010\"4\n\020LoginRpcLoginAsk"
-    "\022\020\n\010Username\030\001 \001(\t\022\016\n\006Passwd\030\002 \001(\t\">\n\022Lo"
-    "ginRpcLoginReply\022\025\n\006Result\030\001 \001(\021:\005-9999\022"
-    "\021\n\006RoleId\030\002 \001(\004:\0010\"/\n\030LoginRpcCharacterL"
-    "istAsk\022\023\n\013Accountname\030\001 \001(\t\"w\n\032LoginRpcC"
-    "haracterListReply\022\025\n\006Result\030\001 \001(\021:\005-9999"
-    "\022%\n\rCharacterList\030\002 \003(\0132\016.CharacterInfo\022"
-    "\033\n\020LastSelectRoleId\030\004 \001(\004:\0010\"/\n\032LoginRpc"
-    "SelectCharacterAsk\022\021\n\006RoleId\030\001 \001(\004:\0010\"e\n"
-    "\034LoginRpcSelectCharacterReply\022\025\n\006Result\030"
-    "\001 \001(\021:\005-9999\022\021\n\006RoleId\030\002 \001(\004:\0010\022\n\n\002Ip\030\003 "
-    "\001(\t\022\017\n\004Port\030\004 \001(\021:\0010\"D\n\032LoginRpcCreateCh"
-    "aracterAsk\022\020\n\010Nickname\030\001 \001(\t\022\024\n\010ConfigId"
-    "\030\002 \001(\021:\002-1\"H\n\034LoginRpcCreateCharacterRep"
-    "ly\022\025\n\006Result\030\001 \001(\021:\005-9999\022\021\n\006RoleId\030\002 \001("
-    "\004:\0010\".\n\031LoginRpcSelectSaveUserAsk\022\021\n\006Rol"
-    "eId\030\001 \001(\004:\0010\"4\n\033LoginRpcSelectSaveUserRe"
-    "ply\022\025\n\006Result\030\001 \001(\021:\005-9999\"/\n\032LoginRpcDe"
-    "leteCharacterAsk\022\021\n\006RoleId\030\001 \001(\004:\0010\"5\n\034L"
-    "oginRpcDeleteCharacterReply\022\025\n\006Result\030\001 "
-    "\001(\021:\005-9999", 930);
+    "\n\016LoginRpc.proto\032\022PublicStruct.proto\"\177\n\020"
+    "LoginRpcLoginAsk\022\020\n\010Username\030\001 \001(\t\022\016\n\006Pa"
+    "sswd\030\002 \001(\t\022\014\n\004SnId\030\003 \001(\t\022\016\n\006GameId\030\004 \001(\t"
+    "\022\013\n\003Mac\030\005 \001(\t\022\r\n\005Token\030\006 \001(\t\022\017\n\007Version\030"
+    "\007 \001(\t\"\261\001\n\022LoginRpcLoginReply\022\025\n\006Result\030\001"
+    " \001(\005:\005-9999\022\021\n\006RoleId\030\002 \001(\004:\0010\022\025\n\003Pos\030\003 "
+    "\001(\0132\010.Vector3\022%\n\rCharacterList\030\004 \003(\0132\016.C"
+    "haracterInfo\022\033\n\020LastSelectRoleId\030\005 \001(\004:\001"
+    "0\022\026\n\nServerTime\030\006 \001(\005:\002-1\"/\n\032LoginRpcSel"
+    "ectCharacterAsk\022\021\n\006RoleId\030\001 \001(\004:\0010\"\242\001\n\034L"
+    "oginRpcSelectCharacterReply\022\025\n\006Result\030\001 "
+    "\001(\005:\005-9999\022\021\n\006RoleId\030\002 \001(\004:\0010\022\027\n\013LastSce"
+    "neID\030\005 \001(\005:\002-1\022\022\n\nBan_Reason\030\006 \001(\t\022\022\n\006Li"
+    "neId\030\007 \001(\005:\002-1\022\027\n\013Ban_EndTime\030\010 \001(\005:\002-1\""
+    "z\n\032LoginRpcCreateCharacterAsk\022\020\n\010Nicknam"
+    "e\030\001 \001(\t\022\024\n\010ConfigId\030\002 \001(\005:\002-1\022!\n\tPinchDa"
+    "ta\030\003 \001(\0132\016.PinchFaceData\022\021\n\tPushRegId\030\004 "
+    "\001(\t\"^\n\034LoginRpcCreateCharacterReply\022\025\n\006R"
+    "esult\030\001 \001(\005:\005-9999\022\021\n\006RoleId\030\002 \001(\004:\0010\022\024\n"
+    "\tTimeStamp\030\003 \001(\005:\0010\"/\n\032LoginRpcDeleteCha"
+    "racterAsk\022\021\n\006RoleId\030\001 \001(\004:\0010\"5\n\034LoginRpc"
+    "DeleteCharacterReply\022\025\n\006Result\030\001 \001(\005:\005-9"
+    "999\"\'\n\017LoginRpcTestAsk\022\t\n\001A\030\001 \003(\003\022\t\n\001B\030\003"
+    " \003(\004\"=\n\021LoginRpcTestReply\022\022\n\006Result\030\001 \001("
+    "\005:\002-1\022\t\n\001A\030\002 \003(\003\022\t\n\001B\030\003 \003(\004\"\035\n\020LoginRpcT"
+    "est1Ask\022\t\n\001B\030\001 \003(\004\"(\n\022LoginRpcTest1Reply"
+    "\022\022\n\006Result\030\001 \001(\005:\002-1\"d\n\031LoginRpcLoginLin"
+    "eUpNotify\022\027\n\013LineUpIndex\030\001 \001(\005:\002-1\022\026\n\nLi"
+    "neUpRole\030\002 \001(\005:\002-1\022\026\n\nLineUpTime\030\003 \001(\005:\002"
+    "-1\"^\n\034LoginRpcLoginEnterGameNotify\022\021\n\006Ro"
+    "leID\030\001 \001(\004:\0010\022\027\n\013LastSceneID\030\002 \001(\005:\002-1\022\022"
+    "\n\006LineID\030\003 \001(\005:\002-1\"\034\n\032LoginRpcLoginQuitL"
+    "ineUpAsk\"2\n\034LoginRpcLoginQuitLineUpReply"
+    "\022\022\n\006Result\030\001 \001(\005:\002-1\"+\n\026LoginRpcRemoteLo"
+    "ginAsk\022\021\n\006Roleid\030\001 \001(\004:\0010\".\n\030LoginRpcRem"
+    "oteLoginReply\022\022\n\006Result\030\001 \001(\005:\002-1", 1433);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "LoginRpc.proto", &protobuf_RegisterTypes);
-  LoginRpcConnectAsk::default_instance_ = new LoginRpcConnectAsk();
-  LoginRpcConnectReply::default_instance_ = new LoginRpcConnectReply();
   LoginRpcLoginAsk::default_instance_ = new LoginRpcLoginAsk();
   LoginRpcLoginReply::default_instance_ = new LoginRpcLoginReply();
-  LoginRpcCharacterListAsk::default_instance_ = new LoginRpcCharacterListAsk();
-  LoginRpcCharacterListReply::default_instance_ = new LoginRpcCharacterListReply();
   LoginRpcSelectCharacterAsk::default_instance_ = new LoginRpcSelectCharacterAsk();
   LoginRpcSelectCharacterReply::default_instance_ = new LoginRpcSelectCharacterReply();
   LoginRpcCreateCharacterAsk::default_instance_ = new LoginRpcCreateCharacterAsk();
   LoginRpcCreateCharacterReply::default_instance_ = new LoginRpcCreateCharacterReply();
-  LoginRpcSelectSaveUserAsk::default_instance_ = new LoginRpcSelectSaveUserAsk();
-  LoginRpcSelectSaveUserReply::default_instance_ = new LoginRpcSelectSaveUserReply();
   LoginRpcDeleteCharacterAsk::default_instance_ = new LoginRpcDeleteCharacterAsk();
   LoginRpcDeleteCharacterReply::default_instance_ = new LoginRpcDeleteCharacterReply();
-  LoginRpcConnectAsk::default_instance_->InitAsDefaultInstance();
-  LoginRpcConnectReply::default_instance_->InitAsDefaultInstance();
+  LoginRpcTestAsk::default_instance_ = new LoginRpcTestAsk();
+  LoginRpcTestReply::default_instance_ = new LoginRpcTestReply();
+  LoginRpcTest1Ask::default_instance_ = new LoginRpcTest1Ask();
+  LoginRpcTest1Reply::default_instance_ = new LoginRpcTest1Reply();
+  LoginRpcLoginLineUpNotify::default_instance_ = new LoginRpcLoginLineUpNotify();
+  LoginRpcLoginEnterGameNotify::default_instance_ = new LoginRpcLoginEnterGameNotify();
+  LoginRpcLoginQuitLineUpAsk::default_instance_ = new LoginRpcLoginQuitLineUpAsk();
+  LoginRpcLoginQuitLineUpReply::default_instance_ = new LoginRpcLoginQuitLineUpReply();
+  LoginRpcRemoteLoginAsk::default_instance_ = new LoginRpcRemoteLoginAsk();
+  LoginRpcRemoteLoginReply::default_instance_ = new LoginRpcRemoteLoginReply();
   LoginRpcLoginAsk::default_instance_->InitAsDefaultInstance();
   LoginRpcLoginReply::default_instance_->InitAsDefaultInstance();
-  LoginRpcCharacterListAsk::default_instance_->InitAsDefaultInstance();
-  LoginRpcCharacterListReply::default_instance_->InitAsDefaultInstance();
   LoginRpcSelectCharacterAsk::default_instance_->InitAsDefaultInstance();
   LoginRpcSelectCharacterReply::default_instance_->InitAsDefaultInstance();
   LoginRpcCreateCharacterAsk::default_instance_->InitAsDefaultInstance();
   LoginRpcCreateCharacterReply::default_instance_->InitAsDefaultInstance();
-  LoginRpcSelectSaveUserAsk::default_instance_->InitAsDefaultInstance();
-  LoginRpcSelectSaveUserReply::default_instance_->InitAsDefaultInstance();
   LoginRpcDeleteCharacterAsk::default_instance_->InitAsDefaultInstance();
   LoginRpcDeleteCharacterReply::default_instance_->InitAsDefaultInstance();
+  LoginRpcTestAsk::default_instance_->InitAsDefaultInstance();
+  LoginRpcTestReply::default_instance_->InitAsDefaultInstance();
+  LoginRpcTest1Ask::default_instance_->InitAsDefaultInstance();
+  LoginRpcTest1Reply::default_instance_->InitAsDefaultInstance();
+  LoginRpcLoginLineUpNotify::default_instance_->InitAsDefaultInstance();
+  LoginRpcLoginEnterGameNotify::default_instance_->InitAsDefaultInstance();
+  LoginRpcLoginQuitLineUpAsk::default_instance_->InitAsDefaultInstance();
+  LoginRpcLoginQuitLineUpReply::default_instance_->InitAsDefaultInstance();
+  LoginRpcRemoteLoginAsk::default_instance_->InitAsDefaultInstance();
+  LoginRpcRemoteLoginReply::default_instance_->InitAsDefaultInstance();
   ::google::protobuf::internal::OnShutdown(&protobuf_ShutdownFile_LoginRpc_2eproto);
 }
 
@@ -440,464 +565,13 @@ struct StaticDescriptorInitializer_LoginRpc_2eproto {
 // ===================================================================
 
 #ifndef _MSC_VER
-const int LoginRpcConnectAsk::kTypeFieldNumber;
-#endif  // !_MSC_VER
-
-LoginRpcConnectAsk::LoginRpcConnectAsk()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void LoginRpcConnectAsk::InitAsDefaultInstance() {
-}
-
-LoginRpcConnectAsk::LoginRpcConnectAsk(const LoginRpcConnectAsk& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void LoginRpcConnectAsk::SharedCtor() {
-  _cached_size_ = 0;
-  type_ = -1;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-LoginRpcConnectAsk::~LoginRpcConnectAsk() {
-  SharedDtor();
-}
-
-void LoginRpcConnectAsk::SharedDtor() {
-  if (this != default_instance_) {
-  }
-}
-
-void LoginRpcConnectAsk::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* LoginRpcConnectAsk::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return LoginRpcConnectAsk_descriptor_;
-}
-
-const LoginRpcConnectAsk& LoginRpcConnectAsk::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_LoginRpc_2eproto();
-  return *default_instance_;
-}
-
-LoginRpcConnectAsk* LoginRpcConnectAsk::default_instance_ = NULL;
-
-LoginRpcConnectAsk* LoginRpcConnectAsk::New() const {
-  return new LoginRpcConnectAsk;
-}
-
-void LoginRpcConnectAsk::Clear() {
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    type_ = -1;
-  }
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool LoginRpcConnectAsk::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional sint32 Type = 1 [default = -1];
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
-                 input, &type_)));
-          set_has_type();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void LoginRpcConnectAsk::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional sint32 Type = 1 [default = -1];
-  if (has_type()) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(1, this->type(), output);
-  }
-
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* LoginRpcConnectAsk::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // optional sint32 Type = 1 [default = -1];
-  if (has_type()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(1, this->type(), target);
-  }
-
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int LoginRpcConnectAsk::ByteSize() const {
-  int total_size = 0;
-
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional sint32 Type = 1 [default = -1];
-    if (has_type()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::SInt32Size(
-          this->type());
-    }
-
-  }
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void LoginRpcConnectAsk::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const LoginRpcConnectAsk* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const LoginRpcConnectAsk*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void LoginRpcConnectAsk::MergeFrom(const LoginRpcConnectAsk& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_type()) {
-      set_type(from.type());
-    }
-  }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void LoginRpcConnectAsk::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void LoginRpcConnectAsk::CopyFrom(const LoginRpcConnectAsk& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool LoginRpcConnectAsk::IsInitialized() const {
-
-  return true;
-}
-
-void LoginRpcConnectAsk::Swap(LoginRpcConnectAsk* other) {
-  if (other != this) {
-    std::swap(type_, other->type_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata LoginRpcConnectAsk::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = LoginRpcConnectAsk_descriptor_;
-  metadata.reflection = LoginRpcConnectAsk_reflection_;
-  return metadata;
-}
-
-
-// ===================================================================
-
-#ifndef _MSC_VER
-const int LoginRpcConnectReply::kResultFieldNumber;
-const int LoginRpcConnectReply::kTypeFieldNumber;
-#endif  // !_MSC_VER
-
-LoginRpcConnectReply::LoginRpcConnectReply()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void LoginRpcConnectReply::InitAsDefaultInstance() {
-}
-
-LoginRpcConnectReply::LoginRpcConnectReply(const LoginRpcConnectReply& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void LoginRpcConnectReply::SharedCtor() {
-  _cached_size_ = 0;
-  result_ = -9999;
-  type_ = 0;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-LoginRpcConnectReply::~LoginRpcConnectReply() {
-  SharedDtor();
-}
-
-void LoginRpcConnectReply::SharedDtor() {
-  if (this != default_instance_) {
-  }
-}
-
-void LoginRpcConnectReply::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* LoginRpcConnectReply::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return LoginRpcConnectReply_descriptor_;
-}
-
-const LoginRpcConnectReply& LoginRpcConnectReply::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_LoginRpc_2eproto();
-  return *default_instance_;
-}
-
-LoginRpcConnectReply* LoginRpcConnectReply::default_instance_ = NULL;
-
-LoginRpcConnectReply* LoginRpcConnectReply::New() const {
-  return new LoginRpcConnectReply;
-}
-
-void LoginRpcConnectReply::Clear() {
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    result_ = -9999;
-    type_ = 0;
-  }
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool LoginRpcConnectReply::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional sint32 Result = 1 [default = -9999];
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
-                 input, &result_)));
-          set_has_result();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(16)) goto parse_Type;
-        break;
-      }
-
-      // optional sint32 Type = 2 [default = 0];
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_Type:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
-                 input, &type_)));
-          set_has_type();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void LoginRpcConnectReply::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional sint32 Result = 1 [default = -9999];
-  if (has_result()) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(1, this->result(), output);
-  }
-
-  // optional sint32 Type = 2 [default = 0];
-  if (has_type()) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(2, this->type(), output);
-  }
-
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* LoginRpcConnectReply::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // optional sint32 Result = 1 [default = -9999];
-  if (has_result()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(1, this->result(), target);
-  }
-
-  // optional sint32 Type = 2 [default = 0];
-  if (has_type()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(2, this->type(), target);
-  }
-
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int LoginRpcConnectReply::ByteSize() const {
-  int total_size = 0;
-
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional sint32 Result = 1 [default = -9999];
-    if (has_result()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::SInt32Size(
-          this->result());
-    }
-
-    // optional sint32 Type = 2 [default = 0];
-    if (has_type()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::SInt32Size(
-          this->type());
-    }
-
-  }
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void LoginRpcConnectReply::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const LoginRpcConnectReply* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const LoginRpcConnectReply*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void LoginRpcConnectReply::MergeFrom(const LoginRpcConnectReply& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_result()) {
-      set_result(from.result());
-    }
-    if (from.has_type()) {
-      set_type(from.type());
-    }
-  }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void LoginRpcConnectReply::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void LoginRpcConnectReply::CopyFrom(const LoginRpcConnectReply& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool LoginRpcConnectReply::IsInitialized() const {
-
-  return true;
-}
-
-void LoginRpcConnectReply::Swap(LoginRpcConnectReply* other) {
-  if (other != this) {
-    std::swap(result_, other->result_);
-    std::swap(type_, other->type_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata LoginRpcConnectReply::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = LoginRpcConnectReply_descriptor_;
-  metadata.reflection = LoginRpcConnectReply_reflection_;
-  return metadata;
-}
-
-
-// ===================================================================
-
-#ifndef _MSC_VER
 const int LoginRpcLoginAsk::kUsernameFieldNumber;
 const int LoginRpcLoginAsk::kPasswdFieldNumber;
+const int LoginRpcLoginAsk::kSnIdFieldNumber;
+const int LoginRpcLoginAsk::kGameIdFieldNumber;
+const int LoginRpcLoginAsk::kMacFieldNumber;
+const int LoginRpcLoginAsk::kTokenFieldNumber;
+const int LoginRpcLoginAsk::kVersionFieldNumber;
 #endif  // !_MSC_VER
 
 LoginRpcLoginAsk::LoginRpcLoginAsk()
@@ -918,6 +592,11 @@ void LoginRpcLoginAsk::SharedCtor() {
   _cached_size_ = 0;
   username_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   passwd_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  snid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  gameid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  mac_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  token_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  version_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -931,6 +610,21 @@ void LoginRpcLoginAsk::SharedDtor() {
   }
   if (passwd_ != &::google::protobuf::internal::kEmptyString) {
     delete passwd_;
+  }
+  if (snid_ != &::google::protobuf::internal::kEmptyString) {
+    delete snid_;
+  }
+  if (gameid_ != &::google::protobuf::internal::kEmptyString) {
+    delete gameid_;
+  }
+  if (mac_ != &::google::protobuf::internal::kEmptyString) {
+    delete mac_;
+  }
+  if (token_ != &::google::protobuf::internal::kEmptyString) {
+    delete token_;
+  }
+  if (version_ != &::google::protobuf::internal::kEmptyString) {
+    delete version_;
   }
   if (this != default_instance_) {
   }
@@ -969,6 +663,31 @@ void LoginRpcLoginAsk::Clear() {
         passwd_->clear();
       }
     }
+    if (has_snid()) {
+      if (snid_ != &::google::protobuf::internal::kEmptyString) {
+        snid_->clear();
+      }
+    }
+    if (has_gameid()) {
+      if (gameid_ != &::google::protobuf::internal::kEmptyString) {
+        gameid_->clear();
+      }
+    }
+    if (has_mac()) {
+      if (mac_ != &::google::protobuf::internal::kEmptyString) {
+        mac_->clear();
+      }
+    }
+    if (has_token()) {
+      if (token_ != &::google::protobuf::internal::kEmptyString) {
+        token_->clear();
+      }
+    }
+    if (has_version()) {
+      if (version_ != &::google::protobuf::internal::kEmptyString) {
+        version_->clear();
+      }
+    }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -1005,6 +724,91 @@ bool LoginRpcLoginAsk::MergePartialFromCodedStream(
                 input, this->mutable_passwd()));
           ::google::protobuf::internal::WireFormat::VerifyUTF8String(
             this->passwd().data(), this->passwd().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(26)) goto parse_SnId;
+        break;
+      }
+
+      // optional string SnId = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_SnId:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_snid()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->snid().data(), this->snid().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(34)) goto parse_GameId;
+        break;
+      }
+
+      // optional string GameId = 4;
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_GameId:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_gameid()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->gameid().data(), this->gameid().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(42)) goto parse_Mac;
+        break;
+      }
+
+      // optional string Mac = 5;
+      case 5: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_Mac:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_mac()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->mac().data(), this->mac().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(50)) goto parse_Token;
+        break;
+      }
+
+      // optional string Token = 6;
+      case 6: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_Token:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_token()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->token().data(), this->token().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(58)) goto parse_Version;
+        break;
+      }
+
+      // optional string Version = 7;
+      case 7: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_Version:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_version()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->version().data(), this->version().length(),
             ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
@@ -1049,6 +853,51 @@ void LoginRpcLoginAsk::SerializeWithCachedSizes(
       2, this->passwd(), output);
   }
 
+  // optional string SnId = 3;
+  if (has_snid()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->snid().data(), this->snid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      3, this->snid(), output);
+  }
+
+  // optional string GameId = 4;
+  if (has_gameid()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->gameid().data(), this->gameid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      4, this->gameid(), output);
+  }
+
+  // optional string Mac = 5;
+  if (has_mac()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->mac().data(), this->mac().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      5, this->mac(), output);
+  }
+
+  // optional string Token = 6;
+  if (has_token()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->token().data(), this->token().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      6, this->token(), output);
+  }
+
+  // optional string Version = 7;
+  if (has_version()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->version().data(), this->version().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      7, this->version(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -1077,6 +926,56 @@ void LoginRpcLoginAsk::SerializeWithCachedSizes(
         2, this->passwd(), target);
   }
 
+  // optional string SnId = 3;
+  if (has_snid()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->snid().data(), this->snid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        3, this->snid(), target);
+  }
+
+  // optional string GameId = 4;
+  if (has_gameid()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->gameid().data(), this->gameid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        4, this->gameid(), target);
+  }
+
+  // optional string Mac = 5;
+  if (has_mac()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->mac().data(), this->mac().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        5, this->mac(), target);
+  }
+
+  // optional string Token = 6;
+  if (has_token()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->token().data(), this->token().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        6, this->token(), target);
+  }
+
+  // optional string Version = 7;
+  if (has_version()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->version().data(), this->version().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        7, this->version(), target);
+  }
+
   if (!unknown_fields().empty()) {
     target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
         unknown_fields(), target);
@@ -1100,6 +999,41 @@ int LoginRpcLoginAsk::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::StringSize(
           this->passwd());
+    }
+
+    // optional string SnId = 3;
+    if (has_snid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->snid());
+    }
+
+    // optional string GameId = 4;
+    if (has_gameid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->gameid());
+    }
+
+    // optional string Mac = 5;
+    if (has_mac()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->mac());
+    }
+
+    // optional string Token = 6;
+    if (has_token()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->token());
+    }
+
+    // optional string Version = 7;
+    if (has_version()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->version());
     }
 
   }
@@ -1135,6 +1069,21 @@ void LoginRpcLoginAsk::MergeFrom(const LoginRpcLoginAsk& from) {
     if (from.has_passwd()) {
       set_passwd(from.passwd());
     }
+    if (from.has_snid()) {
+      set_snid(from.snid());
+    }
+    if (from.has_gameid()) {
+      set_gameid(from.gameid());
+    }
+    if (from.has_mac()) {
+      set_mac(from.mac());
+    }
+    if (from.has_token()) {
+      set_token(from.token());
+    }
+    if (from.has_version()) {
+      set_version(from.version());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -1160,6 +1109,11 @@ void LoginRpcLoginAsk::Swap(LoginRpcLoginAsk* other) {
   if (other != this) {
     std::swap(username_, other->username_);
     std::swap(passwd_, other->passwd_);
+    std::swap(snid_, other->snid_);
+    std::swap(gameid_, other->gameid_);
+    std::swap(mac_, other->mac_);
+    std::swap(token_, other->token_);
+    std::swap(version_, other->version_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -1180,6 +1134,10 @@ void LoginRpcLoginAsk::Swap(LoginRpcLoginAsk* other) {
 #ifndef _MSC_VER
 const int LoginRpcLoginReply::kResultFieldNumber;
 const int LoginRpcLoginReply::kRoleIdFieldNumber;
+const int LoginRpcLoginReply::kPosFieldNumber;
+const int LoginRpcLoginReply::kCharacterListFieldNumber;
+const int LoginRpcLoginReply::kLastSelectRoleIdFieldNumber;
+const int LoginRpcLoginReply::kServerTimeFieldNumber;
 #endif  // !_MSC_VER
 
 LoginRpcLoginReply::LoginRpcLoginReply()
@@ -1188,6 +1146,7 @@ LoginRpcLoginReply::LoginRpcLoginReply()
 }
 
 void LoginRpcLoginReply::InitAsDefaultInstance() {
+  pos_ = const_cast< ::Vector3*>(&::Vector3::default_instance());
 }
 
 LoginRpcLoginReply::LoginRpcLoginReply(const LoginRpcLoginReply& from)
@@ -1200,6 +1159,9 @@ void LoginRpcLoginReply::SharedCtor() {
   _cached_size_ = 0;
   result_ = -9999;
   roleid_ = GOOGLE_ULONGLONG(0);
+  pos_ = NULL;
+  lastselectroleid_ = GOOGLE_ULONGLONG(0);
+  servertime_ = -1;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -1209,6 +1171,7 @@ LoginRpcLoginReply::~LoginRpcLoginReply() {
 
 void LoginRpcLoginReply::SharedDtor() {
   if (this != default_instance_) {
+    delete pos_;
   }
 }
 
@@ -1237,7 +1200,13 @@ void LoginRpcLoginReply::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     result_ = -9999;
     roleid_ = GOOGLE_ULONGLONG(0);
+    if (has_pos()) {
+      if (pos_ != NULL) pos_->::Vector3::Clear();
+    }
+    lastselectroleid_ = GOOGLE_ULONGLONG(0);
+    servertime_ = -1;
   }
+  characterlist_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -1248,12 +1217,12 @@ bool LoginRpcLoginReply::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional sint32 Result = 1 [default = -9999];
+      // optional int32 Result = 1 [default = -9999];
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &result_)));
           set_has_result();
         } else {
@@ -1272,6 +1241,67 @@ bool LoginRpcLoginReply::MergePartialFromCodedStream(
                    ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
                  input, &roleid_)));
           set_has_roleid();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(26)) goto parse_Pos;
+        break;
+      }
+
+      // optional .Vector3 Pos = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_Pos:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_pos()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(34)) goto parse_CharacterList;
+        break;
+      }
+
+      // repeated .CharacterInfo CharacterList = 4;
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_CharacterList:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+                input, add_characterlist()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(34)) goto parse_CharacterList;
+        if (input->ExpectTag(40)) goto parse_LastSelectRoleId;
+        break;
+      }
+
+      // optional uint64 LastSelectRoleId = 5 [default = 0];
+      case 5: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_LastSelectRoleId:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &lastselectroleid_)));
+          set_has_lastselectroleid();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(48)) goto parse_ServerTime;
+        break;
+      }
+
+      // optional int32 ServerTime = 6 [default = -1];
+      case 6: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_ServerTime:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &servertime_)));
+          set_has_servertime();
         } else {
           goto handle_uninterpreted;
         }
@@ -1297,14 +1327,36 @@ bool LoginRpcLoginReply::MergePartialFromCodedStream(
 
 void LoginRpcLoginReply::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   if (has_result()) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(1, this->result(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->result(), output);
   }
 
   // optional uint64 RoleId = 2 [default = 0];
   if (has_roleid()) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->roleid(), output);
+  }
+
+  // optional .Vector3 Pos = 3;
+  if (has_pos()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, this->pos(), output);
+  }
+
+  // repeated .CharacterInfo CharacterList = 4;
+  for (int i = 0; i < this->characterlist_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      4, this->characterlist(i), output);
+  }
+
+  // optional uint64 LastSelectRoleId = 5 [default = 0];
+  if (has_lastselectroleid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(5, this->lastselectroleid(), output);
+  }
+
+  // optional int32 ServerTime = 6 [default = -1];
+  if (has_servertime()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(6, this->servertime(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -1315,14 +1367,38 @@ void LoginRpcLoginReply::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* LoginRpcLoginReply::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   if (has_result()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(1, this->result(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->result(), target);
   }
 
   // optional uint64 RoleId = 2 [default = 0];
   if (has_roleid()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->roleid(), target);
+  }
+
+  // optional .Vector3 Pos = 3;
+  if (has_pos()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        3, this->pos(), target);
+  }
+
+  // repeated .CharacterInfo CharacterList = 4;
+  for (int i = 0; i < this->characterlist_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        4, this->characterlist(i), target);
+  }
+
+  // optional uint64 LastSelectRoleId = 5 [default = 0];
+  if (has_lastselectroleid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(5, this->lastselectroleid(), target);
+  }
+
+  // optional int32 ServerTime = 6 [default = -1];
+  if (has_servertime()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(6, this->servertime(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -1336,10 +1412,10 @@ int LoginRpcLoginReply::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional sint32 Result = 1 [default = -9999];
+    // optional int32 Result = 1 [default = -9999];
     if (has_result()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->result());
     }
 
@@ -1350,7 +1426,36 @@ int LoginRpcLoginReply::ByteSize() const {
           this->roleid());
     }
 
+    // optional .Vector3 Pos = 3;
+    if (has_pos()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->pos());
+    }
+
+    // optional uint64 LastSelectRoleId = 5 [default = 0];
+    if (has_lastselectroleid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt64Size(
+          this->lastselectroleid());
+    }
+
+    // optional int32 ServerTime = 6 [default = -1];
+    if (has_servertime()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->servertime());
+    }
+
   }
+  // repeated .CharacterInfo CharacterList = 4;
+  total_size += 1 * this->characterlist_size();
+  for (int i = 0; i < this->characterlist_size(); i++) {
+    total_size +=
+      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+        this->characterlist(i));
+  }
+
   if (!unknown_fields().empty()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -1376,12 +1481,22 @@ void LoginRpcLoginReply::MergeFrom(const ::google::protobuf::Message& from) {
 
 void LoginRpcLoginReply::MergeFrom(const LoginRpcLoginReply& from) {
   GOOGLE_CHECK_NE(&from, this);
+  characterlist_.MergeFrom(from.characterlist_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_result()) {
       set_result(from.result());
     }
     if (from.has_roleid()) {
       set_roleid(from.roleid());
+    }
+    if (from.has_pos()) {
+      mutable_pos()->::Vector3::MergeFrom(from.pos());
+    }
+    if (from.has_lastselectroleid()) {
+      set_lastselectroleid(from.lastselectroleid());
+    }
+    if (from.has_servertime()) {
+      set_servertime(from.servertime());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -1408,6 +1523,10 @@ void LoginRpcLoginReply::Swap(LoginRpcLoginReply* other) {
   if (other != this) {
     std::swap(result_, other->result_);
     std::swap(roleid_, other->roleid_);
+    std::swap(pos_, other->pos_);
+    characterlist_.Swap(&other->characterlist_);
+    std::swap(lastselectroleid_, other->lastselectroleid_);
+    std::swap(servertime_, other->servertime_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -1419,519 +1538,6 @@ void LoginRpcLoginReply::Swap(LoginRpcLoginReply* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = LoginRpcLoginReply_descriptor_;
   metadata.reflection = LoginRpcLoginReply_reflection_;
-  return metadata;
-}
-
-
-// ===================================================================
-
-#ifndef _MSC_VER
-const int LoginRpcCharacterListAsk::kAccountnameFieldNumber;
-#endif  // !_MSC_VER
-
-LoginRpcCharacterListAsk::LoginRpcCharacterListAsk()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void LoginRpcCharacterListAsk::InitAsDefaultInstance() {
-}
-
-LoginRpcCharacterListAsk::LoginRpcCharacterListAsk(const LoginRpcCharacterListAsk& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void LoginRpcCharacterListAsk::SharedCtor() {
-  _cached_size_ = 0;
-  accountname_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-LoginRpcCharacterListAsk::~LoginRpcCharacterListAsk() {
-  SharedDtor();
-}
-
-void LoginRpcCharacterListAsk::SharedDtor() {
-  if (accountname_ != &::google::protobuf::internal::kEmptyString) {
-    delete accountname_;
-  }
-  if (this != default_instance_) {
-  }
-}
-
-void LoginRpcCharacterListAsk::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* LoginRpcCharacterListAsk::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return LoginRpcCharacterListAsk_descriptor_;
-}
-
-const LoginRpcCharacterListAsk& LoginRpcCharacterListAsk::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_LoginRpc_2eproto();
-  return *default_instance_;
-}
-
-LoginRpcCharacterListAsk* LoginRpcCharacterListAsk::default_instance_ = NULL;
-
-LoginRpcCharacterListAsk* LoginRpcCharacterListAsk::New() const {
-  return new LoginRpcCharacterListAsk;
-}
-
-void LoginRpcCharacterListAsk::Clear() {
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (has_accountname()) {
-      if (accountname_ != &::google::protobuf::internal::kEmptyString) {
-        accountname_->clear();
-      }
-    }
-  }
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool LoginRpcCharacterListAsk::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional string Accountname = 1;
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_accountname()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->accountname().data(), this->accountname().length(),
-            ::google::protobuf::internal::WireFormat::PARSE);
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void LoginRpcCharacterListAsk::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional string Accountname = 1;
-  if (has_accountname()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->accountname().data(), this->accountname().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      1, this->accountname(), output);
-  }
-
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* LoginRpcCharacterListAsk::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // optional string Accountname = 1;
-  if (has_accountname()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->accountname().data(), this->accountname().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        1, this->accountname(), target);
-  }
-
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int LoginRpcCharacterListAsk::ByteSize() const {
-  int total_size = 0;
-
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional string Accountname = 1;
-    if (has_accountname()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->accountname());
-    }
-
-  }
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void LoginRpcCharacterListAsk::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const LoginRpcCharacterListAsk* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const LoginRpcCharacterListAsk*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void LoginRpcCharacterListAsk::MergeFrom(const LoginRpcCharacterListAsk& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_accountname()) {
-      set_accountname(from.accountname());
-    }
-  }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void LoginRpcCharacterListAsk::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void LoginRpcCharacterListAsk::CopyFrom(const LoginRpcCharacterListAsk& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool LoginRpcCharacterListAsk::IsInitialized() const {
-
-  return true;
-}
-
-void LoginRpcCharacterListAsk::Swap(LoginRpcCharacterListAsk* other) {
-  if (other != this) {
-    std::swap(accountname_, other->accountname_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata LoginRpcCharacterListAsk::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = LoginRpcCharacterListAsk_descriptor_;
-  metadata.reflection = LoginRpcCharacterListAsk_reflection_;
-  return metadata;
-}
-
-
-// ===================================================================
-
-#ifndef _MSC_VER
-const int LoginRpcCharacterListReply::kResultFieldNumber;
-const int LoginRpcCharacterListReply::kCharacterListFieldNumber;
-const int LoginRpcCharacterListReply::kLastSelectRoleIdFieldNumber;
-#endif  // !_MSC_VER
-
-LoginRpcCharacterListReply::LoginRpcCharacterListReply()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void LoginRpcCharacterListReply::InitAsDefaultInstance() {
-}
-
-LoginRpcCharacterListReply::LoginRpcCharacterListReply(const LoginRpcCharacterListReply& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void LoginRpcCharacterListReply::SharedCtor() {
-  _cached_size_ = 0;
-  result_ = -9999;
-  lastselectroleid_ = GOOGLE_ULONGLONG(0);
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-LoginRpcCharacterListReply::~LoginRpcCharacterListReply() {
-  SharedDtor();
-}
-
-void LoginRpcCharacterListReply::SharedDtor() {
-  if (this != default_instance_) {
-  }
-}
-
-void LoginRpcCharacterListReply::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* LoginRpcCharacterListReply::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return LoginRpcCharacterListReply_descriptor_;
-}
-
-const LoginRpcCharacterListReply& LoginRpcCharacterListReply::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_LoginRpc_2eproto();
-  return *default_instance_;
-}
-
-LoginRpcCharacterListReply* LoginRpcCharacterListReply::default_instance_ = NULL;
-
-LoginRpcCharacterListReply* LoginRpcCharacterListReply::New() const {
-  return new LoginRpcCharacterListReply;
-}
-
-void LoginRpcCharacterListReply::Clear() {
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    result_ = -9999;
-    lastselectroleid_ = GOOGLE_ULONGLONG(0);
-  }
-  characterlist_.Clear();
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool LoginRpcCharacterListReply::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional sint32 Result = 1 [default = -9999];
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
-                 input, &result_)));
-          set_has_result();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(18)) goto parse_CharacterList;
-        break;
-      }
-
-      // repeated .CharacterInfo CharacterList = 2;
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_CharacterList:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-                input, add_characterlist()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(18)) goto parse_CharacterList;
-        if (input->ExpectTag(32)) goto parse_LastSelectRoleId;
-        break;
-      }
-
-      // optional uint64 LastSelectRoleId = 4 [default = 0];
-      case 4: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_LastSelectRoleId:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
-                 input, &lastselectroleid_)));
-          set_has_lastselectroleid();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void LoginRpcCharacterListReply::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional sint32 Result = 1 [default = -9999];
-  if (has_result()) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(1, this->result(), output);
-  }
-
-  // repeated .CharacterInfo CharacterList = 2;
-  for (int i = 0; i < this->characterlist_size(); i++) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->characterlist(i), output);
-  }
-
-  // optional uint64 LastSelectRoleId = 4 [default = 0];
-  if (has_lastselectroleid()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64(4, this->lastselectroleid(), output);
-  }
-
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* LoginRpcCharacterListReply::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // optional sint32 Result = 1 [default = -9999];
-  if (has_result()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(1, this->result(), target);
-  }
-
-  // repeated .CharacterInfo CharacterList = 2;
-  for (int i = 0; i < this->characterlist_size(); i++) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        2, this->characterlist(i), target);
-  }
-
-  // optional uint64 LastSelectRoleId = 4 [default = 0];
-  if (has_lastselectroleid()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(4, this->lastselectroleid(), target);
-  }
-
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int LoginRpcCharacterListReply::ByteSize() const {
-  int total_size = 0;
-
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional sint32 Result = 1 [default = -9999];
-    if (has_result()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::SInt32Size(
-          this->result());
-    }
-
-    // optional uint64 LastSelectRoleId = 4 [default = 0];
-    if (has_lastselectroleid()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::UInt64Size(
-          this->lastselectroleid());
-    }
-
-  }
-  // repeated .CharacterInfo CharacterList = 2;
-  total_size += 1 * this->characterlist_size();
-  for (int i = 0; i < this->characterlist_size(); i++) {
-    total_size +=
-      ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-        this->characterlist(i));
-  }
-
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void LoginRpcCharacterListReply::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const LoginRpcCharacterListReply* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const LoginRpcCharacterListReply*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void LoginRpcCharacterListReply::MergeFrom(const LoginRpcCharacterListReply& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  characterlist_.MergeFrom(from.characterlist_);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_result()) {
-      set_result(from.result());
-    }
-    if (from.has_lastselectroleid()) {
-      set_lastselectroleid(from.lastselectroleid());
-    }
-  }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void LoginRpcCharacterListReply::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void LoginRpcCharacterListReply::CopyFrom(const LoginRpcCharacterListReply& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool LoginRpcCharacterListReply::IsInitialized() const {
-
-  return true;
-}
-
-void LoginRpcCharacterListReply::Swap(LoginRpcCharacterListReply* other) {
-  if (other != this) {
-    std::swap(result_, other->result_);
-    characterlist_.Swap(&other->characterlist_);
-    std::swap(lastselectroleid_, other->lastselectroleid_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata LoginRpcCharacterListReply::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = LoginRpcCharacterListReply_descriptor_;
-  metadata.reflection = LoginRpcCharacterListReply_reflection_;
   return metadata;
 }
 
@@ -2149,8 +1755,10 @@ void LoginRpcSelectCharacterAsk::Swap(LoginRpcSelectCharacterAsk* other) {
 #ifndef _MSC_VER
 const int LoginRpcSelectCharacterReply::kResultFieldNumber;
 const int LoginRpcSelectCharacterReply::kRoleIdFieldNumber;
-const int LoginRpcSelectCharacterReply::kIpFieldNumber;
-const int LoginRpcSelectCharacterReply::kPortFieldNumber;
+const int LoginRpcSelectCharacterReply::kLastSceneIDFieldNumber;
+const int LoginRpcSelectCharacterReply::kBanReasonFieldNumber;
+const int LoginRpcSelectCharacterReply::kLineIdFieldNumber;
+const int LoginRpcSelectCharacterReply::kBanEndTimeFieldNumber;
 #endif  // !_MSC_VER
 
 LoginRpcSelectCharacterReply::LoginRpcSelectCharacterReply()
@@ -2171,8 +1779,10 @@ void LoginRpcSelectCharacterReply::SharedCtor() {
   _cached_size_ = 0;
   result_ = -9999;
   roleid_ = GOOGLE_ULONGLONG(0);
-  ip_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  port_ = 0;
+  lastsceneid_ = -1;
+  ban_reason_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  lineid_ = -1;
+  ban_endtime_ = -1;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -2181,8 +1791,8 @@ LoginRpcSelectCharacterReply::~LoginRpcSelectCharacterReply() {
 }
 
 void LoginRpcSelectCharacterReply::SharedDtor() {
-  if (ip_ != &::google::protobuf::internal::kEmptyString) {
-    delete ip_;
+  if (ban_reason_ != &::google::protobuf::internal::kEmptyString) {
+    delete ban_reason_;
   }
   if (this != default_instance_) {
   }
@@ -2213,12 +1823,14 @@ void LoginRpcSelectCharacterReply::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     result_ = -9999;
     roleid_ = GOOGLE_ULONGLONG(0);
-    if (has_ip()) {
-      if (ip_ != &::google::protobuf::internal::kEmptyString) {
-        ip_->clear();
+    lastsceneid_ = -1;
+    if (has_ban_reason()) {
+      if (ban_reason_ != &::google::protobuf::internal::kEmptyString) {
+        ban_reason_->clear();
       }
     }
-    port_ = 0;
+    lineid_ = -1;
+    ban_endtime_ = -1;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -2230,12 +1842,12 @@ bool LoginRpcSelectCharacterReply::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional sint32 Result = 1 [default = -9999];
+      // optional int32 Result = 1 [default = -9999];
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &result_)));
           set_has_result();
         } else {
@@ -2257,36 +1869,68 @@ bool LoginRpcSelectCharacterReply::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(26)) goto parse_Ip;
+        if (input->ExpectTag(40)) goto parse_LastSceneID;
         break;
       }
 
-      // optional string Ip = 3;
-      case 3: {
+      // optional int32 LastSceneID = 5 [default = -1];
+      case 5: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_LastSceneID:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &lastsceneid_)));
+          set_has_lastsceneid();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(50)) goto parse_Ban_Reason;
+        break;
+      }
+
+      // optional string Ban_Reason = 6;
+      case 6: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_Ip:
+         parse_Ban_Reason:
           DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_ip()));
+                input, this->mutable_ban_reason()));
           ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-            this->ip().data(), this->ip().length(),
+            this->ban_reason().data(), this->ban_reason().length(),
             ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(32)) goto parse_Port;
+        if (input->ExpectTag(56)) goto parse_LineId;
         break;
       }
 
-      // optional sint32 Port = 4 [default = 0];
-      case 4: {
+      // optional int32 LineId = 7 [default = -1];
+      case 7: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_Port:
+         parse_LineId:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
-                 input, &port_)));
-          set_has_port();
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &lineid_)));
+          set_has_lineid();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(64)) goto parse_Ban_EndTime;
+        break;
+      }
+
+      // optional int32 Ban_EndTime = 8 [default = -1];
+      case 8: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_Ban_EndTime:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &ban_endtime_)));
+          set_has_ban_endtime();
         } else {
           goto handle_uninterpreted;
         }
@@ -2312,9 +1956,9 @@ bool LoginRpcSelectCharacterReply::MergePartialFromCodedStream(
 
 void LoginRpcSelectCharacterReply::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   if (has_result()) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(1, this->result(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->result(), output);
   }
 
   // optional uint64 RoleId = 2 [default = 0];
@@ -2322,18 +1966,28 @@ void LoginRpcSelectCharacterReply::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->roleid(), output);
   }
 
-  // optional string Ip = 3;
-  if (has_ip()) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->ip().data(), this->ip().length(),
-      ::google::protobuf::internal::WireFormat::SERIALIZE);
-    ::google::protobuf::internal::WireFormatLite::WriteString(
-      3, this->ip(), output);
+  // optional int32 LastSceneID = 5 [default = -1];
+  if (has_lastsceneid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->lastsceneid(), output);
   }
 
-  // optional sint32 Port = 4 [default = 0];
-  if (has_port()) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(4, this->port(), output);
+  // optional string Ban_Reason = 6;
+  if (has_ban_reason()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->ban_reason().data(), this->ban_reason().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      6, this->ban_reason(), output);
+  }
+
+  // optional int32 LineId = 7 [default = -1];
+  if (has_lineid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(7, this->lineid(), output);
+  }
+
+  // optional int32 Ban_EndTime = 8 [default = -1];
+  if (has_ban_endtime()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(8, this->ban_endtime(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -2344,9 +1998,9 @@ void LoginRpcSelectCharacterReply::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* LoginRpcSelectCharacterReply::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   if (has_result()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(1, this->result(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->result(), target);
   }
 
   // optional uint64 RoleId = 2 [default = 0];
@@ -2354,19 +2008,29 @@ void LoginRpcSelectCharacterReply::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->roleid(), target);
   }
 
-  // optional string Ip = 3;
-  if (has_ip()) {
+  // optional int32 LastSceneID = 5 [default = -1];
+  if (has_lastsceneid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->lastsceneid(), target);
+  }
+
+  // optional string Ban_Reason = 6;
+  if (has_ban_reason()) {
     ::google::protobuf::internal::WireFormat::VerifyUTF8String(
-      this->ip().data(), this->ip().length(),
+      this->ban_reason().data(), this->ban_reason().length(),
       ::google::protobuf::internal::WireFormat::SERIALIZE);
     target =
       ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        3, this->ip(), target);
+        6, this->ban_reason(), target);
   }
 
-  // optional sint32 Port = 4 [default = 0];
-  if (has_port()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(4, this->port(), target);
+  // optional int32 LineId = 7 [default = -1];
+  if (has_lineid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(7, this->lineid(), target);
+  }
+
+  // optional int32 Ban_EndTime = 8 [default = -1];
+  if (has_ban_endtime()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(8, this->ban_endtime(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -2380,10 +2044,10 @@ int LoginRpcSelectCharacterReply::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional sint32 Result = 1 [default = -9999];
+    // optional int32 Result = 1 [default = -9999];
     if (has_result()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->result());
     }
 
@@ -2394,18 +2058,32 @@ int LoginRpcSelectCharacterReply::ByteSize() const {
           this->roleid());
     }
 
-    // optional string Ip = 3;
-    if (has_ip()) {
+    // optional int32 LastSceneID = 5 [default = -1];
+    if (has_lastsceneid()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::StringSize(
-          this->ip());
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->lastsceneid());
     }
 
-    // optional sint32 Port = 4 [default = 0];
-    if (has_port()) {
+    // optional string Ban_Reason = 6;
+    if (has_ban_reason()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::SInt32Size(
-          this->port());
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->ban_reason());
+    }
+
+    // optional int32 LineId = 7 [default = -1];
+    if (has_lineid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->lineid());
+    }
+
+    // optional int32 Ban_EndTime = 8 [default = -1];
+    if (has_ban_endtime()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->ban_endtime());
     }
 
   }
@@ -2441,11 +2119,17 @@ void LoginRpcSelectCharacterReply::MergeFrom(const LoginRpcSelectCharacterReply&
     if (from.has_roleid()) {
       set_roleid(from.roleid());
     }
-    if (from.has_ip()) {
-      set_ip(from.ip());
+    if (from.has_lastsceneid()) {
+      set_lastsceneid(from.lastsceneid());
     }
-    if (from.has_port()) {
-      set_port(from.port());
+    if (from.has_ban_reason()) {
+      set_ban_reason(from.ban_reason());
+    }
+    if (from.has_lineid()) {
+      set_lineid(from.lineid());
+    }
+    if (from.has_ban_endtime()) {
+      set_ban_endtime(from.ban_endtime());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -2472,8 +2156,10 @@ void LoginRpcSelectCharacterReply::Swap(LoginRpcSelectCharacterReply* other) {
   if (other != this) {
     std::swap(result_, other->result_);
     std::swap(roleid_, other->roleid_);
-    std::swap(ip_, other->ip_);
-    std::swap(port_, other->port_);
+    std::swap(lastsceneid_, other->lastsceneid_);
+    std::swap(ban_reason_, other->ban_reason_);
+    std::swap(lineid_, other->lineid_);
+    std::swap(ban_endtime_, other->ban_endtime_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -2494,6 +2180,8 @@ void LoginRpcSelectCharacterReply::Swap(LoginRpcSelectCharacterReply* other) {
 #ifndef _MSC_VER
 const int LoginRpcCreateCharacterAsk::kNicknameFieldNumber;
 const int LoginRpcCreateCharacterAsk::kConfigIdFieldNumber;
+const int LoginRpcCreateCharacterAsk::kPinchDataFieldNumber;
+const int LoginRpcCreateCharacterAsk::kPushRegIdFieldNumber;
 #endif  // !_MSC_VER
 
 LoginRpcCreateCharacterAsk::LoginRpcCreateCharacterAsk()
@@ -2502,6 +2190,7 @@ LoginRpcCreateCharacterAsk::LoginRpcCreateCharacterAsk()
 }
 
 void LoginRpcCreateCharacterAsk::InitAsDefaultInstance() {
+  pinchdata_ = const_cast< ::PinchFaceData*>(&::PinchFaceData::default_instance());
 }
 
 LoginRpcCreateCharacterAsk::LoginRpcCreateCharacterAsk(const LoginRpcCreateCharacterAsk& from)
@@ -2514,6 +2203,8 @@ void LoginRpcCreateCharacterAsk::SharedCtor() {
   _cached_size_ = 0;
   nickname_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   configid_ = -1;
+  pinchdata_ = NULL;
+  pushregid_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -2525,7 +2216,11 @@ void LoginRpcCreateCharacterAsk::SharedDtor() {
   if (nickname_ != &::google::protobuf::internal::kEmptyString) {
     delete nickname_;
   }
+  if (pushregid_ != &::google::protobuf::internal::kEmptyString) {
+    delete pushregid_;
+  }
   if (this != default_instance_) {
+    delete pinchdata_;
   }
 }
 
@@ -2558,6 +2253,14 @@ void LoginRpcCreateCharacterAsk::Clear() {
       }
     }
     configid_ = -1;
+    if (has_pinchdata()) {
+      if (pinchdata_ != NULL) pinchdata_->::PinchFaceData::Clear();
+    }
+    if (has_pushregid()) {
+      if (pushregid_ != &::google::protobuf::internal::kEmptyString) {
+        pushregid_->clear();
+      }
+    }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -2585,15 +2288,46 @@ bool LoginRpcCreateCharacterAsk::MergePartialFromCodedStream(
         break;
       }
 
-      // optional sint32 ConfigId = 2 [default = -1];
+      // optional int32 ConfigId = 2 [default = -1];
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_ConfigId:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &configid_)));
           set_has_configid();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(26)) goto parse_PinchData;
+        break;
+      }
+
+      // optional .PinchFaceData PinchData = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_PinchData:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_pinchdata()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(34)) goto parse_PushRegId;
+        break;
+      }
+
+      // optional string PushRegId = 4;
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_PushRegId:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
+                input, this->mutable_pushregid()));
+          ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+            this->pushregid().data(), this->pushregid().length(),
+            ::google::protobuf::internal::WireFormat::PARSE);
         } else {
           goto handle_uninterpreted;
         }
@@ -2628,9 +2362,24 @@ void LoginRpcCreateCharacterAsk::SerializeWithCachedSizes(
       1, this->nickname(), output);
   }
 
-  // optional sint32 ConfigId = 2 [default = -1];
+  // optional int32 ConfigId = 2 [default = -1];
   if (has_configid()) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(2, this->configid(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->configid(), output);
+  }
+
+  // optional .PinchFaceData PinchData = 3;
+  if (has_pinchdata()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      3, this->pinchdata(), output);
+  }
+
+  // optional string PushRegId = 4;
+  if (has_pushregid()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->pushregid().data(), this->pushregid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    ::google::protobuf::internal::WireFormatLite::WriteString(
+      4, this->pushregid(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -2651,9 +2400,26 @@ void LoginRpcCreateCharacterAsk::SerializeWithCachedSizes(
         1, this->nickname(), target);
   }
 
-  // optional sint32 ConfigId = 2 [default = -1];
+  // optional int32 ConfigId = 2 [default = -1];
   if (has_configid()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(2, this->configid(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->configid(), target);
+  }
+
+  // optional .PinchFaceData PinchData = 3;
+  if (has_pinchdata()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        3, this->pinchdata(), target);
+  }
+
+  // optional string PushRegId = 4;
+  if (has_pushregid()) {
+    ::google::protobuf::internal::WireFormat::VerifyUTF8String(
+      this->pushregid().data(), this->pushregid().length(),
+      ::google::protobuf::internal::WireFormat::SERIALIZE);
+    target =
+      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
+        4, this->pushregid(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -2674,11 +2440,25 @@ int LoginRpcCreateCharacterAsk::ByteSize() const {
           this->nickname());
     }
 
-    // optional sint32 ConfigId = 2 [default = -1];
+    // optional int32 ConfigId = 2 [default = -1];
     if (has_configid()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->configid());
+    }
+
+    // optional .PinchFaceData PinchData = 3;
+    if (has_pinchdata()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->pinchdata());
+    }
+
+    // optional string PushRegId = 4;
+    if (has_pushregid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::StringSize(
+          this->pushregid());
     }
 
   }
@@ -2714,6 +2494,12 @@ void LoginRpcCreateCharacterAsk::MergeFrom(const LoginRpcCreateCharacterAsk& fro
     if (from.has_configid()) {
       set_configid(from.configid());
     }
+    if (from.has_pinchdata()) {
+      mutable_pinchdata()->::PinchFaceData::MergeFrom(from.pinchdata());
+    }
+    if (from.has_pushregid()) {
+      set_pushregid(from.pushregid());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -2739,6 +2525,8 @@ void LoginRpcCreateCharacterAsk::Swap(LoginRpcCreateCharacterAsk* other) {
   if (other != this) {
     std::swap(nickname_, other->nickname_);
     std::swap(configid_, other->configid_);
+    std::swap(pinchdata_, other->pinchdata_);
+    std::swap(pushregid_, other->pushregid_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -2759,6 +2547,7 @@ void LoginRpcCreateCharacterAsk::Swap(LoginRpcCreateCharacterAsk* other) {
 #ifndef _MSC_VER
 const int LoginRpcCreateCharacterReply::kResultFieldNumber;
 const int LoginRpcCreateCharacterReply::kRoleIdFieldNumber;
+const int LoginRpcCreateCharacterReply::kTimeStampFieldNumber;
 #endif  // !_MSC_VER
 
 LoginRpcCreateCharacterReply::LoginRpcCreateCharacterReply()
@@ -2779,6 +2568,7 @@ void LoginRpcCreateCharacterReply::SharedCtor() {
   _cached_size_ = 0;
   result_ = -9999;
   roleid_ = GOOGLE_ULONGLONG(0);
+  timestamp_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -2816,6 +2606,7 @@ void LoginRpcCreateCharacterReply::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     result_ = -9999;
     roleid_ = GOOGLE_ULONGLONG(0);
+    timestamp_ = 0;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -2827,12 +2618,12 @@ bool LoginRpcCreateCharacterReply::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional sint32 Result = 1 [default = -9999];
+      // optional int32 Result = 1 [default = -9999];
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &result_)));
           set_has_result();
         } else {
@@ -2851,6 +2642,22 @@ bool LoginRpcCreateCharacterReply::MergePartialFromCodedStream(
                    ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
                  input, &roleid_)));
           set_has_roleid();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(24)) goto parse_TimeStamp;
+        break;
+      }
+
+      // optional int32 TimeStamp = 3 [default = 0];
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_TimeStamp:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &timestamp_)));
+          set_has_timestamp();
         } else {
           goto handle_uninterpreted;
         }
@@ -2876,14 +2683,19 @@ bool LoginRpcCreateCharacterReply::MergePartialFromCodedStream(
 
 void LoginRpcCreateCharacterReply::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   if (has_result()) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(1, this->result(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->result(), output);
   }
 
   // optional uint64 RoleId = 2 [default = 0];
   if (has_roleid()) {
     ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->roleid(), output);
+  }
+
+  // optional int32 TimeStamp = 3 [default = 0];
+  if (has_timestamp()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->timestamp(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -2894,14 +2706,19 @@ void LoginRpcCreateCharacterReply::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* LoginRpcCreateCharacterReply::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   if (has_result()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(1, this->result(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->result(), target);
   }
 
   // optional uint64 RoleId = 2 [default = 0];
   if (has_roleid()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->roleid(), target);
+  }
+
+  // optional int32 TimeStamp = 3 [default = 0];
+  if (has_timestamp()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->timestamp(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -2915,10 +2732,10 @@ int LoginRpcCreateCharacterReply::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional sint32 Result = 1 [default = -9999];
+    // optional int32 Result = 1 [default = -9999];
     if (has_result()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->result());
     }
 
@@ -2927,6 +2744,13 @@ int LoginRpcCreateCharacterReply::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::UInt64Size(
           this->roleid());
+    }
+
+    // optional int32 TimeStamp = 3 [default = 0];
+    if (has_timestamp()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->timestamp());
     }
 
   }
@@ -2962,6 +2786,9 @@ void LoginRpcCreateCharacterReply::MergeFrom(const LoginRpcCreateCharacterReply&
     if (from.has_roleid()) {
       set_roleid(from.roleid());
     }
+    if (from.has_timestamp()) {
+      set_timestamp(from.timestamp());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -2987,6 +2814,7 @@ void LoginRpcCreateCharacterReply::Swap(LoginRpcCreateCharacterReply* other) {
   if (other != this) {
     std::swap(result_, other->result_);
     std::swap(roleid_, other->roleid_);
+    std::swap(timestamp_, other->timestamp_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -2998,422 +2826,6 @@ void LoginRpcCreateCharacterReply::Swap(LoginRpcCreateCharacterReply* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = LoginRpcCreateCharacterReply_descriptor_;
   metadata.reflection = LoginRpcCreateCharacterReply_reflection_;
-  return metadata;
-}
-
-
-// ===================================================================
-
-#ifndef _MSC_VER
-const int LoginRpcSelectSaveUserAsk::kRoleIdFieldNumber;
-#endif  // !_MSC_VER
-
-LoginRpcSelectSaveUserAsk::LoginRpcSelectSaveUserAsk()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void LoginRpcSelectSaveUserAsk::InitAsDefaultInstance() {
-}
-
-LoginRpcSelectSaveUserAsk::LoginRpcSelectSaveUserAsk(const LoginRpcSelectSaveUserAsk& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void LoginRpcSelectSaveUserAsk::SharedCtor() {
-  _cached_size_ = 0;
-  roleid_ = GOOGLE_ULONGLONG(0);
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-LoginRpcSelectSaveUserAsk::~LoginRpcSelectSaveUserAsk() {
-  SharedDtor();
-}
-
-void LoginRpcSelectSaveUserAsk::SharedDtor() {
-  if (this != default_instance_) {
-  }
-}
-
-void LoginRpcSelectSaveUserAsk::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* LoginRpcSelectSaveUserAsk::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return LoginRpcSelectSaveUserAsk_descriptor_;
-}
-
-const LoginRpcSelectSaveUserAsk& LoginRpcSelectSaveUserAsk::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_LoginRpc_2eproto();
-  return *default_instance_;
-}
-
-LoginRpcSelectSaveUserAsk* LoginRpcSelectSaveUserAsk::default_instance_ = NULL;
-
-LoginRpcSelectSaveUserAsk* LoginRpcSelectSaveUserAsk::New() const {
-  return new LoginRpcSelectSaveUserAsk;
-}
-
-void LoginRpcSelectSaveUserAsk::Clear() {
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    roleid_ = GOOGLE_ULONGLONG(0);
-  }
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool LoginRpcSelectSaveUserAsk::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional uint64 RoleId = 1 [default = 0];
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
-                 input, &roleid_)));
-          set_has_roleid();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void LoginRpcSelectSaveUserAsk::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional uint64 RoleId = 1 [default = 0];
-  if (has_roleid()) {
-    ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->roleid(), output);
-  }
-
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* LoginRpcSelectSaveUserAsk::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // optional uint64 RoleId = 1 [default = 0];
-  if (has_roleid()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->roleid(), target);
-  }
-
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int LoginRpcSelectSaveUserAsk::ByteSize() const {
-  int total_size = 0;
-
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional uint64 RoleId = 1 [default = 0];
-    if (has_roleid()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::UInt64Size(
-          this->roleid());
-    }
-
-  }
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void LoginRpcSelectSaveUserAsk::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const LoginRpcSelectSaveUserAsk* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const LoginRpcSelectSaveUserAsk*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void LoginRpcSelectSaveUserAsk::MergeFrom(const LoginRpcSelectSaveUserAsk& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_roleid()) {
-      set_roleid(from.roleid());
-    }
-  }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void LoginRpcSelectSaveUserAsk::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void LoginRpcSelectSaveUserAsk::CopyFrom(const LoginRpcSelectSaveUserAsk& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool LoginRpcSelectSaveUserAsk::IsInitialized() const {
-
-  return true;
-}
-
-void LoginRpcSelectSaveUserAsk::Swap(LoginRpcSelectSaveUserAsk* other) {
-  if (other != this) {
-    std::swap(roleid_, other->roleid_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata LoginRpcSelectSaveUserAsk::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = LoginRpcSelectSaveUserAsk_descriptor_;
-  metadata.reflection = LoginRpcSelectSaveUserAsk_reflection_;
-  return metadata;
-}
-
-
-// ===================================================================
-
-#ifndef _MSC_VER
-const int LoginRpcSelectSaveUserReply::kResultFieldNumber;
-#endif  // !_MSC_VER
-
-LoginRpcSelectSaveUserReply::LoginRpcSelectSaveUserReply()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void LoginRpcSelectSaveUserReply::InitAsDefaultInstance() {
-}
-
-LoginRpcSelectSaveUserReply::LoginRpcSelectSaveUserReply(const LoginRpcSelectSaveUserReply& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void LoginRpcSelectSaveUserReply::SharedCtor() {
-  _cached_size_ = 0;
-  result_ = -9999;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-LoginRpcSelectSaveUserReply::~LoginRpcSelectSaveUserReply() {
-  SharedDtor();
-}
-
-void LoginRpcSelectSaveUserReply::SharedDtor() {
-  if (this != default_instance_) {
-  }
-}
-
-void LoginRpcSelectSaveUserReply::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* LoginRpcSelectSaveUserReply::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return LoginRpcSelectSaveUserReply_descriptor_;
-}
-
-const LoginRpcSelectSaveUserReply& LoginRpcSelectSaveUserReply::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_LoginRpc_2eproto();
-  return *default_instance_;
-}
-
-LoginRpcSelectSaveUserReply* LoginRpcSelectSaveUserReply::default_instance_ = NULL;
-
-LoginRpcSelectSaveUserReply* LoginRpcSelectSaveUserReply::New() const {
-  return new LoginRpcSelectSaveUserReply;
-}
-
-void LoginRpcSelectSaveUserReply::Clear() {
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    result_ = -9999;
-  }
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool LoginRpcSelectSaveUserReply::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional sint32 Result = 1 [default = -9999];
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
-                 input, &result_)));
-          set_has_result();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void LoginRpcSelectSaveUserReply::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional sint32 Result = 1 [default = -9999];
-  if (has_result()) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(1, this->result(), output);
-  }
-
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* LoginRpcSelectSaveUserReply::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // optional sint32 Result = 1 [default = -9999];
-  if (has_result()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(1, this->result(), target);
-  }
-
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int LoginRpcSelectSaveUserReply::ByteSize() const {
-  int total_size = 0;
-
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional sint32 Result = 1 [default = -9999];
-    if (has_result()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::SInt32Size(
-          this->result());
-    }
-
-  }
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void LoginRpcSelectSaveUserReply::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const LoginRpcSelectSaveUserReply* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const LoginRpcSelectSaveUserReply*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void LoginRpcSelectSaveUserReply::MergeFrom(const LoginRpcSelectSaveUserReply& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_result()) {
-      set_result(from.result());
-    }
-  }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void LoginRpcSelectSaveUserReply::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void LoginRpcSelectSaveUserReply::CopyFrom(const LoginRpcSelectSaveUserReply& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool LoginRpcSelectSaveUserReply::IsInitialized() const {
-
-  return true;
-}
-
-void LoginRpcSelectSaveUserReply::Swap(LoginRpcSelectSaveUserReply* other) {
-  if (other != this) {
-    std::swap(result_, other->result_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata LoginRpcSelectSaveUserReply::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = LoginRpcSelectSaveUserReply_descriptor_;
-  metadata.reflection = LoginRpcSelectSaveUserReply_reflection_;
   return metadata;
 }
 
@@ -3696,12 +3108,12 @@ bool LoginRpcDeleteCharacterReply::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional sint32 Result = 1 [default = -9999];
+      // optional int32 Result = 1 [default = -9999];
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &result_)));
           set_has_result();
         } else {
@@ -3729,9 +3141,9 @@ bool LoginRpcDeleteCharacterReply::MergePartialFromCodedStream(
 
 void LoginRpcDeleteCharacterReply::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   if (has_result()) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(1, this->result(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->result(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -3742,9 +3154,9 @@ void LoginRpcDeleteCharacterReply::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* LoginRpcDeleteCharacterReply::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   if (has_result()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(1, this->result(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->result(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -3758,10 +3170,10 @@ int LoginRpcDeleteCharacterReply::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional sint32 Result = 1 [default = -9999];
+    // optional int32 Result = 1 [default = -9999];
     if (has_result()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->result());
     }
 
@@ -3830,6 +3242,2344 @@ void LoginRpcDeleteCharacterReply::Swap(LoginRpcDeleteCharacterReply* other) {
   ::google::protobuf::Metadata metadata;
   metadata.descriptor = LoginRpcDeleteCharacterReply_descriptor_;
   metadata.reflection = LoginRpcDeleteCharacterReply_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int LoginRpcTestAsk::kAFieldNumber;
+const int LoginRpcTestAsk::kBFieldNumber;
+#endif  // !_MSC_VER
+
+LoginRpcTestAsk::LoginRpcTestAsk()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void LoginRpcTestAsk::InitAsDefaultInstance() {
+}
+
+LoginRpcTestAsk::LoginRpcTestAsk(const LoginRpcTestAsk& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void LoginRpcTestAsk::SharedCtor() {
+  _cached_size_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+LoginRpcTestAsk::~LoginRpcTestAsk() {
+  SharedDtor();
+}
+
+void LoginRpcTestAsk::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void LoginRpcTestAsk::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* LoginRpcTestAsk::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return LoginRpcTestAsk_descriptor_;
+}
+
+const LoginRpcTestAsk& LoginRpcTestAsk::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_LoginRpc_2eproto();
+  return *default_instance_;
+}
+
+LoginRpcTestAsk* LoginRpcTestAsk::default_instance_ = NULL;
+
+LoginRpcTestAsk* LoginRpcTestAsk::New() const {
+  return new LoginRpcTestAsk;
+}
+
+void LoginRpcTestAsk::Clear() {
+  a_.Clear();
+  b_.Clear();
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool LoginRpcTestAsk::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // repeated int64 A = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_A:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
+                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
+                 1, 8, input, this->mutable_a())));
+        } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
+                   == ::google::protobuf::internal::WireFormatLite::
+                      WIRETYPE_LENGTH_DELIMITED) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
+                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
+                 input, this->mutable_a())));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(8)) goto parse_A;
+        if (input->ExpectTag(24)) goto parse_B;
+        break;
+      }
+
+      // repeated uint64 B = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_B:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 1, 24, input, this->mutable_b())));
+        } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
+                   == ::google::protobuf::internal::WireFormatLite::
+                      WIRETYPE_LENGTH_DELIMITED) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, this->mutable_b())));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(24)) goto parse_B;
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void LoginRpcTestAsk::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // repeated int64 A = 1;
+  for (int i = 0; i < this->a_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt64(
+      1, this->a(i), output);
+  }
+
+  // repeated uint64 B = 3;
+  for (int i = 0; i < this->b_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(
+      3, this->b(i), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* LoginRpcTestAsk::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // repeated int64 A = 1;
+  for (int i = 0; i < this->a_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteInt64ToArray(1, this->a(i), target);
+  }
+
+  // repeated uint64 B = 3;
+  for (int i = 0; i < this->b_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteUInt64ToArray(3, this->b(i), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int LoginRpcTestAsk::ByteSize() const {
+  int total_size = 0;
+
+  // repeated int64 A = 1;
+  {
+    int data_size = 0;
+    for (int i = 0; i < this->a_size(); i++) {
+      data_size += ::google::protobuf::internal::WireFormatLite::
+        Int64Size(this->a(i));
+    }
+    total_size += 1 * this->a_size() + data_size;
+  }
+
+  // repeated uint64 B = 3;
+  {
+    int data_size = 0;
+    for (int i = 0; i < this->b_size(); i++) {
+      data_size += ::google::protobuf::internal::WireFormatLite::
+        UInt64Size(this->b(i));
+    }
+    total_size += 1 * this->b_size() + data_size;
+  }
+
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void LoginRpcTestAsk::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const LoginRpcTestAsk* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const LoginRpcTestAsk*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void LoginRpcTestAsk::MergeFrom(const LoginRpcTestAsk& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  a_.MergeFrom(from.a_);
+  b_.MergeFrom(from.b_);
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void LoginRpcTestAsk::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void LoginRpcTestAsk::CopyFrom(const LoginRpcTestAsk& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool LoginRpcTestAsk::IsInitialized() const {
+
+  return true;
+}
+
+void LoginRpcTestAsk::Swap(LoginRpcTestAsk* other) {
+  if (other != this) {
+    a_.Swap(&other->a_);
+    b_.Swap(&other->b_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata LoginRpcTestAsk::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = LoginRpcTestAsk_descriptor_;
+  metadata.reflection = LoginRpcTestAsk_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int LoginRpcTestReply::kResultFieldNumber;
+const int LoginRpcTestReply::kAFieldNumber;
+const int LoginRpcTestReply::kBFieldNumber;
+#endif  // !_MSC_VER
+
+LoginRpcTestReply::LoginRpcTestReply()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void LoginRpcTestReply::InitAsDefaultInstance() {
+}
+
+LoginRpcTestReply::LoginRpcTestReply(const LoginRpcTestReply& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void LoginRpcTestReply::SharedCtor() {
+  _cached_size_ = 0;
+  result_ = -1;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+LoginRpcTestReply::~LoginRpcTestReply() {
+  SharedDtor();
+}
+
+void LoginRpcTestReply::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void LoginRpcTestReply::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* LoginRpcTestReply::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return LoginRpcTestReply_descriptor_;
+}
+
+const LoginRpcTestReply& LoginRpcTestReply::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_LoginRpc_2eproto();
+  return *default_instance_;
+}
+
+LoginRpcTestReply* LoginRpcTestReply::default_instance_ = NULL;
+
+LoginRpcTestReply* LoginRpcTestReply::New() const {
+  return new LoginRpcTestReply;
+}
+
+void LoginRpcTestReply::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    result_ = -1;
+  }
+  a_.Clear();
+  b_.Clear();
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool LoginRpcTestReply::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional int32 Result = 1 [default = -1];
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &result_)));
+          set_has_result();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(16)) goto parse_A;
+        break;
+      }
+
+      // repeated int64 A = 2;
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_A:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
+                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
+                 1, 16, input, this->mutable_a())));
+        } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
+                   == ::google::protobuf::internal::WireFormatLite::
+                      WIRETYPE_LENGTH_DELIMITED) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
+                   ::google::protobuf::int64, ::google::protobuf::internal::WireFormatLite::TYPE_INT64>(
+                 input, this->mutable_a())));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(16)) goto parse_A;
+        if (input->ExpectTag(24)) goto parse_B;
+        break;
+      }
+
+      // repeated uint64 B = 3;
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_B:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 1, 24, input, this->mutable_b())));
+        } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
+                   == ::google::protobuf::internal::WireFormatLite::
+                      WIRETYPE_LENGTH_DELIMITED) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, this->mutable_b())));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(24)) goto parse_B;
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void LoginRpcTestReply::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional int32 Result = 1 [default = -1];
+  if (has_result()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->result(), output);
+  }
+
+  // repeated int64 A = 2;
+  for (int i = 0; i < this->a_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt64(
+      2, this->a(i), output);
+  }
+
+  // repeated uint64 B = 3;
+  for (int i = 0; i < this->b_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(
+      3, this->b(i), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* LoginRpcTestReply::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional int32 Result = 1 [default = -1];
+  if (has_result()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->result(), target);
+  }
+
+  // repeated int64 A = 2;
+  for (int i = 0; i < this->a_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteInt64ToArray(2, this->a(i), target);
+  }
+
+  // repeated uint64 B = 3;
+  for (int i = 0; i < this->b_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteUInt64ToArray(3, this->b(i), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int LoginRpcTestReply::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional int32 Result = 1 [default = -1];
+    if (has_result()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->result());
+    }
+
+  }
+  // repeated int64 A = 2;
+  {
+    int data_size = 0;
+    for (int i = 0; i < this->a_size(); i++) {
+      data_size += ::google::protobuf::internal::WireFormatLite::
+        Int64Size(this->a(i));
+    }
+    total_size += 1 * this->a_size() + data_size;
+  }
+
+  // repeated uint64 B = 3;
+  {
+    int data_size = 0;
+    for (int i = 0; i < this->b_size(); i++) {
+      data_size += ::google::protobuf::internal::WireFormatLite::
+        UInt64Size(this->b(i));
+    }
+    total_size += 1 * this->b_size() + data_size;
+  }
+
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void LoginRpcTestReply::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const LoginRpcTestReply* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const LoginRpcTestReply*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void LoginRpcTestReply::MergeFrom(const LoginRpcTestReply& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  a_.MergeFrom(from.a_);
+  b_.MergeFrom(from.b_);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_result()) {
+      set_result(from.result());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void LoginRpcTestReply::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void LoginRpcTestReply::CopyFrom(const LoginRpcTestReply& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool LoginRpcTestReply::IsInitialized() const {
+
+  return true;
+}
+
+void LoginRpcTestReply::Swap(LoginRpcTestReply* other) {
+  if (other != this) {
+    std::swap(result_, other->result_);
+    a_.Swap(&other->a_);
+    b_.Swap(&other->b_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata LoginRpcTestReply::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = LoginRpcTestReply_descriptor_;
+  metadata.reflection = LoginRpcTestReply_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int LoginRpcTest1Ask::kBFieldNumber;
+#endif  // !_MSC_VER
+
+LoginRpcTest1Ask::LoginRpcTest1Ask()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void LoginRpcTest1Ask::InitAsDefaultInstance() {
+}
+
+LoginRpcTest1Ask::LoginRpcTest1Ask(const LoginRpcTest1Ask& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void LoginRpcTest1Ask::SharedCtor() {
+  _cached_size_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+LoginRpcTest1Ask::~LoginRpcTest1Ask() {
+  SharedDtor();
+}
+
+void LoginRpcTest1Ask::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void LoginRpcTest1Ask::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* LoginRpcTest1Ask::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return LoginRpcTest1Ask_descriptor_;
+}
+
+const LoginRpcTest1Ask& LoginRpcTest1Ask::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_LoginRpc_2eproto();
+  return *default_instance_;
+}
+
+LoginRpcTest1Ask* LoginRpcTest1Ask::default_instance_ = NULL;
+
+LoginRpcTest1Ask* LoginRpcTest1Ask::New() const {
+  return new LoginRpcTest1Ask;
+}
+
+void LoginRpcTest1Ask::Clear() {
+  b_.Clear();
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool LoginRpcTest1Ask::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // repeated uint64 B = 1;
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_B:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 1, 8, input, this->mutable_b())));
+        } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
+                   == ::google::protobuf::internal::WireFormatLite::
+                      WIRETYPE_LENGTH_DELIMITED) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, this->mutable_b())));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(8)) goto parse_B;
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void LoginRpcTest1Ask::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // repeated uint64 B = 1;
+  for (int i = 0; i < this->b_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(
+      1, this->b(i), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* LoginRpcTest1Ask::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // repeated uint64 B = 1;
+  for (int i = 0; i < this->b_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteUInt64ToArray(1, this->b(i), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int LoginRpcTest1Ask::ByteSize() const {
+  int total_size = 0;
+
+  // repeated uint64 B = 1;
+  {
+    int data_size = 0;
+    for (int i = 0; i < this->b_size(); i++) {
+      data_size += ::google::protobuf::internal::WireFormatLite::
+        UInt64Size(this->b(i));
+    }
+    total_size += 1 * this->b_size() + data_size;
+  }
+
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void LoginRpcTest1Ask::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const LoginRpcTest1Ask* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const LoginRpcTest1Ask*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void LoginRpcTest1Ask::MergeFrom(const LoginRpcTest1Ask& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  b_.MergeFrom(from.b_);
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void LoginRpcTest1Ask::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void LoginRpcTest1Ask::CopyFrom(const LoginRpcTest1Ask& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool LoginRpcTest1Ask::IsInitialized() const {
+
+  return true;
+}
+
+void LoginRpcTest1Ask::Swap(LoginRpcTest1Ask* other) {
+  if (other != this) {
+    b_.Swap(&other->b_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata LoginRpcTest1Ask::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = LoginRpcTest1Ask_descriptor_;
+  metadata.reflection = LoginRpcTest1Ask_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int LoginRpcTest1Reply::kResultFieldNumber;
+#endif  // !_MSC_VER
+
+LoginRpcTest1Reply::LoginRpcTest1Reply()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void LoginRpcTest1Reply::InitAsDefaultInstance() {
+}
+
+LoginRpcTest1Reply::LoginRpcTest1Reply(const LoginRpcTest1Reply& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void LoginRpcTest1Reply::SharedCtor() {
+  _cached_size_ = 0;
+  result_ = -1;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+LoginRpcTest1Reply::~LoginRpcTest1Reply() {
+  SharedDtor();
+}
+
+void LoginRpcTest1Reply::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void LoginRpcTest1Reply::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* LoginRpcTest1Reply::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return LoginRpcTest1Reply_descriptor_;
+}
+
+const LoginRpcTest1Reply& LoginRpcTest1Reply::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_LoginRpc_2eproto();
+  return *default_instance_;
+}
+
+LoginRpcTest1Reply* LoginRpcTest1Reply::default_instance_ = NULL;
+
+LoginRpcTest1Reply* LoginRpcTest1Reply::New() const {
+  return new LoginRpcTest1Reply;
+}
+
+void LoginRpcTest1Reply::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    result_ = -1;
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool LoginRpcTest1Reply::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional int32 Result = 1 [default = -1];
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &result_)));
+          set_has_result();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void LoginRpcTest1Reply::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional int32 Result = 1 [default = -1];
+  if (has_result()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->result(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* LoginRpcTest1Reply::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional int32 Result = 1 [default = -1];
+  if (has_result()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->result(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int LoginRpcTest1Reply::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional int32 Result = 1 [default = -1];
+    if (has_result()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->result());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void LoginRpcTest1Reply::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const LoginRpcTest1Reply* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const LoginRpcTest1Reply*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void LoginRpcTest1Reply::MergeFrom(const LoginRpcTest1Reply& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_result()) {
+      set_result(from.result());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void LoginRpcTest1Reply::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void LoginRpcTest1Reply::CopyFrom(const LoginRpcTest1Reply& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool LoginRpcTest1Reply::IsInitialized() const {
+
+  return true;
+}
+
+void LoginRpcTest1Reply::Swap(LoginRpcTest1Reply* other) {
+  if (other != this) {
+    std::swap(result_, other->result_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata LoginRpcTest1Reply::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = LoginRpcTest1Reply_descriptor_;
+  metadata.reflection = LoginRpcTest1Reply_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int LoginRpcLoginLineUpNotify::kLineUpIndexFieldNumber;
+const int LoginRpcLoginLineUpNotify::kLineUpRoleFieldNumber;
+const int LoginRpcLoginLineUpNotify::kLineUpTimeFieldNumber;
+#endif  // !_MSC_VER
+
+LoginRpcLoginLineUpNotify::LoginRpcLoginLineUpNotify()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void LoginRpcLoginLineUpNotify::InitAsDefaultInstance() {
+}
+
+LoginRpcLoginLineUpNotify::LoginRpcLoginLineUpNotify(const LoginRpcLoginLineUpNotify& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void LoginRpcLoginLineUpNotify::SharedCtor() {
+  _cached_size_ = 0;
+  lineupindex_ = -1;
+  lineuprole_ = -1;
+  lineuptime_ = -1;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+LoginRpcLoginLineUpNotify::~LoginRpcLoginLineUpNotify() {
+  SharedDtor();
+}
+
+void LoginRpcLoginLineUpNotify::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void LoginRpcLoginLineUpNotify::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* LoginRpcLoginLineUpNotify::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return LoginRpcLoginLineUpNotify_descriptor_;
+}
+
+const LoginRpcLoginLineUpNotify& LoginRpcLoginLineUpNotify::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_LoginRpc_2eproto();
+  return *default_instance_;
+}
+
+LoginRpcLoginLineUpNotify* LoginRpcLoginLineUpNotify::default_instance_ = NULL;
+
+LoginRpcLoginLineUpNotify* LoginRpcLoginLineUpNotify::New() const {
+  return new LoginRpcLoginLineUpNotify;
+}
+
+void LoginRpcLoginLineUpNotify::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    lineupindex_ = -1;
+    lineuprole_ = -1;
+    lineuptime_ = -1;
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool LoginRpcLoginLineUpNotify::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional int32 LineUpIndex = 1 [default = -1];
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &lineupindex_)));
+          set_has_lineupindex();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(16)) goto parse_LineUpRole;
+        break;
+      }
+
+      // optional int32 LineUpRole = 2 [default = -1];
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_LineUpRole:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &lineuprole_)));
+          set_has_lineuprole();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(24)) goto parse_LineUpTime;
+        break;
+      }
+
+      // optional int32 LineUpTime = 3 [default = -1];
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_LineUpTime:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &lineuptime_)));
+          set_has_lineuptime();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void LoginRpcLoginLineUpNotify::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional int32 LineUpIndex = 1 [default = -1];
+  if (has_lineupindex()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->lineupindex(), output);
+  }
+
+  // optional int32 LineUpRole = 2 [default = -1];
+  if (has_lineuprole()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->lineuprole(), output);
+  }
+
+  // optional int32 LineUpTime = 3 [default = -1];
+  if (has_lineuptime()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->lineuptime(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* LoginRpcLoginLineUpNotify::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional int32 LineUpIndex = 1 [default = -1];
+  if (has_lineupindex()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->lineupindex(), target);
+  }
+
+  // optional int32 LineUpRole = 2 [default = -1];
+  if (has_lineuprole()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->lineuprole(), target);
+  }
+
+  // optional int32 LineUpTime = 3 [default = -1];
+  if (has_lineuptime()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->lineuptime(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int LoginRpcLoginLineUpNotify::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional int32 LineUpIndex = 1 [default = -1];
+    if (has_lineupindex()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->lineupindex());
+    }
+
+    // optional int32 LineUpRole = 2 [default = -1];
+    if (has_lineuprole()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->lineuprole());
+    }
+
+    // optional int32 LineUpTime = 3 [default = -1];
+    if (has_lineuptime()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->lineuptime());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void LoginRpcLoginLineUpNotify::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const LoginRpcLoginLineUpNotify* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const LoginRpcLoginLineUpNotify*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void LoginRpcLoginLineUpNotify::MergeFrom(const LoginRpcLoginLineUpNotify& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_lineupindex()) {
+      set_lineupindex(from.lineupindex());
+    }
+    if (from.has_lineuprole()) {
+      set_lineuprole(from.lineuprole());
+    }
+    if (from.has_lineuptime()) {
+      set_lineuptime(from.lineuptime());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void LoginRpcLoginLineUpNotify::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void LoginRpcLoginLineUpNotify::CopyFrom(const LoginRpcLoginLineUpNotify& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool LoginRpcLoginLineUpNotify::IsInitialized() const {
+
+  return true;
+}
+
+void LoginRpcLoginLineUpNotify::Swap(LoginRpcLoginLineUpNotify* other) {
+  if (other != this) {
+    std::swap(lineupindex_, other->lineupindex_);
+    std::swap(lineuprole_, other->lineuprole_);
+    std::swap(lineuptime_, other->lineuptime_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata LoginRpcLoginLineUpNotify::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = LoginRpcLoginLineUpNotify_descriptor_;
+  metadata.reflection = LoginRpcLoginLineUpNotify_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int LoginRpcLoginEnterGameNotify::kRoleIDFieldNumber;
+const int LoginRpcLoginEnterGameNotify::kLastSceneIDFieldNumber;
+const int LoginRpcLoginEnterGameNotify::kLineIDFieldNumber;
+#endif  // !_MSC_VER
+
+LoginRpcLoginEnterGameNotify::LoginRpcLoginEnterGameNotify()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void LoginRpcLoginEnterGameNotify::InitAsDefaultInstance() {
+}
+
+LoginRpcLoginEnterGameNotify::LoginRpcLoginEnterGameNotify(const LoginRpcLoginEnterGameNotify& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void LoginRpcLoginEnterGameNotify::SharedCtor() {
+  _cached_size_ = 0;
+  roleid_ = GOOGLE_ULONGLONG(0);
+  lastsceneid_ = -1;
+  lineid_ = -1;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+LoginRpcLoginEnterGameNotify::~LoginRpcLoginEnterGameNotify() {
+  SharedDtor();
+}
+
+void LoginRpcLoginEnterGameNotify::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void LoginRpcLoginEnterGameNotify::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* LoginRpcLoginEnterGameNotify::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return LoginRpcLoginEnterGameNotify_descriptor_;
+}
+
+const LoginRpcLoginEnterGameNotify& LoginRpcLoginEnterGameNotify::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_LoginRpc_2eproto();
+  return *default_instance_;
+}
+
+LoginRpcLoginEnterGameNotify* LoginRpcLoginEnterGameNotify::default_instance_ = NULL;
+
+LoginRpcLoginEnterGameNotify* LoginRpcLoginEnterGameNotify::New() const {
+  return new LoginRpcLoginEnterGameNotify;
+}
+
+void LoginRpcLoginEnterGameNotify::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    roleid_ = GOOGLE_ULONGLONG(0);
+    lastsceneid_ = -1;
+    lineid_ = -1;
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool LoginRpcLoginEnterGameNotify::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint64 RoleID = 1 [default = 0];
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &roleid_)));
+          set_has_roleid();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(16)) goto parse_LastSceneID;
+        break;
+      }
+
+      // optional int32 LastSceneID = 2 [default = -1];
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_LastSceneID:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &lastsceneid_)));
+          set_has_lastsceneid();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(24)) goto parse_LineID;
+        break;
+      }
+
+      // optional int32 LineID = 3 [default = -1];
+      case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_LineID:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &lineid_)));
+          set_has_lineid();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void LoginRpcLoginEnterGameNotify::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional uint64 RoleID = 1 [default = 0];
+  if (has_roleid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->roleid(), output);
+  }
+
+  // optional int32 LastSceneID = 2 [default = -1];
+  if (has_lastsceneid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->lastsceneid(), output);
+  }
+
+  // optional int32 LineID = 3 [default = -1];
+  if (has_lineid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->lineid(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* LoginRpcLoginEnterGameNotify::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional uint64 RoleID = 1 [default = 0];
+  if (has_roleid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->roleid(), target);
+  }
+
+  // optional int32 LastSceneID = 2 [default = -1];
+  if (has_lastsceneid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->lastsceneid(), target);
+  }
+
+  // optional int32 LineID = 3 [default = -1];
+  if (has_lineid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->lineid(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int LoginRpcLoginEnterGameNotify::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional uint64 RoleID = 1 [default = 0];
+    if (has_roleid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt64Size(
+          this->roleid());
+    }
+
+    // optional int32 LastSceneID = 2 [default = -1];
+    if (has_lastsceneid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->lastsceneid());
+    }
+
+    // optional int32 LineID = 3 [default = -1];
+    if (has_lineid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->lineid());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void LoginRpcLoginEnterGameNotify::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const LoginRpcLoginEnterGameNotify* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const LoginRpcLoginEnterGameNotify*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void LoginRpcLoginEnterGameNotify::MergeFrom(const LoginRpcLoginEnterGameNotify& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_roleid()) {
+      set_roleid(from.roleid());
+    }
+    if (from.has_lastsceneid()) {
+      set_lastsceneid(from.lastsceneid());
+    }
+    if (from.has_lineid()) {
+      set_lineid(from.lineid());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void LoginRpcLoginEnterGameNotify::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void LoginRpcLoginEnterGameNotify::CopyFrom(const LoginRpcLoginEnterGameNotify& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool LoginRpcLoginEnterGameNotify::IsInitialized() const {
+
+  return true;
+}
+
+void LoginRpcLoginEnterGameNotify::Swap(LoginRpcLoginEnterGameNotify* other) {
+  if (other != this) {
+    std::swap(roleid_, other->roleid_);
+    std::swap(lastsceneid_, other->lastsceneid_);
+    std::swap(lineid_, other->lineid_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata LoginRpcLoginEnterGameNotify::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = LoginRpcLoginEnterGameNotify_descriptor_;
+  metadata.reflection = LoginRpcLoginEnterGameNotify_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+#endif  // !_MSC_VER
+
+LoginRpcLoginQuitLineUpAsk::LoginRpcLoginQuitLineUpAsk()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void LoginRpcLoginQuitLineUpAsk::InitAsDefaultInstance() {
+}
+
+LoginRpcLoginQuitLineUpAsk::LoginRpcLoginQuitLineUpAsk(const LoginRpcLoginQuitLineUpAsk& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void LoginRpcLoginQuitLineUpAsk::SharedCtor() {
+  _cached_size_ = 0;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+LoginRpcLoginQuitLineUpAsk::~LoginRpcLoginQuitLineUpAsk() {
+  SharedDtor();
+}
+
+void LoginRpcLoginQuitLineUpAsk::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void LoginRpcLoginQuitLineUpAsk::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* LoginRpcLoginQuitLineUpAsk::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return LoginRpcLoginQuitLineUpAsk_descriptor_;
+}
+
+const LoginRpcLoginQuitLineUpAsk& LoginRpcLoginQuitLineUpAsk::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_LoginRpc_2eproto();
+  return *default_instance_;
+}
+
+LoginRpcLoginQuitLineUpAsk* LoginRpcLoginQuitLineUpAsk::default_instance_ = NULL;
+
+LoginRpcLoginQuitLineUpAsk* LoginRpcLoginQuitLineUpAsk::New() const {
+  return new LoginRpcLoginQuitLineUpAsk;
+}
+
+void LoginRpcLoginQuitLineUpAsk::Clear() {
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool LoginRpcLoginQuitLineUpAsk::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+        ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+      return true;
+    }
+    DO_(::google::protobuf::internal::WireFormat::SkipField(
+          input, tag, mutable_unknown_fields()));
+  }
+  return true;
+#undef DO_
+}
+
+void LoginRpcLoginQuitLineUpAsk::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* LoginRpcLoginQuitLineUpAsk::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int LoginRpcLoginQuitLineUpAsk::ByteSize() const {
+  int total_size = 0;
+
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void LoginRpcLoginQuitLineUpAsk::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const LoginRpcLoginQuitLineUpAsk* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const LoginRpcLoginQuitLineUpAsk*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void LoginRpcLoginQuitLineUpAsk::MergeFrom(const LoginRpcLoginQuitLineUpAsk& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void LoginRpcLoginQuitLineUpAsk::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void LoginRpcLoginQuitLineUpAsk::CopyFrom(const LoginRpcLoginQuitLineUpAsk& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool LoginRpcLoginQuitLineUpAsk::IsInitialized() const {
+
+  return true;
+}
+
+void LoginRpcLoginQuitLineUpAsk::Swap(LoginRpcLoginQuitLineUpAsk* other) {
+  if (other != this) {
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata LoginRpcLoginQuitLineUpAsk::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = LoginRpcLoginQuitLineUpAsk_descriptor_;
+  metadata.reflection = LoginRpcLoginQuitLineUpAsk_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int LoginRpcLoginQuitLineUpReply::kResultFieldNumber;
+#endif  // !_MSC_VER
+
+LoginRpcLoginQuitLineUpReply::LoginRpcLoginQuitLineUpReply()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void LoginRpcLoginQuitLineUpReply::InitAsDefaultInstance() {
+}
+
+LoginRpcLoginQuitLineUpReply::LoginRpcLoginQuitLineUpReply(const LoginRpcLoginQuitLineUpReply& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void LoginRpcLoginQuitLineUpReply::SharedCtor() {
+  _cached_size_ = 0;
+  result_ = -1;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+LoginRpcLoginQuitLineUpReply::~LoginRpcLoginQuitLineUpReply() {
+  SharedDtor();
+}
+
+void LoginRpcLoginQuitLineUpReply::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void LoginRpcLoginQuitLineUpReply::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* LoginRpcLoginQuitLineUpReply::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return LoginRpcLoginQuitLineUpReply_descriptor_;
+}
+
+const LoginRpcLoginQuitLineUpReply& LoginRpcLoginQuitLineUpReply::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_LoginRpc_2eproto();
+  return *default_instance_;
+}
+
+LoginRpcLoginQuitLineUpReply* LoginRpcLoginQuitLineUpReply::default_instance_ = NULL;
+
+LoginRpcLoginQuitLineUpReply* LoginRpcLoginQuitLineUpReply::New() const {
+  return new LoginRpcLoginQuitLineUpReply;
+}
+
+void LoginRpcLoginQuitLineUpReply::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    result_ = -1;
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool LoginRpcLoginQuitLineUpReply::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional int32 Result = 1 [default = -1];
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &result_)));
+          set_has_result();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void LoginRpcLoginQuitLineUpReply::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional int32 Result = 1 [default = -1];
+  if (has_result()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->result(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* LoginRpcLoginQuitLineUpReply::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional int32 Result = 1 [default = -1];
+  if (has_result()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->result(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int LoginRpcLoginQuitLineUpReply::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional int32 Result = 1 [default = -1];
+    if (has_result()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->result());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void LoginRpcLoginQuitLineUpReply::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const LoginRpcLoginQuitLineUpReply* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const LoginRpcLoginQuitLineUpReply*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void LoginRpcLoginQuitLineUpReply::MergeFrom(const LoginRpcLoginQuitLineUpReply& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_result()) {
+      set_result(from.result());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void LoginRpcLoginQuitLineUpReply::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void LoginRpcLoginQuitLineUpReply::CopyFrom(const LoginRpcLoginQuitLineUpReply& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool LoginRpcLoginQuitLineUpReply::IsInitialized() const {
+
+  return true;
+}
+
+void LoginRpcLoginQuitLineUpReply::Swap(LoginRpcLoginQuitLineUpReply* other) {
+  if (other != this) {
+    std::swap(result_, other->result_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata LoginRpcLoginQuitLineUpReply::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = LoginRpcLoginQuitLineUpReply_descriptor_;
+  metadata.reflection = LoginRpcLoginQuitLineUpReply_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int LoginRpcRemoteLoginAsk::kRoleidFieldNumber;
+#endif  // !_MSC_VER
+
+LoginRpcRemoteLoginAsk::LoginRpcRemoteLoginAsk()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void LoginRpcRemoteLoginAsk::InitAsDefaultInstance() {
+}
+
+LoginRpcRemoteLoginAsk::LoginRpcRemoteLoginAsk(const LoginRpcRemoteLoginAsk& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void LoginRpcRemoteLoginAsk::SharedCtor() {
+  _cached_size_ = 0;
+  roleid_ = GOOGLE_ULONGLONG(0);
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+LoginRpcRemoteLoginAsk::~LoginRpcRemoteLoginAsk() {
+  SharedDtor();
+}
+
+void LoginRpcRemoteLoginAsk::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void LoginRpcRemoteLoginAsk::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* LoginRpcRemoteLoginAsk::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return LoginRpcRemoteLoginAsk_descriptor_;
+}
+
+const LoginRpcRemoteLoginAsk& LoginRpcRemoteLoginAsk::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_LoginRpc_2eproto();
+  return *default_instance_;
+}
+
+LoginRpcRemoteLoginAsk* LoginRpcRemoteLoginAsk::default_instance_ = NULL;
+
+LoginRpcRemoteLoginAsk* LoginRpcRemoteLoginAsk::New() const {
+  return new LoginRpcRemoteLoginAsk;
+}
+
+void LoginRpcRemoteLoginAsk::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    roleid_ = GOOGLE_ULONGLONG(0);
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool LoginRpcRemoteLoginAsk::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional uint64 Roleid = 1 [default = 0];
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &roleid_)));
+          set_has_roleid();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void LoginRpcRemoteLoginAsk::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional uint64 Roleid = 1 [default = 0];
+  if (has_roleid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(1, this->roleid(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* LoginRpcRemoteLoginAsk::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional uint64 Roleid = 1 [default = 0];
+  if (has_roleid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(1, this->roleid(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int LoginRpcRemoteLoginAsk::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional uint64 Roleid = 1 [default = 0];
+    if (has_roleid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt64Size(
+          this->roleid());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void LoginRpcRemoteLoginAsk::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const LoginRpcRemoteLoginAsk* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const LoginRpcRemoteLoginAsk*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void LoginRpcRemoteLoginAsk::MergeFrom(const LoginRpcRemoteLoginAsk& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_roleid()) {
+      set_roleid(from.roleid());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void LoginRpcRemoteLoginAsk::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void LoginRpcRemoteLoginAsk::CopyFrom(const LoginRpcRemoteLoginAsk& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool LoginRpcRemoteLoginAsk::IsInitialized() const {
+
+  return true;
+}
+
+void LoginRpcRemoteLoginAsk::Swap(LoginRpcRemoteLoginAsk* other) {
+  if (other != this) {
+    std::swap(roleid_, other->roleid_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata LoginRpcRemoteLoginAsk::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = LoginRpcRemoteLoginAsk_descriptor_;
+  metadata.reflection = LoginRpcRemoteLoginAsk_reflection_;
+  return metadata;
+}
+
+
+// ===================================================================
+
+#ifndef _MSC_VER
+const int LoginRpcRemoteLoginReply::kResultFieldNumber;
+#endif  // !_MSC_VER
+
+LoginRpcRemoteLoginReply::LoginRpcRemoteLoginReply()
+  : ::google::protobuf::Message() {
+  SharedCtor();
+}
+
+void LoginRpcRemoteLoginReply::InitAsDefaultInstance() {
+}
+
+LoginRpcRemoteLoginReply::LoginRpcRemoteLoginReply(const LoginRpcRemoteLoginReply& from)
+  : ::google::protobuf::Message() {
+  SharedCtor();
+  MergeFrom(from);
+}
+
+void LoginRpcRemoteLoginReply::SharedCtor() {
+  _cached_size_ = 0;
+  result_ = -1;
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+}
+
+LoginRpcRemoteLoginReply::~LoginRpcRemoteLoginReply() {
+  SharedDtor();
+}
+
+void LoginRpcRemoteLoginReply::SharedDtor() {
+  if (this != default_instance_) {
+  }
+}
+
+void LoginRpcRemoteLoginReply::SetCachedSize(int size) const {
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+}
+const ::google::protobuf::Descriptor* LoginRpcRemoteLoginReply::descriptor() {
+  protobuf_AssignDescriptorsOnce();
+  return LoginRpcRemoteLoginReply_descriptor_;
+}
+
+const LoginRpcRemoteLoginReply& LoginRpcRemoteLoginReply::default_instance() {
+  if (default_instance_ == NULL) protobuf_AddDesc_LoginRpc_2eproto();
+  return *default_instance_;
+}
+
+LoginRpcRemoteLoginReply* LoginRpcRemoteLoginReply::default_instance_ = NULL;
+
+LoginRpcRemoteLoginReply* LoginRpcRemoteLoginReply::New() const {
+  return new LoginRpcRemoteLoginReply;
+}
+
+void LoginRpcRemoteLoginReply::Clear() {
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    result_ = -1;
+  }
+  ::memset(_has_bits_, 0, sizeof(_has_bits_));
+  mutable_unknown_fields()->Clear();
+}
+
+bool LoginRpcRemoteLoginReply::MergePartialFromCodedStream(
+    ::google::protobuf::io::CodedInputStream* input) {
+#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
+  ::google::protobuf::uint32 tag;
+  while ((tag = input->ReadTag()) != 0) {
+    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
+      // optional int32 Result = 1 [default = -1];
+      case 1: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &result_)));
+          set_has_result();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectAtEnd()) return true;
+        break;
+      }
+
+      default: {
+      handle_uninterpreted:
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
+          return true;
+        }
+        DO_(::google::protobuf::internal::WireFormat::SkipField(
+              input, tag, mutable_unknown_fields()));
+        break;
+      }
+    }
+  }
+  return true;
+#undef DO_
+}
+
+void LoginRpcRemoteLoginReply::SerializeWithCachedSizes(
+    ::google::protobuf::io::CodedOutputStream* output) const {
+  // optional int32 Result = 1 [default = -1];
+  if (has_result()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->result(), output);
+  }
+
+  if (!unknown_fields().empty()) {
+    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
+        unknown_fields(), output);
+  }
+}
+
+::google::protobuf::uint8* LoginRpcRemoteLoginReply::SerializeWithCachedSizesToArray(
+    ::google::protobuf::uint8* target) const {
+  // optional int32 Result = 1 [default = -1];
+  if (has_result()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->result(), target);
+  }
+
+  if (!unknown_fields().empty()) {
+    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
+        unknown_fields(), target);
+  }
+  return target;
+}
+
+int LoginRpcRemoteLoginReply::ByteSize() const {
+  int total_size = 0;
+
+  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    // optional int32 Result = 1 [default = -1];
+    if (has_result()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->result());
+    }
+
+  }
+  if (!unknown_fields().empty()) {
+    total_size +=
+      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
+        unknown_fields());
+  }
+  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
+  _cached_size_ = total_size;
+  GOOGLE_SAFE_CONCURRENT_WRITES_END();
+  return total_size;
+}
+
+void LoginRpcRemoteLoginReply::MergeFrom(const ::google::protobuf::Message& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  const LoginRpcRemoteLoginReply* source =
+    ::google::protobuf::internal::dynamic_cast_if_available<const LoginRpcRemoteLoginReply*>(
+      &from);
+  if (source == NULL) {
+    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
+  } else {
+    MergeFrom(*source);
+  }
+}
+
+void LoginRpcRemoteLoginReply::MergeFrom(const LoginRpcRemoteLoginReply& from) {
+  GOOGLE_CHECK_NE(&from, this);
+  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_result()) {
+      set_result(from.result());
+    }
+  }
+  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
+}
+
+void LoginRpcRemoteLoginReply::CopyFrom(const ::google::protobuf::Message& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void LoginRpcRemoteLoginReply::CopyFrom(const LoginRpcRemoteLoginReply& from) {
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool LoginRpcRemoteLoginReply::IsInitialized() const {
+
+  return true;
+}
+
+void LoginRpcRemoteLoginReply::Swap(LoginRpcRemoteLoginReply* other) {
+  if (other != this) {
+    std::swap(result_, other->result_);
+    std::swap(_has_bits_[0], other->_has_bits_[0]);
+    _unknown_fields_.Swap(&other->_unknown_fields_);
+    std::swap(_cached_size_, other->_cached_size_);
+  }
+}
+
+::google::protobuf::Metadata LoginRpcRemoteLoginReply::GetMetadata() const {
+  protobuf_AssignDescriptorsOnce();
+  ::google::protobuf::Metadata metadata;
+  metadata.descriptor = LoginRpcRemoteLoginReply_descriptor_;
+  metadata.reflection = LoginRpcRemoteLoginReply_reflection_;
   return metadata;
 }
 

@@ -9,8 +9,7 @@ using System.Collections.Generic;
 //摄像机配置配置数据类
 public class CameraConfigElement
 {
-	public int entry_id;         	//序号	摄像机配置序号
-	public string comment;       	//备注	备注
+	public int id;               	//序号	摄像机配置序号
 	public lf clipping;          	//摄像机剪裁	视野相关 摄像机剪裁相关 最小值|最大值
 	public float field_of_view;  	//摄像机视野	视野相关 影响摄像机内视野的大小，默认70
 	public float fog_alpha;      	//雾alpha值	决定雾的透明度
@@ -34,7 +33,7 @@ public class CameraConfigElement
 	public bool IsValidate = false;
 	public CameraConfigElement()
 	{
-		entry_id = -1;
+		id = -1;
 	}
 };
 
@@ -122,38 +121,36 @@ public class CameraConfigTable
             vecLine.Add(tmpStr);
             vecHeadType.Add(tmpInt);
 		}
-		if(vecLine.Count != 21)
+		if(vecLine.Count != 20)
 		{
 			Ex.Logger.Log("CameraConfig.csv中列数量与生成的代码不匹配!");
 			return false;
 		}
-		if(vecLine[0]!="entry_id"){Ex.Logger.Log("CameraConfig.csv中字段[entry_id]位置不对应"); return false; }
-		if(vecLine[1]!="comment"){Ex.Logger.Log("CameraConfig.csv中字段[comment]位置不对应"); return false; }
-		if(vecLine[2]!="clipping"){Ex.Logger.Log("CameraConfig.csv中字段[clipping]位置不对应"); return false; }
-		if(vecLine[3]!="field_of_view"){Ex.Logger.Log("CameraConfig.csv中字段[field_of_view]位置不对应"); return false; }
-		if(vecLine[4]!="fog_alpha"){Ex.Logger.Log("CameraConfig.csv中字段[fog_alpha]位置不对应"); return false; }
-		if(vecLine[5]!="fog_noise"){Ex.Logger.Log("CameraConfig.csv中字段[fog_noise]位置不对应"); return false; }
-		if(vecLine[6]!="fog_distance"){Ex.Logger.Log("CameraConfig.csv中字段[fog_distance]位置不对应"); return false; }
-		if(vecLine[7]!="fog_distance_fall_off"){Ex.Logger.Log("CameraConfig.csv中字段[fog_distance_fall_off]位置不对应"); return false; }
-		if(vecLine[8]!="fog_max_distance"){Ex.Logger.Log("CameraConfig.csv中字段[fog_max_distance]位置不对应"); return false; }
-		if(vecLine[9]!="fog_height"){Ex.Logger.Log("CameraConfig.csv中字段[fog_height]位置不对应"); return false; }
-		if(vecLine[10]!="fog_height_fall_off"){Ex.Logger.Log("CameraConfig.csv中字段[fog_height_fall_off]位置不对应"); return false; }
-		if(vecLine[11]!="fog_baseline_height"){Ex.Logger.Log("CameraConfig.csv中字段[fog_baseline_height]位置不对应"); return false; }
-		if(vecLine[12]!="fog_color"){Ex.Logger.Log("CameraConfig.csv中字段[fog_color]位置不对应"); return false; }
-		if(vecLine[13]!="fog_color_2"){Ex.Logger.Log("CameraConfig.csv中字段[fog_color_2]位置不对应"); return false; }
-		if(vecLine[14]!="bloom_threshold"){Ex.Logger.Log("CameraConfig.csv中字段[bloom_threshold]位置不对应"); return false; }
-		if(vecLine[15]!="bloom_intensity"){Ex.Logger.Log("CameraConfig.csv中字段[bloom_intensity]位置不对应"); return false; }
-		if(vecLine[16]!="bloom_blur_size"){Ex.Logger.Log("CameraConfig.csv中字段[bloom_blur_size]位置不对应"); return false; }
-		if(vecLine[17]!="bloom_iteration"){Ex.Logger.Log("CameraConfig.csv中字段[bloom_iteration]位置不对应"); return false; }
-		if(vecLine[18]!="camera_distance"){Ex.Logger.Log("CameraConfig.csv中字段[camera_distance]位置不对应"); return false; }
-		if(vecLine[19]!="camera_angle_vertical"){Ex.Logger.Log("CameraConfig.csv中字段[camera_angle_vertical]位置不对应"); return false; }
-		if(vecLine[20]!="camera_angle_horizontal"){Ex.Logger.Log("CameraConfig.csv中字段[camera_angle_horizontal]位置不对应"); return false; }
+		if(vecLine[0]!="id"){Ex.Logger.Log("CameraConfig.csv中字段[id]位置不对应"); return false; }
+		if(vecLine[1]!="clipping"){Ex.Logger.Log("CameraConfig.csv中字段[clipping]位置不对应"); return false; }
+		if(vecLine[2]!="field_of_view"){Ex.Logger.Log("CameraConfig.csv中字段[field_of_view]位置不对应"); return false; }
+		if(vecLine[3]!="fog_alpha"){Ex.Logger.Log("CameraConfig.csv中字段[fog_alpha]位置不对应"); return false; }
+		if(vecLine[4]!="fog_noise"){Ex.Logger.Log("CameraConfig.csv中字段[fog_noise]位置不对应"); return false; }
+		if(vecLine[5]!="fog_distance"){Ex.Logger.Log("CameraConfig.csv中字段[fog_distance]位置不对应"); return false; }
+		if(vecLine[6]!="fog_distance_fall_off"){Ex.Logger.Log("CameraConfig.csv中字段[fog_distance_fall_off]位置不对应"); return false; }
+		if(vecLine[7]!="fog_max_distance"){Ex.Logger.Log("CameraConfig.csv中字段[fog_max_distance]位置不对应"); return false; }
+		if(vecLine[8]!="fog_height"){Ex.Logger.Log("CameraConfig.csv中字段[fog_height]位置不对应"); return false; }
+		if(vecLine[9]!="fog_height_fall_off"){Ex.Logger.Log("CameraConfig.csv中字段[fog_height_fall_off]位置不对应"); return false; }
+		if(vecLine[10]!="fog_baseline_height"){Ex.Logger.Log("CameraConfig.csv中字段[fog_baseline_height]位置不对应"); return false; }
+		if(vecLine[11]!="fog_color"){Ex.Logger.Log("CameraConfig.csv中字段[fog_color]位置不对应"); return false; }
+		if(vecLine[12]!="fog_color_2"){Ex.Logger.Log("CameraConfig.csv中字段[fog_color_2]位置不对应"); return false; }
+		if(vecLine[13]!="bloom_threshold"){Ex.Logger.Log("CameraConfig.csv中字段[bloom_threshold]位置不对应"); return false; }
+		if(vecLine[14]!="bloom_intensity"){Ex.Logger.Log("CameraConfig.csv中字段[bloom_intensity]位置不对应"); return false; }
+		if(vecLine[15]!="bloom_blur_size"){Ex.Logger.Log("CameraConfig.csv中字段[bloom_blur_size]位置不对应"); return false; }
+		if(vecLine[16]!="bloom_iteration"){Ex.Logger.Log("CameraConfig.csv中字段[bloom_iteration]位置不对应"); return false; }
+		if(vecLine[17]!="camera_distance"){Ex.Logger.Log("CameraConfig.csv中字段[camera_distance]位置不对应"); return false; }
+		if(vecLine[18]!="camera_angle_vertical"){Ex.Logger.Log("CameraConfig.csv中字段[camera_angle_vertical]位置不对应"); return false; }
+		if(vecLine[19]!="camera_angle_horizontal"){Ex.Logger.Log("CameraConfig.csv中字段[camera_angle_horizontal]位置不对应"); return false; }
 
 		for(int i=0; i<nRow; i++)
 		{
 			CameraConfigElement member = new CameraConfigElement();
-			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.entry_id );
-			readPos += GameAssist.ReadString( binContent, readPos, out member.comment);
+			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.id );
 			readPos += GameAssist.ReadString( binContent, readPos, out member.clipping);
 			readPos += GameAssist.ReadFloat( binContent, readPos, out member.field_of_view);
 			readPos += GameAssist.ReadFloat( binContent, readPos, out member.fog_alpha);
@@ -176,7 +173,7 @@ public class CameraConfigTable
 
 			member.IsValidate = true;
 			m_vecAllElements.Add(member);
-			m_mapElements[member.entry_id] = member;
+			m_mapElements[member.id] = member;
 		}
 		return true;
 	}
@@ -189,68 +186,66 @@ public class CameraConfigTable
 		int contentOffset = 0;
 		List<string> vecLine;
 		vecLine = GameAssist.readCsvLine( strContent, ref contentOffset );
-		if(vecLine.Count != 21)
+		if(vecLine.Count != 20)
 		{
 			Ex.Logger.Log("CameraConfig.csv中列数量与生成的代码不匹配!");
 			return false;
 		}
-		if(vecLine[0]!="entry_id"){Ex.Logger.Log("CameraConfig.csv中字段[entry_id]位置不对应"); return false; }
-		if(vecLine[1]!="comment"){Ex.Logger.Log("CameraConfig.csv中字段[comment]位置不对应"); return false; }
-		if(vecLine[2]!="clipping"){Ex.Logger.Log("CameraConfig.csv中字段[clipping]位置不对应"); return false; }
-		if(vecLine[3]!="field_of_view"){Ex.Logger.Log("CameraConfig.csv中字段[field_of_view]位置不对应"); return false; }
-		if(vecLine[4]!="fog_alpha"){Ex.Logger.Log("CameraConfig.csv中字段[fog_alpha]位置不对应"); return false; }
-		if(vecLine[5]!="fog_noise"){Ex.Logger.Log("CameraConfig.csv中字段[fog_noise]位置不对应"); return false; }
-		if(vecLine[6]!="fog_distance"){Ex.Logger.Log("CameraConfig.csv中字段[fog_distance]位置不对应"); return false; }
-		if(vecLine[7]!="fog_distance_fall_off"){Ex.Logger.Log("CameraConfig.csv中字段[fog_distance_fall_off]位置不对应"); return false; }
-		if(vecLine[8]!="fog_max_distance"){Ex.Logger.Log("CameraConfig.csv中字段[fog_max_distance]位置不对应"); return false; }
-		if(vecLine[9]!="fog_height"){Ex.Logger.Log("CameraConfig.csv中字段[fog_height]位置不对应"); return false; }
-		if(vecLine[10]!="fog_height_fall_off"){Ex.Logger.Log("CameraConfig.csv中字段[fog_height_fall_off]位置不对应"); return false; }
-		if(vecLine[11]!="fog_baseline_height"){Ex.Logger.Log("CameraConfig.csv中字段[fog_baseline_height]位置不对应"); return false; }
-		if(vecLine[12]!="fog_color"){Ex.Logger.Log("CameraConfig.csv中字段[fog_color]位置不对应"); return false; }
-		if(vecLine[13]!="fog_color_2"){Ex.Logger.Log("CameraConfig.csv中字段[fog_color_2]位置不对应"); return false; }
-		if(vecLine[14]!="bloom_threshold"){Ex.Logger.Log("CameraConfig.csv中字段[bloom_threshold]位置不对应"); return false; }
-		if(vecLine[15]!="bloom_intensity"){Ex.Logger.Log("CameraConfig.csv中字段[bloom_intensity]位置不对应"); return false; }
-		if(vecLine[16]!="bloom_blur_size"){Ex.Logger.Log("CameraConfig.csv中字段[bloom_blur_size]位置不对应"); return false; }
-		if(vecLine[17]!="bloom_iteration"){Ex.Logger.Log("CameraConfig.csv中字段[bloom_iteration]位置不对应"); return false; }
-		if(vecLine[18]!="camera_distance"){Ex.Logger.Log("CameraConfig.csv中字段[camera_distance]位置不对应"); return false; }
-		if(vecLine[19]!="camera_angle_vertical"){Ex.Logger.Log("CameraConfig.csv中字段[camera_angle_vertical]位置不对应"); return false; }
-		if(vecLine[20]!="camera_angle_horizontal"){Ex.Logger.Log("CameraConfig.csv中字段[camera_angle_horizontal]位置不对应"); return false; }
+		if(vecLine[0]!="id"){Ex.Logger.Log("CameraConfig.csv中字段[id]位置不对应"); return false; }
+		if(vecLine[1]!="clipping"){Ex.Logger.Log("CameraConfig.csv中字段[clipping]位置不对应"); return false; }
+		if(vecLine[2]!="field_of_view"){Ex.Logger.Log("CameraConfig.csv中字段[field_of_view]位置不对应"); return false; }
+		if(vecLine[3]!="fog_alpha"){Ex.Logger.Log("CameraConfig.csv中字段[fog_alpha]位置不对应"); return false; }
+		if(vecLine[4]!="fog_noise"){Ex.Logger.Log("CameraConfig.csv中字段[fog_noise]位置不对应"); return false; }
+		if(vecLine[5]!="fog_distance"){Ex.Logger.Log("CameraConfig.csv中字段[fog_distance]位置不对应"); return false; }
+		if(vecLine[6]!="fog_distance_fall_off"){Ex.Logger.Log("CameraConfig.csv中字段[fog_distance_fall_off]位置不对应"); return false; }
+		if(vecLine[7]!="fog_max_distance"){Ex.Logger.Log("CameraConfig.csv中字段[fog_max_distance]位置不对应"); return false; }
+		if(vecLine[8]!="fog_height"){Ex.Logger.Log("CameraConfig.csv中字段[fog_height]位置不对应"); return false; }
+		if(vecLine[9]!="fog_height_fall_off"){Ex.Logger.Log("CameraConfig.csv中字段[fog_height_fall_off]位置不对应"); return false; }
+		if(vecLine[10]!="fog_baseline_height"){Ex.Logger.Log("CameraConfig.csv中字段[fog_baseline_height]位置不对应"); return false; }
+		if(vecLine[11]!="fog_color"){Ex.Logger.Log("CameraConfig.csv中字段[fog_color]位置不对应"); return false; }
+		if(vecLine[12]!="fog_color_2"){Ex.Logger.Log("CameraConfig.csv中字段[fog_color_2]位置不对应"); return false; }
+		if(vecLine[13]!="bloom_threshold"){Ex.Logger.Log("CameraConfig.csv中字段[bloom_threshold]位置不对应"); return false; }
+		if(vecLine[14]!="bloom_intensity"){Ex.Logger.Log("CameraConfig.csv中字段[bloom_intensity]位置不对应"); return false; }
+		if(vecLine[15]!="bloom_blur_size"){Ex.Logger.Log("CameraConfig.csv中字段[bloom_blur_size]位置不对应"); return false; }
+		if(vecLine[16]!="bloom_iteration"){Ex.Logger.Log("CameraConfig.csv中字段[bloom_iteration]位置不对应"); return false; }
+		if(vecLine[17]!="camera_distance"){Ex.Logger.Log("CameraConfig.csv中字段[camera_distance]位置不对应"); return false; }
+		if(vecLine[18]!="camera_angle_vertical"){Ex.Logger.Log("CameraConfig.csv中字段[camera_angle_vertical]位置不对应"); return false; }
+		if(vecLine[19]!="camera_angle_horizontal"){Ex.Logger.Log("CameraConfig.csv中字段[camera_angle_horizontal]位置不对应"); return false; }
 
 		while(true)
 		{
 			vecLine = GameAssist.readCsvLine( strContent, ref contentOffset );
 			if((int)vecLine.Count == 0 )
 				break;
-			if((int)vecLine.Count != (int)21)
+			if((int)vecLine.Count != (int)20)
 			{
 				return false;
 			}
 			CameraConfigElement member = new CameraConfigElement();
-			member.entry_id=Convert.ToInt32(vecLine[0]);
-			member.comment=vecLine[1];
-			member.clipping=vecLine[2];
-			member.field_of_view=Convert.ToSingle(vecLine[3]);
-			member.fog_alpha=Convert.ToSingle(vecLine[4]);
-			member.fog_noise=Convert.ToSingle(vecLine[5]);
-			member.fog_distance=Convert.ToSingle(vecLine[6]);
-			member.fog_distance_fall_off=Convert.ToSingle(vecLine[7]);
-			member.fog_max_distance=Convert.ToSingle(vecLine[8]);
-			member.fog_height=Convert.ToSingle(vecLine[9]);
-			member.fog_height_fall_off=Convert.ToSingle(vecLine[10]);
-			member.fog_baseline_height=Convert.ToSingle(vecLine[11]);
-			member.fog_color=vecLine[12];
-			member.fog_color_2=vecLine[13];
-			member.bloom_threshold=Convert.ToSingle(vecLine[14]);
-			member.bloom_intensity=Convert.ToSingle(vecLine[15]);
-			member.bloom_blur_size=Convert.ToSingle(vecLine[16]);
-			member.bloom_iteration=Convert.ToInt32(vecLine[17]);
-			member.camera_distance=Convert.ToSingle(vecLine[18]);
-			member.camera_angle_vertical=Convert.ToSingle(vecLine[19]);
-			member.camera_angle_horizontal=Convert.ToSingle(vecLine[20]);
+			member.id=Convert.ToInt32(vecLine[0]);
+			member.clipping=vecLine[1];
+			member.field_of_view=Convert.ToSingle(vecLine[2]);
+			member.fog_alpha=Convert.ToSingle(vecLine[3]);
+			member.fog_noise=Convert.ToSingle(vecLine[4]);
+			member.fog_distance=Convert.ToSingle(vecLine[5]);
+			member.fog_distance_fall_off=Convert.ToSingle(vecLine[6]);
+			member.fog_max_distance=Convert.ToSingle(vecLine[7]);
+			member.fog_height=Convert.ToSingle(vecLine[8]);
+			member.fog_height_fall_off=Convert.ToSingle(vecLine[9]);
+			member.fog_baseline_height=Convert.ToSingle(vecLine[10]);
+			member.fog_color=vecLine[11];
+			member.fog_color_2=vecLine[12];
+			member.bloom_threshold=Convert.ToSingle(vecLine[13]);
+			member.bloom_intensity=Convert.ToSingle(vecLine[14]);
+			member.bloom_blur_size=Convert.ToSingle(vecLine[15]);
+			member.bloom_iteration=Convert.ToInt32(vecLine[16]);
+			member.camera_distance=Convert.ToSingle(vecLine[17]);
+			member.camera_angle_vertical=Convert.ToSingle(vecLine[18]);
+			member.camera_angle_horizontal=Convert.ToSingle(vecLine[19]);
 
 			member.IsValidate = true;
 			m_vecAllElements.Add(member);
-			m_mapElements[member.entry_id] = member;
+			m_mapElements[member.id] = member;
 		}
 		return true;
 	}

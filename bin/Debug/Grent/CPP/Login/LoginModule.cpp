@@ -15,7 +15,7 @@
 ********************************************************************************************/
 
 #include "LoginModule.h"
-#
+
 
 
 //初始化
@@ -23,6 +23,11 @@ bool ModuleLogin::Initialize()
 {
 
 	
+	return OnLoad();
+}
 
-	return true;
+bool ModuleLogin::Reinitialize()
+{
+	
+	return OnLoad();
 }

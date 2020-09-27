@@ -9,7 +9,14 @@ HumanController = cc.coffee.BaseControllerExtend.extend(
     ctor:(_model)->
         @_super(this, _model)
         _model.SetMoveCheckNotifyCB(@MoveCheckCBNotify)
-        _model.SetMoveByPosNotifyCB(@MoveByPosCBNotify)
+        _model.SetRespawnOtherNotifyCB(@RespawnOtherCBNotify)
+        _model.SetRoleDieNotifyCB(@RoleDieCBNotify)
+        _model.SetChangeAnimationStateNotifyCB(@ChangeAnimationStateCBNotify)
+        _model.SetClientAttributesNotifyCB(@ClientAttributesCBNotify)
+        _model.SetTimeCheckNotifyCB(@TimeCheckCBNotify)
+        _model.SetMotionFlagsNotifyCB(@MotionFlagsCBNotify)
+        _model.SetChangePositionNotifyCB(@ChangePositionCBNotify)
+        _model.SetAttrChangeNotifyCB(@AttrChangeCBNotify)
 
         return
 
@@ -17,8 +24,22 @@ HumanController = cc.coffee.BaseControllerExtend.extend(
 
     MoveCheckCBNotify:(ret_msg)->
         cc.log "MoveCheckCBNotify Respond "
-    MoveByPosCBNotify:(ret_msg)->
-        cc.log "MoveByPosCBNotify Respond "
+    RespawnOtherCBNotify:(ret_msg)->
+        cc.log "RespawnOtherCBNotify Respond "
+    RoleDieCBNotify:(ret_msg)->
+        cc.log "RoleDieCBNotify Respond "
+    ChangeAnimationStateCBNotify:(ret_msg)->
+        cc.log "ChangeAnimationStateCBNotify Respond "
+    ClientAttributesCBNotify:(ret_msg)->
+        cc.log "ClientAttributesCBNotify Respond "
+    TimeCheckCBNotify:(ret_msg)->
+        cc.log "TimeCheckCBNotify Respond "
+    MotionFlagsCBNotify:(ret_msg)->
+        cc.log "MotionFlagsCBNotify Respond "
+    ChangePositionCBNotify:(ret_msg)->
+        cc.log "ChangePositionCBNotify Respond "
+    AttrChangeCBNotify:(ret_msg)->
+        cc.log "AttrChangeCBNotify Respond "
 
 
 )

@@ -15,7 +15,7 @@
 ********************************************************************************************/
 
 #include "ChatModule.h"
-#
+
 
 
 //初始化
@@ -23,6 +23,11 @@ bool ModuleChat::Initialize()
 {
 
 	
+	return OnLoad();
+}
 
-	return true;
+bool ModuleChat::Reinitialize()
+{
+	
+	return OnLoad();
 }

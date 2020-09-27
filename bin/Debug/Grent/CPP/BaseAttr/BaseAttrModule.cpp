@@ -15,7 +15,7 @@
 ********************************************************************************************/
 
 #include "BaseAttrModule.h"
-#
+
 
 
 //初始化
@@ -23,6 +23,11 @@ bool ModuleBaseAttr::Initialize()
 {
 
 	
+	return OnLoad();
+}
 
-	return true;
+bool ModuleBaseAttr::Reinitialize()
+{
+	
+	return OnLoad();
 }

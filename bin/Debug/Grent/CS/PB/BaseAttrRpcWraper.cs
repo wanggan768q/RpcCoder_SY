@@ -151,6 +151,7 @@ public class BaseAttrRpcSyncNotifyWraper
 	//构造函数
 	public BaseAttrRpcSyncNotifyWraper()
 	{
+		 m_ObjId = 0;
 		 m_UpdateData = new byte[0];
 
 	}
@@ -158,6 +159,7 @@ public class BaseAttrRpcSyncNotifyWraper
 	//重置函数
 	public void ResetWraper()
 	{
+		 m_ObjId = 0;
 		 m_UpdateData = new byte[0];
 
 	}
@@ -166,6 +168,7 @@ public class BaseAttrRpcSyncNotifyWraper
 	public BaseAttrRpcSyncNotify ToPB()
 	{
 		BaseAttrRpcSyncNotify v = new BaseAttrRpcSyncNotify();
+		v.ObjId = m_ObjId;
 		v.UpdateData = m_UpdateData;
 
 		return v;
@@ -176,6 +179,7 @@ public class BaseAttrRpcSyncNotifyWraper
 	{
         if (v == null)
             return;
+		m_ObjId = v.ObjId;
 		m_UpdateData = v.UpdateData;
 
 	}
@@ -196,6 +200,13 @@ public class BaseAttrRpcSyncNotifyWraper
 		return true;
 	}
 
+	//ObjId
+	public UInt64 m_ObjId;
+	public UInt64 ObjId
+	{
+		get { return m_ObjId;}
+		set { m_ObjId = value; }
+	}
 	//更新数据
 	public byte[] m_UpdateData;
 	public byte[] UpdateData

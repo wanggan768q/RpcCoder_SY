@@ -34,8 +34,6 @@ void protobuf_ShutdownFile_TeamRpc_2eproto();
 
 class TeamRpcCreateTeamAsk;
 class TeamRpcCreateTeamReply;
-class TeamRpcJoinTeamAsk;
-class TeamRpcJoinTeamReply;
 class TeamRpcLeaveTeamAsk;
 class TeamRpcLeaveTeamReply;
 class TeamRpcAppointTeamLeaderAsk;
@@ -60,6 +58,46 @@ class TeamRpcAgreeApplicantReply;
 class TeamRpcAgreeApplicantNotifyNotify;
 class TeamRpcTeamInfoNotify;
 class TeamRpcUpdateTeamMemInfoNotify;
+class TeamRpcFollowTeamLeaderAsk;
+class TeamRpcFollowTeamLeaderReply;
+class TeamRpcSummonMemberAsk;
+class TeamRpcSummonMemberReply;
+class TeamRpcSummonMemberNotifyNotify;
+class TeamRpcChangeTeamTargetReply;
+class TeamRpcChangeTeamTargetAsk;
+class TeamRpcChangeTeamTargetNotifyNotify;
+class TeamRpcChangTeamTypeAsk;
+class TeamRpcChangTeamTypeReply;
+class TeamRpcChangeTeamTypeNotifyNotify;
+class TeamRpcInviteTeamMemberAsk;
+class TeamRpcInviteTeamMemberReply;
+class TeamRpcInviteTeamMemberNotifyNotify;
+class TeamRpcApplyListNotifyNotify;
+class TeamRpcAgreeJoinTeamAsk;
+class TeamRpcAgreeJoinTeamReply;
+class TeamRpcRefuseMemberAsk;
+class TeamRpcRefuseMemberReply;
+class TeamRpcClearApplyListReply;
+class TeamRpcClearApplyListAsk;
+class TeamRpcNoTeamInviteAsk;
+class TeamRpcNoTeamInviteReply;
+class TeamRpcRejectInviteAsk;
+class TeamRpcRejectInviteReply;
+class TeamRpcEnterAutoCombatNotify;
+class TeamRpcHangUpAutoCombatNotify;
+class TeamRpcUpdateTeamHpInfoNotify;
+class TeamRpcUpdateTeamPosInfoNotify;
+class TeamRpcUpdateTeamBuffInfoNotify;
+class TeamRpcHangeUpFollowAsk;
+class TeamRpcHangeUpFollowReply;
+class TeamRpcGoOnFollowAsk;
+class TeamRpcGoOnFollowReply;
+class TeamRpcUpdateFollowStatusNotify;
+class TeamRpcRequestNoTeamMemberListAsk;
+class TeamRpcRequestNoTeamMemberListReply;
+class TeamRpcEnterTeamFollowNotify;
+class TeamRpcEnterLeaderSceneAsk;
+class TeamRpcEnterLeaderSceneReply;
 
 // ===================================================================
 
@@ -117,24 +155,36 @@ class TeamRpcCreateTeamAsk : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 TeamType = 2 [default = -1];
+  // optional int32 TeamType = 2 [default = -1];
   inline bool has_teamtype() const;
   inline void clear_teamtype();
   static const int kTeamTypeFieldNumber = 2;
   inline ::google::protobuf::int32 teamtype() const;
   inline void set_teamtype(::google::protobuf::int32 value);
 
+  // optional .TeamTarget TTarget = 6;
+  inline bool has_ttarget() const;
+  inline void clear_ttarget();
+  static const int kTTargetFieldNumber = 6;
+  inline const ::TeamTarget& ttarget() const;
+  inline ::TeamTarget* mutable_ttarget();
+  inline ::TeamTarget* release_ttarget();
+  inline void set_allocated_ttarget(::TeamTarget* ttarget);
+
   // @@protoc_insertion_point(class_scope:TeamRpcCreateTeamAsk)
  private:
   inline void set_has_teamtype();
   inline void clear_has_teamtype();
+  inline void set_has_ttarget();
+  inline void clear_has_ttarget();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
+  ::TeamTarget* ttarget_;
   ::google::protobuf::int32 teamtype_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
 
   friend void  protobuf_AddDesc_TeamRpc_2eproto();
   friend void protobuf_AssignDesc_TeamRpc_2eproto();
@@ -199,7 +249,7 @@ class TeamRpcCreateTeamReply : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
@@ -236,216 +286,6 @@ class TeamRpcCreateTeamReply : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static TeamRpcCreateTeamReply* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class TeamRpcJoinTeamAsk : public ::google::protobuf::Message {
- public:
-  TeamRpcJoinTeamAsk();
-  virtual ~TeamRpcJoinTeamAsk();
-
-  TeamRpcJoinTeamAsk(const TeamRpcJoinTeamAsk& from);
-
-  inline TeamRpcJoinTeamAsk& operator=(const TeamRpcJoinTeamAsk& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const TeamRpcJoinTeamAsk& default_instance();
-
-  void Swap(TeamRpcJoinTeamAsk* other);
-
-  // implements Message ----------------------------------------------
-
-  TeamRpcJoinTeamAsk* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const TeamRpcJoinTeamAsk& from);
-  void MergeFrom(const TeamRpcJoinTeamAsk& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // optional sint32 TeamId = 1 [default = -1];
-  inline bool has_teamid() const;
-  inline void clear_teamid();
-  static const int kTeamIdFieldNumber = 1;
-  inline ::google::protobuf::int32 teamid() const;
-  inline void set_teamid(::google::protobuf::int32 value);
-
-  // optional sint32 TeamType = 2 [default = -1];
-  inline bool has_teamtype() const;
-  inline void clear_teamtype();
-  static const int kTeamTypeFieldNumber = 2;
-  inline ::google::protobuf::int32 teamtype() const;
-  inline void set_teamtype(::google::protobuf::int32 value);
-
-  // optional .TeamInfo Team = 3;
-  inline bool has_team() const;
-  inline void clear_team();
-  static const int kTeamFieldNumber = 3;
-  inline const ::TeamInfo& team() const;
-  inline ::TeamInfo* mutable_team();
-  inline ::TeamInfo* release_team();
-  inline void set_allocated_team(::TeamInfo* team);
-
-  // optional .TeamMemberInfo TeamMember = 4;
-  inline bool has_teammember() const;
-  inline void clear_teammember();
-  static const int kTeamMemberFieldNumber = 4;
-  inline const ::TeamMemberInfo& teammember() const;
-  inline ::TeamMemberInfo* mutable_teammember();
-  inline ::TeamMemberInfo* release_teammember();
-  inline void set_allocated_teammember(::TeamMemberInfo* teammember);
-
-  // @@protoc_insertion_point(class_scope:TeamRpcJoinTeamAsk)
- private:
-  inline void set_has_teamid();
-  inline void clear_has_teamid();
-  inline void set_has_teamtype();
-  inline void clear_has_teamtype();
-  inline void set_has_team();
-  inline void clear_has_team();
-  inline void set_has_teammember();
-  inline void clear_has_teammember();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::int32 teamid_;
-  ::google::protobuf::int32 teamtype_;
-  ::TeamInfo* team_;
-  ::TeamMemberInfo* teammember_;
-
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
-
-  friend void  protobuf_AddDesc_TeamRpc_2eproto();
-  friend void protobuf_AssignDesc_TeamRpc_2eproto();
-  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
-
-  void InitAsDefaultInstance();
-  static TeamRpcJoinTeamAsk* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class TeamRpcJoinTeamReply : public ::google::protobuf::Message {
- public:
-  TeamRpcJoinTeamReply();
-  virtual ~TeamRpcJoinTeamReply();
-
-  TeamRpcJoinTeamReply(const TeamRpcJoinTeamReply& from);
-
-  inline TeamRpcJoinTeamReply& operator=(const TeamRpcJoinTeamReply& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const TeamRpcJoinTeamReply& default_instance();
-
-  void Swap(TeamRpcJoinTeamReply* other);
-
-  // implements Message ----------------------------------------------
-
-  TeamRpcJoinTeamReply* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const TeamRpcJoinTeamReply& from);
-  void MergeFrom(const TeamRpcJoinTeamReply& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // optional sint32 Result = 1 [default = -9999];
-  inline bool has_result() const;
-  inline void clear_result();
-  static const int kResultFieldNumber = 1;
-  inline ::google::protobuf::int32 result() const;
-  inline void set_result(::google::protobuf::int32 value);
-
-  // optional .TeamInfo Team = 2;
-  inline bool has_team() const;
-  inline void clear_team();
-  static const int kTeamFieldNumber = 2;
-  inline const ::TeamInfo& team() const;
-  inline ::TeamInfo* mutable_team();
-  inline ::TeamInfo* release_team();
-  inline void set_allocated_team(::TeamInfo* team);
-
-  // @@protoc_insertion_point(class_scope:TeamRpcJoinTeamReply)
- private:
-  inline void set_has_result();
-  inline void clear_has_result();
-  inline void set_has_team();
-  inline void clear_has_team();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::TeamInfo* team_;
-  ::google::protobuf::int32 result_;
-
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
-
-  friend void  protobuf_AddDesc_TeamRpc_2eproto();
-  friend void protobuf_AssignDesc_TeamRpc_2eproto();
-  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
-
-  void InitAsDefaultInstance();
-  static TeamRpcJoinTeamReply* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -575,7 +415,7 @@ class TeamRpcLeaveTeamReply : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
@@ -739,7 +579,7 @@ class TeamRpcAppointTeamLeaderReply : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
@@ -995,7 +835,7 @@ class TeamRpcKickMemberReply : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
@@ -1149,7 +989,7 @@ class TeamRpcDissmissTeamReply : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
@@ -1486,17 +1326,29 @@ class TeamRpcJoinTeamNotifyNotify : public ::google::protobuf::Message {
   inline ::TeamMemberInfo* release_teammember();
   inline void set_allocated_teammember(::TeamMemberInfo* teammember);
 
+  // optional .TeamInfo Team = 2;
+  inline bool has_team() const;
+  inline void clear_team();
+  static const int kTeamFieldNumber = 2;
+  inline const ::TeamInfo& team() const;
+  inline ::TeamInfo* mutable_team();
+  inline ::TeamInfo* release_team();
+  inline void set_allocated_team(::TeamInfo* team);
+
   // @@protoc_insertion_point(class_scope:TeamRpcJoinTeamNotifyNotify)
  private:
   inline void set_has_teammember();
   inline void clear_has_teammember();
+  inline void set_has_team();
+  inline void clear_has_team();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::TeamMemberInfo* teammember_;
+  ::TeamInfo* team_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
 
   friend void  protobuf_AddDesc_TeamRpc_2eproto();
   friend void protobuf_AssignDesc_TeamRpc_2eproto();
@@ -1633,14 +1485,34 @@ class TeamRpcSurroundingTeamAsk : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
+  // optional int32 TargetGroupId = 2 [default = -1];
+  inline bool has_targetgroupid() const;
+  inline void clear_targetgroupid();
+  static const int kTargetGroupIdFieldNumber = 2;
+  inline ::google::protobuf::int32 targetgroupid() const;
+  inline void set_targetgroupid(::google::protobuf::int32 value);
+
+  // optional int32 TargetGroup = 3 [default = 0];
+  inline bool has_targetgroup() const;
+  inline void clear_targetgroup();
+  static const int kTargetGroupFieldNumber = 3;
+  inline ::google::protobuf::int32 targetgroup() const;
+  inline void set_targetgroup(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:TeamRpcSurroundingTeamAsk)
  private:
+  inline void set_has_targetgroupid();
+  inline void clear_has_targetgroupid();
+  inline void set_has_targetgroup();
+  inline void clear_has_targetgroup();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
+  ::google::protobuf::int32 targetgroupid_;
+  ::google::protobuf::int32 targetgroup_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[1];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
 
   friend void  protobuf_AddDesc_TeamRpc_2eproto();
   friend void protobuf_AssignDesc_TeamRpc_2eproto();
@@ -1705,7 +1577,7 @@ class TeamRpcSurroundingTeamReply : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
@@ -1724,18 +1596,38 @@ class TeamRpcSurroundingTeamReply : public ::google::protobuf::Message {
   inline ::google::protobuf::RepeatedPtrField< ::TeamInfo >*
       mutable_teamsinfo();
 
+  // optional int32 TargetGroupId = 5 [default = -1];
+  inline bool has_targetgroupid() const;
+  inline void clear_targetgroupid();
+  static const int kTargetGroupIdFieldNumber = 5;
+  inline ::google::protobuf::int32 targetgroupid() const;
+  inline void set_targetgroupid(::google::protobuf::int32 value);
+
+  // optional int32 TargetGroup = 6 [default = 0];
+  inline bool has_targetgroup() const;
+  inline void clear_targetgroup();
+  static const int kTargetGroupFieldNumber = 6;
+  inline ::google::protobuf::int32 targetgroup() const;
+  inline void set_targetgroup(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:TeamRpcSurroundingTeamReply)
  private:
   inline void set_has_result();
   inline void clear_has_result();
+  inline void set_has_targetgroupid();
+  inline void clear_has_targetgroupid();
+  inline void set_has_targetgroup();
+  inline void clear_has_targetgroup();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::RepeatedPtrField< ::TeamInfo > teamsinfo_;
   ::google::protobuf::int32 result_;
+  ::google::protobuf::int32 targetgroupid_;
+  ::google::protobuf::int32 targetgroup_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
 
   friend void  protobuf_AddDesc_TeamRpc_2eproto();
   friend void protobuf_AssignDesc_TeamRpc_2eproto();
@@ -1800,12 +1692,12 @@ class TeamRpcApplyTeamAsk : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 TeamId = 1 [default = -1];
+  // optional uint64 TeamId = 1 [default = 0];
   inline bool has_teamid() const;
   inline void clear_teamid();
   static const int kTeamIdFieldNumber = 1;
-  inline ::google::protobuf::int32 teamid() const;
-  inline void set_teamid(::google::protobuf::int32 value);
+  inline ::google::protobuf::uint64 teamid() const;
+  inline void set_teamid(::google::protobuf::uint64 value);
 
   // @@protoc_insertion_point(class_scope:TeamRpcApplyTeamAsk)
  private:
@@ -1814,7 +1706,7 @@ class TeamRpcApplyTeamAsk : public ::google::protobuf::Message {
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::int32 teamid_;
+  ::google::protobuf::uint64 teamid_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
@@ -1882,19 +1774,19 @@ class TeamRpcApplyTeamReply : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
   inline ::google::protobuf::int32 result() const;
   inline void set_result(::google::protobuf::int32 value);
 
-  // optional sint32 TeamId = 2 [default = -1];
+  // optional uint64 TeamId = 2 [default = 0];
   inline bool has_teamid() const;
   inline void clear_teamid();
   static const int kTeamIdFieldNumber = 2;
-  inline ::google::protobuf::int32 teamid() const;
-  inline void set_teamid(::google::protobuf::int32 value);
+  inline ::google::protobuf::uint64 teamid() const;
+  inline void set_teamid(::google::protobuf::uint64 value);
 
   // @@protoc_insertion_point(class_scope:TeamRpcApplyTeamReply)
  private:
@@ -1905,8 +1797,8 @@ class TeamRpcApplyTeamReply : public ::google::protobuf::Message {
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
+  ::google::protobuf::uint64 teamid_;
   ::google::protobuf::int32 result_;
-  ::google::protobuf::int32 teamid_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
@@ -2140,7 +2032,7 @@ class TeamRpcAgreeApplicantReply : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
@@ -2315,17 +2207,27 @@ class TeamRpcTeamInfoNotify : public ::google::protobuf::Message {
   inline ::TeamInfo* release_team();
   inline void set_allocated_team(::TeamInfo* team);
 
+  // optional int32 FollowTeamLeader = 2 [default = -1];
+  inline bool has_followteamleader() const;
+  inline void clear_followteamleader();
+  static const int kFollowTeamLeaderFieldNumber = 2;
+  inline ::google::protobuf::int32 followteamleader() const;
+  inline void set_followteamleader(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:TeamRpcTeamInfoNotify)
  private:
   inline void set_has_team();
   inline void clear_has_team();
+  inline void set_has_followteamleader();
+  inline void clear_has_followteamleader();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::TeamInfo* team_;
+  ::google::protobuf::int32 followteamleader_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
 
   friend void  protobuf_AddDesc_TeamRpc_2eproto();
   friend void protobuf_AssignDesc_TeamRpc_2eproto();
@@ -2418,6 +2320,3415 @@ class TeamRpcUpdateTeamMemInfoNotify : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static TeamRpcUpdateTeamMemInfoNotify* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class TeamRpcFollowTeamLeaderAsk : public ::google::protobuf::Message {
+ public:
+  TeamRpcFollowTeamLeaderAsk();
+  virtual ~TeamRpcFollowTeamLeaderAsk();
+
+  TeamRpcFollowTeamLeaderAsk(const TeamRpcFollowTeamLeaderAsk& from);
+
+  inline TeamRpcFollowTeamLeaderAsk& operator=(const TeamRpcFollowTeamLeaderAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcFollowTeamLeaderAsk& default_instance();
+
+  void Swap(TeamRpcFollowTeamLeaderAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcFollowTeamLeaderAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcFollowTeamLeaderAsk& from);
+  void MergeFrom(const TeamRpcFollowTeamLeaderAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 FollowTeamLeader = 1 [default = -1];
+  inline bool has_followteamleader() const;
+  inline void clear_followteamleader();
+  static const int kFollowTeamLeaderFieldNumber = 1;
+  inline ::google::protobuf::int32 followteamleader() const;
+  inline void set_followteamleader(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:TeamRpcFollowTeamLeaderAsk)
+ private:
+  inline void set_has_followteamleader();
+  inline void clear_has_followteamleader();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 followteamleader_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcFollowTeamLeaderAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcFollowTeamLeaderReply : public ::google::protobuf::Message {
+ public:
+  TeamRpcFollowTeamLeaderReply();
+  virtual ~TeamRpcFollowTeamLeaderReply();
+
+  TeamRpcFollowTeamLeaderReply(const TeamRpcFollowTeamLeaderReply& from);
+
+  inline TeamRpcFollowTeamLeaderReply& operator=(const TeamRpcFollowTeamLeaderReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcFollowTeamLeaderReply& default_instance();
+
+  void Swap(TeamRpcFollowTeamLeaderReply* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcFollowTeamLeaderReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcFollowTeamLeaderReply& from);
+  void MergeFrom(const TeamRpcFollowTeamLeaderReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -1];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // optional int32 FollowTeamLeader = 2 [default = -1];
+  inline bool has_followteamleader() const;
+  inline void clear_followteamleader();
+  static const int kFollowTeamLeaderFieldNumber = 2;
+  inline ::google::protobuf::int32 followteamleader() const;
+  inline void set_followteamleader(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:TeamRpcFollowTeamLeaderReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+  inline void set_has_followteamleader();
+  inline void clear_has_followteamleader();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+  ::google::protobuf::int32 followteamleader_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcFollowTeamLeaderReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcSummonMemberAsk : public ::google::protobuf::Message {
+ public:
+  TeamRpcSummonMemberAsk();
+  virtual ~TeamRpcSummonMemberAsk();
+
+  TeamRpcSummonMemberAsk(const TeamRpcSummonMemberAsk& from);
+
+  inline TeamRpcSummonMemberAsk& operator=(const TeamRpcSummonMemberAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcSummonMemberAsk& default_instance();
+
+  void Swap(TeamRpcSummonMemberAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcSummonMemberAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcSummonMemberAsk& from);
+  void MergeFrom(const TeamRpcSummonMemberAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:TeamRpcSummonMemberAsk)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[1];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcSummonMemberAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcSummonMemberReply : public ::google::protobuf::Message {
+ public:
+  TeamRpcSummonMemberReply();
+  virtual ~TeamRpcSummonMemberReply();
+
+  TeamRpcSummonMemberReply(const TeamRpcSummonMemberReply& from);
+
+  inline TeamRpcSummonMemberReply& operator=(const TeamRpcSummonMemberReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcSummonMemberReply& default_instance();
+
+  void Swap(TeamRpcSummonMemberReply* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcSummonMemberReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcSummonMemberReply& from);
+  void MergeFrom(const TeamRpcSummonMemberReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -1];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:TeamRpcSummonMemberReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcSummonMemberReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcSummonMemberNotifyNotify : public ::google::protobuf::Message {
+ public:
+  TeamRpcSummonMemberNotifyNotify();
+  virtual ~TeamRpcSummonMemberNotifyNotify();
+
+  TeamRpcSummonMemberNotifyNotify(const TeamRpcSummonMemberNotifyNotify& from);
+
+  inline TeamRpcSummonMemberNotifyNotify& operator=(const TeamRpcSummonMemberNotifyNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcSummonMemberNotifyNotify& default_instance();
+
+  void Swap(TeamRpcSummonMemberNotifyNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcSummonMemberNotifyNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcSummonMemberNotifyNotify& from);
+  void MergeFrom(const TeamRpcSummonMemberNotifyNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 StringNoticeId = 1 [default = -1];
+  inline bool has_stringnoticeid() const;
+  inline void clear_stringnoticeid();
+  static const int kStringNoticeIdFieldNumber = 1;
+  inline ::google::protobuf::int32 stringnoticeid() const;
+  inline void set_stringnoticeid(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:TeamRpcSummonMemberNotifyNotify)
+ private:
+  inline void set_has_stringnoticeid();
+  inline void clear_has_stringnoticeid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 stringnoticeid_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcSummonMemberNotifyNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcChangeTeamTargetReply : public ::google::protobuf::Message {
+ public:
+  TeamRpcChangeTeamTargetReply();
+  virtual ~TeamRpcChangeTeamTargetReply();
+
+  TeamRpcChangeTeamTargetReply(const TeamRpcChangeTeamTargetReply& from);
+
+  inline TeamRpcChangeTeamTargetReply& operator=(const TeamRpcChangeTeamTargetReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcChangeTeamTargetReply& default_instance();
+
+  void Swap(TeamRpcChangeTeamTargetReply* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcChangeTeamTargetReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcChangeTeamTargetReply& from);
+  void MergeFrom(const TeamRpcChangeTeamTargetReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -1];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // optional .TeamTarget TeamTarget = 2;
+  inline bool has_teamtarget() const;
+  inline void clear_teamtarget();
+  static const int kTeamTargetFieldNumber = 2;
+  inline const ::TeamTarget& teamtarget() const;
+  inline ::TeamTarget* mutable_teamtarget();
+  inline ::TeamTarget* release_teamtarget();
+  inline void set_allocated_teamtarget(::TeamTarget* teamtarget);
+
+  // @@protoc_insertion_point(class_scope:TeamRpcChangeTeamTargetReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+  inline void set_has_teamtarget();
+  inline void clear_has_teamtarget();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::TeamTarget* teamtarget_;
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcChangeTeamTargetReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcChangeTeamTargetAsk : public ::google::protobuf::Message {
+ public:
+  TeamRpcChangeTeamTargetAsk();
+  virtual ~TeamRpcChangeTeamTargetAsk();
+
+  TeamRpcChangeTeamTargetAsk(const TeamRpcChangeTeamTargetAsk& from);
+
+  inline TeamRpcChangeTeamTargetAsk& operator=(const TeamRpcChangeTeamTargetAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcChangeTeamTargetAsk& default_instance();
+
+  void Swap(TeamRpcChangeTeamTargetAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcChangeTeamTargetAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcChangeTeamTargetAsk& from);
+  void MergeFrom(const TeamRpcChangeTeamTargetAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional .TeamTarget Target = 6;
+  inline bool has_target() const;
+  inline void clear_target();
+  static const int kTargetFieldNumber = 6;
+  inline const ::TeamTarget& target() const;
+  inline ::TeamTarget* mutable_target();
+  inline ::TeamTarget* release_target();
+  inline void set_allocated_target(::TeamTarget* target);
+
+  // @@protoc_insertion_point(class_scope:TeamRpcChangeTeamTargetAsk)
+ private:
+  inline void set_has_target();
+  inline void clear_has_target();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::TeamTarget* target_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcChangeTeamTargetAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcChangeTeamTargetNotifyNotify : public ::google::protobuf::Message {
+ public:
+  TeamRpcChangeTeamTargetNotifyNotify();
+  virtual ~TeamRpcChangeTeamTargetNotifyNotify();
+
+  TeamRpcChangeTeamTargetNotifyNotify(const TeamRpcChangeTeamTargetNotifyNotify& from);
+
+  inline TeamRpcChangeTeamTargetNotifyNotify& operator=(const TeamRpcChangeTeamTargetNotifyNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcChangeTeamTargetNotifyNotify& default_instance();
+
+  void Swap(TeamRpcChangeTeamTargetNotifyNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcChangeTeamTargetNotifyNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcChangeTeamTargetNotifyNotify& from);
+  void MergeFrom(const TeamRpcChangeTeamTargetNotifyNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional .TeamTarget TeamTarget = 1;
+  inline bool has_teamtarget() const;
+  inline void clear_teamtarget();
+  static const int kTeamTargetFieldNumber = 1;
+  inline const ::TeamTarget& teamtarget() const;
+  inline ::TeamTarget* mutable_teamtarget();
+  inline ::TeamTarget* release_teamtarget();
+  inline void set_allocated_teamtarget(::TeamTarget* teamtarget);
+
+  // @@protoc_insertion_point(class_scope:TeamRpcChangeTeamTargetNotifyNotify)
+ private:
+  inline void set_has_teamtarget();
+  inline void clear_has_teamtarget();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::TeamTarget* teamtarget_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcChangeTeamTargetNotifyNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcChangTeamTypeAsk : public ::google::protobuf::Message {
+ public:
+  TeamRpcChangTeamTypeAsk();
+  virtual ~TeamRpcChangTeamTypeAsk();
+
+  TeamRpcChangTeamTypeAsk(const TeamRpcChangTeamTypeAsk& from);
+
+  inline TeamRpcChangTeamTypeAsk& operator=(const TeamRpcChangTeamTypeAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcChangTeamTypeAsk& default_instance();
+
+  void Swap(TeamRpcChangTeamTypeAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcChangTeamTypeAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcChangTeamTypeAsk& from);
+  void MergeFrom(const TeamRpcChangTeamTypeAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 TeamType = 1 [default = -1];
+  inline bool has_teamtype() const;
+  inline void clear_teamtype();
+  static const int kTeamTypeFieldNumber = 1;
+  inline ::google::protobuf::int32 teamtype() const;
+  inline void set_teamtype(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:TeamRpcChangTeamTypeAsk)
+ private:
+  inline void set_has_teamtype();
+  inline void clear_has_teamtype();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 teamtype_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcChangTeamTypeAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcChangTeamTypeReply : public ::google::protobuf::Message {
+ public:
+  TeamRpcChangTeamTypeReply();
+  virtual ~TeamRpcChangTeamTypeReply();
+
+  TeamRpcChangTeamTypeReply(const TeamRpcChangTeamTypeReply& from);
+
+  inline TeamRpcChangTeamTypeReply& operator=(const TeamRpcChangTeamTypeReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcChangTeamTypeReply& default_instance();
+
+  void Swap(TeamRpcChangTeamTypeReply* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcChangTeamTypeReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcChangTeamTypeReply& from);
+  void MergeFrom(const TeamRpcChangTeamTypeReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -1];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // optional int32 TeamType = 2 [default = -1];
+  inline bool has_teamtype() const;
+  inline void clear_teamtype();
+  static const int kTeamTypeFieldNumber = 2;
+  inline ::google::protobuf::int32 teamtype() const;
+  inline void set_teamtype(::google::protobuf::int32 value);
+
+  // optional .TeamTarget TeamTarget = 3;
+  inline bool has_teamtarget() const;
+  inline void clear_teamtarget();
+  static const int kTeamTargetFieldNumber = 3;
+  inline const ::TeamTarget& teamtarget() const;
+  inline ::TeamTarget* mutable_teamtarget();
+  inline ::TeamTarget* release_teamtarget();
+  inline void set_allocated_teamtarget(::TeamTarget* teamtarget);
+
+  // @@protoc_insertion_point(class_scope:TeamRpcChangTeamTypeReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+  inline void set_has_teamtype();
+  inline void clear_has_teamtype();
+  inline void set_has_teamtarget();
+  inline void clear_has_teamtarget();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+  ::google::protobuf::int32 teamtype_;
+  ::TeamTarget* teamtarget_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcChangTeamTypeReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcChangeTeamTypeNotifyNotify : public ::google::protobuf::Message {
+ public:
+  TeamRpcChangeTeamTypeNotifyNotify();
+  virtual ~TeamRpcChangeTeamTypeNotifyNotify();
+
+  TeamRpcChangeTeamTypeNotifyNotify(const TeamRpcChangeTeamTypeNotifyNotify& from);
+
+  inline TeamRpcChangeTeamTypeNotifyNotify& operator=(const TeamRpcChangeTeamTypeNotifyNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcChangeTeamTypeNotifyNotify& default_instance();
+
+  void Swap(TeamRpcChangeTeamTypeNotifyNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcChangeTeamTypeNotifyNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcChangeTeamTypeNotifyNotify& from);
+  void MergeFrom(const TeamRpcChangeTeamTypeNotifyNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 TeamType = 1 [default = -1];
+  inline bool has_teamtype() const;
+  inline void clear_teamtype();
+  static const int kTeamTypeFieldNumber = 1;
+  inline ::google::protobuf::int32 teamtype() const;
+  inline void set_teamtype(::google::protobuf::int32 value);
+
+  // optional .TeamTarget TeamTarget = 2;
+  inline bool has_teamtarget() const;
+  inline void clear_teamtarget();
+  static const int kTeamTargetFieldNumber = 2;
+  inline const ::TeamTarget& teamtarget() const;
+  inline ::TeamTarget* mutable_teamtarget();
+  inline ::TeamTarget* release_teamtarget();
+  inline void set_allocated_teamtarget(::TeamTarget* teamtarget);
+
+  // @@protoc_insertion_point(class_scope:TeamRpcChangeTeamTypeNotifyNotify)
+ private:
+  inline void set_has_teamtype();
+  inline void clear_has_teamtype();
+  inline void set_has_teamtarget();
+  inline void clear_has_teamtarget();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::TeamTarget* teamtarget_;
+  ::google::protobuf::int32 teamtype_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcChangeTeamTypeNotifyNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcInviteTeamMemberAsk : public ::google::protobuf::Message {
+ public:
+  TeamRpcInviteTeamMemberAsk();
+  virtual ~TeamRpcInviteTeamMemberAsk();
+
+  TeamRpcInviteTeamMemberAsk(const TeamRpcInviteTeamMemberAsk& from);
+
+  inline TeamRpcInviteTeamMemberAsk& operator=(const TeamRpcInviteTeamMemberAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcInviteTeamMemberAsk& default_instance();
+
+  void Swap(TeamRpcInviteTeamMemberAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcInviteTeamMemberAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcInviteTeamMemberAsk& from);
+  void MergeFrom(const TeamRpcInviteTeamMemberAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated uint64 RoleId = 1;
+  inline int roleid_size() const;
+  inline void clear_roleid();
+  static const int kRoleIdFieldNumber = 1;
+  inline ::google::protobuf::uint64 roleid(int index) const;
+  inline void set_roleid(int index, ::google::protobuf::uint64 value);
+  inline void add_roleid(::google::protobuf::uint64 value);
+  inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
+      roleid() const;
+  inline ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
+      mutable_roleid();
+
+  // @@protoc_insertion_point(class_scope:TeamRpcInviteTeamMemberAsk)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint64 > roleid_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcInviteTeamMemberAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcInviteTeamMemberReply : public ::google::protobuf::Message {
+ public:
+  TeamRpcInviteTeamMemberReply();
+  virtual ~TeamRpcInviteTeamMemberReply();
+
+  TeamRpcInviteTeamMemberReply(const TeamRpcInviteTeamMemberReply& from);
+
+  inline TeamRpcInviteTeamMemberReply& operator=(const TeamRpcInviteTeamMemberReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcInviteTeamMemberReply& default_instance();
+
+  void Swap(TeamRpcInviteTeamMemberReply* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcInviteTeamMemberReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcInviteTeamMemberReply& from);
+  void MergeFrom(const TeamRpcInviteTeamMemberReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -1];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // repeated uint64 RoleId = 2;
+  inline int roleid_size() const;
+  inline void clear_roleid();
+  static const int kRoleIdFieldNumber = 2;
+  inline ::google::protobuf::uint64 roleid(int index) const;
+  inline void set_roleid(int index, ::google::protobuf::uint64 value);
+  inline void add_roleid(::google::protobuf::uint64 value);
+  inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
+      roleid() const;
+  inline ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
+      mutable_roleid();
+
+  // @@protoc_insertion_point(class_scope:TeamRpcInviteTeamMemberReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::RepeatedField< ::google::protobuf::uint64 > roleid_;
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcInviteTeamMemberReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcInviteTeamMemberNotifyNotify : public ::google::protobuf::Message {
+ public:
+  TeamRpcInviteTeamMemberNotifyNotify();
+  virtual ~TeamRpcInviteTeamMemberNotifyNotify();
+
+  TeamRpcInviteTeamMemberNotifyNotify(const TeamRpcInviteTeamMemberNotifyNotify& from);
+
+  inline TeamRpcInviteTeamMemberNotifyNotify& operator=(const TeamRpcInviteTeamMemberNotifyNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcInviteTeamMemberNotifyNotify& default_instance();
+
+  void Swap(TeamRpcInviteTeamMemberNotifyNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcInviteTeamMemberNotifyNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcInviteTeamMemberNotifyNotify& from);
+  void MergeFrom(const TeamRpcInviteTeamMemberNotifyNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint64 TeamId = 1 [default = 0];
+  inline bool has_teamid() const;
+  inline void clear_teamid();
+  static const int kTeamIdFieldNumber = 1;
+  inline ::google::protobuf::uint64 teamid() const;
+  inline void set_teamid(::google::protobuf::uint64 value);
+
+  // optional int32 IsLeader = 5 [default = -1];
+  inline bool has_isleader() const;
+  inline void clear_isleader();
+  static const int kIsLeaderFieldNumber = 5;
+  inline ::google::protobuf::int32 isleader() const;
+  inline void set_isleader(::google::protobuf::int32 value);
+
+  // optional .TeamMemberInfo InviteMemberInfo = 6;
+  inline bool has_invitememberinfo() const;
+  inline void clear_invitememberinfo();
+  static const int kInviteMemberInfoFieldNumber = 6;
+  inline const ::TeamMemberInfo& invitememberinfo() const;
+  inline ::TeamMemberInfo* mutable_invitememberinfo();
+  inline ::TeamMemberInfo* release_invitememberinfo();
+  inline void set_allocated_invitememberinfo(::TeamMemberInfo* invitememberinfo);
+
+  // @@protoc_insertion_point(class_scope:TeamRpcInviteTeamMemberNotifyNotify)
+ private:
+  inline void set_has_teamid();
+  inline void clear_has_teamid();
+  inline void set_has_isleader();
+  inline void clear_has_isleader();
+  inline void set_has_invitememberinfo();
+  inline void clear_has_invitememberinfo();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint64 teamid_;
+  ::TeamMemberInfo* invitememberinfo_;
+  ::google::protobuf::int32 isleader_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcInviteTeamMemberNotifyNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcApplyListNotifyNotify : public ::google::protobuf::Message {
+ public:
+  TeamRpcApplyListNotifyNotify();
+  virtual ~TeamRpcApplyListNotifyNotify();
+
+  TeamRpcApplyListNotifyNotify(const TeamRpcApplyListNotifyNotify& from);
+
+  inline TeamRpcApplyListNotifyNotify& operator=(const TeamRpcApplyListNotifyNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcApplyListNotifyNotify& default_instance();
+
+  void Swap(TeamRpcApplyListNotifyNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcApplyListNotifyNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcApplyListNotifyNotify& from);
+  void MergeFrom(const TeamRpcApplyListNotifyNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .TeamMemberInfo ApplyList = 1;
+  inline int applylist_size() const;
+  inline void clear_applylist();
+  static const int kApplyListFieldNumber = 1;
+  inline const ::TeamMemberInfo& applylist(int index) const;
+  inline ::TeamMemberInfo* mutable_applylist(int index);
+  inline ::TeamMemberInfo* add_applylist();
+  inline const ::google::protobuf::RepeatedPtrField< ::TeamMemberInfo >&
+      applylist() const;
+  inline ::google::protobuf::RepeatedPtrField< ::TeamMemberInfo >*
+      mutable_applylist();
+
+  // @@protoc_insertion_point(class_scope:TeamRpcApplyListNotifyNotify)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::RepeatedPtrField< ::TeamMemberInfo > applylist_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcApplyListNotifyNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcAgreeJoinTeamAsk : public ::google::protobuf::Message {
+ public:
+  TeamRpcAgreeJoinTeamAsk();
+  virtual ~TeamRpcAgreeJoinTeamAsk();
+
+  TeamRpcAgreeJoinTeamAsk(const TeamRpcAgreeJoinTeamAsk& from);
+
+  inline TeamRpcAgreeJoinTeamAsk& operator=(const TeamRpcAgreeJoinTeamAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcAgreeJoinTeamAsk& default_instance();
+
+  void Swap(TeamRpcAgreeJoinTeamAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcAgreeJoinTeamAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcAgreeJoinTeamAsk& from);
+  void MergeFrom(const TeamRpcAgreeJoinTeamAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint64 TeamId = 1 [default = 0];
+  inline bool has_teamid() const;
+  inline void clear_teamid();
+  static const int kTeamIdFieldNumber = 1;
+  inline ::google::protobuf::uint64 teamid() const;
+  inline void set_teamid(::google::protobuf::uint64 value);
+
+  // optional int32 IsLeader = 2 [default = -1];
+  inline bool has_isleader() const;
+  inline void clear_isleader();
+  static const int kIsLeaderFieldNumber = 2;
+  inline ::google::protobuf::int32 isleader() const;
+  inline void set_isleader(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:TeamRpcAgreeJoinTeamAsk)
+ private:
+  inline void set_has_teamid();
+  inline void clear_has_teamid();
+  inline void set_has_isleader();
+  inline void clear_has_isleader();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint64 teamid_;
+  ::google::protobuf::int32 isleader_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcAgreeJoinTeamAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcAgreeJoinTeamReply : public ::google::protobuf::Message {
+ public:
+  TeamRpcAgreeJoinTeamReply();
+  virtual ~TeamRpcAgreeJoinTeamReply();
+
+  TeamRpcAgreeJoinTeamReply(const TeamRpcAgreeJoinTeamReply& from);
+
+  inline TeamRpcAgreeJoinTeamReply& operator=(const TeamRpcAgreeJoinTeamReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcAgreeJoinTeamReply& default_instance();
+
+  void Swap(TeamRpcAgreeJoinTeamReply* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcAgreeJoinTeamReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcAgreeJoinTeamReply& from);
+  void MergeFrom(const TeamRpcAgreeJoinTeamReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -1];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:TeamRpcAgreeJoinTeamReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcAgreeJoinTeamReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcRefuseMemberAsk : public ::google::protobuf::Message {
+ public:
+  TeamRpcRefuseMemberAsk();
+  virtual ~TeamRpcRefuseMemberAsk();
+
+  TeamRpcRefuseMemberAsk(const TeamRpcRefuseMemberAsk& from);
+
+  inline TeamRpcRefuseMemberAsk& operator=(const TeamRpcRefuseMemberAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcRefuseMemberAsk& default_instance();
+
+  void Swap(TeamRpcRefuseMemberAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcRefuseMemberAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcRefuseMemberAsk& from);
+  void MergeFrom(const TeamRpcRefuseMemberAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint64 RoleId = 1 [default = 0];
+  inline bool has_roleid() const;
+  inline void clear_roleid();
+  static const int kRoleIdFieldNumber = 1;
+  inline ::google::protobuf::uint64 roleid() const;
+  inline void set_roleid(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:TeamRpcRefuseMemberAsk)
+ private:
+  inline void set_has_roleid();
+  inline void clear_has_roleid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint64 roleid_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcRefuseMemberAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcRefuseMemberReply : public ::google::protobuf::Message {
+ public:
+  TeamRpcRefuseMemberReply();
+  virtual ~TeamRpcRefuseMemberReply();
+
+  TeamRpcRefuseMemberReply(const TeamRpcRefuseMemberReply& from);
+
+  inline TeamRpcRefuseMemberReply& operator=(const TeamRpcRefuseMemberReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcRefuseMemberReply& default_instance();
+
+  void Swap(TeamRpcRefuseMemberReply* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcRefuseMemberReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcRefuseMemberReply& from);
+  void MergeFrom(const TeamRpcRefuseMemberReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -1];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:TeamRpcRefuseMemberReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcRefuseMemberReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcClearApplyListReply : public ::google::protobuf::Message {
+ public:
+  TeamRpcClearApplyListReply();
+  virtual ~TeamRpcClearApplyListReply();
+
+  TeamRpcClearApplyListReply(const TeamRpcClearApplyListReply& from);
+
+  inline TeamRpcClearApplyListReply& operator=(const TeamRpcClearApplyListReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcClearApplyListReply& default_instance();
+
+  void Swap(TeamRpcClearApplyListReply* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcClearApplyListReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcClearApplyListReply& from);
+  void MergeFrom(const TeamRpcClearApplyListReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -1];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:TeamRpcClearApplyListReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcClearApplyListReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcClearApplyListAsk : public ::google::protobuf::Message {
+ public:
+  TeamRpcClearApplyListAsk();
+  virtual ~TeamRpcClearApplyListAsk();
+
+  TeamRpcClearApplyListAsk(const TeamRpcClearApplyListAsk& from);
+
+  inline TeamRpcClearApplyListAsk& operator=(const TeamRpcClearApplyListAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcClearApplyListAsk& default_instance();
+
+  void Swap(TeamRpcClearApplyListAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcClearApplyListAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcClearApplyListAsk& from);
+  void MergeFrom(const TeamRpcClearApplyListAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:TeamRpcClearApplyListAsk)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[1];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcClearApplyListAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcNoTeamInviteAsk : public ::google::protobuf::Message {
+ public:
+  TeamRpcNoTeamInviteAsk();
+  virtual ~TeamRpcNoTeamInviteAsk();
+
+  TeamRpcNoTeamInviteAsk(const TeamRpcNoTeamInviteAsk& from);
+
+  inline TeamRpcNoTeamInviteAsk& operator=(const TeamRpcNoTeamInviteAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcNoTeamInviteAsk& default_instance();
+
+  void Swap(TeamRpcNoTeamInviteAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcNoTeamInviteAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcNoTeamInviteAsk& from);
+  void MergeFrom(const TeamRpcNoTeamInviteAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 TeamType = 1 [default = -1];
+  inline bool has_teamtype() const;
+  inline void clear_teamtype();
+  static const int kTeamTypeFieldNumber = 1;
+  inline ::google::protobuf::int32 teamtype() const;
+  inline void set_teamtype(::google::protobuf::int32 value);
+
+  // optional .TeamTarget TTarget = 2;
+  inline bool has_ttarget() const;
+  inline void clear_ttarget();
+  static const int kTTargetFieldNumber = 2;
+  inline const ::TeamTarget& ttarget() const;
+  inline ::TeamTarget* mutable_ttarget();
+  inline ::TeamTarget* release_ttarget();
+  inline void set_allocated_ttarget(::TeamTarget* ttarget);
+
+  // optional uint64 InviteRoleId = 3 [default = 0];
+  inline bool has_inviteroleid() const;
+  inline void clear_inviteroleid();
+  static const int kInviteRoleIdFieldNumber = 3;
+  inline ::google::protobuf::uint64 inviteroleid() const;
+  inline void set_inviteroleid(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:TeamRpcNoTeamInviteAsk)
+ private:
+  inline void set_has_teamtype();
+  inline void clear_has_teamtype();
+  inline void set_has_ttarget();
+  inline void clear_has_ttarget();
+  inline void set_has_inviteroleid();
+  inline void clear_has_inviteroleid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::TeamTarget* ttarget_;
+  ::google::protobuf::uint64 inviteroleid_;
+  ::google::protobuf::int32 teamtype_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcNoTeamInviteAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcNoTeamInviteReply : public ::google::protobuf::Message {
+ public:
+  TeamRpcNoTeamInviteReply();
+  virtual ~TeamRpcNoTeamInviteReply();
+
+  TeamRpcNoTeamInviteReply(const TeamRpcNoTeamInviteReply& from);
+
+  inline TeamRpcNoTeamInviteReply& operator=(const TeamRpcNoTeamInviteReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcNoTeamInviteReply& default_instance();
+
+  void Swap(TeamRpcNoTeamInviteReply* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcNoTeamInviteReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcNoTeamInviteReply& from);
+  void MergeFrom(const TeamRpcNoTeamInviteReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -1];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // optional .TeamInfo Team = 2;
+  inline bool has_team() const;
+  inline void clear_team();
+  static const int kTeamFieldNumber = 2;
+  inline const ::TeamInfo& team() const;
+  inline ::TeamInfo* mutable_team();
+  inline ::TeamInfo* release_team();
+  inline void set_allocated_team(::TeamInfo* team);
+
+  // @@protoc_insertion_point(class_scope:TeamRpcNoTeamInviteReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+  inline void set_has_team();
+  inline void clear_has_team();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::TeamInfo* team_;
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcNoTeamInviteReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcRejectInviteAsk : public ::google::protobuf::Message {
+ public:
+  TeamRpcRejectInviteAsk();
+  virtual ~TeamRpcRejectInviteAsk();
+
+  TeamRpcRejectInviteAsk(const TeamRpcRejectInviteAsk& from);
+
+  inline TeamRpcRejectInviteAsk& operator=(const TeamRpcRejectInviteAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcRejectInviteAsk& default_instance();
+
+  void Swap(TeamRpcRejectInviteAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcRejectInviteAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcRejectInviteAsk& from);
+  void MergeFrom(const TeamRpcRejectInviteAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint64 RoleId = 3 [default = 0];
+  inline bool has_roleid() const;
+  inline void clear_roleid();
+  static const int kRoleIdFieldNumber = 3;
+  inline ::google::protobuf::uint64 roleid() const;
+  inline void set_roleid(::google::protobuf::uint64 value);
+
+  // optional string Name = 4;
+  inline bool has_name() const;
+  inline void clear_name();
+  static const int kNameFieldNumber = 4;
+  inline const ::std::string& name() const;
+  inline void set_name(const ::std::string& value);
+  inline void set_name(const char* value);
+  inline void set_name(const char* value, size_t size);
+  inline ::std::string* mutable_name();
+  inline ::std::string* release_name();
+  inline void set_allocated_name(::std::string* name);
+
+  // @@protoc_insertion_point(class_scope:TeamRpcRejectInviteAsk)
+ private:
+  inline void set_has_roleid();
+  inline void clear_has_roleid();
+  inline void set_has_name();
+  inline void clear_has_name();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint64 roleid_;
+  ::std::string* name_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcRejectInviteAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcRejectInviteReply : public ::google::protobuf::Message {
+ public:
+  TeamRpcRejectInviteReply();
+  virtual ~TeamRpcRejectInviteReply();
+
+  TeamRpcRejectInviteReply(const TeamRpcRejectInviteReply& from);
+
+  inline TeamRpcRejectInviteReply& operator=(const TeamRpcRejectInviteReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcRejectInviteReply& default_instance();
+
+  void Swap(TeamRpcRejectInviteReply* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcRejectInviteReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcRejectInviteReply& from);
+  void MergeFrom(const TeamRpcRejectInviteReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -1];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:TeamRpcRejectInviteReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcRejectInviteReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcEnterAutoCombatNotify : public ::google::protobuf::Message {
+ public:
+  TeamRpcEnterAutoCombatNotify();
+  virtual ~TeamRpcEnterAutoCombatNotify();
+
+  TeamRpcEnterAutoCombatNotify(const TeamRpcEnterAutoCombatNotify& from);
+
+  inline TeamRpcEnterAutoCombatNotify& operator=(const TeamRpcEnterAutoCombatNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcEnterAutoCombatNotify& default_instance();
+
+  void Swap(TeamRpcEnterAutoCombatNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcEnterAutoCombatNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcEnterAutoCombatNotify& from);
+  void MergeFrom(const TeamRpcEnterAutoCombatNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:TeamRpcEnterAutoCombatNotify)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[1];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcEnterAutoCombatNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcHangUpAutoCombatNotify : public ::google::protobuf::Message {
+ public:
+  TeamRpcHangUpAutoCombatNotify();
+  virtual ~TeamRpcHangUpAutoCombatNotify();
+
+  TeamRpcHangUpAutoCombatNotify(const TeamRpcHangUpAutoCombatNotify& from);
+
+  inline TeamRpcHangUpAutoCombatNotify& operator=(const TeamRpcHangUpAutoCombatNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcHangUpAutoCombatNotify& default_instance();
+
+  void Swap(TeamRpcHangUpAutoCombatNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcHangUpAutoCombatNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcHangUpAutoCombatNotify& from);
+  void MergeFrom(const TeamRpcHangUpAutoCombatNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:TeamRpcHangUpAutoCombatNotify)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[1];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcHangUpAutoCombatNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcUpdateTeamHpInfoNotify : public ::google::protobuf::Message {
+ public:
+  TeamRpcUpdateTeamHpInfoNotify();
+  virtual ~TeamRpcUpdateTeamHpInfoNotify();
+
+  TeamRpcUpdateTeamHpInfoNotify(const TeamRpcUpdateTeamHpInfoNotify& from);
+
+  inline TeamRpcUpdateTeamHpInfoNotify& operator=(const TeamRpcUpdateTeamHpInfoNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcUpdateTeamHpInfoNotify& default_instance();
+
+  void Swap(TeamRpcUpdateTeamHpInfoNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcUpdateTeamHpInfoNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcUpdateTeamHpInfoNotify& from);
+  void MergeFrom(const TeamRpcUpdateTeamHpInfoNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional .TeamMemberHpInfo Member = 1;
+  inline bool has_member() const;
+  inline void clear_member();
+  static const int kMemberFieldNumber = 1;
+  inline const ::TeamMemberHpInfo& member() const;
+  inline ::TeamMemberHpInfo* mutable_member();
+  inline ::TeamMemberHpInfo* release_member();
+  inline void set_allocated_member(::TeamMemberHpInfo* member);
+
+  // @@protoc_insertion_point(class_scope:TeamRpcUpdateTeamHpInfoNotify)
+ private:
+  inline void set_has_member();
+  inline void clear_has_member();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::TeamMemberHpInfo* member_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcUpdateTeamHpInfoNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcUpdateTeamPosInfoNotify : public ::google::protobuf::Message {
+ public:
+  TeamRpcUpdateTeamPosInfoNotify();
+  virtual ~TeamRpcUpdateTeamPosInfoNotify();
+
+  TeamRpcUpdateTeamPosInfoNotify(const TeamRpcUpdateTeamPosInfoNotify& from);
+
+  inline TeamRpcUpdateTeamPosInfoNotify& operator=(const TeamRpcUpdateTeamPosInfoNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcUpdateTeamPosInfoNotify& default_instance();
+
+  void Swap(TeamRpcUpdateTeamPosInfoNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcUpdateTeamPosInfoNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcUpdateTeamPosInfoNotify& from);
+  void MergeFrom(const TeamRpcUpdateTeamPosInfoNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional .TeamMemberPos Member = 1;
+  inline bool has_member() const;
+  inline void clear_member();
+  static const int kMemberFieldNumber = 1;
+  inline const ::TeamMemberPos& member() const;
+  inline ::TeamMemberPos* mutable_member();
+  inline ::TeamMemberPos* release_member();
+  inline void set_allocated_member(::TeamMemberPos* member);
+
+  // @@protoc_insertion_point(class_scope:TeamRpcUpdateTeamPosInfoNotify)
+ private:
+  inline void set_has_member();
+  inline void clear_has_member();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::TeamMemberPos* member_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcUpdateTeamPosInfoNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcUpdateTeamBuffInfoNotify : public ::google::protobuf::Message {
+ public:
+  TeamRpcUpdateTeamBuffInfoNotify();
+  virtual ~TeamRpcUpdateTeamBuffInfoNotify();
+
+  TeamRpcUpdateTeamBuffInfoNotify(const TeamRpcUpdateTeamBuffInfoNotify& from);
+
+  inline TeamRpcUpdateTeamBuffInfoNotify& operator=(const TeamRpcUpdateTeamBuffInfoNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcUpdateTeamBuffInfoNotify& default_instance();
+
+  void Swap(TeamRpcUpdateTeamBuffInfoNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcUpdateTeamBuffInfoNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcUpdateTeamBuffInfoNotify& from);
+  void MergeFrom(const TeamRpcUpdateTeamBuffInfoNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional .TeanMemberBuff Member = 1;
+  inline bool has_member() const;
+  inline void clear_member();
+  static const int kMemberFieldNumber = 1;
+  inline const ::TeanMemberBuff& member() const;
+  inline ::TeanMemberBuff* mutable_member();
+  inline ::TeanMemberBuff* release_member();
+  inline void set_allocated_member(::TeanMemberBuff* member);
+
+  // @@protoc_insertion_point(class_scope:TeamRpcUpdateTeamBuffInfoNotify)
+ private:
+  inline void set_has_member();
+  inline void clear_has_member();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::TeanMemberBuff* member_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcUpdateTeamBuffInfoNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcHangeUpFollowAsk : public ::google::protobuf::Message {
+ public:
+  TeamRpcHangeUpFollowAsk();
+  virtual ~TeamRpcHangeUpFollowAsk();
+
+  TeamRpcHangeUpFollowAsk(const TeamRpcHangeUpFollowAsk& from);
+
+  inline TeamRpcHangeUpFollowAsk& operator=(const TeamRpcHangeUpFollowAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcHangeUpFollowAsk& default_instance();
+
+  void Swap(TeamRpcHangeUpFollowAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcHangeUpFollowAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcHangeUpFollowAsk& from);
+  void MergeFrom(const TeamRpcHangeUpFollowAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:TeamRpcHangeUpFollowAsk)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[1];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcHangeUpFollowAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcHangeUpFollowReply : public ::google::protobuf::Message {
+ public:
+  TeamRpcHangeUpFollowReply();
+  virtual ~TeamRpcHangeUpFollowReply();
+
+  TeamRpcHangeUpFollowReply(const TeamRpcHangeUpFollowReply& from);
+
+  inline TeamRpcHangeUpFollowReply& operator=(const TeamRpcHangeUpFollowReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcHangeUpFollowReply& default_instance();
+
+  void Swap(TeamRpcHangeUpFollowReply* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcHangeUpFollowReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcHangeUpFollowReply& from);
+  void MergeFrom(const TeamRpcHangeUpFollowReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -1];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // optional int32 FollowStatus = 2 [default = -1];
+  inline bool has_followstatus() const;
+  inline void clear_followstatus();
+  static const int kFollowStatusFieldNumber = 2;
+  inline ::google::protobuf::int32 followstatus() const;
+  inline void set_followstatus(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:TeamRpcHangeUpFollowReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+  inline void set_has_followstatus();
+  inline void clear_has_followstatus();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+  ::google::protobuf::int32 followstatus_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcHangeUpFollowReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcGoOnFollowAsk : public ::google::protobuf::Message {
+ public:
+  TeamRpcGoOnFollowAsk();
+  virtual ~TeamRpcGoOnFollowAsk();
+
+  TeamRpcGoOnFollowAsk(const TeamRpcGoOnFollowAsk& from);
+
+  inline TeamRpcGoOnFollowAsk& operator=(const TeamRpcGoOnFollowAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcGoOnFollowAsk& default_instance();
+
+  void Swap(TeamRpcGoOnFollowAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcGoOnFollowAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcGoOnFollowAsk& from);
+  void MergeFrom(const TeamRpcGoOnFollowAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:TeamRpcGoOnFollowAsk)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[1];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcGoOnFollowAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcGoOnFollowReply : public ::google::protobuf::Message {
+ public:
+  TeamRpcGoOnFollowReply();
+  virtual ~TeamRpcGoOnFollowReply();
+
+  TeamRpcGoOnFollowReply(const TeamRpcGoOnFollowReply& from);
+
+  inline TeamRpcGoOnFollowReply& operator=(const TeamRpcGoOnFollowReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcGoOnFollowReply& default_instance();
+
+  void Swap(TeamRpcGoOnFollowReply* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcGoOnFollowReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcGoOnFollowReply& from);
+  void MergeFrom(const TeamRpcGoOnFollowReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -1];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // optional int32 FollowStatus = 2 [default = -1];
+  inline bool has_followstatus() const;
+  inline void clear_followstatus();
+  static const int kFollowStatusFieldNumber = 2;
+  inline ::google::protobuf::int32 followstatus() const;
+  inline void set_followstatus(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:TeamRpcGoOnFollowReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+  inline void set_has_followstatus();
+  inline void clear_has_followstatus();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+  ::google::protobuf::int32 followstatus_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcGoOnFollowReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcUpdateFollowStatusNotify : public ::google::protobuf::Message {
+ public:
+  TeamRpcUpdateFollowStatusNotify();
+  virtual ~TeamRpcUpdateFollowStatusNotify();
+
+  TeamRpcUpdateFollowStatusNotify(const TeamRpcUpdateFollowStatusNotify& from);
+
+  inline TeamRpcUpdateFollowStatusNotify& operator=(const TeamRpcUpdateFollowStatusNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcUpdateFollowStatusNotify& default_instance();
+
+  void Swap(TeamRpcUpdateFollowStatusNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcUpdateFollowStatusNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcUpdateFollowStatusNotify& from);
+  void MergeFrom(const TeamRpcUpdateFollowStatusNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 FollowStatus = 1 [default = -1];
+  inline bool has_followstatus() const;
+  inline void clear_followstatus();
+  static const int kFollowStatusFieldNumber = 1;
+  inline ::google::protobuf::int32 followstatus() const;
+  inline void set_followstatus(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:TeamRpcUpdateFollowStatusNotify)
+ private:
+  inline void set_has_followstatus();
+  inline void clear_has_followstatus();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 followstatus_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcUpdateFollowStatusNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcRequestNoTeamMemberListAsk : public ::google::protobuf::Message {
+ public:
+  TeamRpcRequestNoTeamMemberListAsk();
+  virtual ~TeamRpcRequestNoTeamMemberListAsk();
+
+  TeamRpcRequestNoTeamMemberListAsk(const TeamRpcRequestNoTeamMemberListAsk& from);
+
+  inline TeamRpcRequestNoTeamMemberListAsk& operator=(const TeamRpcRequestNoTeamMemberListAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcRequestNoTeamMemberListAsk& default_instance();
+
+  void Swap(TeamRpcRequestNoTeamMemberListAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcRequestNoTeamMemberListAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcRequestNoTeamMemberListAsk& from);
+  void MergeFrom(const TeamRpcRequestNoTeamMemberListAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 RequestType = 1 [default = -1];
+  inline bool has_requesttype() const;
+  inline void clear_requesttype();
+  static const int kRequestTypeFieldNumber = 1;
+  inline ::google::protobuf::int32 requesttype() const;
+  inline void set_requesttype(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:TeamRpcRequestNoTeamMemberListAsk)
+ private:
+  inline void set_has_requesttype();
+  inline void clear_has_requesttype();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 requesttype_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcRequestNoTeamMemberListAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcRequestNoTeamMemberListReply : public ::google::protobuf::Message {
+ public:
+  TeamRpcRequestNoTeamMemberListReply();
+  virtual ~TeamRpcRequestNoTeamMemberListReply();
+
+  TeamRpcRequestNoTeamMemberListReply(const TeamRpcRequestNoTeamMemberListReply& from);
+
+  inline TeamRpcRequestNoTeamMemberListReply& operator=(const TeamRpcRequestNoTeamMemberListReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcRequestNoTeamMemberListReply& default_instance();
+
+  void Swap(TeamRpcRequestNoTeamMemberListReply* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcRequestNoTeamMemberListReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcRequestNoTeamMemberListReply& from);
+  void MergeFrom(const TeamRpcRequestNoTeamMemberListReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -1];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // optional int32 RequestType = 2 [default = -1];
+  inline bool has_requesttype() const;
+  inline void clear_requesttype();
+  static const int kRequestTypeFieldNumber = 2;
+  inline ::google::protobuf::int32 requesttype() const;
+  inline void set_requesttype(::google::protobuf::int32 value);
+
+  // repeated .TeamMemberInfo MemberList = 3;
+  inline int memberlist_size() const;
+  inline void clear_memberlist();
+  static const int kMemberListFieldNumber = 3;
+  inline const ::TeamMemberInfo& memberlist(int index) const;
+  inline ::TeamMemberInfo* mutable_memberlist(int index);
+  inline ::TeamMemberInfo* add_memberlist();
+  inline const ::google::protobuf::RepeatedPtrField< ::TeamMemberInfo >&
+      memberlist() const;
+  inline ::google::protobuf::RepeatedPtrField< ::TeamMemberInfo >*
+      mutable_memberlist();
+
+  // @@protoc_insertion_point(class_scope:TeamRpcRequestNoTeamMemberListReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+  inline void set_has_requesttype();
+  inline void clear_has_requesttype();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+  ::google::protobuf::int32 requesttype_;
+  ::google::protobuf::RepeatedPtrField< ::TeamMemberInfo > memberlist_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcRequestNoTeamMemberListReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcEnterTeamFollowNotify : public ::google::protobuf::Message {
+ public:
+  TeamRpcEnterTeamFollowNotify();
+  virtual ~TeamRpcEnterTeamFollowNotify();
+
+  TeamRpcEnterTeamFollowNotify(const TeamRpcEnterTeamFollowNotify& from);
+
+  inline TeamRpcEnterTeamFollowNotify& operator=(const TeamRpcEnterTeamFollowNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcEnterTeamFollowNotify& default_instance();
+
+  void Swap(TeamRpcEnterTeamFollowNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcEnterTeamFollowNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcEnterTeamFollowNotify& from);
+  void MergeFrom(const TeamRpcEnterTeamFollowNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:TeamRpcEnterTeamFollowNotify)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[1];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcEnterTeamFollowNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcEnterLeaderSceneAsk : public ::google::protobuf::Message {
+ public:
+  TeamRpcEnterLeaderSceneAsk();
+  virtual ~TeamRpcEnterLeaderSceneAsk();
+
+  TeamRpcEnterLeaderSceneAsk(const TeamRpcEnterLeaderSceneAsk& from);
+
+  inline TeamRpcEnterLeaderSceneAsk& operator=(const TeamRpcEnterLeaderSceneAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcEnterLeaderSceneAsk& default_instance();
+
+  void Swap(TeamRpcEnterLeaderSceneAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcEnterLeaderSceneAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcEnterLeaderSceneAsk& from);
+  void MergeFrom(const TeamRpcEnterLeaderSceneAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:TeamRpcEnterLeaderSceneAsk)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[1];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcEnterLeaderSceneAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class TeamRpcEnterLeaderSceneReply : public ::google::protobuf::Message {
+ public:
+  TeamRpcEnterLeaderSceneReply();
+  virtual ~TeamRpcEnterLeaderSceneReply();
+
+  TeamRpcEnterLeaderSceneReply(const TeamRpcEnterLeaderSceneReply& from);
+
+  inline TeamRpcEnterLeaderSceneReply& operator=(const TeamRpcEnterLeaderSceneReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const TeamRpcEnterLeaderSceneReply& default_instance();
+
+  void Swap(TeamRpcEnterLeaderSceneReply* other);
+
+  // implements Message ----------------------------------------------
+
+  TeamRpcEnterLeaderSceneReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const TeamRpcEnterLeaderSceneReply& from);
+  void MergeFrom(const TeamRpcEnterLeaderSceneReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -1];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:TeamRpcEnterLeaderSceneReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_TeamRpc_2eproto();
+  friend void protobuf_AssignDesc_TeamRpc_2eproto();
+  friend void protobuf_ShutdownFile_TeamRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static TeamRpcEnterLeaderSceneReply* default_instance_;
+};
 // ===================================================================
 
 
@@ -2425,7 +5736,7 @@ class TeamRpcUpdateTeamMemInfoNotify : public ::google::protobuf::Message {
 
 // TeamRpcCreateTeamAsk
 
-// optional sint32 TeamType = 2 [default = -1];
+// optional int32 TeamType = 2 [default = -1];
 inline bool TeamRpcCreateTeamAsk::has_teamtype() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -2447,11 +5758,49 @@ inline void TeamRpcCreateTeamAsk::set_teamtype(::google::protobuf::int32 value) 
   teamtype_ = value;
 }
 
+// optional .TeamTarget TTarget = 6;
+inline bool TeamRpcCreateTeamAsk::has_ttarget() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void TeamRpcCreateTeamAsk::set_has_ttarget() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void TeamRpcCreateTeamAsk::clear_has_ttarget() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void TeamRpcCreateTeamAsk::clear_ttarget() {
+  if (ttarget_ != NULL) ttarget_->::TeamTarget::Clear();
+  clear_has_ttarget();
+}
+inline const ::TeamTarget& TeamRpcCreateTeamAsk::ttarget() const {
+  return ttarget_ != NULL ? *ttarget_ : *default_instance_->ttarget_;
+}
+inline ::TeamTarget* TeamRpcCreateTeamAsk::mutable_ttarget() {
+  set_has_ttarget();
+  if (ttarget_ == NULL) ttarget_ = new ::TeamTarget;
+  return ttarget_;
+}
+inline ::TeamTarget* TeamRpcCreateTeamAsk::release_ttarget() {
+  clear_has_ttarget();
+  ::TeamTarget* temp = ttarget_;
+  ttarget_ = NULL;
+  return temp;
+}
+inline void TeamRpcCreateTeamAsk::set_allocated_ttarget(::TeamTarget* ttarget) {
+  delete ttarget_;
+  ttarget_ = ttarget;
+  if (ttarget) {
+    set_has_ttarget();
+  } else {
+    clear_has_ttarget();
+  }
+}
+
 // -------------------------------------------------------------------
 
 // TeamRpcCreateTeamReply
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool TeamRpcCreateTeamReply::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -2513,201 +5862,13 @@ inline void TeamRpcCreateTeamReply::set_allocated_team(::TeamInfo* team) {
 
 // -------------------------------------------------------------------
 
-// TeamRpcJoinTeamAsk
-
-// optional sint32 TeamId = 1 [default = -1];
-inline bool TeamRpcJoinTeamAsk::has_teamid() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void TeamRpcJoinTeamAsk::set_has_teamid() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void TeamRpcJoinTeamAsk::clear_has_teamid() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void TeamRpcJoinTeamAsk::clear_teamid() {
-  teamid_ = -1;
-  clear_has_teamid();
-}
-inline ::google::protobuf::int32 TeamRpcJoinTeamAsk::teamid() const {
-  return teamid_;
-}
-inline void TeamRpcJoinTeamAsk::set_teamid(::google::protobuf::int32 value) {
-  set_has_teamid();
-  teamid_ = value;
-}
-
-// optional sint32 TeamType = 2 [default = -1];
-inline bool TeamRpcJoinTeamAsk::has_teamtype() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void TeamRpcJoinTeamAsk::set_has_teamtype() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void TeamRpcJoinTeamAsk::clear_has_teamtype() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void TeamRpcJoinTeamAsk::clear_teamtype() {
-  teamtype_ = -1;
-  clear_has_teamtype();
-}
-inline ::google::protobuf::int32 TeamRpcJoinTeamAsk::teamtype() const {
-  return teamtype_;
-}
-inline void TeamRpcJoinTeamAsk::set_teamtype(::google::protobuf::int32 value) {
-  set_has_teamtype();
-  teamtype_ = value;
-}
-
-// optional .TeamInfo Team = 3;
-inline bool TeamRpcJoinTeamAsk::has_team() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void TeamRpcJoinTeamAsk::set_has_team() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void TeamRpcJoinTeamAsk::clear_has_team() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void TeamRpcJoinTeamAsk::clear_team() {
-  if (team_ != NULL) team_->::TeamInfo::Clear();
-  clear_has_team();
-}
-inline const ::TeamInfo& TeamRpcJoinTeamAsk::team() const {
-  return team_ != NULL ? *team_ : *default_instance_->team_;
-}
-inline ::TeamInfo* TeamRpcJoinTeamAsk::mutable_team() {
-  set_has_team();
-  if (team_ == NULL) team_ = new ::TeamInfo;
-  return team_;
-}
-inline ::TeamInfo* TeamRpcJoinTeamAsk::release_team() {
-  clear_has_team();
-  ::TeamInfo* temp = team_;
-  team_ = NULL;
-  return temp;
-}
-inline void TeamRpcJoinTeamAsk::set_allocated_team(::TeamInfo* team) {
-  delete team_;
-  team_ = team;
-  if (team) {
-    set_has_team();
-  } else {
-    clear_has_team();
-  }
-}
-
-// optional .TeamMemberInfo TeamMember = 4;
-inline bool TeamRpcJoinTeamAsk::has_teammember() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void TeamRpcJoinTeamAsk::set_has_teammember() {
-  _has_bits_[0] |= 0x00000008u;
-}
-inline void TeamRpcJoinTeamAsk::clear_has_teammember() {
-  _has_bits_[0] &= ~0x00000008u;
-}
-inline void TeamRpcJoinTeamAsk::clear_teammember() {
-  if (teammember_ != NULL) teammember_->::TeamMemberInfo::Clear();
-  clear_has_teammember();
-}
-inline const ::TeamMemberInfo& TeamRpcJoinTeamAsk::teammember() const {
-  return teammember_ != NULL ? *teammember_ : *default_instance_->teammember_;
-}
-inline ::TeamMemberInfo* TeamRpcJoinTeamAsk::mutable_teammember() {
-  set_has_teammember();
-  if (teammember_ == NULL) teammember_ = new ::TeamMemberInfo;
-  return teammember_;
-}
-inline ::TeamMemberInfo* TeamRpcJoinTeamAsk::release_teammember() {
-  clear_has_teammember();
-  ::TeamMemberInfo* temp = teammember_;
-  teammember_ = NULL;
-  return temp;
-}
-inline void TeamRpcJoinTeamAsk::set_allocated_teammember(::TeamMemberInfo* teammember) {
-  delete teammember_;
-  teammember_ = teammember;
-  if (teammember) {
-    set_has_teammember();
-  } else {
-    clear_has_teammember();
-  }
-}
-
-// -------------------------------------------------------------------
-
-// TeamRpcJoinTeamReply
-
-// optional sint32 Result = 1 [default = -9999];
-inline bool TeamRpcJoinTeamReply::has_result() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void TeamRpcJoinTeamReply::set_has_result() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void TeamRpcJoinTeamReply::clear_has_result() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void TeamRpcJoinTeamReply::clear_result() {
-  result_ = -9999;
-  clear_has_result();
-}
-inline ::google::protobuf::int32 TeamRpcJoinTeamReply::result() const {
-  return result_;
-}
-inline void TeamRpcJoinTeamReply::set_result(::google::protobuf::int32 value) {
-  set_has_result();
-  result_ = value;
-}
-
-// optional .TeamInfo Team = 2;
-inline bool TeamRpcJoinTeamReply::has_team() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void TeamRpcJoinTeamReply::set_has_team() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void TeamRpcJoinTeamReply::clear_has_team() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void TeamRpcJoinTeamReply::clear_team() {
-  if (team_ != NULL) team_->::TeamInfo::Clear();
-  clear_has_team();
-}
-inline const ::TeamInfo& TeamRpcJoinTeamReply::team() const {
-  return team_ != NULL ? *team_ : *default_instance_->team_;
-}
-inline ::TeamInfo* TeamRpcJoinTeamReply::mutable_team() {
-  set_has_team();
-  if (team_ == NULL) team_ = new ::TeamInfo;
-  return team_;
-}
-inline ::TeamInfo* TeamRpcJoinTeamReply::release_team() {
-  clear_has_team();
-  ::TeamInfo* temp = team_;
-  team_ = NULL;
-  return temp;
-}
-inline void TeamRpcJoinTeamReply::set_allocated_team(::TeamInfo* team) {
-  delete team_;
-  team_ = team;
-  if (team) {
-    set_has_team();
-  } else {
-    clear_has_team();
-  }
-}
-
-// -------------------------------------------------------------------
-
 // TeamRpcLeaveTeamAsk
 
 // -------------------------------------------------------------------
 
 // TeamRpcLeaveTeamReply
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool TeamRpcLeaveTeamReply::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -2759,7 +5920,7 @@ inline void TeamRpcAppointTeamLeaderAsk::set_roleid(::google::protobuf::uint64 v
 
 // TeamRpcAppointTeamLeaderReply
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool TeamRpcAppointTeamLeaderReply::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -2859,7 +6020,7 @@ inline void TeamRpcKickMemberAsk::set_kickmemberroleid(::google::protobuf::uint6
 
 // TeamRpcKickMemberReply
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool TeamRpcKickMemberReply::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -2889,7 +6050,7 @@ inline void TeamRpcKickMemberReply::set_result(::google::protobuf::int32 value) 
 
 // TeamRpcDissmissTeamReply
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool TeamRpcDissmissTeamReply::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -3031,6 +6192,44 @@ inline void TeamRpcJoinTeamNotifyNotify::set_allocated_teammember(::TeamMemberIn
   }
 }
 
+// optional .TeamInfo Team = 2;
+inline bool TeamRpcJoinTeamNotifyNotify::has_team() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void TeamRpcJoinTeamNotifyNotify::set_has_team() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void TeamRpcJoinTeamNotifyNotify::clear_has_team() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void TeamRpcJoinTeamNotifyNotify::clear_team() {
+  if (team_ != NULL) team_->::TeamInfo::Clear();
+  clear_has_team();
+}
+inline const ::TeamInfo& TeamRpcJoinTeamNotifyNotify::team() const {
+  return team_ != NULL ? *team_ : *default_instance_->team_;
+}
+inline ::TeamInfo* TeamRpcJoinTeamNotifyNotify::mutable_team() {
+  set_has_team();
+  if (team_ == NULL) team_ = new ::TeamInfo;
+  return team_;
+}
+inline ::TeamInfo* TeamRpcJoinTeamNotifyNotify::release_team() {
+  clear_has_team();
+  ::TeamInfo* temp = team_;
+  team_ = NULL;
+  return temp;
+}
+inline void TeamRpcJoinTeamNotifyNotify::set_allocated_team(::TeamInfo* team) {
+  delete team_;
+  team_ = team;
+  if (team) {
+    set_has_team();
+  } else {
+    clear_has_team();
+  }
+}
+
 // -------------------------------------------------------------------
 
 // TeamRpcDissmissTeamNotifyNotify
@@ -3039,11 +6238,55 @@ inline void TeamRpcJoinTeamNotifyNotify::set_allocated_teammember(::TeamMemberIn
 
 // TeamRpcSurroundingTeamAsk
 
+// optional int32 TargetGroupId = 2 [default = -1];
+inline bool TeamRpcSurroundingTeamAsk::has_targetgroupid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TeamRpcSurroundingTeamAsk::set_has_targetgroupid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void TeamRpcSurroundingTeamAsk::clear_has_targetgroupid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void TeamRpcSurroundingTeamAsk::clear_targetgroupid() {
+  targetgroupid_ = -1;
+  clear_has_targetgroupid();
+}
+inline ::google::protobuf::int32 TeamRpcSurroundingTeamAsk::targetgroupid() const {
+  return targetgroupid_;
+}
+inline void TeamRpcSurroundingTeamAsk::set_targetgroupid(::google::protobuf::int32 value) {
+  set_has_targetgroupid();
+  targetgroupid_ = value;
+}
+
+// optional int32 TargetGroup = 3 [default = 0];
+inline bool TeamRpcSurroundingTeamAsk::has_targetgroup() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void TeamRpcSurroundingTeamAsk::set_has_targetgroup() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void TeamRpcSurroundingTeamAsk::clear_has_targetgroup() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void TeamRpcSurroundingTeamAsk::clear_targetgroup() {
+  targetgroup_ = 0;
+  clear_has_targetgroup();
+}
+inline ::google::protobuf::int32 TeamRpcSurroundingTeamAsk::targetgroup() const {
+  return targetgroup_;
+}
+inline void TeamRpcSurroundingTeamAsk::set_targetgroup(::google::protobuf::int32 value) {
+  set_has_targetgroup();
+  targetgroup_ = value;
+}
+
 // -------------------------------------------------------------------
 
 // TeamRpcSurroundingTeamReply
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool TeamRpcSurroundingTeamReply::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -3090,11 +6333,55 @@ TeamRpcSurroundingTeamReply::mutable_teamsinfo() {
   return &teamsinfo_;
 }
 
+// optional int32 TargetGroupId = 5 [default = -1];
+inline bool TeamRpcSurroundingTeamReply::has_targetgroupid() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void TeamRpcSurroundingTeamReply::set_has_targetgroupid() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void TeamRpcSurroundingTeamReply::clear_has_targetgroupid() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void TeamRpcSurroundingTeamReply::clear_targetgroupid() {
+  targetgroupid_ = -1;
+  clear_has_targetgroupid();
+}
+inline ::google::protobuf::int32 TeamRpcSurroundingTeamReply::targetgroupid() const {
+  return targetgroupid_;
+}
+inline void TeamRpcSurroundingTeamReply::set_targetgroupid(::google::protobuf::int32 value) {
+  set_has_targetgroupid();
+  targetgroupid_ = value;
+}
+
+// optional int32 TargetGroup = 6 [default = 0];
+inline bool TeamRpcSurroundingTeamReply::has_targetgroup() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void TeamRpcSurroundingTeamReply::set_has_targetgroup() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void TeamRpcSurroundingTeamReply::clear_has_targetgroup() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void TeamRpcSurroundingTeamReply::clear_targetgroup() {
+  targetgroup_ = 0;
+  clear_has_targetgroup();
+}
+inline ::google::protobuf::int32 TeamRpcSurroundingTeamReply::targetgroup() const {
+  return targetgroup_;
+}
+inline void TeamRpcSurroundingTeamReply::set_targetgroup(::google::protobuf::int32 value) {
+  set_has_targetgroup();
+  targetgroup_ = value;
+}
+
 // -------------------------------------------------------------------
 
 // TeamRpcApplyTeamAsk
 
-// optional sint32 TeamId = 1 [default = -1];
+// optional uint64 TeamId = 1 [default = 0];
 inline bool TeamRpcApplyTeamAsk::has_teamid() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -3105,13 +6392,13 @@ inline void TeamRpcApplyTeamAsk::clear_has_teamid() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline void TeamRpcApplyTeamAsk::clear_teamid() {
-  teamid_ = -1;
+  teamid_ = GOOGLE_ULONGLONG(0);
   clear_has_teamid();
 }
-inline ::google::protobuf::int32 TeamRpcApplyTeamAsk::teamid() const {
+inline ::google::protobuf::uint64 TeamRpcApplyTeamAsk::teamid() const {
   return teamid_;
 }
-inline void TeamRpcApplyTeamAsk::set_teamid(::google::protobuf::int32 value) {
+inline void TeamRpcApplyTeamAsk::set_teamid(::google::protobuf::uint64 value) {
   set_has_teamid();
   teamid_ = value;
 }
@@ -3120,7 +6407,7 @@ inline void TeamRpcApplyTeamAsk::set_teamid(::google::protobuf::int32 value) {
 
 // TeamRpcApplyTeamReply
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool TeamRpcApplyTeamReply::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -3142,7 +6429,7 @@ inline void TeamRpcApplyTeamReply::set_result(::google::protobuf::int32 value) {
   result_ = value;
 }
 
-// optional sint32 TeamId = 2 [default = -1];
+// optional uint64 TeamId = 2 [default = 0];
 inline bool TeamRpcApplyTeamReply::has_teamid() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -3153,13 +6440,13 @@ inline void TeamRpcApplyTeamReply::clear_has_teamid() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline void TeamRpcApplyTeamReply::clear_teamid() {
-  teamid_ = -1;
+  teamid_ = GOOGLE_ULONGLONG(0);
   clear_has_teamid();
 }
-inline ::google::protobuf::int32 TeamRpcApplyTeamReply::teamid() const {
+inline ::google::protobuf::uint64 TeamRpcApplyTeamReply::teamid() const {
   return teamid_;
 }
-inline void TeamRpcApplyTeamReply::set_teamid(::google::protobuf::int32 value) {
+inline void TeamRpcApplyTeamReply::set_teamid(::google::protobuf::uint64 value) {
   set_has_teamid();
   teamid_ = value;
 }
@@ -3236,7 +6523,7 @@ inline void TeamRpcAgreeApplicantAsk::set_roleid(::google::protobuf::uint64 valu
 
 // TeamRpcAgreeApplicantReply
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool TeamRpcAgreeApplicantReply::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -3342,6 +6629,28 @@ inline void TeamRpcTeamInfoNotify::set_allocated_team(::TeamInfo* team) {
   }
 }
 
+// optional int32 FollowTeamLeader = 2 [default = -1];
+inline bool TeamRpcTeamInfoNotify::has_followteamleader() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void TeamRpcTeamInfoNotify::set_has_followteamleader() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void TeamRpcTeamInfoNotify::clear_has_followteamleader() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void TeamRpcTeamInfoNotify::clear_followteamleader() {
+  followteamleader_ = -1;
+  clear_has_followteamleader();
+}
+inline ::google::protobuf::int32 TeamRpcTeamInfoNotify::followteamleader() const {
+  return followteamleader_;
+}
+inline void TeamRpcTeamInfoNotify::set_followteamleader(::google::protobuf::int32 value) {
+  set_has_followteamleader();
+  followteamleader_ = value;
+}
+
 // -------------------------------------------------------------------
 
 // TeamRpcUpdateTeamMemInfoNotify
@@ -3382,6 +6691,1480 @@ inline void TeamRpcUpdateTeamMemInfoNotify::set_allocated_teammember(::TeamMembe
   } else {
     clear_has_teammember();
   }
+}
+
+// -------------------------------------------------------------------
+
+// TeamRpcFollowTeamLeaderAsk
+
+// optional int32 FollowTeamLeader = 1 [default = -1];
+inline bool TeamRpcFollowTeamLeaderAsk::has_followteamleader() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TeamRpcFollowTeamLeaderAsk::set_has_followteamleader() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void TeamRpcFollowTeamLeaderAsk::clear_has_followteamleader() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void TeamRpcFollowTeamLeaderAsk::clear_followteamleader() {
+  followteamleader_ = -1;
+  clear_has_followteamleader();
+}
+inline ::google::protobuf::int32 TeamRpcFollowTeamLeaderAsk::followteamleader() const {
+  return followteamleader_;
+}
+inline void TeamRpcFollowTeamLeaderAsk::set_followteamleader(::google::protobuf::int32 value) {
+  set_has_followteamleader();
+  followteamleader_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// TeamRpcFollowTeamLeaderReply
+
+// optional int32 Result = 1 [default = -1];
+inline bool TeamRpcFollowTeamLeaderReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TeamRpcFollowTeamLeaderReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void TeamRpcFollowTeamLeaderReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void TeamRpcFollowTeamLeaderReply::clear_result() {
+  result_ = -1;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 TeamRpcFollowTeamLeaderReply::result() const {
+  return result_;
+}
+inline void TeamRpcFollowTeamLeaderReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// optional int32 FollowTeamLeader = 2 [default = -1];
+inline bool TeamRpcFollowTeamLeaderReply::has_followteamleader() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void TeamRpcFollowTeamLeaderReply::set_has_followteamleader() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void TeamRpcFollowTeamLeaderReply::clear_has_followteamleader() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void TeamRpcFollowTeamLeaderReply::clear_followteamleader() {
+  followteamleader_ = -1;
+  clear_has_followteamleader();
+}
+inline ::google::protobuf::int32 TeamRpcFollowTeamLeaderReply::followteamleader() const {
+  return followteamleader_;
+}
+inline void TeamRpcFollowTeamLeaderReply::set_followteamleader(::google::protobuf::int32 value) {
+  set_has_followteamleader();
+  followteamleader_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// TeamRpcSummonMemberAsk
+
+// -------------------------------------------------------------------
+
+// TeamRpcSummonMemberReply
+
+// optional int32 Result = 1 [default = -1];
+inline bool TeamRpcSummonMemberReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TeamRpcSummonMemberReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void TeamRpcSummonMemberReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void TeamRpcSummonMemberReply::clear_result() {
+  result_ = -1;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 TeamRpcSummonMemberReply::result() const {
+  return result_;
+}
+inline void TeamRpcSummonMemberReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// TeamRpcSummonMemberNotifyNotify
+
+// optional int32 StringNoticeId = 1 [default = -1];
+inline bool TeamRpcSummonMemberNotifyNotify::has_stringnoticeid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TeamRpcSummonMemberNotifyNotify::set_has_stringnoticeid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void TeamRpcSummonMemberNotifyNotify::clear_has_stringnoticeid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void TeamRpcSummonMemberNotifyNotify::clear_stringnoticeid() {
+  stringnoticeid_ = -1;
+  clear_has_stringnoticeid();
+}
+inline ::google::protobuf::int32 TeamRpcSummonMemberNotifyNotify::stringnoticeid() const {
+  return stringnoticeid_;
+}
+inline void TeamRpcSummonMemberNotifyNotify::set_stringnoticeid(::google::protobuf::int32 value) {
+  set_has_stringnoticeid();
+  stringnoticeid_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// TeamRpcChangeTeamTargetReply
+
+// optional int32 Result = 1 [default = -1];
+inline bool TeamRpcChangeTeamTargetReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TeamRpcChangeTeamTargetReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void TeamRpcChangeTeamTargetReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void TeamRpcChangeTeamTargetReply::clear_result() {
+  result_ = -1;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 TeamRpcChangeTeamTargetReply::result() const {
+  return result_;
+}
+inline void TeamRpcChangeTeamTargetReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// optional .TeamTarget TeamTarget = 2;
+inline bool TeamRpcChangeTeamTargetReply::has_teamtarget() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void TeamRpcChangeTeamTargetReply::set_has_teamtarget() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void TeamRpcChangeTeamTargetReply::clear_has_teamtarget() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void TeamRpcChangeTeamTargetReply::clear_teamtarget() {
+  if (teamtarget_ != NULL) teamtarget_->::TeamTarget::Clear();
+  clear_has_teamtarget();
+}
+inline const ::TeamTarget& TeamRpcChangeTeamTargetReply::teamtarget() const {
+  return teamtarget_ != NULL ? *teamtarget_ : *default_instance_->teamtarget_;
+}
+inline ::TeamTarget* TeamRpcChangeTeamTargetReply::mutable_teamtarget() {
+  set_has_teamtarget();
+  if (teamtarget_ == NULL) teamtarget_ = new ::TeamTarget;
+  return teamtarget_;
+}
+inline ::TeamTarget* TeamRpcChangeTeamTargetReply::release_teamtarget() {
+  clear_has_teamtarget();
+  ::TeamTarget* temp = teamtarget_;
+  teamtarget_ = NULL;
+  return temp;
+}
+inline void TeamRpcChangeTeamTargetReply::set_allocated_teamtarget(::TeamTarget* teamtarget) {
+  delete teamtarget_;
+  teamtarget_ = teamtarget;
+  if (teamtarget) {
+    set_has_teamtarget();
+  } else {
+    clear_has_teamtarget();
+  }
+}
+
+// -------------------------------------------------------------------
+
+// TeamRpcChangeTeamTargetAsk
+
+// optional .TeamTarget Target = 6;
+inline bool TeamRpcChangeTeamTargetAsk::has_target() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TeamRpcChangeTeamTargetAsk::set_has_target() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void TeamRpcChangeTeamTargetAsk::clear_has_target() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void TeamRpcChangeTeamTargetAsk::clear_target() {
+  if (target_ != NULL) target_->::TeamTarget::Clear();
+  clear_has_target();
+}
+inline const ::TeamTarget& TeamRpcChangeTeamTargetAsk::target() const {
+  return target_ != NULL ? *target_ : *default_instance_->target_;
+}
+inline ::TeamTarget* TeamRpcChangeTeamTargetAsk::mutable_target() {
+  set_has_target();
+  if (target_ == NULL) target_ = new ::TeamTarget;
+  return target_;
+}
+inline ::TeamTarget* TeamRpcChangeTeamTargetAsk::release_target() {
+  clear_has_target();
+  ::TeamTarget* temp = target_;
+  target_ = NULL;
+  return temp;
+}
+inline void TeamRpcChangeTeamTargetAsk::set_allocated_target(::TeamTarget* target) {
+  delete target_;
+  target_ = target;
+  if (target) {
+    set_has_target();
+  } else {
+    clear_has_target();
+  }
+}
+
+// -------------------------------------------------------------------
+
+// TeamRpcChangeTeamTargetNotifyNotify
+
+// optional .TeamTarget TeamTarget = 1;
+inline bool TeamRpcChangeTeamTargetNotifyNotify::has_teamtarget() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TeamRpcChangeTeamTargetNotifyNotify::set_has_teamtarget() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void TeamRpcChangeTeamTargetNotifyNotify::clear_has_teamtarget() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void TeamRpcChangeTeamTargetNotifyNotify::clear_teamtarget() {
+  if (teamtarget_ != NULL) teamtarget_->::TeamTarget::Clear();
+  clear_has_teamtarget();
+}
+inline const ::TeamTarget& TeamRpcChangeTeamTargetNotifyNotify::teamtarget() const {
+  return teamtarget_ != NULL ? *teamtarget_ : *default_instance_->teamtarget_;
+}
+inline ::TeamTarget* TeamRpcChangeTeamTargetNotifyNotify::mutable_teamtarget() {
+  set_has_teamtarget();
+  if (teamtarget_ == NULL) teamtarget_ = new ::TeamTarget;
+  return teamtarget_;
+}
+inline ::TeamTarget* TeamRpcChangeTeamTargetNotifyNotify::release_teamtarget() {
+  clear_has_teamtarget();
+  ::TeamTarget* temp = teamtarget_;
+  teamtarget_ = NULL;
+  return temp;
+}
+inline void TeamRpcChangeTeamTargetNotifyNotify::set_allocated_teamtarget(::TeamTarget* teamtarget) {
+  delete teamtarget_;
+  teamtarget_ = teamtarget;
+  if (teamtarget) {
+    set_has_teamtarget();
+  } else {
+    clear_has_teamtarget();
+  }
+}
+
+// -------------------------------------------------------------------
+
+// TeamRpcChangTeamTypeAsk
+
+// optional int32 TeamType = 1 [default = -1];
+inline bool TeamRpcChangTeamTypeAsk::has_teamtype() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TeamRpcChangTeamTypeAsk::set_has_teamtype() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void TeamRpcChangTeamTypeAsk::clear_has_teamtype() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void TeamRpcChangTeamTypeAsk::clear_teamtype() {
+  teamtype_ = -1;
+  clear_has_teamtype();
+}
+inline ::google::protobuf::int32 TeamRpcChangTeamTypeAsk::teamtype() const {
+  return teamtype_;
+}
+inline void TeamRpcChangTeamTypeAsk::set_teamtype(::google::protobuf::int32 value) {
+  set_has_teamtype();
+  teamtype_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// TeamRpcChangTeamTypeReply
+
+// optional int32 Result = 1 [default = -1];
+inline bool TeamRpcChangTeamTypeReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TeamRpcChangTeamTypeReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void TeamRpcChangTeamTypeReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void TeamRpcChangTeamTypeReply::clear_result() {
+  result_ = -1;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 TeamRpcChangTeamTypeReply::result() const {
+  return result_;
+}
+inline void TeamRpcChangTeamTypeReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// optional int32 TeamType = 2 [default = -1];
+inline bool TeamRpcChangTeamTypeReply::has_teamtype() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void TeamRpcChangTeamTypeReply::set_has_teamtype() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void TeamRpcChangTeamTypeReply::clear_has_teamtype() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void TeamRpcChangTeamTypeReply::clear_teamtype() {
+  teamtype_ = -1;
+  clear_has_teamtype();
+}
+inline ::google::protobuf::int32 TeamRpcChangTeamTypeReply::teamtype() const {
+  return teamtype_;
+}
+inline void TeamRpcChangTeamTypeReply::set_teamtype(::google::protobuf::int32 value) {
+  set_has_teamtype();
+  teamtype_ = value;
+}
+
+// optional .TeamTarget TeamTarget = 3;
+inline bool TeamRpcChangTeamTypeReply::has_teamtarget() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void TeamRpcChangTeamTypeReply::set_has_teamtarget() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void TeamRpcChangTeamTypeReply::clear_has_teamtarget() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void TeamRpcChangTeamTypeReply::clear_teamtarget() {
+  if (teamtarget_ != NULL) teamtarget_->::TeamTarget::Clear();
+  clear_has_teamtarget();
+}
+inline const ::TeamTarget& TeamRpcChangTeamTypeReply::teamtarget() const {
+  return teamtarget_ != NULL ? *teamtarget_ : *default_instance_->teamtarget_;
+}
+inline ::TeamTarget* TeamRpcChangTeamTypeReply::mutable_teamtarget() {
+  set_has_teamtarget();
+  if (teamtarget_ == NULL) teamtarget_ = new ::TeamTarget;
+  return teamtarget_;
+}
+inline ::TeamTarget* TeamRpcChangTeamTypeReply::release_teamtarget() {
+  clear_has_teamtarget();
+  ::TeamTarget* temp = teamtarget_;
+  teamtarget_ = NULL;
+  return temp;
+}
+inline void TeamRpcChangTeamTypeReply::set_allocated_teamtarget(::TeamTarget* teamtarget) {
+  delete teamtarget_;
+  teamtarget_ = teamtarget;
+  if (teamtarget) {
+    set_has_teamtarget();
+  } else {
+    clear_has_teamtarget();
+  }
+}
+
+// -------------------------------------------------------------------
+
+// TeamRpcChangeTeamTypeNotifyNotify
+
+// optional int32 TeamType = 1 [default = -1];
+inline bool TeamRpcChangeTeamTypeNotifyNotify::has_teamtype() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TeamRpcChangeTeamTypeNotifyNotify::set_has_teamtype() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void TeamRpcChangeTeamTypeNotifyNotify::clear_has_teamtype() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void TeamRpcChangeTeamTypeNotifyNotify::clear_teamtype() {
+  teamtype_ = -1;
+  clear_has_teamtype();
+}
+inline ::google::protobuf::int32 TeamRpcChangeTeamTypeNotifyNotify::teamtype() const {
+  return teamtype_;
+}
+inline void TeamRpcChangeTeamTypeNotifyNotify::set_teamtype(::google::protobuf::int32 value) {
+  set_has_teamtype();
+  teamtype_ = value;
+}
+
+// optional .TeamTarget TeamTarget = 2;
+inline bool TeamRpcChangeTeamTypeNotifyNotify::has_teamtarget() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void TeamRpcChangeTeamTypeNotifyNotify::set_has_teamtarget() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void TeamRpcChangeTeamTypeNotifyNotify::clear_has_teamtarget() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void TeamRpcChangeTeamTypeNotifyNotify::clear_teamtarget() {
+  if (teamtarget_ != NULL) teamtarget_->::TeamTarget::Clear();
+  clear_has_teamtarget();
+}
+inline const ::TeamTarget& TeamRpcChangeTeamTypeNotifyNotify::teamtarget() const {
+  return teamtarget_ != NULL ? *teamtarget_ : *default_instance_->teamtarget_;
+}
+inline ::TeamTarget* TeamRpcChangeTeamTypeNotifyNotify::mutable_teamtarget() {
+  set_has_teamtarget();
+  if (teamtarget_ == NULL) teamtarget_ = new ::TeamTarget;
+  return teamtarget_;
+}
+inline ::TeamTarget* TeamRpcChangeTeamTypeNotifyNotify::release_teamtarget() {
+  clear_has_teamtarget();
+  ::TeamTarget* temp = teamtarget_;
+  teamtarget_ = NULL;
+  return temp;
+}
+inline void TeamRpcChangeTeamTypeNotifyNotify::set_allocated_teamtarget(::TeamTarget* teamtarget) {
+  delete teamtarget_;
+  teamtarget_ = teamtarget;
+  if (teamtarget) {
+    set_has_teamtarget();
+  } else {
+    clear_has_teamtarget();
+  }
+}
+
+// -------------------------------------------------------------------
+
+// TeamRpcInviteTeamMemberAsk
+
+// repeated uint64 RoleId = 1;
+inline int TeamRpcInviteTeamMemberAsk::roleid_size() const {
+  return roleid_.size();
+}
+inline void TeamRpcInviteTeamMemberAsk::clear_roleid() {
+  roleid_.Clear();
+}
+inline ::google::protobuf::uint64 TeamRpcInviteTeamMemberAsk::roleid(int index) const {
+  return roleid_.Get(index);
+}
+inline void TeamRpcInviteTeamMemberAsk::set_roleid(int index, ::google::protobuf::uint64 value) {
+  roleid_.Set(index, value);
+}
+inline void TeamRpcInviteTeamMemberAsk::add_roleid(::google::protobuf::uint64 value) {
+  roleid_.Add(value);
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
+TeamRpcInviteTeamMemberAsk::roleid() const {
+  return roleid_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
+TeamRpcInviteTeamMemberAsk::mutable_roleid() {
+  return &roleid_;
+}
+
+// -------------------------------------------------------------------
+
+// TeamRpcInviteTeamMemberReply
+
+// optional int32 Result = 1 [default = -1];
+inline bool TeamRpcInviteTeamMemberReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TeamRpcInviteTeamMemberReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void TeamRpcInviteTeamMemberReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void TeamRpcInviteTeamMemberReply::clear_result() {
+  result_ = -1;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 TeamRpcInviteTeamMemberReply::result() const {
+  return result_;
+}
+inline void TeamRpcInviteTeamMemberReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// repeated uint64 RoleId = 2;
+inline int TeamRpcInviteTeamMemberReply::roleid_size() const {
+  return roleid_.size();
+}
+inline void TeamRpcInviteTeamMemberReply::clear_roleid() {
+  roleid_.Clear();
+}
+inline ::google::protobuf::uint64 TeamRpcInviteTeamMemberReply::roleid(int index) const {
+  return roleid_.Get(index);
+}
+inline void TeamRpcInviteTeamMemberReply::set_roleid(int index, ::google::protobuf::uint64 value) {
+  roleid_.Set(index, value);
+}
+inline void TeamRpcInviteTeamMemberReply::add_roleid(::google::protobuf::uint64 value) {
+  roleid_.Add(value);
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >&
+TeamRpcInviteTeamMemberReply::roleid() const {
+  return roleid_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::uint64 >*
+TeamRpcInviteTeamMemberReply::mutable_roleid() {
+  return &roleid_;
+}
+
+// -------------------------------------------------------------------
+
+// TeamRpcInviteTeamMemberNotifyNotify
+
+// optional uint64 TeamId = 1 [default = 0];
+inline bool TeamRpcInviteTeamMemberNotifyNotify::has_teamid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TeamRpcInviteTeamMemberNotifyNotify::set_has_teamid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void TeamRpcInviteTeamMemberNotifyNotify::clear_has_teamid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void TeamRpcInviteTeamMemberNotifyNotify::clear_teamid() {
+  teamid_ = GOOGLE_ULONGLONG(0);
+  clear_has_teamid();
+}
+inline ::google::protobuf::uint64 TeamRpcInviteTeamMemberNotifyNotify::teamid() const {
+  return teamid_;
+}
+inline void TeamRpcInviteTeamMemberNotifyNotify::set_teamid(::google::protobuf::uint64 value) {
+  set_has_teamid();
+  teamid_ = value;
+}
+
+// optional int32 IsLeader = 5 [default = -1];
+inline bool TeamRpcInviteTeamMemberNotifyNotify::has_isleader() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void TeamRpcInviteTeamMemberNotifyNotify::set_has_isleader() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void TeamRpcInviteTeamMemberNotifyNotify::clear_has_isleader() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void TeamRpcInviteTeamMemberNotifyNotify::clear_isleader() {
+  isleader_ = -1;
+  clear_has_isleader();
+}
+inline ::google::protobuf::int32 TeamRpcInviteTeamMemberNotifyNotify::isleader() const {
+  return isleader_;
+}
+inline void TeamRpcInviteTeamMemberNotifyNotify::set_isleader(::google::protobuf::int32 value) {
+  set_has_isleader();
+  isleader_ = value;
+}
+
+// optional .TeamMemberInfo InviteMemberInfo = 6;
+inline bool TeamRpcInviteTeamMemberNotifyNotify::has_invitememberinfo() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void TeamRpcInviteTeamMemberNotifyNotify::set_has_invitememberinfo() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void TeamRpcInviteTeamMemberNotifyNotify::clear_has_invitememberinfo() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void TeamRpcInviteTeamMemberNotifyNotify::clear_invitememberinfo() {
+  if (invitememberinfo_ != NULL) invitememberinfo_->::TeamMemberInfo::Clear();
+  clear_has_invitememberinfo();
+}
+inline const ::TeamMemberInfo& TeamRpcInviteTeamMemberNotifyNotify::invitememberinfo() const {
+  return invitememberinfo_ != NULL ? *invitememberinfo_ : *default_instance_->invitememberinfo_;
+}
+inline ::TeamMemberInfo* TeamRpcInviteTeamMemberNotifyNotify::mutable_invitememberinfo() {
+  set_has_invitememberinfo();
+  if (invitememberinfo_ == NULL) invitememberinfo_ = new ::TeamMemberInfo;
+  return invitememberinfo_;
+}
+inline ::TeamMemberInfo* TeamRpcInviteTeamMemberNotifyNotify::release_invitememberinfo() {
+  clear_has_invitememberinfo();
+  ::TeamMemberInfo* temp = invitememberinfo_;
+  invitememberinfo_ = NULL;
+  return temp;
+}
+inline void TeamRpcInviteTeamMemberNotifyNotify::set_allocated_invitememberinfo(::TeamMemberInfo* invitememberinfo) {
+  delete invitememberinfo_;
+  invitememberinfo_ = invitememberinfo;
+  if (invitememberinfo) {
+    set_has_invitememberinfo();
+  } else {
+    clear_has_invitememberinfo();
+  }
+}
+
+// -------------------------------------------------------------------
+
+// TeamRpcApplyListNotifyNotify
+
+// repeated .TeamMemberInfo ApplyList = 1;
+inline int TeamRpcApplyListNotifyNotify::applylist_size() const {
+  return applylist_.size();
+}
+inline void TeamRpcApplyListNotifyNotify::clear_applylist() {
+  applylist_.Clear();
+}
+inline const ::TeamMemberInfo& TeamRpcApplyListNotifyNotify::applylist(int index) const {
+  return applylist_.Get(index);
+}
+inline ::TeamMemberInfo* TeamRpcApplyListNotifyNotify::mutable_applylist(int index) {
+  return applylist_.Mutable(index);
+}
+inline ::TeamMemberInfo* TeamRpcApplyListNotifyNotify::add_applylist() {
+  return applylist_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::TeamMemberInfo >&
+TeamRpcApplyListNotifyNotify::applylist() const {
+  return applylist_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::TeamMemberInfo >*
+TeamRpcApplyListNotifyNotify::mutable_applylist() {
+  return &applylist_;
+}
+
+// -------------------------------------------------------------------
+
+// TeamRpcAgreeJoinTeamAsk
+
+// optional uint64 TeamId = 1 [default = 0];
+inline bool TeamRpcAgreeJoinTeamAsk::has_teamid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TeamRpcAgreeJoinTeamAsk::set_has_teamid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void TeamRpcAgreeJoinTeamAsk::clear_has_teamid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void TeamRpcAgreeJoinTeamAsk::clear_teamid() {
+  teamid_ = GOOGLE_ULONGLONG(0);
+  clear_has_teamid();
+}
+inline ::google::protobuf::uint64 TeamRpcAgreeJoinTeamAsk::teamid() const {
+  return teamid_;
+}
+inline void TeamRpcAgreeJoinTeamAsk::set_teamid(::google::protobuf::uint64 value) {
+  set_has_teamid();
+  teamid_ = value;
+}
+
+// optional int32 IsLeader = 2 [default = -1];
+inline bool TeamRpcAgreeJoinTeamAsk::has_isleader() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void TeamRpcAgreeJoinTeamAsk::set_has_isleader() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void TeamRpcAgreeJoinTeamAsk::clear_has_isleader() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void TeamRpcAgreeJoinTeamAsk::clear_isleader() {
+  isleader_ = -1;
+  clear_has_isleader();
+}
+inline ::google::protobuf::int32 TeamRpcAgreeJoinTeamAsk::isleader() const {
+  return isleader_;
+}
+inline void TeamRpcAgreeJoinTeamAsk::set_isleader(::google::protobuf::int32 value) {
+  set_has_isleader();
+  isleader_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// TeamRpcAgreeJoinTeamReply
+
+// optional int32 Result = 1 [default = -1];
+inline bool TeamRpcAgreeJoinTeamReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TeamRpcAgreeJoinTeamReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void TeamRpcAgreeJoinTeamReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void TeamRpcAgreeJoinTeamReply::clear_result() {
+  result_ = -1;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 TeamRpcAgreeJoinTeamReply::result() const {
+  return result_;
+}
+inline void TeamRpcAgreeJoinTeamReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// TeamRpcRefuseMemberAsk
+
+// optional uint64 RoleId = 1 [default = 0];
+inline bool TeamRpcRefuseMemberAsk::has_roleid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TeamRpcRefuseMemberAsk::set_has_roleid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void TeamRpcRefuseMemberAsk::clear_has_roleid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void TeamRpcRefuseMemberAsk::clear_roleid() {
+  roleid_ = GOOGLE_ULONGLONG(0);
+  clear_has_roleid();
+}
+inline ::google::protobuf::uint64 TeamRpcRefuseMemberAsk::roleid() const {
+  return roleid_;
+}
+inline void TeamRpcRefuseMemberAsk::set_roleid(::google::protobuf::uint64 value) {
+  set_has_roleid();
+  roleid_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// TeamRpcRefuseMemberReply
+
+// optional int32 Result = 1 [default = -1];
+inline bool TeamRpcRefuseMemberReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TeamRpcRefuseMemberReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void TeamRpcRefuseMemberReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void TeamRpcRefuseMemberReply::clear_result() {
+  result_ = -1;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 TeamRpcRefuseMemberReply::result() const {
+  return result_;
+}
+inline void TeamRpcRefuseMemberReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// TeamRpcClearApplyListReply
+
+// optional int32 Result = 1 [default = -1];
+inline bool TeamRpcClearApplyListReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TeamRpcClearApplyListReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void TeamRpcClearApplyListReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void TeamRpcClearApplyListReply::clear_result() {
+  result_ = -1;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 TeamRpcClearApplyListReply::result() const {
+  return result_;
+}
+inline void TeamRpcClearApplyListReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// TeamRpcClearApplyListAsk
+
+// -------------------------------------------------------------------
+
+// TeamRpcNoTeamInviteAsk
+
+// optional int32 TeamType = 1 [default = -1];
+inline bool TeamRpcNoTeamInviteAsk::has_teamtype() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TeamRpcNoTeamInviteAsk::set_has_teamtype() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void TeamRpcNoTeamInviteAsk::clear_has_teamtype() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void TeamRpcNoTeamInviteAsk::clear_teamtype() {
+  teamtype_ = -1;
+  clear_has_teamtype();
+}
+inline ::google::protobuf::int32 TeamRpcNoTeamInviteAsk::teamtype() const {
+  return teamtype_;
+}
+inline void TeamRpcNoTeamInviteAsk::set_teamtype(::google::protobuf::int32 value) {
+  set_has_teamtype();
+  teamtype_ = value;
+}
+
+// optional .TeamTarget TTarget = 2;
+inline bool TeamRpcNoTeamInviteAsk::has_ttarget() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void TeamRpcNoTeamInviteAsk::set_has_ttarget() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void TeamRpcNoTeamInviteAsk::clear_has_ttarget() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void TeamRpcNoTeamInviteAsk::clear_ttarget() {
+  if (ttarget_ != NULL) ttarget_->::TeamTarget::Clear();
+  clear_has_ttarget();
+}
+inline const ::TeamTarget& TeamRpcNoTeamInviteAsk::ttarget() const {
+  return ttarget_ != NULL ? *ttarget_ : *default_instance_->ttarget_;
+}
+inline ::TeamTarget* TeamRpcNoTeamInviteAsk::mutable_ttarget() {
+  set_has_ttarget();
+  if (ttarget_ == NULL) ttarget_ = new ::TeamTarget;
+  return ttarget_;
+}
+inline ::TeamTarget* TeamRpcNoTeamInviteAsk::release_ttarget() {
+  clear_has_ttarget();
+  ::TeamTarget* temp = ttarget_;
+  ttarget_ = NULL;
+  return temp;
+}
+inline void TeamRpcNoTeamInviteAsk::set_allocated_ttarget(::TeamTarget* ttarget) {
+  delete ttarget_;
+  ttarget_ = ttarget;
+  if (ttarget) {
+    set_has_ttarget();
+  } else {
+    clear_has_ttarget();
+  }
+}
+
+// optional uint64 InviteRoleId = 3 [default = 0];
+inline bool TeamRpcNoTeamInviteAsk::has_inviteroleid() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void TeamRpcNoTeamInviteAsk::set_has_inviteroleid() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void TeamRpcNoTeamInviteAsk::clear_has_inviteroleid() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void TeamRpcNoTeamInviteAsk::clear_inviteroleid() {
+  inviteroleid_ = GOOGLE_ULONGLONG(0);
+  clear_has_inviteroleid();
+}
+inline ::google::protobuf::uint64 TeamRpcNoTeamInviteAsk::inviteroleid() const {
+  return inviteroleid_;
+}
+inline void TeamRpcNoTeamInviteAsk::set_inviteroleid(::google::protobuf::uint64 value) {
+  set_has_inviteroleid();
+  inviteroleid_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// TeamRpcNoTeamInviteReply
+
+// optional int32 Result = 1 [default = -1];
+inline bool TeamRpcNoTeamInviteReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TeamRpcNoTeamInviteReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void TeamRpcNoTeamInviteReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void TeamRpcNoTeamInviteReply::clear_result() {
+  result_ = -1;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 TeamRpcNoTeamInviteReply::result() const {
+  return result_;
+}
+inline void TeamRpcNoTeamInviteReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// optional .TeamInfo Team = 2;
+inline bool TeamRpcNoTeamInviteReply::has_team() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void TeamRpcNoTeamInviteReply::set_has_team() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void TeamRpcNoTeamInviteReply::clear_has_team() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void TeamRpcNoTeamInviteReply::clear_team() {
+  if (team_ != NULL) team_->::TeamInfo::Clear();
+  clear_has_team();
+}
+inline const ::TeamInfo& TeamRpcNoTeamInviteReply::team() const {
+  return team_ != NULL ? *team_ : *default_instance_->team_;
+}
+inline ::TeamInfo* TeamRpcNoTeamInviteReply::mutable_team() {
+  set_has_team();
+  if (team_ == NULL) team_ = new ::TeamInfo;
+  return team_;
+}
+inline ::TeamInfo* TeamRpcNoTeamInviteReply::release_team() {
+  clear_has_team();
+  ::TeamInfo* temp = team_;
+  team_ = NULL;
+  return temp;
+}
+inline void TeamRpcNoTeamInviteReply::set_allocated_team(::TeamInfo* team) {
+  delete team_;
+  team_ = team;
+  if (team) {
+    set_has_team();
+  } else {
+    clear_has_team();
+  }
+}
+
+// -------------------------------------------------------------------
+
+// TeamRpcRejectInviteAsk
+
+// optional uint64 RoleId = 3 [default = 0];
+inline bool TeamRpcRejectInviteAsk::has_roleid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TeamRpcRejectInviteAsk::set_has_roleid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void TeamRpcRejectInviteAsk::clear_has_roleid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void TeamRpcRejectInviteAsk::clear_roleid() {
+  roleid_ = GOOGLE_ULONGLONG(0);
+  clear_has_roleid();
+}
+inline ::google::protobuf::uint64 TeamRpcRejectInviteAsk::roleid() const {
+  return roleid_;
+}
+inline void TeamRpcRejectInviteAsk::set_roleid(::google::protobuf::uint64 value) {
+  set_has_roleid();
+  roleid_ = value;
+}
+
+// optional string Name = 4;
+inline bool TeamRpcRejectInviteAsk::has_name() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void TeamRpcRejectInviteAsk::set_has_name() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void TeamRpcRejectInviteAsk::clear_has_name() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void TeamRpcRejectInviteAsk::clear_name() {
+  if (name_ != &::google::protobuf::internal::kEmptyString) {
+    name_->clear();
+  }
+  clear_has_name();
+}
+inline const ::std::string& TeamRpcRejectInviteAsk::name() const {
+  return *name_;
+}
+inline void TeamRpcRejectInviteAsk::set_name(const ::std::string& value) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::kEmptyString) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
+}
+inline void TeamRpcRejectInviteAsk::set_name(const char* value) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::kEmptyString) {
+    name_ = new ::std::string;
+  }
+  name_->assign(value);
+}
+inline void TeamRpcRejectInviteAsk::set_name(const char* value, size_t size) {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::kEmptyString) {
+    name_ = new ::std::string;
+  }
+  name_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* TeamRpcRejectInviteAsk::mutable_name() {
+  set_has_name();
+  if (name_ == &::google::protobuf::internal::kEmptyString) {
+    name_ = new ::std::string;
+  }
+  return name_;
+}
+inline ::std::string* TeamRpcRejectInviteAsk::release_name() {
+  clear_has_name();
+  if (name_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = name_;
+    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void TeamRpcRejectInviteAsk::set_allocated_name(::std::string* name) {
+  if (name_ != &::google::protobuf::internal::kEmptyString) {
+    delete name_;
+  }
+  if (name) {
+    set_has_name();
+    name_ = name;
+  } else {
+    clear_has_name();
+    name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// -------------------------------------------------------------------
+
+// TeamRpcRejectInviteReply
+
+// optional int32 Result = 1 [default = -1];
+inline bool TeamRpcRejectInviteReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TeamRpcRejectInviteReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void TeamRpcRejectInviteReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void TeamRpcRejectInviteReply::clear_result() {
+  result_ = -1;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 TeamRpcRejectInviteReply::result() const {
+  return result_;
+}
+inline void TeamRpcRejectInviteReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// TeamRpcEnterAutoCombatNotify
+
+// -------------------------------------------------------------------
+
+// TeamRpcHangUpAutoCombatNotify
+
+// -------------------------------------------------------------------
+
+// TeamRpcUpdateTeamHpInfoNotify
+
+// optional .TeamMemberHpInfo Member = 1;
+inline bool TeamRpcUpdateTeamHpInfoNotify::has_member() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TeamRpcUpdateTeamHpInfoNotify::set_has_member() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void TeamRpcUpdateTeamHpInfoNotify::clear_has_member() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void TeamRpcUpdateTeamHpInfoNotify::clear_member() {
+  if (member_ != NULL) member_->::TeamMemberHpInfo::Clear();
+  clear_has_member();
+}
+inline const ::TeamMemberHpInfo& TeamRpcUpdateTeamHpInfoNotify::member() const {
+  return member_ != NULL ? *member_ : *default_instance_->member_;
+}
+inline ::TeamMemberHpInfo* TeamRpcUpdateTeamHpInfoNotify::mutable_member() {
+  set_has_member();
+  if (member_ == NULL) member_ = new ::TeamMemberHpInfo;
+  return member_;
+}
+inline ::TeamMemberHpInfo* TeamRpcUpdateTeamHpInfoNotify::release_member() {
+  clear_has_member();
+  ::TeamMemberHpInfo* temp = member_;
+  member_ = NULL;
+  return temp;
+}
+inline void TeamRpcUpdateTeamHpInfoNotify::set_allocated_member(::TeamMemberHpInfo* member) {
+  delete member_;
+  member_ = member;
+  if (member) {
+    set_has_member();
+  } else {
+    clear_has_member();
+  }
+}
+
+// -------------------------------------------------------------------
+
+// TeamRpcUpdateTeamPosInfoNotify
+
+// optional .TeamMemberPos Member = 1;
+inline bool TeamRpcUpdateTeamPosInfoNotify::has_member() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TeamRpcUpdateTeamPosInfoNotify::set_has_member() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void TeamRpcUpdateTeamPosInfoNotify::clear_has_member() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void TeamRpcUpdateTeamPosInfoNotify::clear_member() {
+  if (member_ != NULL) member_->::TeamMemberPos::Clear();
+  clear_has_member();
+}
+inline const ::TeamMemberPos& TeamRpcUpdateTeamPosInfoNotify::member() const {
+  return member_ != NULL ? *member_ : *default_instance_->member_;
+}
+inline ::TeamMemberPos* TeamRpcUpdateTeamPosInfoNotify::mutable_member() {
+  set_has_member();
+  if (member_ == NULL) member_ = new ::TeamMemberPos;
+  return member_;
+}
+inline ::TeamMemberPos* TeamRpcUpdateTeamPosInfoNotify::release_member() {
+  clear_has_member();
+  ::TeamMemberPos* temp = member_;
+  member_ = NULL;
+  return temp;
+}
+inline void TeamRpcUpdateTeamPosInfoNotify::set_allocated_member(::TeamMemberPos* member) {
+  delete member_;
+  member_ = member;
+  if (member) {
+    set_has_member();
+  } else {
+    clear_has_member();
+  }
+}
+
+// -------------------------------------------------------------------
+
+// TeamRpcUpdateTeamBuffInfoNotify
+
+// optional .TeanMemberBuff Member = 1;
+inline bool TeamRpcUpdateTeamBuffInfoNotify::has_member() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TeamRpcUpdateTeamBuffInfoNotify::set_has_member() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void TeamRpcUpdateTeamBuffInfoNotify::clear_has_member() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void TeamRpcUpdateTeamBuffInfoNotify::clear_member() {
+  if (member_ != NULL) member_->::TeanMemberBuff::Clear();
+  clear_has_member();
+}
+inline const ::TeanMemberBuff& TeamRpcUpdateTeamBuffInfoNotify::member() const {
+  return member_ != NULL ? *member_ : *default_instance_->member_;
+}
+inline ::TeanMemberBuff* TeamRpcUpdateTeamBuffInfoNotify::mutable_member() {
+  set_has_member();
+  if (member_ == NULL) member_ = new ::TeanMemberBuff;
+  return member_;
+}
+inline ::TeanMemberBuff* TeamRpcUpdateTeamBuffInfoNotify::release_member() {
+  clear_has_member();
+  ::TeanMemberBuff* temp = member_;
+  member_ = NULL;
+  return temp;
+}
+inline void TeamRpcUpdateTeamBuffInfoNotify::set_allocated_member(::TeanMemberBuff* member) {
+  delete member_;
+  member_ = member;
+  if (member) {
+    set_has_member();
+  } else {
+    clear_has_member();
+  }
+}
+
+// -------------------------------------------------------------------
+
+// TeamRpcHangeUpFollowAsk
+
+// -------------------------------------------------------------------
+
+// TeamRpcHangeUpFollowReply
+
+// optional int32 Result = 1 [default = -1];
+inline bool TeamRpcHangeUpFollowReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TeamRpcHangeUpFollowReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void TeamRpcHangeUpFollowReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void TeamRpcHangeUpFollowReply::clear_result() {
+  result_ = -1;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 TeamRpcHangeUpFollowReply::result() const {
+  return result_;
+}
+inline void TeamRpcHangeUpFollowReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// optional int32 FollowStatus = 2 [default = -1];
+inline bool TeamRpcHangeUpFollowReply::has_followstatus() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void TeamRpcHangeUpFollowReply::set_has_followstatus() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void TeamRpcHangeUpFollowReply::clear_has_followstatus() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void TeamRpcHangeUpFollowReply::clear_followstatus() {
+  followstatus_ = -1;
+  clear_has_followstatus();
+}
+inline ::google::protobuf::int32 TeamRpcHangeUpFollowReply::followstatus() const {
+  return followstatus_;
+}
+inline void TeamRpcHangeUpFollowReply::set_followstatus(::google::protobuf::int32 value) {
+  set_has_followstatus();
+  followstatus_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// TeamRpcGoOnFollowAsk
+
+// -------------------------------------------------------------------
+
+// TeamRpcGoOnFollowReply
+
+// optional int32 Result = 1 [default = -1];
+inline bool TeamRpcGoOnFollowReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TeamRpcGoOnFollowReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void TeamRpcGoOnFollowReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void TeamRpcGoOnFollowReply::clear_result() {
+  result_ = -1;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 TeamRpcGoOnFollowReply::result() const {
+  return result_;
+}
+inline void TeamRpcGoOnFollowReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// optional int32 FollowStatus = 2 [default = -1];
+inline bool TeamRpcGoOnFollowReply::has_followstatus() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void TeamRpcGoOnFollowReply::set_has_followstatus() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void TeamRpcGoOnFollowReply::clear_has_followstatus() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void TeamRpcGoOnFollowReply::clear_followstatus() {
+  followstatus_ = -1;
+  clear_has_followstatus();
+}
+inline ::google::protobuf::int32 TeamRpcGoOnFollowReply::followstatus() const {
+  return followstatus_;
+}
+inline void TeamRpcGoOnFollowReply::set_followstatus(::google::protobuf::int32 value) {
+  set_has_followstatus();
+  followstatus_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// TeamRpcUpdateFollowStatusNotify
+
+// optional int32 FollowStatus = 1 [default = -1];
+inline bool TeamRpcUpdateFollowStatusNotify::has_followstatus() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TeamRpcUpdateFollowStatusNotify::set_has_followstatus() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void TeamRpcUpdateFollowStatusNotify::clear_has_followstatus() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void TeamRpcUpdateFollowStatusNotify::clear_followstatus() {
+  followstatus_ = -1;
+  clear_has_followstatus();
+}
+inline ::google::protobuf::int32 TeamRpcUpdateFollowStatusNotify::followstatus() const {
+  return followstatus_;
+}
+inline void TeamRpcUpdateFollowStatusNotify::set_followstatus(::google::protobuf::int32 value) {
+  set_has_followstatus();
+  followstatus_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// TeamRpcRequestNoTeamMemberListAsk
+
+// optional int32 RequestType = 1 [default = -1];
+inline bool TeamRpcRequestNoTeamMemberListAsk::has_requesttype() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TeamRpcRequestNoTeamMemberListAsk::set_has_requesttype() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void TeamRpcRequestNoTeamMemberListAsk::clear_has_requesttype() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void TeamRpcRequestNoTeamMemberListAsk::clear_requesttype() {
+  requesttype_ = -1;
+  clear_has_requesttype();
+}
+inline ::google::protobuf::int32 TeamRpcRequestNoTeamMemberListAsk::requesttype() const {
+  return requesttype_;
+}
+inline void TeamRpcRequestNoTeamMemberListAsk::set_requesttype(::google::protobuf::int32 value) {
+  set_has_requesttype();
+  requesttype_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// TeamRpcRequestNoTeamMemberListReply
+
+// optional int32 Result = 1 [default = -1];
+inline bool TeamRpcRequestNoTeamMemberListReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TeamRpcRequestNoTeamMemberListReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void TeamRpcRequestNoTeamMemberListReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void TeamRpcRequestNoTeamMemberListReply::clear_result() {
+  result_ = -1;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 TeamRpcRequestNoTeamMemberListReply::result() const {
+  return result_;
+}
+inline void TeamRpcRequestNoTeamMemberListReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// optional int32 RequestType = 2 [default = -1];
+inline bool TeamRpcRequestNoTeamMemberListReply::has_requesttype() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void TeamRpcRequestNoTeamMemberListReply::set_has_requesttype() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void TeamRpcRequestNoTeamMemberListReply::clear_has_requesttype() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void TeamRpcRequestNoTeamMemberListReply::clear_requesttype() {
+  requesttype_ = -1;
+  clear_has_requesttype();
+}
+inline ::google::protobuf::int32 TeamRpcRequestNoTeamMemberListReply::requesttype() const {
+  return requesttype_;
+}
+inline void TeamRpcRequestNoTeamMemberListReply::set_requesttype(::google::protobuf::int32 value) {
+  set_has_requesttype();
+  requesttype_ = value;
+}
+
+// repeated .TeamMemberInfo MemberList = 3;
+inline int TeamRpcRequestNoTeamMemberListReply::memberlist_size() const {
+  return memberlist_.size();
+}
+inline void TeamRpcRequestNoTeamMemberListReply::clear_memberlist() {
+  memberlist_.Clear();
+}
+inline const ::TeamMemberInfo& TeamRpcRequestNoTeamMemberListReply::memberlist(int index) const {
+  return memberlist_.Get(index);
+}
+inline ::TeamMemberInfo* TeamRpcRequestNoTeamMemberListReply::mutable_memberlist(int index) {
+  return memberlist_.Mutable(index);
+}
+inline ::TeamMemberInfo* TeamRpcRequestNoTeamMemberListReply::add_memberlist() {
+  return memberlist_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::TeamMemberInfo >&
+TeamRpcRequestNoTeamMemberListReply::memberlist() const {
+  return memberlist_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::TeamMemberInfo >*
+TeamRpcRequestNoTeamMemberListReply::mutable_memberlist() {
+  return &memberlist_;
+}
+
+// -------------------------------------------------------------------
+
+// TeamRpcEnterTeamFollowNotify
+
+// -------------------------------------------------------------------
+
+// TeamRpcEnterLeaderSceneAsk
+
+// -------------------------------------------------------------------
+
+// TeamRpcEnterLeaderSceneReply
+
+// optional int32 Result = 1 [default = -1];
+inline bool TeamRpcEnterLeaderSceneReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void TeamRpcEnterLeaderSceneReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void TeamRpcEnterLeaderSceneReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void TeamRpcEnterLeaderSceneReply::clear_result() {
+  result_ = -1;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 TeamRpcEnterLeaderSceneReply::result() const {
+  return result_;
+}
+inline void TeamRpcEnterLeaderSceneReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
 }
 
 

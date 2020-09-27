@@ -35,6 +35,12 @@ void protobuf_ShutdownFile_EventRpc_2eproto();
 class EventRpcMoveNotify;
 class EventRpcStopMoveNotify;
 class EventRpcObjAttrChangeNotify;
+class EventRpcCoinChangeNotify;
+class EventRpcMovePosNotify;
+class EventRpcDirNotify;
+class EventRpcStartFadeoutNotify;
+class EventRpcCinematicStartNotify;
+class EventRpcCinematicEndNotify;
 
 // ===================================================================
 
@@ -92,21 +98,21 @@ class EventRpcMoveNotify : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 ObjId = 1 [default = -1];
+  // optional uint64 ObjId = 1 [default = 0];
   inline bool has_objid() const;
   inline void clear_objid();
   static const int kObjIdFieldNumber = 1;
-  inline ::google::protobuf::int32 objid() const;
-  inline void set_objid(::google::protobuf::int32 value);
+  inline ::google::protobuf::uint64 objid() const;
+  inline void set_objid(::google::protobuf::uint64 value);
 
-  // optional .V3 Pos = 2;
+  // optional .Vector3 Pos = 2;
   inline bool has_pos() const;
   inline void clear_pos();
   static const int kPosFieldNumber = 2;
-  inline const ::V3& pos() const;
-  inline ::V3* mutable_pos();
-  inline ::V3* release_pos();
-  inline void set_allocated_pos(::V3* pos);
+  inline const ::Vector3& pos() const;
+  inline ::Vector3* mutable_pos();
+  inline ::Vector3* release_pos();
+  inline void set_allocated_pos(::Vector3* pos);
 
   // optional float Dir = 3 [default = -1];
   inline bool has_dir() const;
@@ -126,8 +132,8 @@ class EventRpcMoveNotify : public ::google::protobuf::Message {
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::V3* pos_;
-  ::google::protobuf::int32 objid_;
+  ::google::protobuf::uint64 objid_;
+  ::Vector3* pos_;
   float dir_;
 
   mutable int _cached_size_;
@@ -196,21 +202,21 @@ class EventRpcStopMoveNotify : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 ObjId = 1 [default = -1];
+  // optional uint64 ObjId = 1 [default = 0];
   inline bool has_objid() const;
   inline void clear_objid();
   static const int kObjIdFieldNumber = 1;
-  inline ::google::protobuf::int32 objid() const;
-  inline void set_objid(::google::protobuf::int32 value);
+  inline ::google::protobuf::uint64 objid() const;
+  inline void set_objid(::google::protobuf::uint64 value);
 
-  // optional .V3 Pos = 2;
+  // optional .Vector3Int Pos = 2;
   inline bool has_pos() const;
   inline void clear_pos();
   static const int kPosFieldNumber = 2;
-  inline const ::V3& pos() const;
-  inline ::V3* mutable_pos();
-  inline ::V3* release_pos();
-  inline void set_allocated_pos(::V3* pos);
+  inline const ::Vector3Int& pos() const;
+  inline ::Vector3Int* mutable_pos();
+  inline ::Vector3Int* release_pos();
+  inline void set_allocated_pos(::Vector3Int* pos);
 
   // optional float Dir = 3 [default = -1];
   inline bool has_dir() const;
@@ -218,6 +224,20 @@ class EventRpcStopMoveNotify : public ::google::protobuf::Message {
   static const int kDirFieldNumber = 3;
   inline float dir() const;
   inline void set_dir(float value);
+
+  // optional int32 Type = 5 [default = -1];
+  inline bool has_type() const;
+  inline void clear_type();
+  static const int kTypeFieldNumber = 5;
+  inline ::google::protobuf::int32 type() const;
+  inline void set_type(::google::protobuf::int32 value);
+
+  // optional bool BrakeRush = 6 [default = false];
+  inline bool has_brakerush() const;
+  inline void clear_brakerush();
+  static const int kBrakeRushFieldNumber = 6;
+  inline bool brakerush() const;
+  inline void set_brakerush(bool value);
 
   // @@protoc_insertion_point(class_scope:EventRpcStopMoveNotify)
  private:
@@ -227,15 +247,21 @@ class EventRpcStopMoveNotify : public ::google::protobuf::Message {
   inline void clear_has_pos();
   inline void set_has_dir();
   inline void clear_has_dir();
+  inline void set_has_type();
+  inline void clear_has_type();
+  inline void set_has_brakerush();
+  inline void clear_has_brakerush();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::V3* pos_;
-  ::google::protobuf::int32 objid_;
+  ::google::protobuf::uint64 objid_;
+  ::Vector3Int* pos_;
   float dir_;
+  ::google::protobuf::int32 type_;
+  bool brakerush_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
 
   friend void  protobuf_AddDesc_EventRpc_2eproto();
   friend void protobuf_AssignDesc_EventRpc_2eproto();
@@ -307,33 +333,33 @@ class EventRpcObjAttrChangeNotify : public ::google::protobuf::Message {
   inline float speed() const;
   inline void set_speed(float value);
 
-  // optional sint64 Hp = 2 [default = -1];
+  // optional int64 Hp = 2 [default = -1];
   inline bool has_hp() const;
   inline void clear_hp();
   static const int kHpFieldNumber = 2;
   inline ::google::protobuf::int64 hp() const;
   inline void set_hp(::google::protobuf::int64 value);
 
-  // optional sint32 Status = 3 [default = -1];
+  // optional int32 Status = 3 [default = -1];
   inline bool has_status() const;
   inline void clear_status();
   static const int kStatusFieldNumber = 3;
   inline ::google::protobuf::int32 status() const;
   inline void set_status(::google::protobuf::int32 value);
 
-  // optional sint32 ConfigId = 4 [default = -1];
+  // optional int32 ConfigId = 4 [default = -1];
   inline bool has_configid() const;
   inline void clear_configid();
   static const int kConfigIdFieldNumber = 4;
   inline ::google::protobuf::int32 configid() const;
   inline void set_configid(::google::protobuf::int32 value);
 
-  // optional sint32 ObjId = 5 [default = -1];
+  // optional uint64 ObjId = 5 [default = 0];
   inline bool has_objid() const;
   inline void clear_objid();
   static const int kObjIdFieldNumber = 5;
-  inline ::google::protobuf::int32 objid() const;
-  inline void set_objid(::google::protobuf::int32 value);
+  inline ::google::protobuf::uint64 objid() const;
+  inline void set_objid(::google::protobuf::uint64 value);
 
   // @@protoc_insertion_point(class_scope:EventRpcObjAttrChangeNotify)
  private:
@@ -353,8 +379,8 @@ class EventRpcObjAttrChangeNotify : public ::google::protobuf::Message {
   ::google::protobuf::int64 hp_;
   float speed_;
   ::google::protobuf::int32 status_;
+  ::google::protobuf::uint64 objid_;
   ::google::protobuf::int32 configid_;
-  ::google::protobuf::int32 objid_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
@@ -366,6 +392,581 @@ class EventRpcObjAttrChangeNotify : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static EventRpcObjAttrChangeNotify* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class EventRpcCoinChangeNotify : public ::google::protobuf::Message {
+ public:
+  EventRpcCoinChangeNotify();
+  virtual ~EventRpcCoinChangeNotify();
+
+  EventRpcCoinChangeNotify(const EventRpcCoinChangeNotify& from);
+
+  inline EventRpcCoinChangeNotify& operator=(const EventRpcCoinChangeNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const EventRpcCoinChangeNotify& default_instance();
+
+  void Swap(EventRpcCoinChangeNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  EventRpcCoinChangeNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const EventRpcCoinChangeNotify& from);
+  void MergeFrom(const EventRpcCoinChangeNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Type = 1 [default = -1];
+  inline bool has_type() const;
+  inline void clear_type();
+  static const int kTypeFieldNumber = 1;
+  inline ::google::protobuf::int32 type() const;
+  inline void set_type(::google::protobuf::int32 value);
+
+  // optional int32 Value = 2 [default = -1];
+  inline bool has_value() const;
+  inline void clear_value();
+  static const int kValueFieldNumber = 2;
+  inline ::google::protobuf::int32 value() const;
+  inline void set_value(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:EventRpcCoinChangeNotify)
+ private:
+  inline void set_has_type();
+  inline void clear_has_type();
+  inline void set_has_value();
+  inline void clear_has_value();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 type_;
+  ::google::protobuf::int32 value_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_EventRpc_2eproto();
+  friend void protobuf_AssignDesc_EventRpc_2eproto();
+  friend void protobuf_ShutdownFile_EventRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static EventRpcCoinChangeNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class EventRpcMovePosNotify : public ::google::protobuf::Message {
+ public:
+  EventRpcMovePosNotify();
+  virtual ~EventRpcMovePosNotify();
+
+  EventRpcMovePosNotify(const EventRpcMovePosNotify& from);
+
+  inline EventRpcMovePosNotify& operator=(const EventRpcMovePosNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const EventRpcMovePosNotify& default_instance();
+
+  void Swap(EventRpcMovePosNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  EventRpcMovePosNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const EventRpcMovePosNotify& from);
+  void MergeFrom(const EventRpcMovePosNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint64 ObjId = 1 [default = 0];
+  inline bool has_objid() const;
+  inline void clear_objid();
+  static const int kObjIdFieldNumber = 1;
+  inline ::google::protobuf::uint64 objid() const;
+  inline void set_objid(::google::protobuf::uint64 value);
+
+  // repeated .Vector3Int PosList = 3;
+  inline int poslist_size() const;
+  inline void clear_poslist();
+  static const int kPosListFieldNumber = 3;
+  inline const ::Vector3Int& poslist(int index) const;
+  inline ::Vector3Int* mutable_poslist(int index);
+  inline ::Vector3Int* add_poslist();
+  inline const ::google::protobuf::RepeatedPtrField< ::Vector3Int >&
+      poslist() const;
+  inline ::google::protobuf::RepeatedPtrField< ::Vector3Int >*
+      mutable_poslist();
+
+  // optional float Dir = 4 [default = -1];
+  inline bool has_dir() const;
+  inline void clear_dir();
+  static const int kDirFieldNumber = 4;
+  inline float dir() const;
+  inline void set_dir(float value);
+
+  // optional bool IsAllowChangeRunAnimation = 5 [default = true];
+  inline bool has_isallowchangerunanimation() const;
+  inline void clear_isallowchangerunanimation();
+  static const int kIsAllowChangeRunAnimationFieldNumber = 5;
+  inline bool isallowchangerunanimation() const;
+  inline void set_isallowchangerunanimation(bool value);
+
+  // optional int32 Follow = 6 [default = -1];
+  inline bool has_follow() const;
+  inline void clear_follow();
+  static const int kFollowFieldNumber = 6;
+  inline ::google::protobuf::int32 follow() const;
+  inline void set_follow(::google::protobuf::int32 value);
+
+  // optional bool IsLookAtMoving = 7 [default = true];
+  inline bool has_islookatmoving() const;
+  inline void clear_islookatmoving();
+  static const int kIsLookAtMovingFieldNumber = 7;
+  inline bool islookatmoving() const;
+  inline void set_islookatmoving(bool value);
+
+  // optional int32 FromX = 8 [default = -1];
+  inline bool has_fromx() const;
+  inline void clear_fromx();
+  static const int kFromXFieldNumber = 8;
+  inline ::google::protobuf::int32 fromx() const;
+  inline void set_fromx(::google::protobuf::int32 value);
+
+  // optional int32 FromZ = 9 [default = -1];
+  inline bool has_fromz() const;
+  inline void clear_fromz();
+  static const int kFromZFieldNumber = 9;
+  inline ::google::protobuf::int32 fromz() const;
+  inline void set_fromz(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:EventRpcMovePosNotify)
+ private:
+  inline void set_has_objid();
+  inline void clear_has_objid();
+  inline void set_has_dir();
+  inline void clear_has_dir();
+  inline void set_has_isallowchangerunanimation();
+  inline void clear_has_isallowchangerunanimation();
+  inline void set_has_follow();
+  inline void clear_has_follow();
+  inline void set_has_islookatmoving();
+  inline void clear_has_islookatmoving();
+  inline void set_has_fromx();
+  inline void clear_has_fromx();
+  inline void set_has_fromz();
+  inline void clear_has_fromz();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint64 objid_;
+  ::google::protobuf::RepeatedPtrField< ::Vector3Int > poslist_;
+  float dir_;
+  ::google::protobuf::int32 follow_;
+  bool isallowchangerunanimation_;
+  bool islookatmoving_;
+  ::google::protobuf::int32 fromx_;
+  ::google::protobuf::int32 fromz_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(8 + 31) / 32];
+
+  friend void  protobuf_AddDesc_EventRpc_2eproto();
+  friend void protobuf_AssignDesc_EventRpc_2eproto();
+  friend void protobuf_ShutdownFile_EventRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static EventRpcMovePosNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class EventRpcDirNotify : public ::google::protobuf::Message {
+ public:
+  EventRpcDirNotify();
+  virtual ~EventRpcDirNotify();
+
+  EventRpcDirNotify(const EventRpcDirNotify& from);
+
+  inline EventRpcDirNotify& operator=(const EventRpcDirNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const EventRpcDirNotify& default_instance();
+
+  void Swap(EventRpcDirNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  EventRpcDirNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const EventRpcDirNotify& from);
+  void MergeFrom(const EventRpcDirNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint64 ObjId = 3 [default = 0];
+  inline bool has_objid() const;
+  inline void clear_objid();
+  static const int kObjIdFieldNumber = 3;
+  inline ::google::protobuf::uint64 objid() const;
+  inline void set_objid(::google::protobuf::uint64 value);
+
+  // optional float Dir = 4 [default = -1];
+  inline bool has_dir() const;
+  inline void clear_dir();
+  static const int kDirFieldNumber = 4;
+  inline float dir() const;
+  inline void set_dir(float value);
+
+  // @@protoc_insertion_point(class_scope:EventRpcDirNotify)
+ private:
+  inline void set_has_objid();
+  inline void clear_has_objid();
+  inline void set_has_dir();
+  inline void clear_has_dir();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint64 objid_;
+  float dir_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_EventRpc_2eproto();
+  friend void protobuf_AssignDesc_EventRpc_2eproto();
+  friend void protobuf_ShutdownFile_EventRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static EventRpcDirNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class EventRpcStartFadeoutNotify : public ::google::protobuf::Message {
+ public:
+  EventRpcStartFadeoutNotify();
+  virtual ~EventRpcStartFadeoutNotify();
+
+  EventRpcStartFadeoutNotify(const EventRpcStartFadeoutNotify& from);
+
+  inline EventRpcStartFadeoutNotify& operator=(const EventRpcStartFadeoutNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const EventRpcStartFadeoutNotify& default_instance();
+
+  void Swap(EventRpcStartFadeoutNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  EventRpcStartFadeoutNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const EventRpcStartFadeoutNotify& from);
+  void MergeFrom(const EventRpcStartFadeoutNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint64 ObjId = 1 [default = 0];
+  inline bool has_objid() const;
+  inline void clear_objid();
+  static const int kObjIdFieldNumber = 1;
+  inline ::google::protobuf::uint64 objid() const;
+  inline void set_objid(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:EventRpcStartFadeoutNotify)
+ private:
+  inline void set_has_objid();
+  inline void clear_has_objid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint64 objid_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_EventRpc_2eproto();
+  friend void protobuf_AssignDesc_EventRpc_2eproto();
+  friend void protobuf_ShutdownFile_EventRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static EventRpcStartFadeoutNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class EventRpcCinematicStartNotify : public ::google::protobuf::Message {
+ public:
+  EventRpcCinematicStartNotify();
+  virtual ~EventRpcCinematicStartNotify();
+
+  EventRpcCinematicStartNotify(const EventRpcCinematicStartNotify& from);
+
+  inline EventRpcCinematicStartNotify& operator=(const EventRpcCinematicStartNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const EventRpcCinematicStartNotify& default_instance();
+
+  void Swap(EventRpcCinematicStartNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  EventRpcCinematicStartNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const EventRpcCinematicStartNotify& from);
+  void MergeFrom(const EventRpcCinematicStartNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Text = 1 [default = -1];
+  inline bool has_text() const;
+  inline void clear_text();
+  static const int kTextFieldNumber = 1;
+  inline ::google::protobuf::int32 text() const;
+  inline void set_text(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:EventRpcCinematicStartNotify)
+ private:
+  inline void set_has_text();
+  inline void clear_has_text();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 text_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_EventRpc_2eproto();
+  friend void protobuf_AssignDesc_EventRpc_2eproto();
+  friend void protobuf_ShutdownFile_EventRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static EventRpcCinematicStartNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class EventRpcCinematicEndNotify : public ::google::protobuf::Message {
+ public:
+  EventRpcCinematicEndNotify();
+  virtual ~EventRpcCinematicEndNotify();
+
+  EventRpcCinematicEndNotify(const EventRpcCinematicEndNotify& from);
+
+  inline EventRpcCinematicEndNotify& operator=(const EventRpcCinematicEndNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const EventRpcCinematicEndNotify& default_instance();
+
+  void Swap(EventRpcCinematicEndNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  EventRpcCinematicEndNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const EventRpcCinematicEndNotify& from);
+  void MergeFrom(const EventRpcCinematicEndNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:EventRpcCinematicEndNotify)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[1];
+
+  friend void  protobuf_AddDesc_EventRpc_2eproto();
+  friend void protobuf_AssignDesc_EventRpc_2eproto();
+  friend void protobuf_ShutdownFile_EventRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static EventRpcCinematicEndNotify* default_instance_;
+};
 // ===================================================================
 
 
@@ -373,7 +974,7 @@ class EventRpcObjAttrChangeNotify : public ::google::protobuf::Message {
 
 // EventRpcMoveNotify
 
-// optional sint32 ObjId = 1 [default = -1];
+// optional uint64 ObjId = 1 [default = 0];
 inline bool EventRpcMoveNotify::has_objid() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -384,18 +985,18 @@ inline void EventRpcMoveNotify::clear_has_objid() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline void EventRpcMoveNotify::clear_objid() {
-  objid_ = -1;
+  objid_ = GOOGLE_ULONGLONG(0);
   clear_has_objid();
 }
-inline ::google::protobuf::int32 EventRpcMoveNotify::objid() const {
+inline ::google::protobuf::uint64 EventRpcMoveNotify::objid() const {
   return objid_;
 }
-inline void EventRpcMoveNotify::set_objid(::google::protobuf::int32 value) {
+inline void EventRpcMoveNotify::set_objid(::google::protobuf::uint64 value) {
   set_has_objid();
   objid_ = value;
 }
 
-// optional .V3 Pos = 2;
+// optional .Vector3 Pos = 2;
 inline bool EventRpcMoveNotify::has_pos() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -406,24 +1007,24 @@ inline void EventRpcMoveNotify::clear_has_pos() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline void EventRpcMoveNotify::clear_pos() {
-  if (pos_ != NULL) pos_->::V3::Clear();
+  if (pos_ != NULL) pos_->::Vector3::Clear();
   clear_has_pos();
 }
-inline const ::V3& EventRpcMoveNotify::pos() const {
+inline const ::Vector3& EventRpcMoveNotify::pos() const {
   return pos_ != NULL ? *pos_ : *default_instance_->pos_;
 }
-inline ::V3* EventRpcMoveNotify::mutable_pos() {
+inline ::Vector3* EventRpcMoveNotify::mutable_pos() {
   set_has_pos();
-  if (pos_ == NULL) pos_ = new ::V3;
+  if (pos_ == NULL) pos_ = new ::Vector3;
   return pos_;
 }
-inline ::V3* EventRpcMoveNotify::release_pos() {
+inline ::Vector3* EventRpcMoveNotify::release_pos() {
   clear_has_pos();
-  ::V3* temp = pos_;
+  ::Vector3* temp = pos_;
   pos_ = NULL;
   return temp;
 }
-inline void EventRpcMoveNotify::set_allocated_pos(::V3* pos) {
+inline void EventRpcMoveNotify::set_allocated_pos(::Vector3* pos) {
   delete pos_;
   pos_ = pos;
   if (pos) {
@@ -459,7 +1060,7 @@ inline void EventRpcMoveNotify::set_dir(float value) {
 
 // EventRpcStopMoveNotify
 
-// optional sint32 ObjId = 1 [default = -1];
+// optional uint64 ObjId = 1 [default = 0];
 inline bool EventRpcStopMoveNotify::has_objid() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -470,18 +1071,18 @@ inline void EventRpcStopMoveNotify::clear_has_objid() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline void EventRpcStopMoveNotify::clear_objid() {
-  objid_ = -1;
+  objid_ = GOOGLE_ULONGLONG(0);
   clear_has_objid();
 }
-inline ::google::protobuf::int32 EventRpcStopMoveNotify::objid() const {
+inline ::google::protobuf::uint64 EventRpcStopMoveNotify::objid() const {
   return objid_;
 }
-inline void EventRpcStopMoveNotify::set_objid(::google::protobuf::int32 value) {
+inline void EventRpcStopMoveNotify::set_objid(::google::protobuf::uint64 value) {
   set_has_objid();
   objid_ = value;
 }
 
-// optional .V3 Pos = 2;
+// optional .Vector3Int Pos = 2;
 inline bool EventRpcStopMoveNotify::has_pos() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -492,24 +1093,24 @@ inline void EventRpcStopMoveNotify::clear_has_pos() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline void EventRpcStopMoveNotify::clear_pos() {
-  if (pos_ != NULL) pos_->::V3::Clear();
+  if (pos_ != NULL) pos_->::Vector3Int::Clear();
   clear_has_pos();
 }
-inline const ::V3& EventRpcStopMoveNotify::pos() const {
+inline const ::Vector3Int& EventRpcStopMoveNotify::pos() const {
   return pos_ != NULL ? *pos_ : *default_instance_->pos_;
 }
-inline ::V3* EventRpcStopMoveNotify::mutable_pos() {
+inline ::Vector3Int* EventRpcStopMoveNotify::mutable_pos() {
   set_has_pos();
-  if (pos_ == NULL) pos_ = new ::V3;
+  if (pos_ == NULL) pos_ = new ::Vector3Int;
   return pos_;
 }
-inline ::V3* EventRpcStopMoveNotify::release_pos() {
+inline ::Vector3Int* EventRpcStopMoveNotify::release_pos() {
   clear_has_pos();
-  ::V3* temp = pos_;
+  ::Vector3Int* temp = pos_;
   pos_ = NULL;
   return temp;
 }
-inline void EventRpcStopMoveNotify::set_allocated_pos(::V3* pos) {
+inline void EventRpcStopMoveNotify::set_allocated_pos(::Vector3Int* pos) {
   delete pos_;
   pos_ = pos;
   if (pos) {
@@ -541,6 +1142,50 @@ inline void EventRpcStopMoveNotify::set_dir(float value) {
   dir_ = value;
 }
 
+// optional int32 Type = 5 [default = -1];
+inline bool EventRpcStopMoveNotify::has_type() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void EventRpcStopMoveNotify::set_has_type() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void EventRpcStopMoveNotify::clear_has_type() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void EventRpcStopMoveNotify::clear_type() {
+  type_ = -1;
+  clear_has_type();
+}
+inline ::google::protobuf::int32 EventRpcStopMoveNotify::type() const {
+  return type_;
+}
+inline void EventRpcStopMoveNotify::set_type(::google::protobuf::int32 value) {
+  set_has_type();
+  type_ = value;
+}
+
+// optional bool BrakeRush = 6 [default = false];
+inline bool EventRpcStopMoveNotify::has_brakerush() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void EventRpcStopMoveNotify::set_has_brakerush() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void EventRpcStopMoveNotify::clear_has_brakerush() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void EventRpcStopMoveNotify::clear_brakerush() {
+  brakerush_ = false;
+  clear_has_brakerush();
+}
+inline bool EventRpcStopMoveNotify::brakerush() const {
+  return brakerush_;
+}
+inline void EventRpcStopMoveNotify::set_brakerush(bool value) {
+  set_has_brakerush();
+  brakerush_ = value;
+}
+
 // -------------------------------------------------------------------
 
 // EventRpcObjAttrChangeNotify
@@ -567,7 +1212,7 @@ inline void EventRpcObjAttrChangeNotify::set_speed(float value) {
   speed_ = value;
 }
 
-// optional sint64 Hp = 2 [default = -1];
+// optional int64 Hp = 2 [default = -1];
 inline bool EventRpcObjAttrChangeNotify::has_hp() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -589,7 +1234,7 @@ inline void EventRpcObjAttrChangeNotify::set_hp(::google::protobuf::int64 value)
   hp_ = value;
 }
 
-// optional sint32 Status = 3 [default = -1];
+// optional int32 Status = 3 [default = -1];
 inline bool EventRpcObjAttrChangeNotify::has_status() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -611,7 +1256,7 @@ inline void EventRpcObjAttrChangeNotify::set_status(::google::protobuf::int32 va
   status_ = value;
 }
 
-// optional sint32 ConfigId = 4 [default = -1];
+// optional int32 ConfigId = 4 [default = -1];
 inline bool EventRpcObjAttrChangeNotify::has_configid() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
@@ -633,7 +1278,7 @@ inline void EventRpcObjAttrChangeNotify::set_configid(::google::protobuf::int32 
   configid_ = value;
 }
 
-// optional sint32 ObjId = 5 [default = -1];
+// optional uint64 ObjId = 5 [default = 0];
 inline bool EventRpcObjAttrChangeNotify::has_objid() const {
   return (_has_bits_[0] & 0x00000010u) != 0;
 }
@@ -644,16 +1289,351 @@ inline void EventRpcObjAttrChangeNotify::clear_has_objid() {
   _has_bits_[0] &= ~0x00000010u;
 }
 inline void EventRpcObjAttrChangeNotify::clear_objid() {
-  objid_ = -1;
+  objid_ = GOOGLE_ULONGLONG(0);
   clear_has_objid();
 }
-inline ::google::protobuf::int32 EventRpcObjAttrChangeNotify::objid() const {
+inline ::google::protobuf::uint64 EventRpcObjAttrChangeNotify::objid() const {
   return objid_;
 }
-inline void EventRpcObjAttrChangeNotify::set_objid(::google::protobuf::int32 value) {
+inline void EventRpcObjAttrChangeNotify::set_objid(::google::protobuf::uint64 value) {
   set_has_objid();
   objid_ = value;
 }
+
+// -------------------------------------------------------------------
+
+// EventRpcCoinChangeNotify
+
+// optional int32 Type = 1 [default = -1];
+inline bool EventRpcCoinChangeNotify::has_type() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void EventRpcCoinChangeNotify::set_has_type() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void EventRpcCoinChangeNotify::clear_has_type() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void EventRpcCoinChangeNotify::clear_type() {
+  type_ = -1;
+  clear_has_type();
+}
+inline ::google::protobuf::int32 EventRpcCoinChangeNotify::type() const {
+  return type_;
+}
+inline void EventRpcCoinChangeNotify::set_type(::google::protobuf::int32 value) {
+  set_has_type();
+  type_ = value;
+}
+
+// optional int32 Value = 2 [default = -1];
+inline bool EventRpcCoinChangeNotify::has_value() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void EventRpcCoinChangeNotify::set_has_value() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void EventRpcCoinChangeNotify::clear_has_value() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void EventRpcCoinChangeNotify::clear_value() {
+  value_ = -1;
+  clear_has_value();
+}
+inline ::google::protobuf::int32 EventRpcCoinChangeNotify::value() const {
+  return value_;
+}
+inline void EventRpcCoinChangeNotify::set_value(::google::protobuf::int32 value) {
+  set_has_value();
+  value_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// EventRpcMovePosNotify
+
+// optional uint64 ObjId = 1 [default = 0];
+inline bool EventRpcMovePosNotify::has_objid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void EventRpcMovePosNotify::set_has_objid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void EventRpcMovePosNotify::clear_has_objid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void EventRpcMovePosNotify::clear_objid() {
+  objid_ = GOOGLE_ULONGLONG(0);
+  clear_has_objid();
+}
+inline ::google::protobuf::uint64 EventRpcMovePosNotify::objid() const {
+  return objid_;
+}
+inline void EventRpcMovePosNotify::set_objid(::google::protobuf::uint64 value) {
+  set_has_objid();
+  objid_ = value;
+}
+
+// repeated .Vector3Int PosList = 3;
+inline int EventRpcMovePosNotify::poslist_size() const {
+  return poslist_.size();
+}
+inline void EventRpcMovePosNotify::clear_poslist() {
+  poslist_.Clear();
+}
+inline const ::Vector3Int& EventRpcMovePosNotify::poslist(int index) const {
+  return poslist_.Get(index);
+}
+inline ::Vector3Int* EventRpcMovePosNotify::mutable_poslist(int index) {
+  return poslist_.Mutable(index);
+}
+inline ::Vector3Int* EventRpcMovePosNotify::add_poslist() {
+  return poslist_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::Vector3Int >&
+EventRpcMovePosNotify::poslist() const {
+  return poslist_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::Vector3Int >*
+EventRpcMovePosNotify::mutable_poslist() {
+  return &poslist_;
+}
+
+// optional float Dir = 4 [default = -1];
+inline bool EventRpcMovePosNotify::has_dir() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void EventRpcMovePosNotify::set_has_dir() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void EventRpcMovePosNotify::clear_has_dir() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void EventRpcMovePosNotify::clear_dir() {
+  dir_ = -1;
+  clear_has_dir();
+}
+inline float EventRpcMovePosNotify::dir() const {
+  return dir_;
+}
+inline void EventRpcMovePosNotify::set_dir(float value) {
+  set_has_dir();
+  dir_ = value;
+}
+
+// optional bool IsAllowChangeRunAnimation = 5 [default = true];
+inline bool EventRpcMovePosNotify::has_isallowchangerunanimation() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void EventRpcMovePosNotify::set_has_isallowchangerunanimation() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void EventRpcMovePosNotify::clear_has_isallowchangerunanimation() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void EventRpcMovePosNotify::clear_isallowchangerunanimation() {
+  isallowchangerunanimation_ = true;
+  clear_has_isallowchangerunanimation();
+}
+inline bool EventRpcMovePosNotify::isallowchangerunanimation() const {
+  return isallowchangerunanimation_;
+}
+inline void EventRpcMovePosNotify::set_isallowchangerunanimation(bool value) {
+  set_has_isallowchangerunanimation();
+  isallowchangerunanimation_ = value;
+}
+
+// optional int32 Follow = 6 [default = -1];
+inline bool EventRpcMovePosNotify::has_follow() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void EventRpcMovePosNotify::set_has_follow() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void EventRpcMovePosNotify::clear_has_follow() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void EventRpcMovePosNotify::clear_follow() {
+  follow_ = -1;
+  clear_has_follow();
+}
+inline ::google::protobuf::int32 EventRpcMovePosNotify::follow() const {
+  return follow_;
+}
+inline void EventRpcMovePosNotify::set_follow(::google::protobuf::int32 value) {
+  set_has_follow();
+  follow_ = value;
+}
+
+// optional bool IsLookAtMoving = 7 [default = true];
+inline bool EventRpcMovePosNotify::has_islookatmoving() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void EventRpcMovePosNotify::set_has_islookatmoving() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void EventRpcMovePosNotify::clear_has_islookatmoving() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void EventRpcMovePosNotify::clear_islookatmoving() {
+  islookatmoving_ = true;
+  clear_has_islookatmoving();
+}
+inline bool EventRpcMovePosNotify::islookatmoving() const {
+  return islookatmoving_;
+}
+inline void EventRpcMovePosNotify::set_islookatmoving(bool value) {
+  set_has_islookatmoving();
+  islookatmoving_ = value;
+}
+
+// optional int32 FromX = 8 [default = -1];
+inline bool EventRpcMovePosNotify::has_fromx() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void EventRpcMovePosNotify::set_has_fromx() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void EventRpcMovePosNotify::clear_has_fromx() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void EventRpcMovePosNotify::clear_fromx() {
+  fromx_ = -1;
+  clear_has_fromx();
+}
+inline ::google::protobuf::int32 EventRpcMovePosNotify::fromx() const {
+  return fromx_;
+}
+inline void EventRpcMovePosNotify::set_fromx(::google::protobuf::int32 value) {
+  set_has_fromx();
+  fromx_ = value;
+}
+
+// optional int32 FromZ = 9 [default = -1];
+inline bool EventRpcMovePosNotify::has_fromz() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void EventRpcMovePosNotify::set_has_fromz() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void EventRpcMovePosNotify::clear_has_fromz() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void EventRpcMovePosNotify::clear_fromz() {
+  fromz_ = -1;
+  clear_has_fromz();
+}
+inline ::google::protobuf::int32 EventRpcMovePosNotify::fromz() const {
+  return fromz_;
+}
+inline void EventRpcMovePosNotify::set_fromz(::google::protobuf::int32 value) {
+  set_has_fromz();
+  fromz_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// EventRpcDirNotify
+
+// optional uint64 ObjId = 3 [default = 0];
+inline bool EventRpcDirNotify::has_objid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void EventRpcDirNotify::set_has_objid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void EventRpcDirNotify::clear_has_objid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void EventRpcDirNotify::clear_objid() {
+  objid_ = GOOGLE_ULONGLONG(0);
+  clear_has_objid();
+}
+inline ::google::protobuf::uint64 EventRpcDirNotify::objid() const {
+  return objid_;
+}
+inline void EventRpcDirNotify::set_objid(::google::protobuf::uint64 value) {
+  set_has_objid();
+  objid_ = value;
+}
+
+// optional float Dir = 4 [default = -1];
+inline bool EventRpcDirNotify::has_dir() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void EventRpcDirNotify::set_has_dir() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void EventRpcDirNotify::clear_has_dir() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void EventRpcDirNotify::clear_dir() {
+  dir_ = -1;
+  clear_has_dir();
+}
+inline float EventRpcDirNotify::dir() const {
+  return dir_;
+}
+inline void EventRpcDirNotify::set_dir(float value) {
+  set_has_dir();
+  dir_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// EventRpcStartFadeoutNotify
+
+// optional uint64 ObjId = 1 [default = 0];
+inline bool EventRpcStartFadeoutNotify::has_objid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void EventRpcStartFadeoutNotify::set_has_objid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void EventRpcStartFadeoutNotify::clear_has_objid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void EventRpcStartFadeoutNotify::clear_objid() {
+  objid_ = GOOGLE_ULONGLONG(0);
+  clear_has_objid();
+}
+inline ::google::protobuf::uint64 EventRpcStartFadeoutNotify::objid() const {
+  return objid_;
+}
+inline void EventRpcStartFadeoutNotify::set_objid(::google::protobuf::uint64 value) {
+  set_has_objid();
+  objid_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// EventRpcCinematicStartNotify
+
+// optional int32 Text = 1 [default = -1];
+inline bool EventRpcCinematicStartNotify::has_text() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void EventRpcCinematicStartNotify::set_has_text() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void EventRpcCinematicStartNotify::clear_has_text() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void EventRpcCinematicStartNotify::clear_text() {
+  text_ = -1;
+  clear_has_text();
+}
+inline ::google::protobuf::int32 EventRpcCinematicStartNotify::text() const {
+  return text_;
+}
+inline void EventRpcCinematicStartNotify::set_text(::google::protobuf::int32 value) {
+  set_has_text();
+  text_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// EventRpcCinematicEndNotify
 
 
 // @@protoc_insertion_point(namespace_scope)

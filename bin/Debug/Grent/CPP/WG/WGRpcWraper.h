@@ -23,116 +23,19 @@
 enum ConstWGE
 {
 	MODULE_ID_WG                                 = 11,	//WG模块ID
-	RPC_CODE_WG_INFORMCREATETEAM_REQUEST         = 1151,	//WG-->InformCreateTeam-->请求
-	RPC_CODE_WG_INFORMJOINTEAM_REQUEST           = 1152,	//WG-->InformJoinTeam-->请求
-	RPC_CODE_WG_INFORMLEAVE_REQUEST              = 1153,	//WG-->InformLeave-->请求
-	RPC_CODE_WG_INFORMAPPOINTTEAMLEADER_REQUEST  = 1154,	//WG-->InformAppointTeamLeader-->请求
-	RPC_CODE_WG_INFORMKICKTEAMMEMBER_REQUEST     = 1155,	//WG-->InformKickTeamMember-->请求
-	RPC_CODE_WG_INFORMDISSMISSTEAM_REQUEST       = 1156,	//WG-->InformDissmissTeam-->请求
-	RPC_CODE_WG_INFORMAPPLYTEAM_REQUEST          = 1157,	//WG-->InformApply-->请求
-	RPC_CODE_WG_AGREETEAMAPPLICANT_REQUEST       = 1158,	//WG-->AgreeTeamApplicant-->请求
-	RPC_CODE_WG_INFORMLOGIN_REQUEST              = 1159,	//WG-->InformLogin-->请求
+	RPC_CODE_WG_INFORMJOINTEAM_REQUEST           = 1151,	//WG-->InformJoinTeam-->请求
+	RPC_CODE_WG_INFORMLEAVE_REQUEST              = 1152,	//WG-->InformLeave-->请求
+	RPC_CODE_WG_INFORMAPPOINTTEAMLEADER_REQUEST  = 1153,	//WG-->InformAppointTeamLeader-->请求
+	RPC_CODE_WG_INFORMKICKTEAMMEMBER_REQUEST     = 1154,	//WG-->InformKickTeamMember-->请求
+	RPC_CODE_WG_INFORMDISSMISSTEAM_REQUEST       = 1155,	//WG-->InformDissmissTeam-->请求
+	RPC_CODE_WG_INFORMAPPLYTEAM_REQUEST          = 1156,	//WG-->InformApply-->请求
+	RPC_CODE_WG_AGREETEAMAPPLICANT_REQUEST       = 1157,	//WG-->AgreeTeamApplicant-->请求
+	RPC_CODE_WG_INFORMLOGIN_REQUEST              = 1158,	//WG-->InformLogin-->请求
 
 
 };
 
 
-//InformDissmissTeam回应封装类
-class WGRpcInformDissmissTeamReplyWraper
-{
-public:
-	//构造函数
-	WGRpcInformDissmissTeamReplyWraper()
-	{
-		
-		m_Result = -9999;
-
-	}
-	//赋值构造函数
-	WGRpcInformDissmissTeamReplyWraper(const WGRpcInformDissmissTeamReply& v){ Init(v); }
-	//等号重载函数
-	void operator = (const WGRpcInformDissmissTeamReply& v){ Init(v); }
- 	//转化成Protobuffer类型函数
-	WGRpcInformDissmissTeamReply ToPB() const
-	{
-		WGRpcInformDissmissTeamReply v;
-		v.set_result( m_Result );
-
-		return v;
-	}
-	//获取Protobuffer序列化后大小函数
-	int ByteSize() const { return ToPB().ByteSize();}
-	//Protobuffer序列化到缓冲区
-	bool SerializeToArray( void* data, int size ) const
-	{
-		return ToPB().SerializeToArray(data,size);
-	}
-	//Protobuffer序列化到字符串
-	string SerializeAsString() const
-	{
-		return ToPB().SerializeAsString();
-	}
-	//Protobuffer从字符串进行反序列化
-	bool ParseFromString(const string& v)
-	{
-		return ParseFromArray(v.data(),v.size());
-	}
-	//Protobuffer从缓冲区进行反序列化
-	bool ParseFromArray(const void* data, int size)
-	{
-		WGRpcInformDissmissTeamReply pb;
-		if(!pb.ParseFromArray(data,size)){return false;}
-		Init(pb);
-		return true;
-	}
-	/*
-	string HtmlDescHeader()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-	*/
-	/*
-	string ToHtml()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-		TStr tmpLine;
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}*/
-
-
-private:
-	//从Protobuffer类型初始化
-	void Init(const WGRpcInformDissmissTeamReply& v)
-	{
-		m_Result = v.result();
-
-	}
-
-private:
-	//返回结果
-	INT32 m_Result;
-public:
-	void SetResult( INT32 v)
-	{
-		m_Result=v;
-	}
-	INT32 GetResult()
-	{
-		return m_Result;
-	}
-	INT32 GetResult() const
-	{
-		return m_Result;
-	}
-
-};
 //InformApply请求封装类
 class WGRpcInformApplyTeamAskWraper
 {
@@ -143,7 +46,7 @@ public:
 		
 		m_TeamMember = TeamMemberInfoWraper();
 		m_Result = -9999;
-		m_TeamId = -1;
+		m_TeamId = 0;
 
 	}
 	//赋值构造函数
@@ -251,41 +154,41 @@ public:
 	}
 private:
 	//TeamId
-	INT32 m_TeamId;
+	uint64_t m_TeamId;
 public:
-	void SetTeamId( INT32 v)
+	void SetTeamId( uint64_t v)
 	{
 		m_TeamId=v;
 	}
-	INT32 GetTeamId()
+	uint64_t GetTeamId()
 	{
 		return m_TeamId;
 	}
-	INT32 GetTeamId() const
+	uint64_t GetTeamId() const
 	{
 		return m_TeamId;
 	}
 
 };
-//InformKickTeamMember回应封装类
-class WGRpcInformKickTeamMemberReplyWraper
+//InformApply回应封装类
+class WGRpcInformApplyTeamReplyWraper
 {
 public:
 	//构造函数
-	WGRpcInformKickTeamMemberReplyWraper()
+	WGRpcInformApplyTeamReplyWraper()
 	{
 		
 		m_Result = -9999;
 
 	}
 	//赋值构造函数
-	WGRpcInformKickTeamMemberReplyWraper(const WGRpcInformKickTeamMemberReply& v){ Init(v); }
+	WGRpcInformApplyTeamReplyWraper(const WGRpcInformApplyTeamReply& v){ Init(v); }
 	//等号重载函数
-	void operator = (const WGRpcInformKickTeamMemberReply& v){ Init(v); }
+	void operator = (const WGRpcInformApplyTeamReply& v){ Init(v); }
  	//转化成Protobuffer类型函数
-	WGRpcInformKickTeamMemberReply ToPB() const
+	WGRpcInformApplyTeamReply ToPB() const
 	{
-		WGRpcInformKickTeamMemberReply v;
+		WGRpcInformApplyTeamReply v;
 		v.set_result( m_Result );
 
 		return v;
@@ -310,7 +213,7 @@ public:
 	//Protobuffer从缓冲区进行反序列化
 	bool ParseFromArray(const void* data, int size)
 	{
-		WGRpcInformKickTeamMemberReply pb;
+		WGRpcInformApplyTeamReply pb;
 		if(!pb.ParseFromArray(data,size)){return false;}
 		Init(pb);
 		return true;
@@ -339,7 +242,7 @@ public:
 
 private:
 	//从Protobuffer类型初始化
-	void Init(const WGRpcInformKickTeamMemberReply& v)
+	void Init(const WGRpcInformApplyTeamReply& v)
 	{
 		m_Result = v.result();
 
@@ -478,25 +381,25 @@ public:
 	}
 
 };
-//InformApply回应封装类
-class WGRpcInformApplyTeamReplyWraper
+//InformDissmissTeam回应封装类
+class WGRpcInformDissmissTeamReplyWraper
 {
 public:
 	//构造函数
-	WGRpcInformApplyTeamReplyWraper()
+	WGRpcInformDissmissTeamReplyWraper()
 	{
 		
 		m_Result = -9999;
 
 	}
 	//赋值构造函数
-	WGRpcInformApplyTeamReplyWraper(const WGRpcInformApplyTeamReply& v){ Init(v); }
+	WGRpcInformDissmissTeamReplyWraper(const WGRpcInformDissmissTeamReply& v){ Init(v); }
 	//等号重载函数
-	void operator = (const WGRpcInformApplyTeamReply& v){ Init(v); }
+	void operator = (const WGRpcInformDissmissTeamReply& v){ Init(v); }
  	//转化成Protobuffer类型函数
-	WGRpcInformApplyTeamReply ToPB() const
+	WGRpcInformDissmissTeamReply ToPB() const
 	{
-		WGRpcInformApplyTeamReply v;
+		WGRpcInformDissmissTeamReply v;
 		v.set_result( m_Result );
 
 		return v;
@@ -521,7 +424,7 @@ public:
 	//Protobuffer从缓冲区进行反序列化
 	bool ParseFromArray(const void* data, int size)
 	{
-		WGRpcInformApplyTeamReply pb;
+		WGRpcInformDissmissTeamReply pb;
 		if(!pb.ParseFromArray(data,size)){return false;}
 		Init(pb);
 		return true;
@@ -550,7 +453,7 @@ public:
 
 private:
 	//从Protobuffer类型初始化
-	void Init(const WGRpcInformApplyTeamReply& v)
+	void Init(const WGRpcInformDissmissTeamReply& v)
 	{
 		m_Result = v.result();
 
@@ -958,6 +861,236 @@ public:
 	}
 
 };
+//InformLeave请求封装类
+class WGRpcInformLeaveAskWraper
+{
+public:
+	//构造函数
+	WGRpcInformLeaveAskWraper()
+	{
+		
+		m_RoleId = 0;
+		m_NewLeaderRoleId = 0;
+		m_Result = -9999;
+
+	}
+	//赋值构造函数
+	WGRpcInformLeaveAskWraper(const WGRpcInformLeaveAsk& v){ Init(v); }
+	//等号重载函数
+	void operator = (const WGRpcInformLeaveAsk& v){ Init(v); }
+ 	//转化成Protobuffer类型函数
+	WGRpcInformLeaveAsk ToPB() const
+	{
+		WGRpcInformLeaveAsk v;
+		v.set_roleid( m_RoleId );
+		v.set_newleaderroleid( m_NewLeaderRoleId );
+		v.set_result( m_Result );
+
+		return v;
+	}
+	//获取Protobuffer序列化后大小函数
+	int ByteSize() const { return ToPB().ByteSize();}
+	//Protobuffer序列化到缓冲区
+	bool SerializeToArray( void* data, int size ) const
+	{
+		return ToPB().SerializeToArray(data,size);
+	}
+	//Protobuffer序列化到字符串
+	string SerializeAsString() const
+	{
+		return ToPB().SerializeAsString();
+	}
+	//Protobuffer从字符串进行反序列化
+	bool ParseFromString(const string& v)
+	{
+		return ParseFromArray(v.data(),v.size());
+	}
+	//Protobuffer从缓冲区进行反序列化
+	bool ParseFromArray(const void* data, int size)
+	{
+		WGRpcInformLeaveAsk pb;
+		if(!pb.ParseFromArray(data,size)){return false;}
+		Init(pb);
+		return true;
+	}
+	/*
+	string HtmlDescHeader()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}
+	*/
+	/*
+	string ToHtml()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+		TStr tmpLine;
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}*/
+
+
+private:
+	//从Protobuffer类型初始化
+	void Init(const WGRpcInformLeaveAsk& v)
+	{
+		m_RoleId = v.roleid();
+		m_NewLeaderRoleId = v.newleaderroleid();
+		m_Result = v.result();
+
+	}
+
+private:
+	//RoleId
+	uint64_t m_RoleId;
+public:
+	void SetRoleId( uint64_t v)
+	{
+		m_RoleId=v;
+	}
+	uint64_t GetRoleId()
+	{
+		return m_RoleId;
+	}
+	uint64_t GetRoleId() const
+	{
+		return m_RoleId;
+	}
+private:
+	//NewLeader
+	uint64_t m_NewLeaderRoleId;
+public:
+	void SetNewLeaderRoleId( uint64_t v)
+	{
+		m_NewLeaderRoleId=v;
+	}
+	uint64_t GetNewLeaderRoleId()
+	{
+		return m_NewLeaderRoleId;
+	}
+	uint64_t GetNewLeaderRoleId() const
+	{
+		return m_NewLeaderRoleId;
+	}
+private:
+	//返回结果
+	INT32 m_Result;
+public:
+	void SetResult( INT32 v)
+	{
+		m_Result=v;
+	}
+	INT32 GetResult()
+	{
+		return m_Result;
+	}
+	INT32 GetResult() const
+	{
+		return m_Result;
+	}
+
+};
+//InformLeave回应封装类
+class WGRpcInformLeaveReplyWraper
+{
+public:
+	//构造函数
+	WGRpcInformLeaveReplyWraper()
+	{
+		
+		m_Result = -9999;
+
+	}
+	//赋值构造函数
+	WGRpcInformLeaveReplyWraper(const WGRpcInformLeaveReply& v){ Init(v); }
+	//等号重载函数
+	void operator = (const WGRpcInformLeaveReply& v){ Init(v); }
+ 	//转化成Protobuffer类型函数
+	WGRpcInformLeaveReply ToPB() const
+	{
+		WGRpcInformLeaveReply v;
+		v.set_result( m_Result );
+
+		return v;
+	}
+	//获取Protobuffer序列化后大小函数
+	int ByteSize() const { return ToPB().ByteSize();}
+	//Protobuffer序列化到缓冲区
+	bool SerializeToArray( void* data, int size ) const
+	{
+		return ToPB().SerializeToArray(data,size);
+	}
+	//Protobuffer序列化到字符串
+	string SerializeAsString() const
+	{
+		return ToPB().SerializeAsString();
+	}
+	//Protobuffer从字符串进行反序列化
+	bool ParseFromString(const string& v)
+	{
+		return ParseFromArray(v.data(),v.size());
+	}
+	//Protobuffer从缓冲区进行反序列化
+	bool ParseFromArray(const void* data, int size)
+	{
+		WGRpcInformLeaveReply pb;
+		if(!pb.ParseFromArray(data,size)){return false;}
+		Init(pb);
+		return true;
+	}
+	/*
+	string HtmlDescHeader()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}
+	*/
+	/*
+	string ToHtml()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+		TStr tmpLine;
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}*/
+
+
+private:
+	//从Protobuffer类型初始化
+	void Init(const WGRpcInformLeaveReply& v)
+	{
+		m_Result = v.result();
+
+	}
+
+private:
+	//返回结果
+	INT32 m_Result;
+public:
+	void SetResult( INT32 v)
+	{
+		m_Result=v;
+	}
+	INT32 GetResult()
+	{
+		return m_Result;
+	}
+	INT32 GetResult() const
+	{
+		return m_Result;
+	}
+
+};
 //InformJoinTeam请求封装类
 class WGRpcInformJoinTeamAskWraper
 {
@@ -1169,447 +1302,6 @@ public:
 	}
 
 };
-//InformCreateTeam请求封装类
-class WGRpcInformCreateTeamAskWraper
-{
-public:
-	//构造函数
-	WGRpcInformCreateTeamAskWraper()
-	{
-		
-		m_Team = TeamInfoWraper();
-		m_Result = -9999;
-
-	}
-	//赋值构造函数
-	WGRpcInformCreateTeamAskWraper(const WGRpcInformCreateTeamAsk& v){ Init(v); }
-	//等号重载函数
-	void operator = (const WGRpcInformCreateTeamAsk& v){ Init(v); }
- 	//转化成Protobuffer类型函数
-	WGRpcInformCreateTeamAsk ToPB() const
-	{
-		WGRpcInformCreateTeamAsk v;
-		*v.mutable_team()= m_Team.ToPB();
-		v.set_result( m_Result );
-
-		return v;
-	}
-	//获取Protobuffer序列化后大小函数
-	int ByteSize() const { return ToPB().ByteSize();}
-	//Protobuffer序列化到缓冲区
-	bool SerializeToArray( void* data, int size ) const
-	{
-		return ToPB().SerializeToArray(data,size);
-	}
-	//Protobuffer序列化到字符串
-	string SerializeAsString() const
-	{
-		return ToPB().SerializeAsString();
-	}
-	//Protobuffer从字符串进行反序列化
-	bool ParseFromString(const string& v)
-	{
-		return ParseFromArray(v.data(),v.size());
-	}
-	//Protobuffer从缓冲区进行反序列化
-	bool ParseFromArray(const void* data, int size)
-	{
-		WGRpcInformCreateTeamAsk pb;
-		if(!pb.ParseFromArray(data,size)){return false;}
-		Init(pb);
-		return true;
-	}
-	/*
-	string HtmlDescHeader()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-	*/
-	/*
-	string ToHtml()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-		TStr tmpLine;
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}*/
-
-
-private:
-	//从Protobuffer类型初始化
-	void Init(const WGRpcInformCreateTeamAsk& v)
-	{
-		m_Team = v.team();
-		m_Result = v.result();
-
-	}
-
-private:
-	//Team
-	TeamInfoWraper m_Team;
-public:
-	void SetTeam( const TeamInfoWraper& v)
-	{
-		m_Team=v;
-	}
-	TeamInfoWraper GetTeam()
-	{
-		return m_Team;
-	}
-	TeamInfoWraper GetTeam() const
-	{
-		return m_Team;
-	}
-private:
-	//返回结果
-	INT32 m_Result;
-public:
-	void SetResult( INT32 v)
-	{
-		m_Result=v;
-	}
-	INT32 GetResult()
-	{
-		return m_Result;
-	}
-	INT32 GetResult() const
-	{
-		return m_Result;
-	}
-
-};
-//InformCreateTeam回应封装类
-class WGRpcInformCreateTeamReplyWraper
-{
-public:
-	//构造函数
-	WGRpcInformCreateTeamReplyWraper()
-	{
-		
-		m_Result = -9999;
-
-	}
-	//赋值构造函数
-	WGRpcInformCreateTeamReplyWraper(const WGRpcInformCreateTeamReply& v){ Init(v); }
-	//等号重载函数
-	void operator = (const WGRpcInformCreateTeamReply& v){ Init(v); }
- 	//转化成Protobuffer类型函数
-	WGRpcInformCreateTeamReply ToPB() const
-	{
-		WGRpcInformCreateTeamReply v;
-		v.set_result( m_Result );
-
-		return v;
-	}
-	//获取Protobuffer序列化后大小函数
-	int ByteSize() const { return ToPB().ByteSize();}
-	//Protobuffer序列化到缓冲区
-	bool SerializeToArray( void* data, int size ) const
-	{
-		return ToPB().SerializeToArray(data,size);
-	}
-	//Protobuffer序列化到字符串
-	string SerializeAsString() const
-	{
-		return ToPB().SerializeAsString();
-	}
-	//Protobuffer从字符串进行反序列化
-	bool ParseFromString(const string& v)
-	{
-		return ParseFromArray(v.data(),v.size());
-	}
-	//Protobuffer从缓冲区进行反序列化
-	bool ParseFromArray(const void* data, int size)
-	{
-		WGRpcInformCreateTeamReply pb;
-		if(!pb.ParseFromArray(data,size)){return false;}
-		Init(pb);
-		return true;
-	}
-	/*
-	string HtmlDescHeader()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-	*/
-	/*
-	string ToHtml()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-		TStr tmpLine;
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}*/
-
-
-private:
-	//从Protobuffer类型初始化
-	void Init(const WGRpcInformCreateTeamReply& v)
-	{
-		m_Result = v.result();
-
-	}
-
-private:
-	//返回结果
-	INT32 m_Result;
-public:
-	void SetResult( INT32 v)
-	{
-		m_Result=v;
-	}
-	INT32 GetResult()
-	{
-		return m_Result;
-	}
-	INT32 GetResult() const
-	{
-		return m_Result;
-	}
-
-};
-//InformLeave请求封装类
-class WGRpcInformLeaveAskWraper
-{
-public:
-	//构造函数
-	WGRpcInformLeaveAskWraper()
-	{
-		
-		m_RoleId = 0;
-		m_NewLeaderRoleId = 0;
-		m_Result = -9999;
-
-	}
-	//赋值构造函数
-	WGRpcInformLeaveAskWraper(const WGRpcInformLeaveAsk& v){ Init(v); }
-	//等号重载函数
-	void operator = (const WGRpcInformLeaveAsk& v){ Init(v); }
- 	//转化成Protobuffer类型函数
-	WGRpcInformLeaveAsk ToPB() const
-	{
-		WGRpcInformLeaveAsk v;
-		v.set_roleid( m_RoleId );
-		v.set_newleaderroleid( m_NewLeaderRoleId );
-		v.set_result( m_Result );
-
-		return v;
-	}
-	//获取Protobuffer序列化后大小函数
-	int ByteSize() const { return ToPB().ByteSize();}
-	//Protobuffer序列化到缓冲区
-	bool SerializeToArray( void* data, int size ) const
-	{
-		return ToPB().SerializeToArray(data,size);
-	}
-	//Protobuffer序列化到字符串
-	string SerializeAsString() const
-	{
-		return ToPB().SerializeAsString();
-	}
-	//Protobuffer从字符串进行反序列化
-	bool ParseFromString(const string& v)
-	{
-		return ParseFromArray(v.data(),v.size());
-	}
-	//Protobuffer从缓冲区进行反序列化
-	bool ParseFromArray(const void* data, int size)
-	{
-		WGRpcInformLeaveAsk pb;
-		if(!pb.ParseFromArray(data,size)){return false;}
-		Init(pb);
-		return true;
-	}
-	/*
-	string HtmlDescHeader()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-	*/
-	/*
-	string ToHtml()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-		TStr tmpLine;
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}*/
-
-
-private:
-	//从Protobuffer类型初始化
-	void Init(const WGRpcInformLeaveAsk& v)
-	{
-		m_RoleId = v.roleid();
-		m_NewLeaderRoleId = v.newleaderroleid();
-		m_Result = v.result();
-
-	}
-
-private:
-	//RoleId
-	uint64_t m_RoleId;
-public:
-	void SetRoleId( uint64_t v)
-	{
-		m_RoleId=v;
-	}
-	uint64_t GetRoleId()
-	{
-		return m_RoleId;
-	}
-	uint64_t GetRoleId() const
-	{
-		return m_RoleId;
-	}
-private:
-	//NewLeader
-	uint64_t m_NewLeaderRoleId;
-public:
-	void SetNewLeaderRoleId( uint64_t v)
-	{
-		m_NewLeaderRoleId=v;
-	}
-	uint64_t GetNewLeaderRoleId()
-	{
-		return m_NewLeaderRoleId;
-	}
-	uint64_t GetNewLeaderRoleId() const
-	{
-		return m_NewLeaderRoleId;
-	}
-private:
-	//返回结果
-	INT32 m_Result;
-public:
-	void SetResult( INT32 v)
-	{
-		m_Result=v;
-	}
-	INT32 GetResult()
-	{
-		return m_Result;
-	}
-	INT32 GetResult() const
-	{
-		return m_Result;
-	}
-
-};
-//InformAppointTeamLeader回应封装类
-class WGRpcInformAppointTeamLeaderReplyWraper
-{
-public:
-	//构造函数
-	WGRpcInformAppointTeamLeaderReplyWraper()
-	{
-		
-		m_Result = -9999;
-
-	}
-	//赋值构造函数
-	WGRpcInformAppointTeamLeaderReplyWraper(const WGRpcInformAppointTeamLeaderReply& v){ Init(v); }
-	//等号重载函数
-	void operator = (const WGRpcInformAppointTeamLeaderReply& v){ Init(v); }
- 	//转化成Protobuffer类型函数
-	WGRpcInformAppointTeamLeaderReply ToPB() const
-	{
-		WGRpcInformAppointTeamLeaderReply v;
-		v.set_result( m_Result );
-
-		return v;
-	}
-	//获取Protobuffer序列化后大小函数
-	int ByteSize() const { return ToPB().ByteSize();}
-	//Protobuffer序列化到缓冲区
-	bool SerializeToArray( void* data, int size ) const
-	{
-		return ToPB().SerializeToArray(data,size);
-	}
-	//Protobuffer序列化到字符串
-	string SerializeAsString() const
-	{
-		return ToPB().SerializeAsString();
-	}
-	//Protobuffer从字符串进行反序列化
-	bool ParseFromString(const string& v)
-	{
-		return ParseFromArray(v.data(),v.size());
-	}
-	//Protobuffer从缓冲区进行反序列化
-	bool ParseFromArray(const void* data, int size)
-	{
-		WGRpcInformAppointTeamLeaderReply pb;
-		if(!pb.ParseFromArray(data,size)){return false;}
-		Init(pb);
-		return true;
-	}
-	/*
-	string HtmlDescHeader()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-	*/
-	/*
-	string ToHtml()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-		TStr tmpLine;
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}*/
-
-
-private:
-	//从Protobuffer类型初始化
-	void Init(const WGRpcInformAppointTeamLeaderReply& v)
-	{
-		m_Result = v.result();
-
-	}
-
-private:
-	//返回结果
-	INT32 m_Result;
-public:
-	void SetResult( INT32 v)
-	{
-		m_Result=v;
-	}
-	INT32 GetResult()
-	{
-		return m_Result;
-	}
-	INT32 GetResult() const
-	{
-		return m_Result;
-	}
-
-};
 //InformKickTeamMember请求封装类
 class WGRpcInformKickTeamMemberAskWraper
 {
@@ -1744,25 +1436,25 @@ public:
 	}
 
 };
-//InformLeave回应封装类
-class WGRpcInformLeaveReplyWraper
+//InformKickTeamMember回应封装类
+class WGRpcInformKickTeamMemberReplyWraper
 {
 public:
 	//构造函数
-	WGRpcInformLeaveReplyWraper()
+	WGRpcInformKickTeamMemberReplyWraper()
 	{
 		
 		m_Result = -9999;
 
 	}
 	//赋值构造函数
-	WGRpcInformLeaveReplyWraper(const WGRpcInformLeaveReply& v){ Init(v); }
+	WGRpcInformKickTeamMemberReplyWraper(const WGRpcInformKickTeamMemberReply& v){ Init(v); }
 	//等号重载函数
-	void operator = (const WGRpcInformLeaveReply& v){ Init(v); }
+	void operator = (const WGRpcInformKickTeamMemberReply& v){ Init(v); }
  	//转化成Protobuffer类型函数
-	WGRpcInformLeaveReply ToPB() const
+	WGRpcInformKickTeamMemberReply ToPB() const
 	{
-		WGRpcInformLeaveReply v;
+		WGRpcInformKickTeamMemberReply v;
 		v.set_result( m_Result );
 
 		return v;
@@ -1787,7 +1479,7 @@ public:
 	//Protobuffer从缓冲区进行反序列化
 	bool ParseFromArray(const void* data, int size)
 	{
-		WGRpcInformLeaveReply pb;
+		WGRpcInformKickTeamMemberReply pb;
 		if(!pb.ParseFromArray(data,size)){return false;}
 		Init(pb);
 		return true;
@@ -1816,7 +1508,7 @@ public:
 
 private:
 	//从Protobuffer类型初始化
-	void Init(const WGRpcInformLeaveReply& v)
+	void Init(const WGRpcInformKickTeamMemberReply& v)
 	{
 		m_Result = v.result();
 
@@ -1971,6 +1663,102 @@ public:
 	uint64_t GetOldLeaderRoleId() const
 	{
 		return m_OldLeaderRoleId;
+	}
+
+};
+//InformAppointTeamLeader回应封装类
+class WGRpcInformAppointTeamLeaderReplyWraper
+{
+public:
+	//构造函数
+	WGRpcInformAppointTeamLeaderReplyWraper()
+	{
+		
+		m_Result = -9999;
+
+	}
+	//赋值构造函数
+	WGRpcInformAppointTeamLeaderReplyWraper(const WGRpcInformAppointTeamLeaderReply& v){ Init(v); }
+	//等号重载函数
+	void operator = (const WGRpcInformAppointTeamLeaderReply& v){ Init(v); }
+ 	//转化成Protobuffer类型函数
+	WGRpcInformAppointTeamLeaderReply ToPB() const
+	{
+		WGRpcInformAppointTeamLeaderReply v;
+		v.set_result( m_Result );
+
+		return v;
+	}
+	//获取Protobuffer序列化后大小函数
+	int ByteSize() const { return ToPB().ByteSize();}
+	//Protobuffer序列化到缓冲区
+	bool SerializeToArray( void* data, int size ) const
+	{
+		return ToPB().SerializeToArray(data,size);
+	}
+	//Protobuffer序列化到字符串
+	string SerializeAsString() const
+	{
+		return ToPB().SerializeAsString();
+	}
+	//Protobuffer从字符串进行反序列化
+	bool ParseFromString(const string& v)
+	{
+		return ParseFromArray(v.data(),v.size());
+	}
+	//Protobuffer从缓冲区进行反序列化
+	bool ParseFromArray(const void* data, int size)
+	{
+		WGRpcInformAppointTeamLeaderReply pb;
+		if(!pb.ParseFromArray(data,size)){return false;}
+		Init(pb);
+		return true;
+	}
+	/*
+	string HtmlDescHeader()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}
+	*/
+	/*
+	string ToHtml()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+		TStr tmpLine;
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}*/
+
+
+private:
+	//从Protobuffer类型初始化
+	void Init(const WGRpcInformAppointTeamLeaderReply& v)
+	{
+		m_Result = v.result();
+
+	}
+
+private:
+	//返回结果
+	INT32 m_Result;
+public:
+	void SetResult( INT32 v)
+	{
+		m_Result=v;
+	}
+	INT32 GetResult()
+	{
+		return m_Result;
+	}
+	INT32 GetResult() const
+	{
+		return m_Result;
 	}
 
 };

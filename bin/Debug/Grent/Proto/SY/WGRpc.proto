@@ -1,16 +1,3 @@
-message  WGRpcInformCreateTeamAsk
-{
-	optional TeamInfo Team = 1;
-	optional sint32 Result = 2[default=-9999];
-
-}
-
-message  WGRpcInformCreateTeamReply
-{
-	optional sint32 Result = 1[default=-9999];
-
-}
-
 message  WGRpcInformJoinTeamAsk
 {
 	optional TeamMemberInfo Member = 5;
@@ -20,7 +7,7 @@ message  WGRpcInformJoinTeamAsk
 
 message  WGRpcInformJoinTeamReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 
 }
 
@@ -28,19 +15,19 @@ message  WGRpcInformLeaveAsk
 {
 	optional uint64 RoleId = 1[default=0];
 	optional uint64 NewLeaderRoleId = 2[default=0];
-	optional sint32 Result = 3[default=-9999];
+	optional int32 Result = 3;
 
 }
 
 message  WGRpcInformLeaveReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 
 }
 
 message  WGRpcInformAppointTeamLeaderAsk
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 	optional uint64 NewLeaderRoleId = 2[default=0];
 	optional uint64 OldLeaderRoleId = 3[default=0];
 
@@ -48,13 +35,13 @@ message  WGRpcInformAppointTeamLeaderAsk
 
 message  WGRpcInformAppointTeamLeaderReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 
 }
 
 message  WGRpcInformKickTeamMemberAsk
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 	optional uint64 KickedMemberRoleId = 2[default=0];
 	optional uint64 LeaderRoleId = 3[default=0];
 
@@ -62,34 +49,34 @@ message  WGRpcInformKickTeamMemberAsk
 
 message  WGRpcInformKickTeamMemberReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 
 }
 
 message  WGRpcInformDissmissTeamAsk
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 	optional uint64 LeaderRoleId = 2[default=0];
 
 }
 
 message  WGRpcInformDissmissTeamReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 
 }
 
 message  WGRpcInformApplyTeamAsk
 {
 	optional TeamMemberInfo TeamMember = 1;
-	optional sint32 Result = 2[default=-9999];
-	optional sint32 TeamId = 3[default=-1];
+	optional int32 Result = 2;
+	optional uint64 TeamId = 3[default=0];
 
 }
 
 message  WGRpcInformApplyTeamReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 
 }
 
@@ -101,7 +88,7 @@ message  WGRpcAgreeTeamApplicantAsk
 
 message  WGRpcAgreeTeamApplicantReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 
 }
 
@@ -113,7 +100,127 @@ message  WGRpcInformLoginAsk
 
 message  WGRpcInformLoginReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
+
+}
+
+message  TeamMemberInfo
+{
+	optional uint64 RoleId = 1[default=0];
+	optional int32 Level = 3[default=0];
+	optional string Name = 4;
+	optional int32 ConfigId = 5[default=-1];
+	optional int32 Hp = 6[default=-1];
+	optional int32 Status = 8[default=-1];
+	optional int64 MaxHp = 11[default=-1];
+	optional CharacterLocation Location = 15;
+	optional int32 ProfessionId = 16[default=-1];
+	optional int32 OnLine = 17[default=1];
+	optional int32 FollowTeam = 18[default=-1];
+	repeated int32 BuffIdList = 19;
+	optional bool Robot = 20[default=false];
+	optional int32 Camp = 21[default=-1];
+	optional uint64 GuildGuid = 22[default=0];
+	optional int32 BattleScore = 23[default=-1];
+	optional TreasureEquipedID Treasureinfo = 24;
+	optional uint64 GhostGuid = 25[default=0];
+	optional int32 Occupation = 26[default=-1];
+	optional PinchFaceData PinchData = 27;
+	optional int64 WillLeaveTime = 28[default=0];
+	optional int64 LastLogoutTime = 29[default=-1];
+
+}
+
+message  TeamInfo
+{
+	repeated TeamMemberInfo Members = 1;
+	optional uint64 LeaderRoleId = 2[default=0];
+	optional uint64 TeamId = 3[default=0];
+	optional int32 TeamType = 4[default=-1];
+	optional TeamTarget TeamTarget = 5;
+
+}
+
+message  CharacterLocation
+{
+	optional int32 SceneId = 2[default=-1];
+	optional Vector3 Pos = 3;
+	optional int32 MapId = 5[default=-1];
+	optional int32 DungeonConfigId = 6[default=-1];
+	optional int32 LineId = 7[default=-1];
+	optional int32 SceneConfigId = 8[default=-1];
+	optional int32 MirrorId = 9[default=-1];
+	optional int32 ServerId = 10[default=-1];
+
+}
+
+message  Vector3
+{
+	optional float X = 1[default=-1];
+	optional float Y = 2[default=-1];
+	optional float Z = 3[default=-1];
+
+}
+
+message  TreasureEquipedID
+{
+	optional int32 TreasureHair = 1[default=-1];
+	optional int32 TreasureHead = 2[default=-1];
+	optional int32 TreasureBody = 3[default=-1];
+	optional int32 TreasureWeapon = 4[default=-1];
+	optional int32 TreasureWing = 5[default=-1];
+	optional int32 TreasureRiding = 6[default=-1];
+	optional int32 TreasureFootPrint = 7[default=-1];
+	optional int32 EquipHair = 8[default=-1];
+	optional int32 EquipHead = 9[default=-1];
+	optional int32 EquipBody = 10[default=-1];
+	optional int32 EquipWeapon = 11[default=-1];
+	optional bool Headdisplayswitch = 12[default=true];
+	optional bool Fashiondisplayswitch = 13[default=true];
+	optional int32 InitHair = 14[default=-1];
+	optional int32 InitHead = 15[default=-1];
+	optional int32 InitBody = 16[default=-1];
+	optional int32 InitWeapon = 17[default=-1];
+
+}
+
+message  PinchFaceData
+{
+	repeated PinchFaceBase DataInfo = 1;
+
+}
+
+message  PinchFaceBase
+{
+	optional int32 Id = 1[default=-1];
+	optional float Value = 2[default=-1];
+	optional Color Color = 4;
+
+}
+
+message  Color
+{
+	optional float R = 1[default=-1];
+	optional float G = 2[default=-1];
+	optional float B = 3[default=-1];
+	optional float A = 4[default=-1];
+
+}
+
+message  TeamTarget
+{
+	optional int32 Id = 1[default=0];
+	optional int32 MinLevel = 2[default=0];
+	optional int32 MaxLevel = 3[default=0];
+	repeated TeamProfessionTarget Profession = 4;
+	optional int32 TargetType = 5[default=0];
+
+}
+
+message  TeamProfessionTarget
+{
+	optional int32 ProfessionId = 1[default=-1];
+	optional int32 Size = 2[default=-1];
 
 }
 

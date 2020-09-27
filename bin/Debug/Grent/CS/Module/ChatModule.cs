@@ -22,6 +22,9 @@ public class ChatRPC
 	
 	public const int RPC_CODE_CHAT_CHAT_REQUEST = 1351;
 	public const int RPC_CODE_CHAT_PUSHCHATUPDATES_NOTIFY = 1352;
+	public const int RPC_CODE_CHAT_PUSHMARQUEE_NOTIFY = 1353;
+	public const int RPC_CODE_CHAT_SAY_NOTIFY = 1354;
+	public const int RPC_CODE_CHAT_SERVERCHAT_NOTIFY = 1355;
 
 	
 	private static ChatRPC m_Instance = null;
@@ -45,6 +48,9 @@ public class ChatRPC
 		Singleton<GameSocket>.Instance.RegisterSyncUpdate( ModuleId, ChatData.Instance.UpdateField );
 		
 		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_CHAT_PUSHCHATUPDATES_NOTIFY, PushChatUpdatesCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_CHAT_PUSHMARQUEE_NOTIFY, PushMarqueeCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_CHAT_SAY_NOTIFY, SayCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_CHAT_SERVERCHAT_NOTIFY, ServerChatCB);
 
 
 		return true;
@@ -82,6 +88,39 @@ public class ChatRPC
 			PushChatUpdatesCBDelegate( notifyPBWraper );
 	}
 	public static ServerNotifyCallback PushChatUpdatesCBDelegate = null;
+	/**
+	*Chat-->推送跑马灯 服务器通知回调
+	*/
+	public static void PushMarqueeCB( ModMessage notifyMsg )
+	{
+		ChatRpcPushMarqueeNotifyWraper notifyPBWraper = new ChatRpcPushMarqueeNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( PushMarqueeCBDelegate != null )
+			PushMarqueeCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback PushMarqueeCBDelegate = null;
+	/**
+	*Chat-->玩家或NPC对象说话 服务器通知回调
+	*/
+	public static void SayCB( ModMessage notifyMsg )
+	{
+		ChatRpcSayNotifyWraper notifyPBWraper = new ChatRpcSayNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( SayCBDelegate != null )
+			SayCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback SayCBDelegate = null;
+	/**
+	*Chat-->服务器通知 服务器通知回调
+	*/
+	public static void ServerChatCB( ModMessage notifyMsg )
+	{
+		ChatRpcServerChatNotifyWraper notifyPBWraper = new ChatRpcServerChatNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( ServerChatCBDelegate != null )
+			ServerChatCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback ServerChatCBDelegate = null;
 
 
 

@@ -1,200 +1,87 @@
 #ifndef __SUMMONMONSTER_CONFIG_H
 #define __SUMMONMONSTER_CONFIG_H
 
-#include "CommonDefine.h"
-#include "DK_Assertx.h"
+#include "BaseDef.h"
 
-#include <boost/property_tree/ptree.hpp>
-#include <boost/property_tree/json_parser.hpp>
-#include <boost/foreach.hpp>
-#include <boost/typeof/typeof.hpp>
 
-#include <vector>
-#include <string>
-#include <unordered_map>
+
 using namespace std;
-
 
 //召唤小怪表配置数据结构
 struct SummonMonsterElement
 {
 	friend class SummonMonsterTable;
-	int summon_id;               	//序号	序号
-	float group_id;              	//规定召唤怪的组	规定召唤怪的组
+	int id;                      	//同一个召唤组共享仇恨	同一个召唤组共享仇恨
+	string comment;              	//策划备注	策划备注
+	int type;                    	//类型，0固定位置，1随机，2召唤者位置偏移生成 ，3技能目标脚下生成	类型，0固定位置，1随机，2召唤者位置偏移生成
 	int npc_entry_id;            	//NPC总表中的ENTRY ID	NPC总表中的ENTRY ID
-	int map_id;                  	//NPC所处的场景号	NPC所处的场景号
-	float location_x;            	//NPC所处的场景的X坐标	NPC所处的场景的X坐标
-	float location_y;            	//NPC所处的场景的Y坐标	NPC所处的场景的Y坐标
-	float location_z;            	//路点所处的场景的Z坐标	路点所处的场景的Z坐标
+	int num;                     	//数量	数量
+	vector<int> pars;            	//参数，随机填半径，0原点 如果是召唤者位置偏移，填X|Z，一次召唤多个就顺序填，比如召唤2个，那么位置必须填成X1|Z1|X2|Z2	固定位置，路点id
+	int dead_delete;             	//主人死亡是否删除，0不删除	主人死亡是否删除，0不删除
+	int leave_fight_delete;      	//脱战是否删除，0不删除	脱战是否删除，0不删除
+	int alive_time;              	//存活时间，-1无限，单位S	存活时间，-1无限，单位S
+	int max_num;                 	//上限，达到上限不召唤	上限，达到上限不召唤
+	int group_id;                	//给召唤ID分组，ID相同的为同组，同组内共享召唤上限，取组内召唤上限的最小值	给召唤ID分组，ID相同的为同组，同组内共享召唤上限，取组内召唤上限的最小值
+	int follow_switch;           	//跟随切换地图，仅玩家角色召唤的怪物生效	0不跟随，1跟随
 
 private:
-	bool m_bIsValidate;
-	void SetIsValidate(bool isValid)
-	{
-		m_bIsValidate=isValid;
-	}
+
 public:
-	bool IsValidate()
-	{
-		return m_bIsValidate;
-	}
+
 	SummonMonsterElement()
 	{
-		summon_id = -1;
-		m_bIsValidate=false;
+		id = -1;
+
 	}
 };
 
 //召唤小怪表配置封装类
 class SummonMonsterTable
 {
-	friend class TableData;
+	public:
+	typedef std::unique_ptr<SummonMonsterElement> ele_ptr_type;
+	typedef std::unordered_map<int, ele_ptr_type> MapElementMap;
+	typedef vector<int> vec_type;
+	//typedef std::set<int> set_type;
+	typedef std::function<void()> ReloadCallback;
+	typedef std::vector<ReloadCallback> reload_vec_type;
 private:
-	SummonMonsterTable(){}
-	~SummonMonsterTable(){}
-	typedef unordered_map<int, SummonMonsterElement> MapElementMap;
+	SummonMonsterTable();
+	~SummonMonsterTable();
+
+	vec_type m_vElementID;
 	MapElementMap	m_mapElements;
-	vector<SummonMonsterElement>	m_vecAllElements;
-	SummonMonsterElement m_emptyItem;
+	reload_vec_type m_vReLoadCb;
+
 public:
-	static SummonMonsterTable& Instance()
-	{
-		static SummonMonsterTable sInstance;
-		return sInstance;
-	}
+	static SummonMonsterTable& Instance();
 
-	const SummonMonsterElement* GetElement(int key)
-	{
-		MapElementMap::iterator it = m_mapElements.find(key);
-		if (it == m_mapElements.end())
-		{
-			AssertEx(false, std::string(std::string("SummonMonsterTable: ") + std::to_string(key)).c_str());
-			return NULL;
-		}
-		return &it->second;
-	}
+	void RegisterReLoadCb(const ReloadCallback &cb);
 
-	bool HasElement(int key)
-	{
-		return m_mapElements.find(key) != m_mapElements.end();
-	}
+	const SummonMonsterElement* GetElement(int key);
 
-	vector<SummonMonsterElement>&	GetAllElement()
-	{
-		if(!m_vecAllElements.empty()) 
-			return m_vecAllElements;
-		m_vecAllElements.reserve(m_mapElements.size());
-		for(auto iter=m_mapElements.begin(); iter != m_mapElements.end(); ++iter)
-		{
-			if(iter->second.IsValidate()) 
-				m_vecAllElements.push_back(iter->second);
-		}
-		return m_vecAllElements;
-	}
-	bool Load()
-	{
-		#ifdef CONFIG_JSON
-		return LoadJson("SummonMonster.json");
-		#else
-		string strTableContent;
-		if( LoadConfigContent("SummonMonster.csv", strTableContent ) )
-			return LoadCsv( strTableContent );
-		if( !LoadConfigContent("SummonMonster.bin", strTableContent ) )
-		{
-			printf_message("配置文件[SummonMonster.bin]未找到");
-			assert(false);
-			return false;
-		}
-		return LoadBin(strTableContent);
-		#endif
+	bool HasElement(int key);
 
-		
-	}
+	const vec_type& GetAllID() const;
 
-	bool LoadJson(const std::string& jsonFile)
-	{
-		boost::property_tree::ptree sms_array;
-		boost::property_tree::json_parser::read_json(std::string(CONFIG_PATH) + jsonFile, sms_array);
-		//boost::property_tree::ptree sms_array = parse.get_child("data");
+	const MapElementMap& GetAllElement() const;
+	bool Load();
 
-		vector<string> vecLine;
+	void NotifyCb();
 
-		
-
-		BOOST_FOREACH(boost::property_tree::ptree::value_type& v, sms_array)
-		{
-			boost::property_tree::ptree p = v.second;
-
-			SummonMonsterElement	member;
-
-						member.summon_id=p.get<int>("summon_id");
-			member.group_id=p.get<float>("group_id");
-			member.npc_entry_id=p.get<int>("npc_entry_id");
-			member.map_id=p.get<int>("map_id");
-			member.location_x=p.get<float>("location_x");
-			member.location_y=p.get<float>("location_y");
-			member.location_z=p.get<float>("location_z");
+	bool LoadJson(const std::string& jsonFile);
 
 
-			member.SetIsValidate(true);
-			m_mapElements[member.summon_id] = member;
-		}
+	bool ReLoad();
+	
 
-		return true;
-	}
+  int32_t min_table_id()const;
+  int32_t max_table_id()const;
+ private:
+   int32_t min_table_id_{INT32_MAX};
+   int32_t max_table_id_{INT32_MIN};
+   bool m_bLoad{false};
 
-	bool LoadCsv(string strContent)
-	{
-		m_vecAllElements.clear();
-		m_mapElements.clear();
-		int contentOffset = 0;
-		vector<string> vecLine;
-		vecLine = ReadCsvLine( strContent, contentOffset );
-		if(vecLine.size() != 7)
-		{
-			printf_message("SummonMonster.csv中列数量与生成的代码不匹配!");
-			assert(false);
-			return false;
-		}
-		if(vecLine[0]!="summon_id"){printf_message("SummonMonster.csv中字段[summon_id]位置不对应 ");assert(false); return false; }
-		if(vecLine[1]!="group_id"){printf_message("SummonMonster.csv中字段[group_id]位置不对应 ");assert(false); return false; }
-		if(vecLine[2]!="npc_entry_id"){printf_message("SummonMonster.csv中字段[npc_entry_id]位置不对应 ");assert(false); return false; }
-		if(vecLine[3]!="map_id"){printf_message("SummonMonster.csv中字段[map_id]位置不对应 ");assert(false); return false; }
-		if(vecLine[4]!="location_x"){printf_message("SummonMonster.csv中字段[location_x]位置不对应 ");assert(false); return false; }
-		if(vecLine[5]!="location_y"){printf_message("SummonMonster.csv中字段[location_y]位置不对应 ");assert(false); return false; }
-		if(vecLine[6]!="location_z"){printf_message("SummonMonster.csv中字段[location_z]位置不对应 ");assert(false); return false; }
-
-		while(true)
-		{
-			vecLine = ReadCsvLine( strContent, contentOffset );
-			if((int)vecLine.size() == 0 )
-				break;
-			if((int)vecLine.size() != (int)7)
-			{
-				assert(false);
-				return false;
-			}
-			SummonMonsterElement	member;
-			member.summon_id=(int)atoi(vecLine[0].c_str());
-			member.group_id=(float)atof(vecLine[1].c_str());
-			member.npc_entry_id=(int)atoi(vecLine[2].c_str());
-			member.map_id=(int)atoi(vecLine[3].c_str());
-			member.location_x=(float)atof(vecLine[4].c_str());
-			member.location_y=(float)atof(vecLine[5].c_str());
-			member.location_z=(float)atof(vecLine[6].c_str());
-
-			member.SetIsValidate(true);
-			m_mapElements[member.summon_id] = member;
-		}
-		return true;
-	}
-
-	vector<string> ReadCsvLine(string strContent,int contentOffset)
-	{
-		vector<string> temp;
-		return temp;
-
-	}
 };
 
 #endif

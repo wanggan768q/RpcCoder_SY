@@ -33,25 +33,6 @@ static int ModuleBag::RpcUseItem( CPlayer* pPlayer, CPacket* pPacket)
 }
 
 /********************************************************************************************
-* Function:       RpcSync
-* Description:    Bag-->请求背包数据同步调用操作函数
-* Input:          BagRpcSyncAskWraper& Ask 请求背包数据请求
-* Output:         BagRpcSyncReplyWraper& Reply 请求背包数据回应
-* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
-*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
-********************************************************************************************/
-static int ModuleBag::RpcSync( CPlayer* pPlayer, CPacket* pPacket)
-{
-
-	//逻辑代码
-
-
-	//设置返回结果
-	Reply.SetResult(0);
-	return 0;
-}
-
-/********************************************************************************************
 * Function:       RpcSaleItem
 * Description:    Bag-->SaleItem同步调用操作函数
 * Input:          BagRpcSaleItemAskWraper& Ask SaleItem请求
@@ -176,6 +157,146 @@ static int ModuleBag::RpcTakeAllBackBags( CPlayer* pPlayer, CPacket* pPacket)
 void ModuleBag::SendToClientBagChange( INT64 UserId, BagRpcBagChangeNotifyWraper& Notify )
 {
 	MsgStreamMgr::Instance().SendMsg( UserId, 0, Notify );
+}
+
+/********************************************************************************************
+* Function:       RpcMergeItem
+* Description:    Bag-->MergeItem同步调用操作函数
+* Input:          BagRpcMergeItemAskWraper& Ask MergeItem请求
+* Output:         BagRpcMergeItemReplyWraper& Reply MergeItem回应
+* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+********************************************************************************************/
+static int ModuleBag::RpcMergeItem( CPlayer* pPlayer, CPacket* pPacket)
+{
+
+	//逻辑代码
+
+
+	//设置返回结果
+	Reply.SetResult(0);
+	return 0;
+}
+
+/********************************************************************************************
+* Function:       RpcBagSync
+* Description:    Bag-->背包数据初始化同步调用操作函数
+* Input:          BagRpcBagSyncAskWraper& Ask 背包数据初始化请求
+* Output:         BagRpcBagSyncReplyWraper& Reply 背包数据初始化回应
+* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+********************************************************************************************/
+static int ModuleBag::RpcBagSync( CPlayer* pPlayer, CPacket* pPacket)
+{
+
+	//逻辑代码
+
+
+	//设置返回结果
+	Reply.SetResult(0);
+	return 0;
+}
+
+/********************************************************************************************
+* Function:       SendToClientAddItem
+* Description:    Bag-->新加物品异步通知操作函数
+* Input:          BagRpcAddItemNotifyWraper& Notify 新加物品通知
+* Input:          INT64 UserId 需要通知到的用户ID
+* Output:         无
+* Return:         无
+********************************************************************************************/
+void ModuleBag::SendToClientAddItem( INT64 UserId, BagRpcAddItemNotifyWraper& Notify )
+{
+	MsgStreamMgr::Instance().SendMsg( UserId, 0, Notify );
+}
+
+/********************************************************************************************
+* Function:       RpcConsumeItem
+* Description:    Bag-->根据物品id使用物品同步调用操作函数
+* Input:          BagRpcConsumeItemAskWraper& Ask 根据物品id使用物品请求
+* Output:         BagRpcConsumeItemReplyWraper& Reply 根据物品id使用物品回应
+* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+********************************************************************************************/
+static int ModuleBag::RpcConsumeItem( CPlayer* pPlayer, CPacket* pPacket)
+{
+
+	//逻辑代码
+
+
+	//设置返回结果
+	Reply.SetResult(0);
+	return 0;
+}
+
+/********************************************************************************************
+* Function:       SendToClientItemChange
+* Description:    Bag-->物品改变异步通知操作函数
+* Input:          BagRpcItemChangeNotifyWraper& Notify 物品改变通知
+* Input:          INT64 UserId 需要通知到的用户ID
+* Output:         无
+* Return:         无
+********************************************************************************************/
+void ModuleBag::SendToClientItemChange( INT64 UserId, BagRpcItemChangeNotifyWraper& Notify )
+{
+	MsgStreamMgr::Instance().SendMsg( UserId, 0, Notify );
+}
+
+/********************************************************************************************
+* Function:       RpcClickItem
+* Description:    Bag-->点击物品同步调用操作函数
+* Input:          BagRpcClickItemAskWraper& Ask 点击物品请求
+* Output:         BagRpcClickItemReplyWraper& Reply 点击物品回应
+* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+********************************************************************************************/
+static int ModuleBag::RpcClickItem( CPlayer* pPlayer, CPacket* pPacket)
+{
+
+	//逻辑代码
+
+
+	//设置返回结果
+	Reply.SetResult(0);
+	return 0;
+}
+
+/********************************************************************************************
+* Function:       RpcRemoveItemByPos
+* Description:    Bag-->通过位置删除物品同步调用操作函数
+* Input:          BagRpcRemoveItemByPosAskWraper& Ask 通过位置删除物品请求
+* Output:         BagRpcRemoveItemByPosReplyWraper& Reply 通过位置删除物品回应
+* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+********************************************************************************************/
+static int ModuleBag::RpcRemoveItemByPos( CPlayer* pPlayer, CPacket* pPacket)
+{
+
+	//逻辑代码
+
+
+	//设置返回结果
+	Reply.SetResult(0);
+	return 0;
+}
+
+/********************************************************************************************
+* Function:       RpcClearBagRedPoint
+* Description:    Bag-->清除背包红点同步调用操作函数
+* Input:          BagRpcClearBagRedPointAskWraper& Ask 清除背包红点请求
+* Output:         BagRpcClearBagRedPointReplyWraper& Reply 清除背包红点回应
+* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+********************************************************************************************/
+static int ModuleBag::RpcClearBagRedPoint( CPlayer* pPlayer, CPacket* pPacket)
+{
+
+	//逻辑代码
+
+
+	//设置返回结果
+	Reply.SetResult(0);
+	return 0;
 }
 
 

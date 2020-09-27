@@ -17,143 +17,6 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-//InformCreateTeam请求封装类
-[System.Serializable]
-public class WGRpcInformCreateTeamAskWraper
-{
-
-	//构造函数
-	public WGRpcInformCreateTeamAskWraper()
-	{
-		 m_Team = new TeamInfoWraper();
-		 m_Result = -9999;
-
-	}
-
-	//重置函数
-	public void ResetWraper()
-	{
-		 m_Team = new TeamInfoWraper();
-		 m_Result = -9999;
-
-	}
-
- 	//转化成Protobuffer类型函数
-	public WGRpcInformCreateTeamAsk ToPB()
-	{
-		WGRpcInformCreateTeamAsk v = new WGRpcInformCreateTeamAsk();
-		v.Team = m_Team.ToPB();
-		v.Result = m_Result;
-
-		return v;
-	}
-	
-	//从Protobuffer类型初始化
-	public void FromPB(WGRpcInformCreateTeamAsk v)
-	{
-        if (v == null)
-            return;
-		m_Team.FromPB(v.Team);
-		m_Result = v.Result;
-
-	}
-	
-	//Protobuffer序列化到MemoryStream
-	public MemoryStream ToMemoryStream()
-	{
-		MemoryStream protoMS = new MemoryStream();
-		ProtoBuf.Serializer.Serialize<WGRpcInformCreateTeamAsk>(protoMS, ToPB());
-		return protoMS;
-	}
-	
-	//Protobuffer从MemoryStream进行反序列化
-	public bool FromMemoryStream(MemoryStream protoMS)
-	{
-		WGRpcInformCreateTeamAsk pb = ProtoBuf.Serializer.Deserialize<WGRpcInformCreateTeamAsk>(protoMS);
-		FromPB(pb);
-		return true;
-	}
-
-	//Team
-	public TeamInfoWraper m_Team;
-	public TeamInfoWraper Team
-	{
-		get { return m_Team;}
-		set { m_Team = value; }
-	}
-	//返回结果
-	public int m_Result;
-	public int Result
-	{
-		get { return m_Result;}
-		set { m_Result = value; }
-	}
-
-
-};
-//InformCreateTeam回应封装类
-[System.Serializable]
-public class WGRpcInformCreateTeamReplyWraper
-{
-
-	//构造函数
-	public WGRpcInformCreateTeamReplyWraper()
-	{
-		 m_Result = -9999;
-
-	}
-
-	//重置函数
-	public void ResetWraper()
-	{
-		 m_Result = -9999;
-
-	}
-
- 	//转化成Protobuffer类型函数
-	public WGRpcInformCreateTeamReply ToPB()
-	{
-		WGRpcInformCreateTeamReply v = new WGRpcInformCreateTeamReply();
-		v.Result = m_Result;
-
-		return v;
-	}
-	
-	//从Protobuffer类型初始化
-	public void FromPB(WGRpcInformCreateTeamReply v)
-	{
-        if (v == null)
-            return;
-		m_Result = v.Result;
-
-	}
-	
-	//Protobuffer序列化到MemoryStream
-	public MemoryStream ToMemoryStream()
-	{
-		MemoryStream protoMS = new MemoryStream();
-		ProtoBuf.Serializer.Serialize<WGRpcInformCreateTeamReply>(protoMS, ToPB());
-		return protoMS;
-	}
-	
-	//Protobuffer从MemoryStream进行反序列化
-	public bool FromMemoryStream(MemoryStream protoMS)
-	{
-		WGRpcInformCreateTeamReply pb = ProtoBuf.Serializer.Deserialize<WGRpcInformCreateTeamReply>(protoMS);
-		FromPB(pb);
-		return true;
-	}
-
-	//返回结果
-	public int m_Result;
-	public int Result
-	{
-		get { return m_Result;}
-		set { m_Result = value; }
-	}
-
-
-};
 //InformJoinTeam请求封装类
 [System.Serializable]
 public class WGRpcInformJoinTeamAskWraper
@@ -882,7 +745,7 @@ public class WGRpcInformApplyTeamAskWraper
 	{
 		 m_TeamMember = new TeamMemberInfoWraper();
 		 m_Result = -9999;
-		 m_TeamId = -1;
+		 m_TeamId = 0;
 
 	}
 
@@ -891,7 +754,7 @@ public class WGRpcInformApplyTeamAskWraper
 	{
 		 m_TeamMember = new TeamMemberInfoWraper();
 		 m_Result = -9999;
-		 m_TeamId = -1;
+		 m_TeamId = 0;
 
 	}
 
@@ -948,8 +811,8 @@ public class WGRpcInformApplyTeamAskWraper
 		set { m_Result = value; }
 	}
 	//TeamId
-	public int m_TeamId;
-	public int TeamId
+	public UInt64 m_TeamId;
+	public UInt64 TeamId
 	{
 		get { return m_TeamId;}
 		set { m_TeamId = value; }

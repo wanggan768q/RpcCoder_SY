@@ -15,7 +15,7 @@
 ********************************************************************************************/
 
 #include "WGModule.h"
-#
+
 
 
 //初始化
@@ -23,6 +23,11 @@ bool ModuleWG::Initialize()
 {
 
 	
+	return OnLoad();
+}
 
-	return true;
+bool ModuleWG::Reinitialize()
+{
+	
+	return OnLoad();
 }

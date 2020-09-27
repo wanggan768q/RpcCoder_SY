@@ -10,13 +10,13 @@ using System.Collections.Generic;
 public class GMCodeElement
 {
 	public int id;               	//指令id	序号
-	public string  code;         	//指令名称	值
 	public string name;          	//中文名称	描述
 	public string desc;          	//功能说明	策划使用
 	public int param1;           	//指令参数1	0.INT 1.FLOAT 2.STRING 3.LI 4.LF 5.LS
 	public int param2;           	//指令参数2	0.INT 1.FLOAT 2.STRING 3.LI 4.LF 5.LS
-	public int param3;           	//指令参数	0.INT 1.FLOAT 2.STRING 3.LI 4.LF 5.LS
-	public int code_catalog;     	//指令分类	0.未分类 1.角色 2.移动 3.战斗
+	public int param3;           	//指令参数3	0.INT 1.FLOAT 2.STRING 3.LI 4.LF 5.LS
+	public int param4;           	//指令参数4	0.INT 1.FLOAT 2.STRING 3.LI 4.LF 5.LS
+	public int code_catalog;     	//指令分类	0.未分类 1.角色 2.移动 3.战斗 4.其它
 	public string param_example; 	//参数解释	
 	public string param_desc;    	//参数说明	
 	public string comment;       	//其他信息	
@@ -118,12 +118,12 @@ public class GMCodeTable
 			return false;
 		}
 		if(vecLine[0]!="id"){Ex.Logger.Log("GMCode.csv中字段[id]位置不对应"); return false; }
-		if(vecLine[1]!=" code"){Ex.Logger.Log("GMCode.csv中字段[ code]位置不对应"); return false; }
-		if(vecLine[2]!="name"){Ex.Logger.Log("GMCode.csv中字段[name]位置不对应"); return false; }
-		if(vecLine[3]!="desc"){Ex.Logger.Log("GMCode.csv中字段[desc]位置不对应"); return false; }
-		if(vecLine[4]!="param1"){Ex.Logger.Log("GMCode.csv中字段[param1]位置不对应"); return false; }
-		if(vecLine[5]!="param2"){Ex.Logger.Log("GMCode.csv中字段[param2]位置不对应"); return false; }
-		if(vecLine[6]!="param3"){Ex.Logger.Log("GMCode.csv中字段[param3]位置不对应"); return false; }
+		if(vecLine[1]!="name"){Ex.Logger.Log("GMCode.csv中字段[name]位置不对应"); return false; }
+		if(vecLine[2]!="desc"){Ex.Logger.Log("GMCode.csv中字段[desc]位置不对应"); return false; }
+		if(vecLine[3]!="param1"){Ex.Logger.Log("GMCode.csv中字段[param1]位置不对应"); return false; }
+		if(vecLine[4]!="param2"){Ex.Logger.Log("GMCode.csv中字段[param2]位置不对应"); return false; }
+		if(vecLine[5]!="param3"){Ex.Logger.Log("GMCode.csv中字段[param3]位置不对应"); return false; }
+		if(vecLine[6]!="param4"){Ex.Logger.Log("GMCode.csv中字段[param4]位置不对应"); return false; }
 		if(vecLine[7]!="code_catalog"){Ex.Logger.Log("GMCode.csv中字段[code_catalog]位置不对应"); return false; }
 		if(vecLine[8]!="param_example"){Ex.Logger.Log("GMCode.csv中字段[param_example]位置不对应"); return false; }
 		if(vecLine[9]!="param_desc"){Ex.Logger.Log("GMCode.csv中字段[param_desc]位置不对应"); return false; }
@@ -133,12 +133,12 @@ public class GMCodeTable
 		{
 			GMCodeElement member = new GMCodeElement();
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.id );
-			readPos += GameAssist.ReadString( binContent, readPos, out member. code);
 			readPos += GameAssist.ReadString( binContent, readPos, out member.name);
 			readPos += GameAssist.ReadString( binContent, readPos, out member.desc);
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.param1 );
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.param2 );
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.param3 );
+			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.param4 );
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.code_catalog );
 			readPos += GameAssist.ReadString( binContent, readPos, out member.param_example);
 			readPos += GameAssist.ReadString( binContent, readPos, out member.param_desc);
@@ -165,12 +165,12 @@ public class GMCodeTable
 			return false;
 		}
 		if(vecLine[0]!="id"){Ex.Logger.Log("GMCode.csv中字段[id]位置不对应"); return false; }
-		if(vecLine[1]!=" code"){Ex.Logger.Log("GMCode.csv中字段[ code]位置不对应"); return false; }
-		if(vecLine[2]!="name"){Ex.Logger.Log("GMCode.csv中字段[name]位置不对应"); return false; }
-		if(vecLine[3]!="desc"){Ex.Logger.Log("GMCode.csv中字段[desc]位置不对应"); return false; }
-		if(vecLine[4]!="param1"){Ex.Logger.Log("GMCode.csv中字段[param1]位置不对应"); return false; }
-		if(vecLine[5]!="param2"){Ex.Logger.Log("GMCode.csv中字段[param2]位置不对应"); return false; }
-		if(vecLine[6]!="param3"){Ex.Logger.Log("GMCode.csv中字段[param3]位置不对应"); return false; }
+		if(vecLine[1]!="name"){Ex.Logger.Log("GMCode.csv中字段[name]位置不对应"); return false; }
+		if(vecLine[2]!="desc"){Ex.Logger.Log("GMCode.csv中字段[desc]位置不对应"); return false; }
+		if(vecLine[3]!="param1"){Ex.Logger.Log("GMCode.csv中字段[param1]位置不对应"); return false; }
+		if(vecLine[4]!="param2"){Ex.Logger.Log("GMCode.csv中字段[param2]位置不对应"); return false; }
+		if(vecLine[5]!="param3"){Ex.Logger.Log("GMCode.csv中字段[param3]位置不对应"); return false; }
+		if(vecLine[6]!="param4"){Ex.Logger.Log("GMCode.csv中字段[param4]位置不对应"); return false; }
 		if(vecLine[7]!="code_catalog"){Ex.Logger.Log("GMCode.csv中字段[code_catalog]位置不对应"); return false; }
 		if(vecLine[8]!="param_example"){Ex.Logger.Log("GMCode.csv中字段[param_example]位置不对应"); return false; }
 		if(vecLine[9]!="param_desc"){Ex.Logger.Log("GMCode.csv中字段[param_desc]位置不对应"); return false; }
@@ -187,12 +187,12 @@ public class GMCodeTable
 			}
 			GMCodeElement member = new GMCodeElement();
 			member.id=Convert.ToInt32(vecLine[0]);
-			member. code=vecLine[1];
-			member.name=vecLine[2];
-			member.desc=vecLine[3];
-			member.param1=Convert.ToInt32(vecLine[4]);
-			member.param2=Convert.ToInt32(vecLine[5]);
-			member.param3=Convert.ToInt32(vecLine[6]);
+			member.name=vecLine[1];
+			member.desc=vecLine[2];
+			member.param1=Convert.ToInt32(vecLine[3]);
+			member.param2=Convert.ToInt32(vecLine[4]);
+			member.param3=Convert.ToInt32(vecLine[5]);
+			member.param4=Convert.ToInt32(vecLine[6]);
 			member.code_catalog=Convert.ToInt32(vecLine[7]);
 			member.param_example=vecLine[8];
 			member.param_desc=vecLine[9];

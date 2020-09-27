@@ -1,264 +1,142 @@
 #ifndef __DUNGEON_CONFIG_H
 #define __DUNGEON_CONFIG_H
 
-#include "CommonDefine.h"
-#include "DK_Assertx.h"
+#include "BaseDef.h"
 
-#include <boost/property_tree/ptree.hpp>
-#include <boost/property_tree/json_parser.hpp>
-#include <boost/foreach.hpp>
-#include <boost/typeof/typeof.hpp>
 
-#include <vector>
-#include <string>
-#include <unordered_map>
+
 using namespace std;
-
 
 //副本表配置数据结构
 struct DungeonElement
 {
 	friend class DungeonTable;
 	int id;                      	//序号	序号
-	string comment;              	//	
-	int map_id;                  	//场景ID	
-	int dungeon_type;            	//副本类型	0：野外 1：5人副本 2：竞技场 3：团队本 4：战场
-	int difficult;               	//难度	
-	int required_num;            	//所需玩家数量	
-	int required_last_dungeon_id;	//所需前置副本ID	
-	int reset_type;              	//重置类型	
-	int finish_amount;           	//允许玩家完成次数	
-	int name_id;                 	//副本名字ID	
-	int describle_id;            	//副本描述ID	
-	string reward_boss_ui;       	//boss掉落数组	
-	int First_reward_ui;         	//首通奖励礼包ID	
-	int general_reward__ui;      	//非首通奖励礼包ID	
-	int is_transfer;             	//是否需要装备中转表	
-	string start_music;          	//开启音乐	
-	string loop_music;           	//循环音乐	
-	int endingboss_id;           	//最后boss ID	
-	int duration_time;           	//副本存活时间	
-	int conclusion_time;         	//副本结算时间	
-	int start_time;              	//副本开启时间	
-	int end_time;                	//副本关闭时间	
-	int exit_waypoint;           	//退出副本后的路点	
+	string comment;              	//备注	策划看
+	int map_id;                  	//场景ID	对应Scene_场景表ID
+	int dungeon_type;            	//副本类型	0：野外 1：2~5人普通 2：2~5人困难 3：单人（非剧情） 4：团队普通 5：团队困难 6：公会 7：单人爬塔 8：单人剧情 9：组队活动副本
+	int rebotonoff;              	//是否创建机器人	0 不创建 1 创建 
+	int auto_on;                 	//自动开启自动副本	进入副本后自动开启自动副本 1 自动开启 0 不自动开启
+	int order;                   	//副本查找器索引	按等级开启顺序排序，同一副本的不同难度，按难度排序 -1：不在副本查找器中显示（特殊类型，如日常活动等）
+	int enter_location;          	//副本入口传送门位置	野外场景，副本入口传送门的位置，对应路点表
+	int difficult;               	//难度文本	野外碰触副本入口时弹出的UI中难度按钮文本。读StringUi表
+	vector<int> level;           	//副本等级	进入副本所需玩家等级 等级下限|等级上限
+	int tips_lv;                 	//弹窗需求等级	进入低级副本时的弹窗条件： 0  永远不弹 N  玩家当前等级-副本等级大于等于N时 弹窗
+	int recommend_power;         	//推荐战力	UI显示用
+	int rebirth_num;             	//原地复活次数	每次生成的副本每玩家允许原地复活的次数 0/不填  不允许 1~98  X次数 99  不限次 
+	vector<int> open_day;        	//每周开放日	例如：2|4 每周二、四开放
+	vector<int> player_config_list;	//玩家职业推荐	坦克人数|治疗人数|输出人数
+	string obj_group;            	//怪物所属分组	此字段无用 ice_server\trunk\bin\Config\Scene相应文件夹下的monster文件
+	int team_type;               	//队伍状态	进入副本需求当前队伍状态 0/不填  不限制 1  单人 2  小队 3  团队
+	int min_num;                 	//最少玩家数量	进入副本至少需求X名玩家 默认为1
+	int max_num;                 	//最多玩家数量	副本内最多可进入X名玩家默认为1 最大为10 （单人本需填写1，超过1则需要组队才能进入）
+	int required_quest_id;       	//需接到任务	只有接到指定ID的任务才能进入该副本
+	int required_last_dungeon_id;	//所需前置副本ID	只有通关指定的副本ID才能解锁该副本
+	int reset_type;              	//重置类型	服务器没用此字段 1：每日早上5点重置 2：每周固定时间维护 3：每次副本销毁后重置 默认为1。重置后首通奖励重置且进度清空。
+	int finish_amount;           	//允许玩家完成次数	服务器没用此字段允许玩家最多完成的副本次数，超出该次数不再获得奖励
+	int halfway_join;            	//续排类型	是否允许中途进入副本 0 允许，可在任意阶段中途进入。 1 不允许，任意阶段都不允许中途进入。 2 只要有队员处于首领战状态就禁止进入，其余阶段可进入
+	int friendship_add;          	//友好度增加	服务器没用此字段 好友组队进行副本增加的友好度数值
+	int name_id;                 	//副本名字ID	对应StringUi_界面文本表
+	int describle_id;            	//副本描述ID	对应StringUi_界面文本表
+	int simple_describle_id;     	//副本简单描述ID	对应StringUi_界面文本表
+	int story_describle_id;      	//剧情本结算描述	对应StringUi_界面文本表
+	string mini_pic;             	//副本图片	野外碰触副本入口时弹出的UI中显示的副本图片 填图片资源名
+	int First_reward_ui;         	//首通奖励礼包ID	服务器没用此字段
+	int general_reward_ui;       	//非首通奖励礼包ID	服务器没用此字段
+	vector<int> reward_display;  	//奖励显示	进副本时弹出的面板中展示的奖励图标，对应ItemProto_道具原型表，为数组
+	int is_transfer;             	//是否需要装备中转表	服务器没用此字段
+	string start_music;          	//开启音乐	此字段无用。音乐在场景表中。
+	string loop_music;           	//循环音乐	此字段无用。音乐在场景表中。
+	int kill_refresh;            	//击杀次数刷新	1=每日刷新 7=每周刷新 99=永不刷新（剧情本用）
+	vector<int> boss_id;         	//bossid	最左边开始是1号BOSS
+	vector<int> boss_kill_num;   	//boss可击杀次数	同难度同序号BOSS共享次数（剧情副本则是每个副本单独计数、不共享）
+	vector<int> all_rewards;     	//此难度奖励总览	展示道具id，UI显示用
+	string map_pic;              	//地图图片	雷达图
+	vector<int> boss_rewards;    	//boss掉落展示	固定5个（全局表ID40配置） 副本内有3个BOSS掉落数量3、5、4的填法如下 1|2|3|0|0|1|2|3|4|5|1|2|3|4|0 副本内有2个BOSS掉落数量3、5的填法如下 1|2|3|0|0|1|2|3|4|5
+	int endingboss_id;           	//最后boss ID	对应Creature_总NPC表
+	int automatic_entry;         	//是否自动进入	配置0不自动准备 配置1自动准备  默认为0
+	int duration_time;           	//副本总时长	 脚本未配置才读这里. 副本从创建到销毁的总时长 单位秒
+	int prepare_time;            	//副本准备时间	脚本未配置才读这里. 副本生成后，最开始的准备时间单位秒
+	int reward_time;             	//副本结算时间	脚本未配置才读这里. 单位秒
+	int conclusion_delayed;      	//结算动画延迟时间	结算时间到后延迟多少秒播放结算动画 单位为秒
+	int start_time;              	//副本开启时间	服务器没用此字段
+	int end_time;                	//副本关闭时间	服务器没用此字段
+	int teleport_id;             	//通关传送门ID	
+	int teleport_location;       	//传送门生成路点	对应WayPoint_路点表ID
+	string teleporteffect;       	//传送门特效	
+	int exit_waypoint;           	//胜利后的传出位置	副本胜利后传出的位置。 对应WayPoint_路点表ID
+	int defeat_exit_waypoint;    	//未胜利的传出位置	副本失败/中途退出/中途离线后传出的位置。 对应WayPoint_路点表ID
+	string monster_id;           	//副本怪物ID	不同难度副本对应的不同的Monster.json文件，-1表示未配置Monster.json文件
+	string dungeon_lua;          	//副本脚本	对应 ice_server\trunk\bin\Config\Script\Dungeon下的脚本
+	string behaviac;             	//副本行为树	Config/behaviac/下的目录
+	vector<int> area_id;         	//区域id	
+	int monster_delay;           	//刷怪延迟	创建副本后n秒刷怪  单位：秒
+	int second_verification;     	//二次确认	副本最低进入人数＞1该字段生效 效果是进入副本时是否弹出二次确认面板 0需要 1不需要
+	int display_point;           	//副本展示点	关联路点表，填id使用有亮相的结算类型，不填id使用无结算的类型。
+	int display_damage;          	//伤害显示	副本内是否显示伤害累计  1为显示，0或不填为不显示
+	int activity_id;             	//活动id	关联的活动id  空或-1则没有关联
+	int team_id;                 	//组队界面id	关联的组队界面id （点击组队按钮跳转组队UI用） 空或-1则没有关联
+	int team_jump;               	//组队界面跳转	该副本点击挑战按钮是否会跳转到组队界面（副本圆球进入界面） 0：不跳转 1：跳转
+	int canuse_blood;            	//是否可用血瓶	龙魂神殿副本不可使用血瓶功能 0或不填：可用 1：不可用
 
 private:
-	bool m_bIsValidate;
-	void SetIsValidate(bool isValid)
-	{
-		m_bIsValidate=isValid;
-	}
+
 public:
-	bool IsValidate()
-	{
-		return m_bIsValidate;
-	}
+
 	DungeonElement()
 	{
 		id = -1;
-		m_bIsValidate=false;
+
 	}
 };
 
 //副本表配置封装类
 class DungeonTable
 {
-	friend class TableData;
+	public:
+	typedef std::unique_ptr<DungeonElement> ele_ptr_type;
+	typedef std::unordered_map<int, ele_ptr_type> MapElementMap;
+	typedef vector<int> vec_type;
+	//typedef std::set<int> set_type;
+	typedef std::function<void()> ReloadCallback;
+	typedef std::vector<ReloadCallback> reload_vec_type;
 private:
-	DungeonTable(){}
-	~DungeonTable(){}
-	typedef unordered_map<int, DungeonElement> MapElementMap;
+	DungeonTable();
+	~DungeonTable();
+
+	vec_type m_vElementID;
 	MapElementMap	m_mapElements;
-	vector<DungeonElement>	m_vecAllElements;
-	DungeonElement m_emptyItem;
+	reload_vec_type m_vReLoadCb;
+
 public:
-	static DungeonTable& Instance()
-	{
-		static DungeonTable sInstance;
-		return sInstance;
-	}
+	static DungeonTable& Instance();
 
-	const DungeonElement* GetElement(int key)
-	{
-		MapElementMap::iterator it = m_mapElements.find(key);
-		if (it == m_mapElements.end())
-		{
-			AssertEx(false, std::string(std::string("DungeonTable: ") + std::to_string(key)).c_str());
-			return NULL;
-		}
-		return &it->second;
-	}
+	void RegisterReLoadCb(const ReloadCallback &cb);
 
-	bool HasElement(int key)
-	{
-		return m_mapElements.find(key) != m_mapElements.end();
-	}
+	const DungeonElement* GetElement(int key);
 
-	vector<DungeonElement>&	GetAllElement()
-	{
-		if(!m_vecAllElements.empty()) 
-			return m_vecAllElements;
-		m_vecAllElements.reserve(m_mapElements.size());
-		for(auto iter=m_mapElements.begin(); iter != m_mapElements.end(); ++iter)
-		{
-			if(iter->second.IsValidate()) 
-				m_vecAllElements.push_back(iter->second);
-		}
-		return m_vecAllElements;
-	}
-	bool Load()
-	{
-		#ifdef CONFIG_JSON
-		return LoadJson("Dungeon.json");
-		#else
-		string strTableContent;
-		if( LoadConfigContent("Dungeon.csv", strTableContent ) )
-			return LoadCsv( strTableContent );
-		if( !LoadConfigContent("Dungeon.bin", strTableContent ) )
-		{
-			printf_message("配置文件[Dungeon.bin]未找到");
-			assert(false);
-			return false;
-		}
-		return LoadBin(strTableContent);
-		#endif
+	bool HasElement(int key);
 
-		
-	}
+	const vec_type& GetAllID() const;
 
-	bool LoadJson(const std::string& jsonFile)
-	{
-		boost::property_tree::ptree sms_array;
-		boost::property_tree::json_parser::read_json(std::string(CONFIG_PATH) + jsonFile, sms_array);
-		//boost::property_tree::ptree sms_array = parse.get_child("data");
+	const MapElementMap& GetAllElement() const;
+	bool Load();
 
-		vector<string> vecLine;
+	void NotifyCb();
 
-		
-
-		BOOST_FOREACH(boost::property_tree::ptree::value_type& v, sms_array)
-		{
-			boost::property_tree::ptree p = v.second;
-
-			DungeonElement	member;
-
-						member.id=p.get<int>("id");
-			member.comment=p.get<string>("comment");
-			member.map_id=p.get<int>("map_id");
-			member.dungeon_type=p.get<int>("dungeon_type");
-			member.difficult=p.get<int>("difficult");
-			member.required_num=p.get<int>("required_num");
-			member.required_last_dungeon_id=p.get<int>("required_last_dungeon_id");
-			member.reset_type=p.get<int>("reset_type");
-			member.finish_amount=p.get<int>("finish_amount");
-			member.name_id=p.get<int>("name_id");
-			member.describle_id=p.get<int>("describle_id");
-			member.reward_boss_ui=p.get<string>("reward_boss_ui");
-			member.First_reward_ui=p.get<int>("First_reward_ui");
-			member.general_reward__ui=p.get<int>("general_reward__ui");
-			member.is_transfer=p.get<int>("is_transfer");
-			member.start_music=p.get<string>("start_music");
-			member.loop_music=p.get<string>("loop_music");
-			member.endingboss_id=p.get<int>("endingboss_id");
-			member.duration_time=p.get<int>("duration_time");
-			member.conclusion_time=p.get<int>("conclusion_time");
-			member.start_time=p.get<int>("start_time");
-			member.end_time=p.get<int>("end_time");
-			member.exit_waypoint=p.get<int>("exit_waypoint");
+	bool LoadJson(const std::string& jsonFile);
 
 
-			member.SetIsValidate(true);
-			m_mapElements[member.id] = member;
-		}
+	bool ReLoad();
+	
 
-		return true;
-	}
+  int32_t min_table_id()const;
+  int32_t max_table_id()const;
+ private:
+   int32_t min_table_id_{INT32_MAX};
+   int32_t max_table_id_{INT32_MIN};
+   bool m_bLoad{false};
 
-	bool LoadCsv(string strContent)
-	{
-		m_vecAllElements.clear();
-		m_mapElements.clear();
-		int contentOffset = 0;
-		vector<string> vecLine;
-		vecLine = ReadCsvLine( strContent, contentOffset );
-		if(vecLine.size() != 23)
-		{
-			printf_message("Dungeon.csv中列数量与生成的代码不匹配!");
-			assert(false);
-			return false;
-		}
-		if(vecLine[0]!="id"){printf_message("Dungeon.csv中字段[id]位置不对应 ");assert(false); return false; }
-		if(vecLine[1]!="comment"){printf_message("Dungeon.csv中字段[comment]位置不对应 ");assert(false); return false; }
-		if(vecLine[2]!="map_id"){printf_message("Dungeon.csv中字段[map_id]位置不对应 ");assert(false); return false; }
-		if(vecLine[3]!="dungeon_type"){printf_message("Dungeon.csv中字段[dungeon_type]位置不对应 ");assert(false); return false; }
-		if(vecLine[4]!="difficult"){printf_message("Dungeon.csv中字段[difficult]位置不对应 ");assert(false); return false; }
-		if(vecLine[5]!="required_num"){printf_message("Dungeon.csv中字段[required_num]位置不对应 ");assert(false); return false; }
-		if(vecLine[6]!="required_last_dungeon_id"){printf_message("Dungeon.csv中字段[required_last_dungeon_id]位置不对应 ");assert(false); return false; }
-		if(vecLine[7]!="reset_type"){printf_message("Dungeon.csv中字段[reset_type]位置不对应 ");assert(false); return false; }
-		if(vecLine[8]!="finish_amount"){printf_message("Dungeon.csv中字段[finish_amount]位置不对应 ");assert(false); return false; }
-		if(vecLine[9]!="name_id"){printf_message("Dungeon.csv中字段[name_id]位置不对应 ");assert(false); return false; }
-		if(vecLine[10]!="describle_id"){printf_message("Dungeon.csv中字段[describle_id]位置不对应 ");assert(false); return false; }
-		if(vecLine[11]!="reward_boss_ui"){printf_message("Dungeon.csv中字段[reward_boss_ui]位置不对应 ");assert(false); return false; }
-		if(vecLine[12]!="First_reward_ui"){printf_message("Dungeon.csv中字段[First_reward_ui]位置不对应 ");assert(false); return false; }
-		if(vecLine[13]!="general_reward__ui"){printf_message("Dungeon.csv中字段[general_reward__ui]位置不对应 ");assert(false); return false; }
-		if(vecLine[14]!="is_transfer"){printf_message("Dungeon.csv中字段[is_transfer]位置不对应 ");assert(false); return false; }
-		if(vecLine[15]!="start_music"){printf_message("Dungeon.csv中字段[start_music]位置不对应 ");assert(false); return false; }
-		if(vecLine[16]!="loop_music"){printf_message("Dungeon.csv中字段[loop_music]位置不对应 ");assert(false); return false; }
-		if(vecLine[17]!="endingboss_id"){printf_message("Dungeon.csv中字段[endingboss_id]位置不对应 ");assert(false); return false; }
-		if(vecLine[18]!="duration_time"){printf_message("Dungeon.csv中字段[duration_time]位置不对应 ");assert(false); return false; }
-		if(vecLine[19]!="conclusion_time"){printf_message("Dungeon.csv中字段[conclusion_time]位置不对应 ");assert(false); return false; }
-		if(vecLine[20]!="start_time"){printf_message("Dungeon.csv中字段[start_time]位置不对应 ");assert(false); return false; }
-		if(vecLine[21]!="end_time"){printf_message("Dungeon.csv中字段[end_time]位置不对应 ");assert(false); return false; }
-		if(vecLine[22]!="exit_waypoint"){printf_message("Dungeon.csv中字段[exit_waypoint]位置不对应 ");assert(false); return false; }
-
-		while(true)
-		{
-			vecLine = ReadCsvLine( strContent, contentOffset );
-			if((int)vecLine.size() == 0 )
-				break;
-			if((int)vecLine.size() != (int)23)
-			{
-				assert(false);
-				return false;
-			}
-			DungeonElement	member;
-			member.id=(int)atoi(vecLine[0].c_str());
-			member.comment=vecLine[1];
-			member.map_id=(int)atoi(vecLine[2].c_str());
-			member.dungeon_type=(int)atoi(vecLine[3].c_str());
-			member.difficult=(int)atoi(vecLine[4].c_str());
-			member.required_num=(int)atoi(vecLine[5].c_str());
-			member.required_last_dungeon_id=(int)atoi(vecLine[6].c_str());
-			member.reset_type=(int)atoi(vecLine[7].c_str());
-			member.finish_amount=(int)atoi(vecLine[8].c_str());
-			member.name_id=(int)atoi(vecLine[9].c_str());
-			member.describle_id=(int)atoi(vecLine[10].c_str());
-			member.reward_boss_ui=vecLine[11];
-			member.First_reward_ui=(int)atoi(vecLine[12].c_str());
-			member.general_reward__ui=(int)atoi(vecLine[13].c_str());
-			member.is_transfer=(int)atoi(vecLine[14].c_str());
-			member.start_music=vecLine[15];
-			member.loop_music=vecLine[16];
-			member.endingboss_id=(int)atoi(vecLine[17].c_str());
-			member.duration_time=(int)atoi(vecLine[18].c_str());
-			member.conclusion_time=(int)atoi(vecLine[19].c_str());
-			member.start_time=(int)atoi(vecLine[20].c_str());
-			member.end_time=(int)atoi(vecLine[21].c_str());
-			member.exit_waypoint=(int)atoi(vecLine[22].c_str());
-
-			member.SetIsValidate(true);
-			m_mapElements[member.id] = member;
-		}
-		return true;
-	}
-
-	vector<string> ReadCsvLine(string strContent,int contentOffset)
-	{
-		vector<string> temp;
-		return temp;
-
-	}
 };
 
 #endif

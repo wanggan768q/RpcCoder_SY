@@ -15,7 +15,7 @@
 ********************************************************************************************/
 
 #include "HumanModule.h"
-#
+
 
 
 //初始化
@@ -23,6 +23,11 @@ bool ModuleHuman::Initialize()
 {
 
 	
+	return OnLoad();
+}
 
-	return true;
+bool ModuleHuman::Reinitialize()
+{
+	
+	return OnLoad();
 }

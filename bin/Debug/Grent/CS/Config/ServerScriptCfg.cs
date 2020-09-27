@@ -9,13 +9,13 @@ using System.Collections.Generic;
 //服务器脚本配置数据类
 public class ServerScriptElement
 {
-	public int lua_id;           	//脚本id	脚本id
+	public int id;               	//脚本id	脚本id
 	public string file;          	//	
 
 	public bool IsValidate = false;
 	public ServerScriptElement()
 	{
-		lua_id = -1;
+		id = -1;
 	}
 };
 
@@ -108,18 +108,18 @@ public class ServerScriptTable
 			Ex.Logger.Log("ServerScript.csv中列数量与生成的代码不匹配!");
 			return false;
 		}
-		if(vecLine[0]!="lua_id"){Ex.Logger.Log("ServerScript.csv中字段[lua_id]位置不对应"); return false; }
+		if(vecLine[0]!="id"){Ex.Logger.Log("ServerScript.csv中字段[id]位置不对应"); return false; }
 		if(vecLine[1]!="file"){Ex.Logger.Log("ServerScript.csv中字段[file]位置不对应"); return false; }
 
 		for(int i=0; i<nRow; i++)
 		{
 			ServerScriptElement member = new ServerScriptElement();
-			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.lua_id );
+			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.id );
 			readPos += GameAssist.ReadString( binContent, readPos, out member.file);
 
 			member.IsValidate = true;
 			m_vecAllElements.Add(member);
-			m_mapElements[member.lua_id] = member;
+			m_mapElements[member.id] = member;
 		}
 		return true;
 	}
@@ -137,7 +137,7 @@ public class ServerScriptTable
 			Ex.Logger.Log("ServerScript.csv中列数量与生成的代码不匹配!");
 			return false;
 		}
-		if(vecLine[0]!="lua_id"){Ex.Logger.Log("ServerScript.csv中字段[lua_id]位置不对应"); return false; }
+		if(vecLine[0]!="id"){Ex.Logger.Log("ServerScript.csv中字段[id]位置不对应"); return false; }
 		if(vecLine[1]!="file"){Ex.Logger.Log("ServerScript.csv中字段[file]位置不对应"); return false; }
 
 		while(true)
@@ -150,12 +150,12 @@ public class ServerScriptTable
 				return false;
 			}
 			ServerScriptElement member = new ServerScriptElement();
-			member.lua_id=Convert.ToInt32(vecLine[0]);
+			member.id=Convert.ToInt32(vecLine[0]);
 			member.file=vecLine[1];
 
 			member.IsValidate = true;
 			m_vecAllElements.Add(member);
-			m_mapElements[member.lua_id] = member;
+			m_mapElements[member.id] = member;
 		}
 		return true;
 	}

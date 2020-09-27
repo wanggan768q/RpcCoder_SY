@@ -68,7 +68,8 @@ void protobuf_AssignDesc_BaseAttrRpc_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(BaseAttrRpcSyncDataReply));
   BaseAttrRpcSyncNotify_descriptor_ = file->message_type(2);
-  static const int BaseAttrRpcSyncNotify_offsets_[1] = {
+  static const int BaseAttrRpcSyncNotify_offsets_[2] = {
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrRpcSyncNotify, objid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(BaseAttrRpcSyncNotify, updatedata_),
   };
   BaseAttrRpcSyncNotify_reflection_ =
@@ -123,9 +124,9 @@ void protobuf_AddDesc_BaseAttrRpc_2eproto() {
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
     "\n\021BaseAttrRpc.proto\032\022PublicStruct.proto\""
     "\030\n\026BaseAttrRpcSyncDataAsk\"E\n\030BaseAttrRpc"
-    "SyncDataReply\022\025\n\006Result\030\001 \001(\021:\005-9999\022\022\n\n"
-    "UpdateData\030\002 \001(\014\"+\n\025BaseAttrRpcSyncNotif"
-    "y\022\022\n\nUpdateData\030\001 \001(\014", 181);
+    "SyncDataReply\022\025\n\006Result\030\001 \001(\005:\005-9999\022\022\n\n"
+    "UpdateData\030\002 \001(\014\"=\n\025BaseAttrRpcSyncNotif"
+    "y\022\020\n\005ObjId\030\002 \001(\004:\0010\022\022\n\nUpdateData\030\003 \001(\014", 199);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "BaseAttrRpc.proto", &protobuf_RegisterTypes);
   BaseAttrRpcSyncDataAsk::default_instance_ = new BaseAttrRpcSyncDataAsk();
@@ -380,12 +381,12 @@ bool BaseAttrRpcSyncDataReply::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional sint32 Result = 1 [default = -9999];
+      // optional int32 Result = 1 [default = -9999];
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &result_)));
           set_has_result();
         } else {
@@ -427,9 +428,9 @@ bool BaseAttrRpcSyncDataReply::MergePartialFromCodedStream(
 
 void BaseAttrRpcSyncDataReply::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   if (has_result()) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(1, this->result(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->result(), output);
   }
 
   // optional bytes UpdateData = 2;
@@ -446,9 +447,9 @@ void BaseAttrRpcSyncDataReply::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* BaseAttrRpcSyncDataReply::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   if (has_result()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(1, this->result(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->result(), target);
   }
 
   // optional bytes UpdateData = 2;
@@ -469,10 +470,10 @@ int BaseAttrRpcSyncDataReply::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional sint32 Result = 1 [default = -9999];
+    // optional int32 Result = 1 [default = -9999];
     if (has_result()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->result());
     }
 
@@ -559,6 +560,7 @@ void BaseAttrRpcSyncDataReply::Swap(BaseAttrRpcSyncDataReply* other) {
 // ===================================================================
 
 #ifndef _MSC_VER
+const int BaseAttrRpcSyncNotify::kObjIdFieldNumber;
 const int BaseAttrRpcSyncNotify::kUpdateDataFieldNumber;
 #endif  // !_MSC_VER
 
@@ -578,6 +580,7 @@ BaseAttrRpcSyncNotify::BaseAttrRpcSyncNotify(const BaseAttrRpcSyncNotify& from)
 
 void BaseAttrRpcSyncNotify::SharedCtor() {
   _cached_size_ = 0;
+  objid_ = GOOGLE_ULONGLONG(0);
   updatedata_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -617,6 +620,7 @@ BaseAttrRpcSyncNotify* BaseAttrRpcSyncNotify::New() const {
 
 void BaseAttrRpcSyncNotify::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    objid_ = GOOGLE_ULONGLONG(0);
     if (has_updatedata()) {
       if (updatedata_ != &::google::protobuf::internal::kEmptyString) {
         updatedata_->clear();
@@ -633,10 +637,26 @@ bool BaseAttrRpcSyncNotify::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional bytes UpdateData = 1;
-      case 1: {
+      // optional uint64 ObjId = 2 [default = 0];
+      case 2: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
+                 input, &objid_)));
+          set_has_objid();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(26)) goto parse_UpdateData;
+        break;
+      }
+
+      // optional bytes UpdateData = 3;
+      case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_UpdateData:
           DO_(::google::protobuf::internal::WireFormatLite::ReadBytes(
                 input, this->mutable_updatedata()));
         } else {
@@ -664,10 +684,15 @@ bool BaseAttrRpcSyncNotify::MergePartialFromCodedStream(
 
 void BaseAttrRpcSyncNotify::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional bytes UpdateData = 1;
+  // optional uint64 ObjId = 2 [default = 0];
+  if (has_objid()) {
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->objid(), output);
+  }
+
+  // optional bytes UpdateData = 3;
   if (has_updatedata()) {
     ::google::protobuf::internal::WireFormatLite::WriteBytes(
-      1, this->updatedata(), output);
+      3, this->updatedata(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -678,11 +703,16 @@ void BaseAttrRpcSyncNotify::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* BaseAttrRpcSyncNotify::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional bytes UpdateData = 1;
+  // optional uint64 ObjId = 2 [default = 0];
+  if (has_objid()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->objid(), target);
+  }
+
+  // optional bytes UpdateData = 3;
   if (has_updatedata()) {
     target =
       ::google::protobuf::internal::WireFormatLite::WriteBytesToArray(
-        1, this->updatedata(), target);
+        3, this->updatedata(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -696,7 +726,14 @@ int BaseAttrRpcSyncNotify::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional bytes UpdateData = 1;
+    // optional uint64 ObjId = 2 [default = 0];
+    if (has_objid()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::UInt64Size(
+          this->objid());
+    }
+
+    // optional bytes UpdateData = 3;
     if (has_updatedata()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::BytesSize(
@@ -730,6 +767,9 @@ void BaseAttrRpcSyncNotify::MergeFrom(const ::google::protobuf::Message& from) {
 void BaseAttrRpcSyncNotify::MergeFrom(const BaseAttrRpcSyncNotify& from) {
   GOOGLE_CHECK_NE(&from, this);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
+    if (from.has_objid()) {
+      set_objid(from.objid());
+    }
     if (from.has_updatedata()) {
       set_updatedata(from.updatedata());
     }
@@ -756,6 +796,7 @@ bool BaseAttrRpcSyncNotify::IsInitialized() const {
 
 void BaseAttrRpcSyncNotify::Swap(BaseAttrRpcSyncNotify* other) {
   if (other != this) {
+    std::swap(objid_, other->objid_);
     std::swap(updatedata_, other->updatedata_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);

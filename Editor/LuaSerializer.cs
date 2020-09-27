@@ -190,6 +190,15 @@
                     string str10 = OperationImplement;
                     OperationImplement = str10 + "function " + operate.Name + "(self,";
                     string str = "\tlocal PB = self.rpc_pb." + m.ModuleName + "Rpc" + operate.Name + "Ask()\r\n";
+
+                    //添加协议测试钩子
+                    if (GenLangFlags.LUA_HOOK == true)
+                    {
+                        string HookKey = "RPC_CODE_" + m.ModuleName.ToUpper() + "_" + operate.Name.ToUpper() + "_REQUEST";
+                        OperationImpl += "\tMLayerMgr.RegHook(" + HookKey + "," + "self.rpc_pb." + m.ModuleName + "Rpc" + operate.Name + "Ask())\r\n";
+                    }
+
+
                     foreach (DataStruct.FieldDescriptor descriptor in struct2.fieldItem)
                     {
                         TestProtocol = TestProtocol + ((num3 == 0) ? "" : ",");

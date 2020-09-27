@@ -27,7 +27,7 @@ namespace GenPB
     public BaseAttrRpcSyncDataReply() {}
     
     private int _Result = (int)-9999;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-9999)]
     public int Result
     {
@@ -52,8 +52,16 @@ namespace GenPB
   {
     public BaseAttrRpcSyncNotify() {}
     
+    private ulong _ObjId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"ObjId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong ObjId
+    {
+      get { return _ObjId; }
+      set { _ObjId = value; }
+    }
     private byte[] _UpdateData = null;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"UpdateData", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"UpdateData", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue(null)]
     public byte[] UpdateData
     {

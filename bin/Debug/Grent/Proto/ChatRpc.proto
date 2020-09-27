@@ -4,19 +4,47 @@ import "PublicStruct.proto";
 message  ChatRpcChatAsk
 {
 	optional ChatMsg Chat_msg = 1;
-	optional sint32 Chat_channel = 2[default=-1];
+	optional int32 Chat_channel = 2;
 
 }
 
 message  ChatRpcChatReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
+	optional int32 Forbid_endtime = 2;
 
 }
 
 message  ChatRpcPushChatUpdatesNotify
 {
 	repeated ChatChannelData Chat_channels = 1;
+
+}
+
+message  ChatRpcPushMarqueeNotify
+{
+	repeated AppendString Marquee = 1;
+	optional int32 Priority = 2;
+
+}
+
+message  ChatRpcSayNotify
+{
+	optional uint64 ObjId = 1[default=0];
+	optional int32 ChatId = 2;
+	optional int32 Duration = 3;
+	optional int32 ChatType = 4;
+	optional int32 Interval = 5;
+
+}
+
+message  ChatRpcServerChatNotify
+{
+	optional int32 Id = 1;
+	optional int32 Channel = 2;
+	repeated int32 IParams = 3;
+	repeated string SParams = 4;
+	repeated ItemData Items = 5;
 
 }
 

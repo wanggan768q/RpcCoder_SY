@@ -25,7 +25,7 @@ namespace GenPB
       set { _Chat_msg = value; }
     }
     private int _Chat_channel = (int)-1;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Chat_channel", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Chat_channel", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int Chat_channel
     {
@@ -43,12 +43,20 @@ namespace GenPB
     public ChatRpcChatReply() {}
     
     private int _Result = (int)-9999;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-9999)]
     public int Result
     {
       get { return _Result; }
       set { _Result = value; }
+    }
+    private int _Forbid_endtime = (int)-1;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Forbid_endtime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Forbid_endtime
+    {
+      get { return _Forbid_endtime; }
+      set { _Forbid_endtime = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -65,6 +73,128 @@ namespace GenPB
     public global::System.Collections.Generic.List<ChatChannelData> Chat_channels
     {
       get { return _Chat_channels; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ChatRpcPushMarqueeNotify")]
+  public partial class ChatRpcPushMarqueeNotify : global::ProtoBuf.IExtensible
+  {
+    public ChatRpcPushMarqueeNotify() {}
+    
+    private readonly global::System.Collections.Generic.List<AppendString> _Marquee = new global::System.Collections.Generic.List<AppendString>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"Marquee", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<AppendString> Marquee
+    {
+      get { return _Marquee; }
+    }
+  
+    private int _Priority = (int)-1;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Priority", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Priority
+    {
+      get { return _Priority; }
+      set { _Priority = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ChatRpcSayNotify")]
+  public partial class ChatRpcSayNotify : global::ProtoBuf.IExtensible
+  {
+    public ChatRpcSayNotify() {}
+    
+    private ulong _ObjId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ObjId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong ObjId
+    {
+      get { return _ObjId; }
+      set { _ObjId = value; }
+    }
+    private int _ChatId = (int)0;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"ChatId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int ChatId
+    {
+      get { return _ChatId; }
+      set { _ChatId = value; }
+    }
+    private int _Duration = (int)0;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"Duration", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int Duration
+    {
+      get { return _Duration; }
+      set { _Duration = value; }
+    }
+    private int _ChatType = (int)0;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"ChatType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int ChatType
+    {
+      get { return _ChatType; }
+      set { _ChatType = value; }
+    }
+    private int _Interval = (int)0;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"Interval", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int Interval
+    {
+      get { return _Interval; }
+      set { _Interval = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"ChatRpcServerChatNotify")]
+  public partial class ChatRpcServerChatNotify : global::ProtoBuf.IExtensible
+  {
+    public ChatRpcServerChatNotify() {}
+    
+    private int _Id = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Id", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Id
+    {
+      get { return _Id; }
+      set { _Id = value; }
+    }
+    private int _Channel = (int)-1;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Channel", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Channel
+    {
+      get { return _Channel; }
+      set { _Channel = value; }
+    }
+    private readonly global::System.Collections.Generic.List<int> _IParams = new global::System.Collections.Generic.List<int>();
+    [global::ProtoBuf.ProtoMember(3, Name=@"IParams", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<int> IParams
+    {
+      get { return _IParams; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<string> _SParams = new global::System.Collections.Generic.List<string>();
+    [global::ProtoBuf.ProtoMember(4, Name=@"SParams", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<string> SParams
+    {
+      get { return _SParams; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<ItemData> _Items = new global::System.Collections.Generic.List<ItemData>();
+    [global::ProtoBuf.ProtoMember(5, Name=@"Items", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<ItemData> Items
+    {
+      get { return _Items; }
     }
   
     private global::ProtoBuf.IExtension extensionObject;

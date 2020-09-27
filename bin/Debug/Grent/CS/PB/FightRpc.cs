@@ -16,24 +16,24 @@ namespace GenPB
   {
     public FightRpcUseSkillActionNotify() {}
     
-    private int _ObjId = (int)-1;
-    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"ObjId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-1)]
-    public int ObjId
+    private ulong _ObjId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"ObjId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong ObjId
     {
       get { return _ObjId; }
       set { _ObjId = value; }
     }
-    private int _ObjTargetId = (int)-1;
-    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"ObjTargetId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-1)]
-    public int ObjTargetId
+    private ulong _ObjTargetId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"ObjTargetId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong ObjTargetId
     {
       get { return _ObjTargetId; }
       set { _ObjTargetId = value; }
     }
     private int _SkillId = (int)-1;
-    [global::ProtoBuf.ProtoMember(10, IsRequired = false, Name=@"SkillId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(10, IsRequired = false, Name=@"SkillId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int SkillId
     {
@@ -73,12 +73,20 @@ namespace GenPB
       set { _Z = value; }
     }
     private int _MomentIndex = (int)-1;
-    [global::ProtoBuf.ProtoMember(15, IsRequired = false, Name=@"MomentIndex", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(15, IsRequired = false, Name=@"MomentIndex", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int MomentIndex
     {
       get { return _MomentIndex; }
       set { _MomentIndex = value; }
+    }
+    private CustomSkiData _CustomSkiData = null;
+    [global::ProtoBuf.ProtoMember(16, IsRequired = false, Name=@"CustomSkiData", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public CustomSkiData CustomSkiData
+    {
+      get { return _CustomSkiData; }
+      set { _CustomSkiData = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -90,16 +98,16 @@ namespace GenPB
   {
     public FightRpcShowExpActionNotify() {}
     
-    private int _ObjId = (int)-1;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ObjId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-1)]
-    public int ObjId
+    private ulong _ObjId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ObjId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong ObjId
     {
       get { return _ObjId; }
       set { _ObjId = value; }
     }
     private int _Value = (int)-1;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Value", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Value", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int Value
     {
@@ -116,61 +124,13 @@ namespace GenPB
   {
     public FightRpcBuffActionNotify() {}
     
-    private int _ObjId = (int)-1;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ObjId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-1)]
-    public int ObjId
+    private BuffInfo _Info = null;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"Info", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public BuffInfo Info
     {
-      get { return _ObjId; }
-      set { _ObjId = value; }
-    }
-    private int _TargetId = (int)-1;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"TargetId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-1)]
-    public int TargetId
-    {
-      get { return _TargetId; }
-      set { _TargetId = value; }
-    }
-    private int _OpType = (int)-1;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"OpType", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-1)]
-    public int OpType
-    {
-      get { return _OpType; }
-      set { _OpType = value; }
-    }
-    private int _BufId = (int)-1;
-    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"BufId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-1)]
-    public int BufId
-    {
-      get { return _BufId; }
-      set { _BufId = value; }
-    }
-    private int _RemainTime = (int)-1;
-    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"RemainTime", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-1)]
-    public int RemainTime
-    {
-      get { return _RemainTime; }
-      set { _RemainTime = value; }
-    }
-    private int _BuffLv = (int)-1;
-    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"BuffLv", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-1)]
-    public int BuffLv
-    {
-      get { return _BuffLv; }
-      set { _BuffLv = value; }
-    }
-    private int _Sn = (int)-1;
-    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"Sn", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-1)]
-    public int Sn
-    {
-      get { return _Sn; }
-      set { _Sn = value; }
+      get { return _Info; }
+      set { _Info = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -182,37 +142,45 @@ namespace GenPB
   {
     public FightRpcStateActionNotify() {}
     
-    private int _ObjId = (int)-1;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ObjId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-1)]
-    public int ObjId
+    private ulong _ObjId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ObjId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong ObjId
     {
       get { return _ObjId; }
       set { _ObjId = value; }
     }
     private int _Type = (int)-1;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Type", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int Type
     {
       get { return _Type; }
       set { _Type = value; }
     }
-    private V3 _Pos = null;
+    private Vector3 _Pos = null;
     [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"Pos", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue(null)]
-    public V3 Pos
+    public Vector3 Pos
     {
       get { return _Pos; }
       set { _Pos = value; }
     }
     private int _TargetPos = (int)-1;
-    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"TargetPos", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"TargetPos", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int TargetPos
     {
       get { return _TargetPos; }
       set { _TargetPos = value; }
+    }
+    private int _State = (int)-1;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"State", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int State
+    {
+      get { return _State; }
+      set { _State = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -224,24 +192,24 @@ namespace GenPB
   {
     public FightRpcReviveActionNotify() {}
     
-    private int _ObjId = (int)-1;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ObjId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-1)]
-    public int ObjId
+    private ulong _ObjId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ObjId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong ObjId
     {
       get { return _ObjId; }
       set { _ObjId = value; }
     }
-    private V3 _Pos = null;
+    private Vector3 _Pos = null;
     [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Pos", DataFormat = global::ProtoBuf.DataFormat.Default)]
     [global::System.ComponentModel.DefaultValue(null)]
-    public V3 Pos
+    public Vector3 Pos
     {
       get { return _Pos; }
       set { _Pos = value; }
     }
     private int _CurHp = (int)-1;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"CurHp", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"CurHp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int CurHp
     {
@@ -258,16 +226,16 @@ namespace GenPB
   {
     public FightRpcComboSkillActionNotify() {}
     
-    private int _ObjId = (int)-1;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ObjId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-1)]
-    public int ObjId
+    private ulong _ObjId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ObjId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong ObjId
     {
       get { return _ObjId; }
       set { _ObjId = value; }
     }
     private int _SkillId = (int)-1;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"SkillId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"SkillId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int SkillId
     {
@@ -304,29 +272,29 @@ namespace GenPB
   {
     public FightRpcHpChangeActionNotify() {}
     
-    private int _ObjId = (int)-1;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ObjId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-1)]
-    public int ObjId
+    private ulong _ObjId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ObjId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong ObjId
     {
       get { return _ObjId; }
       set { _ObjId = value; }
     }
-    private int _CurHp = (int)-1;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"CurHp", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-1)]
-    public int CurHp
+    private int _IncrementHp = (int)0;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"IncrementHp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int IncrementHp
     {
-      get { return _CurHp; }
-      set { _CurHp = value; }
+      get { return _IncrementHp; }
+      set { _IncrementHp = value; }
     }
-    private int _MaxHp = (int)-1;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"MaxHp", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-1)]
-    public int MaxHp
+    private ulong _CasterId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"CasterId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong CasterId
     {
-      get { return _MaxHp; }
-      set { _MaxHp = value; }
+      get { return _CasterId; }
+      set { _CasterId = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -338,16 +306,15 @@ namespace GenPB
   {
     public FightRpcUseSkillAsk() {}
     
-    private int _ObjTargetId = (int)-1;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ObjTargetId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-1)]
-    public int ObjTargetId
+    private readonly global::System.Collections.Generic.List<ulong> _ObjTargetId = new global::System.Collections.Generic.List<ulong>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"ObjTargetId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<ulong> ObjTargetId
     {
       get { return _ObjTargetId; }
-      set { _ObjTargetId = value; }
     }
+  
     private int _SkillId = (int)-1;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"SkillId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"SkillId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int SkillId
     {
@@ -387,12 +354,28 @@ namespace GenPB
       set { _Z = value; }
     }
     private int _MomentIndex = (int)-1;
-    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"MomentIndex", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"MomentIndex", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int MomentIndex
     {
       get { return _MomentIndex; }
       set { _MomentIndex = value; }
+    }
+    private CustomSkiData _CustomSkiData = null;
+    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"CustomSkiData", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public CustomSkiData CustomSkiData
+    {
+      get { return _CustomSkiData; }
+      set { _CustomSkiData = value; }
+    }
+    private Vector3Int _CurrentPos = null;
+    [global::ProtoBuf.ProtoMember(10, IsRequired = false, Name=@"CurrentPos", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Vector3Int CurrentPos
+    {
+      get { return _CurrentPos; }
+      set { _CurrentPos = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -405,7 +388,7 @@ namespace GenPB
     public FightRpcUseSkillReply() {}
     
     private int _Result = (int)-9999;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-9999)]
     public int Result
     {
@@ -422,16 +405,16 @@ namespace GenPB
   {
     public FightRpcHurtActionNotify() {}
     
-    private int _ObjId = (int)-1;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ObjId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-1)]
-    public int ObjId
+    private ulong _ObjId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ObjId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong ObjId
     {
       get { return _ObjId; }
       set { _ObjId = value; }
     }
     private int _SegmentIndex = (int)-1;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"SegmentIndex", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"SegmentIndex", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int SegmentIndex
     {
@@ -439,23 +422,23 @@ namespace GenPB
       set { _SegmentIndex = value; }
     }
     private int _SkillId = (int)-1;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"SkillId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"SkillId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int SkillId
     {
       get { return _SkillId; }
       set { _SkillId = value; }
     }
-    private int _TargetObjId = (int)-1;
-    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"TargetObjId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-1)]
-    public int TargetObjId
+    private ulong _TargetObjId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"TargetObjId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong TargetObjId
     {
       get { return _TargetObjId; }
       set { _TargetObjId = value; }
     }
     private int _HurtValue = (int)0;
-    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"HurtValue", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"HurtValue", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)0)]
     public int HurtValue
     {
@@ -470,13 +453,869 @@ namespace GenPB
       get { return _IsCritical; }
       set { _IsCritical = value; }
     }
-    private int _Energy = (int)-1;
-    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"Energy", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-1)]
-    public int Energy
+    private bool _IsDodge = (bool)false;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"IsDodge", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool IsDodge
     {
-      get { return _Energy; }
-      set { _Energy = value; }
+      get { return _IsDodge; }
+      set { _IsDodge = value; }
+    }
+    private bool _IsMiss = (bool)false;
+    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"IsMiss", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool IsMiss
+    {
+      get { return _IsMiss; }
+      set { _IsMiss = value; }
+    }
+    private bool _IsHurtState = (bool)false;
+    [global::ProtoBuf.ProtoMember(10, IsRequired = false, Name=@"IsHurtState", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool IsHurtState
+    {
+      get { return _IsHurtState; }
+      set { _IsHurtState = value; }
+    }
+    private int _AttackId = (int)-1;
+    [global::ProtoBuf.ProtoMember(11, IsRequired = false, Name=@"AttackId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int AttackId
+    {
+      get { return _AttackId; }
+      set { _AttackId = value; }
+    }
+    private bool _IsDead = (bool)false;
+    [global::ProtoBuf.ProtoMember(12, IsRequired = false, Name=@"IsDead", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool IsDead
+    {
+      get { return _IsDead; }
+      set { _IsDead = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"FightRpcRepelActionNotify")]
+  public partial class FightRpcRepelActionNotify : global::ProtoBuf.IExtensible
+  {
+    public FightRpcRepelActionNotify() {}
+    
+    private ulong _ObjId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"ObjId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong ObjId
+    {
+      get { return _ObjId; }
+      set { _ObjId = value; }
+    }
+    private int _SegmentIndex = (int)-1;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"SegmentIndex", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int SegmentIndex
+    {
+      get { return _SegmentIndex; }
+      set { _SegmentIndex = value; }
+    }
+    private int _SkillId = (int)-1;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"SkillId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int SkillId
+    {
+      get { return _SkillId; }
+      set { _SkillId = value; }
+    }
+    private ulong _TargetObjId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"TargetObjId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong TargetObjId
+    {
+      get { return _TargetObjId; }
+      set { _TargetObjId = value; }
+    }
+    private Vector3 _SkiTargetPos = null;
+    [global::ProtoBuf.ProtoMember(10, IsRequired = false, Name=@"SkiTargetPos", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Vector3 SkiTargetPos
+    {
+      get { return _SkiTargetPos; }
+      set { _SkiTargetPos = value; }
+    }
+    private bool _IsPlayerDiaup = (bool)true;
+    [global::ProtoBuf.ProtoMember(11, IsRequired = false, Name=@"IsPlayerDiaup", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)true)]
+    public bool IsPlayerDiaup
+    {
+      get { return _IsPlayerDiaup; }
+      set { _IsPlayerDiaup = value; }
+    }
+    private float _Speed = (float)0;
+    [global::ProtoBuf.ProtoMember(12, IsRequired = false, Name=@"Speed", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float Speed
+    {
+      get { return _Speed; }
+      set { _Speed = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"FightRpcObjDeadActionNotify")]
+  public partial class FightRpcObjDeadActionNotify : global::ProtoBuf.IExtensible
+  {
+    public FightRpcObjDeadActionNotify() {}
+    
+    private ulong _ObjId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ObjId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong ObjId
+    {
+      get { return _ObjId; }
+      set { _ObjId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"FightRpcFightTipsNotify")]
+  public partial class FightRpcFightTipsNotify : global::ProtoBuf.IExtensible
+  {
+    public FightRpcFightTipsNotify() {}
+    
+    private int _TipsID = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"TipsID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int TipsID
+    {
+      get { return _TipsID; }
+      set { _TipsID = value; }
+    }
+    private int _Durtion = (int)-1;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Durtion", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Durtion
+    {
+      get { return _Durtion; }
+      set { _Durtion = value; }
+    }
+    private int _TypeID = (int)-1;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"TypeID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int TypeID
+    {
+      get { return _TypeID; }
+      set { _TypeID = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"FightRpcBuffListNotify")]
+  public partial class FightRpcBuffListNotify : global::ProtoBuf.IExtensible
+  {
+    public FightRpcBuffListNotify() {}
+    
+    private readonly global::System.Collections.Generic.List<BuffInfo> _BuffList = new global::System.Collections.Generic.List<BuffInfo>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"BuffList", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<BuffInfo> BuffList
+    {
+      get { return _BuffList; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"FightRpcReduceCDNotify")]
+  public partial class FightRpcReduceCDNotify : global::ProtoBuf.IExtensible
+  {
+    public FightRpcReduceCDNotify() {}
+    
+    private int _SkillId = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"SkillId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int SkillId
+    {
+      get { return _SkillId; }
+      set { _SkillId = value; }
+    }
+    private int _ModTime = (int)-1;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"ModTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int ModTime
+    {
+      get { return _ModTime; }
+      set { _ModTime = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"FightRpcReliveNotifyNotify")]
+  public partial class FightRpcReliveNotifyNotify : global::ProtoBuf.IExtensible
+  {
+    public FightRpcReliveNotifyNotify() {}
+    
+    private ulong _ObjId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"ObjId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong ObjId
+    {
+      get { return _ObjId; }
+      set { _ObjId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"FightRpcSkillCDNotify")]
+  public partial class FightRpcSkillCDNotify : global::ProtoBuf.IExtensible
+  {
+    public FightRpcSkillCDNotify() {}
+    
+    private readonly global::System.Collections.Generic.List<SkillCDInfo> _SkillCDInfo = new global::System.Collections.Generic.List<SkillCDInfo>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"SkillCDInfo", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<SkillCDInfo> SkillCDInfo
+    {
+      get { return _SkillCDInfo; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"FightRpcAutoCombatMonsterNotify")]
+  public partial class FightRpcAutoCombatMonsterNotify : global::ProtoBuf.IExtensible
+  {
+    public FightRpcAutoCombatMonsterNotify() {}
+    
+    private ulong _MonsterGuid = (ulong)0;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"MonsterGuid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong MonsterGuid
+    {
+      get { return _MonsterGuid; }
+      set { _MonsterGuid = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"FightRpcTranslateActionNotify")]
+  public partial class FightRpcTranslateActionNotify : global::ProtoBuf.IExtensible
+  {
+    public FightRpcTranslateActionNotify() {}
+    
+    private ulong _ObjId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ObjId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong ObjId
+    {
+      get { return _ObjId; }
+      set { _ObjId = value; }
+    }
+    private Vector3 _TargetPos = null;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"TargetPos", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Vector3 TargetPos
+    {
+      get { return _TargetPos; }
+      set { _TargetPos = value; }
+    }
+    private float _Dir = (float)-1;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"Dir", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)-1)]
+    public float Dir
+    {
+      get { return _Dir; }
+      set { _Dir = value; }
+    }
+    private int _SkillId = (int)-1;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"SkillId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int SkillId
+    {
+      get { return _SkillId; }
+      set { _SkillId = value; }
+    }
+    private int _CommandIndex = (int)-1;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"CommandIndex", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int CommandIndex
+    {
+      get { return _CommandIndex; }
+      set { _CommandIndex = value; }
+    }
+    private bool _IsEnd = (bool)false;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"IsEnd", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool IsEnd
+    {
+      get { return _IsEnd; }
+      set { _IsEnd = value; }
+    }
+    private float _Speed = (float)0;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"Speed", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float Speed
+    {
+      get { return _Speed; }
+      set { _Speed = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"FightRpcCantAddBuffTipNotify")]
+  public partial class FightRpcCantAddBuffTipNotify : global::ProtoBuf.IExtensible
+  {
+    public FightRpcCantAddBuffTipNotify() {}
+    
+    private int _BuffId = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"BuffId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int BuffId
+    {
+      get { return _BuffId; }
+      set { _BuffId = value; }
+    }
+    private ulong _CasterId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"CasterId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong CasterId
+    {
+      get { return _CasterId; }
+      set { _CasterId = value; }
+    }
+    private ulong _ObjId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"ObjId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong ObjId
+    {
+      get { return _ObjId; }
+      set { _ObjId = value; }
+    }
+    private int _Sn = (int)-1;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"Sn", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Sn
+    {
+      get { return _Sn; }
+      set { _Sn = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"FightRpcAttackWarningNotify")]
+  public partial class FightRpcAttackWarningNotify : global::ProtoBuf.IExtensible
+  {
+    public FightRpcAttackWarningNotify() {}
+    
+    private int _AttackId = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"AttackId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int AttackId
+    {
+      get { return _AttackId; }
+      set { _AttackId = value; }
+    }
+    private ulong _Caster = (ulong)0;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Caster", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong Caster
+    {
+      get { return _Caster; }
+      set { _Caster = value; }
+    }
+    private readonly global::System.Collections.Generic.List<ulong> _TargetList = new global::System.Collections.Generic.List<ulong>();
+    [global::ProtoBuf.ProtoMember(3, Name=@"TargetList", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<ulong> TargetList
+    {
+      get { return _TargetList; }
+    }
+  
+    private Vector3 _TargetPos = null;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"TargetPos", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Vector3 TargetPos
+    {
+      get { return _TargetPos; }
+      set { _TargetPos = value; }
+    }
+    private int _SkillId = (int)-1;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"SkillId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int SkillId
+    {
+      get { return _SkillId; }
+      set { _SkillId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"FightRpcInterruptActionNotify")]
+  public partial class FightRpcInterruptActionNotify : global::ProtoBuf.IExtensible
+  {
+    public FightRpcInterruptActionNotify() {}
+    
+    private ulong _Caster = (ulong)0;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Caster", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong Caster
+    {
+      get { return _Caster; }
+      set { _Caster = value; }
+    }
+    private ulong _Interrupter = (ulong)0;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Interrupter", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong Interrupter
+    {
+      get { return _Interrupter; }
+      set { _Interrupter = value; }
+    }
+    private readonly global::System.Collections.Generic.List<int> _Skill = new global::System.Collections.Generic.List<int>();
+    [global::ProtoBuf.ProtoMember(3, Name=@"Skill", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<int> Skill
+    {
+      get { return _Skill; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"FightRpcSkillPrepareAsk")]
+  public partial class FightRpcSkillPrepareAsk : global::ProtoBuf.IExtensible
+  {
+    public FightRpcSkillPrepareAsk() {}
+    
+    private int _SkillId = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"SkillId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int SkillId
+    {
+      get { return _SkillId; }
+      set { _SkillId = value; }
+    }
+    private int _Type = (int)0;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int Type
+    {
+      get { return _Type; }
+      set { _Type = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"FightRpcSkillPrepareReply")]
+  public partial class FightRpcSkillPrepareReply : global::ProtoBuf.IExtensible
+  {
+    public FightRpcSkillPrepareReply() {}
+    
+    private int _Result = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"FightRpcSkillPrepareActionNotify")]
+  public partial class FightRpcSkillPrepareActionNotify : global::ProtoBuf.IExtensible
+  {
+    public FightRpcSkillPrepareActionNotify() {}
+    
+    private long _ObjId = (long)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ObjId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((long)-1)]
+    public long ObjId
+    {
+      get { return _ObjId; }
+      set { _ObjId = value; }
+    }
+    private int _SkillId = (int)-1;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"SkillId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int SkillId
+    {
+      get { return _SkillId; }
+      set { _SkillId = value; }
+    }
+    private int _Type = (int)-1;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"Type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Type
+    {
+      get { return _Type; }
+      set { _Type = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"FightRpcChainMagicJumpNotify")]
+  public partial class FightRpcChainMagicJumpNotify : global::ProtoBuf.IExtensible
+  {
+    public FightRpcChainMagicJumpNotify() {}
+    
+    private long _ObjId = (long)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ObjId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((long)-1)]
+    public long ObjId
+    {
+      get { return _ObjId; }
+      set { _ObjId = value; }
+    }
+    private int _SkillId = (int)-1;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"SkillId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int SkillId
+    {
+      get { return _SkillId; }
+      set { _SkillId = value; }
+    }
+    private long _JumpFromObjId = (long)-1;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"JumpFromObjId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((long)-1)]
+    public long JumpFromObjId
+    {
+      get { return _JumpFromObjId; }
+      set { _JumpFromObjId = value; }
+    }
+    private long _JumpToObjId = (long)-1;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"JumpToObjId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((long)-1)]
+    public long JumpToObjId
+    {
+      get { return _JumpToObjId; }
+      set { _JumpToObjId = value; }
+    }
+    private int _AttackId = (int)-1;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"AttackId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int AttackId
+    {
+      get { return _AttackId; }
+      set { _AttackId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"FightRpcBlackHoleActionNotify")]
+  public partial class FightRpcBlackHoleActionNotify : global::ProtoBuf.IExtensible
+  {
+    public FightRpcBlackHoleActionNotify() {}
+    
+    private long _ObjId = (long)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ObjId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((long)-1)]
+    public long ObjId
+    {
+      get { return _ObjId; }
+      set { _ObjId = value; }
+    }
+    private float _ToX = (float)-1;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"ToX", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)-1)]
+    public float ToX
+    {
+      get { return _ToX; }
+      set { _ToX = value; }
+    }
+    private float _ToZ = (float)-1;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"ToZ", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)-1)]
+    public float ToZ
+    {
+      get { return _ToZ; }
+      set { _ToZ = value; }
+    }
+    private float _Speed = (float)-1;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"Speed", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)-1)]
+    public float Speed
+    {
+      get { return _Speed; }
+      set { _Speed = value; }
+    }
+    private bool _Apply = (bool)false;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"Apply", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool Apply
+    {
+      get { return _Apply; }
+      set { _Apply = value; }
+    }
+    private int _Type = (int)-1;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"Type", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Type
+    {
+      get { return _Type; }
+      set { _Type = value; }
+    }
+    private ulong _TargetObjId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"TargetObjId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong TargetObjId
+    {
+      get { return _TargetObjId; }
+      set { _TargetObjId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"FightRpcLoopActionCancelAsk")]
+  public partial class FightRpcLoopActionCancelAsk : global::ProtoBuf.IExtensible
+  {
+    public FightRpcLoopActionCancelAsk() {}
+    
+    private int _SkillId = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"SkillId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int SkillId
+    {
+      get { return _SkillId; }
+      set { _SkillId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"FightRpcLoopActionCancelOtherNotify")]
+  public partial class FightRpcLoopActionCancelOtherNotify : global::ProtoBuf.IExtensible
+  {
+    public FightRpcLoopActionCancelOtherNotify() {}
+    
+    private ulong _ObjId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ObjId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong ObjId
+    {
+      get { return _ObjId; }
+      set { _ObjId = value; }
+    }
+    private int _SkillId = (int)-1;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"SkillId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int SkillId
+    {
+      get { return _SkillId; }
+      set { _SkillId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"FightRpcLoopActionCancelReply")]
+  public partial class FightRpcLoopActionCancelReply : global::ProtoBuf.IExtensible
+  {
+    public FightRpcLoopActionCancelReply() {}
+    
+    private int _Result = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"FightRpcSkillListNotify")]
+  public partial class FightRpcSkillListNotify : global::ProtoBuf.IExtensible
+  {
+    public FightRpcSkillListNotify() {}
+    
+    private readonly global::System.Collections.Generic.List<int> _SkillList = new global::System.Collections.Generic.List<int>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"SkillList", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<int> SkillList
+    {
+      get { return _SkillList; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"FightRpcUsePetSkillAsk")]
+  public partial class FightRpcUsePetSkillAsk : global::ProtoBuf.IExtensible
+  {
+    public FightRpcUsePetSkillAsk() {}
+    
+    private readonly global::System.Collections.Generic.List<ulong> _ObjTargetId = new global::System.Collections.Generic.List<ulong>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"ObjTargetId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<ulong> ObjTargetId
+    {
+      get { return _ObjTargetId; }
+    }
+  
+    private int _SkillId = (int)-1;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"SkillId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int SkillId
+    {
+      get { return _SkillId; }
+      set { _SkillId = value; }
+    }
+    private float _CastingDir = (float)-1;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"CastingDir", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)-1)]
+    public float CastingDir
+    {
+      get { return _CastingDir; }
+      set { _CastingDir = value; }
+    }
+    private Vector3Int _CurrentPos = null;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"CurrentPos", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Vector3Int CurrentPos
+    {
+      get { return _CurrentPos; }
+      set { _CurrentPos = value; }
+    }
+    private Vector3Int _TargetPos = null;
+    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"TargetPos", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Vector3Int TargetPos
+    {
+      get { return _TargetPos; }
+      set { _TargetPos = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"FightRpcUsePetSkillReply")]
+  public partial class FightRpcUsePetSkillReply : global::ProtoBuf.IExtensible
+  {
+    public FightRpcUsePetSkillReply() {}
+    
+    private int _Result = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"FightRpcRemoveModifySkillNotify")]
+  public partial class FightRpcRemoveModifySkillNotify : global::ProtoBuf.IExtensible
+  {
+    public FightRpcRemoveModifySkillNotify() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"FightRpcLinkMagicActionNotify")]
+  public partial class FightRpcLinkMagicActionNotify : global::ProtoBuf.IExtensible
+  {
+    public FightRpcLinkMagicActionNotify() {}
+    
+    private ulong _ObjId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ObjId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong ObjId
+    {
+      get { return _ObjId; }
+      set { _ObjId = value; }
+    }
+    private ulong _LinkerId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"LinkerId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong LinkerId
+    {
+      get { return _LinkerId; }
+      set { _LinkerId = value; }
+    }
+    private int _AttackId = (int)-1;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"AttackId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int AttackId
+    {
+      get { return _AttackId; }
+      set { _AttackId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"FightRpcMonsterInteractAsk")]
+  public partial class FightRpcMonsterInteractAsk : global::ProtoBuf.IExtensible
+  {
+    public FightRpcMonsterInteractAsk() {}
+    
+    private ulong _TargetId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"TargetId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong TargetId
+    {
+      get { return _TargetId; }
+      set { _TargetId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"FightRpcMonsterInteractReply")]
+  public partial class FightRpcMonsterInteractReply : global::ProtoBuf.IExtensible
+  {
+    public FightRpcMonsterInteractReply() {}
+    
+    private int _Result = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

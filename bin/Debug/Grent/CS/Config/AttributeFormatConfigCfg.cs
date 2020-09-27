@@ -10,11 +10,17 @@ using System.Collections.Generic;
 public class AttributeFormatConfigElement
 {
 	public int id;               	//ID	添加需要 通知程序
-	public string name;          	//属性中文名	仅策划用
 	public int nameid;           	//属性名称ID	属性名称ID
+	public int type;             	//属性显示	0：显示数字 1：显示百分比
 	public string des;           	//属性说明	仅策划用
 	public int desid;            	//属性说明ID	属性说明ID
-	public lf weight;            	//战力权重	格式=[参数1,参数2] 战力等于=[参数2/参数1]
+	public lf weight;            	//战力权重	战力=[计算单位|战力权重]
+	public string refine_name;   	//洗练名称	对应该属性在装备后缀表的字段名
+	public int attr_type;        	//属性类型	0.一级属性 1.二级属性 2.其他
+	public int attack_type;      	//属性的攻击类型	0.物理属性 1.魔法属性 2.通用
+	public int basic_display;    	//基础界面显示	0.不显示 >0.显示，并表示其优先级（数字大优先高） （同优先级按id顺序显示）
+	public int total_display;    	//完整界面显示	0.不显示 >0.显示，并表示其优先级（数字大优先高） （同优先级按id顺序显示）
+	public int total_category;   	//完整界面分类	对应AttributeCatagory表的某一条
 
 	public bool IsValidate = false;
 	public AttributeFormatConfigElement()
@@ -107,27 +113,39 @@ public class AttributeFormatConfigTable
             vecLine.Add(tmpStr);
             vecHeadType.Add(tmpInt);
 		}
-		if(vecLine.Count != 6)
+		if(vecLine.Count != 12)
 		{
 			Ex.Logger.Log("AttributeFormatConfig.csv中列数量与生成的代码不匹配!");
 			return false;
 		}
 		if(vecLine[0]!="id"){Ex.Logger.Log("AttributeFormatConfig.csv中字段[id]位置不对应"); return false; }
-		if(vecLine[1]!="name"){Ex.Logger.Log("AttributeFormatConfig.csv中字段[name]位置不对应"); return false; }
-		if(vecLine[2]!="nameid"){Ex.Logger.Log("AttributeFormatConfig.csv中字段[nameid]位置不对应"); return false; }
+		if(vecLine[1]!="nameid"){Ex.Logger.Log("AttributeFormatConfig.csv中字段[nameid]位置不对应"); return false; }
+		if(vecLine[2]!="type"){Ex.Logger.Log("AttributeFormatConfig.csv中字段[type]位置不对应"); return false; }
 		if(vecLine[3]!="des"){Ex.Logger.Log("AttributeFormatConfig.csv中字段[des]位置不对应"); return false; }
 		if(vecLine[4]!="desid"){Ex.Logger.Log("AttributeFormatConfig.csv中字段[desid]位置不对应"); return false; }
 		if(vecLine[5]!="weight"){Ex.Logger.Log("AttributeFormatConfig.csv中字段[weight]位置不对应"); return false; }
+		if(vecLine[6]!="refine_name"){Ex.Logger.Log("AttributeFormatConfig.csv中字段[refine_name]位置不对应"); return false; }
+		if(vecLine[7]!="attr_type"){Ex.Logger.Log("AttributeFormatConfig.csv中字段[attr_type]位置不对应"); return false; }
+		if(vecLine[8]!="attack_type"){Ex.Logger.Log("AttributeFormatConfig.csv中字段[attack_type]位置不对应"); return false; }
+		if(vecLine[9]!="basic_display"){Ex.Logger.Log("AttributeFormatConfig.csv中字段[basic_display]位置不对应"); return false; }
+		if(vecLine[10]!="total_display"){Ex.Logger.Log("AttributeFormatConfig.csv中字段[total_display]位置不对应"); return false; }
+		if(vecLine[11]!="total_category"){Ex.Logger.Log("AttributeFormatConfig.csv中字段[total_category]位置不对应"); return false; }
 
 		for(int i=0; i<nRow; i++)
 		{
 			AttributeFormatConfigElement member = new AttributeFormatConfigElement();
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.id );
-			readPos += GameAssist.ReadString( binContent, readPos, out member.name);
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.nameid );
+			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.type );
 			readPos += GameAssist.ReadString( binContent, readPos, out member.des);
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.desid );
 			readPos += GameAssist.ReadString( binContent, readPos, out member.weight);
+			readPos += GameAssist.ReadString( binContent, readPos, out member.refine_name);
+			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.attr_type );
+			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.attack_type );
+			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.basic_display );
+			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.total_display );
+			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.total_category );
 
 			member.IsValidate = true;
 			m_vecAllElements.Add(member);
@@ -144,34 +162,46 @@ public class AttributeFormatConfigTable
 		int contentOffset = 0;
 		List<string> vecLine;
 		vecLine = GameAssist.readCsvLine( strContent, ref contentOffset );
-		if(vecLine.Count != 6)
+		if(vecLine.Count != 12)
 		{
 			Ex.Logger.Log("AttributeFormatConfig.csv中列数量与生成的代码不匹配!");
 			return false;
 		}
 		if(vecLine[0]!="id"){Ex.Logger.Log("AttributeFormatConfig.csv中字段[id]位置不对应"); return false; }
-		if(vecLine[1]!="name"){Ex.Logger.Log("AttributeFormatConfig.csv中字段[name]位置不对应"); return false; }
-		if(vecLine[2]!="nameid"){Ex.Logger.Log("AttributeFormatConfig.csv中字段[nameid]位置不对应"); return false; }
+		if(vecLine[1]!="nameid"){Ex.Logger.Log("AttributeFormatConfig.csv中字段[nameid]位置不对应"); return false; }
+		if(vecLine[2]!="type"){Ex.Logger.Log("AttributeFormatConfig.csv中字段[type]位置不对应"); return false; }
 		if(vecLine[3]!="des"){Ex.Logger.Log("AttributeFormatConfig.csv中字段[des]位置不对应"); return false; }
 		if(vecLine[4]!="desid"){Ex.Logger.Log("AttributeFormatConfig.csv中字段[desid]位置不对应"); return false; }
 		if(vecLine[5]!="weight"){Ex.Logger.Log("AttributeFormatConfig.csv中字段[weight]位置不对应"); return false; }
+		if(vecLine[6]!="refine_name"){Ex.Logger.Log("AttributeFormatConfig.csv中字段[refine_name]位置不对应"); return false; }
+		if(vecLine[7]!="attr_type"){Ex.Logger.Log("AttributeFormatConfig.csv中字段[attr_type]位置不对应"); return false; }
+		if(vecLine[8]!="attack_type"){Ex.Logger.Log("AttributeFormatConfig.csv中字段[attack_type]位置不对应"); return false; }
+		if(vecLine[9]!="basic_display"){Ex.Logger.Log("AttributeFormatConfig.csv中字段[basic_display]位置不对应"); return false; }
+		if(vecLine[10]!="total_display"){Ex.Logger.Log("AttributeFormatConfig.csv中字段[total_display]位置不对应"); return false; }
+		if(vecLine[11]!="total_category"){Ex.Logger.Log("AttributeFormatConfig.csv中字段[total_category]位置不对应"); return false; }
 
 		while(true)
 		{
 			vecLine = GameAssist.readCsvLine( strContent, ref contentOffset );
 			if((int)vecLine.Count == 0 )
 				break;
-			if((int)vecLine.Count != (int)6)
+			if((int)vecLine.Count != (int)12)
 			{
 				return false;
 			}
 			AttributeFormatConfigElement member = new AttributeFormatConfigElement();
 			member.id=Convert.ToInt32(vecLine[0]);
-			member.name=vecLine[1];
-			member.nameid=Convert.ToInt32(vecLine[2]);
+			member.nameid=Convert.ToInt32(vecLine[1]);
+			member.type=Convert.ToInt32(vecLine[2]);
 			member.des=vecLine[3];
 			member.desid=Convert.ToInt32(vecLine[4]);
 			member.weight=vecLine[5];
+			member.refine_name=vecLine[6];
+			member.attr_type=Convert.ToInt32(vecLine[7]);
+			member.attack_type=Convert.ToInt32(vecLine[8]);
+			member.basic_display=Convert.ToInt32(vecLine[9]);
+			member.total_display=Convert.ToInt32(vecLine[10]);
+			member.total_category=Convert.ToInt32(vecLine[11]);
 
 			member.IsValidate = true;
 			m_vecAllElements.Add(member);

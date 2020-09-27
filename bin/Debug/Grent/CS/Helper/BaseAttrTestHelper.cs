@@ -15,6 +15,7 @@ public class BaseAttrRpcSyncDataAskWraperHelper
 [System.Serializable]
 public class BaseAttrRpcSyncNotifyWraperHelper
 {
+	public UInt64 ObjId;
 	public byte[] UpdateData;
 }
 

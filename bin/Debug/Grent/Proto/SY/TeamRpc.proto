@@ -1,28 +1,13 @@
 message  TeamRpcCreateTeamAsk
 {
-	optional sint32 TeamType = 2[default=-1];
+	optional int32 TeamType = 2;
+	optional TeamTarget TTarget = 6;
 
 }
 
 message  TeamRpcCreateTeamReply
 {
-	optional sint32 Result = 1[default=-9999];
-	optional TeamInfo Team = 2;
-
-}
-
-message  TeamRpcJoinTeamAsk
-{
-	optional sint32 TeamId = 1[default=-1];
-	optional sint32 TeamType = 2[default=-1];
-	optional TeamInfo Team = 3;
-	optional TeamMemberInfo TeamMember = 4;
-
-}
-
-message  TeamRpcJoinTeamReply
-{
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 	optional TeamInfo Team = 2;
 
 }
@@ -34,7 +19,7 @@ message  TeamRpcLeaveTeamAsk
 
 message  TeamRpcLeaveTeamReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 
 }
 
@@ -46,7 +31,7 @@ message  TeamRpcAppointTeamLeaderAsk
 
 message  TeamRpcAppointTeamLeaderReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 	optional uint64 NewLeaderId = 2[default=0];
 
 }
@@ -65,7 +50,7 @@ message  TeamRpcKickMemberAsk
 
 message  TeamRpcKickMemberReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 
 }
 
@@ -76,7 +61,7 @@ message  TeamRpcDissmissTeamAsk
 
 message  TeamRpcDissmissTeamReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 
 }
 
@@ -101,6 +86,7 @@ message  TeamRpcLeaveTeamNotifyNotify
 message  TeamRpcJoinTeamNotifyNotify
 {
 	optional TeamMemberInfo TeamMember = 1;
+	optional TeamInfo Team = 2;
 
 }
 
@@ -111,26 +97,30 @@ message  TeamRpcDissmissTeamNotifyNotify
 
 message  TeamRpcSurroundingTeamAsk
 {
+	optional int32 TargetGroupId = 2;
+	optional int32 TargetGroup = 3;
 
 }
 
 message  TeamRpcSurroundingTeamReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 	repeated TeamInfo TeamsInfo = 2;
+	optional int32 TargetGroupId = 5;
+	optional int32 TargetGroup = 6;
 
 }
 
 message  TeamRpcApplyTeamAsk
 {
-	optional sint32 TeamId = 1[default=-1];
+	optional uint64 TeamId = 1[default=0];
 
 }
 
 message  TeamRpcApplyTeamReply
 {
-	optional sint32 Result = 1[default=-9999];
-	optional sint32 TeamId = 2[default=-1];
+	optional int32 Result = 1;
+	optional uint64 TeamId = 2[default=0];
 
 }
 
@@ -148,7 +138,7 @@ message  TeamRpcAgreeApplicantAsk
 
 message  TeamRpcAgreeApplicantReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 
 }
 
@@ -161,12 +151,404 @@ message  TeamRpcAgreeApplicantNotifyNotify
 message  TeamRpcTeamInfoNotify
 {
 	optional TeamInfo Team = 1;
+	optional int32 FollowTeamLeader = 2;
 
 }
 
 message  TeamRpcUpdateTeamMemInfoNotify
 {
 	optional TeamMemberInfo TeamMember = 1;
+
+}
+
+message  TeamRpcFollowTeamLeaderAsk
+{
+	optional int32 FollowTeamLeader = 1;
+
+}
+
+message  TeamRpcFollowTeamLeaderReply
+{
+	optional int32 Result = 1;
+	optional int32 FollowTeamLeader = 2;
+
+}
+
+message  TeamRpcSummonMemberAsk
+{
+
+}
+
+message  TeamRpcSummonMemberReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  TeamRpcSummonMemberNotifyNotify
+{
+	optional int32 StringNoticeId = 1;
+
+}
+
+message  TeamRpcChangeTeamTargetReply
+{
+	optional int32 Result = 1;
+	optional TeamTarget TeamTarget = 2;
+
+}
+
+message  TeamRpcChangeTeamTargetAsk
+{
+	optional TeamTarget Target = 6;
+
+}
+
+message  TeamRpcChangeTeamTargetNotifyNotify
+{
+	optional TeamTarget TeamTarget = 1;
+
+}
+
+message  TeamRpcChangTeamTypeAsk
+{
+	optional int32 TeamType = 1;
+
+}
+
+message  TeamRpcChangTeamTypeReply
+{
+	optional int32 Result = 1;
+	optional int32 TeamType = 2;
+	optional TeamTarget TeamTarget = 3;
+
+}
+
+message  TeamRpcChangeTeamTypeNotifyNotify
+{
+	optional int32 TeamType = 1;
+	optional TeamTarget TeamTarget = 2;
+
+}
+
+message  TeamRpcInviteTeamMemberAsk
+{
+	repeated uint64 RoleId = 1;
+
+}
+
+message  TeamRpcInviteTeamMemberReply
+{
+	optional int32 Result = 1;
+	repeated uint64 RoleId = 2;
+
+}
+
+message  TeamRpcInviteTeamMemberNotifyNotify
+{
+	optional uint64 TeamId = 1[default=0];
+	optional int32 IsLeader = 5;
+	optional TeamMemberInfo InviteMemberInfo = 6;
+
+}
+
+message  TeamRpcApplyListNotifyNotify
+{
+	repeated TeamMemberInfo ApplyList = 1;
+
+}
+
+message  TeamRpcAgreeJoinTeamAsk
+{
+	optional uint64 TeamId = 1[default=0];
+	optional int32 IsLeader = 2;
+
+}
+
+message  TeamRpcAgreeJoinTeamReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  TeamRpcRefuseMemberAsk
+{
+	optional uint64 RoleId = 1[default=0];
+
+}
+
+message  TeamRpcRefuseMemberReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  TeamRpcClearApplyListReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  TeamRpcClearApplyListAsk
+{
+
+}
+
+message  TeamRpcNoTeamInviteAsk
+{
+	optional int32 TeamType = 1;
+	optional TeamTarget TTarget = 2;
+	optional uint64 InviteRoleId = 3[default=0];
+
+}
+
+message  TeamRpcNoTeamInviteReply
+{
+	optional int32 Result = 1;
+	optional TeamInfo Team = 2;
+
+}
+
+message  TeamRpcRejectInviteAsk
+{
+	optional uint64 RoleId = 3[default=0];
+	optional string Name = 4;
+
+}
+
+message  TeamRpcRejectInviteReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  TeamRpcEnterAutoCombatNotify
+{
+
+}
+
+message  TeamRpcHangUpAutoCombatNotify
+{
+
+}
+
+message  TeamRpcUpdateTeamHpInfoNotify
+{
+	optional TeamMemberHpInfo Member = 1;
+
+}
+
+message  TeamRpcUpdateTeamPosInfoNotify
+{
+	optional TeamMemberPos Member = 1;
+
+}
+
+message  TeamRpcUpdateTeamBuffInfoNotify
+{
+	optional TeanMemberBuff Member = 1;
+
+}
+
+message  TeamRpcHangeUpFollowAsk
+{
+
+}
+
+message  TeamRpcHangeUpFollowReply
+{
+	optional int32 Result = 1;
+	optional int32 FollowStatus = 2;
+
+}
+
+message  TeamRpcGoOnFollowAsk
+{
+
+}
+
+message  TeamRpcGoOnFollowReply
+{
+	optional int32 Result = 1;
+	optional int32 FollowStatus = 2;
+
+}
+
+message  TeamRpcUpdateFollowStatusNotify
+{
+	optional int32 FollowStatus = 1;
+
+}
+
+message  TeamRpcRequestNoTeamMemberListAsk
+{
+	optional int32 RequestType = 1;
+
+}
+
+message  TeamRpcRequestNoTeamMemberListReply
+{
+	optional int32 Result = 1;
+	optional int32 RequestType = 2;
+	repeated TeamMemberInfo MemberList = 3;
+
+}
+
+message  TeamRpcEnterTeamFollowNotify
+{
+
+}
+
+message  TeamRpcEnterLeaderSceneAsk
+{
+
+}
+
+message  TeamRpcEnterLeaderSceneReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  TeamTarget
+{
+	optional int32 Id = 1[default=0];
+	optional int32 MinLevel = 2[default=0];
+	optional int32 MaxLevel = 3[default=0];
+	repeated TeamProfessionTarget Profession = 4;
+	optional int32 TargetType = 5[default=0];
+
+}
+
+message  TeamInfo
+{
+	repeated TeamMemberInfo Members = 1;
+	optional uint64 LeaderRoleId = 2[default=0];
+	optional uint64 TeamId = 3[default=0];
+	optional int32 TeamType = 4[default=-1];
+	optional TeamTarget TeamTarget = 5;
+
+}
+
+message  TeamMemberInfo
+{
+	optional uint64 RoleId = 1[default=0];
+	optional int32 Level = 3[default=0];
+	optional string Name = 4;
+	optional int32 ConfigId = 5[default=-1];
+	optional int32 Hp = 6[default=-1];
+	optional int32 Status = 8[default=-1];
+	optional int64 MaxHp = 11[default=-1];
+	optional CharacterLocation Location = 15;
+	optional int32 ProfessionId = 16[default=-1];
+	optional int32 OnLine = 17[default=1];
+	optional int32 FollowTeam = 18[default=-1];
+	repeated int32 BuffIdList = 19;
+	optional bool Robot = 20[default=false];
+	optional int32 Camp = 21[default=-1];
+	optional uint64 GuildGuid = 22[default=0];
+	optional int32 BattleScore = 23[default=-1];
+	optional TreasureEquipedID Treasureinfo = 24;
+	optional uint64 GhostGuid = 25[default=0];
+	optional int32 Occupation = 26[default=-1];
+	optional PinchFaceData PinchData = 27;
+	optional int64 WillLeaveTime = 28[default=0];
+	optional int64 LastLogoutTime = 29[default=-1];
+
+}
+
+message  TeamMemberHpInfo
+{
+	optional int32 Hp = 1[default=-1];
+	optional int64 MaxHp = 3[default=-1];
+	optional uint64 RoleId = 4[default=0];
+
+}
+
+message  TeamMemberPos
+{
+	optional Vector3 Pos = 1;
+	optional uint64 RoleId = 2[default=0];
+
+}
+
+message  TeanMemberBuff
+{
+	optional uint64 RoleId = 1[default=0];
+	repeated int32 BuffIdList = 2;
+
+}
+
+message  TeamProfessionTarget
+{
+	optional int32 ProfessionId = 1[default=-1];
+	optional int32 Size = 2[default=-1];
+
+}
+
+message  CharacterLocation
+{
+	optional int32 SceneId = 2[default=-1];
+	optional Vector3 Pos = 3;
+	optional int32 MapId = 5[default=-1];
+	optional int32 DungeonConfigId = 6[default=-1];
+	optional int32 LineId = 7[default=-1];
+	optional int32 SceneConfigId = 8[default=-1];
+	optional int32 MirrorId = 9[default=-1];
+	optional int32 ServerId = 10[default=-1];
+
+}
+
+message  Vector3
+{
+	optional float X = 1[default=-1];
+	optional float Y = 2[default=-1];
+	optional float Z = 3[default=-1];
+
+}
+
+message  TreasureEquipedID
+{
+	optional int32 TreasureHair = 1[default=-1];
+	optional int32 TreasureHead = 2[default=-1];
+	optional int32 TreasureBody = 3[default=-1];
+	optional int32 TreasureWeapon = 4[default=-1];
+	optional int32 TreasureWing = 5[default=-1];
+	optional int32 TreasureRiding = 6[default=-1];
+	optional int32 TreasureFootPrint = 7[default=-1];
+	optional int32 EquipHair = 8[default=-1];
+	optional int32 EquipHead = 9[default=-1];
+	optional int32 EquipBody = 10[default=-1];
+	optional int32 EquipWeapon = 11[default=-1];
+	optional bool Headdisplayswitch = 12[default=true];
+	optional bool Fashiondisplayswitch = 13[default=true];
+	optional int32 InitHair = 14[default=-1];
+	optional int32 InitHead = 15[default=-1];
+	optional int32 InitBody = 16[default=-1];
+	optional int32 InitWeapon = 17[default=-1];
+
+}
+
+message  PinchFaceData
+{
+	repeated PinchFaceBase DataInfo = 1;
+
+}
+
+message  PinchFaceBase
+{
+	optional int32 Id = 1[default=-1];
+	optional float Value = 2[default=-1];
+	optional Color Color = 4;
+
+}
+
+message  Color
+{
+	optional float R = 1[default=-1];
+	optional float G = 2[default=-1];
+	optional float B = 3[default=-1];
+	optional float A = 4[default=-1];
 
 }
 

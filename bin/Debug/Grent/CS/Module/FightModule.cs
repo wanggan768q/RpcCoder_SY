@@ -31,6 +31,29 @@ public class FightRPC
 	public const int RPC_CODE_FIGHT_HPCHANGEACTION_NOTIFY = 959;
 	public const int RPC_CODE_FIGHT_USESKILL_REQUEST = 960;
 	public const int RPC_CODE_FIGHT_HURTACTION_NOTIFY = 961;
+	public const int RPC_CODE_FIGHT_REPELACTION_NOTIFY = 962;
+	public const int RPC_CODE_FIGHT_OBJDEADACTION_NOTIFY = 963;
+	public const int RPC_CODE_FIGHT_FIGHTTIPS_NOTIFY = 964;
+	public const int RPC_CODE_FIGHT_BUFFLIST_NOTIFY = 965;
+	public const int RPC_CODE_FIGHT_REDUCECD_NOTIFY = 966;
+	public const int RPC_CODE_FIGHT_RELIVENOTIFY_NOTIFY = 967;
+	public const int RPC_CODE_FIGHT_SKILLCD_NOTIFY = 968;
+	public const int RPC_CODE_FIGHT_AUTOCOMBATMONSTER_NOTIFY = 969;
+	public const int RPC_CODE_FIGHT_TRANSLATEACTION_NOTIFY = 970;
+	public const int RPC_CODE_FIGHT_CANTADDBUFFTIP_NOTIFY = 971;
+	public const int RPC_CODE_FIGHT_ATTACKWARNING_NOTIFY = 972;
+	public const int RPC_CODE_FIGHT_INTERRUPTACTION_NOTIFY = 973;
+	public const int RPC_CODE_FIGHT_SKILLPREPARE_REQUEST = 974;
+	public const int RPC_CODE_FIGHT_SKILLPREPAREACTION_NOTIFY = 975;
+	public const int RPC_CODE_FIGHT_CHAINMAGICJUMP_NOTIFY = 976;
+	public const int RPC_CODE_FIGHT_BLACKHOLEACTION_NOTIFY = 977;
+	public const int RPC_CODE_FIGHT_LOOPACTIONCANCEL_REQUEST = 978;
+	public const int RPC_CODE_FIGHT_LOOPACTIONCANCELOTHER_NOTIFY = 979;
+	public const int RPC_CODE_FIGHT_SKILLLIST_NOTIFY = 980;
+	public const int RPC_CODE_FIGHT_USEPETSKILL_REQUEST = 981;
+	public const int RPC_CODE_FIGHT_REMOVEMODIFYSKILL_NOTIFY = 982;
+	public const int RPC_CODE_FIGHT_LINKMAGICACTION_NOTIFY = 983;
+	public const int RPC_CODE_FIGHT_MONSTERINTERACT_REQUEST = 984;
 
 	
 	private static FightRPC m_Instance = null;
@@ -63,6 +86,25 @@ public class FightRPC
 		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_FIGHT_USEITEMACTION_NOTIFY, UseItemActionCB);
 		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_FIGHT_HPCHANGEACTION_NOTIFY, HpChangeActionCB);
 		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_FIGHT_HURTACTION_NOTIFY, HurtActionCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_FIGHT_REPELACTION_NOTIFY, RepelActionCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_FIGHT_OBJDEADACTION_NOTIFY, ObjDeadActionCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_FIGHT_FIGHTTIPS_NOTIFY, FightTipsCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_FIGHT_BUFFLIST_NOTIFY, BuffListCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_FIGHT_REDUCECD_NOTIFY, ReduceCDCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_FIGHT_RELIVENOTIFY_NOTIFY, ReliveNotifyCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_FIGHT_SKILLCD_NOTIFY, SkillCDCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_FIGHT_AUTOCOMBATMONSTER_NOTIFY, AutoCombatMonsterCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_FIGHT_TRANSLATEACTION_NOTIFY, TranslateActionCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_FIGHT_CANTADDBUFFTIP_NOTIFY, CantAddBuffTipCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_FIGHT_ATTACKWARNING_NOTIFY, AttackWarningCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_FIGHT_INTERRUPTACTION_NOTIFY, InterruptActionCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_FIGHT_SKILLPREPAREACTION_NOTIFY, SkillPrepareActionCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_FIGHT_CHAINMAGICJUMP_NOTIFY, ChainMagicJumpCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_FIGHT_BLACKHOLEACTION_NOTIFY, BlackHoleActionCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_FIGHT_LOOPACTIONCANCELOTHER_NOTIFY, LoopActionCancelOtherCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_FIGHT_SKILLLIST_NOTIFY, SkillListCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_FIGHT_REMOVEMODIFYSKILL_NOTIFY, RemoveModifySkillCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_FIGHT_LINKMAGICACTION_NOTIFY, LinkMagicActionCB);
 
 
 		return true;
@@ -72,22 +114,101 @@ public class FightRPC
 	/**
 	*战斗-->使用技能请求 RPC请求
 	*/
-	public void UseSkill(int ObjTargetId, int SkillId, float CastingDir, float X, float Y, float Z, int MomentIndex, ReplyHandler replyCB)
+	public void UseSkill(List<UInt64> ObjTargetId, int SkillId, float CastingDir, float X, float Y, float Z, int MomentIndex, CustomSkiDataWraper CustomSkiData, Vector3IntWraper CurrentPos, ReplyHandler replyCB)
 	{
 		FightRpcUseSkillAskWraper askPBWraper = new FightRpcUseSkillAskWraper();
-		askPBWraper.ObjTargetId = ObjTargetId;
+		askPBWraper.SetObjTargetId(ObjTargetId);
 		askPBWraper.SkillId = SkillId;
 		askPBWraper.CastingDir = CastingDir;
 		askPBWraper.X = X;
 		askPBWraper.Y = Y;
 		askPBWraper.Z = Z;
 		askPBWraper.MomentIndex = MomentIndex;
+		askPBWraper.CustomSkiData = CustomSkiData;
+		askPBWraper.CurrentPos = CurrentPos;
 		ModMessage askMsg = new ModMessage();
 		askMsg.MsgNum = RPC_CODE_FIGHT_USESKILL_REQUEST;
 		askMsg.protoMS = askPBWraper.ToMemoryStream();
 
 		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
 			FightRpcUseSkillReplyWraper replyPBWraper = new FightRpcUseSkillReplyWraper();
+			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
+			replyCB(replyPBWraper);
+		});
+	}
+
+	/**
+	*战斗-->技能蓄力请求 RPC请求
+	*/
+	public void SkillPrepare(int SkillId, int Type, ReplyHandler replyCB)
+	{
+		FightRpcSkillPrepareAskWraper askPBWraper = new FightRpcSkillPrepareAskWraper();
+		askPBWraper.SkillId = SkillId;
+		askPBWraper.Type = Type;
+		ModMessage askMsg = new ModMessage();
+		askMsg.MsgNum = RPC_CODE_FIGHT_SKILLPREPARE_REQUEST;
+		askMsg.protoMS = askPBWraper.ToMemoryStream();
+
+		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
+			FightRpcSkillPrepareReplyWraper replyPBWraper = new FightRpcSkillPrepareReplyWraper();
+			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
+			replyCB(replyPBWraper);
+		});
+	}
+
+	/**
+	*战斗-->循环动作取消 RPC请求
+	*/
+	public void LoopActionCancel(int SkillId, ReplyHandler replyCB)
+	{
+		FightRpcLoopActionCancelAskWraper askPBWraper = new FightRpcLoopActionCancelAskWraper();
+		askPBWraper.SkillId = SkillId;
+		ModMessage askMsg = new ModMessage();
+		askMsg.MsgNum = RPC_CODE_FIGHT_LOOPACTIONCANCEL_REQUEST;
+		askMsg.protoMS = askPBWraper.ToMemoryStream();
+
+		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
+			FightRpcLoopActionCancelReplyWraper replyPBWraper = new FightRpcLoopActionCancelReplyWraper();
+			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
+			replyCB(replyPBWraper);
+		});
+	}
+
+	/**
+	*战斗-->使用宠物技能 RPC请求
+	*/
+	public void UsePetSkill(List<UInt64> ObjTargetId, int SkillId, float CastingDir, Vector3IntWraper CurrentPos, Vector3IntWraper TargetPos, ReplyHandler replyCB)
+	{
+		FightRpcUsePetSkillAskWraper askPBWraper = new FightRpcUsePetSkillAskWraper();
+		askPBWraper.SetObjTargetId(ObjTargetId);
+		askPBWraper.SkillId = SkillId;
+		askPBWraper.CastingDir = CastingDir;
+		askPBWraper.CurrentPos = CurrentPos;
+		askPBWraper.TargetPos = TargetPos;
+		ModMessage askMsg = new ModMessage();
+		askMsg.MsgNum = RPC_CODE_FIGHT_USEPETSKILL_REQUEST;
+		askMsg.protoMS = askPBWraper.ToMemoryStream();
+
+		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
+			FightRpcUsePetSkillReplyWraper replyPBWraper = new FightRpcUsePetSkillReplyWraper();
+			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
+			replyCB(replyPBWraper);
+		});
+	}
+
+	/**
+	*战斗-->怪物交互 RPC请求
+	*/
+	public void MonsterInteract(UInt64 TargetId, ReplyHandler replyCB)
+	{
+		FightRpcMonsterInteractAskWraper askPBWraper = new FightRpcMonsterInteractAskWraper();
+		askPBWraper.TargetId = TargetId;
+		ModMessage askMsg = new ModMessage();
+		askMsg.MsgNum = RPC_CODE_FIGHT_MONSTERINTERACT_REQUEST;
+		askMsg.protoMS = askPBWraper.ToMemoryStream();
+
+		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
+			FightRpcMonsterInteractReplyWraper replyPBWraper = new FightRpcMonsterInteractReplyWraper();
 			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
 			replyCB(replyPBWraper);
 		});
@@ -204,6 +325,215 @@ public class FightRPC
 			HurtActionCBDelegate( notifyPBWraper );
 	}
 	public static ServerNotifyCallback HurtActionCBDelegate = null;
+	/**
+	*战斗-->战斗击 退、飞、撞、拉 通知 服务器通知回调
+	*/
+	public static void RepelActionCB( ModMessage notifyMsg )
+	{
+		FightRpcRepelActionNotifyWraper notifyPBWraper = new FightRpcRepelActionNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( RepelActionCBDelegate != null )
+			RepelActionCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback RepelActionCBDelegate = null;
+	/**
+	*战斗-->obj死亡通知 服务器通知回调
+	*/
+	public static void ObjDeadActionCB( ModMessage notifyMsg )
+	{
+		FightRpcObjDeadActionNotifyWraper notifyPBWraper = new FightRpcObjDeadActionNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( ObjDeadActionCBDelegate != null )
+			ObjDeadActionCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback ObjDeadActionCBDelegate = null;
+	/**
+	*战斗-->战斗辅助tips 服务器通知回调
+	*/
+	public static void FightTipsCB( ModMessage notifyMsg )
+	{
+		FightRpcFightTipsNotifyWraper notifyPBWraper = new FightRpcFightTipsNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( FightTipsCBDelegate != null )
+			FightTipsCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback FightTipsCBDelegate = null;
+	/**
+	*战斗-->BuffList 服务器通知回调
+	*/
+	public static void BuffListCB( ModMessage notifyMsg )
+	{
+		FightRpcBuffListNotifyWraper notifyPBWraper = new FightRpcBuffListNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( BuffListCBDelegate != null )
+			BuffListCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback BuffListCBDelegate = null;
+	/**
+	*战斗-->减少cd 服务器通知回调
+	*/
+	public static void ReduceCDCB( ModMessage notifyMsg )
+	{
+		FightRpcReduceCDNotifyWraper notifyPBWraper = new FightRpcReduceCDNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( ReduceCDCBDelegate != null )
+			ReduceCDCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback ReduceCDCBDelegate = null;
+	/**
+	*战斗-->复活通知 服务器通知回调
+	*/
+	public static void ReliveNotifyCB( ModMessage notifyMsg )
+	{
+		FightRpcReliveNotifyNotifyWraper notifyPBWraper = new FightRpcReliveNotifyNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( ReliveNotifyCBDelegate != null )
+			ReliveNotifyCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback ReliveNotifyCBDelegate = null;
+	/**
+	*战斗-->技能同步cd 服务器通知回调
+	*/
+	public static void SkillCDCB( ModMessage notifyMsg )
+	{
+		FightRpcSkillCDNotifyWraper notifyPBWraper = new FightRpcSkillCDNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( SkillCDCBDelegate != null )
+			SkillCDCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback SkillCDCBDelegate = null;
+	/**
+	*战斗-->自动杀怪 服务器通知回调
+	*/
+	public static void AutoCombatMonsterCB( ModMessage notifyMsg )
+	{
+		FightRpcAutoCombatMonsterNotifyWraper notifyPBWraper = new FightRpcAutoCombatMonsterNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( AutoCombatMonsterCBDelegate != null )
+			AutoCombatMonsterCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback AutoCombatMonsterCBDelegate = null;
+	/**
+	*战斗-->战斗位移 服务器通知回调
+	*/
+	public static void TranslateActionCB( ModMessage notifyMsg )
+	{
+		FightRpcTranslateActionNotifyWraper notifyPBWraper = new FightRpcTranslateActionNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( TranslateActionCBDelegate != null )
+			TranslateActionCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback TranslateActionCBDelegate = null;
+	/**
+	*战斗-->添加buff失败提示 服务器通知回调
+	*/
+	public static void CantAddBuffTipCB( ModMessage notifyMsg )
+	{
+		FightRpcCantAddBuffTipNotifyWraper notifyPBWraper = new FightRpcCantAddBuffTipNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( CantAddBuffTipCBDelegate != null )
+			CantAddBuffTipCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback CantAddBuffTipCBDelegate = null;
+	/**
+	*战斗-->生成预警圈 服务器通知回调
+	*/
+	public static void AttackWarningCB( ModMessage notifyMsg )
+	{
+		FightRpcAttackWarningNotifyWraper notifyPBWraper = new FightRpcAttackWarningNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( AttackWarningCBDelegate != null )
+			AttackWarningCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback AttackWarningCBDelegate = null;
+	/**
+	*战斗-->技能打断事件 服务器通知回调
+	*/
+	public static void InterruptActionCB( ModMessage notifyMsg )
+	{
+		FightRpcInterruptActionNotifyWraper notifyPBWraper = new FightRpcInterruptActionNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( InterruptActionCBDelegate != null )
+			InterruptActionCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback InterruptActionCBDelegate = null;
+	/**
+	*战斗-->蓄力技能通知 服务器通知回调
+	*/
+	public static void SkillPrepareActionCB( ModMessage notifyMsg )
+	{
+		FightRpcSkillPrepareActionNotifyWraper notifyPBWraper = new FightRpcSkillPrepareActionNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( SkillPrepareActionCBDelegate != null )
+			SkillPrepareActionCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback SkillPrepareActionCBDelegate = null;
+	/**
+	*战斗-->链式法术跳跃 服务器通知回调
+	*/
+	public static void ChainMagicJumpCB( ModMessage notifyMsg )
+	{
+		FightRpcChainMagicJumpNotifyWraper notifyPBWraper = new FightRpcChainMagicJumpNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( ChainMagicJumpCBDelegate != null )
+			ChainMagicJumpCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback ChainMagicJumpCBDelegate = null;
+	/**
+	*战斗-->黑洞拉拽效果 服务器通知回调
+	*/
+	public static void BlackHoleActionCB( ModMessage notifyMsg )
+	{
+		FightRpcBlackHoleActionNotifyWraper notifyPBWraper = new FightRpcBlackHoleActionNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( BlackHoleActionCBDelegate != null )
+			BlackHoleActionCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback BlackHoleActionCBDelegate = null;
+	/**
+	*战斗-->循环动作取消广播 服务器通知回调
+	*/
+	public static void LoopActionCancelOtherCB( ModMessage notifyMsg )
+	{
+		FightRpcLoopActionCancelOtherNotifyWraper notifyPBWraper = new FightRpcLoopActionCancelOtherNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( LoopActionCancelOtherCBDelegate != null )
+			LoopActionCancelOtherCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback LoopActionCancelOtherCBDelegate = null;
+	/**
+	*战斗-->SkillList 服务器通知回调
+	*/
+	public static void SkillListCB( ModMessage notifyMsg )
+	{
+		FightRpcSkillListNotifyWraper notifyPBWraper = new FightRpcSkillListNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( SkillListCBDelegate != null )
+			SkillListCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback SkillListCBDelegate = null;
+	/**
+	*战斗-->RemoveModifySkill 服务器通知回调
+	*/
+	public static void RemoveModifySkillCB( ModMessage notifyMsg )
+	{
+		FightRpcRemoveModifySkillNotifyWraper notifyPBWraper = new FightRpcRemoveModifySkillNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( RemoveModifySkillCBDelegate != null )
+			RemoveModifySkillCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback RemoveModifySkillCBDelegate = null;
+	/**
+	*战斗-->链接magic效果 服务器通知回调
+	*/
+	public static void LinkMagicActionCB( ModMessage notifyMsg )
+	{
+		FightRpcLinkMagicActionNotifyWraper notifyPBWraper = new FightRpcLinkMagicActionNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( LinkMagicActionCBDelegate != null )
+			LinkMagicActionCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback LinkMagicActionCBDelegate = null;
 
 
 

@@ -21,10 +21,11 @@
 
 
 #include "PacketFactory.h"
-#include "include/PacketMgr.h"
+#include "Game/PacketMgr.h"
 #include "WGRpc.pb.h"
 #include <memory>
-
+#include <vector>
+#include <functional>
 
 
 
@@ -43,24 +44,23 @@ public:
 	enum ConstWGE
 	{
 	MODULE_ID_WG                                 = 11,	//WG模块ID
-	RPC_CODE_WG_INFORMCREATETEAM_REQUEST         = 1151,	//WG-->InformCreateTeam-->请求
-	RPC_CODE_WG_INFORMJOINTEAM_REQUEST           = 1152,	//WG-->InformJoinTeam-->请求
-	RPC_CODE_WG_INFORMLEAVE_REQUEST              = 1153,	//WG-->InformLeave-->请求
-	RPC_CODE_WG_INFORMAPPOINTTEAMLEADER_REQUEST  = 1154,	//WG-->InformAppointTeamLeader-->请求
-	RPC_CODE_WG_INFORMKICKTEAMMEMBER_REQUEST     = 1155,	//WG-->InformKickTeamMember-->请求
-	RPC_CODE_WG_INFORMDISSMISSTEAM_REQUEST       = 1156,	//WG-->InformDissmissTeam-->请求
-	RPC_CODE_WG_INFORMAPPLYTEAM_REQUEST          = 1157,	//WG-->InformApply-->请求
-	RPC_CODE_WG_AGREETEAMAPPLICANT_REQUEST       = 1158,	//WG-->AgreeTeamApplicant-->请求
-	RPC_CODE_WG_INFORMLOGIN_REQUEST              = 1159,	//WG-->InformLogin-->请求
+	RPC_CODE_WG_INFORMJOINTEAM_REQUEST           = 1151,	//WG-->InformJoinTeam-->请求
+	RPC_CODE_WG_INFORMLEAVE_REQUEST              = 1152,	//WG-->InformLeave-->请求
+	RPC_CODE_WG_INFORMAPPOINTTEAMLEADER_REQUEST  = 1153,	//WG-->InformAppointTeamLeader-->请求
+	RPC_CODE_WG_INFORMKICKTEAMMEMBER_REQUEST     = 1154,	//WG-->InformKickTeamMember-->请求
+	RPC_CODE_WG_INFORMDISSMISSTEAM_REQUEST       = 1155,	//WG-->InformDissmissTeam-->请求
+	RPC_CODE_WG_INFORMAPPLYTEAM_REQUEST          = 1156,	//WG-->InformApply-->请求
+	RPC_CODE_WG_AGREETEAMAPPLICANT_REQUEST       = 1157,	//WG-->AgreeTeamApplicant-->请求
+	RPC_CODE_WG_INFORMLOGIN_REQUEST              = 1158,	//WG-->InformLogin-->请求
 
 	};
 
+	typedef std::function<bool()> ReloadCallback;
+	typedef std::vector<ReloadCallback> reload_vec_type;
 public:
 	//WG实现类构造函数
 	ModuleWG()
 	{
-	g_pPacketMgr->registerHandle(	RPC_CODE_WG_INFORMCREATETEAM_REQUEST, &ModuleWG::RpcInformCreateTeam);
-	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_WG_INFORMCREATETEAM_REQUEST, new Some_Factory<WGRpcInformCreateTeamAsk>());
 	g_pPacketMgr->registerHandle(	RPC_CODE_WG_INFORMJOINTEAM_REQUEST, &ModuleWG::RpcInformJoinTeam);
 	g_pPacketMgr->registerPacketFacotry(	RPC_CODE_WG_INFORMJOINTEAM_REQUEST, new Some_Factory<WGRpcInformJoinTeamAsk>());
 	g_pPacketMgr->registerHandle(	RPC_CODE_WG_INFORMLEAVE_REQUEST, &ModuleWG::RpcInformLeave);
@@ -84,25 +84,30 @@ public:
 	~ModuleWG(){}
 
 
-	static ModuleWG Instance()
+	static ModuleWG & Instance()
 	{
 		static ModuleWG sInstance;
 		return sInstance;
 	}
 	
 	bool Initialize();
+	bool Reinitialize();
 
+	void RegisterReLoadCb(const ReloadCallback &cb)
+	{
+		m_vReLoadCb.push_back(cb);
+	}
+	
+	bool OnLoad()
+	{
+		bool bRet = true;
+			for (auto it : m_vReLoadCb)
+		{
+			bRet &= it();
+		}
+		return bRet;
+	}
 public:
-	/********************************************************************************************
-	* Function:       RpcInformCreateTeam
-	* Description:    WG-->InformCreateTeam同步调用操作函数
-	* Input:          WGRpcInformCreateTeamAskWraper& Ask InformCreateTeam请求
-	* Output:         WGRpcInformCreateTeamReplyWraper& Reply InformCreateTeam回应
-	* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
-	*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
-	********************************************************************************************/
-	static int RpcInformCreateTeam( CPlayer* pPlayer, CPacket* pPacket );
-
 	/********************************************************************************************
 	* Function:       RpcInformJoinTeam
 	* Description:    WG-->InformJoinTeam同步调用操作函数
@@ -184,6 +189,7 @@ public:
 	static int RpcInformLogin( CPlayer* pPlayer, CPacket* pPacket );
 
 
+	reload_vec_type m_vReLoadCb;
 
 };
 

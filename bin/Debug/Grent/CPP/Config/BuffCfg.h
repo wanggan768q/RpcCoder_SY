@@ -1,19 +1,11 @@
 #ifndef __BUFF_CONFIG_H
 #define __BUFF_CONFIG_H
 
-#include "CommonDefine.h"
-#include "DK_Assertx.h"
+#include "BaseDef.h"
 
-#include <boost/property_tree/ptree.hpp>
-#include <boost/property_tree/json_parser.hpp>
-#include <boost/foreach.hpp>
-#include <boost/typeof/typeof.hpp>
 
-#include <vector>
-#include <string>
-#include <unordered_map>
+
 using namespace std;
-
 
 //效果配置数据结构
 struct BuffElement
@@ -21,216 +13,102 @@ struct BuffElement
 	friend class BuffTable;
 	int id;                      	//数据索引	数据索引
 	int buffID;                  	//对应的BuffID	仅程序用
+	string descPars;             	//参数说明	仅说明
 	string desc_type;            	//Buff效果	仅程序用
-	string desc;                 	//Buff名称	仅策划用
-	int oper;                    	//Buff关系	0=叠加 1=冲抵 2=免疫
-	int operPars;                	//关系参数	若叠加类=最大叠加次数
-	int overTimed;               	//是否持续Buff	0=非持续 1=持续
-	int continuance;             	//持续时间ms	非持续；无效：立即结算 持续；0：公式结算 持续；时间：时间结算
+	string comment;              	//备注	jius
+	int on_phase;                	//生效阶段	指buff对应阶段逻辑是否生效，二进制标志位，可拓展，无特殊需求需填全部生效:7 1：buff开始时生效 2：buff每次在间隔时间生效 4：buff结束时生效 如：7 = 1 + 2 + 4，buff从开始到每跳到结束全上一次，
+	int oper;                    	//Buff关系	0=叠加 1=冲抵 2=免疫 3=不同caster共存,相同caster叠加 4=不同caster免疫,相同caster叠加
+	int operPars;                	//关系参数	若叠加类=最大叠加次数（最小层数是1）
+	int overTimed;               	//是否持续Buff	0-非持续（BUFF会直接上身，1-持续（会走mutexID字段进行判断），若不需要判断BUFF组关系，在mutexID字段配置-1即可
+	int continuance;             	//持续时间ms	非持续；无效：立即结算 持续；0：公式结算 持续；时间：时间结算 持续：-1，永久
 	int interval;                	//间隔时间ms	间隔时间
 	int mutexID;                 	//Buff组ID	-1表示跟谁都不是一组的
-	string buffEffect;           	//buff特效	buff特效名称
-	int buffMount;               	//buff特效挂载点	所有部位数字0-19
+	int subMutexID;              	//副Buff组ID	当buff组ID一致，且组间关系是共存时，新旧buff判断该列的ID一致时，会按照该副buff组ID进行分组，按照优先级决定是否顶替，新buff优先级大于等于旧buff优先级时，才会顶替 平时无特殊需求的buff，该列填写-1
+	vector<string> buffEffect;   	//buff特效	buff特效名称，多个数据用“|”连接，无数据保持空值
+	vector<int> follow_rotation; 	//跟随旋转	数据对应buff特效的个数，特效是否跟随玩家旋转，若有多个特效资源，则用“|”连接 -1旋转 0不旋转
+	vector<int> buffMount;       	//buff特效挂载点	无数据保持空值，数据数量需要和buff特效个数一致，多个数据用“|”连接 所有部位数字0-20 0：左脚 1：右脚 2：左手 3：右手 4：头 5：胸部受击点 18：世界脚 19：世界胸 20：世界头 99:UI特效专用
+	vector<string> buffEndEffect;	//buff消失特效	buff消失特效名称，若有多个小时特效，则用“|”串联填写，无数据保持空值
+	vector<int> buffEndMount;    	//buff消失特效挂载点	所有部位数字0-20，99位UI特效专用，消失特效的挂点个数需要和buff消失特效数量一致，无数据保持空值
+	vector<int> buffEndEffectDuring;	//buff消失特效持续时间	buff消失时播放的特效持续的时间，单位：ms 数据个数需要和消失特效数量一致，无数据保持空值
 	int groupPriority;           	//组中优先级	0为最低
-	vector<int> pars;            	//参数	参数1
-	int is_tell_client;          	//是否告知客户端	0：否 1：是
+	vector<float> pars;          	//参数	具体参数说明见文档《BUFF系统》
+	vector<int> pars_2;          	//参数_2	特殊buff所需参数，可触发Buff的Buff类型ID
+	vector<string> pars_3;       	//参数_3	特殊buff所需字符串类型参数，具体填写规则见《BUFF系统》
+	int isDebuff;                	//是否减益	1：减益debuff 0：增益buff
+	int buff_delete;             	//buff删除时机	0：不删除 1：下线删除 2：场景删除 4：死亡删除 8：怪回归删除（仅对怪有效）
+	int displayPriority;         	//buff显示优先级	填写>=0整数，用于图标、特效等显示优先级，数字越大优先级越高
+	int buffNameId;              	//buff名称ID	对应stringBuff表中的文本ID
+	int specialBuffNameId;       	//计时buff简述特殊名称ID	对应stringBuff表中的文本ID
+	int descId;                  	//buff描述ID	对应stringBuff表中的文本ID
+	string iconName;             	//图标名称	图标名称
+	int is_broadcast;            	//是否广播消息	0：否 1：是 是否需要将buff消息进行广播。 有特效需要让所有人看见的话，则填1，否则填0
+	int is_tell_client;          	//是否告知客户端	0：否 1：是 需要显示受到图标、连击点、计时条等客户端需处理内容，则填1，否则填0（只修改属性，可填0）
+	int buff_show_rule;          	//buff显示规则	0：全部不显示 1：闲置 2：显示图标 4：显示计时条（前提是显示图标） 8：自然使专用BUFF 16：显示冒字 32：隐藏图标处时间 如：14=图标、计时条、自然使专用buff均显示
+	string script;               	//脚本路径	脚本路径
+	int performance_buff_id;     	//链接技能表现	连接技能表现表，给buff宿主加效果
+	int skill_slot_mod_id;       	//技能槽修改技能效果id	填写《SkillValueMod_技能数值成长表》中的ID
+	int is_ignore_res;           	//是否忽略抗性属性计算	1：上buff时，忽略抗性属性计算 0：上buff时，先计算抗性属性 默认填0，当前已有抗性属性：眩晕、冰冻、击飞、定身、净化、驱散、沉默、打断、禁疗
+	int is_visible;              	//是否可以忽略特效数量限制	0=不能 1=忽略数量限制，有就显示
+	int quality;                 	//buff品质	爬塔buff选择时用，客户端显示，对应stringui表
 
 private:
-	bool m_bIsValidate;
-	void SetIsValidate(bool isValid)
-	{
-		m_bIsValidate=isValid;
-	}
+
 public:
-	bool IsValidate()
-	{
-		return m_bIsValidate;
-	}
+
 	BuffElement()
 	{
 		id = -1;
-		m_bIsValidate=false;
+
 	}
 };
 
 //效果配置封装类
 class BuffTable
 {
-	friend class TableData;
+	public:
+	typedef std::unique_ptr<BuffElement> ele_ptr_type;
+	typedef std::unordered_map<int, ele_ptr_type> MapElementMap;
+	typedef vector<int> vec_type;
+	//typedef std::set<int> set_type;
+	typedef std::function<void()> ReloadCallback;
+	typedef std::vector<ReloadCallback> reload_vec_type;
 private:
-	BuffTable(){}
-	~BuffTable(){}
-	typedef unordered_map<int, BuffElement> MapElementMap;
+	BuffTable();
+	~BuffTable();
+
+	vec_type m_vElementID;
 	MapElementMap	m_mapElements;
-	vector<BuffElement>	m_vecAllElements;
-	BuffElement m_emptyItem;
+	reload_vec_type m_vReLoadCb;
+
 public:
-	static BuffTable& Instance()
-	{
-		static BuffTable sInstance;
-		return sInstance;
-	}
+	static BuffTable& Instance();
 
-	const BuffElement* GetElement(int key)
-	{
-		MapElementMap::iterator it = m_mapElements.find(key);
-		if (it == m_mapElements.end())
-		{
-			AssertEx(false, std::string(std::string("BuffTable: ") + std::to_string(key)).c_str());
-			return NULL;
-		}
-		return &it->second;
-	}
+	void RegisterReLoadCb(const ReloadCallback &cb);
 
-	bool HasElement(int key)
-	{
-		return m_mapElements.find(key) != m_mapElements.end();
-	}
+	const BuffElement* GetElement(int key);
 
-	vector<BuffElement>&	GetAllElement()
-	{
-		if(!m_vecAllElements.empty()) 
-			return m_vecAllElements;
-		m_vecAllElements.reserve(m_mapElements.size());
-		for(auto iter=m_mapElements.begin(); iter != m_mapElements.end(); ++iter)
-		{
-			if(iter->second.IsValidate()) 
-				m_vecAllElements.push_back(iter->second);
-		}
-		return m_vecAllElements;
-	}
-	bool Load()
-	{
-		#ifdef CONFIG_JSON
-		return LoadJson("Buff.json");
-		#else
-		string strTableContent;
-		if( LoadConfigContent("Buff.csv", strTableContent ) )
-			return LoadCsv( strTableContent );
-		if( !LoadConfigContent("Buff.bin", strTableContent ) )
-		{
-			printf_message("配置文件[Buff.bin]未找到");
-			assert(false);
-			return false;
-		}
-		return LoadBin(strTableContent);
-		#endif
+	bool HasElement(int key);
 
-		
-	}
+	const vec_type& GetAllID() const;
 
-	bool LoadJson(const std::string& jsonFile)
-	{
-		boost::property_tree::ptree sms_array;
-		boost::property_tree::json_parser::read_json(std::string(CONFIG_PATH) + jsonFile, sms_array);
-		//boost::property_tree::ptree sms_array = parse.get_child("data");
+	const MapElementMap& GetAllElement() const;
+	bool Load();
 
-		vector<string> vecLine;
+	void NotifyCb();
 
-		
-
-		BOOST_FOREACH(boost::property_tree::ptree::value_type& v, sms_array)
-		{
-			boost::property_tree::ptree p = v.second;
-
-			BuffElement	member;
-
-						member.id=p.get<int>("id");
-			member.buffID=p.get<int>("buffID");
-			member.desc_type=p.get<string>("desc_type");
-			member.desc=p.get<string>("desc");
-			member.oper=p.get<int>("oper");
-			member.operPars=p.get<int>("operPars");
-			member.overTimed=p.get<int>("overTimed");
-			member.continuance=p.get<int>("continuance");
-			member.interval=p.get<int>("interval");
-			member.mutexID=p.get<int>("mutexID");
-			member.buffEffect=p.get<string>("buffEffect");
-			member.buffMount=p.get<int>("buffMount");
-			member.groupPriority=p.get<int>("groupPriority");
-			boost::property_tree::ptree sms_array_childpars = p.get_child("pars");
-			for (BOOST_AUTO(pos, sms_array_childpars.begin()); pos != sms_array_childpars.end(); ++pos)
-			{
-				int n = pos->second.get_value<int>(); 
-				member.pars.push_back(n);
-			}
-			member.is_tell_client=p.get<int>("is_tell_client");
+	bool LoadJson(const std::string& jsonFile);
 
 
-			member.SetIsValidate(true);
-			m_mapElements[member.id] = member;
-		}
+	bool ReLoad();
+	
 
-		return true;
-	}
+  int32_t min_table_id()const;
+  int32_t max_table_id()const;
+ private:
+   int32_t min_table_id_{INT32_MAX};
+   int32_t max_table_id_{INT32_MIN};
+   bool m_bLoad{false};
 
-	bool LoadCsv(string strContent)
-	{
-		m_vecAllElements.clear();
-		m_mapElements.clear();
-		int contentOffset = 0;
-		vector<string> vecLine;
-		vecLine = ReadCsvLine( strContent, contentOffset );
-		if(vecLine.size() != 15)
-		{
-			printf_message("Buff.csv中列数量与生成的代码不匹配!");
-			assert(false);
-			return false;
-		}
-		if(vecLine[0]!="id"){printf_message("Buff.csv中字段[id]位置不对应 ");assert(false); return false; }
-		if(vecLine[1]!="buffID"){printf_message("Buff.csv中字段[buffID]位置不对应 ");assert(false); return false; }
-		if(vecLine[2]!="desc_type"){printf_message("Buff.csv中字段[desc_type]位置不对应 ");assert(false); return false; }
-		if(vecLine[3]!="desc"){printf_message("Buff.csv中字段[desc]位置不对应 ");assert(false); return false; }
-		if(vecLine[4]!="oper"){printf_message("Buff.csv中字段[oper]位置不对应 ");assert(false); return false; }
-		if(vecLine[5]!="operPars"){printf_message("Buff.csv中字段[operPars]位置不对应 ");assert(false); return false; }
-		if(vecLine[6]!="overTimed"){printf_message("Buff.csv中字段[overTimed]位置不对应 ");assert(false); return false; }
-		if(vecLine[7]!="continuance"){printf_message("Buff.csv中字段[continuance]位置不对应 ");assert(false); return false; }
-		if(vecLine[8]!="interval"){printf_message("Buff.csv中字段[interval]位置不对应 ");assert(false); return false; }
-		if(vecLine[9]!="mutexID"){printf_message("Buff.csv中字段[mutexID]位置不对应 ");assert(false); return false; }
-		if(vecLine[10]!="buffEffect"){printf_message("Buff.csv中字段[buffEffect]位置不对应 ");assert(false); return false; }
-		if(vecLine[11]!="buffMount"){printf_message("Buff.csv中字段[buffMount]位置不对应 ");assert(false); return false; }
-		if(vecLine[12]!="groupPriority"){printf_message("Buff.csv中字段[groupPriority]位置不对应 ");assert(false); return false; }
-		if(vecLine[13]!="pars"){printf_message("Buff.csv中字段[pars]位置不对应 ");assert(false); return false; }
-		if(vecLine[14]!="is_tell_client"){printf_message("Buff.csv中字段[is_tell_client]位置不对应 ");assert(false); return false; }
-
-		while(true)
-		{
-			vecLine = ReadCsvLine( strContent, contentOffset );
-			if((int)vecLine.size() == 0 )
-				break;
-			if((int)vecLine.size() != (int)15)
-			{
-				assert(false);
-				return false;
-			}
-			BuffElement	member;
-			member.id=(int)atoi(vecLine[0].c_str());
-			member.buffID=(int)atoi(vecLine[1].c_str());
-			member.desc_type=vecLine[2];
-			member.desc=vecLine[3];
-			member.oper=(int)atoi(vecLine[4].c_str());
-			member.operPars=(int)atoi(vecLine[5].c_str());
-			member.overTimed=(int)atoi(vecLine[6].c_str());
-			member.continuance=(int)atoi(vecLine[7].c_str());
-			member.interval=(int)atoi(vecLine[8].c_str());
-			member.mutexID=(int)atoi(vecLine[9].c_str());
-			member.buffEffect=vecLine[10];
-			member.buffMount=(int)atoi(vecLine[11].c_str());
-			member.groupPriority=(int)atoi(vecLine[12].c_str());
-			member.is_tell_client=(int)atoi(vecLine[14].c_str());
-
-			member.SetIsValidate(true);
-			m_mapElements[member.id] = member;
-		}
-		return true;
-	}
-
-	vector<string> ReadCsvLine(string strContent,int contentOffset)
-	{
-		vector<string> temp;
-		return temp;
-
-	}
 };
 
 #endif

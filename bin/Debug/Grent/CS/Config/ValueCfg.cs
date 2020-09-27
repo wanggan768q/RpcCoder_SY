@@ -11,7 +11,6 @@ public class ValueElement
 {
 	public int id;               	//序号	序号
 	public int value;            	//值	值
-	public string interpretation;	//描述	描述
 
 	public bool IsValidate = false;
 	public ValueElement()
@@ -104,21 +103,19 @@ public class ValueTable
             vecLine.Add(tmpStr);
             vecHeadType.Add(tmpInt);
 		}
-		if(vecLine.Count != 3)
+		if(vecLine.Count != 2)
 		{
 			Ex.Logger.Log("Value.csv中列数量与生成的代码不匹配!");
 			return false;
 		}
 		if(vecLine[0]!="id"){Ex.Logger.Log("Value.csv中字段[id]位置不对应"); return false; }
 		if(vecLine[1]!="value"){Ex.Logger.Log("Value.csv中字段[value]位置不对应"); return false; }
-		if(vecLine[2]!="interpretation"){Ex.Logger.Log("Value.csv中字段[interpretation]位置不对应"); return false; }
 
 		for(int i=0; i<nRow; i++)
 		{
 			ValueElement member = new ValueElement();
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.id );
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.value );
-			readPos += GameAssist.ReadString( binContent, readPos, out member.interpretation);
 
 			member.IsValidate = true;
 			m_vecAllElements.Add(member);
@@ -135,28 +132,26 @@ public class ValueTable
 		int contentOffset = 0;
 		List<string> vecLine;
 		vecLine = GameAssist.readCsvLine( strContent, ref contentOffset );
-		if(vecLine.Count != 3)
+		if(vecLine.Count != 2)
 		{
 			Ex.Logger.Log("Value.csv中列数量与生成的代码不匹配!");
 			return false;
 		}
 		if(vecLine[0]!="id"){Ex.Logger.Log("Value.csv中字段[id]位置不对应"); return false; }
 		if(vecLine[1]!="value"){Ex.Logger.Log("Value.csv中字段[value]位置不对应"); return false; }
-		if(vecLine[2]!="interpretation"){Ex.Logger.Log("Value.csv中字段[interpretation]位置不对应"); return false; }
 
 		while(true)
 		{
 			vecLine = GameAssist.readCsvLine( strContent, ref contentOffset );
 			if((int)vecLine.Count == 0 )
 				break;
-			if((int)vecLine.Count != (int)3)
+			if((int)vecLine.Count != (int)2)
 			{
 				return false;
 			}
 			ValueElement member = new ValueElement();
 			member.id=Convert.ToInt32(vecLine[0]);
 			member.value=Convert.ToInt32(vecLine[1]);
-			member.interpretation=vecLine[2];
 
 			member.IsValidate = true;
 			m_vecAllElements.Add(member);

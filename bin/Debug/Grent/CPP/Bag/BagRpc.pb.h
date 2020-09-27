@@ -34,8 +34,6 @@ void protobuf_ShutdownFile_BagRpc_2eproto();
 
 class BagRpcUseItemAsk;
 class BagRpcUseItemReply;
-class BagRpcSyncAsk;
-class BagRpcSyncReply;
 class BagRpcSaleItemAsk;
 class BagRpcSaleItemReply;
 class BagRpcLockItemAsk;
@@ -49,6 +47,20 @@ class BagRpcTidyReply;
 class BagRpcTakeAllBackBagsAsk;
 class BagRpcTakeAllBackBagsReply;
 class BagRpcBagChangeNotify;
+class BagRpcMergeItemAsk;
+class BagRpcMergeItemReply;
+class BagRpcBagSyncAsk;
+class BagRpcBagSyncReply;
+class BagRpcAddItemNotify;
+class BagRpcConsumeItemAsk;
+class BagRpcConsumeItemReply;
+class BagRpcItemChangeNotify;
+class BagRpcClickItemAsk;
+class BagRpcClickItemReply;
+class BagRpcRemoveItemByPosAsk;
+class BagRpcRemoveItemByPosReply;
+class BagRpcClearBagRedPointAsk;
+class BagRpcClearBagRedPointReply;
 
 // ===================================================================
 
@@ -106,19 +118,40 @@ class BagRpcUseItemAsk : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Count = 1 [default = -1];
+  // optional int32 Count = 1 [default = -1];
   inline bool has_count() const;
   inline void clear_count();
   static const int kCountFieldNumber = 1;
   inline ::google::protobuf::int32 count() const;
   inline void set_count(::google::protobuf::int32 value);
 
-  // optional sint32 Pos = 2 [default = -1];
+  // optional int32 Pos = 2 [default = -1];
   inline bool has_pos() const;
   inline void clear_pos();
   static const int kPosFieldNumber = 2;
   inline ::google::protobuf::int32 pos() const;
   inline void set_pos(::google::protobuf::int32 value);
+
+  // optional int32 BagType = 3 [default = -1];
+  inline bool has_bagtype() const;
+  inline void clear_bagtype();
+  static const int kBagTypeFieldNumber = 3;
+  inline ::google::protobuf::int32 bagtype() const;
+  inline void set_bagtype(::google::protobuf::int32 value);
+
+  // optional uint64 TargetId = 4 [default = 0];
+  inline bool has_targetid() const;
+  inline void clear_targetid();
+  static const int kTargetIdFieldNumber = 4;
+  inline ::google::protobuf::uint64 targetid() const;
+  inline void set_targetid(::google::protobuf::uint64 value);
+
+  // optional int32 OptionIdx = 6 [default = 0];
+  inline bool has_optionidx() const;
+  inline void clear_optionidx();
+  static const int kOptionIdxFieldNumber = 6;
+  inline ::google::protobuf::int32 optionidx() const;
+  inline void set_optionidx(::google::protobuf::int32 value);
 
   // @@protoc_insertion_point(class_scope:BagRpcUseItemAsk)
  private:
@@ -126,14 +159,23 @@ class BagRpcUseItemAsk : public ::google::protobuf::Message {
   inline void clear_has_count();
   inline void set_has_pos();
   inline void clear_has_pos();
+  inline void set_has_bagtype();
+  inline void clear_has_bagtype();
+  inline void set_has_targetid();
+  inline void clear_has_targetid();
+  inline void set_has_optionidx();
+  inline void clear_has_optionidx();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::int32 count_;
   ::google::protobuf::int32 pos_;
+  ::google::protobuf::uint64 targetid_;
+  ::google::protobuf::int32 bagtype_;
+  ::google::protobuf::int32 optionidx_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
 
   friend void  protobuf_AddDesc_BagRpc_2eproto();
   friend void protobuf_AssignDesc_BagRpc_2eproto();
@@ -198,7 +240,7 @@ class BagRpcUseItemReply : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
@@ -214,20 +256,32 @@ class BagRpcUseItemReply : public ::google::protobuf::Message {
   inline ::ItemObj* release_item();
   inline void set_allocated_item(::ItemObj* item);
 
+  // optional .ItemObj NowItem = 4;
+  inline bool has_nowitem() const;
+  inline void clear_nowitem();
+  static const int kNowItemFieldNumber = 4;
+  inline const ::ItemObj& nowitem() const;
+  inline ::ItemObj* mutable_nowitem();
+  inline ::ItemObj* release_nowitem();
+  inline void set_allocated_nowitem(::ItemObj* nowitem);
+
   // @@protoc_insertion_point(class_scope:BagRpcUseItemReply)
  private:
   inline void set_has_result();
   inline void clear_has_result();
   inline void set_has_item();
   inline void clear_has_item();
+  inline void set_has_nowitem();
+  inline void clear_has_nowitem();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::ItemObj* item_;
+  ::ItemObj* nowitem_;
   ::google::protobuf::int32 result_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_BagRpc_2eproto();
   friend void protobuf_AssignDesc_BagRpc_2eproto();
@@ -235,173 +289,6 @@ class BagRpcUseItemReply : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static BagRpcUseItemReply* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class BagRpcSyncAsk : public ::google::protobuf::Message {
- public:
-  BagRpcSyncAsk();
-  virtual ~BagRpcSyncAsk();
-
-  BagRpcSyncAsk(const BagRpcSyncAsk& from);
-
-  inline BagRpcSyncAsk& operator=(const BagRpcSyncAsk& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const BagRpcSyncAsk& default_instance();
-
-  void Swap(BagRpcSyncAsk* other);
-
-  // implements Message ----------------------------------------------
-
-  BagRpcSyncAsk* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const BagRpcSyncAsk& from);
-  void MergeFrom(const BagRpcSyncAsk& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // @@protoc_insertion_point(class_scope:BagRpcSyncAsk)
- private:
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[1];
-
-  friend void  protobuf_AddDesc_BagRpc_2eproto();
-  friend void protobuf_AssignDesc_BagRpc_2eproto();
-  friend void protobuf_ShutdownFile_BagRpc_2eproto();
-
-  void InitAsDefaultInstance();
-  static BagRpcSyncAsk* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class BagRpcSyncReply : public ::google::protobuf::Message {
- public:
-  BagRpcSyncReply();
-  virtual ~BagRpcSyncReply();
-
-  BagRpcSyncReply(const BagRpcSyncReply& from);
-
-  inline BagRpcSyncReply& operator=(const BagRpcSyncReply& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const BagRpcSyncReply& default_instance();
-
-  void Swap(BagRpcSyncReply* other);
-
-  // implements Message ----------------------------------------------
-
-  BagRpcSyncReply* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const BagRpcSyncReply& from);
-  void MergeFrom(const BagRpcSyncReply& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // optional sint32 Result = 1 [default = -9999];
-  inline bool has_result() const;
-  inline void clear_result();
-  static const int kResultFieldNumber = 1;
-  inline ::google::protobuf::int32 result() const;
-  inline void set_result(::google::protobuf::int32 value);
-
-  // repeated .BagData Bags = 2;
-  inline int bags_size() const;
-  inline void clear_bags();
-  static const int kBagsFieldNumber = 2;
-  inline const ::BagData& bags(int index) const;
-  inline ::BagData* mutable_bags(int index);
-  inline ::BagData* add_bags();
-  inline const ::google::protobuf::RepeatedPtrField< ::BagData >&
-      bags() const;
-  inline ::google::protobuf::RepeatedPtrField< ::BagData >*
-      mutable_bags();
-
-  // @@protoc_insertion_point(class_scope:BagRpcSyncReply)
- private:
-  inline void set_has_result();
-  inline void clear_has_result();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::RepeatedPtrField< ::BagData > bags_;
-  ::google::protobuf::int32 result_;
-
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
-
-  friend void  protobuf_AddDesc_BagRpc_2eproto();
-  friend void protobuf_AssignDesc_BagRpc_2eproto();
-  friend void protobuf_ShutdownFile_BagRpc_2eproto();
-
-  void InitAsDefaultInstance();
-  static BagRpcSyncReply* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -459,19 +346,26 @@ class BagRpcSaleItemAsk : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Pos = 5 [default = -1];
+  // optional int32 Pos = 5 [default = -1];
   inline bool has_pos() const;
   inline void clear_pos();
   static const int kPosFieldNumber = 5;
   inline ::google::protobuf::int32 pos() const;
   inline void set_pos(::google::protobuf::int32 value);
 
-  // optional sint32 Count = 6 [default = -1];
+  // optional int32 Count = 6 [default = -1];
   inline bool has_count() const;
   inline void clear_count();
   static const int kCountFieldNumber = 6;
   inline ::google::protobuf::int32 count() const;
   inline void set_count(::google::protobuf::int32 value);
+
+  // optional int32 BagType = 7 [default = -1];
+  inline bool has_bagtype() const;
+  inline void clear_bagtype();
+  static const int kBagTypeFieldNumber = 7;
+  inline ::google::protobuf::int32 bagtype() const;
+  inline void set_bagtype(::google::protobuf::int32 value);
 
   // @@protoc_insertion_point(class_scope:BagRpcSaleItemAsk)
  private:
@@ -479,14 +373,17 @@ class BagRpcSaleItemAsk : public ::google::protobuf::Message {
   inline void clear_has_pos();
   inline void set_has_count();
   inline void clear_has_count();
+  inline void set_has_bagtype();
+  inline void clear_has_bagtype();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::int32 pos_;
   ::google::protobuf::int32 count_;
+  ::google::protobuf::int32 bagtype_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_BagRpc_2eproto();
   friend void protobuf_AssignDesc_BagRpc_2eproto();
@@ -551,7 +448,7 @@ class BagRpcSaleItemReply : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
@@ -645,7 +542,7 @@ class BagRpcLockItemAsk : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Pos = 1 [default = -1];
+  // optional int32 Pos = 1 [default = -1];
   inline bool has_pos() const;
   inline void clear_pos();
   static const int kPosFieldNumber = 1;
@@ -659,20 +556,30 @@ class BagRpcLockItemAsk : public ::google::protobuf::Message {
   inline bool islock() const;
   inline void set_islock(bool value);
 
+  // optional int32 BagType = 4 [default = -1];
+  inline bool has_bagtype() const;
+  inline void clear_bagtype();
+  static const int kBagTypeFieldNumber = 4;
+  inline ::google::protobuf::int32 bagtype() const;
+  inline void set_bagtype(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:BagRpcLockItemAsk)
  private:
   inline void set_has_pos();
   inline void clear_has_pos();
   inline void set_has_islock();
   inline void clear_has_islock();
+  inline void set_has_bagtype();
+  inline void clear_has_bagtype();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::int32 pos_;
   bool islock_;
+  ::google::protobuf::int32 bagtype_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_BagRpc_2eproto();
   friend void protobuf_AssignDesc_BagRpc_2eproto();
@@ -737,7 +644,7 @@ class BagRpcLockItemReply : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
@@ -831,7 +738,7 @@ class BagRpcDeblockingAsk : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 BagType = 1 [default = -1];
+  // optional int32 BagType = 1 [default = -1];
   inline bool has_bagtype() const;
   inline void clear_bagtype();
   static const int kBagTypeFieldNumber = 1;
@@ -913,21 +820,21 @@ class BagRpcDeblockingReply : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
   inline ::google::protobuf::int32 result() const;
   inline void set_result(::google::protobuf::int32 value);
 
-  // optional sint32 BagType = 2 [default = -1];
+  // optional int32 BagType = 2 [default = -1];
   inline bool has_bagtype() const;
   inline void clear_bagtype();
   static const int kBagTypeFieldNumber = 2;
   inline ::google::protobuf::int32 bagtype() const;
   inline void set_bagtype(::google::protobuf::int32 value);
 
-  // optional sint32 CurCapacity = 3 [default = -1];
+  // optional int32 CurCapacity = 3 [default = -1];
   inline bool has_curcapacity() const;
   inline void clear_curcapacity();
   static const int kCurCapacityFieldNumber = 3;
@@ -1015,21 +922,21 @@ class BagRpcTakeItemAsk : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 FromBagType = 1 [default = -1];
+  // optional int32 FromBagType = 1 [default = -1];
   inline bool has_frombagtype() const;
   inline void clear_frombagtype();
   static const int kFromBagTypeFieldNumber = 1;
   inline ::google::protobuf::int32 frombagtype() const;
   inline void set_frombagtype(::google::protobuf::int32 value);
 
-  // optional sint32 ToBagType = 2 [default = -1];
+  // optional int32 ToBagType = 2 [default = -1];
   inline bool has_tobagtype() const;
   inline void clear_tobagtype();
   static const int kToBagTypeFieldNumber = 2;
   inline ::google::protobuf::int32 tobagtype() const;
   inline void set_tobagtype(::google::protobuf::int32 value);
 
-  // optional sint32 FromPos = 3 [default = -1];
+  // optional int32 FromPos = 3 [default = -1];
   inline bool has_frompos() const;
   inline void clear_frompos();
   static const int kFromPosFieldNumber = 3;
@@ -1117,7 +1024,7 @@ class BagRpcTakeItemReply : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
@@ -1142,14 +1049,14 @@ class BagRpcTakeItemReply : public ::google::protobuf::Message {
   inline ::ItemObj* release_fromitemobj();
   inline void set_allocated_fromitemobj(::ItemObj* fromitemobj);
 
-  // optional sint32 FromBagType = 4 [default = -1];
+  // optional int32 FromBagType = 4 [default = -1];
   inline bool has_frombagtype() const;
   inline void clear_frombagtype();
   static const int kFromBagTypeFieldNumber = 4;
   inline ::google::protobuf::int32 frombagtype() const;
   inline void set_frombagtype(::google::protobuf::int32 value);
 
-  // optional sint32 ToBagType = 5 [default = -1];
+  // optional int32 ToBagType = 5 [default = -1];
   inline bool has_tobagtype() const;
   inline void clear_tobagtype();
   static const int kToBagTypeFieldNumber = 5;
@@ -1243,7 +1150,7 @@ class BagRpcTidyAsk : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 BagType = 2 [default = -1];
+  // optional int32 BagType = 2 [default = -1];
   inline bool has_bagtype() const;
   inline void clear_bagtype();
   static const int kBagTypeFieldNumber = 2;
@@ -1325,47 +1232,36 @@ class BagRpcTidyReply : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
   inline ::google::protobuf::int32 result() const;
   inline void set_result(::google::protobuf::int32 value);
 
-  // repeated .BagData Bags = 3;
-  inline int bags_size() const;
+  // optional .BagData Bags = 3;
+  inline bool has_bags() const;
   inline void clear_bags();
   static const int kBagsFieldNumber = 3;
-  inline const ::BagData& bags(int index) const;
-  inline ::BagData* mutable_bags(int index);
-  inline ::BagData* add_bags();
-  inline const ::google::protobuf::RepeatedPtrField< ::BagData >&
-      bags() const;
-  inline ::google::protobuf::RepeatedPtrField< ::BagData >*
-      mutable_bags();
-
-  // optional sint32 BagType = 4 [default = -1];
-  inline bool has_bagtype() const;
-  inline void clear_bagtype();
-  static const int kBagTypeFieldNumber = 4;
-  inline ::google::protobuf::int32 bagtype() const;
-  inline void set_bagtype(::google::protobuf::int32 value);
+  inline const ::BagData& bags() const;
+  inline ::BagData* mutable_bags();
+  inline ::BagData* release_bags();
+  inline void set_allocated_bags(::BagData* bags);
 
   // @@protoc_insertion_point(class_scope:BagRpcTidyReply)
  private:
   inline void set_has_result();
   inline void clear_has_result();
-  inline void set_has_bagtype();
-  inline void clear_has_bagtype();
+  inline void set_has_bags();
+  inline void clear_has_bags();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::RepeatedPtrField< ::BagData > bags_;
+  ::BagData* bags_;
   ::google::protobuf::int32 result_;
-  ::google::protobuf::int32 bagtype_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
 
   friend void  protobuf_AddDesc_BagRpc_2eproto();
   friend void protobuf_AssignDesc_BagRpc_2eproto();
@@ -1502,7 +1398,7 @@ class BagRpcTakeAllBackBagsReply : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
@@ -1597,7 +1493,7 @@ class BagRpcBagChangeNotify : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
@@ -1635,6 +1531,1226 @@ class BagRpcBagChangeNotify : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static BagRpcBagChangeNotify* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class BagRpcMergeItemAsk : public ::google::protobuf::Message {
+ public:
+  BagRpcMergeItemAsk();
+  virtual ~BagRpcMergeItemAsk();
+
+  BagRpcMergeItemAsk(const BagRpcMergeItemAsk& from);
+
+  inline BagRpcMergeItemAsk& operator=(const BagRpcMergeItemAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const BagRpcMergeItemAsk& default_instance();
+
+  void Swap(BagRpcMergeItemAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  BagRpcMergeItemAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const BagRpcMergeItemAsk& from);
+  void MergeFrom(const BagRpcMergeItemAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Pos = 1 [default = -1];
+  inline bool has_pos() const;
+  inline void clear_pos();
+  static const int kPosFieldNumber = 1;
+  inline ::google::protobuf::int32 pos() const;
+  inline void set_pos(::google::protobuf::int32 value);
+
+  // optional int32 BagType = 2 [default = -1];
+  inline bool has_bagtype() const;
+  inline void clear_bagtype();
+  static const int kBagTypeFieldNumber = 2;
+  inline ::google::protobuf::int32 bagtype() const;
+  inline void set_bagtype(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:BagRpcMergeItemAsk)
+ private:
+  inline void set_has_pos();
+  inline void clear_has_pos();
+  inline void set_has_bagtype();
+  inline void clear_has_bagtype();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 pos_;
+  ::google::protobuf::int32 bagtype_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_BagRpc_2eproto();
+  friend void protobuf_AssignDesc_BagRpc_2eproto();
+  friend void protobuf_ShutdownFile_BagRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static BagRpcMergeItemAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class BagRpcMergeItemReply : public ::google::protobuf::Message {
+ public:
+  BagRpcMergeItemReply();
+  virtual ~BagRpcMergeItemReply();
+
+  BagRpcMergeItemReply(const BagRpcMergeItemReply& from);
+
+  inline BagRpcMergeItemReply& operator=(const BagRpcMergeItemReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const BagRpcMergeItemReply& default_instance();
+
+  void Swap(BagRpcMergeItemReply* other);
+
+  // implements Message ----------------------------------------------
+
+  BagRpcMergeItemReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const BagRpcMergeItemReply& from);
+  void MergeFrom(const BagRpcMergeItemReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -9999];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // optional .BagData Bags = 2;
+  inline bool has_bags() const;
+  inline void clear_bags();
+  static const int kBagsFieldNumber = 2;
+  inline const ::BagData& bags() const;
+  inline ::BagData* mutable_bags();
+  inline ::BagData* release_bags();
+  inline void set_allocated_bags(::BagData* bags);
+
+  // @@protoc_insertion_point(class_scope:BagRpcMergeItemReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+  inline void set_has_bags();
+  inline void clear_has_bags();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::BagData* bags_;
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_BagRpc_2eproto();
+  friend void protobuf_AssignDesc_BagRpc_2eproto();
+  friend void protobuf_ShutdownFile_BagRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static BagRpcMergeItemReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class BagRpcBagSyncAsk : public ::google::protobuf::Message {
+ public:
+  BagRpcBagSyncAsk();
+  virtual ~BagRpcBagSyncAsk();
+
+  BagRpcBagSyncAsk(const BagRpcBagSyncAsk& from);
+
+  inline BagRpcBagSyncAsk& operator=(const BagRpcBagSyncAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const BagRpcBagSyncAsk& default_instance();
+
+  void Swap(BagRpcBagSyncAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  BagRpcBagSyncAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const BagRpcBagSyncAsk& from);
+  void MergeFrom(const BagRpcBagSyncAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:BagRpcBagSyncAsk)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[1];
+
+  friend void  protobuf_AddDesc_BagRpc_2eproto();
+  friend void protobuf_AssignDesc_BagRpc_2eproto();
+  friend void protobuf_ShutdownFile_BagRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static BagRpcBagSyncAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class BagRpcBagSyncReply : public ::google::protobuf::Message {
+ public:
+  BagRpcBagSyncReply();
+  virtual ~BagRpcBagSyncReply();
+
+  BagRpcBagSyncReply(const BagRpcBagSyncReply& from);
+
+  inline BagRpcBagSyncReply& operator=(const BagRpcBagSyncReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const BagRpcBagSyncReply& default_instance();
+
+  void Swap(BagRpcBagSyncReply* other);
+
+  // implements Message ----------------------------------------------
+
+  BagRpcBagSyncReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const BagRpcBagSyncReply& from);
+  void MergeFrom(const BagRpcBagSyncReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -1];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // repeated .BagData Bags = 2;
+  inline int bags_size() const;
+  inline void clear_bags();
+  static const int kBagsFieldNumber = 2;
+  inline const ::BagData& bags(int index) const;
+  inline ::BagData* mutable_bags(int index);
+  inline ::BagData* add_bags();
+  inline const ::google::protobuf::RepeatedPtrField< ::BagData >&
+      bags() const;
+  inline ::google::protobuf::RepeatedPtrField< ::BagData >*
+      mutable_bags();
+
+  // @@protoc_insertion_point(class_scope:BagRpcBagSyncReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::RepeatedPtrField< ::BagData > bags_;
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_BagRpc_2eproto();
+  friend void protobuf_AssignDesc_BagRpc_2eproto();
+  friend void protobuf_ShutdownFile_BagRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static BagRpcBagSyncReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class BagRpcAddItemNotify : public ::google::protobuf::Message {
+ public:
+  BagRpcAddItemNotify();
+  virtual ~BagRpcAddItemNotify();
+
+  BagRpcAddItemNotify(const BagRpcAddItemNotify& from);
+
+  inline BagRpcAddItemNotify& operator=(const BagRpcAddItemNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const BagRpcAddItemNotify& default_instance();
+
+  void Swap(BagRpcAddItemNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  BagRpcAddItemNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const BagRpcAddItemNotify& from);
+  void MergeFrom(const BagRpcAddItemNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .ItemObj Item = 1;
+  inline int item_size() const;
+  inline void clear_item();
+  static const int kItemFieldNumber = 1;
+  inline const ::ItemObj& item(int index) const;
+  inline ::ItemObj* mutable_item(int index);
+  inline ::ItemObj* add_item();
+  inline const ::google::protobuf::RepeatedPtrField< ::ItemObj >&
+      item() const;
+  inline ::google::protobuf::RepeatedPtrField< ::ItemObj >*
+      mutable_item();
+
+  // @@protoc_insertion_point(class_scope:BagRpcAddItemNotify)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::RepeatedPtrField< ::ItemObj > item_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_BagRpc_2eproto();
+  friend void protobuf_AssignDesc_BagRpc_2eproto();
+  friend void protobuf_ShutdownFile_BagRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static BagRpcAddItemNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class BagRpcConsumeItemAsk : public ::google::protobuf::Message {
+ public:
+  BagRpcConsumeItemAsk();
+  virtual ~BagRpcConsumeItemAsk();
+
+  BagRpcConsumeItemAsk(const BagRpcConsumeItemAsk& from);
+
+  inline BagRpcConsumeItemAsk& operator=(const BagRpcConsumeItemAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const BagRpcConsumeItemAsk& default_instance();
+
+  void Swap(BagRpcConsumeItemAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  BagRpcConsumeItemAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const BagRpcConsumeItemAsk& from);
+  void MergeFrom(const BagRpcConsumeItemAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .ItemSimpleData ItemData = 3;
+  inline int itemdata_size() const;
+  inline void clear_itemdata();
+  static const int kItemDataFieldNumber = 3;
+  inline const ::ItemSimpleData& itemdata(int index) const;
+  inline ::ItemSimpleData* mutable_itemdata(int index);
+  inline ::ItemSimpleData* add_itemdata();
+  inline const ::google::protobuf::RepeatedPtrField< ::ItemSimpleData >&
+      itemdata() const;
+  inline ::google::protobuf::RepeatedPtrField< ::ItemSimpleData >*
+      mutable_itemdata();
+
+  // @@protoc_insertion_point(class_scope:BagRpcConsumeItemAsk)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::RepeatedPtrField< ::ItemSimpleData > itemdata_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_BagRpc_2eproto();
+  friend void protobuf_AssignDesc_BagRpc_2eproto();
+  friend void protobuf_ShutdownFile_BagRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static BagRpcConsumeItemAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class BagRpcConsumeItemReply : public ::google::protobuf::Message {
+ public:
+  BagRpcConsumeItemReply();
+  virtual ~BagRpcConsumeItemReply();
+
+  BagRpcConsumeItemReply(const BagRpcConsumeItemReply& from);
+
+  inline BagRpcConsumeItemReply& operator=(const BagRpcConsumeItemReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const BagRpcConsumeItemReply& default_instance();
+
+  void Swap(BagRpcConsumeItemReply* other);
+
+  // implements Message ----------------------------------------------
+
+  BagRpcConsumeItemReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const BagRpcConsumeItemReply& from);
+  void MergeFrom(const BagRpcConsumeItemReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -1];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:BagRpcConsumeItemReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_BagRpc_2eproto();
+  friend void protobuf_AssignDesc_BagRpc_2eproto();
+  friend void protobuf_ShutdownFile_BagRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static BagRpcConsumeItemReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class BagRpcItemChangeNotify : public ::google::protobuf::Message {
+ public:
+  BagRpcItemChangeNotify();
+  virtual ~BagRpcItemChangeNotify();
+
+  BagRpcItemChangeNotify(const BagRpcItemChangeNotify& from);
+
+  inline BagRpcItemChangeNotify& operator=(const BagRpcItemChangeNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const BagRpcItemChangeNotify& default_instance();
+
+  void Swap(BagRpcItemChangeNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  BagRpcItemChangeNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const BagRpcItemChangeNotify& from);
+  void MergeFrom(const BagRpcItemChangeNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .ItemObj ItemList = 1;
+  inline int itemlist_size() const;
+  inline void clear_itemlist();
+  static const int kItemListFieldNumber = 1;
+  inline const ::ItemObj& itemlist(int index) const;
+  inline ::ItemObj* mutable_itemlist(int index);
+  inline ::ItemObj* add_itemlist();
+  inline const ::google::protobuf::RepeatedPtrField< ::ItemObj >&
+      itemlist() const;
+  inline ::google::protobuf::RepeatedPtrField< ::ItemObj >*
+      mutable_itemlist();
+
+  // optional int32 BagType = 2 [default = -1];
+  inline bool has_bagtype() const;
+  inline void clear_bagtype();
+  static const int kBagTypeFieldNumber = 2;
+  inline ::google::protobuf::int32 bagtype() const;
+  inline void set_bagtype(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:BagRpcItemChangeNotify)
+ private:
+  inline void set_has_bagtype();
+  inline void clear_has_bagtype();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::RepeatedPtrField< ::ItemObj > itemlist_;
+  ::google::protobuf::int32 bagtype_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_BagRpc_2eproto();
+  friend void protobuf_AssignDesc_BagRpc_2eproto();
+  friend void protobuf_ShutdownFile_BagRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static BagRpcItemChangeNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class BagRpcClickItemAsk : public ::google::protobuf::Message {
+ public:
+  BagRpcClickItemAsk();
+  virtual ~BagRpcClickItemAsk();
+
+  BagRpcClickItemAsk(const BagRpcClickItemAsk& from);
+
+  inline BagRpcClickItemAsk& operator=(const BagRpcClickItemAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const BagRpcClickItemAsk& default_instance();
+
+  void Swap(BagRpcClickItemAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  BagRpcClickItemAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const BagRpcClickItemAsk& from);
+  void MergeFrom(const BagRpcClickItemAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint64 Guid = 1 [default = 0];
+  inline bool has_guid() const;
+  inline void clear_guid();
+  static const int kGuidFieldNumber = 1;
+  inline ::google::protobuf::uint64 guid() const;
+  inline void set_guid(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:BagRpcClickItemAsk)
+ private:
+  inline void set_has_guid();
+  inline void clear_has_guid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint64 guid_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_BagRpc_2eproto();
+  friend void protobuf_AssignDesc_BagRpc_2eproto();
+  friend void protobuf_ShutdownFile_BagRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static BagRpcClickItemAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class BagRpcClickItemReply : public ::google::protobuf::Message {
+ public:
+  BagRpcClickItemReply();
+  virtual ~BagRpcClickItemReply();
+
+  BagRpcClickItemReply(const BagRpcClickItemReply& from);
+
+  inline BagRpcClickItemReply& operator=(const BagRpcClickItemReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const BagRpcClickItemReply& default_instance();
+
+  void Swap(BagRpcClickItemReply* other);
+
+  // implements Message ----------------------------------------------
+
+  BagRpcClickItemReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const BagRpcClickItemReply& from);
+  void MergeFrom(const BagRpcClickItemReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -1];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // optional .ItemObj Item = 2;
+  inline bool has_item() const;
+  inline void clear_item();
+  static const int kItemFieldNumber = 2;
+  inline const ::ItemObj& item() const;
+  inline ::ItemObj* mutable_item();
+  inline ::ItemObj* release_item();
+  inline void set_allocated_item(::ItemObj* item);
+
+  // @@protoc_insertion_point(class_scope:BagRpcClickItemReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+  inline void set_has_item();
+  inline void clear_has_item();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::ItemObj* item_;
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_BagRpc_2eproto();
+  friend void protobuf_AssignDesc_BagRpc_2eproto();
+  friend void protobuf_ShutdownFile_BagRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static BagRpcClickItemReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class BagRpcRemoveItemByPosAsk : public ::google::protobuf::Message {
+ public:
+  BagRpcRemoveItemByPosAsk();
+  virtual ~BagRpcRemoveItemByPosAsk();
+
+  BagRpcRemoveItemByPosAsk(const BagRpcRemoveItemByPosAsk& from);
+
+  inline BagRpcRemoveItemByPosAsk& operator=(const BagRpcRemoveItemByPosAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const BagRpcRemoveItemByPosAsk& default_instance();
+
+  void Swap(BagRpcRemoveItemByPosAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  BagRpcRemoveItemByPosAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const BagRpcRemoveItemByPosAsk& from);
+  void MergeFrom(const BagRpcRemoveItemByPosAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated int32 PosList = 1;
+  inline int poslist_size() const;
+  inline void clear_poslist();
+  static const int kPosListFieldNumber = 1;
+  inline ::google::protobuf::int32 poslist(int index) const;
+  inline void set_poslist(int index, ::google::protobuf::int32 value);
+  inline void add_poslist(::google::protobuf::int32 value);
+  inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+      poslist() const;
+  inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+      mutable_poslist();
+
+  // optional int32 BagType = 2 [default = -1];
+  inline bool has_bagtype() const;
+  inline void clear_bagtype();
+  static const int kBagTypeFieldNumber = 2;
+  inline ::google::protobuf::int32 bagtype() const;
+  inline void set_bagtype(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:BagRpcRemoveItemByPosAsk)
+ private:
+  inline void set_has_bagtype();
+  inline void clear_has_bagtype();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 > poslist_;
+  ::google::protobuf::int32 bagtype_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_BagRpc_2eproto();
+  friend void protobuf_AssignDesc_BagRpc_2eproto();
+  friend void protobuf_ShutdownFile_BagRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static BagRpcRemoveItemByPosAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class BagRpcRemoveItemByPosReply : public ::google::protobuf::Message {
+ public:
+  BagRpcRemoveItemByPosReply();
+  virtual ~BagRpcRemoveItemByPosReply();
+
+  BagRpcRemoveItemByPosReply(const BagRpcRemoveItemByPosReply& from);
+
+  inline BagRpcRemoveItemByPosReply& operator=(const BagRpcRemoveItemByPosReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const BagRpcRemoveItemByPosReply& default_instance();
+
+  void Swap(BagRpcRemoveItemByPosReply* other);
+
+  // implements Message ----------------------------------------------
+
+  BagRpcRemoveItemByPosReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const BagRpcRemoveItemByPosReply& from);
+  void MergeFrom(const BagRpcRemoveItemByPosReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -1];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // repeated .ItemObj ItemList = 2;
+  inline int itemlist_size() const;
+  inline void clear_itemlist();
+  static const int kItemListFieldNumber = 2;
+  inline const ::ItemObj& itemlist(int index) const;
+  inline ::ItemObj* mutable_itemlist(int index);
+  inline ::ItemObj* add_itemlist();
+  inline const ::google::protobuf::RepeatedPtrField< ::ItemObj >&
+      itemlist() const;
+  inline ::google::protobuf::RepeatedPtrField< ::ItemObj >*
+      mutable_itemlist();
+
+  // @@protoc_insertion_point(class_scope:BagRpcRemoveItemByPosReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::RepeatedPtrField< ::ItemObj > itemlist_;
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_BagRpc_2eproto();
+  friend void protobuf_AssignDesc_BagRpc_2eproto();
+  friend void protobuf_ShutdownFile_BagRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static BagRpcRemoveItemByPosReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class BagRpcClearBagRedPointAsk : public ::google::protobuf::Message {
+ public:
+  BagRpcClearBagRedPointAsk();
+  virtual ~BagRpcClearBagRedPointAsk();
+
+  BagRpcClearBagRedPointAsk(const BagRpcClearBagRedPointAsk& from);
+
+  inline BagRpcClearBagRedPointAsk& operator=(const BagRpcClearBagRedPointAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const BagRpcClearBagRedPointAsk& default_instance();
+
+  void Swap(BagRpcClearBagRedPointAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  BagRpcClearBagRedPointAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const BagRpcClearBagRedPointAsk& from);
+  void MergeFrom(const BagRpcClearBagRedPointAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:BagRpcClearBagRedPointAsk)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[1];
+
+  friend void  protobuf_AddDesc_BagRpc_2eproto();
+  friend void protobuf_AssignDesc_BagRpc_2eproto();
+  friend void protobuf_ShutdownFile_BagRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static BagRpcClearBagRedPointAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class BagRpcClearBagRedPointReply : public ::google::protobuf::Message {
+ public:
+  BagRpcClearBagRedPointReply();
+  virtual ~BagRpcClearBagRedPointReply();
+
+  BagRpcClearBagRedPointReply(const BagRpcClearBagRedPointReply& from);
+
+  inline BagRpcClearBagRedPointReply& operator=(const BagRpcClearBagRedPointReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const BagRpcClearBagRedPointReply& default_instance();
+
+  void Swap(BagRpcClearBagRedPointReply* other);
+
+  // implements Message ----------------------------------------------
+
+  BagRpcClearBagRedPointReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const BagRpcClearBagRedPointReply& from);
+  void MergeFrom(const BagRpcClearBagRedPointReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -1];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:BagRpcClearBagRedPointReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_BagRpc_2eproto();
+  friend void protobuf_AssignDesc_BagRpc_2eproto();
+  friend void protobuf_ShutdownFile_BagRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static BagRpcClearBagRedPointReply* default_instance_;
+};
 // ===================================================================
 
 
@@ -1642,7 +2758,7 @@ class BagRpcBagChangeNotify : public ::google::protobuf::Message {
 
 // BagRpcUseItemAsk
 
-// optional sint32 Count = 1 [default = -1];
+// optional int32 Count = 1 [default = -1];
 inline bool BagRpcUseItemAsk::has_count() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -1664,7 +2780,7 @@ inline void BagRpcUseItemAsk::set_count(::google::protobuf::int32 value) {
   count_ = value;
 }
 
-// optional sint32 Pos = 2 [default = -1];
+// optional int32 Pos = 2 [default = -1];
 inline bool BagRpcUseItemAsk::has_pos() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -1686,11 +2802,77 @@ inline void BagRpcUseItemAsk::set_pos(::google::protobuf::int32 value) {
   pos_ = value;
 }
 
+// optional int32 BagType = 3 [default = -1];
+inline bool BagRpcUseItemAsk::has_bagtype() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void BagRpcUseItemAsk::set_has_bagtype() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void BagRpcUseItemAsk::clear_has_bagtype() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void BagRpcUseItemAsk::clear_bagtype() {
+  bagtype_ = -1;
+  clear_has_bagtype();
+}
+inline ::google::protobuf::int32 BagRpcUseItemAsk::bagtype() const {
+  return bagtype_;
+}
+inline void BagRpcUseItemAsk::set_bagtype(::google::protobuf::int32 value) {
+  set_has_bagtype();
+  bagtype_ = value;
+}
+
+// optional uint64 TargetId = 4 [default = 0];
+inline bool BagRpcUseItemAsk::has_targetid() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void BagRpcUseItemAsk::set_has_targetid() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void BagRpcUseItemAsk::clear_has_targetid() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void BagRpcUseItemAsk::clear_targetid() {
+  targetid_ = GOOGLE_ULONGLONG(0);
+  clear_has_targetid();
+}
+inline ::google::protobuf::uint64 BagRpcUseItemAsk::targetid() const {
+  return targetid_;
+}
+inline void BagRpcUseItemAsk::set_targetid(::google::protobuf::uint64 value) {
+  set_has_targetid();
+  targetid_ = value;
+}
+
+// optional int32 OptionIdx = 6 [default = 0];
+inline bool BagRpcUseItemAsk::has_optionidx() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void BagRpcUseItemAsk::set_has_optionidx() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void BagRpcUseItemAsk::clear_has_optionidx() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void BagRpcUseItemAsk::clear_optionidx() {
+  optionidx_ = 0;
+  clear_has_optionidx();
+}
+inline ::google::protobuf::int32 BagRpcUseItemAsk::optionidx() const {
+  return optionidx_;
+}
+inline void BagRpcUseItemAsk::set_optionidx(::google::protobuf::int32 value) {
+  set_has_optionidx();
+  optionidx_ = value;
+}
+
 // -------------------------------------------------------------------
 
 // BagRpcUseItemReply
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool BagRpcUseItemReply::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -1750,66 +2932,49 @@ inline void BagRpcUseItemReply::set_allocated_item(::ItemObj* item) {
   }
 }
 
-// -------------------------------------------------------------------
-
-// BagRpcSyncAsk
-
-// -------------------------------------------------------------------
-
-// BagRpcSyncReply
-
-// optional sint32 Result = 1 [default = -9999];
-inline bool BagRpcSyncReply::has_result() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
+// optional .ItemObj NowItem = 4;
+inline bool BagRpcUseItemReply::has_nowitem() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void BagRpcSyncReply::set_has_result() {
-  _has_bits_[0] |= 0x00000001u;
+inline void BagRpcUseItemReply::set_has_nowitem() {
+  _has_bits_[0] |= 0x00000004u;
 }
-inline void BagRpcSyncReply::clear_has_result() {
-  _has_bits_[0] &= ~0x00000001u;
+inline void BagRpcUseItemReply::clear_has_nowitem() {
+  _has_bits_[0] &= ~0x00000004u;
 }
-inline void BagRpcSyncReply::clear_result() {
-  result_ = -9999;
-  clear_has_result();
+inline void BagRpcUseItemReply::clear_nowitem() {
+  if (nowitem_ != NULL) nowitem_->::ItemObj::Clear();
+  clear_has_nowitem();
 }
-inline ::google::protobuf::int32 BagRpcSyncReply::result() const {
-  return result_;
+inline const ::ItemObj& BagRpcUseItemReply::nowitem() const {
+  return nowitem_ != NULL ? *nowitem_ : *default_instance_->nowitem_;
 }
-inline void BagRpcSyncReply::set_result(::google::protobuf::int32 value) {
-  set_has_result();
-  result_ = value;
+inline ::ItemObj* BagRpcUseItemReply::mutable_nowitem() {
+  set_has_nowitem();
+  if (nowitem_ == NULL) nowitem_ = new ::ItemObj;
+  return nowitem_;
 }
-
-// repeated .BagData Bags = 2;
-inline int BagRpcSyncReply::bags_size() const {
-  return bags_.size();
+inline ::ItemObj* BagRpcUseItemReply::release_nowitem() {
+  clear_has_nowitem();
+  ::ItemObj* temp = nowitem_;
+  nowitem_ = NULL;
+  return temp;
 }
-inline void BagRpcSyncReply::clear_bags() {
-  bags_.Clear();
-}
-inline const ::BagData& BagRpcSyncReply::bags(int index) const {
-  return bags_.Get(index);
-}
-inline ::BagData* BagRpcSyncReply::mutable_bags(int index) {
-  return bags_.Mutable(index);
-}
-inline ::BagData* BagRpcSyncReply::add_bags() {
-  return bags_.Add();
-}
-inline const ::google::protobuf::RepeatedPtrField< ::BagData >&
-BagRpcSyncReply::bags() const {
-  return bags_;
-}
-inline ::google::protobuf::RepeatedPtrField< ::BagData >*
-BagRpcSyncReply::mutable_bags() {
-  return &bags_;
+inline void BagRpcUseItemReply::set_allocated_nowitem(::ItemObj* nowitem) {
+  delete nowitem_;
+  nowitem_ = nowitem;
+  if (nowitem) {
+    set_has_nowitem();
+  } else {
+    clear_has_nowitem();
+  }
 }
 
 // -------------------------------------------------------------------
 
 // BagRpcSaleItemAsk
 
-// optional sint32 Pos = 5 [default = -1];
+// optional int32 Pos = 5 [default = -1];
 inline bool BagRpcSaleItemAsk::has_pos() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -1831,7 +2996,7 @@ inline void BagRpcSaleItemAsk::set_pos(::google::protobuf::int32 value) {
   pos_ = value;
 }
 
-// optional sint32 Count = 6 [default = -1];
+// optional int32 Count = 6 [default = -1];
 inline bool BagRpcSaleItemAsk::has_count() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -1853,11 +3018,33 @@ inline void BagRpcSaleItemAsk::set_count(::google::protobuf::int32 value) {
   count_ = value;
 }
 
+// optional int32 BagType = 7 [default = -1];
+inline bool BagRpcSaleItemAsk::has_bagtype() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void BagRpcSaleItemAsk::set_has_bagtype() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void BagRpcSaleItemAsk::clear_has_bagtype() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void BagRpcSaleItemAsk::clear_bagtype() {
+  bagtype_ = -1;
+  clear_has_bagtype();
+}
+inline ::google::protobuf::int32 BagRpcSaleItemAsk::bagtype() const {
+  return bagtype_;
+}
+inline void BagRpcSaleItemAsk::set_bagtype(::google::protobuf::int32 value) {
+  set_has_bagtype();
+  bagtype_ = value;
+}
+
 // -------------------------------------------------------------------
 
 // BagRpcSaleItemReply
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool BagRpcSaleItemReply::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -1921,7 +3108,7 @@ inline void BagRpcSaleItemReply::set_allocated_item(::ItemObj* item) {
 
 // BagRpcLockItemAsk
 
-// optional sint32 Pos = 1 [default = -1];
+// optional int32 Pos = 1 [default = -1];
 inline bool BagRpcLockItemAsk::has_pos() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -1965,11 +3152,33 @@ inline void BagRpcLockItemAsk::set_islock(bool value) {
   islock_ = value;
 }
 
+// optional int32 BagType = 4 [default = -1];
+inline bool BagRpcLockItemAsk::has_bagtype() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void BagRpcLockItemAsk::set_has_bagtype() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void BagRpcLockItemAsk::clear_has_bagtype() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void BagRpcLockItemAsk::clear_bagtype() {
+  bagtype_ = -1;
+  clear_has_bagtype();
+}
+inline ::google::protobuf::int32 BagRpcLockItemAsk::bagtype() const {
+  return bagtype_;
+}
+inline void BagRpcLockItemAsk::set_bagtype(::google::protobuf::int32 value) {
+  set_has_bagtype();
+  bagtype_ = value;
+}
+
 // -------------------------------------------------------------------
 
 // BagRpcLockItemReply
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool BagRpcLockItemReply::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -2033,7 +3242,7 @@ inline void BagRpcLockItemReply::set_allocated_item(::ItemObj* item) {
 
 // BagRpcDeblockingAsk
 
-// optional sint32 BagType = 1 [default = -1];
+// optional int32 BagType = 1 [default = -1];
 inline bool BagRpcDeblockingAsk::has_bagtype() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -2059,7 +3268,7 @@ inline void BagRpcDeblockingAsk::set_bagtype(::google::protobuf::int32 value) {
 
 // BagRpcDeblockingReply
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool BagRpcDeblockingReply::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -2081,7 +3290,7 @@ inline void BagRpcDeblockingReply::set_result(::google::protobuf::int32 value) {
   result_ = value;
 }
 
-// optional sint32 BagType = 2 [default = -1];
+// optional int32 BagType = 2 [default = -1];
 inline bool BagRpcDeblockingReply::has_bagtype() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -2103,7 +3312,7 @@ inline void BagRpcDeblockingReply::set_bagtype(::google::protobuf::int32 value) 
   bagtype_ = value;
 }
 
-// optional sint32 CurCapacity = 3 [default = -1];
+// optional int32 CurCapacity = 3 [default = -1];
 inline bool BagRpcDeblockingReply::has_curcapacity() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -2129,7 +3338,7 @@ inline void BagRpcDeblockingReply::set_curcapacity(::google::protobuf::int32 val
 
 // BagRpcTakeItemAsk
 
-// optional sint32 FromBagType = 1 [default = -1];
+// optional int32 FromBagType = 1 [default = -1];
 inline bool BagRpcTakeItemAsk::has_frombagtype() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -2151,7 +3360,7 @@ inline void BagRpcTakeItemAsk::set_frombagtype(::google::protobuf::int32 value) 
   frombagtype_ = value;
 }
 
-// optional sint32 ToBagType = 2 [default = -1];
+// optional int32 ToBagType = 2 [default = -1];
 inline bool BagRpcTakeItemAsk::has_tobagtype() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -2173,7 +3382,7 @@ inline void BagRpcTakeItemAsk::set_tobagtype(::google::protobuf::int32 value) {
   tobagtype_ = value;
 }
 
-// optional sint32 FromPos = 3 [default = -1];
+// optional int32 FromPos = 3 [default = -1];
 inline bool BagRpcTakeItemAsk::has_frompos() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -2199,7 +3408,7 @@ inline void BagRpcTakeItemAsk::set_frompos(::google::protobuf::int32 value) {
 
 // BagRpcTakeItemReply
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool BagRpcTakeItemReply::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -2297,7 +3506,7 @@ inline void BagRpcTakeItemReply::set_allocated_fromitemobj(::ItemObj* fromitemob
   }
 }
 
-// optional sint32 FromBagType = 4 [default = -1];
+// optional int32 FromBagType = 4 [default = -1];
 inline bool BagRpcTakeItemReply::has_frombagtype() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
@@ -2319,7 +3528,7 @@ inline void BagRpcTakeItemReply::set_frombagtype(::google::protobuf::int32 value
   frombagtype_ = value;
 }
 
-// optional sint32 ToBagType = 5 [default = -1];
+// optional int32 ToBagType = 5 [default = -1];
 inline bool BagRpcTakeItemReply::has_tobagtype() const {
   return (_has_bits_[0] & 0x00000010u) != 0;
 }
@@ -2345,7 +3554,7 @@ inline void BagRpcTakeItemReply::set_tobagtype(::google::protobuf::int32 value) 
 
 // BagRpcTidyAsk
 
-// optional sint32 BagType = 2 [default = -1];
+// optional int32 BagType = 2 [default = -1];
 inline bool BagRpcTidyAsk::has_bagtype() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -2371,7 +3580,7 @@ inline void BagRpcTidyAsk::set_bagtype(::google::protobuf::int32 value) {
 
 // BagRpcTidyReply
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool BagRpcTidyReply::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -2393,51 +3602,42 @@ inline void BagRpcTidyReply::set_result(::google::protobuf::int32 value) {
   result_ = value;
 }
 
-// repeated .BagData Bags = 3;
-inline int BagRpcTidyReply::bags_size() const {
-  return bags_.size();
+// optional .BagData Bags = 3;
+inline bool BagRpcTidyReply::has_bags() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void BagRpcTidyReply::set_has_bags() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void BagRpcTidyReply::clear_has_bags() {
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void BagRpcTidyReply::clear_bags() {
-  bags_.Clear();
+  if (bags_ != NULL) bags_->::BagData::Clear();
+  clear_has_bags();
 }
-inline const ::BagData& BagRpcTidyReply::bags(int index) const {
-  return bags_.Get(index);
+inline const ::BagData& BagRpcTidyReply::bags() const {
+  return bags_ != NULL ? *bags_ : *default_instance_->bags_;
 }
-inline ::BagData* BagRpcTidyReply::mutable_bags(int index) {
-  return bags_.Mutable(index);
-}
-inline ::BagData* BagRpcTidyReply::add_bags() {
-  return bags_.Add();
-}
-inline const ::google::protobuf::RepeatedPtrField< ::BagData >&
-BagRpcTidyReply::bags() const {
+inline ::BagData* BagRpcTidyReply::mutable_bags() {
+  set_has_bags();
+  if (bags_ == NULL) bags_ = new ::BagData;
   return bags_;
 }
-inline ::google::protobuf::RepeatedPtrField< ::BagData >*
-BagRpcTidyReply::mutable_bags() {
-  return &bags_;
+inline ::BagData* BagRpcTidyReply::release_bags() {
+  clear_has_bags();
+  ::BagData* temp = bags_;
+  bags_ = NULL;
+  return temp;
 }
-
-// optional sint32 BagType = 4 [default = -1];
-inline bool BagRpcTidyReply::has_bagtype() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void BagRpcTidyReply::set_has_bagtype() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void BagRpcTidyReply::clear_has_bagtype() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void BagRpcTidyReply::clear_bagtype() {
-  bagtype_ = -1;
-  clear_has_bagtype();
-}
-inline ::google::protobuf::int32 BagRpcTidyReply::bagtype() const {
-  return bagtype_;
-}
-inline void BagRpcTidyReply::set_bagtype(::google::protobuf::int32 value) {
-  set_has_bagtype();
-  bagtype_ = value;
+inline void BagRpcTidyReply::set_allocated_bags(::BagData* bags) {
+  delete bags_;
+  bags_ = bags;
+  if (bags) {
+    set_has_bags();
+  } else {
+    clear_has_bags();
+  }
 }
 
 // -------------------------------------------------------------------
@@ -2448,7 +3648,7 @@ inline void BagRpcTidyReply::set_bagtype(::google::protobuf::int32 value) {
 
 // BagRpcTakeAllBackBagsReply
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool BagRpcTakeAllBackBagsReply::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -2499,7 +3699,7 @@ BagRpcTakeAllBackBagsReply::mutable_bags() {
 
 // BagRpcBagChangeNotify
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool BagRpcBagChangeNotify::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -2557,6 +3757,530 @@ inline void BagRpcBagChangeNotify::set_allocated_bags(::BagData* bags) {
   } else {
     clear_has_bags();
   }
+}
+
+// -------------------------------------------------------------------
+
+// BagRpcMergeItemAsk
+
+// optional int32 Pos = 1 [default = -1];
+inline bool BagRpcMergeItemAsk::has_pos() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void BagRpcMergeItemAsk::set_has_pos() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void BagRpcMergeItemAsk::clear_has_pos() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void BagRpcMergeItemAsk::clear_pos() {
+  pos_ = -1;
+  clear_has_pos();
+}
+inline ::google::protobuf::int32 BagRpcMergeItemAsk::pos() const {
+  return pos_;
+}
+inline void BagRpcMergeItemAsk::set_pos(::google::protobuf::int32 value) {
+  set_has_pos();
+  pos_ = value;
+}
+
+// optional int32 BagType = 2 [default = -1];
+inline bool BagRpcMergeItemAsk::has_bagtype() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void BagRpcMergeItemAsk::set_has_bagtype() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void BagRpcMergeItemAsk::clear_has_bagtype() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void BagRpcMergeItemAsk::clear_bagtype() {
+  bagtype_ = -1;
+  clear_has_bagtype();
+}
+inline ::google::protobuf::int32 BagRpcMergeItemAsk::bagtype() const {
+  return bagtype_;
+}
+inline void BagRpcMergeItemAsk::set_bagtype(::google::protobuf::int32 value) {
+  set_has_bagtype();
+  bagtype_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// BagRpcMergeItemReply
+
+// optional int32 Result = 1 [default = -9999];
+inline bool BagRpcMergeItemReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void BagRpcMergeItemReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void BagRpcMergeItemReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void BagRpcMergeItemReply::clear_result() {
+  result_ = -9999;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 BagRpcMergeItemReply::result() const {
+  return result_;
+}
+inline void BagRpcMergeItemReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// optional .BagData Bags = 2;
+inline bool BagRpcMergeItemReply::has_bags() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void BagRpcMergeItemReply::set_has_bags() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void BagRpcMergeItemReply::clear_has_bags() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void BagRpcMergeItemReply::clear_bags() {
+  if (bags_ != NULL) bags_->::BagData::Clear();
+  clear_has_bags();
+}
+inline const ::BagData& BagRpcMergeItemReply::bags() const {
+  return bags_ != NULL ? *bags_ : *default_instance_->bags_;
+}
+inline ::BagData* BagRpcMergeItemReply::mutable_bags() {
+  set_has_bags();
+  if (bags_ == NULL) bags_ = new ::BagData;
+  return bags_;
+}
+inline ::BagData* BagRpcMergeItemReply::release_bags() {
+  clear_has_bags();
+  ::BagData* temp = bags_;
+  bags_ = NULL;
+  return temp;
+}
+inline void BagRpcMergeItemReply::set_allocated_bags(::BagData* bags) {
+  delete bags_;
+  bags_ = bags;
+  if (bags) {
+    set_has_bags();
+  } else {
+    clear_has_bags();
+  }
+}
+
+// -------------------------------------------------------------------
+
+// BagRpcBagSyncAsk
+
+// -------------------------------------------------------------------
+
+// BagRpcBagSyncReply
+
+// optional int32 Result = 1 [default = -1];
+inline bool BagRpcBagSyncReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void BagRpcBagSyncReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void BagRpcBagSyncReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void BagRpcBagSyncReply::clear_result() {
+  result_ = -1;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 BagRpcBagSyncReply::result() const {
+  return result_;
+}
+inline void BagRpcBagSyncReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// repeated .BagData Bags = 2;
+inline int BagRpcBagSyncReply::bags_size() const {
+  return bags_.size();
+}
+inline void BagRpcBagSyncReply::clear_bags() {
+  bags_.Clear();
+}
+inline const ::BagData& BagRpcBagSyncReply::bags(int index) const {
+  return bags_.Get(index);
+}
+inline ::BagData* BagRpcBagSyncReply::mutable_bags(int index) {
+  return bags_.Mutable(index);
+}
+inline ::BagData* BagRpcBagSyncReply::add_bags() {
+  return bags_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::BagData >&
+BagRpcBagSyncReply::bags() const {
+  return bags_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::BagData >*
+BagRpcBagSyncReply::mutable_bags() {
+  return &bags_;
+}
+
+// -------------------------------------------------------------------
+
+// BagRpcAddItemNotify
+
+// repeated .ItemObj Item = 1;
+inline int BagRpcAddItemNotify::item_size() const {
+  return item_.size();
+}
+inline void BagRpcAddItemNotify::clear_item() {
+  item_.Clear();
+}
+inline const ::ItemObj& BagRpcAddItemNotify::item(int index) const {
+  return item_.Get(index);
+}
+inline ::ItemObj* BagRpcAddItemNotify::mutable_item(int index) {
+  return item_.Mutable(index);
+}
+inline ::ItemObj* BagRpcAddItemNotify::add_item() {
+  return item_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::ItemObj >&
+BagRpcAddItemNotify::item() const {
+  return item_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::ItemObj >*
+BagRpcAddItemNotify::mutable_item() {
+  return &item_;
+}
+
+// -------------------------------------------------------------------
+
+// BagRpcConsumeItemAsk
+
+// repeated .ItemSimpleData ItemData = 3;
+inline int BagRpcConsumeItemAsk::itemdata_size() const {
+  return itemdata_.size();
+}
+inline void BagRpcConsumeItemAsk::clear_itemdata() {
+  itemdata_.Clear();
+}
+inline const ::ItemSimpleData& BagRpcConsumeItemAsk::itemdata(int index) const {
+  return itemdata_.Get(index);
+}
+inline ::ItemSimpleData* BagRpcConsumeItemAsk::mutable_itemdata(int index) {
+  return itemdata_.Mutable(index);
+}
+inline ::ItemSimpleData* BagRpcConsumeItemAsk::add_itemdata() {
+  return itemdata_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::ItemSimpleData >&
+BagRpcConsumeItemAsk::itemdata() const {
+  return itemdata_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::ItemSimpleData >*
+BagRpcConsumeItemAsk::mutable_itemdata() {
+  return &itemdata_;
+}
+
+// -------------------------------------------------------------------
+
+// BagRpcConsumeItemReply
+
+// optional int32 Result = 1 [default = -1];
+inline bool BagRpcConsumeItemReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void BagRpcConsumeItemReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void BagRpcConsumeItemReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void BagRpcConsumeItemReply::clear_result() {
+  result_ = -1;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 BagRpcConsumeItemReply::result() const {
+  return result_;
+}
+inline void BagRpcConsumeItemReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// BagRpcItemChangeNotify
+
+// repeated .ItemObj ItemList = 1;
+inline int BagRpcItemChangeNotify::itemlist_size() const {
+  return itemlist_.size();
+}
+inline void BagRpcItemChangeNotify::clear_itemlist() {
+  itemlist_.Clear();
+}
+inline const ::ItemObj& BagRpcItemChangeNotify::itemlist(int index) const {
+  return itemlist_.Get(index);
+}
+inline ::ItemObj* BagRpcItemChangeNotify::mutable_itemlist(int index) {
+  return itemlist_.Mutable(index);
+}
+inline ::ItemObj* BagRpcItemChangeNotify::add_itemlist() {
+  return itemlist_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::ItemObj >&
+BagRpcItemChangeNotify::itemlist() const {
+  return itemlist_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::ItemObj >*
+BagRpcItemChangeNotify::mutable_itemlist() {
+  return &itemlist_;
+}
+
+// optional int32 BagType = 2 [default = -1];
+inline bool BagRpcItemChangeNotify::has_bagtype() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void BagRpcItemChangeNotify::set_has_bagtype() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void BagRpcItemChangeNotify::clear_has_bagtype() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void BagRpcItemChangeNotify::clear_bagtype() {
+  bagtype_ = -1;
+  clear_has_bagtype();
+}
+inline ::google::protobuf::int32 BagRpcItemChangeNotify::bagtype() const {
+  return bagtype_;
+}
+inline void BagRpcItemChangeNotify::set_bagtype(::google::protobuf::int32 value) {
+  set_has_bagtype();
+  bagtype_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// BagRpcClickItemAsk
+
+// optional uint64 Guid = 1 [default = 0];
+inline bool BagRpcClickItemAsk::has_guid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void BagRpcClickItemAsk::set_has_guid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void BagRpcClickItemAsk::clear_has_guid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void BagRpcClickItemAsk::clear_guid() {
+  guid_ = GOOGLE_ULONGLONG(0);
+  clear_has_guid();
+}
+inline ::google::protobuf::uint64 BagRpcClickItemAsk::guid() const {
+  return guid_;
+}
+inline void BagRpcClickItemAsk::set_guid(::google::protobuf::uint64 value) {
+  set_has_guid();
+  guid_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// BagRpcClickItemReply
+
+// optional int32 Result = 1 [default = -1];
+inline bool BagRpcClickItemReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void BagRpcClickItemReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void BagRpcClickItemReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void BagRpcClickItemReply::clear_result() {
+  result_ = -1;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 BagRpcClickItemReply::result() const {
+  return result_;
+}
+inline void BagRpcClickItemReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// optional .ItemObj Item = 2;
+inline bool BagRpcClickItemReply::has_item() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void BagRpcClickItemReply::set_has_item() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void BagRpcClickItemReply::clear_has_item() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void BagRpcClickItemReply::clear_item() {
+  if (item_ != NULL) item_->::ItemObj::Clear();
+  clear_has_item();
+}
+inline const ::ItemObj& BagRpcClickItemReply::item() const {
+  return item_ != NULL ? *item_ : *default_instance_->item_;
+}
+inline ::ItemObj* BagRpcClickItemReply::mutable_item() {
+  set_has_item();
+  if (item_ == NULL) item_ = new ::ItemObj;
+  return item_;
+}
+inline ::ItemObj* BagRpcClickItemReply::release_item() {
+  clear_has_item();
+  ::ItemObj* temp = item_;
+  item_ = NULL;
+  return temp;
+}
+inline void BagRpcClickItemReply::set_allocated_item(::ItemObj* item) {
+  delete item_;
+  item_ = item;
+  if (item) {
+    set_has_item();
+  } else {
+    clear_has_item();
+  }
+}
+
+// -------------------------------------------------------------------
+
+// BagRpcRemoveItemByPosAsk
+
+// repeated int32 PosList = 1;
+inline int BagRpcRemoveItemByPosAsk::poslist_size() const {
+  return poslist_.size();
+}
+inline void BagRpcRemoveItemByPosAsk::clear_poslist() {
+  poslist_.Clear();
+}
+inline ::google::protobuf::int32 BagRpcRemoveItemByPosAsk::poslist(int index) const {
+  return poslist_.Get(index);
+}
+inline void BagRpcRemoveItemByPosAsk::set_poslist(int index, ::google::protobuf::int32 value) {
+  poslist_.Set(index, value);
+}
+inline void BagRpcRemoveItemByPosAsk::add_poslist(::google::protobuf::int32 value) {
+  poslist_.Add(value);
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+BagRpcRemoveItemByPosAsk::poslist() const {
+  return poslist_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+BagRpcRemoveItemByPosAsk::mutable_poslist() {
+  return &poslist_;
+}
+
+// optional int32 BagType = 2 [default = -1];
+inline bool BagRpcRemoveItemByPosAsk::has_bagtype() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void BagRpcRemoveItemByPosAsk::set_has_bagtype() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void BagRpcRemoveItemByPosAsk::clear_has_bagtype() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void BagRpcRemoveItemByPosAsk::clear_bagtype() {
+  bagtype_ = -1;
+  clear_has_bagtype();
+}
+inline ::google::protobuf::int32 BagRpcRemoveItemByPosAsk::bagtype() const {
+  return bagtype_;
+}
+inline void BagRpcRemoveItemByPosAsk::set_bagtype(::google::protobuf::int32 value) {
+  set_has_bagtype();
+  bagtype_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// BagRpcRemoveItemByPosReply
+
+// optional int32 Result = 1 [default = -1];
+inline bool BagRpcRemoveItemByPosReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void BagRpcRemoveItemByPosReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void BagRpcRemoveItemByPosReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void BagRpcRemoveItemByPosReply::clear_result() {
+  result_ = -1;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 BagRpcRemoveItemByPosReply::result() const {
+  return result_;
+}
+inline void BagRpcRemoveItemByPosReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// repeated .ItemObj ItemList = 2;
+inline int BagRpcRemoveItemByPosReply::itemlist_size() const {
+  return itemlist_.size();
+}
+inline void BagRpcRemoveItemByPosReply::clear_itemlist() {
+  itemlist_.Clear();
+}
+inline const ::ItemObj& BagRpcRemoveItemByPosReply::itemlist(int index) const {
+  return itemlist_.Get(index);
+}
+inline ::ItemObj* BagRpcRemoveItemByPosReply::mutable_itemlist(int index) {
+  return itemlist_.Mutable(index);
+}
+inline ::ItemObj* BagRpcRemoveItemByPosReply::add_itemlist() {
+  return itemlist_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::ItemObj >&
+BagRpcRemoveItemByPosReply::itemlist() const {
+  return itemlist_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::ItemObj >*
+BagRpcRemoveItemByPosReply::mutable_itemlist() {
+  return &itemlist_;
+}
+
+// -------------------------------------------------------------------
+
+// BagRpcClearBagRedPointAsk
+
+// -------------------------------------------------------------------
+
+// BagRpcClearBagRedPointReply
+
+// optional int32 Result = 1 [default = -1];
+inline bool BagRpcClearBagRedPointReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void BagRpcClearBagRedPointReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void BagRpcClearBagRedPointReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void BagRpcClearBagRedPointReply::clear_result() {
+  result_ = -1;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 BagRpcClearBagRedPointReply::result() const {
+  return result_;
+}
+inline void BagRpcClearBagRedPointReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
 }
 
 

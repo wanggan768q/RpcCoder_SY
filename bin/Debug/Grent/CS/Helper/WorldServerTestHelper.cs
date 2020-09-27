@@ -9,125 +9,23 @@ using System.Collections.Generic;
 
 
 [System.Serializable]
-public class WorldServerRpcChangeSceneAskWraperHelper
-{
-	public UInt64 RoleId;
-	public int CurSceneId;
-	public int TargetSceneId;
-	public int MemId;
-	public int SceneId;
-}
-[System.Serializable]
 public class WorldServerRpcEnterSceneAskWraperHelper
 {
 	public UInt64 RoleId;
-	public int SceneId;
-	public int MemId;
+	public CharacterLocationWraper Location;
 }
 [System.Serializable]
-public class WorldServerRpcCreateDungeonAskWraperHelper
-{
-	public UInt64 RoleId;
-	public int TargetSceneId;
-	public int MemId;
-	public int DungeonConfigId;
-	public int CurSceneId;
-	public int Result;
-	public List<UInt64> RoleIds;
-}
-[System.Serializable]
-public class WorldServerRpcCreateTeamAskWraperHelper
-{
-	public int TeamType;
-	public TeamMemberInfoWraper TeamMember;
-	public int Result;
-	public TeamInfoWraper Team;
-}
-[System.Serializable]
-public class WorldServerRpcJoinTeamAskWraperHelper
-{
-	public int TeamId;
-	public int Result;
-	public TeamMemberInfoWraper TeamMember;
-	public TeamInfoWraper Team;
-	public int TeamType;
-	public int MemId;
-	public int SceneId;
-}
-[System.Serializable]
-public class WorldServerRpcLeaveTeamAskWraperHelper
-{
-	public int TeamId;
-	public UInt64 RoleId;
-	public int MemId;
-	public int SceneId;
-	public UInt64 NewLeaderRoleId;
-	public int Result;
-}
-[System.Serializable]
-public class WorldServerRpcAppointTeamLeaderAskWraperHelper
-{
-	public UInt64 NewLeaderRoleId;
-	public int MemId;
-	public int SceneId;
-	public UInt64 CurLeaderRoleId;
-	public int TeamId;
-	public int Result;
-}
-[System.Serializable]
-public class WorldServerRpcDismissTeamAskWraperHelper
-{
-	public int SceneId;
-	public int MemId;
-	public UInt64 RoleId;
-	public int TeamId;
-	public int Result;
-}
-[System.Serializable]
-public class WorldServerRpcKickMemberAskWraperHelper
-{
-	public UInt64 KickMemberRoleId;
-	public int MemId;
-	public int SceneId;
-	public int TeamId;
-	public UInt64 LeaderRoleId;
-	public int Result;
-}
-[System.Serializable]
-public class WorldServerRpcApplyTeamAskWraperHelper
-{
-	public int TeamId;
-	public int Result;
-	public TeamMemberInfoWraper TeamMember;
-	public int MemId;
-	public int SceneId;
-}
-[System.Serializable]
-public class WorldServerRpcAgreeTeamApplicantAskWraperHelper
-{
-	public UInt64 RoleId;
-	public UInt64 LeaderRoleId;
-	public int Result;
-	public int MemId;
-	public int SceneId;
-	public TeamInfoWraper Team;
-}
-[System.Serializable]
-public class WorldServerRpcLoginAskWraperHelper
+public class WorldServerRpcLoginGameServerAskWraperHelper
 {
 	public TeamInfoWraper Team;
-	public int MemId;
-	public int SceneId;
 	public OnlineUserInfoWraper RoleInfo;
+	public CharacterLocationWraper Location;
+	public int GateId;
 }
 [System.Serializable]
-public class WorldServerRpcUpdateRoleInfoAskWraperHelper
+public class WorldServerRpcLogoutGameServerAskWraperHelper
 {
-	public OnlineUserInfoWraper RoleInfo;
-}
-[System.Serializable]
-public class WorldServerRpcLogoutAskWraperHelper
-{
+	public int Result;
 	public OnlineUserInfoWraper RoleInfo;
 }
 [System.Serializable]
@@ -135,7 +33,6 @@ public class WorldServerRpcCreateDungeonNotifyAskWraperHelper
 {
 	public int CurSceneId;
 	public UInt64 RoleId;
-	public int MemId;
 	public int TargetSceneId;
 }
 [System.Serializable]
@@ -149,101 +46,105 @@ public class WorldServerRpcExitDungeonAskWraperHelper
 	public UInt64 RoleId;
 }
 [System.Serializable]
-public class WorldServerRpcReleaseDungeonAskWraperHelper
+public class WorldServerRpcUpdateTeamInfoAskWraperHelper
 {
+	public TeamMemberInfoWraper TeamMember;
+	public UInt64 RoleId;
+	public TeamInfoWraper Team;
+	public int TeamType;
+}
+[System.Serializable]
+public class WorldServerRpcSendMailAskWraperHelper
+{
+	public MailInfoWraper Mail;
+	public UInt64 GlobalMailID;
+}
+[System.Serializable]
+public class WorldServerRpcChangeTeamTypeAskWraperHelper
+{
+	public UInt64 TeamId;
+	public UInt64 RoleId;
+	public int Result;
+	public int TeamType;
+	public TeamTargetWraper Target;
+}
+[System.Serializable]
+public class WorldServerRpcAutoMatchAskWraperHelper
+{
+	public TeamMemberInfoWraper MemberInfo;
+	public PlayerMatchDataWraper MatchInfo;
+	public int Result;
+}
+[System.Serializable]
+public class WorldServerRpcCancelMatchAskWraperHelper
+{
+	public UInt64 RoleId;
+	public int Result;
+	public int IsNotify;
+}
+[System.Serializable]
+public class WorldServerRpcGetPlayerInfoAskWraperHelper
+{
+	public UInt64 Player_guid;
 }
 
 
 
 public class WorldServerTestHelper : MonoBehaviour
 {
-	public WorldServerRpcChangeSceneAskWraperHelper WorldServerRpcChangeSceneAskWraperVar;
 	public WorldServerRpcEnterSceneAskWraperHelper WorldServerRpcEnterSceneAskWraperVar;
-	public WorldServerRpcCreateDungeonAskWraperHelper WorldServerRpcCreateDungeonAskWraperVar;
-	public WorldServerRpcCreateTeamAskWraperHelper WorldServerRpcCreateTeamAskWraperVar;
-	public WorldServerRpcJoinTeamAskWraperHelper WorldServerRpcJoinTeamAskWraperVar;
-	public WorldServerRpcLeaveTeamAskWraperHelper WorldServerRpcLeaveTeamAskWraperVar;
-	public WorldServerRpcAppointTeamLeaderAskWraperHelper WorldServerRpcAppointTeamLeaderAskWraperVar;
-	public WorldServerRpcDismissTeamAskWraperHelper WorldServerRpcDismissTeamAskWraperVar;
-	public WorldServerRpcKickMemberAskWraperHelper WorldServerRpcKickMemberAskWraperVar;
-	public WorldServerRpcApplyTeamAskWraperHelper WorldServerRpcApplyTeamAskWraperVar;
-	public WorldServerRpcAgreeTeamApplicantAskWraperHelper WorldServerRpcAgreeTeamApplicantAskWraperVar;
-	public WorldServerRpcLoginAskWraperHelper WorldServerRpcLoginAskWraperVar;
-	public WorldServerRpcUpdateRoleInfoAskWraperHelper WorldServerRpcUpdateRoleInfoAskWraperVar;
-	public WorldServerRpcLogoutAskWraperHelper WorldServerRpcLogoutAskWraperVar;
+	public WorldServerRpcLoginGameServerAskWraperHelper WorldServerRpcLoginGameServerAskWraperVar;
+	public WorldServerRpcLogoutGameServerAskWraperHelper WorldServerRpcLogoutGameServerAskWraperVar;
 	public WorldServerRpcCreateDungeonNotifyAskWraperHelper WorldServerRpcCreateDungeonNotifyAskWraperVar;
 	public WorldServerRpcCreateDungeonNotifyReplyWraperHelper WorldServerRpcCreateDungeonNotifyReplyWraperVar;
 	public WorldServerRpcExitDungeonAskWraperHelper WorldServerRpcExitDungeonAskWraperVar;
-	public WorldServerRpcReleaseDungeonAskWraperHelper WorldServerRpcReleaseDungeonAskWraperVar;
+	public WorldServerRpcUpdateTeamInfoAskWraperHelper WorldServerRpcUpdateTeamInfoAskWraperVar;
+	public WorldServerRpcSendMailAskWraperHelper WorldServerRpcSendMailAskWraperVar;
+	public WorldServerRpcChangeTeamTypeAskWraperHelper WorldServerRpcChangeTeamTypeAskWraperVar;
+	public WorldServerRpcAutoMatchAskWraperHelper WorldServerRpcAutoMatchAskWraperVar;
+	public WorldServerRpcCancelMatchAskWraperHelper WorldServerRpcCancelMatchAskWraperVar;
+	public WorldServerRpcGetPlayerInfoAskWraperHelper WorldServerRpcGetPlayerInfoAskWraperVar;
 
 
-	public void TestChangeScene()
-	{
-		WorldServerRPC.Instance.ChangeScene(WorldServerRpcChangeSceneAskWraperVar.RoleId,WorldServerRpcChangeSceneAskWraperVar.CurSceneId,WorldServerRpcChangeSceneAskWraperVar.TargetSceneId,WorldServerRpcChangeSceneAskWraperVar.MemId,WorldServerRpcChangeSceneAskWraperVar.SceneId,delegate(object obj){});
-	}
-	public void TestEnterScene()
-	{
-		WorldServerRPC.Instance.EnterScene(WorldServerRpcEnterSceneAskWraperVar.RoleId,WorldServerRpcEnterSceneAskWraperVar.SceneId,WorldServerRpcEnterSceneAskWraperVar.MemId,delegate(object obj){});
-	}
-	public void TestCreateDungeon()
-	{
-		WorldServerRPC.Instance.CreateDungeon(WorldServerRpcCreateDungeonAskWraperVar.RoleId,WorldServerRpcCreateDungeonAskWraperVar.TargetSceneId,WorldServerRpcCreateDungeonAskWraperVar.MemId,WorldServerRpcCreateDungeonAskWraperVar.DungeonConfigId,WorldServerRpcCreateDungeonAskWraperVar.CurSceneId,WorldServerRpcCreateDungeonAskWraperVar.Result,WorldServerRpcCreateDungeonAskWraperVar.RoleIds,delegate(object obj){});
-	}
-	public void TestCreateTeam()
-	{
-		WorldServerRPC.Instance.CreateTeam(WorldServerRpcCreateTeamAskWraperVar.TeamType,WorldServerRpcCreateTeamAskWraperVar.TeamMember,WorldServerRpcCreateTeamAskWraperVar.Result,WorldServerRpcCreateTeamAskWraperVar.Team,delegate(object obj){});
-	}
-	public void TestJoinTeam()
-	{
-		WorldServerRPC.Instance.JoinTeam(WorldServerRpcJoinTeamAskWraperVar.TeamId,WorldServerRpcJoinTeamAskWraperVar.Result,WorldServerRpcJoinTeamAskWraperVar.TeamMember,WorldServerRpcJoinTeamAskWraperVar.Team,WorldServerRpcJoinTeamAskWraperVar.TeamType,WorldServerRpcJoinTeamAskWraperVar.MemId,WorldServerRpcJoinTeamAskWraperVar.SceneId,delegate(object obj){});
-	}
-	public void TestLeaveTeam()
-	{
-		WorldServerRPC.Instance.LeaveTeam(WorldServerRpcLeaveTeamAskWraperVar.TeamId,WorldServerRpcLeaveTeamAskWraperVar.RoleId,WorldServerRpcLeaveTeamAskWraperVar.MemId,WorldServerRpcLeaveTeamAskWraperVar.SceneId,WorldServerRpcLeaveTeamAskWraperVar.NewLeaderRoleId,WorldServerRpcLeaveTeamAskWraperVar.Result,delegate(object obj){});
-	}
-	public void TestAppointTeamLeader()
-	{
-		WorldServerRPC.Instance.AppointTeamLeader(WorldServerRpcAppointTeamLeaderAskWraperVar.NewLeaderRoleId,WorldServerRpcAppointTeamLeaderAskWraperVar.MemId,WorldServerRpcAppointTeamLeaderAskWraperVar.SceneId,WorldServerRpcAppointTeamLeaderAskWraperVar.CurLeaderRoleId,WorldServerRpcAppointTeamLeaderAskWraperVar.TeamId,WorldServerRpcAppointTeamLeaderAskWraperVar.Result,delegate(object obj){});
-	}
-	public void TestDismissTeam()
-	{
-		WorldServerRPC.Instance.DismissTeam(WorldServerRpcDismissTeamAskWraperVar.SceneId,WorldServerRpcDismissTeamAskWraperVar.MemId,WorldServerRpcDismissTeamAskWraperVar.RoleId,WorldServerRpcDismissTeamAskWraperVar.TeamId,WorldServerRpcDismissTeamAskWraperVar.Result,delegate(object obj){});
-	}
-	public void TestKickMember()
-	{
-		WorldServerRPC.Instance.KickMember(WorldServerRpcKickMemberAskWraperVar.KickMemberRoleId,WorldServerRpcKickMemberAskWraperVar.MemId,WorldServerRpcKickMemberAskWraperVar.SceneId,WorldServerRpcKickMemberAskWraperVar.TeamId,WorldServerRpcKickMemberAskWraperVar.LeaderRoleId,WorldServerRpcKickMemberAskWraperVar.Result,delegate(object obj){});
-	}
-	public void TestApplyTeam()
-	{
-		WorldServerRPC.Instance.ApplyTeam(WorldServerRpcApplyTeamAskWraperVar.TeamId,WorldServerRpcApplyTeamAskWraperVar.Result,WorldServerRpcApplyTeamAskWraperVar.TeamMember,WorldServerRpcApplyTeamAskWraperVar.MemId,WorldServerRpcApplyTeamAskWraperVar.SceneId,delegate(object obj){});
-	}
-	public void TestAgreeTeamApplicant()
-	{
-		WorldServerRPC.Instance.AgreeTeamApplicant(WorldServerRpcAgreeTeamApplicantAskWraperVar.RoleId,WorldServerRpcAgreeTeamApplicantAskWraperVar.LeaderRoleId,WorldServerRpcAgreeTeamApplicantAskWraperVar.Result,WorldServerRpcAgreeTeamApplicantAskWraperVar.MemId,WorldServerRpcAgreeTeamApplicantAskWraperVar.SceneId,WorldServerRpcAgreeTeamApplicantAskWraperVar.Team,delegate(object obj){});
-	}
-	public void TestLogin()
-	{
-		WorldServerRPC.Instance.Login(WorldServerRpcLoginAskWraperVar.Team,WorldServerRpcLoginAskWraperVar.MemId,WorldServerRpcLoginAskWraperVar.SceneId,WorldServerRpcLoginAskWraperVar.RoleInfo,delegate(object obj){});
-	}
-	public void TestUpdateRoleInfo()
-	{
-		WorldServerRPC.Instance.UpdateRoleInfo(WorldServerRpcUpdateRoleInfoAskWraperVar.RoleInfo,delegate(object obj){});
-	}
-	public void TestLogout()
-	{
-		WorldServerRPC.Instance.Logout(WorldServerRpcLogoutAskWraperVar.RoleInfo,delegate(object obj){});
-	}
 	public void TestCreateDungeonNotify()
 	{
-		WorldServerRPC.Instance.CreateDungeonNotify(WorldServerRpcCreateDungeonNotifyAskWraperVar.CurSceneId,WorldServerRpcCreateDungeonNotifyAskWraperVar.RoleId,WorldServerRpcCreateDungeonNotifyAskWraperVar.MemId,WorldServerRpcCreateDungeonNotifyAskWraperVar.TargetSceneId,delegate(object obj){});
+		WorldServerRPC.Instance.CreateDungeonNotify(WorldServerRpcCreateDungeonNotifyAskWraperVar.CurSceneId,WorldServerRpcCreateDungeonNotifyAskWraperVar.RoleId,WorldServerRpcCreateDungeonNotifyAskWraperVar.TargetSceneId,delegate(bool connedServer,object obj){});
 	}
 	public void TestExitDungeon()
 	{
-		WorldServerRPC.Instance.ExitDungeon(WorldServerRpcExitDungeonAskWraperVar.RoleId,delegate(object obj){});
+		WorldServerRPC.Instance.ExitDungeon(WorldServerRpcExitDungeonAskWraperVar.RoleId,delegate(bool connedServer,object obj){});
 	}
-	public void TestReleaseDungeon()
+	public void TestUpdateTeamInfo()
 	{
-		WorldServerRPC.Instance.ReleaseDungeon(delegate(object obj){});
+		WorldServerRPC.Instance.UpdateTeamInfo(WorldServerRpcUpdateTeamInfoAskWraperVar.TeamMember,WorldServerRpcUpdateTeamInfoAskWraperVar.RoleId,WorldServerRpcUpdateTeamInfoAskWraperVar.Team,WorldServerRpcUpdateTeamInfoAskWraperVar.TeamType,delegate(bool connedServer,object obj){});
+	}
+	public void TestSendMail()
+	{
+		WorldServerRPC.Instance.SendMail(WorldServerRpcSendMailAskWraperVar.Mail,WorldServerRpcSendMailAskWraperVar.GlobalMailID,delegate(bool connedServer,object obj){});
+	}
+	public void TestChangeTeamType()
+	{
+		WorldServerRPC.Instance.ChangeTeamType(WorldServerRpcChangeTeamTypeAskWraperVar.TeamId,WorldServerRpcChangeTeamTypeAskWraperVar.RoleId,WorldServerRpcChangeTeamTypeAskWraperVar.Result,WorldServerRpcChangeTeamTypeAskWraperVar.TeamType,WorldServerRpcChangeTeamTypeAskWraperVar.Target,delegate(bool connedServer,object obj){});
+	}
+	public void TestAutoMatch()
+	{
+		WorldServerRPC.Instance.AutoMatch(WorldServerRpcAutoMatchAskWraperVar.MemberInfo,WorldServerRpcAutoMatchAskWraperVar.MatchInfo,WorldServerRpcAutoMatchAskWraperVar.Result,delegate(bool connedServer,object obj){});
+	}
+	public void TestCancelMatch()
+	{
+		WorldServerRPC.Instance.CancelMatch(WorldServerRpcCancelMatchAskWraperVar.RoleId,WorldServerRpcCancelMatchAskWraperVar.Result,WorldServerRpcCancelMatchAskWraperVar.IsNotify,delegate(bool connedServer,object obj){});
+	}
+	public void TestLoginGameServer()
+	{
+		WorldServerRPC.Instance.LoginGameServer(WorldServerRpcLoginGameServerAskWraperVar.Team,WorldServerRpcLoginGameServerAskWraperVar.RoleInfo,WorldServerRpcLoginGameServerAskWraperVar.Location,WorldServerRpcLoginGameServerAskWraperVar.GateId,delegate(bool connedServer,object obj){});
+	}
+	public void TestLogoutGameServer()
+	{
+		WorldServerRPC.Instance.LogoutGameServer(WorldServerRpcLogoutGameServerAskWraperVar.Result,WorldServerRpcLogoutGameServerAskWraperVar.RoleInfo,delegate(bool connedServer,object obj){});
+	}
+	public void TestGetPlayerInfo()
+	{
+		WorldServerRPC.Instance.GetPlayerInfo(WorldServerRpcGetPlayerInfoAskWraperVar.Player_guid,delegate(bool connedServer,object obj){});
 	}
 
 
@@ -257,76 +158,6 @@ public class WorldServerTester : Editor
     {
         base.OnInspectorGUI();
         
-		if (GUILayout.Button("ChangeScene"))
-		{
-			WorldServerTestHelper rpc = target as WorldServerTestHelper;
-			if( rpc ) rpc.TestChangeScene();
-		}
-		if (GUILayout.Button("EnterScene"))
-		{
-			WorldServerTestHelper rpc = target as WorldServerTestHelper;
-			if( rpc ) rpc.TestEnterScene();
-		}
-		if (GUILayout.Button("CreateDungeon"))
-		{
-			WorldServerTestHelper rpc = target as WorldServerTestHelper;
-			if( rpc ) rpc.TestCreateDungeon();
-		}
-		if (GUILayout.Button("CreateTeam"))
-		{
-			WorldServerTestHelper rpc = target as WorldServerTestHelper;
-			if( rpc ) rpc.TestCreateTeam();
-		}
-		if (GUILayout.Button("JoinTeam"))
-		{
-			WorldServerTestHelper rpc = target as WorldServerTestHelper;
-			if( rpc ) rpc.TestJoinTeam();
-		}
-		if (GUILayout.Button("LeaveTeam"))
-		{
-			WorldServerTestHelper rpc = target as WorldServerTestHelper;
-			if( rpc ) rpc.TestLeaveTeam();
-		}
-		if (GUILayout.Button("AppointTeamLeader"))
-		{
-			WorldServerTestHelper rpc = target as WorldServerTestHelper;
-			if( rpc ) rpc.TestAppointTeamLeader();
-		}
-		if (GUILayout.Button("DismissTeam"))
-		{
-			WorldServerTestHelper rpc = target as WorldServerTestHelper;
-			if( rpc ) rpc.TestDismissTeam();
-		}
-		if (GUILayout.Button("KickMember"))
-		{
-			WorldServerTestHelper rpc = target as WorldServerTestHelper;
-			if( rpc ) rpc.TestKickMember();
-		}
-		if (GUILayout.Button("ApplyTeam"))
-		{
-			WorldServerTestHelper rpc = target as WorldServerTestHelper;
-			if( rpc ) rpc.TestApplyTeam();
-		}
-		if (GUILayout.Button("AgreeTeamApplicant"))
-		{
-			WorldServerTestHelper rpc = target as WorldServerTestHelper;
-			if( rpc ) rpc.TestAgreeTeamApplicant();
-		}
-		if (GUILayout.Button("Login"))
-		{
-			WorldServerTestHelper rpc = target as WorldServerTestHelper;
-			if( rpc ) rpc.TestLogin();
-		}
-		if (GUILayout.Button("UpdateRoleInfo"))
-		{
-			WorldServerTestHelper rpc = target as WorldServerTestHelper;
-			if( rpc ) rpc.TestUpdateRoleInfo();
-		}
-		if (GUILayout.Button("Logout"))
-		{
-			WorldServerTestHelper rpc = target as WorldServerTestHelper;
-			if( rpc ) rpc.TestLogout();
-		}
 		if (GUILayout.Button("CreateDungeonNotify"))
 		{
 			WorldServerTestHelper rpc = target as WorldServerTestHelper;
@@ -337,10 +168,45 @@ public class WorldServerTester : Editor
 			WorldServerTestHelper rpc = target as WorldServerTestHelper;
 			if( rpc ) rpc.TestExitDungeon();
 		}
-		if (GUILayout.Button("ReleaseDungeon"))
+		if (GUILayout.Button("UpdateTeamInfo"))
 		{
 			WorldServerTestHelper rpc = target as WorldServerTestHelper;
-			if( rpc ) rpc.TestReleaseDungeon();
+			if( rpc ) rpc.TestUpdateTeamInfo();
+		}
+		if (GUILayout.Button("SendMail"))
+		{
+			WorldServerTestHelper rpc = target as WorldServerTestHelper;
+			if( rpc ) rpc.TestSendMail();
+		}
+		if (GUILayout.Button("ChangeTeamType"))
+		{
+			WorldServerTestHelper rpc = target as WorldServerTestHelper;
+			if( rpc ) rpc.TestChangeTeamType();
+		}
+		if (GUILayout.Button("AutoMatch"))
+		{
+			WorldServerTestHelper rpc = target as WorldServerTestHelper;
+			if( rpc ) rpc.TestAutoMatch();
+		}
+		if (GUILayout.Button("CancelMatch"))
+		{
+			WorldServerTestHelper rpc = target as WorldServerTestHelper;
+			if( rpc ) rpc.TestCancelMatch();
+		}
+		if (GUILayout.Button("LoginGameServer"))
+		{
+			WorldServerTestHelper rpc = target as WorldServerTestHelper;
+			if( rpc ) rpc.TestLoginGameServer();
+		}
+		if (GUILayout.Button("LogoutGameServer"))
+		{
+			WorldServerTestHelper rpc = target as WorldServerTestHelper;
+			if( rpc ) rpc.TestLogoutGameServer();
+		}
+		if (GUILayout.Button("GetPlayerInfo"))
+		{
+			WorldServerTestHelper rpc = target as WorldServerTestHelper;
+			if( rpc ) rpc.TestGetPlayerInfo();
 		}
 
 

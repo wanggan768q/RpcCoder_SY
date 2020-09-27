@@ -37,8 +37,6 @@ class SceneRpcLoadSceneCompleteReply;
 class SceneRpcDeletePlayerNotify;
 class SceneRpcConnectGameServerAsk;
 class SceneRpcConnectGameServerReply;
-class SceneRpcChangeSceneAsk;
-class SceneRpcChangeSceneReply;
 class SceneRpcCreateObjNotify;
 class SceneRpcSurroundingHumanAsk;
 class SceneRpcSurroundingHumanReply;
@@ -47,6 +45,30 @@ class SceneRpcSEnterSceneNotify;
 class SceneRpcObjDieNotify;
 class SceneRpcCollide_ChangeSceneAsk;
 class SceneRpcCollide_ChangeSceneReply;
+class SceneRpcEnterMirrorAsk;
+class SceneRpcEnterMirrorReply;
+class SceneRpcSEnterMirrorSceneNotify;
+class SceneRpcExitMirrorSceneAsk;
+class SceneRpcExitMirrorSceneReply;
+class SceneRpcChangeSceneLeaveNotify;
+class SceneRpcChangeLineAsk;
+class SceneRpcChangeLineReply;
+class SceneRpcPingAsk;
+class SceneRpcPingReply;
+class SceneRpcSyncSceneLineStatsNotify;
+class SceneRpcLogOutGameAsk;
+class SceneRpcLogOutGameReply;
+class SceneRpcKickOutGameNotify;
+class SceneRpcShowFilmFinishAsk;
+class SceneRpcShowFilmFinishReply;
+class SceneRpcSpecObjPosAsk;
+class SceneRpcSpecObjPosReply;
+class SceneRpcDayNightChangeNotify;
+class SceneRpcWeatherChangeNotify;
+class SceneRpcWantChangeZoneAsk;
+class SceneRpcWantChangeZoneReply;
+class SceneRpcReturnSrcServerAsk;
+class SceneRpcReturnSrcServerReply;
 
 // ===================================================================
 
@@ -111,7 +133,7 @@ class SceneRpcLoadSceneCompleteAsk : public ::google::protobuf::Message {
   inline ::google::protobuf::uint64 roleid() const;
   inline void set_roleid(::google::protobuf::uint64 value);
 
-  // optional sint32 SceneId = 2 [default = -1];
+  // optional int32 SceneId = 2 [default = -1];
   inline bool has_sceneid() const;
   inline void clear_sceneid();
   static const int kSceneIdFieldNumber = 2;
@@ -196,37 +218,28 @@ class SceneRpcLoadSceneCompleteReply : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
   inline ::google::protobuf::int32 result() const;
   inline void set_result(::google::protobuf::int32 value);
 
-  // optional .CharacterInfo RoleInfo = 2;
-  inline bool has_roleinfo() const;
-  inline void clear_roleinfo();
-  static const int kRoleInfoFieldNumber = 2;
-  inline const ::CharacterInfo& roleinfo() const;
-  inline ::CharacterInfo* mutable_roleinfo();
-  inline ::CharacterInfo* release_roleinfo();
-  inline void set_allocated_roleinfo(::CharacterInfo* roleinfo);
-
-  // optional sint32 ObjId = 3 [default = -1];
+  // optional uint64 ObjId = 3 [default = 0];
   inline bool has_objid() const;
   inline void clear_objid();
   static const int kObjIdFieldNumber = 3;
-  inline ::google::protobuf::int32 objid() const;
-  inline void set_objid(::google::protobuf::int32 value);
+  inline ::google::protobuf::uint64 objid() const;
+  inline void set_objid(::google::protobuf::uint64 value);
 
-  // optional .V3 Pos = 4;
+  // optional .Vector3 Pos = 4;
   inline bool has_pos() const;
   inline void clear_pos();
   static const int kPosFieldNumber = 4;
-  inline const ::V3& pos() const;
-  inline ::V3* mutable_pos();
-  inline ::V3* release_pos();
-  inline void set_allocated_pos(::V3* pos);
+  inline const ::Vector3& pos() const;
+  inline ::Vector3* mutable_pos();
+  inline ::Vector3* release_pos();
+  inline void set_allocated_pos(::Vector3* pos);
 
   // optional float Dir = 5 [default = -1];
   inline bool has_dir() const;
@@ -235,26 +248,38 @@ class SceneRpcLoadSceneCompleteReply : public ::google::protobuf::Message {
   inline float dir() const;
   inline void set_dir(float value);
 
+  // optional bytes ObjData = 6;
+  inline bool has_objdata() const;
+  inline void clear_objdata();
+  static const int kObjDataFieldNumber = 6;
+  inline const ::std::string& objdata() const;
+  inline void set_objdata(const ::std::string& value);
+  inline void set_objdata(const char* value);
+  inline void set_objdata(const void* value, size_t size);
+  inline ::std::string* mutable_objdata();
+  inline ::std::string* release_objdata();
+  inline void set_allocated_objdata(::std::string* objdata);
+
   // @@protoc_insertion_point(class_scope:SceneRpcLoadSceneCompleteReply)
  private:
   inline void set_has_result();
   inline void clear_has_result();
-  inline void set_has_roleinfo();
-  inline void clear_has_roleinfo();
   inline void set_has_objid();
   inline void clear_has_objid();
   inline void set_has_pos();
   inline void clear_has_pos();
   inline void set_has_dir();
   inline void clear_has_dir();
+  inline void set_has_objdata();
+  inline void clear_has_objdata();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::CharacterInfo* roleinfo_;
+  ::google::protobuf::uint64 objid_;
   ::google::protobuf::int32 result_;
-  ::google::protobuf::int32 objid_;
-  ::V3* pos_;
   float dir_;
+  ::Vector3* pos_;
+  ::std::string* objdata_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
@@ -322,34 +347,27 @@ class SceneRpcDeletePlayerNotify : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 ObjId = 2 [default = -1];
-  inline bool has_objid() const;
-  inline void clear_objid();
-  static const int kObjIdFieldNumber = 2;
-  inline ::google::protobuf::int32 objid() const;
-  inline void set_objid(::google::protobuf::int32 value);
-
-  // optional sint32 SceneId = 3 [default = -1];
-  inline bool has_sceneid() const;
-  inline void clear_sceneid();
-  static const int kSceneIdFieldNumber = 3;
-  inline ::google::protobuf::int32 sceneid() const;
-  inline void set_sceneid(::google::protobuf::int32 value);
+  // repeated .ObjDeleteInfo Delete_list = 4;
+  inline int delete_list_size() const;
+  inline void clear_delete_list();
+  static const int kDeleteListFieldNumber = 4;
+  inline const ::ObjDeleteInfo& delete_list(int index) const;
+  inline ::ObjDeleteInfo* mutable_delete_list(int index);
+  inline ::ObjDeleteInfo* add_delete_list();
+  inline const ::google::protobuf::RepeatedPtrField< ::ObjDeleteInfo >&
+      delete_list() const;
+  inline ::google::protobuf::RepeatedPtrField< ::ObjDeleteInfo >*
+      mutable_delete_list();
 
   // @@protoc_insertion_point(class_scope:SceneRpcDeletePlayerNotify)
  private:
-  inline void set_has_objid();
-  inline void clear_has_objid();
-  inline void set_has_sceneid();
-  inline void clear_has_sceneid();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::int32 objid_;
-  ::google::protobuf::int32 sceneid_;
+  ::google::protobuf::RepeatedPtrField< ::ObjDeleteInfo > delete_list_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
 
   friend void  protobuf_AddDesc_SceneRpc_2eproto();
   friend void protobuf_AssignDesc_SceneRpc_2eproto();
@@ -433,20 +451,55 @@ class SceneRpcConnectGameServerAsk : public ::google::protobuf::Message {
   inline ::std::string* release_key();
   inline void set_allocated_key(::std::string* key);
 
+  // optional int32 SceneID = 3 [default = -1];
+  inline bool has_sceneid() const;
+  inline void clear_sceneid();
+  static const int kSceneIDFieldNumber = 3;
+  inline ::google::protobuf::int32 sceneid() const;
+  inline void set_sceneid(::google::protobuf::int32 value);
+
+  // optional int32 LineID = 4 [default = -1];
+  inline bool has_lineid() const;
+  inline void clear_lineid();
+  static const int kLineIDFieldNumber = 4;
+  inline ::google::protobuf::int32 lineid() const;
+  inline void set_lineid(::google::protobuf::int32 value);
+
+  // optional string GameToken = 5;
+  inline bool has_gametoken() const;
+  inline void clear_gametoken();
+  static const int kGameTokenFieldNumber = 5;
+  inline const ::std::string& gametoken() const;
+  inline void set_gametoken(const ::std::string& value);
+  inline void set_gametoken(const char* value);
+  inline void set_gametoken(const char* value, size_t size);
+  inline ::std::string* mutable_gametoken();
+  inline ::std::string* release_gametoken();
+  inline void set_allocated_gametoken(::std::string* gametoken);
+
   // @@protoc_insertion_point(class_scope:SceneRpcConnectGameServerAsk)
  private:
   inline void set_has_roleid();
   inline void clear_has_roleid();
   inline void set_has_key();
   inline void clear_has_key();
+  inline void set_has_sceneid();
+  inline void clear_has_sceneid();
+  inline void set_has_lineid();
+  inline void clear_has_lineid();
+  inline void set_has_gametoken();
+  inline void clear_has_gametoken();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint64 roleid_;
   ::std::string* key_;
+  ::google::protobuf::int32 sceneid_;
+  ::google::protobuf::int32 lineid_;
+  ::std::string* gametoken_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
 
   friend void  protobuf_AddDesc_SceneRpc_2eproto();
   friend void protobuf_AssignDesc_SceneRpc_2eproto();
@@ -511,7 +564,7 @@ class SceneRpcConnectGameServerReply : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
@@ -525,19 +578,31 @@ class SceneRpcConnectGameServerReply : public ::google::protobuf::Message {
   inline ::google::protobuf::uint64 roleid() const;
   inline void set_roleid(::google::protobuf::uint64 value);
 
-  // optional sint32 SceneId = 3 [default = -1];
+  // optional int32 SceneId = 3 [default = -1];
   inline bool has_sceneid() const;
   inline void clear_sceneid();
   static const int kSceneIdFieldNumber = 3;
   inline ::google::protobuf::int32 sceneid() const;
   inline void set_sceneid(::google::protobuf::int32 value);
 
-  // optional sint32 MapId = 5 [default = -1];
+  // optional int32 MapId = 5 [default = -1];
   inline bool has_mapid() const;
   inline void clear_mapid();
   static const int kMapIdFieldNumber = 5;
   inline ::google::protobuf::int32 mapid() const;
   inline void set_mapid(::google::protobuf::int32 value);
+
+  // optional string GameToken = 6;
+  inline bool has_gametoken() const;
+  inline void clear_gametoken();
+  static const int kGameTokenFieldNumber = 6;
+  inline const ::std::string& gametoken() const;
+  inline void set_gametoken(const ::std::string& value);
+  inline void set_gametoken(const char* value);
+  inline void set_gametoken(const char* value, size_t size);
+  inline ::std::string* mutable_gametoken();
+  inline ::std::string* release_gametoken();
+  inline void set_allocated_gametoken(::std::string* gametoken);
 
   // @@protoc_insertion_point(class_scope:SceneRpcConnectGameServerReply)
  private:
@@ -549,16 +614,19 @@ class SceneRpcConnectGameServerReply : public ::google::protobuf::Message {
   inline void clear_has_sceneid();
   inline void set_has_mapid();
   inline void clear_has_mapid();
+  inline void set_has_gametoken();
+  inline void clear_has_gametoken();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::uint64 roleid_;
   ::google::protobuf::int32 result_;
   ::google::protobuf::int32 sceneid_;
+  ::std::string* gametoken_;
   ::google::protobuf::int32 mapid_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
 
   friend void  protobuf_AddDesc_SceneRpc_2eproto();
   friend void protobuf_AssignDesc_SceneRpc_2eproto();
@@ -566,220 +634,6 @@ class SceneRpcConnectGameServerReply : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static SceneRpcConnectGameServerReply* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class SceneRpcChangeSceneAsk : public ::google::protobuf::Message {
- public:
-  SceneRpcChangeSceneAsk();
-  virtual ~SceneRpcChangeSceneAsk();
-
-  SceneRpcChangeSceneAsk(const SceneRpcChangeSceneAsk& from);
-
-  inline SceneRpcChangeSceneAsk& operator=(const SceneRpcChangeSceneAsk& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const SceneRpcChangeSceneAsk& default_instance();
-
-  void Swap(SceneRpcChangeSceneAsk* other);
-
-  // implements Message ----------------------------------------------
-
-  SceneRpcChangeSceneAsk* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const SceneRpcChangeSceneAsk& from);
-  void MergeFrom(const SceneRpcChangeSceneAsk& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // optional uint64 RoleId = 1 [default = 0];
-  inline bool has_roleid() const;
-  inline void clear_roleid();
-  static const int kRoleIdFieldNumber = 1;
-  inline ::google::protobuf::uint64 roleid() const;
-  inline void set_roleid(::google::protobuf::uint64 value);
-
-  // optional sint32 CurSceneId = 2 [default = -1];
-  inline bool has_cursceneid() const;
-  inline void clear_cursceneid();
-  static const int kCurSceneIdFieldNumber = 2;
-  inline ::google::protobuf::int32 cursceneid() const;
-  inline void set_cursceneid(::google::protobuf::int32 value);
-
-  // optional sint32 TargetSceneId = 3 [default = -1];
-  inline bool has_targetsceneid() const;
-  inline void clear_targetsceneid();
-  static const int kTargetSceneIdFieldNumber = 3;
-  inline ::google::protobuf::int32 targetsceneid() const;
-  inline void set_targetsceneid(::google::protobuf::int32 value);
-
-  // @@protoc_insertion_point(class_scope:SceneRpcChangeSceneAsk)
- private:
-  inline void set_has_roleid();
-  inline void clear_has_roleid();
-  inline void set_has_cursceneid();
-  inline void clear_has_cursceneid();
-  inline void set_has_targetsceneid();
-  inline void clear_has_targetsceneid();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::uint64 roleid_;
-  ::google::protobuf::int32 cursceneid_;
-  ::google::protobuf::int32 targetsceneid_;
-
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
-
-  friend void  protobuf_AddDesc_SceneRpc_2eproto();
-  friend void protobuf_AssignDesc_SceneRpc_2eproto();
-  friend void protobuf_ShutdownFile_SceneRpc_2eproto();
-
-  void InitAsDefaultInstance();
-  static SceneRpcChangeSceneAsk* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class SceneRpcChangeSceneReply : public ::google::protobuf::Message {
- public:
-  SceneRpcChangeSceneReply();
-  virtual ~SceneRpcChangeSceneReply();
-
-  SceneRpcChangeSceneReply(const SceneRpcChangeSceneReply& from);
-
-  inline SceneRpcChangeSceneReply& operator=(const SceneRpcChangeSceneReply& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const SceneRpcChangeSceneReply& default_instance();
-
-  void Swap(SceneRpcChangeSceneReply* other);
-
-  // implements Message ----------------------------------------------
-
-  SceneRpcChangeSceneReply* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const SceneRpcChangeSceneReply& from);
-  void MergeFrom(const SceneRpcChangeSceneReply& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // optional sint32 Result = 1 [default = -9999];
-  inline bool has_result() const;
-  inline void clear_result();
-  static const int kResultFieldNumber = 1;
-  inline ::google::protobuf::int32 result() const;
-  inline void set_result(::google::protobuf::int32 value);
-
-  // optional uint64 RoleId = 2 [default = 0];
-  inline bool has_roleid() const;
-  inline void clear_roleid();
-  static const int kRoleIdFieldNumber = 2;
-  inline ::google::protobuf::uint64 roleid() const;
-  inline void set_roleid(::google::protobuf::uint64 value);
-
-  // optional sint32 CurSceneId = 3 [default = -1];
-  inline bool has_cursceneid() const;
-  inline void clear_cursceneid();
-  static const int kCurSceneIdFieldNumber = 3;
-  inline ::google::protobuf::int32 cursceneid() const;
-  inline void set_cursceneid(::google::protobuf::int32 value);
-
-  // optional sint32 TargetSceneId = 4 [default = -1];
-  inline bool has_targetsceneid() const;
-  inline void clear_targetsceneid();
-  static const int kTargetSceneIdFieldNumber = 4;
-  inline ::google::protobuf::int32 targetsceneid() const;
-  inline void set_targetsceneid(::google::protobuf::int32 value);
-
-  // @@protoc_insertion_point(class_scope:SceneRpcChangeSceneReply)
- private:
-  inline void set_has_result();
-  inline void clear_has_result();
-  inline void set_has_roleid();
-  inline void clear_has_roleid();
-  inline void set_has_cursceneid();
-  inline void clear_has_cursceneid();
-  inline void set_has_targetsceneid();
-  inline void clear_has_targetsceneid();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::uint64 roleid_;
-  ::google::protobuf::int32 result_;
-  ::google::protobuf::int32 cursceneid_;
-  ::google::protobuf::int32 targetsceneid_;
-
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
-
-  friend void  protobuf_AddDesc_SceneRpc_2eproto();
-  friend void protobuf_AssignDesc_SceneRpc_2eproto();
-  friend void protobuf_ShutdownFile_SceneRpc_2eproto();
-
-  void InitAsDefaultInstance();
-  static SceneRpcChangeSceneReply* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -837,143 +691,27 @@ class SceneRpcCreateObjNotify : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 ObjId = 1 [default = -1];
-  inline bool has_objid() const;
-  inline void clear_objid();
-  static const int kObjIdFieldNumber = 1;
-  inline ::google::protobuf::int32 objid() const;
-  inline void set_objid(::google::protobuf::int32 value);
-
-  // optional .V3 Pos = 2;
-  inline bool has_pos() const;
-  inline void clear_pos();
-  static const int kPosFieldNumber = 2;
-  inline const ::V3& pos() const;
-  inline ::V3* mutable_pos();
-  inline ::V3* release_pos();
-  inline void set_allocated_pos(::V3* pos);
-
-  // optional float Dir = 3 [default = -1];
-  inline bool has_dir() const;
-  inline void clear_dir();
-  static const int kDirFieldNumber = 3;
-  inline float dir() const;
-  inline void set_dir(float value);
-
-  // optional sint32 ObjType = 4 [default = -1];
-  inline bool has_objtype() const;
-  inline void clear_objtype();
-  static const int kObjTypeFieldNumber = 4;
-  inline ::google::protobuf::int32 objtype() const;
-  inline void set_objtype(::google::protobuf::int32 value);
-
-  // optional sint32 ConfigId = 5 [default = -1];
-  inline bool has_configid() const;
-  inline void clear_configid();
-  static const int kConfigIdFieldNumber = 5;
-  inline ::google::protobuf::int32 configid() const;
-  inline void set_configid(::google::protobuf::int32 value);
-
-  // optional sint32 Status = 6 [default = -1];
-  inline bool has_status() const;
-  inline void clear_status();
-  static const int kStatusFieldNumber = 6;
-  inline ::google::protobuf::int32 status() const;
-  inline void set_status(::google::protobuf::int32 value);
-
-  // optional float MoveSpeed = 7 [default = -1];
-  inline bool has_movespeed() const;
-  inline void clear_movespeed();
-  static const int kMoveSpeedFieldNumber = 7;
-  inline float movespeed() const;
-  inline void set_movespeed(float value);
-
-  // optional uint64 RoleId = 8 [default = 0];
-  inline bool has_roleid() const;
-  inline void clear_roleid();
-  static const int kRoleIdFieldNumber = 8;
-  inline ::google::protobuf::uint64 roleid() const;
-  inline void set_roleid(::google::protobuf::uint64 value);
-
-  // optional string NickName = 9;
-  inline bool has_nickname() const;
-  inline void clear_nickname();
-  static const int kNickNameFieldNumber = 9;
-  inline const ::std::string& nickname() const;
-  inline void set_nickname(const ::std::string& value);
-  inline void set_nickname(const char* value);
-  inline void set_nickname(const char* value, size_t size);
-  inline ::std::string* mutable_nickname();
-  inline ::std::string* release_nickname();
-  inline void set_allocated_nickname(::std::string* nickname);
-
-  // optional sint32 Hp = 10 [default = -1];
-  inline bool has_hp() const;
-  inline void clear_hp();
-  static const int kHpFieldNumber = 10;
-  inline ::google::protobuf::int32 hp() const;
-  inline void set_hp(::google::protobuf::int32 value);
-
-  // optional .V3 TargetPos = 11;
-  inline bool has_targetpos() const;
-  inline void clear_targetpos();
-  static const int kTargetPosFieldNumber = 11;
-  inline const ::V3& targetpos() const;
-  inline ::V3* mutable_targetpos();
-  inline ::V3* release_targetpos();
-  inline void set_allocated_targetpos(::V3* targetpos);
-
-  // optional int32 HpMax = 12 [default = -1];
-  inline bool has_hpmax() const;
-  inline void clear_hpmax();
-  static const int kHpMaxFieldNumber = 12;
-  inline ::google::protobuf::int32 hpmax() const;
-  inline void set_hpmax(::google::protobuf::int32 value);
+  // repeated .ObjCreateInfo Create_list = 14;
+  inline int create_list_size() const;
+  inline void clear_create_list();
+  static const int kCreateListFieldNumber = 14;
+  inline const ::ObjCreateInfo& create_list(int index) const;
+  inline ::ObjCreateInfo* mutable_create_list(int index);
+  inline ::ObjCreateInfo* add_create_list();
+  inline const ::google::protobuf::RepeatedPtrField< ::ObjCreateInfo >&
+      create_list() const;
+  inline ::google::protobuf::RepeatedPtrField< ::ObjCreateInfo >*
+      mutable_create_list();
 
   // @@protoc_insertion_point(class_scope:SceneRpcCreateObjNotify)
  private:
-  inline void set_has_objid();
-  inline void clear_has_objid();
-  inline void set_has_pos();
-  inline void clear_has_pos();
-  inline void set_has_dir();
-  inline void clear_has_dir();
-  inline void set_has_objtype();
-  inline void clear_has_objtype();
-  inline void set_has_configid();
-  inline void clear_has_configid();
-  inline void set_has_status();
-  inline void clear_has_status();
-  inline void set_has_movespeed();
-  inline void clear_has_movespeed();
-  inline void set_has_roleid();
-  inline void clear_has_roleid();
-  inline void set_has_nickname();
-  inline void clear_has_nickname();
-  inline void set_has_hp();
-  inline void clear_has_hp();
-  inline void set_has_targetpos();
-  inline void clear_has_targetpos();
-  inline void set_has_hpmax();
-  inline void clear_has_hpmax();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::V3* pos_;
-  ::google::protobuf::int32 objid_;
-  float dir_;
-  ::google::protobuf::int32 objtype_;
-  ::google::protobuf::int32 configid_;
-  ::google::protobuf::int32 status_;
-  float movespeed_;
-  ::google::protobuf::uint64 roleid_;
-  ::std::string* nickname_;
-  ::V3* targetpos_;
-  ::google::protobuf::int32 hp_;
-  ::google::protobuf::int32 hpmax_;
+  ::google::protobuf::RepeatedPtrField< ::ObjCreateInfo > create_list_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(12 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
 
   friend void  protobuf_AddDesc_SceneRpc_2eproto();
   friend void protobuf_AssignDesc_SceneRpc_2eproto();
@@ -1110,7 +848,7 @@ class SceneRpcSurroundingHumanReply : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
@@ -1205,19 +943,26 @@ class SceneRpcCEnterSceneNotify : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 SceneId = 3 [default = -1];
+  // optional int32 SceneId = 3 [default = -1];
   inline bool has_sceneid() const;
   inline void clear_sceneid();
   static const int kSceneIdFieldNumber = 3;
   inline ::google::protobuf::int32 sceneid() const;
   inline void set_sceneid(::google::protobuf::int32 value);
 
-  // optional sint32 MapId = 6 [default = -1];
+  // optional int32 MapId = 6 [default = -1];
   inline bool has_mapid() const;
   inline void clear_mapid();
   static const int kMapIdFieldNumber = 6;
   inline ::google::protobuf::int32 mapid() const;
   inline void set_mapid(::google::protobuf::int32 value);
+
+  // optional int32 LineId = 7 [default = -1];
+  inline bool has_lineid() const;
+  inline void clear_lineid();
+  static const int kLineIdFieldNumber = 7;
+  inline ::google::protobuf::int32 lineid() const;
+  inline void set_lineid(::google::protobuf::int32 value);
 
   // @@protoc_insertion_point(class_scope:SceneRpcCEnterSceneNotify)
  private:
@@ -1225,14 +970,17 @@ class SceneRpcCEnterSceneNotify : public ::google::protobuf::Message {
   inline void clear_has_sceneid();
   inline void set_has_mapid();
   inline void clear_has_mapid();
+  inline void set_has_lineid();
+  inline void clear_has_lineid();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::int32 sceneid_;
   ::google::protobuf::int32 mapid_;
+  ::google::protobuf::int32 lineid_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
 
   friend void  protobuf_AddDesc_SceneRpc_2eproto();
   friend void protobuf_AssignDesc_SceneRpc_2eproto();
@@ -1297,28 +1045,28 @@ class SceneRpcSEnterSceneNotify : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
   inline ::google::protobuf::int32 result() const;
   inline void set_result(::google::protobuf::int32 value);
 
-  // optional sint32 SceneId = 8 [default = -1];
+  // optional int32 SceneId = 8 [default = -1];
   inline bool has_sceneid() const;
   inline void clear_sceneid();
   static const int kSceneIdFieldNumber = 8;
   inline ::google::protobuf::int32 sceneid() const;
   inline void set_sceneid(::google::protobuf::int32 value);
 
-  // optional sint32 SceneConfigId = 9 [default = -1];
+  // optional int32 SceneConfigId = 9 [default = -1];
   inline bool has_sceneconfigid() const;
   inline void clear_sceneconfigid();
   static const int kSceneConfigIdFieldNumber = 9;
   inline ::google::protobuf::int32 sceneconfigid() const;
   inline void set_sceneconfigid(::google::protobuf::int32 value);
 
-  // optional sint32 MapId = 10 [default = -1];
+  // optional int32 MapId = 10 [default = -1];
   inline bool has_mapid() const;
   inline void clear_mapid();
   static const int kMapIdFieldNumber = 10;
@@ -1332,12 +1080,31 @@ class SceneRpcSEnterSceneNotify : public ::google::protobuf::Message {
   inline ::google::protobuf::uint64 roleid() const;
   inline void set_roleid(::google::protobuf::uint64 value);
 
-  // optional sint32 DungeonConfigId = 12 [default = -1];
+  // optional int32 DungeonConfigId = 12 [default = -1];
   inline bool has_dungeonconfigid() const;
   inline void clear_dungeonconfigid();
   static const int kDungeonConfigIdFieldNumber = 12;
   inline ::google::protobuf::int32 dungeonconfigid() const;
   inline void set_dungeonconfigid(::google::protobuf::int32 value);
+
+  // optional int32 LineId = 14 [default = -1];
+  inline bool has_lineid() const;
+  inline void clear_lineid();
+  static const int kLineIdFieldNumber = 14;
+  inline ::google::protobuf::int32 lineid() const;
+  inline void set_lineid(::google::protobuf::int32 value);
+
+  // repeated .IntPair TypeConfig = 18;
+  inline int typeconfig_size() const;
+  inline void clear_typeconfig();
+  static const int kTypeConfigFieldNumber = 18;
+  inline const ::IntPair& typeconfig(int index) const;
+  inline ::IntPair* mutable_typeconfig(int index);
+  inline ::IntPair* add_typeconfig();
+  inline const ::google::protobuf::RepeatedPtrField< ::IntPair >&
+      typeconfig() const;
+  inline ::google::protobuf::RepeatedPtrField< ::IntPair >*
+      mutable_typeconfig();
 
   // @@protoc_insertion_point(class_scope:SceneRpcSEnterSceneNotify)
  private:
@@ -1353,6 +1120,8 @@ class SceneRpcSEnterSceneNotify : public ::google::protobuf::Message {
   inline void clear_has_roleid();
   inline void set_has_dungeonconfigid();
   inline void clear_has_dungeonconfigid();
+  inline void set_has_lineid();
+  inline void clear_has_lineid();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -1362,9 +1131,11 @@ class SceneRpcSEnterSceneNotify : public ::google::protobuf::Message {
   ::google::protobuf::int32 mapid_;
   ::google::protobuf::uint64 roleid_;
   ::google::protobuf::int32 dungeonconfigid_;
+  ::google::protobuf::int32 lineid_;
+  ::google::protobuf::RepeatedPtrField< ::IntPair > typeconfig_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(6 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(8 + 31) / 32];
 
   friend void  protobuf_AddDesc_SceneRpc_2eproto();
   friend void protobuf_AssignDesc_SceneRpc_2eproto();
@@ -1429,28 +1200,28 @@ class SceneRpcObjDieNotify : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 ObjId = 1 [default = -1];
+  // optional uint64 ObjId = 1 [default = 0];
   inline bool has_objid() const;
   inline void clear_objid();
   static const int kObjIdFieldNumber = 1;
-  inline ::google::protobuf::int32 objid() const;
-  inline void set_objid(::google::protobuf::int32 value);
+  inline ::google::protobuf::uint64 objid() const;
+  inline void set_objid(::google::protobuf::uint64 value);
 
-  // optional sint32 RespawnTime = 2 [default = -1];
+  // optional int32 RespawnTime = 2 [default = -1];
   inline bool has_respawntime() const;
   inline void clear_respawntime();
   static const int kRespawnTimeFieldNumber = 2;
   inline ::google::protobuf::int32 respawntime() const;
   inline void set_respawntime(::google::protobuf::int32 value);
 
-  // optional sint32 ConfigId = 3 [default = -1];
+  // optional int32 ConfigId = 3 [default = -1];
   inline bool has_configid() const;
   inline void clear_configid();
   static const int kConfigIdFieldNumber = 3;
   inline ::google::protobuf::int32 configid() const;
   inline void set_configid(::google::protobuf::int32 value);
 
-  // optional sint32 ObjType = 4 [default = -1];
+  // optional int32 ObjType = 4 [default = -1];
   inline bool has_objtype() const;
   inline void clear_objtype();
   static const int kObjTypeFieldNumber = 4;
@@ -1470,7 +1241,7 @@ class SceneRpcObjDieNotify : public ::google::protobuf::Message {
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::int32 objid_;
+  ::google::protobuf::uint64 objid_;
   ::google::protobuf::int32 respawntime_;
   ::google::protobuf::int32 configid_;
   ::google::protobuf::int32 objtype_;
@@ -1541,7 +1312,7 @@ class SceneRpcCollide_ChangeSceneAsk : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Collide_id = 1 [default = -1];
+  // optional int32 Collide_id = 1 [default = -1];
   inline bool has_collide_id() const;
   inline void clear_collide_id();
   static const int kCollideIdFieldNumber = 1;
@@ -1623,7 +1394,7 @@ class SceneRpcCollide_ChangeSceneReply : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
@@ -1648,6 +1419,2041 @@ class SceneRpcCollide_ChangeSceneReply : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static SceneRpcCollide_ChangeSceneReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SceneRpcEnterMirrorAsk : public ::google::protobuf::Message {
+ public:
+  SceneRpcEnterMirrorAsk();
+  virtual ~SceneRpcEnterMirrorAsk();
+
+  SceneRpcEnterMirrorAsk(const SceneRpcEnterMirrorAsk& from);
+
+  inline SceneRpcEnterMirrorAsk& operator=(const SceneRpcEnterMirrorAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SceneRpcEnterMirrorAsk& default_instance();
+
+  void Swap(SceneRpcEnterMirrorAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  SceneRpcEnterMirrorAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SceneRpcEnterMirrorAsk& from);
+  void MergeFrom(const SceneRpcEnterMirrorAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 MirrorID = 1 [default = -1];
+  inline bool has_mirrorid() const;
+  inline void clear_mirrorid();
+  static const int kMirrorIDFieldNumber = 1;
+  inline ::google::protobuf::int32 mirrorid() const;
+  inline void set_mirrorid(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:SceneRpcEnterMirrorAsk)
+ private:
+  inline void set_has_mirrorid();
+  inline void clear_has_mirrorid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 mirrorid_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_SceneRpc_2eproto();
+  friend void protobuf_AssignDesc_SceneRpc_2eproto();
+  friend void protobuf_ShutdownFile_SceneRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static SceneRpcEnterMirrorAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SceneRpcEnterMirrorReply : public ::google::protobuf::Message {
+ public:
+  SceneRpcEnterMirrorReply();
+  virtual ~SceneRpcEnterMirrorReply();
+
+  SceneRpcEnterMirrorReply(const SceneRpcEnterMirrorReply& from);
+
+  inline SceneRpcEnterMirrorReply& operator=(const SceneRpcEnterMirrorReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SceneRpcEnterMirrorReply& default_instance();
+
+  void Swap(SceneRpcEnterMirrorReply* other);
+
+  // implements Message ----------------------------------------------
+
+  SceneRpcEnterMirrorReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SceneRpcEnterMirrorReply& from);
+  void MergeFrom(const SceneRpcEnterMirrorReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -1];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:SceneRpcEnterMirrorReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_SceneRpc_2eproto();
+  friend void protobuf_AssignDesc_SceneRpc_2eproto();
+  friend void protobuf_ShutdownFile_SceneRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static SceneRpcEnterMirrorReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SceneRpcSEnterMirrorSceneNotify : public ::google::protobuf::Message {
+ public:
+  SceneRpcSEnterMirrorSceneNotify();
+  virtual ~SceneRpcSEnterMirrorSceneNotify();
+
+  SceneRpcSEnterMirrorSceneNotify(const SceneRpcSEnterMirrorSceneNotify& from);
+
+  inline SceneRpcSEnterMirrorSceneNotify& operator=(const SceneRpcSEnterMirrorSceneNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SceneRpcSEnterMirrorSceneNotify& default_instance();
+
+  void Swap(SceneRpcSEnterMirrorSceneNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  SceneRpcSEnterMirrorSceneNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SceneRpcSEnterMirrorSceneNotify& from);
+  void MergeFrom(const SceneRpcSEnterMirrorSceneNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 MapID = 1 [default = -1];
+  inline bool has_mapid() const;
+  inline void clear_mapid();
+  static const int kMapIDFieldNumber = 1;
+  inline ::google::protobuf::int32 mapid() const;
+  inline void set_mapid(::google::protobuf::int32 value);
+
+  // optional int32 MirrorID = 2 [default = -1];
+  inline bool has_mirrorid() const;
+  inline void clear_mirrorid();
+  static const int kMirrorIDFieldNumber = 2;
+  inline ::google::protobuf::int32 mirrorid() const;
+  inline void set_mirrorid(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:SceneRpcSEnterMirrorSceneNotify)
+ private:
+  inline void set_has_mapid();
+  inline void clear_has_mapid();
+  inline void set_has_mirrorid();
+  inline void clear_has_mirrorid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 mapid_;
+  ::google::protobuf::int32 mirrorid_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_SceneRpc_2eproto();
+  friend void protobuf_AssignDesc_SceneRpc_2eproto();
+  friend void protobuf_ShutdownFile_SceneRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static SceneRpcSEnterMirrorSceneNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SceneRpcExitMirrorSceneAsk : public ::google::protobuf::Message {
+ public:
+  SceneRpcExitMirrorSceneAsk();
+  virtual ~SceneRpcExitMirrorSceneAsk();
+
+  SceneRpcExitMirrorSceneAsk(const SceneRpcExitMirrorSceneAsk& from);
+
+  inline SceneRpcExitMirrorSceneAsk& operator=(const SceneRpcExitMirrorSceneAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SceneRpcExitMirrorSceneAsk& default_instance();
+
+  void Swap(SceneRpcExitMirrorSceneAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  SceneRpcExitMirrorSceneAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SceneRpcExitMirrorSceneAsk& from);
+  void MergeFrom(const SceneRpcExitMirrorSceneAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:SceneRpcExitMirrorSceneAsk)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[1];
+
+  friend void  protobuf_AddDesc_SceneRpc_2eproto();
+  friend void protobuf_AssignDesc_SceneRpc_2eproto();
+  friend void protobuf_ShutdownFile_SceneRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static SceneRpcExitMirrorSceneAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SceneRpcExitMirrorSceneReply : public ::google::protobuf::Message {
+ public:
+  SceneRpcExitMirrorSceneReply();
+  virtual ~SceneRpcExitMirrorSceneReply();
+
+  SceneRpcExitMirrorSceneReply(const SceneRpcExitMirrorSceneReply& from);
+
+  inline SceneRpcExitMirrorSceneReply& operator=(const SceneRpcExitMirrorSceneReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SceneRpcExitMirrorSceneReply& default_instance();
+
+  void Swap(SceneRpcExitMirrorSceneReply* other);
+
+  // implements Message ----------------------------------------------
+
+  SceneRpcExitMirrorSceneReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SceneRpcExitMirrorSceneReply& from);
+  void MergeFrom(const SceneRpcExitMirrorSceneReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -1];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:SceneRpcExitMirrorSceneReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_SceneRpc_2eproto();
+  friend void protobuf_AssignDesc_SceneRpc_2eproto();
+  friend void protobuf_ShutdownFile_SceneRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static SceneRpcExitMirrorSceneReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SceneRpcChangeSceneLeaveNotify : public ::google::protobuf::Message {
+ public:
+  SceneRpcChangeSceneLeaveNotify();
+  virtual ~SceneRpcChangeSceneLeaveNotify();
+
+  SceneRpcChangeSceneLeaveNotify(const SceneRpcChangeSceneLeaveNotify& from);
+
+  inline SceneRpcChangeSceneLeaveNotify& operator=(const SceneRpcChangeSceneLeaveNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SceneRpcChangeSceneLeaveNotify& default_instance();
+
+  void Swap(SceneRpcChangeSceneLeaveNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  SceneRpcChangeSceneLeaveNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SceneRpcChangeSceneLeaveNotify& from);
+  void MergeFrom(const SceneRpcChangeSceneLeaveNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 TargetLineID = 1 [default = -1];
+  inline bool has_targetlineid() const;
+  inline void clear_targetlineid();
+  static const int kTargetLineIDFieldNumber = 1;
+  inline ::google::protobuf::int32 targetlineid() const;
+  inline void set_targetlineid(::google::protobuf::int32 value);
+
+  // optional int32 TargetMapID = 2 [default = -1];
+  inline bool has_targetmapid() const;
+  inline void clear_targetmapid();
+  static const int kTargetMapIDFieldNumber = 2;
+  inline ::google::protobuf::int32 targetmapid() const;
+  inline void set_targetmapid(::google::protobuf::int32 value);
+
+  // optional uint64 RoleID = 4 [default = 0];
+  inline bool has_roleid() const;
+  inline void clear_roleid();
+  static const int kRoleIDFieldNumber = 4;
+  inline ::google::protobuf::uint64 roleid() const;
+  inline void set_roleid(::google::protobuf::uint64 value);
+
+  // optional int32 CopyID = 5 [default = -1];
+  inline bool has_copyid() const;
+  inline void clear_copyid();
+  static const int kCopyIDFieldNumber = 5;
+  inline ::google::protobuf::int32 copyid() const;
+  inline void set_copyid(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:SceneRpcChangeSceneLeaveNotify)
+ private:
+  inline void set_has_targetlineid();
+  inline void clear_has_targetlineid();
+  inline void set_has_targetmapid();
+  inline void clear_has_targetmapid();
+  inline void set_has_roleid();
+  inline void clear_has_roleid();
+  inline void set_has_copyid();
+  inline void clear_has_copyid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 targetlineid_;
+  ::google::protobuf::int32 targetmapid_;
+  ::google::protobuf::uint64 roleid_;
+  ::google::protobuf::int32 copyid_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+
+  friend void  protobuf_AddDesc_SceneRpc_2eproto();
+  friend void protobuf_AssignDesc_SceneRpc_2eproto();
+  friend void protobuf_ShutdownFile_SceneRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static SceneRpcChangeSceneLeaveNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SceneRpcChangeLineAsk : public ::google::protobuf::Message {
+ public:
+  SceneRpcChangeLineAsk();
+  virtual ~SceneRpcChangeLineAsk();
+
+  SceneRpcChangeLineAsk(const SceneRpcChangeLineAsk& from);
+
+  inline SceneRpcChangeLineAsk& operator=(const SceneRpcChangeLineAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SceneRpcChangeLineAsk& default_instance();
+
+  void Swap(SceneRpcChangeLineAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  SceneRpcChangeLineAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SceneRpcChangeLineAsk& from);
+  void MergeFrom(const SceneRpcChangeLineAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 LineID = 1 [default = -1];
+  inline bool has_lineid() const;
+  inline void clear_lineid();
+  static const int kLineIDFieldNumber = 1;
+  inline ::google::protobuf::int32 lineid() const;
+  inline void set_lineid(::google::protobuf::int32 value);
+
+  // optional int32 MapID = 2 [default = -1];
+  inline bool has_mapid() const;
+  inline void clear_mapid();
+  static const int kMapIDFieldNumber = 2;
+  inline ::google::protobuf::int32 mapid() const;
+  inline void set_mapid(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:SceneRpcChangeLineAsk)
+ private:
+  inline void set_has_lineid();
+  inline void clear_has_lineid();
+  inline void set_has_mapid();
+  inline void clear_has_mapid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 lineid_;
+  ::google::protobuf::int32 mapid_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_SceneRpc_2eproto();
+  friend void protobuf_AssignDesc_SceneRpc_2eproto();
+  friend void protobuf_ShutdownFile_SceneRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static SceneRpcChangeLineAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SceneRpcChangeLineReply : public ::google::protobuf::Message {
+ public:
+  SceneRpcChangeLineReply();
+  virtual ~SceneRpcChangeLineReply();
+
+  SceneRpcChangeLineReply(const SceneRpcChangeLineReply& from);
+
+  inline SceneRpcChangeLineReply& operator=(const SceneRpcChangeLineReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SceneRpcChangeLineReply& default_instance();
+
+  void Swap(SceneRpcChangeLineReply* other);
+
+  // implements Message ----------------------------------------------
+
+  SceneRpcChangeLineReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SceneRpcChangeLineReply& from);
+  void MergeFrom(const SceneRpcChangeLineReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -1];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // optional int32 LineID = 2 [default = -1];
+  inline bool has_lineid() const;
+  inline void clear_lineid();
+  static const int kLineIDFieldNumber = 2;
+  inline ::google::protobuf::int32 lineid() const;
+  inline void set_lineid(::google::protobuf::int32 value);
+
+  // optional int32 MapID = 3 [default = -1];
+  inline bool has_mapid() const;
+  inline void clear_mapid();
+  static const int kMapIDFieldNumber = 3;
+  inline ::google::protobuf::int32 mapid() const;
+  inline void set_mapid(::google::protobuf::int32 value);
+
+  // optional uint64 RoleID = 4 [default = 0];
+  inline bool has_roleid() const;
+  inline void clear_roleid();
+  static const int kRoleIDFieldNumber = 4;
+  inline ::google::protobuf::uint64 roleid() const;
+  inline void set_roleid(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:SceneRpcChangeLineReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+  inline void set_has_lineid();
+  inline void clear_has_lineid();
+  inline void set_has_mapid();
+  inline void clear_has_mapid();
+  inline void set_has_roleid();
+  inline void clear_has_roleid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+  ::google::protobuf::int32 lineid_;
+  ::google::protobuf::uint64 roleid_;
+  ::google::protobuf::int32 mapid_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+
+  friend void  protobuf_AddDesc_SceneRpc_2eproto();
+  friend void protobuf_AssignDesc_SceneRpc_2eproto();
+  friend void protobuf_ShutdownFile_SceneRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static SceneRpcChangeLineReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SceneRpcPingAsk : public ::google::protobuf::Message {
+ public:
+  SceneRpcPingAsk();
+  virtual ~SceneRpcPingAsk();
+
+  SceneRpcPingAsk(const SceneRpcPingAsk& from);
+
+  inline SceneRpcPingAsk& operator=(const SceneRpcPingAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SceneRpcPingAsk& default_instance();
+
+  void Swap(SceneRpcPingAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  SceneRpcPingAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SceneRpcPingAsk& from);
+  void MergeFrom(const SceneRpcPingAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:SceneRpcPingAsk)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[1];
+
+  friend void  protobuf_AddDesc_SceneRpc_2eproto();
+  friend void protobuf_AssignDesc_SceneRpc_2eproto();
+  friend void protobuf_ShutdownFile_SceneRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static SceneRpcPingAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SceneRpcPingReply : public ::google::protobuf::Message {
+ public:
+  SceneRpcPingReply();
+  virtual ~SceneRpcPingReply();
+
+  SceneRpcPingReply(const SceneRpcPingReply& from);
+
+  inline SceneRpcPingReply& operator=(const SceneRpcPingReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SceneRpcPingReply& default_instance();
+
+  void Swap(SceneRpcPingReply* other);
+
+  // implements Message ----------------------------------------------
+
+  SceneRpcPingReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SceneRpcPingReply& from);
+  void MergeFrom(const SceneRpcPingReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -1];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:SceneRpcPingReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_SceneRpc_2eproto();
+  friend void protobuf_AssignDesc_SceneRpc_2eproto();
+  friend void protobuf_ShutdownFile_SceneRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static SceneRpcPingReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SceneRpcSyncSceneLineStatsNotify : public ::google::protobuf::Message {
+ public:
+  SceneRpcSyncSceneLineStatsNotify();
+  virtual ~SceneRpcSyncSceneLineStatsNotify();
+
+  SceneRpcSyncSceneLineStatsNotify(const SceneRpcSyncSceneLineStatsNotify& from);
+
+  inline SceneRpcSyncSceneLineStatsNotify& operator=(const SceneRpcSyncSceneLineStatsNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SceneRpcSyncSceneLineStatsNotify& default_instance();
+
+  void Swap(SceneRpcSyncSceneLineStatsNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  SceneRpcSyncSceneLineStatsNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SceneRpcSyncSceneLineStatsNotify& from);
+  void MergeFrom(const SceneRpcSyncSceneLineStatsNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional .SceneStats Scene_stats = 1;
+  inline bool has_scene_stats() const;
+  inline void clear_scene_stats();
+  static const int kSceneStatsFieldNumber = 1;
+  inline const ::SceneStats& scene_stats() const;
+  inline ::SceneStats* mutable_scene_stats();
+  inline ::SceneStats* release_scene_stats();
+  inline void set_allocated_scene_stats(::SceneStats* scene_stats);
+
+  // optional int32 Player_lineId = 2 [default = -1];
+  inline bool has_player_lineid() const;
+  inline void clear_player_lineid();
+  static const int kPlayerLineIdFieldNumber = 2;
+  inline ::google::protobuf::int32 player_lineid() const;
+  inline void set_player_lineid(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:SceneRpcSyncSceneLineStatsNotify)
+ private:
+  inline void set_has_scene_stats();
+  inline void clear_has_scene_stats();
+  inline void set_has_player_lineid();
+  inline void clear_has_player_lineid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::SceneStats* scene_stats_;
+  ::google::protobuf::int32 player_lineid_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_SceneRpc_2eproto();
+  friend void protobuf_AssignDesc_SceneRpc_2eproto();
+  friend void protobuf_ShutdownFile_SceneRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static SceneRpcSyncSceneLineStatsNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SceneRpcLogOutGameAsk : public ::google::protobuf::Message {
+ public:
+  SceneRpcLogOutGameAsk();
+  virtual ~SceneRpcLogOutGameAsk();
+
+  SceneRpcLogOutGameAsk(const SceneRpcLogOutGameAsk& from);
+
+  inline SceneRpcLogOutGameAsk& operator=(const SceneRpcLogOutGameAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SceneRpcLogOutGameAsk& default_instance();
+
+  void Swap(SceneRpcLogOutGameAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  SceneRpcLogOutGameAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SceneRpcLogOutGameAsk& from);
+  void MergeFrom(const SceneRpcLogOutGameAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:SceneRpcLogOutGameAsk)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[1];
+
+  friend void  protobuf_AddDesc_SceneRpc_2eproto();
+  friend void protobuf_AssignDesc_SceneRpc_2eproto();
+  friend void protobuf_ShutdownFile_SceneRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static SceneRpcLogOutGameAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SceneRpcLogOutGameReply : public ::google::protobuf::Message {
+ public:
+  SceneRpcLogOutGameReply();
+  virtual ~SceneRpcLogOutGameReply();
+
+  SceneRpcLogOutGameReply(const SceneRpcLogOutGameReply& from);
+
+  inline SceneRpcLogOutGameReply& operator=(const SceneRpcLogOutGameReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SceneRpcLogOutGameReply& default_instance();
+
+  void Swap(SceneRpcLogOutGameReply* other);
+
+  // implements Message ----------------------------------------------
+
+  SceneRpcLogOutGameReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SceneRpcLogOutGameReply& from);
+  void MergeFrom(const SceneRpcLogOutGameReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -1];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:SceneRpcLogOutGameReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_SceneRpc_2eproto();
+  friend void protobuf_AssignDesc_SceneRpc_2eproto();
+  friend void protobuf_ShutdownFile_SceneRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static SceneRpcLogOutGameReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SceneRpcKickOutGameNotify : public ::google::protobuf::Message {
+ public:
+  SceneRpcKickOutGameNotify();
+  virtual ~SceneRpcKickOutGameNotify();
+
+  SceneRpcKickOutGameNotify(const SceneRpcKickOutGameNotify& from);
+
+  inline SceneRpcKickOutGameNotify& operator=(const SceneRpcKickOutGameNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SceneRpcKickOutGameNotify& default_instance();
+
+  void Swap(SceneRpcKickOutGameNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  SceneRpcKickOutGameNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SceneRpcKickOutGameNotify& from);
+  void MergeFrom(const SceneRpcKickOutGameNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional .AppendString Kick_reason = 1;
+  inline bool has_kick_reason() const;
+  inline void clear_kick_reason();
+  static const int kKickReasonFieldNumber = 1;
+  inline const ::AppendString& kick_reason() const;
+  inline ::AppendString* mutable_kick_reason();
+  inline ::AppendString* release_kick_reason();
+  inline void set_allocated_kick_reason(::AppendString* kick_reason);
+
+  // optional int32 Reason_id = 2 [default = -1];
+  inline bool has_reason_id() const;
+  inline void clear_reason_id();
+  static const int kReasonIdFieldNumber = 2;
+  inline ::google::protobuf::int32 reason_id() const;
+  inline void set_reason_id(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:SceneRpcKickOutGameNotify)
+ private:
+  inline void set_has_kick_reason();
+  inline void clear_has_kick_reason();
+  inline void set_has_reason_id();
+  inline void clear_has_reason_id();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::AppendString* kick_reason_;
+  ::google::protobuf::int32 reason_id_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_SceneRpc_2eproto();
+  friend void protobuf_AssignDesc_SceneRpc_2eproto();
+  friend void protobuf_ShutdownFile_SceneRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static SceneRpcKickOutGameNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SceneRpcShowFilmFinishAsk : public ::google::protobuf::Message {
+ public:
+  SceneRpcShowFilmFinishAsk();
+  virtual ~SceneRpcShowFilmFinishAsk();
+
+  SceneRpcShowFilmFinishAsk(const SceneRpcShowFilmFinishAsk& from);
+
+  inline SceneRpcShowFilmFinishAsk& operator=(const SceneRpcShowFilmFinishAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SceneRpcShowFilmFinishAsk& default_instance();
+
+  void Swap(SceneRpcShowFilmFinishAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  SceneRpcShowFilmFinishAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SceneRpcShowFilmFinishAsk& from);
+  void MergeFrom(const SceneRpcShowFilmFinishAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:SceneRpcShowFilmFinishAsk)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[1];
+
+  friend void  protobuf_AddDesc_SceneRpc_2eproto();
+  friend void protobuf_AssignDesc_SceneRpc_2eproto();
+  friend void protobuf_ShutdownFile_SceneRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static SceneRpcShowFilmFinishAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SceneRpcShowFilmFinishReply : public ::google::protobuf::Message {
+ public:
+  SceneRpcShowFilmFinishReply();
+  virtual ~SceneRpcShowFilmFinishReply();
+
+  SceneRpcShowFilmFinishReply(const SceneRpcShowFilmFinishReply& from);
+
+  inline SceneRpcShowFilmFinishReply& operator=(const SceneRpcShowFilmFinishReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SceneRpcShowFilmFinishReply& default_instance();
+
+  void Swap(SceneRpcShowFilmFinishReply* other);
+
+  // implements Message ----------------------------------------------
+
+  SceneRpcShowFilmFinishReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SceneRpcShowFilmFinishReply& from);
+  void MergeFrom(const SceneRpcShowFilmFinishReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -1];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:SceneRpcShowFilmFinishReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_SceneRpc_2eproto();
+  friend void protobuf_AssignDesc_SceneRpc_2eproto();
+  friend void protobuf_ShutdownFile_SceneRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static SceneRpcShowFilmFinishReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SceneRpcSpecObjPosAsk : public ::google::protobuf::Message {
+ public:
+  SceneRpcSpecObjPosAsk();
+  virtual ~SceneRpcSpecObjPosAsk();
+
+  SceneRpcSpecObjPosAsk(const SceneRpcSpecObjPosAsk& from);
+
+  inline SceneRpcSpecObjPosAsk& operator=(const SceneRpcSpecObjPosAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SceneRpcSpecObjPosAsk& default_instance();
+
+  void Swap(SceneRpcSpecObjPosAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  SceneRpcSpecObjPosAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SceneRpcSpecObjPosAsk& from);
+  void MergeFrom(const SceneRpcSpecObjPosAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:SceneRpcSpecObjPosAsk)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[1];
+
+  friend void  protobuf_AddDesc_SceneRpc_2eproto();
+  friend void protobuf_AssignDesc_SceneRpc_2eproto();
+  friend void protobuf_ShutdownFile_SceneRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static SceneRpcSpecObjPosAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SceneRpcSpecObjPosReply : public ::google::protobuf::Message {
+ public:
+  SceneRpcSpecObjPosReply();
+  virtual ~SceneRpcSpecObjPosReply();
+
+  SceneRpcSpecObjPosReply(const SceneRpcSpecObjPosReply& from);
+
+  inline SceneRpcSpecObjPosReply& operator=(const SceneRpcSpecObjPosReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SceneRpcSpecObjPosReply& default_instance();
+
+  void Swap(SceneRpcSpecObjPosReply* other);
+
+  // implements Message ----------------------------------------------
+
+  SceneRpcSpecObjPosReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SceneRpcSpecObjPosReply& from);
+  void MergeFrom(const SceneRpcSpecObjPosReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -1];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // repeated .ObjPosInfo PosInfos = 2;
+  inline int posinfos_size() const;
+  inline void clear_posinfos();
+  static const int kPosInfosFieldNumber = 2;
+  inline const ::ObjPosInfo& posinfos(int index) const;
+  inline ::ObjPosInfo* mutable_posinfos(int index);
+  inline ::ObjPosInfo* add_posinfos();
+  inline const ::google::protobuf::RepeatedPtrField< ::ObjPosInfo >&
+      posinfos() const;
+  inline ::google::protobuf::RepeatedPtrField< ::ObjPosInfo >*
+      mutable_posinfos();
+
+  // @@protoc_insertion_point(class_scope:SceneRpcSpecObjPosReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::RepeatedPtrField< ::ObjPosInfo > posinfos_;
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_SceneRpc_2eproto();
+  friend void protobuf_AssignDesc_SceneRpc_2eproto();
+  friend void protobuf_ShutdownFile_SceneRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static SceneRpcSpecObjPosReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SceneRpcDayNightChangeNotify : public ::google::protobuf::Message {
+ public:
+  SceneRpcDayNightChangeNotify();
+  virtual ~SceneRpcDayNightChangeNotify();
+
+  SceneRpcDayNightChangeNotify(const SceneRpcDayNightChangeNotify& from);
+
+  inline SceneRpcDayNightChangeNotify& operator=(const SceneRpcDayNightChangeNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SceneRpcDayNightChangeNotify& default_instance();
+
+  void Swap(SceneRpcDayNightChangeNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  SceneRpcDayNightChangeNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SceneRpcDayNightChangeNotify& from);
+  void MergeFrom(const SceneRpcDayNightChangeNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 DayStage = 1 [default = -1];
+  inline bool has_daystage() const;
+  inline void clear_daystage();
+  static const int kDayStageFieldNumber = 1;
+  inline ::google::protobuf::int32 daystage() const;
+  inline void set_daystage(::google::protobuf::int32 value);
+
+  // optional int32 Remaining = 2 [default = -1];
+  inline bool has_remaining() const;
+  inline void clear_remaining();
+  static const int kRemainingFieldNumber = 2;
+  inline ::google::protobuf::int32 remaining() const;
+  inline void set_remaining(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:SceneRpcDayNightChangeNotify)
+ private:
+  inline void set_has_daystage();
+  inline void clear_has_daystage();
+  inline void set_has_remaining();
+  inline void clear_has_remaining();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 daystage_;
+  ::google::protobuf::int32 remaining_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_SceneRpc_2eproto();
+  friend void protobuf_AssignDesc_SceneRpc_2eproto();
+  friend void protobuf_ShutdownFile_SceneRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static SceneRpcDayNightChangeNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SceneRpcWeatherChangeNotify : public ::google::protobuf::Message {
+ public:
+  SceneRpcWeatherChangeNotify();
+  virtual ~SceneRpcWeatherChangeNotify();
+
+  SceneRpcWeatherChangeNotify(const SceneRpcWeatherChangeNotify& from);
+
+  inline SceneRpcWeatherChangeNotify& operator=(const SceneRpcWeatherChangeNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SceneRpcWeatherChangeNotify& default_instance();
+
+  void Swap(SceneRpcWeatherChangeNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  SceneRpcWeatherChangeNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SceneRpcWeatherChangeNotify& from);
+  void MergeFrom(const SceneRpcWeatherChangeNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 WeatherId = 1 [default = -1];
+  inline bool has_weatherid() const;
+  inline void clear_weatherid();
+  static const int kWeatherIdFieldNumber = 1;
+  inline ::google::protobuf::int32 weatherid() const;
+  inline void set_weatherid(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:SceneRpcWeatherChangeNotify)
+ private:
+  inline void set_has_weatherid();
+  inline void clear_has_weatherid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 weatherid_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_SceneRpc_2eproto();
+  friend void protobuf_AssignDesc_SceneRpc_2eproto();
+  friend void protobuf_ShutdownFile_SceneRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static SceneRpcWeatherChangeNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SceneRpcWantChangeZoneAsk : public ::google::protobuf::Message {
+ public:
+  SceneRpcWantChangeZoneAsk();
+  virtual ~SceneRpcWantChangeZoneAsk();
+
+  SceneRpcWantChangeZoneAsk(const SceneRpcWantChangeZoneAsk& from);
+
+  inline SceneRpcWantChangeZoneAsk& operator=(const SceneRpcWantChangeZoneAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SceneRpcWantChangeZoneAsk& default_instance();
+
+  void Swap(SceneRpcWantChangeZoneAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  SceneRpcWantChangeZoneAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SceneRpcWantChangeZoneAsk& from);
+  void MergeFrom(const SceneRpcWantChangeZoneAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Zoneid = 1 [default = -1];
+  inline bool has_zoneid() const;
+  inline void clear_zoneid();
+  static const int kZoneidFieldNumber = 1;
+  inline ::google::protobuf::int32 zoneid() const;
+  inline void set_zoneid(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:SceneRpcWantChangeZoneAsk)
+ private:
+  inline void set_has_zoneid();
+  inline void clear_has_zoneid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 zoneid_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_SceneRpc_2eproto();
+  friend void protobuf_AssignDesc_SceneRpc_2eproto();
+  friend void protobuf_ShutdownFile_SceneRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static SceneRpcWantChangeZoneAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SceneRpcWantChangeZoneReply : public ::google::protobuf::Message {
+ public:
+  SceneRpcWantChangeZoneReply();
+  virtual ~SceneRpcWantChangeZoneReply();
+
+  SceneRpcWantChangeZoneReply(const SceneRpcWantChangeZoneReply& from);
+
+  inline SceneRpcWantChangeZoneReply& operator=(const SceneRpcWantChangeZoneReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SceneRpcWantChangeZoneReply& default_instance();
+
+  void Swap(SceneRpcWantChangeZoneReply* other);
+
+  // implements Message ----------------------------------------------
+
+  SceneRpcWantChangeZoneReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SceneRpcWantChangeZoneReply& from);
+  void MergeFrom(const SceneRpcWantChangeZoneReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -1];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:SceneRpcWantChangeZoneReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_SceneRpc_2eproto();
+  friend void protobuf_AssignDesc_SceneRpc_2eproto();
+  friend void protobuf_ShutdownFile_SceneRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static SceneRpcWantChangeZoneReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SceneRpcReturnSrcServerAsk : public ::google::protobuf::Message {
+ public:
+  SceneRpcReturnSrcServerAsk();
+  virtual ~SceneRpcReturnSrcServerAsk();
+
+  SceneRpcReturnSrcServerAsk(const SceneRpcReturnSrcServerAsk& from);
+
+  inline SceneRpcReturnSrcServerAsk& operator=(const SceneRpcReturnSrcServerAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SceneRpcReturnSrcServerAsk& default_instance();
+
+  void Swap(SceneRpcReturnSrcServerAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  SceneRpcReturnSrcServerAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SceneRpcReturnSrcServerAsk& from);
+  void MergeFrom(const SceneRpcReturnSrcServerAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:SceneRpcReturnSrcServerAsk)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[1];
+
+  friend void  protobuf_AddDesc_SceneRpc_2eproto();
+  friend void protobuf_AssignDesc_SceneRpc_2eproto();
+  friend void protobuf_ShutdownFile_SceneRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static SceneRpcReturnSrcServerAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class SceneRpcReturnSrcServerReply : public ::google::protobuf::Message {
+ public:
+  SceneRpcReturnSrcServerReply();
+  virtual ~SceneRpcReturnSrcServerReply();
+
+  SceneRpcReturnSrcServerReply(const SceneRpcReturnSrcServerReply& from);
+
+  inline SceneRpcReturnSrcServerReply& operator=(const SceneRpcReturnSrcServerReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const SceneRpcReturnSrcServerReply& default_instance();
+
+  void Swap(SceneRpcReturnSrcServerReply* other);
+
+  // implements Message ----------------------------------------------
+
+  SceneRpcReturnSrcServerReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const SceneRpcReturnSrcServerReply& from);
+  void MergeFrom(const SceneRpcReturnSrcServerReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -1];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:SceneRpcReturnSrcServerReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_SceneRpc_2eproto();
+  friend void protobuf_AssignDesc_SceneRpc_2eproto();
+  friend void protobuf_ShutdownFile_SceneRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static SceneRpcReturnSrcServerReply* default_instance_;
 };
 // ===================================================================
 
@@ -1678,7 +3484,7 @@ inline void SceneRpcLoadSceneCompleteAsk::set_roleid(::google::protobuf::uint64 
   roleid_ = value;
 }
 
-// optional sint32 SceneId = 2 [default = -1];
+// optional int32 SceneId = 2 [default = -1];
 inline bool SceneRpcLoadSceneCompleteAsk::has_sceneid() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -1704,7 +3510,7 @@ inline void SceneRpcLoadSceneCompleteAsk::set_sceneid(::google::protobuf::int32 
 
 // SceneRpcLoadSceneCompleteReply
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool SceneRpcLoadSceneCompleteReply::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -1726,95 +3532,57 @@ inline void SceneRpcLoadSceneCompleteReply::set_result(::google::protobuf::int32
   result_ = value;
 }
 
-// optional .CharacterInfo RoleInfo = 2;
-inline bool SceneRpcLoadSceneCompleteReply::has_roleinfo() const {
+// optional uint64 ObjId = 3 [default = 0];
+inline bool SceneRpcLoadSceneCompleteReply::has_objid() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void SceneRpcLoadSceneCompleteReply::set_has_roleinfo() {
+inline void SceneRpcLoadSceneCompleteReply::set_has_objid() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void SceneRpcLoadSceneCompleteReply::clear_has_roleinfo() {
+inline void SceneRpcLoadSceneCompleteReply::clear_has_objid() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void SceneRpcLoadSceneCompleteReply::clear_roleinfo() {
-  if (roleinfo_ != NULL) roleinfo_->::CharacterInfo::Clear();
-  clear_has_roleinfo();
-}
-inline const ::CharacterInfo& SceneRpcLoadSceneCompleteReply::roleinfo() const {
-  return roleinfo_ != NULL ? *roleinfo_ : *default_instance_->roleinfo_;
-}
-inline ::CharacterInfo* SceneRpcLoadSceneCompleteReply::mutable_roleinfo() {
-  set_has_roleinfo();
-  if (roleinfo_ == NULL) roleinfo_ = new ::CharacterInfo;
-  return roleinfo_;
-}
-inline ::CharacterInfo* SceneRpcLoadSceneCompleteReply::release_roleinfo() {
-  clear_has_roleinfo();
-  ::CharacterInfo* temp = roleinfo_;
-  roleinfo_ = NULL;
-  return temp;
-}
-inline void SceneRpcLoadSceneCompleteReply::set_allocated_roleinfo(::CharacterInfo* roleinfo) {
-  delete roleinfo_;
-  roleinfo_ = roleinfo;
-  if (roleinfo) {
-    set_has_roleinfo();
-  } else {
-    clear_has_roleinfo();
-  }
-}
-
-// optional sint32 ObjId = 3 [default = -1];
-inline bool SceneRpcLoadSceneCompleteReply::has_objid() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void SceneRpcLoadSceneCompleteReply::set_has_objid() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void SceneRpcLoadSceneCompleteReply::clear_has_objid() {
-  _has_bits_[0] &= ~0x00000004u;
-}
 inline void SceneRpcLoadSceneCompleteReply::clear_objid() {
-  objid_ = -1;
+  objid_ = GOOGLE_ULONGLONG(0);
   clear_has_objid();
 }
-inline ::google::protobuf::int32 SceneRpcLoadSceneCompleteReply::objid() const {
+inline ::google::protobuf::uint64 SceneRpcLoadSceneCompleteReply::objid() const {
   return objid_;
 }
-inline void SceneRpcLoadSceneCompleteReply::set_objid(::google::protobuf::int32 value) {
+inline void SceneRpcLoadSceneCompleteReply::set_objid(::google::protobuf::uint64 value) {
   set_has_objid();
   objid_ = value;
 }
 
-// optional .V3 Pos = 4;
+// optional .Vector3 Pos = 4;
 inline bool SceneRpcLoadSceneCompleteReply::has_pos() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void SceneRpcLoadSceneCompleteReply::set_has_pos() {
-  _has_bits_[0] |= 0x00000008u;
+  _has_bits_[0] |= 0x00000004u;
 }
 inline void SceneRpcLoadSceneCompleteReply::clear_has_pos() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void SceneRpcLoadSceneCompleteReply::clear_pos() {
-  if (pos_ != NULL) pos_->::V3::Clear();
+  if (pos_ != NULL) pos_->::Vector3::Clear();
   clear_has_pos();
 }
-inline const ::V3& SceneRpcLoadSceneCompleteReply::pos() const {
+inline const ::Vector3& SceneRpcLoadSceneCompleteReply::pos() const {
   return pos_ != NULL ? *pos_ : *default_instance_->pos_;
 }
-inline ::V3* SceneRpcLoadSceneCompleteReply::mutable_pos() {
+inline ::Vector3* SceneRpcLoadSceneCompleteReply::mutable_pos() {
   set_has_pos();
-  if (pos_ == NULL) pos_ = new ::V3;
+  if (pos_ == NULL) pos_ = new ::Vector3;
   return pos_;
 }
-inline ::V3* SceneRpcLoadSceneCompleteReply::release_pos() {
+inline ::Vector3* SceneRpcLoadSceneCompleteReply::release_pos() {
   clear_has_pos();
-  ::V3* temp = pos_;
+  ::Vector3* temp = pos_;
   pos_ = NULL;
   return temp;
 }
-inline void SceneRpcLoadSceneCompleteReply::set_allocated_pos(::V3* pos) {
+inline void SceneRpcLoadSceneCompleteReply::set_allocated_pos(::Vector3* pos) {
   delete pos_;
   pos_ = pos;
   if (pos) {
@@ -1826,13 +3594,13 @@ inline void SceneRpcLoadSceneCompleteReply::set_allocated_pos(::V3* pos) {
 
 // optional float Dir = 5 [default = -1];
 inline bool SceneRpcLoadSceneCompleteReply::has_dir() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void SceneRpcLoadSceneCompleteReply::set_has_dir() {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000008u;
 }
 inline void SceneRpcLoadSceneCompleteReply::clear_has_dir() {
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void SceneRpcLoadSceneCompleteReply::clear_dir() {
   dir_ = -1;
@@ -1846,52 +3614,103 @@ inline void SceneRpcLoadSceneCompleteReply::set_dir(float value) {
   dir_ = value;
 }
 
+// optional bytes ObjData = 6;
+inline bool SceneRpcLoadSceneCompleteReply::has_objdata() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void SceneRpcLoadSceneCompleteReply::set_has_objdata() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void SceneRpcLoadSceneCompleteReply::clear_has_objdata() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void SceneRpcLoadSceneCompleteReply::clear_objdata() {
+  if (objdata_ != &::google::protobuf::internal::kEmptyString) {
+    objdata_->clear();
+  }
+  clear_has_objdata();
+}
+inline const ::std::string& SceneRpcLoadSceneCompleteReply::objdata() const {
+  return *objdata_;
+}
+inline void SceneRpcLoadSceneCompleteReply::set_objdata(const ::std::string& value) {
+  set_has_objdata();
+  if (objdata_ == &::google::protobuf::internal::kEmptyString) {
+    objdata_ = new ::std::string;
+  }
+  objdata_->assign(value);
+}
+inline void SceneRpcLoadSceneCompleteReply::set_objdata(const char* value) {
+  set_has_objdata();
+  if (objdata_ == &::google::protobuf::internal::kEmptyString) {
+    objdata_ = new ::std::string;
+  }
+  objdata_->assign(value);
+}
+inline void SceneRpcLoadSceneCompleteReply::set_objdata(const void* value, size_t size) {
+  set_has_objdata();
+  if (objdata_ == &::google::protobuf::internal::kEmptyString) {
+    objdata_ = new ::std::string;
+  }
+  objdata_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* SceneRpcLoadSceneCompleteReply::mutable_objdata() {
+  set_has_objdata();
+  if (objdata_ == &::google::protobuf::internal::kEmptyString) {
+    objdata_ = new ::std::string;
+  }
+  return objdata_;
+}
+inline ::std::string* SceneRpcLoadSceneCompleteReply::release_objdata() {
+  clear_has_objdata();
+  if (objdata_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = objdata_;
+    objdata_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void SceneRpcLoadSceneCompleteReply::set_allocated_objdata(::std::string* objdata) {
+  if (objdata_ != &::google::protobuf::internal::kEmptyString) {
+    delete objdata_;
+  }
+  if (objdata) {
+    set_has_objdata();
+    objdata_ = objdata;
+  } else {
+    clear_has_objdata();
+    objdata_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
 // -------------------------------------------------------------------
 
 // SceneRpcDeletePlayerNotify
 
-// optional sint32 ObjId = 2 [default = -1];
-inline bool SceneRpcDeletePlayerNotify::has_objid() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
+// repeated .ObjDeleteInfo Delete_list = 4;
+inline int SceneRpcDeletePlayerNotify::delete_list_size() const {
+  return delete_list_.size();
 }
-inline void SceneRpcDeletePlayerNotify::set_has_objid() {
-  _has_bits_[0] |= 0x00000001u;
+inline void SceneRpcDeletePlayerNotify::clear_delete_list() {
+  delete_list_.Clear();
 }
-inline void SceneRpcDeletePlayerNotify::clear_has_objid() {
-  _has_bits_[0] &= ~0x00000001u;
+inline const ::ObjDeleteInfo& SceneRpcDeletePlayerNotify::delete_list(int index) const {
+  return delete_list_.Get(index);
 }
-inline void SceneRpcDeletePlayerNotify::clear_objid() {
-  objid_ = -1;
-  clear_has_objid();
+inline ::ObjDeleteInfo* SceneRpcDeletePlayerNotify::mutable_delete_list(int index) {
+  return delete_list_.Mutable(index);
 }
-inline ::google::protobuf::int32 SceneRpcDeletePlayerNotify::objid() const {
-  return objid_;
+inline ::ObjDeleteInfo* SceneRpcDeletePlayerNotify::add_delete_list() {
+  return delete_list_.Add();
 }
-inline void SceneRpcDeletePlayerNotify::set_objid(::google::protobuf::int32 value) {
-  set_has_objid();
-  objid_ = value;
+inline const ::google::protobuf::RepeatedPtrField< ::ObjDeleteInfo >&
+SceneRpcDeletePlayerNotify::delete_list() const {
+  return delete_list_;
 }
-
-// optional sint32 SceneId = 3 [default = -1];
-inline bool SceneRpcDeletePlayerNotify::has_sceneid() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void SceneRpcDeletePlayerNotify::set_has_sceneid() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void SceneRpcDeletePlayerNotify::clear_has_sceneid() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void SceneRpcDeletePlayerNotify::clear_sceneid() {
-  sceneid_ = -1;
-  clear_has_sceneid();
-}
-inline ::google::protobuf::int32 SceneRpcDeletePlayerNotify::sceneid() const {
-  return sceneid_;
-}
-inline void SceneRpcDeletePlayerNotify::set_sceneid(::google::protobuf::int32 value) {
-  set_has_sceneid();
-  sceneid_ = value;
+inline ::google::protobuf::RepeatedPtrField< ::ObjDeleteInfo >*
+SceneRpcDeletePlayerNotify::mutable_delete_list() {
+  return &delete_list_;
 }
 
 // -------------------------------------------------------------------
@@ -1990,11 +3809,125 @@ inline void SceneRpcConnectGameServerAsk::set_allocated_key(::std::string* key) 
   }
 }
 
+// optional int32 SceneID = 3 [default = -1];
+inline bool SceneRpcConnectGameServerAsk::has_sceneid() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void SceneRpcConnectGameServerAsk::set_has_sceneid() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void SceneRpcConnectGameServerAsk::clear_has_sceneid() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void SceneRpcConnectGameServerAsk::clear_sceneid() {
+  sceneid_ = -1;
+  clear_has_sceneid();
+}
+inline ::google::protobuf::int32 SceneRpcConnectGameServerAsk::sceneid() const {
+  return sceneid_;
+}
+inline void SceneRpcConnectGameServerAsk::set_sceneid(::google::protobuf::int32 value) {
+  set_has_sceneid();
+  sceneid_ = value;
+}
+
+// optional int32 LineID = 4 [default = -1];
+inline bool SceneRpcConnectGameServerAsk::has_lineid() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void SceneRpcConnectGameServerAsk::set_has_lineid() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void SceneRpcConnectGameServerAsk::clear_has_lineid() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void SceneRpcConnectGameServerAsk::clear_lineid() {
+  lineid_ = -1;
+  clear_has_lineid();
+}
+inline ::google::protobuf::int32 SceneRpcConnectGameServerAsk::lineid() const {
+  return lineid_;
+}
+inline void SceneRpcConnectGameServerAsk::set_lineid(::google::protobuf::int32 value) {
+  set_has_lineid();
+  lineid_ = value;
+}
+
+// optional string GameToken = 5;
+inline bool SceneRpcConnectGameServerAsk::has_gametoken() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void SceneRpcConnectGameServerAsk::set_has_gametoken() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void SceneRpcConnectGameServerAsk::clear_has_gametoken() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void SceneRpcConnectGameServerAsk::clear_gametoken() {
+  if (gametoken_ != &::google::protobuf::internal::kEmptyString) {
+    gametoken_->clear();
+  }
+  clear_has_gametoken();
+}
+inline const ::std::string& SceneRpcConnectGameServerAsk::gametoken() const {
+  return *gametoken_;
+}
+inline void SceneRpcConnectGameServerAsk::set_gametoken(const ::std::string& value) {
+  set_has_gametoken();
+  if (gametoken_ == &::google::protobuf::internal::kEmptyString) {
+    gametoken_ = new ::std::string;
+  }
+  gametoken_->assign(value);
+}
+inline void SceneRpcConnectGameServerAsk::set_gametoken(const char* value) {
+  set_has_gametoken();
+  if (gametoken_ == &::google::protobuf::internal::kEmptyString) {
+    gametoken_ = new ::std::string;
+  }
+  gametoken_->assign(value);
+}
+inline void SceneRpcConnectGameServerAsk::set_gametoken(const char* value, size_t size) {
+  set_has_gametoken();
+  if (gametoken_ == &::google::protobuf::internal::kEmptyString) {
+    gametoken_ = new ::std::string;
+  }
+  gametoken_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* SceneRpcConnectGameServerAsk::mutable_gametoken() {
+  set_has_gametoken();
+  if (gametoken_ == &::google::protobuf::internal::kEmptyString) {
+    gametoken_ = new ::std::string;
+  }
+  return gametoken_;
+}
+inline ::std::string* SceneRpcConnectGameServerAsk::release_gametoken() {
+  clear_has_gametoken();
+  if (gametoken_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = gametoken_;
+    gametoken_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void SceneRpcConnectGameServerAsk::set_allocated_gametoken(::std::string* gametoken) {
+  if (gametoken_ != &::google::protobuf::internal::kEmptyString) {
+    delete gametoken_;
+  }
+  if (gametoken) {
+    set_has_gametoken();
+    gametoken_ = gametoken;
+  } else {
+    clear_has_gametoken();
+    gametoken_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
 // -------------------------------------------------------------------
 
 // SceneRpcConnectGameServerReply
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool SceneRpcConnectGameServerReply::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -2038,7 +3971,7 @@ inline void SceneRpcConnectGameServerReply::set_roleid(::google::protobuf::uint6
   roleid_ = value;
 }
 
-// optional sint32 SceneId = 3 [default = -1];
+// optional int32 SceneId = 3 [default = -1];
 inline bool SceneRpcConnectGameServerReply::has_sceneid() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -2060,7 +3993,7 @@ inline void SceneRpcConnectGameServerReply::set_sceneid(::google::protobuf::int3
   sceneid_ = value;
 }
 
-// optional sint32 MapId = 5 [default = -1];
+// optional int32 MapId = 5 [default = -1];
 inline bool SceneRpcConnectGameServerReply::has_mapid() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
@@ -2082,514 +4015,103 @@ inline void SceneRpcConnectGameServerReply::set_mapid(::google::protobuf::int32 
   mapid_ = value;
 }
 
-// -------------------------------------------------------------------
-
-// SceneRpcChangeSceneAsk
-
-// optional uint64 RoleId = 1 [default = 0];
-inline bool SceneRpcChangeSceneAsk::has_roleid() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
+// optional string GameToken = 6;
+inline bool SceneRpcConnectGameServerReply::has_gametoken() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
 }
-inline void SceneRpcChangeSceneAsk::set_has_roleid() {
-  _has_bits_[0] |= 0x00000001u;
+inline void SceneRpcConnectGameServerReply::set_has_gametoken() {
+  _has_bits_[0] |= 0x00000010u;
 }
-inline void SceneRpcChangeSceneAsk::clear_has_roleid() {
-  _has_bits_[0] &= ~0x00000001u;
+inline void SceneRpcConnectGameServerReply::clear_has_gametoken() {
+  _has_bits_[0] &= ~0x00000010u;
 }
-inline void SceneRpcChangeSceneAsk::clear_roleid() {
-  roleid_ = GOOGLE_ULONGLONG(0);
-  clear_has_roleid();
+inline void SceneRpcConnectGameServerReply::clear_gametoken() {
+  if (gametoken_ != &::google::protobuf::internal::kEmptyString) {
+    gametoken_->clear();
+  }
+  clear_has_gametoken();
 }
-inline ::google::protobuf::uint64 SceneRpcChangeSceneAsk::roleid() const {
-  return roleid_;
+inline const ::std::string& SceneRpcConnectGameServerReply::gametoken() const {
+  return *gametoken_;
 }
-inline void SceneRpcChangeSceneAsk::set_roleid(::google::protobuf::uint64 value) {
-  set_has_roleid();
-  roleid_ = value;
+inline void SceneRpcConnectGameServerReply::set_gametoken(const ::std::string& value) {
+  set_has_gametoken();
+  if (gametoken_ == &::google::protobuf::internal::kEmptyString) {
+    gametoken_ = new ::std::string;
+  }
+  gametoken_->assign(value);
 }
-
-// optional sint32 CurSceneId = 2 [default = -1];
-inline bool SceneRpcChangeSceneAsk::has_cursceneid() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
+inline void SceneRpcConnectGameServerReply::set_gametoken(const char* value) {
+  set_has_gametoken();
+  if (gametoken_ == &::google::protobuf::internal::kEmptyString) {
+    gametoken_ = new ::std::string;
+  }
+  gametoken_->assign(value);
 }
-inline void SceneRpcChangeSceneAsk::set_has_cursceneid() {
-  _has_bits_[0] |= 0x00000002u;
+inline void SceneRpcConnectGameServerReply::set_gametoken(const char* value, size_t size) {
+  set_has_gametoken();
+  if (gametoken_ == &::google::protobuf::internal::kEmptyString) {
+    gametoken_ = new ::std::string;
+  }
+  gametoken_->assign(reinterpret_cast<const char*>(value), size);
 }
-inline void SceneRpcChangeSceneAsk::clear_has_cursceneid() {
-  _has_bits_[0] &= ~0x00000002u;
+inline ::std::string* SceneRpcConnectGameServerReply::mutable_gametoken() {
+  set_has_gametoken();
+  if (gametoken_ == &::google::protobuf::internal::kEmptyString) {
+    gametoken_ = new ::std::string;
+  }
+  return gametoken_;
 }
-inline void SceneRpcChangeSceneAsk::clear_cursceneid() {
-  cursceneid_ = -1;
-  clear_has_cursceneid();
+inline ::std::string* SceneRpcConnectGameServerReply::release_gametoken() {
+  clear_has_gametoken();
+  if (gametoken_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = gametoken_;
+    gametoken_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
 }
-inline ::google::protobuf::int32 SceneRpcChangeSceneAsk::cursceneid() const {
-  return cursceneid_;
-}
-inline void SceneRpcChangeSceneAsk::set_cursceneid(::google::protobuf::int32 value) {
-  set_has_cursceneid();
-  cursceneid_ = value;
-}
-
-// optional sint32 TargetSceneId = 3 [default = -1];
-inline bool SceneRpcChangeSceneAsk::has_targetsceneid() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void SceneRpcChangeSceneAsk::set_has_targetsceneid() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void SceneRpcChangeSceneAsk::clear_has_targetsceneid() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void SceneRpcChangeSceneAsk::clear_targetsceneid() {
-  targetsceneid_ = -1;
-  clear_has_targetsceneid();
-}
-inline ::google::protobuf::int32 SceneRpcChangeSceneAsk::targetsceneid() const {
-  return targetsceneid_;
-}
-inline void SceneRpcChangeSceneAsk::set_targetsceneid(::google::protobuf::int32 value) {
-  set_has_targetsceneid();
-  targetsceneid_ = value;
-}
-
-// -------------------------------------------------------------------
-
-// SceneRpcChangeSceneReply
-
-// optional sint32 Result = 1 [default = -9999];
-inline bool SceneRpcChangeSceneReply::has_result() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void SceneRpcChangeSceneReply::set_has_result() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void SceneRpcChangeSceneReply::clear_has_result() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void SceneRpcChangeSceneReply::clear_result() {
-  result_ = -9999;
-  clear_has_result();
-}
-inline ::google::protobuf::int32 SceneRpcChangeSceneReply::result() const {
-  return result_;
-}
-inline void SceneRpcChangeSceneReply::set_result(::google::protobuf::int32 value) {
-  set_has_result();
-  result_ = value;
-}
-
-// optional uint64 RoleId = 2 [default = 0];
-inline bool SceneRpcChangeSceneReply::has_roleid() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void SceneRpcChangeSceneReply::set_has_roleid() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void SceneRpcChangeSceneReply::clear_has_roleid() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void SceneRpcChangeSceneReply::clear_roleid() {
-  roleid_ = GOOGLE_ULONGLONG(0);
-  clear_has_roleid();
-}
-inline ::google::protobuf::uint64 SceneRpcChangeSceneReply::roleid() const {
-  return roleid_;
-}
-inline void SceneRpcChangeSceneReply::set_roleid(::google::protobuf::uint64 value) {
-  set_has_roleid();
-  roleid_ = value;
-}
-
-// optional sint32 CurSceneId = 3 [default = -1];
-inline bool SceneRpcChangeSceneReply::has_cursceneid() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void SceneRpcChangeSceneReply::set_has_cursceneid() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void SceneRpcChangeSceneReply::clear_has_cursceneid() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void SceneRpcChangeSceneReply::clear_cursceneid() {
-  cursceneid_ = -1;
-  clear_has_cursceneid();
-}
-inline ::google::protobuf::int32 SceneRpcChangeSceneReply::cursceneid() const {
-  return cursceneid_;
-}
-inline void SceneRpcChangeSceneReply::set_cursceneid(::google::protobuf::int32 value) {
-  set_has_cursceneid();
-  cursceneid_ = value;
-}
-
-// optional sint32 TargetSceneId = 4 [default = -1];
-inline bool SceneRpcChangeSceneReply::has_targetsceneid() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void SceneRpcChangeSceneReply::set_has_targetsceneid() {
-  _has_bits_[0] |= 0x00000008u;
-}
-inline void SceneRpcChangeSceneReply::clear_has_targetsceneid() {
-  _has_bits_[0] &= ~0x00000008u;
-}
-inline void SceneRpcChangeSceneReply::clear_targetsceneid() {
-  targetsceneid_ = -1;
-  clear_has_targetsceneid();
-}
-inline ::google::protobuf::int32 SceneRpcChangeSceneReply::targetsceneid() const {
-  return targetsceneid_;
-}
-inline void SceneRpcChangeSceneReply::set_targetsceneid(::google::protobuf::int32 value) {
-  set_has_targetsceneid();
-  targetsceneid_ = value;
+inline void SceneRpcConnectGameServerReply::set_allocated_gametoken(::std::string* gametoken) {
+  if (gametoken_ != &::google::protobuf::internal::kEmptyString) {
+    delete gametoken_;
+  }
+  if (gametoken) {
+    set_has_gametoken();
+    gametoken_ = gametoken;
+  } else {
+    clear_has_gametoken();
+    gametoken_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
 }
 
 // -------------------------------------------------------------------
 
 // SceneRpcCreateObjNotify
 
-// optional sint32 ObjId = 1 [default = -1];
-inline bool SceneRpcCreateObjNotify::has_objid() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
+// repeated .ObjCreateInfo Create_list = 14;
+inline int SceneRpcCreateObjNotify::create_list_size() const {
+  return create_list_.size();
 }
-inline void SceneRpcCreateObjNotify::set_has_objid() {
-  _has_bits_[0] |= 0x00000001u;
+inline void SceneRpcCreateObjNotify::clear_create_list() {
+  create_list_.Clear();
 }
-inline void SceneRpcCreateObjNotify::clear_has_objid() {
-  _has_bits_[0] &= ~0x00000001u;
+inline const ::ObjCreateInfo& SceneRpcCreateObjNotify::create_list(int index) const {
+  return create_list_.Get(index);
 }
-inline void SceneRpcCreateObjNotify::clear_objid() {
-  objid_ = -1;
-  clear_has_objid();
+inline ::ObjCreateInfo* SceneRpcCreateObjNotify::mutable_create_list(int index) {
+  return create_list_.Mutable(index);
 }
-inline ::google::protobuf::int32 SceneRpcCreateObjNotify::objid() const {
-  return objid_;
+inline ::ObjCreateInfo* SceneRpcCreateObjNotify::add_create_list() {
+  return create_list_.Add();
 }
-inline void SceneRpcCreateObjNotify::set_objid(::google::protobuf::int32 value) {
-  set_has_objid();
-  objid_ = value;
+inline const ::google::protobuf::RepeatedPtrField< ::ObjCreateInfo >&
+SceneRpcCreateObjNotify::create_list() const {
+  return create_list_;
 }
-
-// optional .V3 Pos = 2;
-inline bool SceneRpcCreateObjNotify::has_pos() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void SceneRpcCreateObjNotify::set_has_pos() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void SceneRpcCreateObjNotify::clear_has_pos() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void SceneRpcCreateObjNotify::clear_pos() {
-  if (pos_ != NULL) pos_->::V3::Clear();
-  clear_has_pos();
-}
-inline const ::V3& SceneRpcCreateObjNotify::pos() const {
-  return pos_ != NULL ? *pos_ : *default_instance_->pos_;
-}
-inline ::V3* SceneRpcCreateObjNotify::mutable_pos() {
-  set_has_pos();
-  if (pos_ == NULL) pos_ = new ::V3;
-  return pos_;
-}
-inline ::V3* SceneRpcCreateObjNotify::release_pos() {
-  clear_has_pos();
-  ::V3* temp = pos_;
-  pos_ = NULL;
-  return temp;
-}
-inline void SceneRpcCreateObjNotify::set_allocated_pos(::V3* pos) {
-  delete pos_;
-  pos_ = pos;
-  if (pos) {
-    set_has_pos();
-  } else {
-    clear_has_pos();
-  }
-}
-
-// optional float Dir = 3 [default = -1];
-inline bool SceneRpcCreateObjNotify::has_dir() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void SceneRpcCreateObjNotify::set_has_dir() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void SceneRpcCreateObjNotify::clear_has_dir() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void SceneRpcCreateObjNotify::clear_dir() {
-  dir_ = -1;
-  clear_has_dir();
-}
-inline float SceneRpcCreateObjNotify::dir() const {
-  return dir_;
-}
-inline void SceneRpcCreateObjNotify::set_dir(float value) {
-  set_has_dir();
-  dir_ = value;
-}
-
-// optional sint32 ObjType = 4 [default = -1];
-inline bool SceneRpcCreateObjNotify::has_objtype() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void SceneRpcCreateObjNotify::set_has_objtype() {
-  _has_bits_[0] |= 0x00000008u;
-}
-inline void SceneRpcCreateObjNotify::clear_has_objtype() {
-  _has_bits_[0] &= ~0x00000008u;
-}
-inline void SceneRpcCreateObjNotify::clear_objtype() {
-  objtype_ = -1;
-  clear_has_objtype();
-}
-inline ::google::protobuf::int32 SceneRpcCreateObjNotify::objtype() const {
-  return objtype_;
-}
-inline void SceneRpcCreateObjNotify::set_objtype(::google::protobuf::int32 value) {
-  set_has_objtype();
-  objtype_ = value;
-}
-
-// optional sint32 ConfigId = 5 [default = -1];
-inline bool SceneRpcCreateObjNotify::has_configid() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
-}
-inline void SceneRpcCreateObjNotify::set_has_configid() {
-  _has_bits_[0] |= 0x00000010u;
-}
-inline void SceneRpcCreateObjNotify::clear_has_configid() {
-  _has_bits_[0] &= ~0x00000010u;
-}
-inline void SceneRpcCreateObjNotify::clear_configid() {
-  configid_ = -1;
-  clear_has_configid();
-}
-inline ::google::protobuf::int32 SceneRpcCreateObjNotify::configid() const {
-  return configid_;
-}
-inline void SceneRpcCreateObjNotify::set_configid(::google::protobuf::int32 value) {
-  set_has_configid();
-  configid_ = value;
-}
-
-// optional sint32 Status = 6 [default = -1];
-inline bool SceneRpcCreateObjNotify::has_status() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
-}
-inline void SceneRpcCreateObjNotify::set_has_status() {
-  _has_bits_[0] |= 0x00000020u;
-}
-inline void SceneRpcCreateObjNotify::clear_has_status() {
-  _has_bits_[0] &= ~0x00000020u;
-}
-inline void SceneRpcCreateObjNotify::clear_status() {
-  status_ = -1;
-  clear_has_status();
-}
-inline ::google::protobuf::int32 SceneRpcCreateObjNotify::status() const {
-  return status_;
-}
-inline void SceneRpcCreateObjNotify::set_status(::google::protobuf::int32 value) {
-  set_has_status();
-  status_ = value;
-}
-
-// optional float MoveSpeed = 7 [default = -1];
-inline bool SceneRpcCreateObjNotify::has_movespeed() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
-}
-inline void SceneRpcCreateObjNotify::set_has_movespeed() {
-  _has_bits_[0] |= 0x00000040u;
-}
-inline void SceneRpcCreateObjNotify::clear_has_movespeed() {
-  _has_bits_[0] &= ~0x00000040u;
-}
-inline void SceneRpcCreateObjNotify::clear_movespeed() {
-  movespeed_ = -1;
-  clear_has_movespeed();
-}
-inline float SceneRpcCreateObjNotify::movespeed() const {
-  return movespeed_;
-}
-inline void SceneRpcCreateObjNotify::set_movespeed(float value) {
-  set_has_movespeed();
-  movespeed_ = value;
-}
-
-// optional uint64 RoleId = 8 [default = 0];
-inline bool SceneRpcCreateObjNotify::has_roleid() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
-}
-inline void SceneRpcCreateObjNotify::set_has_roleid() {
-  _has_bits_[0] |= 0x00000080u;
-}
-inline void SceneRpcCreateObjNotify::clear_has_roleid() {
-  _has_bits_[0] &= ~0x00000080u;
-}
-inline void SceneRpcCreateObjNotify::clear_roleid() {
-  roleid_ = GOOGLE_ULONGLONG(0);
-  clear_has_roleid();
-}
-inline ::google::protobuf::uint64 SceneRpcCreateObjNotify::roleid() const {
-  return roleid_;
-}
-inline void SceneRpcCreateObjNotify::set_roleid(::google::protobuf::uint64 value) {
-  set_has_roleid();
-  roleid_ = value;
-}
-
-// optional string NickName = 9;
-inline bool SceneRpcCreateObjNotify::has_nickname() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
-}
-inline void SceneRpcCreateObjNotify::set_has_nickname() {
-  _has_bits_[0] |= 0x00000100u;
-}
-inline void SceneRpcCreateObjNotify::clear_has_nickname() {
-  _has_bits_[0] &= ~0x00000100u;
-}
-inline void SceneRpcCreateObjNotify::clear_nickname() {
-  if (nickname_ != &::google::protobuf::internal::kEmptyString) {
-    nickname_->clear();
-  }
-  clear_has_nickname();
-}
-inline const ::std::string& SceneRpcCreateObjNotify::nickname() const {
-  return *nickname_;
-}
-inline void SceneRpcCreateObjNotify::set_nickname(const ::std::string& value) {
-  set_has_nickname();
-  if (nickname_ == &::google::protobuf::internal::kEmptyString) {
-    nickname_ = new ::std::string;
-  }
-  nickname_->assign(value);
-}
-inline void SceneRpcCreateObjNotify::set_nickname(const char* value) {
-  set_has_nickname();
-  if (nickname_ == &::google::protobuf::internal::kEmptyString) {
-    nickname_ = new ::std::string;
-  }
-  nickname_->assign(value);
-}
-inline void SceneRpcCreateObjNotify::set_nickname(const char* value, size_t size) {
-  set_has_nickname();
-  if (nickname_ == &::google::protobuf::internal::kEmptyString) {
-    nickname_ = new ::std::string;
-  }
-  nickname_->assign(reinterpret_cast<const char*>(value), size);
-}
-inline ::std::string* SceneRpcCreateObjNotify::mutable_nickname() {
-  set_has_nickname();
-  if (nickname_ == &::google::protobuf::internal::kEmptyString) {
-    nickname_ = new ::std::string;
-  }
-  return nickname_;
-}
-inline ::std::string* SceneRpcCreateObjNotify::release_nickname() {
-  clear_has_nickname();
-  if (nickname_ == &::google::protobuf::internal::kEmptyString) {
-    return NULL;
-  } else {
-    ::std::string* temp = nickname_;
-    nickname_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-    return temp;
-  }
-}
-inline void SceneRpcCreateObjNotify::set_allocated_nickname(::std::string* nickname) {
-  if (nickname_ != &::google::protobuf::internal::kEmptyString) {
-    delete nickname_;
-  }
-  if (nickname) {
-    set_has_nickname();
-    nickname_ = nickname;
-  } else {
-    clear_has_nickname();
-    nickname_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  }
-}
-
-// optional sint32 Hp = 10 [default = -1];
-inline bool SceneRpcCreateObjNotify::has_hp() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
-}
-inline void SceneRpcCreateObjNotify::set_has_hp() {
-  _has_bits_[0] |= 0x00000200u;
-}
-inline void SceneRpcCreateObjNotify::clear_has_hp() {
-  _has_bits_[0] &= ~0x00000200u;
-}
-inline void SceneRpcCreateObjNotify::clear_hp() {
-  hp_ = -1;
-  clear_has_hp();
-}
-inline ::google::protobuf::int32 SceneRpcCreateObjNotify::hp() const {
-  return hp_;
-}
-inline void SceneRpcCreateObjNotify::set_hp(::google::protobuf::int32 value) {
-  set_has_hp();
-  hp_ = value;
-}
-
-// optional .V3 TargetPos = 11;
-inline bool SceneRpcCreateObjNotify::has_targetpos() const {
-  return (_has_bits_[0] & 0x00000400u) != 0;
-}
-inline void SceneRpcCreateObjNotify::set_has_targetpos() {
-  _has_bits_[0] |= 0x00000400u;
-}
-inline void SceneRpcCreateObjNotify::clear_has_targetpos() {
-  _has_bits_[0] &= ~0x00000400u;
-}
-inline void SceneRpcCreateObjNotify::clear_targetpos() {
-  if (targetpos_ != NULL) targetpos_->::V3::Clear();
-  clear_has_targetpos();
-}
-inline const ::V3& SceneRpcCreateObjNotify::targetpos() const {
-  return targetpos_ != NULL ? *targetpos_ : *default_instance_->targetpos_;
-}
-inline ::V3* SceneRpcCreateObjNotify::mutable_targetpos() {
-  set_has_targetpos();
-  if (targetpos_ == NULL) targetpos_ = new ::V3;
-  return targetpos_;
-}
-inline ::V3* SceneRpcCreateObjNotify::release_targetpos() {
-  clear_has_targetpos();
-  ::V3* temp = targetpos_;
-  targetpos_ = NULL;
-  return temp;
-}
-inline void SceneRpcCreateObjNotify::set_allocated_targetpos(::V3* targetpos) {
-  delete targetpos_;
-  targetpos_ = targetpos;
-  if (targetpos) {
-    set_has_targetpos();
-  } else {
-    clear_has_targetpos();
-  }
-}
-
-// optional int32 HpMax = 12 [default = -1];
-inline bool SceneRpcCreateObjNotify::has_hpmax() const {
-  return (_has_bits_[0] & 0x00000800u) != 0;
-}
-inline void SceneRpcCreateObjNotify::set_has_hpmax() {
-  _has_bits_[0] |= 0x00000800u;
-}
-inline void SceneRpcCreateObjNotify::clear_has_hpmax() {
-  _has_bits_[0] &= ~0x00000800u;
-}
-inline void SceneRpcCreateObjNotify::clear_hpmax() {
-  hpmax_ = -1;
-  clear_has_hpmax();
-}
-inline ::google::protobuf::int32 SceneRpcCreateObjNotify::hpmax() const {
-  return hpmax_;
-}
-inline void SceneRpcCreateObjNotify::set_hpmax(::google::protobuf::int32 value) {
-  set_has_hpmax();
-  hpmax_ = value;
+inline ::google::protobuf::RepeatedPtrField< ::ObjCreateInfo >*
+SceneRpcCreateObjNotify::mutable_create_list() {
+  return &create_list_;
 }
 
 // -------------------------------------------------------------------
@@ -2600,7 +4122,7 @@ inline void SceneRpcCreateObjNotify::set_hpmax(::google::protobuf::int32 value) 
 
 // SceneRpcSurroundingHumanReply
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool SceneRpcSurroundingHumanReply::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -2651,7 +4173,7 @@ SceneRpcSurroundingHumanReply::mutable_rolelist() {
 
 // SceneRpcCEnterSceneNotify
 
-// optional sint32 SceneId = 3 [default = -1];
+// optional int32 SceneId = 3 [default = -1];
 inline bool SceneRpcCEnterSceneNotify::has_sceneid() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -2673,7 +4195,7 @@ inline void SceneRpcCEnterSceneNotify::set_sceneid(::google::protobuf::int32 val
   sceneid_ = value;
 }
 
-// optional sint32 MapId = 6 [default = -1];
+// optional int32 MapId = 6 [default = -1];
 inline bool SceneRpcCEnterSceneNotify::has_mapid() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -2695,11 +4217,33 @@ inline void SceneRpcCEnterSceneNotify::set_mapid(::google::protobuf::int32 value
   mapid_ = value;
 }
 
+// optional int32 LineId = 7 [default = -1];
+inline bool SceneRpcCEnterSceneNotify::has_lineid() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void SceneRpcCEnterSceneNotify::set_has_lineid() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void SceneRpcCEnterSceneNotify::clear_has_lineid() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void SceneRpcCEnterSceneNotify::clear_lineid() {
+  lineid_ = -1;
+  clear_has_lineid();
+}
+inline ::google::protobuf::int32 SceneRpcCEnterSceneNotify::lineid() const {
+  return lineid_;
+}
+inline void SceneRpcCEnterSceneNotify::set_lineid(::google::protobuf::int32 value) {
+  set_has_lineid();
+  lineid_ = value;
+}
+
 // -------------------------------------------------------------------
 
 // SceneRpcSEnterSceneNotify
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool SceneRpcSEnterSceneNotify::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -2721,7 +4265,7 @@ inline void SceneRpcSEnterSceneNotify::set_result(::google::protobuf::int32 valu
   result_ = value;
 }
 
-// optional sint32 SceneId = 8 [default = -1];
+// optional int32 SceneId = 8 [default = -1];
 inline bool SceneRpcSEnterSceneNotify::has_sceneid() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -2743,7 +4287,7 @@ inline void SceneRpcSEnterSceneNotify::set_sceneid(::google::protobuf::int32 val
   sceneid_ = value;
 }
 
-// optional sint32 SceneConfigId = 9 [default = -1];
+// optional int32 SceneConfigId = 9 [default = -1];
 inline bool SceneRpcSEnterSceneNotify::has_sceneconfigid() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -2765,7 +4309,7 @@ inline void SceneRpcSEnterSceneNotify::set_sceneconfigid(::google::protobuf::int
   sceneconfigid_ = value;
 }
 
-// optional sint32 MapId = 10 [default = -1];
+// optional int32 MapId = 10 [default = -1];
 inline bool SceneRpcSEnterSceneNotify::has_mapid() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
@@ -2809,7 +4353,7 @@ inline void SceneRpcSEnterSceneNotify::set_roleid(::google::protobuf::uint64 val
   roleid_ = value;
 }
 
-// optional sint32 DungeonConfigId = 12 [default = -1];
+// optional int32 DungeonConfigId = 12 [default = -1];
 inline bool SceneRpcSEnterSceneNotify::has_dungeonconfigid() const {
   return (_has_bits_[0] & 0x00000020u) != 0;
 }
@@ -2831,11 +4375,58 @@ inline void SceneRpcSEnterSceneNotify::set_dungeonconfigid(::google::protobuf::i
   dungeonconfigid_ = value;
 }
 
+// optional int32 LineId = 14 [default = -1];
+inline bool SceneRpcSEnterSceneNotify::has_lineid() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void SceneRpcSEnterSceneNotify::set_has_lineid() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void SceneRpcSEnterSceneNotify::clear_has_lineid() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void SceneRpcSEnterSceneNotify::clear_lineid() {
+  lineid_ = -1;
+  clear_has_lineid();
+}
+inline ::google::protobuf::int32 SceneRpcSEnterSceneNotify::lineid() const {
+  return lineid_;
+}
+inline void SceneRpcSEnterSceneNotify::set_lineid(::google::protobuf::int32 value) {
+  set_has_lineid();
+  lineid_ = value;
+}
+
+// repeated .IntPair TypeConfig = 18;
+inline int SceneRpcSEnterSceneNotify::typeconfig_size() const {
+  return typeconfig_.size();
+}
+inline void SceneRpcSEnterSceneNotify::clear_typeconfig() {
+  typeconfig_.Clear();
+}
+inline const ::IntPair& SceneRpcSEnterSceneNotify::typeconfig(int index) const {
+  return typeconfig_.Get(index);
+}
+inline ::IntPair* SceneRpcSEnterSceneNotify::mutable_typeconfig(int index) {
+  return typeconfig_.Mutable(index);
+}
+inline ::IntPair* SceneRpcSEnterSceneNotify::add_typeconfig() {
+  return typeconfig_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::IntPair >&
+SceneRpcSEnterSceneNotify::typeconfig() const {
+  return typeconfig_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::IntPair >*
+SceneRpcSEnterSceneNotify::mutable_typeconfig() {
+  return &typeconfig_;
+}
+
 // -------------------------------------------------------------------
 
 // SceneRpcObjDieNotify
 
-// optional sint32 ObjId = 1 [default = -1];
+// optional uint64 ObjId = 1 [default = 0];
 inline bool SceneRpcObjDieNotify::has_objid() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -2846,18 +4437,18 @@ inline void SceneRpcObjDieNotify::clear_has_objid() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline void SceneRpcObjDieNotify::clear_objid() {
-  objid_ = -1;
+  objid_ = GOOGLE_ULONGLONG(0);
   clear_has_objid();
 }
-inline ::google::protobuf::int32 SceneRpcObjDieNotify::objid() const {
+inline ::google::protobuf::uint64 SceneRpcObjDieNotify::objid() const {
   return objid_;
 }
-inline void SceneRpcObjDieNotify::set_objid(::google::protobuf::int32 value) {
+inline void SceneRpcObjDieNotify::set_objid(::google::protobuf::uint64 value) {
   set_has_objid();
   objid_ = value;
 }
 
-// optional sint32 RespawnTime = 2 [default = -1];
+// optional int32 RespawnTime = 2 [default = -1];
 inline bool SceneRpcObjDieNotify::has_respawntime() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -2879,7 +4470,7 @@ inline void SceneRpcObjDieNotify::set_respawntime(::google::protobuf::int32 valu
   respawntime_ = value;
 }
 
-// optional sint32 ConfigId = 3 [default = -1];
+// optional int32 ConfigId = 3 [default = -1];
 inline bool SceneRpcObjDieNotify::has_configid() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -2901,7 +4492,7 @@ inline void SceneRpcObjDieNotify::set_configid(::google::protobuf::int32 value) 
   configid_ = value;
 }
 
-// optional sint32 ObjType = 4 [default = -1];
+// optional int32 ObjType = 4 [default = -1];
 inline bool SceneRpcObjDieNotify::has_objtype() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
@@ -2927,7 +4518,7 @@ inline void SceneRpcObjDieNotify::set_objtype(::google::protobuf::int32 value) {
 
 // SceneRpcCollide_ChangeSceneAsk
 
-// optional sint32 Collide_id = 1 [default = -1];
+// optional int32 Collide_id = 1 [default = -1];
 inline bool SceneRpcCollide_ChangeSceneAsk::has_collide_id() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -2953,7 +4544,7 @@ inline void SceneRpcCollide_ChangeSceneAsk::set_collide_id(::google::protobuf::i
 
 // SceneRpcCollide_ChangeSceneReply
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool SceneRpcCollide_ChangeSceneReply::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -2971,6 +4562,797 @@ inline ::google::protobuf::int32 SceneRpcCollide_ChangeSceneReply::result() cons
   return result_;
 }
 inline void SceneRpcCollide_ChangeSceneReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// SceneRpcEnterMirrorAsk
+
+// optional int32 MirrorID = 1 [default = -1];
+inline bool SceneRpcEnterMirrorAsk::has_mirrorid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void SceneRpcEnterMirrorAsk::set_has_mirrorid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void SceneRpcEnterMirrorAsk::clear_has_mirrorid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void SceneRpcEnterMirrorAsk::clear_mirrorid() {
+  mirrorid_ = -1;
+  clear_has_mirrorid();
+}
+inline ::google::protobuf::int32 SceneRpcEnterMirrorAsk::mirrorid() const {
+  return mirrorid_;
+}
+inline void SceneRpcEnterMirrorAsk::set_mirrorid(::google::protobuf::int32 value) {
+  set_has_mirrorid();
+  mirrorid_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// SceneRpcEnterMirrorReply
+
+// optional int32 Result = 1 [default = -1];
+inline bool SceneRpcEnterMirrorReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void SceneRpcEnterMirrorReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void SceneRpcEnterMirrorReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void SceneRpcEnterMirrorReply::clear_result() {
+  result_ = -1;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 SceneRpcEnterMirrorReply::result() const {
+  return result_;
+}
+inline void SceneRpcEnterMirrorReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// SceneRpcSEnterMirrorSceneNotify
+
+// optional int32 MapID = 1 [default = -1];
+inline bool SceneRpcSEnterMirrorSceneNotify::has_mapid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void SceneRpcSEnterMirrorSceneNotify::set_has_mapid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void SceneRpcSEnterMirrorSceneNotify::clear_has_mapid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void SceneRpcSEnterMirrorSceneNotify::clear_mapid() {
+  mapid_ = -1;
+  clear_has_mapid();
+}
+inline ::google::protobuf::int32 SceneRpcSEnterMirrorSceneNotify::mapid() const {
+  return mapid_;
+}
+inline void SceneRpcSEnterMirrorSceneNotify::set_mapid(::google::protobuf::int32 value) {
+  set_has_mapid();
+  mapid_ = value;
+}
+
+// optional int32 MirrorID = 2 [default = -1];
+inline bool SceneRpcSEnterMirrorSceneNotify::has_mirrorid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void SceneRpcSEnterMirrorSceneNotify::set_has_mirrorid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void SceneRpcSEnterMirrorSceneNotify::clear_has_mirrorid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void SceneRpcSEnterMirrorSceneNotify::clear_mirrorid() {
+  mirrorid_ = -1;
+  clear_has_mirrorid();
+}
+inline ::google::protobuf::int32 SceneRpcSEnterMirrorSceneNotify::mirrorid() const {
+  return mirrorid_;
+}
+inline void SceneRpcSEnterMirrorSceneNotify::set_mirrorid(::google::protobuf::int32 value) {
+  set_has_mirrorid();
+  mirrorid_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// SceneRpcExitMirrorSceneAsk
+
+// -------------------------------------------------------------------
+
+// SceneRpcExitMirrorSceneReply
+
+// optional int32 Result = 1 [default = -1];
+inline bool SceneRpcExitMirrorSceneReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void SceneRpcExitMirrorSceneReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void SceneRpcExitMirrorSceneReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void SceneRpcExitMirrorSceneReply::clear_result() {
+  result_ = -1;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 SceneRpcExitMirrorSceneReply::result() const {
+  return result_;
+}
+inline void SceneRpcExitMirrorSceneReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// SceneRpcChangeSceneLeaveNotify
+
+// optional int32 TargetLineID = 1 [default = -1];
+inline bool SceneRpcChangeSceneLeaveNotify::has_targetlineid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void SceneRpcChangeSceneLeaveNotify::set_has_targetlineid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void SceneRpcChangeSceneLeaveNotify::clear_has_targetlineid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void SceneRpcChangeSceneLeaveNotify::clear_targetlineid() {
+  targetlineid_ = -1;
+  clear_has_targetlineid();
+}
+inline ::google::protobuf::int32 SceneRpcChangeSceneLeaveNotify::targetlineid() const {
+  return targetlineid_;
+}
+inline void SceneRpcChangeSceneLeaveNotify::set_targetlineid(::google::protobuf::int32 value) {
+  set_has_targetlineid();
+  targetlineid_ = value;
+}
+
+// optional int32 TargetMapID = 2 [default = -1];
+inline bool SceneRpcChangeSceneLeaveNotify::has_targetmapid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void SceneRpcChangeSceneLeaveNotify::set_has_targetmapid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void SceneRpcChangeSceneLeaveNotify::clear_has_targetmapid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void SceneRpcChangeSceneLeaveNotify::clear_targetmapid() {
+  targetmapid_ = -1;
+  clear_has_targetmapid();
+}
+inline ::google::protobuf::int32 SceneRpcChangeSceneLeaveNotify::targetmapid() const {
+  return targetmapid_;
+}
+inline void SceneRpcChangeSceneLeaveNotify::set_targetmapid(::google::protobuf::int32 value) {
+  set_has_targetmapid();
+  targetmapid_ = value;
+}
+
+// optional uint64 RoleID = 4 [default = 0];
+inline bool SceneRpcChangeSceneLeaveNotify::has_roleid() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void SceneRpcChangeSceneLeaveNotify::set_has_roleid() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void SceneRpcChangeSceneLeaveNotify::clear_has_roleid() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void SceneRpcChangeSceneLeaveNotify::clear_roleid() {
+  roleid_ = GOOGLE_ULONGLONG(0);
+  clear_has_roleid();
+}
+inline ::google::protobuf::uint64 SceneRpcChangeSceneLeaveNotify::roleid() const {
+  return roleid_;
+}
+inline void SceneRpcChangeSceneLeaveNotify::set_roleid(::google::protobuf::uint64 value) {
+  set_has_roleid();
+  roleid_ = value;
+}
+
+// optional int32 CopyID = 5 [default = -1];
+inline bool SceneRpcChangeSceneLeaveNotify::has_copyid() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void SceneRpcChangeSceneLeaveNotify::set_has_copyid() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void SceneRpcChangeSceneLeaveNotify::clear_has_copyid() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void SceneRpcChangeSceneLeaveNotify::clear_copyid() {
+  copyid_ = -1;
+  clear_has_copyid();
+}
+inline ::google::protobuf::int32 SceneRpcChangeSceneLeaveNotify::copyid() const {
+  return copyid_;
+}
+inline void SceneRpcChangeSceneLeaveNotify::set_copyid(::google::protobuf::int32 value) {
+  set_has_copyid();
+  copyid_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// SceneRpcChangeLineAsk
+
+// optional int32 LineID = 1 [default = -1];
+inline bool SceneRpcChangeLineAsk::has_lineid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void SceneRpcChangeLineAsk::set_has_lineid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void SceneRpcChangeLineAsk::clear_has_lineid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void SceneRpcChangeLineAsk::clear_lineid() {
+  lineid_ = -1;
+  clear_has_lineid();
+}
+inline ::google::protobuf::int32 SceneRpcChangeLineAsk::lineid() const {
+  return lineid_;
+}
+inline void SceneRpcChangeLineAsk::set_lineid(::google::protobuf::int32 value) {
+  set_has_lineid();
+  lineid_ = value;
+}
+
+// optional int32 MapID = 2 [default = -1];
+inline bool SceneRpcChangeLineAsk::has_mapid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void SceneRpcChangeLineAsk::set_has_mapid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void SceneRpcChangeLineAsk::clear_has_mapid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void SceneRpcChangeLineAsk::clear_mapid() {
+  mapid_ = -1;
+  clear_has_mapid();
+}
+inline ::google::protobuf::int32 SceneRpcChangeLineAsk::mapid() const {
+  return mapid_;
+}
+inline void SceneRpcChangeLineAsk::set_mapid(::google::protobuf::int32 value) {
+  set_has_mapid();
+  mapid_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// SceneRpcChangeLineReply
+
+// optional int32 Result = 1 [default = -1];
+inline bool SceneRpcChangeLineReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void SceneRpcChangeLineReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void SceneRpcChangeLineReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void SceneRpcChangeLineReply::clear_result() {
+  result_ = -1;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 SceneRpcChangeLineReply::result() const {
+  return result_;
+}
+inline void SceneRpcChangeLineReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// optional int32 LineID = 2 [default = -1];
+inline bool SceneRpcChangeLineReply::has_lineid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void SceneRpcChangeLineReply::set_has_lineid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void SceneRpcChangeLineReply::clear_has_lineid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void SceneRpcChangeLineReply::clear_lineid() {
+  lineid_ = -1;
+  clear_has_lineid();
+}
+inline ::google::protobuf::int32 SceneRpcChangeLineReply::lineid() const {
+  return lineid_;
+}
+inline void SceneRpcChangeLineReply::set_lineid(::google::protobuf::int32 value) {
+  set_has_lineid();
+  lineid_ = value;
+}
+
+// optional int32 MapID = 3 [default = -1];
+inline bool SceneRpcChangeLineReply::has_mapid() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void SceneRpcChangeLineReply::set_has_mapid() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void SceneRpcChangeLineReply::clear_has_mapid() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void SceneRpcChangeLineReply::clear_mapid() {
+  mapid_ = -1;
+  clear_has_mapid();
+}
+inline ::google::protobuf::int32 SceneRpcChangeLineReply::mapid() const {
+  return mapid_;
+}
+inline void SceneRpcChangeLineReply::set_mapid(::google::protobuf::int32 value) {
+  set_has_mapid();
+  mapid_ = value;
+}
+
+// optional uint64 RoleID = 4 [default = 0];
+inline bool SceneRpcChangeLineReply::has_roleid() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void SceneRpcChangeLineReply::set_has_roleid() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void SceneRpcChangeLineReply::clear_has_roleid() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void SceneRpcChangeLineReply::clear_roleid() {
+  roleid_ = GOOGLE_ULONGLONG(0);
+  clear_has_roleid();
+}
+inline ::google::protobuf::uint64 SceneRpcChangeLineReply::roleid() const {
+  return roleid_;
+}
+inline void SceneRpcChangeLineReply::set_roleid(::google::protobuf::uint64 value) {
+  set_has_roleid();
+  roleid_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// SceneRpcPingAsk
+
+// -------------------------------------------------------------------
+
+// SceneRpcPingReply
+
+// optional int32 Result = 1 [default = -1];
+inline bool SceneRpcPingReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void SceneRpcPingReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void SceneRpcPingReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void SceneRpcPingReply::clear_result() {
+  result_ = -1;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 SceneRpcPingReply::result() const {
+  return result_;
+}
+inline void SceneRpcPingReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// SceneRpcSyncSceneLineStatsNotify
+
+// optional .SceneStats Scene_stats = 1;
+inline bool SceneRpcSyncSceneLineStatsNotify::has_scene_stats() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void SceneRpcSyncSceneLineStatsNotify::set_has_scene_stats() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void SceneRpcSyncSceneLineStatsNotify::clear_has_scene_stats() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void SceneRpcSyncSceneLineStatsNotify::clear_scene_stats() {
+  if (scene_stats_ != NULL) scene_stats_->::SceneStats::Clear();
+  clear_has_scene_stats();
+}
+inline const ::SceneStats& SceneRpcSyncSceneLineStatsNotify::scene_stats() const {
+  return scene_stats_ != NULL ? *scene_stats_ : *default_instance_->scene_stats_;
+}
+inline ::SceneStats* SceneRpcSyncSceneLineStatsNotify::mutable_scene_stats() {
+  set_has_scene_stats();
+  if (scene_stats_ == NULL) scene_stats_ = new ::SceneStats;
+  return scene_stats_;
+}
+inline ::SceneStats* SceneRpcSyncSceneLineStatsNotify::release_scene_stats() {
+  clear_has_scene_stats();
+  ::SceneStats* temp = scene_stats_;
+  scene_stats_ = NULL;
+  return temp;
+}
+inline void SceneRpcSyncSceneLineStatsNotify::set_allocated_scene_stats(::SceneStats* scene_stats) {
+  delete scene_stats_;
+  scene_stats_ = scene_stats;
+  if (scene_stats) {
+    set_has_scene_stats();
+  } else {
+    clear_has_scene_stats();
+  }
+}
+
+// optional int32 Player_lineId = 2 [default = -1];
+inline bool SceneRpcSyncSceneLineStatsNotify::has_player_lineid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void SceneRpcSyncSceneLineStatsNotify::set_has_player_lineid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void SceneRpcSyncSceneLineStatsNotify::clear_has_player_lineid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void SceneRpcSyncSceneLineStatsNotify::clear_player_lineid() {
+  player_lineid_ = -1;
+  clear_has_player_lineid();
+}
+inline ::google::protobuf::int32 SceneRpcSyncSceneLineStatsNotify::player_lineid() const {
+  return player_lineid_;
+}
+inline void SceneRpcSyncSceneLineStatsNotify::set_player_lineid(::google::protobuf::int32 value) {
+  set_has_player_lineid();
+  player_lineid_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// SceneRpcLogOutGameAsk
+
+// -------------------------------------------------------------------
+
+// SceneRpcLogOutGameReply
+
+// optional int32 Result = 1 [default = -1];
+inline bool SceneRpcLogOutGameReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void SceneRpcLogOutGameReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void SceneRpcLogOutGameReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void SceneRpcLogOutGameReply::clear_result() {
+  result_ = -1;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 SceneRpcLogOutGameReply::result() const {
+  return result_;
+}
+inline void SceneRpcLogOutGameReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// SceneRpcKickOutGameNotify
+
+// optional .AppendString Kick_reason = 1;
+inline bool SceneRpcKickOutGameNotify::has_kick_reason() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void SceneRpcKickOutGameNotify::set_has_kick_reason() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void SceneRpcKickOutGameNotify::clear_has_kick_reason() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void SceneRpcKickOutGameNotify::clear_kick_reason() {
+  if (kick_reason_ != NULL) kick_reason_->::AppendString::Clear();
+  clear_has_kick_reason();
+}
+inline const ::AppendString& SceneRpcKickOutGameNotify::kick_reason() const {
+  return kick_reason_ != NULL ? *kick_reason_ : *default_instance_->kick_reason_;
+}
+inline ::AppendString* SceneRpcKickOutGameNotify::mutable_kick_reason() {
+  set_has_kick_reason();
+  if (kick_reason_ == NULL) kick_reason_ = new ::AppendString;
+  return kick_reason_;
+}
+inline ::AppendString* SceneRpcKickOutGameNotify::release_kick_reason() {
+  clear_has_kick_reason();
+  ::AppendString* temp = kick_reason_;
+  kick_reason_ = NULL;
+  return temp;
+}
+inline void SceneRpcKickOutGameNotify::set_allocated_kick_reason(::AppendString* kick_reason) {
+  delete kick_reason_;
+  kick_reason_ = kick_reason;
+  if (kick_reason) {
+    set_has_kick_reason();
+  } else {
+    clear_has_kick_reason();
+  }
+}
+
+// optional int32 Reason_id = 2 [default = -1];
+inline bool SceneRpcKickOutGameNotify::has_reason_id() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void SceneRpcKickOutGameNotify::set_has_reason_id() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void SceneRpcKickOutGameNotify::clear_has_reason_id() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void SceneRpcKickOutGameNotify::clear_reason_id() {
+  reason_id_ = -1;
+  clear_has_reason_id();
+}
+inline ::google::protobuf::int32 SceneRpcKickOutGameNotify::reason_id() const {
+  return reason_id_;
+}
+inline void SceneRpcKickOutGameNotify::set_reason_id(::google::protobuf::int32 value) {
+  set_has_reason_id();
+  reason_id_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// SceneRpcShowFilmFinishAsk
+
+// -------------------------------------------------------------------
+
+// SceneRpcShowFilmFinishReply
+
+// optional int32 Result = 1 [default = -1];
+inline bool SceneRpcShowFilmFinishReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void SceneRpcShowFilmFinishReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void SceneRpcShowFilmFinishReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void SceneRpcShowFilmFinishReply::clear_result() {
+  result_ = -1;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 SceneRpcShowFilmFinishReply::result() const {
+  return result_;
+}
+inline void SceneRpcShowFilmFinishReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// SceneRpcSpecObjPosAsk
+
+// -------------------------------------------------------------------
+
+// SceneRpcSpecObjPosReply
+
+// optional int32 Result = 1 [default = -1];
+inline bool SceneRpcSpecObjPosReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void SceneRpcSpecObjPosReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void SceneRpcSpecObjPosReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void SceneRpcSpecObjPosReply::clear_result() {
+  result_ = -1;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 SceneRpcSpecObjPosReply::result() const {
+  return result_;
+}
+inline void SceneRpcSpecObjPosReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// repeated .ObjPosInfo PosInfos = 2;
+inline int SceneRpcSpecObjPosReply::posinfos_size() const {
+  return posinfos_.size();
+}
+inline void SceneRpcSpecObjPosReply::clear_posinfos() {
+  posinfos_.Clear();
+}
+inline const ::ObjPosInfo& SceneRpcSpecObjPosReply::posinfos(int index) const {
+  return posinfos_.Get(index);
+}
+inline ::ObjPosInfo* SceneRpcSpecObjPosReply::mutable_posinfos(int index) {
+  return posinfos_.Mutable(index);
+}
+inline ::ObjPosInfo* SceneRpcSpecObjPosReply::add_posinfos() {
+  return posinfos_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::ObjPosInfo >&
+SceneRpcSpecObjPosReply::posinfos() const {
+  return posinfos_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::ObjPosInfo >*
+SceneRpcSpecObjPosReply::mutable_posinfos() {
+  return &posinfos_;
+}
+
+// -------------------------------------------------------------------
+
+// SceneRpcDayNightChangeNotify
+
+// optional int32 DayStage = 1 [default = -1];
+inline bool SceneRpcDayNightChangeNotify::has_daystage() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void SceneRpcDayNightChangeNotify::set_has_daystage() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void SceneRpcDayNightChangeNotify::clear_has_daystage() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void SceneRpcDayNightChangeNotify::clear_daystage() {
+  daystage_ = -1;
+  clear_has_daystage();
+}
+inline ::google::protobuf::int32 SceneRpcDayNightChangeNotify::daystage() const {
+  return daystage_;
+}
+inline void SceneRpcDayNightChangeNotify::set_daystage(::google::protobuf::int32 value) {
+  set_has_daystage();
+  daystage_ = value;
+}
+
+// optional int32 Remaining = 2 [default = -1];
+inline bool SceneRpcDayNightChangeNotify::has_remaining() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void SceneRpcDayNightChangeNotify::set_has_remaining() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void SceneRpcDayNightChangeNotify::clear_has_remaining() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void SceneRpcDayNightChangeNotify::clear_remaining() {
+  remaining_ = -1;
+  clear_has_remaining();
+}
+inline ::google::protobuf::int32 SceneRpcDayNightChangeNotify::remaining() const {
+  return remaining_;
+}
+inline void SceneRpcDayNightChangeNotify::set_remaining(::google::protobuf::int32 value) {
+  set_has_remaining();
+  remaining_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// SceneRpcWeatherChangeNotify
+
+// optional int32 WeatherId = 1 [default = -1];
+inline bool SceneRpcWeatherChangeNotify::has_weatherid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void SceneRpcWeatherChangeNotify::set_has_weatherid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void SceneRpcWeatherChangeNotify::clear_has_weatherid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void SceneRpcWeatherChangeNotify::clear_weatherid() {
+  weatherid_ = -1;
+  clear_has_weatherid();
+}
+inline ::google::protobuf::int32 SceneRpcWeatherChangeNotify::weatherid() const {
+  return weatherid_;
+}
+inline void SceneRpcWeatherChangeNotify::set_weatherid(::google::protobuf::int32 value) {
+  set_has_weatherid();
+  weatherid_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// SceneRpcWantChangeZoneAsk
+
+// optional int32 Zoneid = 1 [default = -1];
+inline bool SceneRpcWantChangeZoneAsk::has_zoneid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void SceneRpcWantChangeZoneAsk::set_has_zoneid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void SceneRpcWantChangeZoneAsk::clear_has_zoneid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void SceneRpcWantChangeZoneAsk::clear_zoneid() {
+  zoneid_ = -1;
+  clear_has_zoneid();
+}
+inline ::google::protobuf::int32 SceneRpcWantChangeZoneAsk::zoneid() const {
+  return zoneid_;
+}
+inline void SceneRpcWantChangeZoneAsk::set_zoneid(::google::protobuf::int32 value) {
+  set_has_zoneid();
+  zoneid_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// SceneRpcWantChangeZoneReply
+
+// optional int32 Result = 1 [default = -1];
+inline bool SceneRpcWantChangeZoneReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void SceneRpcWantChangeZoneReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void SceneRpcWantChangeZoneReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void SceneRpcWantChangeZoneReply::clear_result() {
+  result_ = -1;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 SceneRpcWantChangeZoneReply::result() const {
+  return result_;
+}
+inline void SceneRpcWantChangeZoneReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// SceneRpcReturnSrcServerAsk
+
+// -------------------------------------------------------------------
+
+// SceneRpcReturnSrcServerReply
+
+// optional int32 Result = 1 [default = -1];
+inline bool SceneRpcReturnSrcServerReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void SceneRpcReturnSrcServerReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void SceneRpcReturnSrcServerReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void SceneRpcReturnSrcServerReply::clear_result() {
+  result_ = -1;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 SceneRpcReturnSrcServerReply::result() const {
+  return result_;
+}
+inline void SceneRpcReturnSrcServerReply::set_result(::google::protobuf::int32 value) {
   set_has_result();
   result_ = value;
 }

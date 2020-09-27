@@ -13,22 +13,23 @@ public class BagRpcUseItemAskWraperHelper
 {
 	public int Count;
 	public int Pos;
-}
-[System.Serializable]
-public class BagRpcSyncAskWraperHelper
-{
+	public int BagType;
+	public UInt64 TargetId;
+	public int OptionIdx;
 }
 [System.Serializable]
 public class BagRpcSaleItemAskWraperHelper
 {
 	public int Pos;
 	public int Count;
+	public int BagType;
 }
 [System.Serializable]
 public class BagRpcLockItemAskWraperHelper
 {
 	public int Pos;
 	public bool IsLock;
+	public int BagType;
 }
 [System.Serializable]
 public class BagRpcDeblockingAskWraperHelper
@@ -57,13 +58,53 @@ public class BagRpcBagChangeNotifyWraperHelper
 	public int Result;
 	public BagDataWraper Bags;
 }
+[System.Serializable]
+public class BagRpcMergeItemAskWraperHelper
+{
+	public int Pos;
+	public int BagType;
+}
+[System.Serializable]
+public class BagRpcBagSyncAskWraperHelper
+{
+}
+[System.Serializable]
+public class BagRpcAddItemNotifyWraperHelper
+{
+	public List<ItemObjWraper> Item;
+}
+[System.Serializable]
+public class BagRpcConsumeItemAskWraperHelper
+{
+	public List<ItemSimpleDataWraper> ItemData;
+}
+[System.Serializable]
+public class BagRpcItemChangeNotifyWraperHelper
+{
+	public List<ItemObjWraper> ItemList;
+	public int BagType;
+}
+[System.Serializable]
+public class BagRpcClickItemAskWraperHelper
+{
+	public UInt64 Guid;
+}
+[System.Serializable]
+public class BagRpcRemoveItemByPosAskWraperHelper
+{
+	public List<int> PosList;
+	public int BagType;
+}
+[System.Serializable]
+public class BagRpcClearBagRedPointAskWraperHelper
+{
+}
 
 
 
 public class BagTestHelper : MonoBehaviour
 {
 	public BagRpcUseItemAskWraperHelper BagRpcUseItemAskWraperVar;
-	public BagRpcSyncAskWraperHelper BagRpcSyncAskWraperVar;
 	public BagRpcSaleItemAskWraperHelper BagRpcSaleItemAskWraperVar;
 	public BagRpcLockItemAskWraperHelper BagRpcLockItemAskWraperVar;
 	public BagRpcDeblockingAskWraperHelper BagRpcDeblockingAskWraperVar;
@@ -71,23 +112,27 @@ public class BagTestHelper : MonoBehaviour
 	public BagRpcTidyAskWraperHelper BagRpcTidyAskWraperVar;
 	public BagRpcTakeAllBackBagsAskWraperHelper BagRpcTakeAllBackBagsAskWraperVar;
 	public BagRpcBagChangeNotifyWraperHelper BagRpcBagChangeNotifyWraperVar;
+	public BagRpcMergeItemAskWraperHelper BagRpcMergeItemAskWraperVar;
+	public BagRpcBagSyncAskWraperHelper BagRpcBagSyncAskWraperVar;
+	public BagRpcAddItemNotifyWraperHelper BagRpcAddItemNotifyWraperVar;
+	public BagRpcConsumeItemAskWraperHelper BagRpcConsumeItemAskWraperVar;
+	public BagRpcItemChangeNotifyWraperHelper BagRpcItemChangeNotifyWraperVar;
+	public BagRpcClickItemAskWraperHelper BagRpcClickItemAskWraperVar;
+	public BagRpcRemoveItemByPosAskWraperHelper BagRpcRemoveItemByPosAskWraperVar;
+	public BagRpcClearBagRedPointAskWraperHelper BagRpcClearBagRedPointAskWraperVar;
 
 
 	public void TestUseItem()
 	{
-		BagRPC.Instance.UseItem(BagRpcUseItemAskWraperVar.Count,BagRpcUseItemAskWraperVar.Pos,delegate(object obj){});
-	}
-	public void TestSync()
-	{
-		BagRPC.Instance.Sync(delegate(object obj){});
+		BagRPC.Instance.UseItem(BagRpcUseItemAskWraperVar.Count,BagRpcUseItemAskWraperVar.Pos,BagRpcUseItemAskWraperVar.BagType,BagRpcUseItemAskWraperVar.TargetId,BagRpcUseItemAskWraperVar.OptionIdx,delegate(object obj){});
 	}
 	public void TestSaleItem()
 	{
-		BagRPC.Instance.SaleItem(BagRpcSaleItemAskWraperVar.Pos,BagRpcSaleItemAskWraperVar.Count,delegate(object obj){});
+		BagRPC.Instance.SaleItem(BagRpcSaleItemAskWraperVar.Pos,BagRpcSaleItemAskWraperVar.Count,BagRpcSaleItemAskWraperVar.BagType,delegate(object obj){});
 	}
 	public void TestLockItem()
 	{
-		BagRPC.Instance.LockItem(BagRpcLockItemAskWraperVar.Pos,BagRpcLockItemAskWraperVar.IsLock,delegate(object obj){});
+		BagRPC.Instance.LockItem(BagRpcLockItemAskWraperVar.Pos,BagRpcLockItemAskWraperVar.IsLock,BagRpcLockItemAskWraperVar.BagType,delegate(object obj){});
 	}
 	public void TestDeblocking()
 	{
@@ -105,6 +150,30 @@ public class BagTestHelper : MonoBehaviour
 	{
 		BagRPC.Instance.TakeAllBackBags(delegate(object obj){});
 	}
+	public void TestMergeItem()
+	{
+		BagRPC.Instance.MergeItem(BagRpcMergeItemAskWraperVar.Pos,BagRpcMergeItemAskWraperVar.BagType,delegate(object obj){});
+	}
+	public void TestBagSync()
+	{
+		BagRPC.Instance.BagSync(delegate(object obj){});
+	}
+	public void TestConsumeItem()
+	{
+		BagRPC.Instance.ConsumeItem(BagRpcConsumeItemAskWraperVar.ItemData,delegate(object obj){});
+	}
+	public void TestClickItem()
+	{
+		BagRPC.Instance.ClickItem(BagRpcClickItemAskWraperVar.Guid,delegate(object obj){});
+	}
+	public void TestRemoveItemByPos()
+	{
+		BagRPC.Instance.RemoveItemByPos(BagRpcRemoveItemByPosAskWraperVar.PosList,BagRpcRemoveItemByPosAskWraperVar.BagType,delegate(object obj){});
+	}
+	public void TestClearBagRedPoint()
+	{
+		BagRPC.Instance.ClearBagRedPoint(delegate(object obj){});
+	}
 
 
 }
@@ -121,11 +190,6 @@ public class BagTester : Editor
 		{
 			BagTestHelper rpc = target as BagTestHelper;
 			if( rpc ) rpc.TestUseItem();
-		}
-		if (GUILayout.Button("Sync"))
-		{
-			BagTestHelper rpc = target as BagTestHelper;
-			if( rpc ) rpc.TestSync();
 		}
 		if (GUILayout.Button("SaleItem"))
 		{
@@ -156,6 +220,36 @@ public class BagTester : Editor
 		{
 			BagTestHelper rpc = target as BagTestHelper;
 			if( rpc ) rpc.TestTakeAllBackBags();
+		}
+		if (GUILayout.Button("MergeItem"))
+		{
+			BagTestHelper rpc = target as BagTestHelper;
+			if( rpc ) rpc.TestMergeItem();
+		}
+		if (GUILayout.Button("BagSync"))
+		{
+			BagTestHelper rpc = target as BagTestHelper;
+			if( rpc ) rpc.TestBagSync();
+		}
+		if (GUILayout.Button("ConsumeItem"))
+		{
+			BagTestHelper rpc = target as BagTestHelper;
+			if( rpc ) rpc.TestConsumeItem();
+		}
+		if (GUILayout.Button("ClickItem"))
+		{
+			BagTestHelper rpc = target as BagTestHelper;
+			if( rpc ) rpc.TestClickItem();
+		}
+		if (GUILayout.Button("RemoveItemByPos"))
+		{
+			BagTestHelper rpc = target as BagTestHelper;
+			if( rpc ) rpc.TestRemoveItemByPos();
+		}
+		if (GUILayout.Button("ClearBagRedPoint"))
+		{
+			BagTestHelper rpc = target as BagTestHelper;
+			if( rpc ) rpc.TestClearBagRedPoint();
 		}
 
 

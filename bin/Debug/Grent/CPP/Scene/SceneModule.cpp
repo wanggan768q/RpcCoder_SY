@@ -15,7 +15,7 @@
 ********************************************************************************************/
 
 #include "SceneModule.h"
-#
+
 
 
 //初始化
@@ -23,6 +23,11 @@ bool ModuleScene::Initialize()
 {
 
 	
+	return OnLoad();
+}
 
-	return true;
+bool ModuleScene::Reinitialize()
+{
+	
+	return OnLoad();
 }

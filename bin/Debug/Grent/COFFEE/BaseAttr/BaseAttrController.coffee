@@ -8,11 +8,14 @@ BaseAttrController = cc.coffee.BaseControllerExtend.extend(
 
     ctor:(_model)->
         @_super(this, _model)
+        _model.SetSyncNotifyCB(@SyncCBNotify)
 
         return
 
 
 
+    SyncCBNotify:(ret_msg)->
+        cc.log "SyncCBNotify Respond "
 
 
 )

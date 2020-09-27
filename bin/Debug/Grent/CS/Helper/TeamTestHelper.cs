@@ -12,14 +12,7 @@ using System.Collections.Generic;
 public class TeamRpcCreateTeamAskWraperHelper
 {
 	public int TeamType;
-}
-[System.Serializable]
-public class TeamRpcJoinTeamAskWraperHelper
-{
-	public int TeamId;
-	public int TeamType;
-	public TeamInfoWraper Team;
-	public TeamMemberInfoWraper TeamMember;
+	public TeamTargetWraper TTarget;
 }
 [System.Serializable]
 public class TeamRpcLeaveTeamAskWraperHelper
@@ -63,6 +56,7 @@ public class TeamRpcLeaveTeamNotifyNotifyWraperHelper
 public class TeamRpcJoinTeamNotifyNotifyWraperHelper
 {
 	public TeamMemberInfoWraper TeamMember;
+	public TeamInfoWraper Team;
 }
 [System.Serializable]
 public class TeamRpcDissmissTeamNotifyNotifyWraperHelper
@@ -71,11 +65,13 @@ public class TeamRpcDissmissTeamNotifyNotifyWraperHelper
 [System.Serializable]
 public class TeamRpcSurroundingTeamAskWraperHelper
 {
+	public int TargetGroupId;
+	public int TargetGroup;
 }
 [System.Serializable]
 public class TeamRpcApplyTeamAskWraperHelper
 {
-	public int TeamId;
+	public UInt64 TeamId;
 }
 [System.Serializable]
 public class TeamRpcApplyTeamNotifyNotifyWraperHelper
@@ -96,11 +92,141 @@ public class TeamRpcAgreeApplicantNotifyNotifyWraperHelper
 public class TeamRpcTeamInfoNotifyWraperHelper
 {
 	public TeamInfoWraper Team;
+	public int FollowTeamLeader;
 }
 [System.Serializable]
 public class TeamRpcUpdateTeamMemInfoNotifyWraperHelper
 {
 	public TeamMemberInfoWraper TeamMember;
+}
+[System.Serializable]
+public class TeamRpcFollowTeamLeaderAskWraperHelper
+{
+	public int FollowTeamLeader;
+}
+[System.Serializable]
+public class TeamRpcSummonMemberAskWraperHelper
+{
+}
+[System.Serializable]
+public class TeamRpcSummonMemberNotifyNotifyWraperHelper
+{
+	public int StringNoticeId;
+}
+[System.Serializable]
+public class TeamRpcChangeTeamTargetAskWraperHelper
+{
+	public TeamTargetWraper Target;
+}
+[System.Serializable]
+public class TeamRpcChangeTeamTargetNotifyNotifyWraperHelper
+{
+	public TeamTargetWraper TeamTarget;
+}
+[System.Serializable]
+public class TeamRpcChangTeamTypeAskWraperHelper
+{
+	public int TeamType;
+}
+[System.Serializable]
+public class TeamRpcChangeTeamTypeNotifyNotifyWraperHelper
+{
+	public int TeamType;
+	public TeamTargetWraper TeamTarget;
+}
+[System.Serializable]
+public class TeamRpcInviteTeamMemberAskWraperHelper
+{
+	public List<UInt64> RoleId;
+}
+[System.Serializable]
+public class TeamRpcInviteTeamMemberNotifyNotifyWraperHelper
+{
+	public UInt64 TeamId;
+	public int IsLeader;
+	public TeamMemberInfoWraper InviteMemberInfo;
+}
+[System.Serializable]
+public class TeamRpcApplyListNotifyNotifyWraperHelper
+{
+	public List<TeamMemberInfoWraper> ApplyList;
+}
+[System.Serializable]
+public class TeamRpcAgreeJoinTeamAskWraperHelper
+{
+	public UInt64 TeamId;
+	public int IsLeader;
+}
+[System.Serializable]
+public class TeamRpcRefuseMemberAskWraperHelper
+{
+	public UInt64 RoleId;
+}
+[System.Serializable]
+public class TeamRpcClearApplyListAskWraperHelper
+{
+}
+[System.Serializable]
+public class TeamRpcNoTeamInviteAskWraperHelper
+{
+	public int TeamType;
+	public TeamTargetWraper TTarget;
+	public UInt64 InviteRoleId;
+}
+[System.Serializable]
+public class TeamRpcRejectInviteAskWraperHelper
+{
+	public UInt64 RoleId;
+	public string Name;
+}
+[System.Serializable]
+public class TeamRpcEnterAutoCombatNotifyWraperHelper
+{
+}
+[System.Serializable]
+public class TeamRpcHangUpAutoCombatNotifyWraperHelper
+{
+}
+[System.Serializable]
+public class TeamRpcUpdateTeamHpInfoNotifyWraperHelper
+{
+	public TeamMemberHpInfoWraper Member;
+}
+[System.Serializable]
+public class TeamRpcUpdateTeamPosInfoNotifyWraperHelper
+{
+	public TeamMemberPosWraper Member;
+}
+[System.Serializable]
+public class TeamRpcUpdateTeamBuffInfoNotifyWraperHelper
+{
+	public TeanMemberBuffWraper Member;
+}
+[System.Serializable]
+public class TeamRpcHangeUpFollowAskWraperHelper
+{
+}
+[System.Serializable]
+public class TeamRpcGoOnFollowAskWraperHelper
+{
+}
+[System.Serializable]
+public class TeamRpcUpdateFollowStatusNotifyWraperHelper
+{
+	public int FollowStatus;
+}
+[System.Serializable]
+public class TeamRpcRequestNoTeamMemberListAskWraperHelper
+{
+	public int RequestType;
+}
+[System.Serializable]
+public class TeamRpcEnterTeamFollowNotifyWraperHelper
+{
+}
+[System.Serializable]
+public class TeamRpcEnterLeaderSceneAskWraperHelper
+{
 }
 
 
@@ -108,7 +234,6 @@ public class TeamRpcUpdateTeamMemInfoNotifyWraperHelper
 public class TeamTestHelper : MonoBehaviour
 {
 	public TeamRpcCreateTeamAskWraperHelper TeamRpcCreateTeamAskWraperVar;
-	public TeamRpcJoinTeamAskWraperHelper TeamRpcJoinTeamAskWraperVar;
 	public TeamRpcLeaveTeamAskWraperHelper TeamRpcLeaveTeamAskWraperVar;
 	public TeamRpcAppointTeamLeaderAskWraperHelper TeamRpcAppointTeamLeaderAskWraperVar;
 	public TeamRpcNewLeaderNotifyWraperHelper TeamRpcNewLeaderNotifyWraperVar;
@@ -126,12 +251,34 @@ public class TeamTestHelper : MonoBehaviour
 	public TeamRpcAgreeApplicantNotifyNotifyWraperHelper TeamRpcAgreeApplicantNotifyNotifyWraperVar;
 	public TeamRpcTeamInfoNotifyWraperHelper TeamRpcTeamInfoNotifyWraperVar;
 	public TeamRpcUpdateTeamMemInfoNotifyWraperHelper TeamRpcUpdateTeamMemInfoNotifyWraperVar;
+	public TeamRpcFollowTeamLeaderAskWraperHelper TeamRpcFollowTeamLeaderAskWraperVar;
+	public TeamRpcSummonMemberAskWraperHelper TeamRpcSummonMemberAskWraperVar;
+	public TeamRpcSummonMemberNotifyNotifyWraperHelper TeamRpcSummonMemberNotifyNotifyWraperVar;
+	public TeamRpcChangeTeamTargetAskWraperHelper TeamRpcChangeTeamTargetAskWraperVar;
+	public TeamRpcChangeTeamTargetNotifyNotifyWraperHelper TeamRpcChangeTeamTargetNotifyNotifyWraperVar;
+	public TeamRpcChangTeamTypeAskWraperHelper TeamRpcChangTeamTypeAskWraperVar;
+	public TeamRpcChangeTeamTypeNotifyNotifyWraperHelper TeamRpcChangeTeamTypeNotifyNotifyWraperVar;
+	public TeamRpcInviteTeamMemberAskWraperHelper TeamRpcInviteTeamMemberAskWraperVar;
+	public TeamRpcInviteTeamMemberNotifyNotifyWraperHelper TeamRpcInviteTeamMemberNotifyNotifyWraperVar;
+	public TeamRpcApplyListNotifyNotifyWraperHelper TeamRpcApplyListNotifyNotifyWraperVar;
+	public TeamRpcAgreeJoinTeamAskWraperHelper TeamRpcAgreeJoinTeamAskWraperVar;
+	public TeamRpcRefuseMemberAskWraperHelper TeamRpcRefuseMemberAskWraperVar;
+	public TeamRpcClearApplyListAskWraperHelper TeamRpcClearApplyListAskWraperVar;
+	public TeamRpcNoTeamInviteAskWraperHelper TeamRpcNoTeamInviteAskWraperVar;
+	public TeamRpcRejectInviteAskWraperHelper TeamRpcRejectInviteAskWraperVar;
+	public TeamRpcEnterAutoCombatNotifyWraperHelper TeamRpcEnterAutoCombatNotifyWraperVar;
+	public TeamRpcHangUpAutoCombatNotifyWraperHelper TeamRpcHangUpAutoCombatNotifyWraperVar;
+	public TeamRpcUpdateTeamHpInfoNotifyWraperHelper TeamRpcUpdateTeamHpInfoNotifyWraperVar;
+	public TeamRpcUpdateTeamPosInfoNotifyWraperHelper TeamRpcUpdateTeamPosInfoNotifyWraperVar;
+	public TeamRpcUpdateTeamBuffInfoNotifyWraperHelper TeamRpcUpdateTeamBuffInfoNotifyWraperVar;
+	public TeamRpcHangeUpFollowAskWraperHelper TeamRpcHangeUpFollowAskWraperVar;
+	public TeamRpcGoOnFollowAskWraperHelper TeamRpcGoOnFollowAskWraperVar;
+	public TeamRpcUpdateFollowStatusNotifyWraperHelper TeamRpcUpdateFollowStatusNotifyWraperVar;
+	public TeamRpcRequestNoTeamMemberListAskWraperHelper TeamRpcRequestNoTeamMemberListAskWraperVar;
+	public TeamRpcEnterTeamFollowNotifyWraperHelper TeamRpcEnterTeamFollowNotifyWraperVar;
+	public TeamRpcEnterLeaderSceneAskWraperHelper TeamRpcEnterLeaderSceneAskWraperVar;
 
 
-	public void TestJoinTeam()
-	{
-		TeamRPC.Instance.JoinTeam(TeamRpcJoinTeamAskWraperVar.TeamId,TeamRpcJoinTeamAskWraperVar.TeamType,TeamRpcJoinTeamAskWraperVar.Team,TeamRpcJoinTeamAskWraperVar.TeamMember,delegate(object obj){});
-	}
 	public void TestLeaveTeam()
 	{
 		TeamRPC.Instance.LeaveTeam(delegate(object obj){});
@@ -142,7 +289,7 @@ public class TeamTestHelper : MonoBehaviour
 	}
 	public void TestCreateTeam()
 	{
-		TeamRPC.Instance.CreateTeam(TeamRpcCreateTeamAskWraperVar.TeamType,delegate(object obj){});
+		TeamRPC.Instance.CreateTeam(TeamRpcCreateTeamAskWraperVar.TeamType,TeamRpcCreateTeamAskWraperVar.TTarget,delegate(object obj){});
 	}
 	public void TestDissmissTeam()
 	{
@@ -154,7 +301,7 @@ public class TeamTestHelper : MonoBehaviour
 	}
 	public void TestSurroundingTeam()
 	{
-		TeamRPC.Instance.SurroundingTeam(delegate(object obj){});
+		TeamRPC.Instance.SurroundingTeam(TeamRpcSurroundingTeamAskWraperVar.TargetGroupId,TeamRpcSurroundingTeamAskWraperVar.TargetGroup,delegate(object obj){});
 	}
 	public void TestApplyTeam()
 	{
@@ -163,6 +310,62 @@ public class TeamTestHelper : MonoBehaviour
 	public void TestAgreeApplicant()
 	{
 		TeamRPC.Instance.AgreeApplicant(TeamRpcAgreeApplicantAskWraperVar.RoleId,delegate(object obj){});
+	}
+	public void TestFollowTeamLeader()
+	{
+		TeamRPC.Instance.FollowTeamLeader(TeamRpcFollowTeamLeaderAskWraperVar.FollowTeamLeader,delegate(object obj){});
+	}
+	public void TestSummonMember()
+	{
+		TeamRPC.Instance.SummonMember(delegate(object obj){});
+	}
+	public void TestChangeTeamTarget()
+	{
+		TeamRPC.Instance.ChangeTeamTarget(TeamRpcChangeTeamTargetAskWraperVar.Target,delegate(object obj){});
+	}
+	public void TestChangTeamType()
+	{
+		TeamRPC.Instance.ChangTeamType(TeamRpcChangTeamTypeAskWraperVar.TeamType,delegate(object obj){});
+	}
+	public void TestInviteTeamMember()
+	{
+		TeamRPC.Instance.InviteTeamMember(TeamRpcInviteTeamMemberAskWraperVar.RoleId,delegate(object obj){});
+	}
+	public void TestAgreeJoinTeam()
+	{
+		TeamRPC.Instance.AgreeJoinTeam(TeamRpcAgreeJoinTeamAskWraperVar.TeamId,TeamRpcAgreeJoinTeamAskWraperVar.IsLeader,delegate(object obj){});
+	}
+	public void TestRefuseMember()
+	{
+		TeamRPC.Instance.RefuseMember(TeamRpcRefuseMemberAskWraperVar.RoleId,delegate(object obj){});
+	}
+	public void TestClearApplyList()
+	{
+		TeamRPC.Instance.ClearApplyList(delegate(object obj){});
+	}
+	public void TestNoTeamInvite()
+	{
+		TeamRPC.Instance.NoTeamInvite(TeamRpcNoTeamInviteAskWraperVar.TeamType,TeamRpcNoTeamInviteAskWraperVar.TTarget,TeamRpcNoTeamInviteAskWraperVar.InviteRoleId,delegate(object obj){});
+	}
+	public void TestRejectInvite()
+	{
+		TeamRPC.Instance.RejectInvite(TeamRpcRejectInviteAskWraperVar.RoleId,TeamRpcRejectInviteAskWraperVar.Name,delegate(object obj){});
+	}
+	public void TestHangeUpFollow()
+	{
+		TeamRPC.Instance.HangeUpFollow(delegate(object obj){});
+	}
+	public void TestGoOnFollow()
+	{
+		TeamRPC.Instance.GoOnFollow(delegate(object obj){});
+	}
+	public void TestRequestNoTeamMemberList()
+	{
+		TeamRPC.Instance.RequestNoTeamMemberList(TeamRpcRequestNoTeamMemberListAskWraperVar.RequestType,delegate(object obj){});
+	}
+	public void TestEnterLeaderScene()
+	{
+		TeamRPC.Instance.EnterLeaderScene(delegate(object obj){});
 	}
 
 
@@ -176,11 +379,6 @@ public class TeamTester : Editor
     {
         base.OnInspectorGUI();
         
-		if (GUILayout.Button("JoinTeam"))
-		{
-			TeamTestHelper rpc = target as TeamTestHelper;
-			if( rpc ) rpc.TestJoinTeam();
-		}
 		if (GUILayout.Button("LeaveTeam"))
 		{
 			TeamTestHelper rpc = target as TeamTestHelper;
@@ -220,6 +418,76 @@ public class TeamTester : Editor
 		{
 			TeamTestHelper rpc = target as TeamTestHelper;
 			if( rpc ) rpc.TestAgreeApplicant();
+		}
+		if (GUILayout.Button("FollowTeamLeader"))
+		{
+			TeamTestHelper rpc = target as TeamTestHelper;
+			if( rpc ) rpc.TestFollowTeamLeader();
+		}
+		if (GUILayout.Button("SummonMember"))
+		{
+			TeamTestHelper rpc = target as TeamTestHelper;
+			if( rpc ) rpc.TestSummonMember();
+		}
+		if (GUILayout.Button("ChangeTeamTarget"))
+		{
+			TeamTestHelper rpc = target as TeamTestHelper;
+			if( rpc ) rpc.TestChangeTeamTarget();
+		}
+		if (GUILayout.Button("ChangTeamType"))
+		{
+			TeamTestHelper rpc = target as TeamTestHelper;
+			if( rpc ) rpc.TestChangTeamType();
+		}
+		if (GUILayout.Button("InviteTeamMember"))
+		{
+			TeamTestHelper rpc = target as TeamTestHelper;
+			if( rpc ) rpc.TestInviteTeamMember();
+		}
+		if (GUILayout.Button("AgreeJoinTeam"))
+		{
+			TeamTestHelper rpc = target as TeamTestHelper;
+			if( rpc ) rpc.TestAgreeJoinTeam();
+		}
+		if (GUILayout.Button("RefuseMember"))
+		{
+			TeamTestHelper rpc = target as TeamTestHelper;
+			if( rpc ) rpc.TestRefuseMember();
+		}
+		if (GUILayout.Button("ClearApplyList"))
+		{
+			TeamTestHelper rpc = target as TeamTestHelper;
+			if( rpc ) rpc.TestClearApplyList();
+		}
+		if (GUILayout.Button("NoTeamInvite"))
+		{
+			TeamTestHelper rpc = target as TeamTestHelper;
+			if( rpc ) rpc.TestNoTeamInvite();
+		}
+		if (GUILayout.Button("RejectInvite"))
+		{
+			TeamTestHelper rpc = target as TeamTestHelper;
+			if( rpc ) rpc.TestRejectInvite();
+		}
+		if (GUILayout.Button("HangeUpFollow"))
+		{
+			TeamTestHelper rpc = target as TeamTestHelper;
+			if( rpc ) rpc.TestHangeUpFollow();
+		}
+		if (GUILayout.Button("GoOnFollow"))
+		{
+			TeamTestHelper rpc = target as TeamTestHelper;
+			if( rpc ) rpc.TestGoOnFollow();
+		}
+		if (GUILayout.Button("RequestNoTeamMemberList"))
+		{
+			TeamTestHelper rpc = target as TeamTestHelper;
+			if( rpc ) rpc.TestRequestNoTeamMemberList();
+		}
+		if (GUILayout.Button("EnterLeaderScene"))
+		{
+			TeamTestHelper rpc = target as TeamTestHelper;
+			if( rpc ) rpc.TestEnterLeaderScene();
 		}
 
 

@@ -14,25 +14,6 @@
 
 
 /********************************************************************************************
-* Function:       RpcConnect
-* Description:    登录模块-->连接验证同步调用操作函数
-* Input:          LoginRpcConnectAskWraper& Ask 连接验证请求
-* Output:         LoginRpcConnectReplyWraper& Reply 连接验证回应
-* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
-*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
-********************************************************************************************/
-static int ModuleLogin::RpcConnect( CPlayer* pPlayer, CPacket* pPacket)
-{
-
-	//逻辑代码
-
-
-	//设置返回结果
-	Reply.SetResult(0);
-	return 0;
-}
-
-/********************************************************************************************
 * Function:       RpcLogin
 * Description:    登录模块-->登录同步调用操作函数
 * Input:          LoginRpcLoginAskWraper& Ask 登录请求
@@ -41,25 +22,6 @@ static int ModuleLogin::RpcConnect( CPlayer* pPlayer, CPacket* pPacket)
 *                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
 ********************************************************************************************/
 static int ModuleLogin::RpcLogin( CPlayer* pPlayer, CPacket* pPacket)
-{
-
-	//逻辑代码
-
-
-	//设置返回结果
-	Reply.SetResult(0);
-	return 0;
-}
-
-/********************************************************************************************
-* Function:       RpcCharacterList
-* Description:    登录模块-->角色列表同步调用操作函数
-* Input:          LoginRpcCharacterListAskWraper& Ask 角色列表请求
-* Output:         LoginRpcCharacterListReplyWraper& Reply 角色列表回应
-* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
-*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
-********************************************************************************************/
-static int ModuleLogin::RpcCharacterList( CPlayer* pPlayer, CPacket* pPacket)
 {
 
 	//逻辑代码
@@ -109,14 +71,14 @@ static int ModuleLogin::RpcCreateCharacter( CPlayer* pPlayer, CPacket* pPacket)
 }
 
 /********************************************************************************************
-* Function:       RpcSelectSaveUser
-* Description:    登录模块-->选择角色存储redis同步调用操作函数
-* Input:          LoginRpcSelectSaveUserAskWraper& Ask 选择角色存储redis请求
-* Output:         LoginRpcSelectSaveUserReplyWraper& Reply 选择角色存储redis回应
+* Function:       RpcDeleteCharacter
+* Description:    登录模块-->删除角色同步调用操作函数
+* Input:          LoginRpcDeleteCharacterAskWraper& Ask 删除角色请求
+* Output:         LoginRpcDeleteCharacterReplyWraper& Reply 删除角色回应
 * Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
 *                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
 ********************************************************************************************/
-static int ModuleLogin::RpcSelectSaveUser( CPlayer* pPlayer, CPacket* pPacket)
+static int ModuleLogin::RpcDeleteCharacter( CPlayer* pPlayer, CPacket* pPacket)
 {
 
 	//逻辑代码
@@ -128,14 +90,97 @@ static int ModuleLogin::RpcSelectSaveUser( CPlayer* pPlayer, CPacket* pPacket)
 }
 
 /********************************************************************************************
-* Function:       RpcDeleteCharacter
-* Description:    登录模块-->删除角色同步调用操作函数
-* Input:          LoginRpcDeleteCharacterAskWraper& Ask 删除角色请求
-* Output:         LoginRpcDeleteCharacterReplyWraper& Reply 删除角色回应
+* Function:       RpcTest
+* Description:    登录模块-->Test同步调用操作函数
+* Input:          LoginRpcTestAskWraper& Ask Test请求
+* Output:         LoginRpcTestReplyWraper& Reply Test回应
 * Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
 *                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
 ********************************************************************************************/
-static int ModuleLogin::RpcDeleteCharacter( CPlayer* pPlayer, CPacket* pPacket)
+static int ModuleLogin::RpcTest( CPlayer* pPlayer, CPacket* pPacket)
+{
+
+	//逻辑代码
+
+
+	//设置返回结果
+	Reply.SetResult(0);
+	return 0;
+}
+
+/********************************************************************************************
+* Function:       RpcTest1
+* Description:    登录模块-->Test1同步调用操作函数
+* Input:          LoginRpcTest1AskWraper& Ask Test1请求
+* Output:         LoginRpcTest1ReplyWraper& Reply Test1回应
+* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+********************************************************************************************/
+static int ModuleLogin::RpcTest1( CPlayer* pPlayer, CPacket* pPacket)
+{
+
+	//逻辑代码
+
+
+	//设置返回结果
+	Reply.SetResult(0);
+	return 0;
+}
+
+/********************************************************************************************
+* Function:       SendToClientLoginLineUp
+* Description:    登录模块-->登录 排队通知异步通知操作函数
+* Input:          LoginRpcLoginLineUpNotifyWraper& Notify 登录 排队通知通知
+* Input:          INT64 UserId 需要通知到的用户ID
+* Output:         无
+* Return:         无
+********************************************************************************************/
+void ModuleLogin::SendToClientLoginLineUp( INT64 UserId, LoginRpcLoginLineUpNotifyWraper& Notify )
+{
+	MsgStreamMgr::Instance().SendMsg( UserId, 0, Notify );
+}
+
+/********************************************************************************************
+* Function:       SendToClientLoginEnterGame
+* Description:    登录模块-->可以登录服务器的通知异步通知操作函数
+* Input:          LoginRpcLoginEnterGameNotifyWraper& Notify 可以登录服务器的通知通知
+* Input:          INT64 UserId 需要通知到的用户ID
+* Output:         无
+* Return:         无
+********************************************************************************************/
+void ModuleLogin::SendToClientLoginEnterGame( INT64 UserId, LoginRpcLoginEnterGameNotifyWraper& Notify )
+{
+	MsgStreamMgr::Instance().SendMsg( UserId, 0, Notify );
+}
+
+/********************************************************************************************
+* Function:       RpcLoginQuitLineUp
+* Description:    登录模块-->退出排队同步调用操作函数
+* Input:          LoginRpcLoginQuitLineUpAskWraper& Ask 退出排队请求
+* Output:         LoginRpcLoginQuitLineUpReplyWraper& Reply 退出排队回应
+* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+********************************************************************************************/
+static int ModuleLogin::RpcLoginQuitLineUp( CPlayer* pPlayer, CPacket* pPacket)
+{
+
+	//逻辑代码
+
+
+	//设置返回结果
+	Reply.SetResult(0);
+	return 0;
+}
+
+/********************************************************************************************
+* Function:       RpcRemoteLogin
+* Description:    登录模块-->login同步调用操作函数
+* Input:          LoginRpcRemoteLoginAskWraper& Ask login请求
+* Output:         LoginRpcRemoteLoginReplyWraper& Reply login回应
+* Return:         int 高16位为系统返回值RpcCallErrorCodeE，获取方法GET_RPC_ERROR_CODE(ret) 
+*                     低16位为操作返回值，获取方法GET_OPERATION_RET_CODE(ret)
+********************************************************************************************/
+static int ModuleLogin::RpcRemoteLogin( CPlayer* pPlayer, CPacket* pPacket)
 {
 
 	//逻辑代码

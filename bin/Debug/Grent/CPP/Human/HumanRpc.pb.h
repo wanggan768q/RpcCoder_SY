@@ -37,9 +37,30 @@ class HumanRpcMoveReply;
 class HumanRpcStopMoveAsk;
 class HumanRpcStopMoveReply;
 class HumanRpcMoveCheckNotify;
-class HumanRpcMoveByPosNotify;
 class HumanRpcRespawnAsk;
 class HumanRpcRespawnReply;
+class HumanRpcRespawnOtherNotify;
+class HumanRpcMovePosAsk;
+class HumanRpcMovePosReply;
+class HumanRpcRoleDieNotify;
+class HumanRpcChangeAnimationStateNotify;
+class HumanRpcFuncNoticeAsk;
+class HumanRpcFuncNoticeReply;
+class HumanRpcFuncNoticeChangeAsk;
+class HumanRpcFuncNoticeChangeReply;
+class HumanRpcClientAttributesNotify;
+class HumanRpcTimeCheckNotify;
+class HumanRpcMotionFlagsNotify;
+class HumanRpcRushAsk;
+class HumanRpcRushReply;
+class HumanRpcStareAsk;
+class HumanRpcStareReply;
+class HumanRpcChangePositionNotify;
+class HumanRpcAttrChangeNotify;
+class HumanRpcTrusteeshipAsk;
+class HumanRpcTrusteeshipReply;
+class HumanRpcChangePlayerNameAsk;
+class HumanRpcChangePlayerNameReply;
 
 // ===================================================================
 
@@ -118,6 +139,13 @@ class HumanRpcMoveAsk : public ::google::protobuf::Message {
   inline float z() const;
   inline void set_z(float value);
 
+  // optional uint64 ObjId = 5 [default = 0];
+  inline bool has_objid() const;
+  inline void clear_objid();
+  static const int kObjIdFieldNumber = 5;
+  inline ::google::protobuf::uint64 objid() const;
+  inline void set_objid(::google::protobuf::uint64 value);
+
   // @@protoc_insertion_point(class_scope:HumanRpcMoveAsk)
  private:
   inline void set_has_dir();
@@ -126,15 +154,18 @@ class HumanRpcMoveAsk : public ::google::protobuf::Message {
   inline void clear_has_x();
   inline void set_has_z();
   inline void clear_has_z();
+  inline void set_has_objid();
+  inline void clear_has_objid();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   float dir_;
   float x_;
+  ::google::protobuf::uint64 objid_;
   float z_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
 
   friend void  protobuf_AddDesc_HumanRpc_2eproto();
   friend void protobuf_AssignDesc_HumanRpc_2eproto();
@@ -199,21 +230,21 @@ class HumanRpcMoveReply : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
   inline ::google::protobuf::int32 result() const;
   inline void set_result(::google::protobuf::int32 value);
 
-  // optional .V3 Pos = 2;
+  // optional .Vector3 Pos = 2;
   inline bool has_pos() const;
   inline void clear_pos();
   static const int kPosFieldNumber = 2;
-  inline const ::V3& pos() const;
-  inline ::V3* mutable_pos();
-  inline ::V3* release_pos();
-  inline void set_allocated_pos(::V3* pos);
+  inline const ::Vector3& pos() const;
+  inline ::Vector3* mutable_pos();
+  inline ::Vector3* release_pos();
+  inline void set_allocated_pos(::Vector3* pos);
 
   // optional float Dir = 3 [default = -1];
   inline bool has_dir() const;
@@ -221,6 +252,13 @@ class HumanRpcMoveReply : public ::google::protobuf::Message {
   static const int kDirFieldNumber = 3;
   inline float dir() const;
   inline void set_dir(float value);
+
+  // optional uint64 ObjId = 4 [default = 0];
+  inline bool has_objid() const;
+  inline void clear_objid();
+  static const int kObjIdFieldNumber = 4;
+  inline ::google::protobuf::uint64 objid() const;
+  inline void set_objid(::google::protobuf::uint64 value);
 
   // @@protoc_insertion_point(class_scope:HumanRpcMoveReply)
  private:
@@ -230,15 +268,18 @@ class HumanRpcMoveReply : public ::google::protobuf::Message {
   inline void clear_has_pos();
   inline void set_has_dir();
   inline void clear_has_dir();
+  inline void set_has_objid();
+  inline void clear_has_objid();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::V3* pos_;
+  ::Vector3* pos_;
   ::google::protobuf::int32 result_;
   float dir_;
+  ::google::protobuf::uint64 objid_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
 
   friend void  protobuf_AddDesc_HumanRpc_2eproto();
   friend void protobuf_AssignDesc_HumanRpc_2eproto();
@@ -310,19 +351,33 @@ class HumanRpcStopMoveAsk : public ::google::protobuf::Message {
   inline float dir() const;
   inline void set_dir(float value);
 
-  // optional float X = 3 [default = -1];
+  // optional int32 X = 3 [default = -1];
   inline bool has_x() const;
   inline void clear_x();
   static const int kXFieldNumber = 3;
-  inline float x() const;
-  inline void set_x(float value);
+  inline ::google::protobuf::int32 x() const;
+  inline void set_x(::google::protobuf::int32 value);
 
-  // optional float Z = 4 [default = -1];
+  // optional int32 Z = 4 [default = -1];
   inline bool has_z() const;
   inline void clear_z();
   static const int kZFieldNumber = 4;
-  inline float z() const;
-  inline void set_z(float value);
+  inline ::google::protobuf::int32 z() const;
+  inline void set_z(::google::protobuf::int32 value);
+
+  // optional uint64 ObjId = 5 [default = 0];
+  inline bool has_objid() const;
+  inline void clear_objid();
+  static const int kObjIdFieldNumber = 5;
+  inline ::google::protobuf::uint64 objid() const;
+  inline void set_objid(::google::protobuf::uint64 value);
+
+  // optional bool BrakeRush = 6 [default = false];
+  inline bool has_brakerush() const;
+  inline void clear_brakerush();
+  static const int kBrakeRushFieldNumber = 6;
+  inline bool brakerush() const;
+  inline void set_brakerush(bool value);
 
   // @@protoc_insertion_point(class_scope:HumanRpcStopMoveAsk)
  private:
@@ -332,15 +387,21 @@ class HumanRpcStopMoveAsk : public ::google::protobuf::Message {
   inline void clear_has_x();
   inline void set_has_z();
   inline void clear_has_z();
+  inline void set_has_objid();
+  inline void clear_has_objid();
+  inline void set_has_brakerush();
+  inline void clear_has_brakerush();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   float dir_;
-  float x_;
-  float z_;
+  ::google::protobuf::int32 x_;
+  ::google::protobuf::uint64 objid_;
+  ::google::protobuf::int32 z_;
+  bool brakerush_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
 
   friend void  protobuf_AddDesc_HumanRpc_2eproto();
   friend void protobuf_AssignDesc_HumanRpc_2eproto();
@@ -405,21 +466,21 @@ class HumanRpcStopMoveReply : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
   inline ::google::protobuf::int32 result() const;
   inline void set_result(::google::protobuf::int32 value);
 
-  // optional .V3 Pos = 2;
+  // optional .Vector3Int Pos = 2;
   inline bool has_pos() const;
   inline void clear_pos();
   static const int kPosFieldNumber = 2;
-  inline const ::V3& pos() const;
-  inline ::V3* mutable_pos();
-  inline ::V3* release_pos();
-  inline void set_allocated_pos(::V3* pos);
+  inline const ::Vector3Int& pos() const;
+  inline ::Vector3Int* mutable_pos();
+  inline ::Vector3Int* release_pos();
+  inline void set_allocated_pos(::Vector3Int* pos);
 
   // optional float Dir = 3 [default = -1];
   inline bool has_dir() const;
@@ -427,6 +488,13 @@ class HumanRpcStopMoveReply : public ::google::protobuf::Message {
   static const int kDirFieldNumber = 3;
   inline float dir() const;
   inline void set_dir(float value);
+
+  // optional uint64 ObjId = 4 [default = 0];
+  inline bool has_objid() const;
+  inline void clear_objid();
+  static const int kObjIdFieldNumber = 4;
+  inline ::google::protobuf::uint64 objid() const;
+  inline void set_objid(::google::protobuf::uint64 value);
 
   // @@protoc_insertion_point(class_scope:HumanRpcStopMoveReply)
  private:
@@ -436,15 +504,18 @@ class HumanRpcStopMoveReply : public ::google::protobuf::Message {
   inline void clear_has_pos();
   inline void set_has_dir();
   inline void clear_has_dir();
+  inline void set_has_objid();
+  inline void clear_has_objid();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::V3* pos_;
+  ::Vector3Int* pos_;
   ::google::protobuf::int32 result_;
   float dir_;
+  ::google::protobuf::uint64 objid_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
 
   friend void  protobuf_AddDesc_HumanRpc_2eproto();
   friend void protobuf_AssignDesc_HumanRpc_2eproto();
@@ -509,12 +580,12 @@ class HumanRpcMoveCheckNotify : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 ObjId = 1 [default = -1];
+  // optional uint64 ObjId = 1 [default = 0];
   inline bool has_objid() const;
   inline void clear_objid();
   static const int kObjIdFieldNumber = 1;
-  inline ::google::protobuf::int32 objid() const;
-  inline void set_objid(::google::protobuf::int32 value);
+  inline ::google::protobuf::uint64 objid() const;
+  inline void set_objid(::google::protobuf::uint64 value);
 
   // optional float Dir = 3 [default = -1];
   inline bool has_dir() const;
@@ -550,7 +621,7 @@ class HumanRpcMoveCheckNotify : public ::google::protobuf::Message {
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
-  ::google::protobuf::int32 objid_;
+  ::google::protobuf::uint64 objid_;
   float dir_;
   float x_;
   float y_;
@@ -564,108 +635,6 @@ class HumanRpcMoveCheckNotify : public ::google::protobuf::Message {
 
   void InitAsDefaultInstance();
   static HumanRpcMoveCheckNotify* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class HumanRpcMoveByPosNotify : public ::google::protobuf::Message {
- public:
-  HumanRpcMoveByPosNotify();
-  virtual ~HumanRpcMoveByPosNotify();
-
-  HumanRpcMoveByPosNotify(const HumanRpcMoveByPosNotify& from);
-
-  inline HumanRpcMoveByPosNotify& operator=(const HumanRpcMoveByPosNotify& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const HumanRpcMoveByPosNotify& default_instance();
-
-  void Swap(HumanRpcMoveByPosNotify* other);
-
-  // implements Message ----------------------------------------------
-
-  HumanRpcMoveByPosNotify* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const HumanRpcMoveByPosNotify& from);
-  void MergeFrom(const HumanRpcMoveByPosNotify& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // optional sint32 ObjId = 1 [default = -1];
-  inline bool has_objid() const;
-  inline void clear_objid();
-  static const int kObjIdFieldNumber = 1;
-  inline ::google::protobuf::int32 objid() const;
-  inline void set_objid(::google::protobuf::int32 value);
-
-  // optional float TargetX = 2 [default = -1];
-  inline bool has_targetx() const;
-  inline void clear_targetx();
-  static const int kTargetXFieldNumber = 2;
-  inline float targetx() const;
-  inline void set_targetx(float value);
-
-  // optional float TargetY = 3 [default = -1];
-  inline bool has_targety() const;
-  inline void clear_targety();
-  static const int kTargetYFieldNumber = 3;
-  inline float targety() const;
-  inline void set_targety(float value);
-
-  // @@protoc_insertion_point(class_scope:HumanRpcMoveByPosNotify)
- private:
-  inline void set_has_objid();
-  inline void clear_has_objid();
-  inline void set_has_targetx();
-  inline void clear_has_targetx();
-  inline void set_has_targety();
-  inline void clear_has_targety();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::int32 objid_;
-  float targetx_;
-  float targety_;
-
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
-
-  friend void  protobuf_AddDesc_HumanRpc_2eproto();
-  friend void protobuf_AssignDesc_HumanRpc_2eproto();
-  friend void protobuf_ShutdownFile_HumanRpc_2eproto();
-
-  void InitAsDefaultInstance();
-  static HumanRpcMoveByPosNotify* default_instance_;
 };
 // -------------------------------------------------------------------
 
@@ -723,14 +692,24 @@ class HumanRpcRespawnAsk : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
+  // optional int32 ReviveType = 1 [default = -1];
+  inline bool has_revivetype() const;
+  inline void clear_revivetype();
+  static const int kReviveTypeFieldNumber = 1;
+  inline ::google::protobuf::int32 revivetype() const;
+  inline void set_revivetype(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:HumanRpcRespawnAsk)
  private:
+  inline void set_has_revivetype();
+  inline void clear_has_revivetype();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
+  ::google::protobuf::int32 revivetype_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[1];
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
 
   friend void  protobuf_AddDesc_HumanRpc_2eproto();
   friend void protobuf_AssignDesc_HumanRpc_2eproto();
@@ -795,14 +774,892 @@ class HumanRpcRespawnReply : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
   inline ::google::protobuf::int32 result() const;
   inline void set_result(::google::protobuf::int32 value);
 
+  // optional int32 ReviveType = 2 [default = -1];
+  inline bool has_revivetype() const;
+  inline void clear_revivetype();
+  static const int kReviveTypeFieldNumber = 2;
+  inline ::google::protobuf::int32 revivetype() const;
+  inline void set_revivetype(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:HumanRpcRespawnReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+  inline void set_has_revivetype();
+  inline void clear_has_revivetype();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+  ::google::protobuf::int32 revivetype_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_HumanRpc_2eproto();
+  friend void protobuf_AssignDesc_HumanRpc_2eproto();
+  friend void protobuf_ShutdownFile_HumanRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static HumanRpcRespawnReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class HumanRpcRespawnOtherNotify : public ::google::protobuf::Message {
+ public:
+  HumanRpcRespawnOtherNotify();
+  virtual ~HumanRpcRespawnOtherNotify();
+
+  HumanRpcRespawnOtherNotify(const HumanRpcRespawnOtherNotify& from);
+
+  inline HumanRpcRespawnOtherNotify& operator=(const HumanRpcRespawnOtherNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const HumanRpcRespawnOtherNotify& default_instance();
+
+  void Swap(HumanRpcRespawnOtherNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  HumanRpcRespawnOtherNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const HumanRpcRespawnOtherNotify& from);
+  void MergeFrom(const HumanRpcRespawnOtherNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint64 ObjId = 1 [default = 0];
+  inline bool has_objid() const;
+  inline void clear_objid();
+  static const int kObjIdFieldNumber = 1;
+  inline ::google::protobuf::uint64 objid() const;
+  inline void set_objid(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:HumanRpcRespawnOtherNotify)
+ private:
+  inline void set_has_objid();
+  inline void clear_has_objid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint64 objid_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_HumanRpc_2eproto();
+  friend void protobuf_AssignDesc_HumanRpc_2eproto();
+  friend void protobuf_ShutdownFile_HumanRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static HumanRpcRespawnOtherNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class HumanRpcMovePosAsk : public ::google::protobuf::Message {
+ public:
+  HumanRpcMovePosAsk();
+  virtual ~HumanRpcMovePosAsk();
+
+  HumanRpcMovePosAsk(const HumanRpcMovePosAsk& from);
+
+  inline HumanRpcMovePosAsk& operator=(const HumanRpcMovePosAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const HumanRpcMovePosAsk& default_instance();
+
+  void Swap(HumanRpcMovePosAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  HumanRpcMovePosAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const HumanRpcMovePosAsk& from);
+  void MergeFrom(const HumanRpcMovePosAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .Vector3Int PosList = 1;
+  inline int poslist_size() const;
+  inline void clear_poslist();
+  static const int kPosListFieldNumber = 1;
+  inline const ::Vector3Int& poslist(int index) const;
+  inline ::Vector3Int* mutable_poslist(int index);
+  inline ::Vector3Int* add_poslist();
+  inline const ::google::protobuf::RepeatedPtrField< ::Vector3Int >&
+      poslist() const;
+  inline ::google::protobuf::RepeatedPtrField< ::Vector3Int >*
+      mutable_poslist();
+
+  // optional float Dir = 2 [default = -1];
+  inline bool has_dir() const;
+  inline void clear_dir();
+  static const int kDirFieldNumber = 2;
+  inline float dir() const;
+  inline void set_dir(float value);
+
+  // optional uint64 ObjId = 3 [default = 0];
+  inline bool has_objid() const;
+  inline void clear_objid();
+  static const int kObjIdFieldNumber = 3;
+  inline ::google::protobuf::uint64 objid() const;
+  inline void set_objid(::google::protobuf::uint64 value);
+
+  // optional bool IsAllowChangeRunAnimation = 4 [default = true];
+  inline bool has_isallowchangerunanimation() const;
+  inline void clear_isallowchangerunanimation();
+  static const int kIsAllowChangeRunAnimationFieldNumber = 4;
+  inline bool isallowchangerunanimation() const;
+  inline void set_isallowchangerunanimation(bool value);
+
+  // optional bool IsLookAtMoving = 5 [default = true];
+  inline bool has_islookatmoving() const;
+  inline void clear_islookatmoving();
+  static const int kIsLookAtMovingFieldNumber = 5;
+  inline bool islookatmoving() const;
+  inline void set_islookatmoving(bool value);
+
+  // optional int32 FromX = 6 [default = -1];
+  inline bool has_fromx() const;
+  inline void clear_fromx();
+  static const int kFromXFieldNumber = 6;
+  inline ::google::protobuf::int32 fromx() const;
+  inline void set_fromx(::google::protobuf::int32 value);
+
+  // optional int32 FromZ = 7 [default = -1];
+  inline bool has_fromz() const;
+  inline void clear_fromz();
+  static const int kFromZFieldNumber = 7;
+  inline ::google::protobuf::int32 fromz() const;
+  inline void set_fromz(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:HumanRpcMovePosAsk)
+ private:
+  inline void set_has_dir();
+  inline void clear_has_dir();
+  inline void set_has_objid();
+  inline void clear_has_objid();
+  inline void set_has_isallowchangerunanimation();
+  inline void clear_has_isallowchangerunanimation();
+  inline void set_has_islookatmoving();
+  inline void clear_has_islookatmoving();
+  inline void set_has_fromx();
+  inline void clear_has_fromx();
+  inline void set_has_fromz();
+  inline void clear_has_fromz();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::RepeatedPtrField< ::Vector3Int > poslist_;
+  ::google::protobuf::uint64 objid_;
+  float dir_;
+  bool isallowchangerunanimation_;
+  bool islookatmoving_;
+  ::google::protobuf::int32 fromx_;
+  ::google::protobuf::int32 fromz_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(7 + 31) / 32];
+
+  friend void  protobuf_AddDesc_HumanRpc_2eproto();
+  friend void protobuf_AssignDesc_HumanRpc_2eproto();
+  friend void protobuf_ShutdownFile_HumanRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static HumanRpcMovePosAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class HumanRpcMovePosReply : public ::google::protobuf::Message {
+ public:
+  HumanRpcMovePosReply();
+  virtual ~HumanRpcMovePosReply();
+
+  HumanRpcMovePosReply(const HumanRpcMovePosReply& from);
+
+  inline HumanRpcMovePosReply& operator=(const HumanRpcMovePosReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const HumanRpcMovePosReply& default_instance();
+
+  void Swap(HumanRpcMovePosReply* other);
+
+  // implements Message ----------------------------------------------
+
+  HumanRpcMovePosReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const HumanRpcMovePosReply& from);
+  void MergeFrom(const HumanRpcMovePosReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -1];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // optional .Vector3Int Pos = 2;
+  inline bool has_pos() const;
+  inline void clear_pos();
+  static const int kPosFieldNumber = 2;
+  inline const ::Vector3Int& pos() const;
+  inline ::Vector3Int* mutable_pos();
+  inline ::Vector3Int* release_pos();
+  inline void set_allocated_pos(::Vector3Int* pos);
+
+  // optional float Dir = 3 [default = -1];
+  inline bool has_dir() const;
+  inline void clear_dir();
+  static const int kDirFieldNumber = 3;
+  inline float dir() const;
+  inline void set_dir(float value);
+
+  // optional uint64 ObjId = 4 [default = 0];
+  inline bool has_objid() const;
+  inline void clear_objid();
+  static const int kObjIdFieldNumber = 4;
+  inline ::google::protobuf::uint64 objid() const;
+  inline void set_objid(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:HumanRpcMovePosReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+  inline void set_has_pos();
+  inline void clear_has_pos();
+  inline void set_has_dir();
+  inline void clear_has_dir();
+  inline void set_has_objid();
+  inline void clear_has_objid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::Vector3Int* pos_;
+  ::google::protobuf::int32 result_;
+  float dir_;
+  ::google::protobuf::uint64 objid_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+
+  friend void  protobuf_AddDesc_HumanRpc_2eproto();
+  friend void protobuf_AssignDesc_HumanRpc_2eproto();
+  friend void protobuf_ShutdownFile_HumanRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static HumanRpcMovePosReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class HumanRpcRoleDieNotify : public ::google::protobuf::Message {
+ public:
+  HumanRpcRoleDieNotify();
+  virtual ~HumanRpcRoleDieNotify();
+
+  HumanRpcRoleDieNotify(const HumanRpcRoleDieNotify& from);
+
+  inline HumanRpcRoleDieNotify& operator=(const HumanRpcRoleDieNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const HumanRpcRoleDieNotify& default_instance();
+
+  void Swap(HumanRpcRoleDieNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  HumanRpcRoleDieNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const HumanRpcRoleDieNotify& from);
+  void MergeFrom(const HumanRpcRoleDieNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int64 KillerGuid = 1 [default = -1];
+  inline bool has_killerguid() const;
+  inline void clear_killerguid();
+  static const int kKillerGuidFieldNumber = 1;
+  inline ::google::protobuf::int64 killerguid() const;
+  inline void set_killerguid(::google::protobuf::int64 value);
+
+  // optional string KillerName = 2;
+  inline bool has_killername() const;
+  inline void clear_killername();
+  static const int kKillerNameFieldNumber = 2;
+  inline const ::std::string& killername() const;
+  inline void set_killername(const ::std::string& value);
+  inline void set_killername(const char* value);
+  inline void set_killername(const char* value, size_t size);
+  inline ::std::string* mutable_killername();
+  inline ::std::string* release_killername();
+  inline void set_allocated_killername(::std::string* killername);
+
+  // optional int32 KillerType = 3 [default = -1];
+  inline bool has_killertype() const;
+  inline void clear_killertype();
+  static const int kKillerTypeFieldNumber = 3;
+  inline ::google::protobuf::int32 killertype() const;
+  inline void set_killertype(::google::protobuf::int32 value);
+
+  // optional int32 RevieCDTime = 4 [default = -1];
+  inline bool has_reviecdtime() const;
+  inline void clear_reviecdtime();
+  static const int kRevieCDTimeFieldNumber = 4;
+  inline ::google::protobuf::int32 reviecdtime() const;
+  inline void set_reviecdtime(::google::protobuf::int32 value);
+
+  // optional int32 DungeonReviveCounts = 5 [default = 0];
+  inline bool has_dungeonrevivecounts() const;
+  inline void clear_dungeonrevivecounts();
+  static const int kDungeonReviveCountsFieldNumber = 5;
+  inline ::google::protobuf::int32 dungeonrevivecounts() const;
+  inline void set_dungeonrevivecounts(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:HumanRpcRoleDieNotify)
+ private:
+  inline void set_has_killerguid();
+  inline void clear_has_killerguid();
+  inline void set_has_killername();
+  inline void clear_has_killername();
+  inline void set_has_killertype();
+  inline void clear_has_killertype();
+  inline void set_has_reviecdtime();
+  inline void clear_has_reviecdtime();
+  inline void set_has_dungeonrevivecounts();
+  inline void clear_has_dungeonrevivecounts();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int64 killerguid_;
+  ::std::string* killername_;
+  ::google::protobuf::int32 killertype_;
+  ::google::protobuf::int32 reviecdtime_;
+  ::google::protobuf::int32 dungeonrevivecounts_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+
+  friend void  protobuf_AddDesc_HumanRpc_2eproto();
+  friend void protobuf_AssignDesc_HumanRpc_2eproto();
+  friend void protobuf_ShutdownFile_HumanRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static HumanRpcRoleDieNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class HumanRpcChangeAnimationStateNotify : public ::google::protobuf::Message {
+ public:
+  HumanRpcChangeAnimationStateNotify();
+  virtual ~HumanRpcChangeAnimationStateNotify();
+
+  HumanRpcChangeAnimationStateNotify(const HumanRpcChangeAnimationStateNotify& from);
+
+  inline HumanRpcChangeAnimationStateNotify& operator=(const HumanRpcChangeAnimationStateNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const HumanRpcChangeAnimationStateNotify& default_instance();
+
+  void Swap(HumanRpcChangeAnimationStateNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  HumanRpcChangeAnimationStateNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const HumanRpcChangeAnimationStateNotify& from);
+  void MergeFrom(const HumanRpcChangeAnimationStateNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional bool AnimationState = 1 [default = false];
+  inline bool has_animationstate() const;
+  inline void clear_animationstate();
+  static const int kAnimationStateFieldNumber = 1;
+  inline bool animationstate() const;
+  inline void set_animationstate(bool value);
+
+  // @@protoc_insertion_point(class_scope:HumanRpcChangeAnimationStateNotify)
+ private:
+  inline void set_has_animationstate();
+  inline void clear_has_animationstate();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  bool animationstate_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_HumanRpc_2eproto();
+  friend void protobuf_AssignDesc_HumanRpc_2eproto();
+  friend void protobuf_ShutdownFile_HumanRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static HumanRpcChangeAnimationStateNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class HumanRpcFuncNoticeAsk : public ::google::protobuf::Message {
+ public:
+  HumanRpcFuncNoticeAsk();
+  virtual ~HumanRpcFuncNoticeAsk();
+
+  HumanRpcFuncNoticeAsk(const HumanRpcFuncNoticeAsk& from);
+
+  inline HumanRpcFuncNoticeAsk& operator=(const HumanRpcFuncNoticeAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const HumanRpcFuncNoticeAsk& default_instance();
+
+  void Swap(HumanRpcFuncNoticeAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  HumanRpcFuncNoticeAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const HumanRpcFuncNoticeAsk& from);
+  void MergeFrom(const HumanRpcFuncNoticeAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:HumanRpcFuncNoticeAsk)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[1];
+
+  friend void  protobuf_AddDesc_HumanRpc_2eproto();
+  friend void protobuf_AssignDesc_HumanRpc_2eproto();
+  friend void protobuf_ShutdownFile_HumanRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static HumanRpcFuncNoticeAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class HumanRpcFuncNoticeReply : public ::google::protobuf::Message {
+ public:
+  HumanRpcFuncNoticeReply();
+  virtual ~HumanRpcFuncNoticeReply();
+
+  HumanRpcFuncNoticeReply(const HumanRpcFuncNoticeReply& from);
+
+  inline HumanRpcFuncNoticeReply& operator=(const HumanRpcFuncNoticeReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const HumanRpcFuncNoticeReply& default_instance();
+
+  void Swap(HumanRpcFuncNoticeReply* other);
+
+  // implements Message ----------------------------------------------
+
+  HumanRpcFuncNoticeReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const HumanRpcFuncNoticeReply& from);
+  void MergeFrom(const HumanRpcFuncNoticeReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -1];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // optional int32 FuncIndex = 2 [default = -1];
+  inline bool has_funcindex() const;
+  inline void clear_funcindex();
+  static const int kFuncIndexFieldNumber = 2;
+  inline ::google::protobuf::int32 funcindex() const;
+  inline void set_funcindex(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:HumanRpcFuncNoticeReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+  inline void set_has_funcindex();
+  inline void clear_has_funcindex();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+  ::google::protobuf::int32 funcindex_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_HumanRpc_2eproto();
+  friend void protobuf_AssignDesc_HumanRpc_2eproto();
+  friend void protobuf_ShutdownFile_HumanRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static HumanRpcFuncNoticeReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class HumanRpcFuncNoticeChangeAsk : public ::google::protobuf::Message {
+ public:
+  HumanRpcFuncNoticeChangeAsk();
+  virtual ~HumanRpcFuncNoticeChangeAsk();
+
+  HumanRpcFuncNoticeChangeAsk(const HumanRpcFuncNoticeChangeAsk& from);
+
+  inline HumanRpcFuncNoticeChangeAsk& operator=(const HumanRpcFuncNoticeChangeAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const HumanRpcFuncNoticeChangeAsk& default_instance();
+
+  void Swap(HumanRpcFuncNoticeChangeAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  HumanRpcFuncNoticeChangeAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const HumanRpcFuncNoticeChangeAsk& from);
+  void MergeFrom(const HumanRpcFuncNoticeChangeAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // @@protoc_insertion_point(class_scope:HumanRpcFuncNoticeChangeAsk)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[1];
+
+  friend void  protobuf_AddDesc_HumanRpc_2eproto();
+  friend void protobuf_AssignDesc_HumanRpc_2eproto();
+  friend void protobuf_ShutdownFile_HumanRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static HumanRpcFuncNoticeChangeAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class HumanRpcFuncNoticeChangeReply : public ::google::protobuf::Message {
+ public:
+  HumanRpcFuncNoticeChangeReply();
+  virtual ~HumanRpcFuncNoticeChangeReply();
+
+  HumanRpcFuncNoticeChangeReply(const HumanRpcFuncNoticeChangeReply& from);
+
+  inline HumanRpcFuncNoticeChangeReply& operator=(const HumanRpcFuncNoticeChangeReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const HumanRpcFuncNoticeChangeReply& default_instance();
+
+  void Swap(HumanRpcFuncNoticeChangeReply* other);
+
+  // implements Message ----------------------------------------------
+
+  HumanRpcFuncNoticeChangeReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const HumanRpcFuncNoticeChangeReply& from);
+  void MergeFrom(const HumanRpcFuncNoticeChangeReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -1];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:HumanRpcFuncNoticeChangeReply)
  private:
   inline void set_has_result();
   inline void clear_has_result();
@@ -819,7 +1676,1180 @@ class HumanRpcRespawnReply : public ::google::protobuf::Message {
   friend void protobuf_ShutdownFile_HumanRpc_2eproto();
 
   void InitAsDefaultInstance();
-  static HumanRpcRespawnReply* default_instance_;
+  static HumanRpcFuncNoticeChangeReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class HumanRpcClientAttributesNotify : public ::google::protobuf::Message {
+ public:
+  HumanRpcClientAttributesNotify();
+  virtual ~HumanRpcClientAttributesNotify();
+
+  HumanRpcClientAttributesNotify(const HumanRpcClientAttributesNotify& from);
+
+  inline HumanRpcClientAttributesNotify& operator=(const HumanRpcClientAttributesNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const HumanRpcClientAttributesNotify& default_instance();
+
+  void Swap(HumanRpcClientAttributesNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  HumanRpcClientAttributesNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const HumanRpcClientAttributesNotify& from);
+  void MergeFrom(const HumanRpcClientAttributesNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint64 ObjId = 2 [default = 0];
+  inline bool has_objid() const;
+  inline void clear_objid();
+  static const int kObjIdFieldNumber = 2;
+  inline ::google::protobuf::uint64 objid() const;
+  inline void set_objid(::google::protobuf::uint64 value);
+
+  // optional bool IsTouchJoyStick = 6 [default = false];
+  inline bool has_istouchjoystick() const;
+  inline void clear_istouchjoystick();
+  static const int kIsTouchJoyStickFieldNumber = 6;
+  inline bool istouchjoystick() const;
+  inline void set_istouchjoystick(bool value);
+
+  // optional bool IsHold = 7 [default = false];
+  inline bool has_ishold() const;
+  inline void clear_ishold();
+  static const int kIsHoldFieldNumber = 7;
+  inline bool ishold() const;
+  inline void set_ishold(bool value);
+
+  // @@protoc_insertion_point(class_scope:HumanRpcClientAttributesNotify)
+ private:
+  inline void set_has_objid();
+  inline void clear_has_objid();
+  inline void set_has_istouchjoystick();
+  inline void clear_has_istouchjoystick();
+  inline void set_has_ishold();
+  inline void clear_has_ishold();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint64 objid_;
+  bool istouchjoystick_;
+  bool ishold_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+
+  friend void  protobuf_AddDesc_HumanRpc_2eproto();
+  friend void protobuf_AssignDesc_HumanRpc_2eproto();
+  friend void protobuf_ShutdownFile_HumanRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static HumanRpcClientAttributesNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class HumanRpcTimeCheckNotify : public ::google::protobuf::Message {
+ public:
+  HumanRpcTimeCheckNotify();
+  virtual ~HumanRpcTimeCheckNotify();
+
+  HumanRpcTimeCheckNotify(const HumanRpcTimeCheckNotify& from);
+
+  inline HumanRpcTimeCheckNotify& operator=(const HumanRpcTimeCheckNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const HumanRpcTimeCheckNotify& default_instance();
+
+  void Swap(HumanRpcTimeCheckNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  HumanRpcTimeCheckNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const HumanRpcTimeCheckNotify& from);
+  void MergeFrom(const HumanRpcTimeCheckNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int64 Data = 1 [default = -1];
+  inline bool has_data() const;
+  inline void clear_data();
+  static const int kDataFieldNumber = 1;
+  inline ::google::protobuf::int64 data() const;
+  inline void set_data(::google::protobuf::int64 value);
+
+  // @@protoc_insertion_point(class_scope:HumanRpcTimeCheckNotify)
+ private:
+  inline void set_has_data();
+  inline void clear_has_data();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int64 data_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_HumanRpc_2eproto();
+  friend void protobuf_AssignDesc_HumanRpc_2eproto();
+  friend void protobuf_ShutdownFile_HumanRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static HumanRpcTimeCheckNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class HumanRpcMotionFlagsNotify : public ::google::protobuf::Message {
+ public:
+  HumanRpcMotionFlagsNotify();
+  virtual ~HumanRpcMotionFlagsNotify();
+
+  HumanRpcMotionFlagsNotify(const HumanRpcMotionFlagsNotify& from);
+
+  inline HumanRpcMotionFlagsNotify& operator=(const HumanRpcMotionFlagsNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const HumanRpcMotionFlagsNotify& default_instance();
+
+  void Swap(HumanRpcMotionFlagsNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  HumanRpcMotionFlagsNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const HumanRpcMotionFlagsNotify& from);
+  void MergeFrom(const HumanRpcMotionFlagsNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint64 ObjId = 1 [default = 0];
+  inline bool has_objid() const;
+  inline void clear_objid();
+  static const int kObjIdFieldNumber = 1;
+  inline ::google::protobuf::uint64 objid() const;
+  inline void set_objid(::google::protobuf::uint64 value);
+
+  // optional int32 MotionFlags = 2 [default = -1];
+  inline bool has_motionflags() const;
+  inline void clear_motionflags();
+  static const int kMotionFlagsFieldNumber = 2;
+  inline ::google::protobuf::int32 motionflags() const;
+  inline void set_motionflags(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:HumanRpcMotionFlagsNotify)
+ private:
+  inline void set_has_objid();
+  inline void clear_has_objid();
+  inline void set_has_motionflags();
+  inline void clear_has_motionflags();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint64 objid_;
+  ::google::protobuf::int32 motionflags_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_HumanRpc_2eproto();
+  friend void protobuf_AssignDesc_HumanRpc_2eproto();
+  friend void protobuf_ShutdownFile_HumanRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static HumanRpcMotionFlagsNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class HumanRpcRushAsk : public ::google::protobuf::Message {
+ public:
+  HumanRpcRushAsk();
+  virtual ~HumanRpcRushAsk();
+
+  HumanRpcRushAsk(const HumanRpcRushAsk& from);
+
+  inline HumanRpcRushAsk& operator=(const HumanRpcRushAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const HumanRpcRushAsk& default_instance();
+
+  void Swap(HumanRpcRushAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  HumanRpcRushAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const HumanRpcRushAsk& from);
+  void MergeFrom(const HumanRpcRushAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional bool Apply = 1 [default = false];
+  inline bool has_apply() const;
+  inline void clear_apply();
+  static const int kApplyFieldNumber = 1;
+  inline bool apply() const;
+  inline void set_apply(bool value);
+
+  // @@protoc_insertion_point(class_scope:HumanRpcRushAsk)
+ private:
+  inline void set_has_apply();
+  inline void clear_has_apply();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  bool apply_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_HumanRpc_2eproto();
+  friend void protobuf_AssignDesc_HumanRpc_2eproto();
+  friend void protobuf_ShutdownFile_HumanRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static HumanRpcRushAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class HumanRpcRushReply : public ::google::protobuf::Message {
+ public:
+  HumanRpcRushReply();
+  virtual ~HumanRpcRushReply();
+
+  HumanRpcRushReply(const HumanRpcRushReply& from);
+
+  inline HumanRpcRushReply& operator=(const HumanRpcRushReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const HumanRpcRushReply& default_instance();
+
+  void Swap(HumanRpcRushReply* other);
+
+  // implements Message ----------------------------------------------
+
+  HumanRpcRushReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const HumanRpcRushReply& from);
+  void MergeFrom(const HumanRpcRushReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -1];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:HumanRpcRushReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_HumanRpc_2eproto();
+  friend void protobuf_AssignDesc_HumanRpc_2eproto();
+  friend void protobuf_ShutdownFile_HumanRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static HumanRpcRushReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class HumanRpcStareAsk : public ::google::protobuf::Message {
+ public:
+  HumanRpcStareAsk();
+  virtual ~HumanRpcStareAsk();
+
+  HumanRpcStareAsk(const HumanRpcStareAsk& from);
+
+  inline HumanRpcStareAsk& operator=(const HumanRpcStareAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const HumanRpcStareAsk& default_instance();
+
+  void Swap(HumanRpcStareAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  HumanRpcStareAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const HumanRpcStareAsk& from);
+  void MergeFrom(const HumanRpcStareAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional bool Apply = 1 [default = false];
+  inline bool has_apply() const;
+  inline void clear_apply();
+  static const int kApplyFieldNumber = 1;
+  inline bool apply() const;
+  inline void set_apply(bool value);
+
+  // optional uint64 TargetID = 2 [default = 0];
+  inline bool has_targetid() const;
+  inline void clear_targetid();
+  static const int kTargetIDFieldNumber = 2;
+  inline ::google::protobuf::uint64 targetid() const;
+  inline void set_targetid(::google::protobuf::uint64 value);
+
+  // optional float Dir = 3 [default = -1];
+  inline bool has_dir() const;
+  inline void clear_dir();
+  static const int kDirFieldNumber = 3;
+  inline float dir() const;
+  inline void set_dir(float value);
+
+  // @@protoc_insertion_point(class_scope:HumanRpcStareAsk)
+ private:
+  inline void set_has_apply();
+  inline void clear_has_apply();
+  inline void set_has_targetid();
+  inline void clear_has_targetid();
+  inline void set_has_dir();
+  inline void clear_has_dir();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint64 targetid_;
+  bool apply_;
+  float dir_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+
+  friend void  protobuf_AddDesc_HumanRpc_2eproto();
+  friend void protobuf_AssignDesc_HumanRpc_2eproto();
+  friend void protobuf_ShutdownFile_HumanRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static HumanRpcStareAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class HumanRpcStareReply : public ::google::protobuf::Message {
+ public:
+  HumanRpcStareReply();
+  virtual ~HumanRpcStareReply();
+
+  HumanRpcStareReply(const HumanRpcStareReply& from);
+
+  inline HumanRpcStareReply& operator=(const HumanRpcStareReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const HumanRpcStareReply& default_instance();
+
+  void Swap(HumanRpcStareReply* other);
+
+  // implements Message ----------------------------------------------
+
+  HumanRpcStareReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const HumanRpcStareReply& from);
+  void MergeFrom(const HumanRpcStareReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -1];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // optional uint64 TargetID = 2 [default = 0];
+  inline bool has_targetid() const;
+  inline void clear_targetid();
+  static const int kTargetIDFieldNumber = 2;
+  inline ::google::protobuf::uint64 targetid() const;
+  inline void set_targetid(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:HumanRpcStareReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+  inline void set_has_targetid();
+  inline void clear_has_targetid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint64 targetid_;
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_HumanRpc_2eproto();
+  friend void protobuf_AssignDesc_HumanRpc_2eproto();
+  friend void protobuf_ShutdownFile_HumanRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static HumanRpcStareReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class HumanRpcChangePositionNotify : public ::google::protobuf::Message {
+ public:
+  HumanRpcChangePositionNotify();
+  virtual ~HumanRpcChangePositionNotify();
+
+  HumanRpcChangePositionNotify(const HumanRpcChangePositionNotify& from);
+
+  inline HumanRpcChangePositionNotify& operator=(const HumanRpcChangePositionNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const HumanRpcChangePositionNotify& default_instance();
+
+  void Swap(HumanRpcChangePositionNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  HumanRpcChangePositionNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const HumanRpcChangePositionNotify& from);
+  void MergeFrom(const HumanRpcChangePositionNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint64 ObjID = 1 [default = 0];
+  inline bool has_objid() const;
+  inline void clear_objid();
+  static const int kObjIDFieldNumber = 1;
+  inline ::google::protobuf::uint64 objid() const;
+  inline void set_objid(::google::protobuf::uint64 value);
+
+  // optional .Vector3Int Pos = 2;
+  inline bool has_pos() const;
+  inline void clear_pos();
+  static const int kPosFieldNumber = 2;
+  inline const ::Vector3Int& pos() const;
+  inline ::Vector3Int* mutable_pos();
+  inline ::Vector3Int* release_pos();
+  inline void set_allocated_pos(::Vector3Int* pos);
+
+  // optional float Dir = 4 [default = -1];
+  inline bool has_dir() const;
+  inline void clear_dir();
+  static const int kDirFieldNumber = 4;
+  inline float dir() const;
+  inline void set_dir(float value);
+
+  // @@protoc_insertion_point(class_scope:HumanRpcChangePositionNotify)
+ private:
+  inline void set_has_objid();
+  inline void clear_has_objid();
+  inline void set_has_pos();
+  inline void clear_has_pos();
+  inline void set_has_dir();
+  inline void clear_has_dir();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint64 objid_;
+  ::Vector3Int* pos_;
+  float dir_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+
+  friend void  protobuf_AddDesc_HumanRpc_2eproto();
+  friend void protobuf_AssignDesc_HumanRpc_2eproto();
+  friend void protobuf_ShutdownFile_HumanRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static HumanRpcChangePositionNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class HumanRpcAttrChangeNotify : public ::google::protobuf::Message {
+ public:
+  HumanRpcAttrChangeNotify();
+  virtual ~HumanRpcAttrChangeNotify();
+
+  HumanRpcAttrChangeNotify(const HumanRpcAttrChangeNotify& from);
+
+  inline HumanRpcAttrChangeNotify& operator=(const HumanRpcAttrChangeNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const HumanRpcAttrChangeNotify& default_instance();
+
+  void Swap(HumanRpcAttrChangeNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  HumanRpcAttrChangeNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const HumanRpcAttrChangeNotify& from);
+  void MergeFrom(const HumanRpcAttrChangeNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 AttrType = 1 [default = -1];
+  inline bool has_attrtype() const;
+  inline void clear_attrtype();
+  static const int kAttrTypeFieldNumber = 1;
+  inline ::google::protobuf::int32 attrtype() const;
+  inline void set_attrtype(::google::protobuf::int32 value);
+
+  // optional int32 Value = 2 [default = -1];
+  inline bool has_value() const;
+  inline void clear_value();
+  static const int kValueFieldNumber = 2;
+  inline ::google::protobuf::int32 value() const;
+  inline void set_value(::google::protobuf::int32 value);
+
+  // optional uint64 Playerguid = 3 [default = 0];
+  inline bool has_playerguid() const;
+  inline void clear_playerguid();
+  static const int kPlayerguidFieldNumber = 3;
+  inline ::google::protobuf::uint64 playerguid() const;
+  inline void set_playerguid(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:HumanRpcAttrChangeNotify)
+ private:
+  inline void set_has_attrtype();
+  inline void clear_has_attrtype();
+  inline void set_has_value();
+  inline void clear_has_value();
+  inline void set_has_playerguid();
+  inline void clear_has_playerguid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 attrtype_;
+  ::google::protobuf::int32 value_;
+  ::google::protobuf::uint64 playerguid_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
+
+  friend void  protobuf_AddDesc_HumanRpc_2eproto();
+  friend void protobuf_AssignDesc_HumanRpc_2eproto();
+  friend void protobuf_ShutdownFile_HumanRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static HumanRpcAttrChangeNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class HumanRpcTrusteeshipAsk : public ::google::protobuf::Message {
+ public:
+  HumanRpcTrusteeshipAsk();
+  virtual ~HumanRpcTrusteeshipAsk();
+
+  HumanRpcTrusteeshipAsk(const HumanRpcTrusteeshipAsk& from);
+
+  inline HumanRpcTrusteeshipAsk& operator=(const HumanRpcTrusteeshipAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const HumanRpcTrusteeshipAsk& default_instance();
+
+  void Swap(HumanRpcTrusteeshipAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  HumanRpcTrusteeshipAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const HumanRpcTrusteeshipAsk& from);
+  void MergeFrom(const HumanRpcTrusteeshipAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional bool Open = 1 [default = false];
+  inline bool has_open() const;
+  inline void clear_open();
+  static const int kOpenFieldNumber = 1;
+  inline bool open() const;
+  inline void set_open(bool value);
+
+  // @@protoc_insertion_point(class_scope:HumanRpcTrusteeshipAsk)
+ private:
+  inline void set_has_open();
+  inline void clear_has_open();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  bool open_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_HumanRpc_2eproto();
+  friend void protobuf_AssignDesc_HumanRpc_2eproto();
+  friend void protobuf_ShutdownFile_HumanRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static HumanRpcTrusteeshipAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class HumanRpcTrusteeshipReply : public ::google::protobuf::Message {
+ public:
+  HumanRpcTrusteeshipReply();
+  virtual ~HumanRpcTrusteeshipReply();
+
+  HumanRpcTrusteeshipReply(const HumanRpcTrusteeshipReply& from);
+
+  inline HumanRpcTrusteeshipReply& operator=(const HumanRpcTrusteeshipReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const HumanRpcTrusteeshipReply& default_instance();
+
+  void Swap(HumanRpcTrusteeshipReply* other);
+
+  // implements Message ----------------------------------------------
+
+  HumanRpcTrusteeshipReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const HumanRpcTrusteeshipReply& from);
+  void MergeFrom(const HumanRpcTrusteeshipReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -1];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:HumanRpcTrusteeshipReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_HumanRpc_2eproto();
+  friend void protobuf_AssignDesc_HumanRpc_2eproto();
+  friend void protobuf_ShutdownFile_HumanRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static HumanRpcTrusteeshipReply* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class HumanRpcChangePlayerNameAsk : public ::google::protobuf::Message {
+ public:
+  HumanRpcChangePlayerNameAsk();
+  virtual ~HumanRpcChangePlayerNameAsk();
+
+  HumanRpcChangePlayerNameAsk(const HumanRpcChangePlayerNameAsk& from);
+
+  inline HumanRpcChangePlayerNameAsk& operator=(const HumanRpcChangePlayerNameAsk& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const HumanRpcChangePlayerNameAsk& default_instance();
+
+  void Swap(HumanRpcChangePlayerNameAsk* other);
+
+  // implements Message ----------------------------------------------
+
+  HumanRpcChangePlayerNameAsk* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const HumanRpcChangePlayerNameAsk& from);
+  void MergeFrom(const HumanRpcChangePlayerNameAsk& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional string PlayerName = 1;
+  inline bool has_playername() const;
+  inline void clear_playername();
+  static const int kPlayerNameFieldNumber = 1;
+  inline const ::std::string& playername() const;
+  inline void set_playername(const ::std::string& value);
+  inline void set_playername(const char* value);
+  inline void set_playername(const char* value, size_t size);
+  inline ::std::string* mutable_playername();
+  inline ::std::string* release_playername();
+  inline void set_allocated_playername(::std::string* playername);
+
+  // @@protoc_insertion_point(class_scope:HumanRpcChangePlayerNameAsk)
+ private:
+  inline void set_has_playername();
+  inline void clear_has_playername();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::std::string* playername_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_HumanRpc_2eproto();
+  friend void protobuf_AssignDesc_HumanRpc_2eproto();
+  friend void protobuf_ShutdownFile_HumanRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static HumanRpcChangePlayerNameAsk* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class HumanRpcChangePlayerNameReply : public ::google::protobuf::Message {
+ public:
+  HumanRpcChangePlayerNameReply();
+  virtual ~HumanRpcChangePlayerNameReply();
+
+  HumanRpcChangePlayerNameReply(const HumanRpcChangePlayerNameReply& from);
+
+  inline HumanRpcChangePlayerNameReply& operator=(const HumanRpcChangePlayerNameReply& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const HumanRpcChangePlayerNameReply& default_instance();
+
+  void Swap(HumanRpcChangePlayerNameReply* other);
+
+  // implements Message ----------------------------------------------
+
+  HumanRpcChangePlayerNameReply* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const HumanRpcChangePlayerNameReply& from);
+  void MergeFrom(const HumanRpcChangePlayerNameReply& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Result = 1 [default = -1];
+  inline bool has_result() const;
+  inline void clear_result();
+  static const int kResultFieldNumber = 1;
+  inline ::google::protobuf::int32 result() const;
+  inline void set_result(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:HumanRpcChangePlayerNameReply)
+ private:
+  inline void set_has_result();
+  inline void clear_has_result();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 result_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_HumanRpc_2eproto();
+  friend void protobuf_AssignDesc_HumanRpc_2eproto();
+  friend void protobuf_ShutdownFile_HumanRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static HumanRpcChangePlayerNameReply* default_instance_;
 };
 // ===================================================================
 
@@ -894,11 +2924,33 @@ inline void HumanRpcMoveAsk::set_z(float value) {
   z_ = value;
 }
 
+// optional uint64 ObjId = 5 [default = 0];
+inline bool HumanRpcMoveAsk::has_objid() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void HumanRpcMoveAsk::set_has_objid() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void HumanRpcMoveAsk::clear_has_objid() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void HumanRpcMoveAsk::clear_objid() {
+  objid_ = GOOGLE_ULONGLONG(0);
+  clear_has_objid();
+}
+inline ::google::protobuf::uint64 HumanRpcMoveAsk::objid() const {
+  return objid_;
+}
+inline void HumanRpcMoveAsk::set_objid(::google::protobuf::uint64 value) {
+  set_has_objid();
+  objid_ = value;
+}
+
 // -------------------------------------------------------------------
 
 // HumanRpcMoveReply
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool HumanRpcMoveReply::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -920,7 +2972,7 @@ inline void HumanRpcMoveReply::set_result(::google::protobuf::int32 value) {
   result_ = value;
 }
 
-// optional .V3 Pos = 2;
+// optional .Vector3 Pos = 2;
 inline bool HumanRpcMoveReply::has_pos() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -931,24 +2983,24 @@ inline void HumanRpcMoveReply::clear_has_pos() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline void HumanRpcMoveReply::clear_pos() {
-  if (pos_ != NULL) pos_->::V3::Clear();
+  if (pos_ != NULL) pos_->::Vector3::Clear();
   clear_has_pos();
 }
-inline const ::V3& HumanRpcMoveReply::pos() const {
+inline const ::Vector3& HumanRpcMoveReply::pos() const {
   return pos_ != NULL ? *pos_ : *default_instance_->pos_;
 }
-inline ::V3* HumanRpcMoveReply::mutable_pos() {
+inline ::Vector3* HumanRpcMoveReply::mutable_pos() {
   set_has_pos();
-  if (pos_ == NULL) pos_ = new ::V3;
+  if (pos_ == NULL) pos_ = new ::Vector3;
   return pos_;
 }
-inline ::V3* HumanRpcMoveReply::release_pos() {
+inline ::Vector3* HumanRpcMoveReply::release_pos() {
   clear_has_pos();
-  ::V3* temp = pos_;
+  ::Vector3* temp = pos_;
   pos_ = NULL;
   return temp;
 }
-inline void HumanRpcMoveReply::set_allocated_pos(::V3* pos) {
+inline void HumanRpcMoveReply::set_allocated_pos(::Vector3* pos) {
   delete pos_;
   pos_ = pos;
   if (pos) {
@@ -980,6 +3032,28 @@ inline void HumanRpcMoveReply::set_dir(float value) {
   dir_ = value;
 }
 
+// optional uint64 ObjId = 4 [default = 0];
+inline bool HumanRpcMoveReply::has_objid() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void HumanRpcMoveReply::set_has_objid() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void HumanRpcMoveReply::clear_has_objid() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void HumanRpcMoveReply::clear_objid() {
+  objid_ = GOOGLE_ULONGLONG(0);
+  clear_has_objid();
+}
+inline ::google::protobuf::uint64 HumanRpcMoveReply::objid() const {
+  return objid_;
+}
+inline void HumanRpcMoveReply::set_objid(::google::protobuf::uint64 value) {
+  set_has_objid();
+  objid_ = value;
+}
+
 // -------------------------------------------------------------------
 
 // HumanRpcStopMoveAsk
@@ -1006,7 +3080,7 @@ inline void HumanRpcStopMoveAsk::set_dir(float value) {
   dir_ = value;
 }
 
-// optional float X = 3 [default = -1];
+// optional int32 X = 3 [default = -1];
 inline bool HumanRpcStopMoveAsk::has_x() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -1020,15 +3094,15 @@ inline void HumanRpcStopMoveAsk::clear_x() {
   x_ = -1;
   clear_has_x();
 }
-inline float HumanRpcStopMoveAsk::x() const {
+inline ::google::protobuf::int32 HumanRpcStopMoveAsk::x() const {
   return x_;
 }
-inline void HumanRpcStopMoveAsk::set_x(float value) {
+inline void HumanRpcStopMoveAsk::set_x(::google::protobuf::int32 value) {
   set_has_x();
   x_ = value;
 }
 
-// optional float Z = 4 [default = -1];
+// optional int32 Z = 4 [default = -1];
 inline bool HumanRpcStopMoveAsk::has_z() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -1042,19 +3116,63 @@ inline void HumanRpcStopMoveAsk::clear_z() {
   z_ = -1;
   clear_has_z();
 }
-inline float HumanRpcStopMoveAsk::z() const {
+inline ::google::protobuf::int32 HumanRpcStopMoveAsk::z() const {
   return z_;
 }
-inline void HumanRpcStopMoveAsk::set_z(float value) {
+inline void HumanRpcStopMoveAsk::set_z(::google::protobuf::int32 value) {
   set_has_z();
   z_ = value;
+}
+
+// optional uint64 ObjId = 5 [default = 0];
+inline bool HumanRpcStopMoveAsk::has_objid() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void HumanRpcStopMoveAsk::set_has_objid() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void HumanRpcStopMoveAsk::clear_has_objid() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void HumanRpcStopMoveAsk::clear_objid() {
+  objid_ = GOOGLE_ULONGLONG(0);
+  clear_has_objid();
+}
+inline ::google::protobuf::uint64 HumanRpcStopMoveAsk::objid() const {
+  return objid_;
+}
+inline void HumanRpcStopMoveAsk::set_objid(::google::protobuf::uint64 value) {
+  set_has_objid();
+  objid_ = value;
+}
+
+// optional bool BrakeRush = 6 [default = false];
+inline bool HumanRpcStopMoveAsk::has_brakerush() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void HumanRpcStopMoveAsk::set_has_brakerush() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void HumanRpcStopMoveAsk::clear_has_brakerush() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void HumanRpcStopMoveAsk::clear_brakerush() {
+  brakerush_ = false;
+  clear_has_brakerush();
+}
+inline bool HumanRpcStopMoveAsk::brakerush() const {
+  return brakerush_;
+}
+inline void HumanRpcStopMoveAsk::set_brakerush(bool value) {
+  set_has_brakerush();
+  brakerush_ = value;
 }
 
 // -------------------------------------------------------------------
 
 // HumanRpcStopMoveReply
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool HumanRpcStopMoveReply::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -1076,7 +3194,7 @@ inline void HumanRpcStopMoveReply::set_result(::google::protobuf::int32 value) {
   result_ = value;
 }
 
-// optional .V3 Pos = 2;
+// optional .Vector3Int Pos = 2;
 inline bool HumanRpcStopMoveReply::has_pos() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -1087,24 +3205,24 @@ inline void HumanRpcStopMoveReply::clear_has_pos() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline void HumanRpcStopMoveReply::clear_pos() {
-  if (pos_ != NULL) pos_->::V3::Clear();
+  if (pos_ != NULL) pos_->::Vector3Int::Clear();
   clear_has_pos();
 }
-inline const ::V3& HumanRpcStopMoveReply::pos() const {
+inline const ::Vector3Int& HumanRpcStopMoveReply::pos() const {
   return pos_ != NULL ? *pos_ : *default_instance_->pos_;
 }
-inline ::V3* HumanRpcStopMoveReply::mutable_pos() {
+inline ::Vector3Int* HumanRpcStopMoveReply::mutable_pos() {
   set_has_pos();
-  if (pos_ == NULL) pos_ = new ::V3;
+  if (pos_ == NULL) pos_ = new ::Vector3Int;
   return pos_;
 }
-inline ::V3* HumanRpcStopMoveReply::release_pos() {
+inline ::Vector3Int* HumanRpcStopMoveReply::release_pos() {
   clear_has_pos();
-  ::V3* temp = pos_;
+  ::Vector3Int* temp = pos_;
   pos_ = NULL;
   return temp;
 }
-inline void HumanRpcStopMoveReply::set_allocated_pos(::V3* pos) {
+inline void HumanRpcStopMoveReply::set_allocated_pos(::Vector3Int* pos) {
   delete pos_;
   pos_ = pos;
   if (pos) {
@@ -1136,11 +3254,33 @@ inline void HumanRpcStopMoveReply::set_dir(float value) {
   dir_ = value;
 }
 
+// optional uint64 ObjId = 4 [default = 0];
+inline bool HumanRpcStopMoveReply::has_objid() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void HumanRpcStopMoveReply::set_has_objid() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void HumanRpcStopMoveReply::clear_has_objid() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void HumanRpcStopMoveReply::clear_objid() {
+  objid_ = GOOGLE_ULONGLONG(0);
+  clear_has_objid();
+}
+inline ::google::protobuf::uint64 HumanRpcStopMoveReply::objid() const {
+  return objid_;
+}
+inline void HumanRpcStopMoveReply::set_objid(::google::protobuf::uint64 value) {
+  set_has_objid();
+  objid_ = value;
+}
+
 // -------------------------------------------------------------------
 
 // HumanRpcMoveCheckNotify
 
-// optional sint32 ObjId = 1 [default = -1];
+// optional uint64 ObjId = 1 [default = 0];
 inline bool HumanRpcMoveCheckNotify::has_objid() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -1151,13 +3291,13 @@ inline void HumanRpcMoveCheckNotify::clear_has_objid() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline void HumanRpcMoveCheckNotify::clear_objid() {
-  objid_ = -1;
+  objid_ = GOOGLE_ULONGLONG(0);
   clear_has_objid();
 }
-inline ::google::protobuf::int32 HumanRpcMoveCheckNotify::objid() const {
+inline ::google::protobuf::uint64 HumanRpcMoveCheckNotify::objid() const {
   return objid_;
 }
-inline void HumanRpcMoveCheckNotify::set_objid(::google::protobuf::int32 value) {
+inline void HumanRpcMoveCheckNotify::set_objid(::google::protobuf::uint64 value) {
   set_has_objid();
   objid_ = value;
 }
@@ -1230,83 +3370,35 @@ inline void HumanRpcMoveCheckNotify::set_y(float value) {
 
 // -------------------------------------------------------------------
 
-// HumanRpcMoveByPosNotify
+// HumanRpcRespawnAsk
 
-// optional sint32 ObjId = 1 [default = -1];
-inline bool HumanRpcMoveByPosNotify::has_objid() const {
+// optional int32 ReviveType = 1 [default = -1];
+inline bool HumanRpcRespawnAsk::has_revivetype() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void HumanRpcMoveByPosNotify::set_has_objid() {
+inline void HumanRpcRespawnAsk::set_has_revivetype() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void HumanRpcMoveByPosNotify::clear_has_objid() {
+inline void HumanRpcRespawnAsk::clear_has_revivetype() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void HumanRpcMoveByPosNotify::clear_objid() {
-  objid_ = -1;
-  clear_has_objid();
+inline void HumanRpcRespawnAsk::clear_revivetype() {
+  revivetype_ = -1;
+  clear_has_revivetype();
 }
-inline ::google::protobuf::int32 HumanRpcMoveByPosNotify::objid() const {
-  return objid_;
+inline ::google::protobuf::int32 HumanRpcRespawnAsk::revivetype() const {
+  return revivetype_;
 }
-inline void HumanRpcMoveByPosNotify::set_objid(::google::protobuf::int32 value) {
-  set_has_objid();
-  objid_ = value;
+inline void HumanRpcRespawnAsk::set_revivetype(::google::protobuf::int32 value) {
+  set_has_revivetype();
+  revivetype_ = value;
 }
-
-// optional float TargetX = 2 [default = -1];
-inline bool HumanRpcMoveByPosNotify::has_targetx() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void HumanRpcMoveByPosNotify::set_has_targetx() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void HumanRpcMoveByPosNotify::clear_has_targetx() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void HumanRpcMoveByPosNotify::clear_targetx() {
-  targetx_ = -1;
-  clear_has_targetx();
-}
-inline float HumanRpcMoveByPosNotify::targetx() const {
-  return targetx_;
-}
-inline void HumanRpcMoveByPosNotify::set_targetx(float value) {
-  set_has_targetx();
-  targetx_ = value;
-}
-
-// optional float TargetY = 3 [default = -1];
-inline bool HumanRpcMoveByPosNotify::has_targety() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void HumanRpcMoveByPosNotify::set_has_targety() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void HumanRpcMoveByPosNotify::clear_has_targety() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void HumanRpcMoveByPosNotify::clear_targety() {
-  targety_ = -1;
-  clear_has_targety();
-}
-inline float HumanRpcMoveByPosNotify::targety() const {
-  return targety_;
-}
-inline void HumanRpcMoveByPosNotify::set_targety(float value) {
-  set_has_targety();
-  targety_ = value;
-}
-
-// -------------------------------------------------------------------
-
-// HumanRpcRespawnAsk
 
 // -------------------------------------------------------------------
 
 // HumanRpcRespawnReply
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool HumanRpcRespawnReply::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -1324,6 +3416,1215 @@ inline ::google::protobuf::int32 HumanRpcRespawnReply::result() const {
   return result_;
 }
 inline void HumanRpcRespawnReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// optional int32 ReviveType = 2 [default = -1];
+inline bool HumanRpcRespawnReply::has_revivetype() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void HumanRpcRespawnReply::set_has_revivetype() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void HumanRpcRespawnReply::clear_has_revivetype() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void HumanRpcRespawnReply::clear_revivetype() {
+  revivetype_ = -1;
+  clear_has_revivetype();
+}
+inline ::google::protobuf::int32 HumanRpcRespawnReply::revivetype() const {
+  return revivetype_;
+}
+inline void HumanRpcRespawnReply::set_revivetype(::google::protobuf::int32 value) {
+  set_has_revivetype();
+  revivetype_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// HumanRpcRespawnOtherNotify
+
+// optional uint64 ObjId = 1 [default = 0];
+inline bool HumanRpcRespawnOtherNotify::has_objid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void HumanRpcRespawnOtherNotify::set_has_objid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void HumanRpcRespawnOtherNotify::clear_has_objid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void HumanRpcRespawnOtherNotify::clear_objid() {
+  objid_ = GOOGLE_ULONGLONG(0);
+  clear_has_objid();
+}
+inline ::google::protobuf::uint64 HumanRpcRespawnOtherNotify::objid() const {
+  return objid_;
+}
+inline void HumanRpcRespawnOtherNotify::set_objid(::google::protobuf::uint64 value) {
+  set_has_objid();
+  objid_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// HumanRpcMovePosAsk
+
+// repeated .Vector3Int PosList = 1;
+inline int HumanRpcMovePosAsk::poslist_size() const {
+  return poslist_.size();
+}
+inline void HumanRpcMovePosAsk::clear_poslist() {
+  poslist_.Clear();
+}
+inline const ::Vector3Int& HumanRpcMovePosAsk::poslist(int index) const {
+  return poslist_.Get(index);
+}
+inline ::Vector3Int* HumanRpcMovePosAsk::mutable_poslist(int index) {
+  return poslist_.Mutable(index);
+}
+inline ::Vector3Int* HumanRpcMovePosAsk::add_poslist() {
+  return poslist_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::Vector3Int >&
+HumanRpcMovePosAsk::poslist() const {
+  return poslist_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::Vector3Int >*
+HumanRpcMovePosAsk::mutable_poslist() {
+  return &poslist_;
+}
+
+// optional float Dir = 2 [default = -1];
+inline bool HumanRpcMovePosAsk::has_dir() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void HumanRpcMovePosAsk::set_has_dir() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void HumanRpcMovePosAsk::clear_has_dir() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void HumanRpcMovePosAsk::clear_dir() {
+  dir_ = -1;
+  clear_has_dir();
+}
+inline float HumanRpcMovePosAsk::dir() const {
+  return dir_;
+}
+inline void HumanRpcMovePosAsk::set_dir(float value) {
+  set_has_dir();
+  dir_ = value;
+}
+
+// optional uint64 ObjId = 3 [default = 0];
+inline bool HumanRpcMovePosAsk::has_objid() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void HumanRpcMovePosAsk::set_has_objid() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void HumanRpcMovePosAsk::clear_has_objid() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void HumanRpcMovePosAsk::clear_objid() {
+  objid_ = GOOGLE_ULONGLONG(0);
+  clear_has_objid();
+}
+inline ::google::protobuf::uint64 HumanRpcMovePosAsk::objid() const {
+  return objid_;
+}
+inline void HumanRpcMovePosAsk::set_objid(::google::protobuf::uint64 value) {
+  set_has_objid();
+  objid_ = value;
+}
+
+// optional bool IsAllowChangeRunAnimation = 4 [default = true];
+inline bool HumanRpcMovePosAsk::has_isallowchangerunanimation() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void HumanRpcMovePosAsk::set_has_isallowchangerunanimation() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void HumanRpcMovePosAsk::clear_has_isallowchangerunanimation() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void HumanRpcMovePosAsk::clear_isallowchangerunanimation() {
+  isallowchangerunanimation_ = true;
+  clear_has_isallowchangerunanimation();
+}
+inline bool HumanRpcMovePosAsk::isallowchangerunanimation() const {
+  return isallowchangerunanimation_;
+}
+inline void HumanRpcMovePosAsk::set_isallowchangerunanimation(bool value) {
+  set_has_isallowchangerunanimation();
+  isallowchangerunanimation_ = value;
+}
+
+// optional bool IsLookAtMoving = 5 [default = true];
+inline bool HumanRpcMovePosAsk::has_islookatmoving() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void HumanRpcMovePosAsk::set_has_islookatmoving() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void HumanRpcMovePosAsk::clear_has_islookatmoving() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void HumanRpcMovePosAsk::clear_islookatmoving() {
+  islookatmoving_ = true;
+  clear_has_islookatmoving();
+}
+inline bool HumanRpcMovePosAsk::islookatmoving() const {
+  return islookatmoving_;
+}
+inline void HumanRpcMovePosAsk::set_islookatmoving(bool value) {
+  set_has_islookatmoving();
+  islookatmoving_ = value;
+}
+
+// optional int32 FromX = 6 [default = -1];
+inline bool HumanRpcMovePosAsk::has_fromx() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void HumanRpcMovePosAsk::set_has_fromx() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void HumanRpcMovePosAsk::clear_has_fromx() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void HumanRpcMovePosAsk::clear_fromx() {
+  fromx_ = -1;
+  clear_has_fromx();
+}
+inline ::google::protobuf::int32 HumanRpcMovePosAsk::fromx() const {
+  return fromx_;
+}
+inline void HumanRpcMovePosAsk::set_fromx(::google::protobuf::int32 value) {
+  set_has_fromx();
+  fromx_ = value;
+}
+
+// optional int32 FromZ = 7 [default = -1];
+inline bool HumanRpcMovePosAsk::has_fromz() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void HumanRpcMovePosAsk::set_has_fromz() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void HumanRpcMovePosAsk::clear_has_fromz() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void HumanRpcMovePosAsk::clear_fromz() {
+  fromz_ = -1;
+  clear_has_fromz();
+}
+inline ::google::protobuf::int32 HumanRpcMovePosAsk::fromz() const {
+  return fromz_;
+}
+inline void HumanRpcMovePosAsk::set_fromz(::google::protobuf::int32 value) {
+  set_has_fromz();
+  fromz_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// HumanRpcMovePosReply
+
+// optional int32 Result = 1 [default = -1];
+inline bool HumanRpcMovePosReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void HumanRpcMovePosReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void HumanRpcMovePosReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void HumanRpcMovePosReply::clear_result() {
+  result_ = -1;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 HumanRpcMovePosReply::result() const {
+  return result_;
+}
+inline void HumanRpcMovePosReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// optional .Vector3Int Pos = 2;
+inline bool HumanRpcMovePosReply::has_pos() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void HumanRpcMovePosReply::set_has_pos() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void HumanRpcMovePosReply::clear_has_pos() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void HumanRpcMovePosReply::clear_pos() {
+  if (pos_ != NULL) pos_->::Vector3Int::Clear();
+  clear_has_pos();
+}
+inline const ::Vector3Int& HumanRpcMovePosReply::pos() const {
+  return pos_ != NULL ? *pos_ : *default_instance_->pos_;
+}
+inline ::Vector3Int* HumanRpcMovePosReply::mutable_pos() {
+  set_has_pos();
+  if (pos_ == NULL) pos_ = new ::Vector3Int;
+  return pos_;
+}
+inline ::Vector3Int* HumanRpcMovePosReply::release_pos() {
+  clear_has_pos();
+  ::Vector3Int* temp = pos_;
+  pos_ = NULL;
+  return temp;
+}
+inline void HumanRpcMovePosReply::set_allocated_pos(::Vector3Int* pos) {
+  delete pos_;
+  pos_ = pos;
+  if (pos) {
+    set_has_pos();
+  } else {
+    clear_has_pos();
+  }
+}
+
+// optional float Dir = 3 [default = -1];
+inline bool HumanRpcMovePosReply::has_dir() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void HumanRpcMovePosReply::set_has_dir() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void HumanRpcMovePosReply::clear_has_dir() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void HumanRpcMovePosReply::clear_dir() {
+  dir_ = -1;
+  clear_has_dir();
+}
+inline float HumanRpcMovePosReply::dir() const {
+  return dir_;
+}
+inline void HumanRpcMovePosReply::set_dir(float value) {
+  set_has_dir();
+  dir_ = value;
+}
+
+// optional uint64 ObjId = 4 [default = 0];
+inline bool HumanRpcMovePosReply::has_objid() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void HumanRpcMovePosReply::set_has_objid() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void HumanRpcMovePosReply::clear_has_objid() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void HumanRpcMovePosReply::clear_objid() {
+  objid_ = GOOGLE_ULONGLONG(0);
+  clear_has_objid();
+}
+inline ::google::protobuf::uint64 HumanRpcMovePosReply::objid() const {
+  return objid_;
+}
+inline void HumanRpcMovePosReply::set_objid(::google::protobuf::uint64 value) {
+  set_has_objid();
+  objid_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// HumanRpcRoleDieNotify
+
+// optional int64 KillerGuid = 1 [default = -1];
+inline bool HumanRpcRoleDieNotify::has_killerguid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void HumanRpcRoleDieNotify::set_has_killerguid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void HumanRpcRoleDieNotify::clear_has_killerguid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void HumanRpcRoleDieNotify::clear_killerguid() {
+  killerguid_ = GOOGLE_LONGLONG(-1);
+  clear_has_killerguid();
+}
+inline ::google::protobuf::int64 HumanRpcRoleDieNotify::killerguid() const {
+  return killerguid_;
+}
+inline void HumanRpcRoleDieNotify::set_killerguid(::google::protobuf::int64 value) {
+  set_has_killerguid();
+  killerguid_ = value;
+}
+
+// optional string KillerName = 2;
+inline bool HumanRpcRoleDieNotify::has_killername() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void HumanRpcRoleDieNotify::set_has_killername() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void HumanRpcRoleDieNotify::clear_has_killername() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void HumanRpcRoleDieNotify::clear_killername() {
+  if (killername_ != &::google::protobuf::internal::kEmptyString) {
+    killername_->clear();
+  }
+  clear_has_killername();
+}
+inline const ::std::string& HumanRpcRoleDieNotify::killername() const {
+  return *killername_;
+}
+inline void HumanRpcRoleDieNotify::set_killername(const ::std::string& value) {
+  set_has_killername();
+  if (killername_ == &::google::protobuf::internal::kEmptyString) {
+    killername_ = new ::std::string;
+  }
+  killername_->assign(value);
+}
+inline void HumanRpcRoleDieNotify::set_killername(const char* value) {
+  set_has_killername();
+  if (killername_ == &::google::protobuf::internal::kEmptyString) {
+    killername_ = new ::std::string;
+  }
+  killername_->assign(value);
+}
+inline void HumanRpcRoleDieNotify::set_killername(const char* value, size_t size) {
+  set_has_killername();
+  if (killername_ == &::google::protobuf::internal::kEmptyString) {
+    killername_ = new ::std::string;
+  }
+  killername_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* HumanRpcRoleDieNotify::mutable_killername() {
+  set_has_killername();
+  if (killername_ == &::google::protobuf::internal::kEmptyString) {
+    killername_ = new ::std::string;
+  }
+  return killername_;
+}
+inline ::std::string* HumanRpcRoleDieNotify::release_killername() {
+  clear_has_killername();
+  if (killername_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = killername_;
+    killername_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void HumanRpcRoleDieNotify::set_allocated_killername(::std::string* killername) {
+  if (killername_ != &::google::protobuf::internal::kEmptyString) {
+    delete killername_;
+  }
+  if (killername) {
+    set_has_killername();
+    killername_ = killername;
+  } else {
+    clear_has_killername();
+    killername_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional int32 KillerType = 3 [default = -1];
+inline bool HumanRpcRoleDieNotify::has_killertype() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void HumanRpcRoleDieNotify::set_has_killertype() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void HumanRpcRoleDieNotify::clear_has_killertype() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void HumanRpcRoleDieNotify::clear_killertype() {
+  killertype_ = -1;
+  clear_has_killertype();
+}
+inline ::google::protobuf::int32 HumanRpcRoleDieNotify::killertype() const {
+  return killertype_;
+}
+inline void HumanRpcRoleDieNotify::set_killertype(::google::protobuf::int32 value) {
+  set_has_killertype();
+  killertype_ = value;
+}
+
+// optional int32 RevieCDTime = 4 [default = -1];
+inline bool HumanRpcRoleDieNotify::has_reviecdtime() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void HumanRpcRoleDieNotify::set_has_reviecdtime() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void HumanRpcRoleDieNotify::clear_has_reviecdtime() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void HumanRpcRoleDieNotify::clear_reviecdtime() {
+  reviecdtime_ = -1;
+  clear_has_reviecdtime();
+}
+inline ::google::protobuf::int32 HumanRpcRoleDieNotify::reviecdtime() const {
+  return reviecdtime_;
+}
+inline void HumanRpcRoleDieNotify::set_reviecdtime(::google::protobuf::int32 value) {
+  set_has_reviecdtime();
+  reviecdtime_ = value;
+}
+
+// optional int32 DungeonReviveCounts = 5 [default = 0];
+inline bool HumanRpcRoleDieNotify::has_dungeonrevivecounts() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void HumanRpcRoleDieNotify::set_has_dungeonrevivecounts() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void HumanRpcRoleDieNotify::clear_has_dungeonrevivecounts() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void HumanRpcRoleDieNotify::clear_dungeonrevivecounts() {
+  dungeonrevivecounts_ = 0;
+  clear_has_dungeonrevivecounts();
+}
+inline ::google::protobuf::int32 HumanRpcRoleDieNotify::dungeonrevivecounts() const {
+  return dungeonrevivecounts_;
+}
+inline void HumanRpcRoleDieNotify::set_dungeonrevivecounts(::google::protobuf::int32 value) {
+  set_has_dungeonrevivecounts();
+  dungeonrevivecounts_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// HumanRpcChangeAnimationStateNotify
+
+// optional bool AnimationState = 1 [default = false];
+inline bool HumanRpcChangeAnimationStateNotify::has_animationstate() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void HumanRpcChangeAnimationStateNotify::set_has_animationstate() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void HumanRpcChangeAnimationStateNotify::clear_has_animationstate() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void HumanRpcChangeAnimationStateNotify::clear_animationstate() {
+  animationstate_ = false;
+  clear_has_animationstate();
+}
+inline bool HumanRpcChangeAnimationStateNotify::animationstate() const {
+  return animationstate_;
+}
+inline void HumanRpcChangeAnimationStateNotify::set_animationstate(bool value) {
+  set_has_animationstate();
+  animationstate_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// HumanRpcFuncNoticeAsk
+
+// -------------------------------------------------------------------
+
+// HumanRpcFuncNoticeReply
+
+// optional int32 Result = 1 [default = -1];
+inline bool HumanRpcFuncNoticeReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void HumanRpcFuncNoticeReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void HumanRpcFuncNoticeReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void HumanRpcFuncNoticeReply::clear_result() {
+  result_ = -1;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 HumanRpcFuncNoticeReply::result() const {
+  return result_;
+}
+inline void HumanRpcFuncNoticeReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// optional int32 FuncIndex = 2 [default = -1];
+inline bool HumanRpcFuncNoticeReply::has_funcindex() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void HumanRpcFuncNoticeReply::set_has_funcindex() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void HumanRpcFuncNoticeReply::clear_has_funcindex() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void HumanRpcFuncNoticeReply::clear_funcindex() {
+  funcindex_ = -1;
+  clear_has_funcindex();
+}
+inline ::google::protobuf::int32 HumanRpcFuncNoticeReply::funcindex() const {
+  return funcindex_;
+}
+inline void HumanRpcFuncNoticeReply::set_funcindex(::google::protobuf::int32 value) {
+  set_has_funcindex();
+  funcindex_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// HumanRpcFuncNoticeChangeAsk
+
+// -------------------------------------------------------------------
+
+// HumanRpcFuncNoticeChangeReply
+
+// optional int32 Result = 1 [default = -1];
+inline bool HumanRpcFuncNoticeChangeReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void HumanRpcFuncNoticeChangeReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void HumanRpcFuncNoticeChangeReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void HumanRpcFuncNoticeChangeReply::clear_result() {
+  result_ = -1;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 HumanRpcFuncNoticeChangeReply::result() const {
+  return result_;
+}
+inline void HumanRpcFuncNoticeChangeReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// HumanRpcClientAttributesNotify
+
+// optional uint64 ObjId = 2 [default = 0];
+inline bool HumanRpcClientAttributesNotify::has_objid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void HumanRpcClientAttributesNotify::set_has_objid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void HumanRpcClientAttributesNotify::clear_has_objid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void HumanRpcClientAttributesNotify::clear_objid() {
+  objid_ = GOOGLE_ULONGLONG(0);
+  clear_has_objid();
+}
+inline ::google::protobuf::uint64 HumanRpcClientAttributesNotify::objid() const {
+  return objid_;
+}
+inline void HumanRpcClientAttributesNotify::set_objid(::google::protobuf::uint64 value) {
+  set_has_objid();
+  objid_ = value;
+}
+
+// optional bool IsTouchJoyStick = 6 [default = false];
+inline bool HumanRpcClientAttributesNotify::has_istouchjoystick() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void HumanRpcClientAttributesNotify::set_has_istouchjoystick() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void HumanRpcClientAttributesNotify::clear_has_istouchjoystick() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void HumanRpcClientAttributesNotify::clear_istouchjoystick() {
+  istouchjoystick_ = false;
+  clear_has_istouchjoystick();
+}
+inline bool HumanRpcClientAttributesNotify::istouchjoystick() const {
+  return istouchjoystick_;
+}
+inline void HumanRpcClientAttributesNotify::set_istouchjoystick(bool value) {
+  set_has_istouchjoystick();
+  istouchjoystick_ = value;
+}
+
+// optional bool IsHold = 7 [default = false];
+inline bool HumanRpcClientAttributesNotify::has_ishold() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void HumanRpcClientAttributesNotify::set_has_ishold() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void HumanRpcClientAttributesNotify::clear_has_ishold() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void HumanRpcClientAttributesNotify::clear_ishold() {
+  ishold_ = false;
+  clear_has_ishold();
+}
+inline bool HumanRpcClientAttributesNotify::ishold() const {
+  return ishold_;
+}
+inline void HumanRpcClientAttributesNotify::set_ishold(bool value) {
+  set_has_ishold();
+  ishold_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// HumanRpcTimeCheckNotify
+
+// optional int64 Data = 1 [default = -1];
+inline bool HumanRpcTimeCheckNotify::has_data() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void HumanRpcTimeCheckNotify::set_has_data() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void HumanRpcTimeCheckNotify::clear_has_data() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void HumanRpcTimeCheckNotify::clear_data() {
+  data_ = GOOGLE_LONGLONG(-1);
+  clear_has_data();
+}
+inline ::google::protobuf::int64 HumanRpcTimeCheckNotify::data() const {
+  return data_;
+}
+inline void HumanRpcTimeCheckNotify::set_data(::google::protobuf::int64 value) {
+  set_has_data();
+  data_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// HumanRpcMotionFlagsNotify
+
+// optional uint64 ObjId = 1 [default = 0];
+inline bool HumanRpcMotionFlagsNotify::has_objid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void HumanRpcMotionFlagsNotify::set_has_objid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void HumanRpcMotionFlagsNotify::clear_has_objid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void HumanRpcMotionFlagsNotify::clear_objid() {
+  objid_ = GOOGLE_ULONGLONG(0);
+  clear_has_objid();
+}
+inline ::google::protobuf::uint64 HumanRpcMotionFlagsNotify::objid() const {
+  return objid_;
+}
+inline void HumanRpcMotionFlagsNotify::set_objid(::google::protobuf::uint64 value) {
+  set_has_objid();
+  objid_ = value;
+}
+
+// optional int32 MotionFlags = 2 [default = -1];
+inline bool HumanRpcMotionFlagsNotify::has_motionflags() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void HumanRpcMotionFlagsNotify::set_has_motionflags() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void HumanRpcMotionFlagsNotify::clear_has_motionflags() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void HumanRpcMotionFlagsNotify::clear_motionflags() {
+  motionflags_ = -1;
+  clear_has_motionflags();
+}
+inline ::google::protobuf::int32 HumanRpcMotionFlagsNotify::motionflags() const {
+  return motionflags_;
+}
+inline void HumanRpcMotionFlagsNotify::set_motionflags(::google::protobuf::int32 value) {
+  set_has_motionflags();
+  motionflags_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// HumanRpcRushAsk
+
+// optional bool Apply = 1 [default = false];
+inline bool HumanRpcRushAsk::has_apply() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void HumanRpcRushAsk::set_has_apply() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void HumanRpcRushAsk::clear_has_apply() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void HumanRpcRushAsk::clear_apply() {
+  apply_ = false;
+  clear_has_apply();
+}
+inline bool HumanRpcRushAsk::apply() const {
+  return apply_;
+}
+inline void HumanRpcRushAsk::set_apply(bool value) {
+  set_has_apply();
+  apply_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// HumanRpcRushReply
+
+// optional int32 Result = 1 [default = -1];
+inline bool HumanRpcRushReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void HumanRpcRushReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void HumanRpcRushReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void HumanRpcRushReply::clear_result() {
+  result_ = -1;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 HumanRpcRushReply::result() const {
+  return result_;
+}
+inline void HumanRpcRushReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// HumanRpcStareAsk
+
+// optional bool Apply = 1 [default = false];
+inline bool HumanRpcStareAsk::has_apply() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void HumanRpcStareAsk::set_has_apply() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void HumanRpcStareAsk::clear_has_apply() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void HumanRpcStareAsk::clear_apply() {
+  apply_ = false;
+  clear_has_apply();
+}
+inline bool HumanRpcStareAsk::apply() const {
+  return apply_;
+}
+inline void HumanRpcStareAsk::set_apply(bool value) {
+  set_has_apply();
+  apply_ = value;
+}
+
+// optional uint64 TargetID = 2 [default = 0];
+inline bool HumanRpcStareAsk::has_targetid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void HumanRpcStareAsk::set_has_targetid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void HumanRpcStareAsk::clear_has_targetid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void HumanRpcStareAsk::clear_targetid() {
+  targetid_ = GOOGLE_ULONGLONG(0);
+  clear_has_targetid();
+}
+inline ::google::protobuf::uint64 HumanRpcStareAsk::targetid() const {
+  return targetid_;
+}
+inline void HumanRpcStareAsk::set_targetid(::google::protobuf::uint64 value) {
+  set_has_targetid();
+  targetid_ = value;
+}
+
+// optional float Dir = 3 [default = -1];
+inline bool HumanRpcStareAsk::has_dir() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void HumanRpcStareAsk::set_has_dir() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void HumanRpcStareAsk::clear_has_dir() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void HumanRpcStareAsk::clear_dir() {
+  dir_ = -1;
+  clear_has_dir();
+}
+inline float HumanRpcStareAsk::dir() const {
+  return dir_;
+}
+inline void HumanRpcStareAsk::set_dir(float value) {
+  set_has_dir();
+  dir_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// HumanRpcStareReply
+
+// optional int32 Result = 1 [default = -1];
+inline bool HumanRpcStareReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void HumanRpcStareReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void HumanRpcStareReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void HumanRpcStareReply::clear_result() {
+  result_ = -1;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 HumanRpcStareReply::result() const {
+  return result_;
+}
+inline void HumanRpcStareReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// optional uint64 TargetID = 2 [default = 0];
+inline bool HumanRpcStareReply::has_targetid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void HumanRpcStareReply::set_has_targetid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void HumanRpcStareReply::clear_has_targetid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void HumanRpcStareReply::clear_targetid() {
+  targetid_ = GOOGLE_ULONGLONG(0);
+  clear_has_targetid();
+}
+inline ::google::protobuf::uint64 HumanRpcStareReply::targetid() const {
+  return targetid_;
+}
+inline void HumanRpcStareReply::set_targetid(::google::protobuf::uint64 value) {
+  set_has_targetid();
+  targetid_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// HumanRpcChangePositionNotify
+
+// optional uint64 ObjID = 1 [default = 0];
+inline bool HumanRpcChangePositionNotify::has_objid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void HumanRpcChangePositionNotify::set_has_objid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void HumanRpcChangePositionNotify::clear_has_objid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void HumanRpcChangePositionNotify::clear_objid() {
+  objid_ = GOOGLE_ULONGLONG(0);
+  clear_has_objid();
+}
+inline ::google::protobuf::uint64 HumanRpcChangePositionNotify::objid() const {
+  return objid_;
+}
+inline void HumanRpcChangePositionNotify::set_objid(::google::protobuf::uint64 value) {
+  set_has_objid();
+  objid_ = value;
+}
+
+// optional .Vector3Int Pos = 2;
+inline bool HumanRpcChangePositionNotify::has_pos() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void HumanRpcChangePositionNotify::set_has_pos() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void HumanRpcChangePositionNotify::clear_has_pos() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void HumanRpcChangePositionNotify::clear_pos() {
+  if (pos_ != NULL) pos_->::Vector3Int::Clear();
+  clear_has_pos();
+}
+inline const ::Vector3Int& HumanRpcChangePositionNotify::pos() const {
+  return pos_ != NULL ? *pos_ : *default_instance_->pos_;
+}
+inline ::Vector3Int* HumanRpcChangePositionNotify::mutable_pos() {
+  set_has_pos();
+  if (pos_ == NULL) pos_ = new ::Vector3Int;
+  return pos_;
+}
+inline ::Vector3Int* HumanRpcChangePositionNotify::release_pos() {
+  clear_has_pos();
+  ::Vector3Int* temp = pos_;
+  pos_ = NULL;
+  return temp;
+}
+inline void HumanRpcChangePositionNotify::set_allocated_pos(::Vector3Int* pos) {
+  delete pos_;
+  pos_ = pos;
+  if (pos) {
+    set_has_pos();
+  } else {
+    clear_has_pos();
+  }
+}
+
+// optional float Dir = 4 [default = -1];
+inline bool HumanRpcChangePositionNotify::has_dir() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void HumanRpcChangePositionNotify::set_has_dir() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void HumanRpcChangePositionNotify::clear_has_dir() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void HumanRpcChangePositionNotify::clear_dir() {
+  dir_ = -1;
+  clear_has_dir();
+}
+inline float HumanRpcChangePositionNotify::dir() const {
+  return dir_;
+}
+inline void HumanRpcChangePositionNotify::set_dir(float value) {
+  set_has_dir();
+  dir_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// HumanRpcAttrChangeNotify
+
+// optional int32 AttrType = 1 [default = -1];
+inline bool HumanRpcAttrChangeNotify::has_attrtype() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void HumanRpcAttrChangeNotify::set_has_attrtype() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void HumanRpcAttrChangeNotify::clear_has_attrtype() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void HumanRpcAttrChangeNotify::clear_attrtype() {
+  attrtype_ = -1;
+  clear_has_attrtype();
+}
+inline ::google::protobuf::int32 HumanRpcAttrChangeNotify::attrtype() const {
+  return attrtype_;
+}
+inline void HumanRpcAttrChangeNotify::set_attrtype(::google::protobuf::int32 value) {
+  set_has_attrtype();
+  attrtype_ = value;
+}
+
+// optional int32 Value = 2 [default = -1];
+inline bool HumanRpcAttrChangeNotify::has_value() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void HumanRpcAttrChangeNotify::set_has_value() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void HumanRpcAttrChangeNotify::clear_has_value() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void HumanRpcAttrChangeNotify::clear_value() {
+  value_ = -1;
+  clear_has_value();
+}
+inline ::google::protobuf::int32 HumanRpcAttrChangeNotify::value() const {
+  return value_;
+}
+inline void HumanRpcAttrChangeNotify::set_value(::google::protobuf::int32 value) {
+  set_has_value();
+  value_ = value;
+}
+
+// optional uint64 Playerguid = 3 [default = 0];
+inline bool HumanRpcAttrChangeNotify::has_playerguid() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void HumanRpcAttrChangeNotify::set_has_playerguid() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void HumanRpcAttrChangeNotify::clear_has_playerguid() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void HumanRpcAttrChangeNotify::clear_playerguid() {
+  playerguid_ = GOOGLE_ULONGLONG(0);
+  clear_has_playerguid();
+}
+inline ::google::protobuf::uint64 HumanRpcAttrChangeNotify::playerguid() const {
+  return playerguid_;
+}
+inline void HumanRpcAttrChangeNotify::set_playerguid(::google::protobuf::uint64 value) {
+  set_has_playerguid();
+  playerguid_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// HumanRpcTrusteeshipAsk
+
+// optional bool Open = 1 [default = false];
+inline bool HumanRpcTrusteeshipAsk::has_open() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void HumanRpcTrusteeshipAsk::set_has_open() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void HumanRpcTrusteeshipAsk::clear_has_open() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void HumanRpcTrusteeshipAsk::clear_open() {
+  open_ = false;
+  clear_has_open();
+}
+inline bool HumanRpcTrusteeshipAsk::open() const {
+  return open_;
+}
+inline void HumanRpcTrusteeshipAsk::set_open(bool value) {
+  set_has_open();
+  open_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// HumanRpcTrusteeshipReply
+
+// optional int32 Result = 1 [default = -1];
+inline bool HumanRpcTrusteeshipReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void HumanRpcTrusteeshipReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void HumanRpcTrusteeshipReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void HumanRpcTrusteeshipReply::clear_result() {
+  result_ = -1;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 HumanRpcTrusteeshipReply::result() const {
+  return result_;
+}
+inline void HumanRpcTrusteeshipReply::set_result(::google::protobuf::int32 value) {
+  set_has_result();
+  result_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// HumanRpcChangePlayerNameAsk
+
+// optional string PlayerName = 1;
+inline bool HumanRpcChangePlayerNameAsk::has_playername() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void HumanRpcChangePlayerNameAsk::set_has_playername() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void HumanRpcChangePlayerNameAsk::clear_has_playername() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void HumanRpcChangePlayerNameAsk::clear_playername() {
+  if (playername_ != &::google::protobuf::internal::kEmptyString) {
+    playername_->clear();
+  }
+  clear_has_playername();
+}
+inline const ::std::string& HumanRpcChangePlayerNameAsk::playername() const {
+  return *playername_;
+}
+inline void HumanRpcChangePlayerNameAsk::set_playername(const ::std::string& value) {
+  set_has_playername();
+  if (playername_ == &::google::protobuf::internal::kEmptyString) {
+    playername_ = new ::std::string;
+  }
+  playername_->assign(value);
+}
+inline void HumanRpcChangePlayerNameAsk::set_playername(const char* value) {
+  set_has_playername();
+  if (playername_ == &::google::protobuf::internal::kEmptyString) {
+    playername_ = new ::std::string;
+  }
+  playername_->assign(value);
+}
+inline void HumanRpcChangePlayerNameAsk::set_playername(const char* value, size_t size) {
+  set_has_playername();
+  if (playername_ == &::google::protobuf::internal::kEmptyString) {
+    playername_ = new ::std::string;
+  }
+  playername_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* HumanRpcChangePlayerNameAsk::mutable_playername() {
+  set_has_playername();
+  if (playername_ == &::google::protobuf::internal::kEmptyString) {
+    playername_ = new ::std::string;
+  }
+  return playername_;
+}
+inline ::std::string* HumanRpcChangePlayerNameAsk::release_playername() {
+  clear_has_playername();
+  if (playername_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = playername_;
+    playername_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void HumanRpcChangePlayerNameAsk::set_allocated_playername(::std::string* playername) {
+  if (playername_ != &::google::protobuf::internal::kEmptyString) {
+    delete playername_;
+  }
+  if (playername) {
+    set_has_playername();
+    playername_ = playername;
+  } else {
+    clear_has_playername();
+    playername_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// -------------------------------------------------------------------
+
+// HumanRpcChangePlayerNameReply
+
+// optional int32 Result = 1 [default = -1];
+inline bool HumanRpcChangePlayerNameReply::has_result() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void HumanRpcChangePlayerNameReply::set_has_result() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void HumanRpcChangePlayerNameReply::clear_has_result() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void HumanRpcChangePlayerNameReply::clear_result() {
+  result_ = -1;
+  clear_has_result();
+}
+inline ::google::protobuf::int32 HumanRpcChangePlayerNameReply::result() const {
+  return result_;
+}
+inline void HumanRpcChangePlayerNameReply::set_result(::google::protobuf::int32 value) {
   set_has_result();
   result_ = value;
 }

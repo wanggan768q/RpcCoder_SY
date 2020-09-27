@@ -18,12 +18,6 @@
 
 namespace {
 
-const ::google::protobuf::Descriptor* WGRpcInformCreateTeamAsk_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  WGRpcInformCreateTeamAsk_reflection_ = NULL;
-const ::google::protobuf::Descriptor* WGRpcInformCreateTeamReply_descriptor_ = NULL;
-const ::google::protobuf::internal::GeneratedMessageReflection*
-  WGRpcInformCreateTeamReply_reflection_ = NULL;
 const ::google::protobuf::Descriptor* WGRpcInformJoinTeamAsk_descriptor_ = NULL;
 const ::google::protobuf::internal::GeneratedMessageReflection*
   WGRpcInformJoinTeamAsk_reflection_ = NULL;
@@ -82,38 +76,7 @@ void protobuf_AssignDesc_WGRpc_2eproto() {
     ::google::protobuf::DescriptorPool::generated_pool()->FindFileByName(
       "WGRpc.proto");
   GOOGLE_CHECK(file != NULL);
-  WGRpcInformCreateTeamAsk_descriptor_ = file->message_type(0);
-  static const int WGRpcInformCreateTeamAsk_offsets_[2] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WGRpcInformCreateTeamAsk, team_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WGRpcInformCreateTeamAsk, result_),
-  };
-  WGRpcInformCreateTeamAsk_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      WGRpcInformCreateTeamAsk_descriptor_,
-      WGRpcInformCreateTeamAsk::default_instance_,
-      WGRpcInformCreateTeamAsk_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WGRpcInformCreateTeamAsk, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WGRpcInformCreateTeamAsk, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(WGRpcInformCreateTeamAsk));
-  WGRpcInformCreateTeamReply_descriptor_ = file->message_type(1);
-  static const int WGRpcInformCreateTeamReply_offsets_[1] = {
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WGRpcInformCreateTeamReply, result_),
-  };
-  WGRpcInformCreateTeamReply_reflection_ =
-    new ::google::protobuf::internal::GeneratedMessageReflection(
-      WGRpcInformCreateTeamReply_descriptor_,
-      WGRpcInformCreateTeamReply::default_instance_,
-      WGRpcInformCreateTeamReply_offsets_,
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WGRpcInformCreateTeamReply, _has_bits_[0]),
-      GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WGRpcInformCreateTeamReply, _unknown_fields_),
-      -1,
-      ::google::protobuf::DescriptorPool::generated_pool(),
-      ::google::protobuf::MessageFactory::generated_factory(),
-      sizeof(WGRpcInformCreateTeamReply));
-  WGRpcInformJoinTeamAsk_descriptor_ = file->message_type(2);
+  WGRpcInformJoinTeamAsk_descriptor_ = file->message_type(0);
   static const int WGRpcInformJoinTeamAsk_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WGRpcInformJoinTeamAsk, member_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WGRpcInformJoinTeamAsk, team_),
@@ -129,7 +92,7 @@ void protobuf_AssignDesc_WGRpc_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(WGRpcInformJoinTeamAsk));
-  WGRpcInformJoinTeamReply_descriptor_ = file->message_type(3);
+  WGRpcInformJoinTeamReply_descriptor_ = file->message_type(1);
   static const int WGRpcInformJoinTeamReply_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WGRpcInformJoinTeamReply, result_),
   };
@@ -144,7 +107,7 @@ void protobuf_AssignDesc_WGRpc_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(WGRpcInformJoinTeamReply));
-  WGRpcInformLeaveAsk_descriptor_ = file->message_type(4);
+  WGRpcInformLeaveAsk_descriptor_ = file->message_type(2);
   static const int WGRpcInformLeaveAsk_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WGRpcInformLeaveAsk, roleid_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WGRpcInformLeaveAsk, newleaderroleid_),
@@ -161,7 +124,7 @@ void protobuf_AssignDesc_WGRpc_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(WGRpcInformLeaveAsk));
-  WGRpcInformLeaveReply_descriptor_ = file->message_type(5);
+  WGRpcInformLeaveReply_descriptor_ = file->message_type(3);
   static const int WGRpcInformLeaveReply_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WGRpcInformLeaveReply, result_),
   };
@@ -176,7 +139,7 @@ void protobuf_AssignDesc_WGRpc_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(WGRpcInformLeaveReply));
-  WGRpcInformAppointTeamLeaderAsk_descriptor_ = file->message_type(6);
+  WGRpcInformAppointTeamLeaderAsk_descriptor_ = file->message_type(4);
   static const int WGRpcInformAppointTeamLeaderAsk_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WGRpcInformAppointTeamLeaderAsk, result_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WGRpcInformAppointTeamLeaderAsk, newleaderroleid_),
@@ -193,7 +156,7 @@ void protobuf_AssignDesc_WGRpc_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(WGRpcInformAppointTeamLeaderAsk));
-  WGRpcInformAppointTeamLeaderReply_descriptor_ = file->message_type(7);
+  WGRpcInformAppointTeamLeaderReply_descriptor_ = file->message_type(5);
   static const int WGRpcInformAppointTeamLeaderReply_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WGRpcInformAppointTeamLeaderReply, result_),
   };
@@ -208,7 +171,7 @@ void protobuf_AssignDesc_WGRpc_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(WGRpcInformAppointTeamLeaderReply));
-  WGRpcInformKickTeamMemberAsk_descriptor_ = file->message_type(8);
+  WGRpcInformKickTeamMemberAsk_descriptor_ = file->message_type(6);
   static const int WGRpcInformKickTeamMemberAsk_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WGRpcInformKickTeamMemberAsk, result_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WGRpcInformKickTeamMemberAsk, kickedmemberroleid_),
@@ -225,7 +188,7 @@ void protobuf_AssignDesc_WGRpc_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(WGRpcInformKickTeamMemberAsk));
-  WGRpcInformKickTeamMemberReply_descriptor_ = file->message_type(9);
+  WGRpcInformKickTeamMemberReply_descriptor_ = file->message_type(7);
   static const int WGRpcInformKickTeamMemberReply_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WGRpcInformKickTeamMemberReply, result_),
   };
@@ -240,7 +203,7 @@ void protobuf_AssignDesc_WGRpc_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(WGRpcInformKickTeamMemberReply));
-  WGRpcInformDissmissTeamAsk_descriptor_ = file->message_type(10);
+  WGRpcInformDissmissTeamAsk_descriptor_ = file->message_type(8);
   static const int WGRpcInformDissmissTeamAsk_offsets_[2] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WGRpcInformDissmissTeamAsk, result_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WGRpcInformDissmissTeamAsk, leaderroleid_),
@@ -256,7 +219,7 @@ void protobuf_AssignDesc_WGRpc_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(WGRpcInformDissmissTeamAsk));
-  WGRpcInformDissmissTeamReply_descriptor_ = file->message_type(11);
+  WGRpcInformDissmissTeamReply_descriptor_ = file->message_type(9);
   static const int WGRpcInformDissmissTeamReply_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WGRpcInformDissmissTeamReply, result_),
   };
@@ -271,7 +234,7 @@ void protobuf_AssignDesc_WGRpc_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(WGRpcInformDissmissTeamReply));
-  WGRpcInformApplyTeamAsk_descriptor_ = file->message_type(12);
+  WGRpcInformApplyTeamAsk_descriptor_ = file->message_type(10);
   static const int WGRpcInformApplyTeamAsk_offsets_[3] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WGRpcInformApplyTeamAsk, teammember_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WGRpcInformApplyTeamAsk, result_),
@@ -288,7 +251,7 @@ void protobuf_AssignDesc_WGRpc_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(WGRpcInformApplyTeamAsk));
-  WGRpcInformApplyTeamReply_descriptor_ = file->message_type(13);
+  WGRpcInformApplyTeamReply_descriptor_ = file->message_type(11);
   static const int WGRpcInformApplyTeamReply_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WGRpcInformApplyTeamReply, result_),
   };
@@ -303,7 +266,7 @@ void protobuf_AssignDesc_WGRpc_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(WGRpcInformApplyTeamReply));
-  WGRpcAgreeTeamApplicantAsk_descriptor_ = file->message_type(14);
+  WGRpcAgreeTeamApplicantAsk_descriptor_ = file->message_type(12);
   static const int WGRpcAgreeTeamApplicantAsk_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WGRpcAgreeTeamApplicantAsk, team_),
   };
@@ -318,7 +281,7 @@ void protobuf_AssignDesc_WGRpc_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(WGRpcAgreeTeamApplicantAsk));
-  WGRpcAgreeTeamApplicantReply_descriptor_ = file->message_type(15);
+  WGRpcAgreeTeamApplicantReply_descriptor_ = file->message_type(13);
   static const int WGRpcAgreeTeamApplicantReply_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WGRpcAgreeTeamApplicantReply, result_),
   };
@@ -333,7 +296,7 @@ void protobuf_AssignDesc_WGRpc_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(WGRpcAgreeTeamApplicantReply));
-  WGRpcInformLoginAsk_descriptor_ = file->message_type(16);
+  WGRpcInformLoginAsk_descriptor_ = file->message_type(14);
   static const int WGRpcInformLoginAsk_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WGRpcInformLoginAsk, team_),
   };
@@ -348,7 +311,7 @@ void protobuf_AssignDesc_WGRpc_2eproto() {
       ::google::protobuf::DescriptorPool::generated_pool(),
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(WGRpcInformLoginAsk));
-  WGRpcInformLoginReply_descriptor_ = file->message_type(17);
+  WGRpcInformLoginReply_descriptor_ = file->message_type(15);
   static const int WGRpcInformLoginReply_offsets_[1] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(WGRpcInformLoginReply, result_),
   };
@@ -375,10 +338,6 @@ inline void protobuf_AssignDescriptorsOnce() {
 
 void protobuf_RegisterTypes(const ::std::string&) {
   protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    WGRpcInformCreateTeamAsk_descriptor_, &WGRpcInformCreateTeamAsk::default_instance());
-  ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
-    WGRpcInformCreateTeamReply_descriptor_, &WGRpcInformCreateTeamReply::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
     WGRpcInformJoinTeamAsk_descriptor_, &WGRpcInformJoinTeamAsk::default_instance());
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedMessage(
@@ -416,10 +375,6 @@ void protobuf_RegisterTypes(const ::std::string&) {
 }  // namespace
 
 void protobuf_ShutdownFile_WGRpc_2eproto() {
-  delete WGRpcInformCreateTeamAsk::default_instance_;
-  delete WGRpcInformCreateTeamAsk_reflection_;
-  delete WGRpcInformCreateTeamReply::default_instance_;
-  delete WGRpcInformCreateTeamReply_reflection_;
   delete WGRpcInformJoinTeamAsk::default_instance_;
   delete WGRpcInformJoinTeamAsk_reflection_;
   delete WGRpcInformJoinTeamReply::default_instance_;
@@ -462,42 +417,37 @@ void protobuf_AddDesc_WGRpc_2eproto() {
 
   ::protobuf_AddDesc_PublicStruct_2eproto();
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\013WGRpc.proto\032\022PublicStruct.proto\"J\n\030WGR"
-    "pcInformCreateTeamAsk\022\027\n\004Team\030\001 \001(\0132\t.Te"
-    "amInfo\022\025\n\006Result\030\002 \001(\021:\005-9999\"3\n\032WGRpcIn"
-    "formCreateTeamReply\022\025\n\006Result\030\001 \001(\021:\005-99"
-    "99\"R\n\026WGRpcInformJoinTeamAsk\022\037\n\006Member\030\005"
-    " \001(\0132\017.TeamMemberInfo\022\027\n\004Team\030\006 \001(\0132\t.Te"
-    "amInfo\"1\n\030WGRpcInformJoinTeamReply\022\025\n\006Re"
-    "sult\030\001 \001(\021:\005-9999\"[\n\023WGRpcInformLeaveAsk"
-    "\022\021\n\006RoleId\030\001 \001(\004:\0010\022\032\n\017NewLeaderRoleId\030\002"
-    " \001(\004:\0010\022\025\n\006Result\030\003 \001(\021:\005-9999\".\n\025WGRpcI"
-    "nformLeaveReply\022\025\n\006Result\030\001 \001(\021:\005-9999\"p"
-    "\n\037WGRpcInformAppointTeamLeaderAsk\022\025\n\006Res"
-    "ult\030\001 \001(\021:\005-9999\022\032\n\017NewLeaderRoleId\030\002 \001("
-    "\004:\0010\022\032\n\017OldLeaderRoleId\030\003 \001(\004:\0010\":\n!WGRp"
-    "cInformAppointTeamLeaderReply\022\025\n\006Result\030"
-    "\001 \001(\021:\005-9999\"m\n\034WGRpcInformKickTeamMembe"
-    "rAsk\022\025\n\006Result\030\001 \001(\021:\005-9999\022\035\n\022KickedMem"
-    "berRoleId\030\002 \001(\004:\0010\022\027\n\014LeaderRoleId\030\003 \001(\004"
-    ":\0010\"7\n\036WGRpcInformKickTeamMemberReply\022\025\n"
-    "\006Result\030\001 \001(\021:\005-9999\"L\n\032WGRpcInformDissm"
-    "issTeamAsk\022\025\n\006Result\030\001 \001(\021:\005-9999\022\027\n\014Lea"
-    "derRoleId\030\002 \001(\004:\0010\"5\n\034WGRpcInformDissmis"
-    "sTeamReply\022\025\n\006Result\030\001 \001(\021:\005-9999\"i\n\027WGR"
-    "pcInformApplyTeamAsk\022#\n\nTeamMember\030\001 \001(\013"
-    "2\017.TeamMemberInfo\022\025\n\006Result\030\002 \001(\021:\005-9999"
-    "\022\022\n\006TeamId\030\003 \001(\021:\002-1\"2\n\031WGRpcInformApply"
-    "TeamReply\022\025\n\006Result\030\001 \001(\021:\005-9999\"5\n\032WGRp"
-    "cAgreeTeamApplicantAsk\022\027\n\004Team\030\002 \001(\0132\t.T"
-    "eamInfo\"5\n\034WGRpcAgreeTeamApplicantReply\022"
-    "\025\n\006Result\030\001 \001(\021:\005-9999\".\n\023WGRpcInformLog"
-    "inAsk\022\027\n\004Team\030\001 \001(\0132\t.TeamInfo\".\n\025WGRpcI"
-    "nformLoginReply\022\025\n\006Result\030\001 \001(\021:\005-9999", 1278);
+    "\n\013WGRpc.proto\032\022PublicStruct.proto\"R\n\026WGR"
+    "pcInformJoinTeamAsk\022\037\n\006Member\030\005 \001(\0132\017.Te"
+    "amMemberInfo\022\027\n\004Team\030\006 \001(\0132\t.TeamInfo\"1\n"
+    "\030WGRpcInformJoinTeamReply\022\025\n\006Result\030\001 \001("
+    "\005:\005-9999\"[\n\023WGRpcInformLeaveAsk\022\021\n\006RoleI"
+    "d\030\001 \001(\004:\0010\022\032\n\017NewLeaderRoleId\030\002 \001(\004:\0010\022\025"
+    "\n\006Result\030\003 \001(\005:\005-9999\".\n\025WGRpcInformLeav"
+    "eReply\022\025\n\006Result\030\001 \001(\005:\005-9999\"p\n\037WGRpcIn"
+    "formAppointTeamLeaderAsk\022\025\n\006Result\030\001 \001(\005"
+    ":\005-9999\022\032\n\017NewLeaderRoleId\030\002 \001(\004:\0010\022\032\n\017O"
+    "ldLeaderRoleId\030\003 \001(\004:\0010\":\n!WGRpcInformAp"
+    "pointTeamLeaderReply\022\025\n\006Result\030\001 \001(\005:\005-9"
+    "999\"m\n\034WGRpcInformKickTeamMemberAsk\022\025\n\006R"
+    "esult\030\001 \001(\005:\005-9999\022\035\n\022KickedMemberRoleId"
+    "\030\002 \001(\004:\0010\022\027\n\014LeaderRoleId\030\003 \001(\004:\0010\"7\n\036WG"
+    "RpcInformKickTeamMemberReply\022\025\n\006Result\030\001"
+    " \001(\005:\005-9999\"L\n\032WGRpcInformDissmissTeamAs"
+    "k\022\025\n\006Result\030\001 \001(\005:\005-9999\022\027\n\014LeaderRoleId"
+    "\030\002 \001(\004:\0010\"5\n\034WGRpcInformDissmissTeamRepl"
+    "y\022\025\n\006Result\030\001 \001(\005:\005-9999\"h\n\027WGRpcInformA"
+    "pplyTeamAsk\022#\n\nTeamMember\030\001 \001(\0132\017.TeamMe"
+    "mberInfo\022\025\n\006Result\030\002 \001(\005:\005-9999\022\021\n\006TeamI"
+    "d\030\003 \001(\004:\0010\"2\n\031WGRpcInformApplyTeamReply\022"
+    "\025\n\006Result\030\001 \001(\005:\005-9999\"5\n\032WGRpcAgreeTeam"
+    "ApplicantAsk\022\027\n\004Team\030\002 \001(\0132\t.TeamInfo\"5\n"
+    "\034WGRpcAgreeTeamApplicantReply\022\025\n\006Result\030"
+    "\001 \001(\005:\005-9999\".\n\023WGRpcInformLoginAsk\022\027\n\004T"
+    "eam\030\001 \001(\0132\t.TeamInfo\".\n\025WGRpcInformLogin"
+    "Reply\022\025\n\006Result\030\001 \001(\005:\005-9999", 1148);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "WGRpc.proto", &protobuf_RegisterTypes);
-  WGRpcInformCreateTeamAsk::default_instance_ = new WGRpcInformCreateTeamAsk();
-  WGRpcInformCreateTeamReply::default_instance_ = new WGRpcInformCreateTeamReply();
   WGRpcInformJoinTeamAsk::default_instance_ = new WGRpcInformJoinTeamAsk();
   WGRpcInformJoinTeamReply::default_instance_ = new WGRpcInformJoinTeamReply();
   WGRpcInformLeaveAsk::default_instance_ = new WGRpcInformLeaveAsk();
@@ -514,8 +464,6 @@ void protobuf_AddDesc_WGRpc_2eproto() {
   WGRpcAgreeTeamApplicantReply::default_instance_ = new WGRpcAgreeTeamApplicantReply();
   WGRpcInformLoginAsk::default_instance_ = new WGRpcInformLoginAsk();
   WGRpcInformLoginReply::default_instance_ = new WGRpcInformLoginReply();
-  WGRpcInformCreateTeamAsk::default_instance_->InitAsDefaultInstance();
-  WGRpcInformCreateTeamReply::default_instance_->InitAsDefaultInstance();
   WGRpcInformJoinTeamAsk::default_instance_->InitAsDefaultInstance();
   WGRpcInformJoinTeamReply::default_instance_->InitAsDefaultInstance();
   WGRpcInformLeaveAsk::default_instance_->InitAsDefaultInstance();
@@ -541,467 +489,6 @@ struct StaticDescriptorInitializer_WGRpc_2eproto {
     protobuf_AddDesc_WGRpc_2eproto();
   }
 } static_descriptor_initializer_WGRpc_2eproto_;
-
-// ===================================================================
-
-#ifndef _MSC_VER
-const int WGRpcInformCreateTeamAsk::kTeamFieldNumber;
-const int WGRpcInformCreateTeamAsk::kResultFieldNumber;
-#endif  // !_MSC_VER
-
-WGRpcInformCreateTeamAsk::WGRpcInformCreateTeamAsk()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void WGRpcInformCreateTeamAsk::InitAsDefaultInstance() {
-  team_ = const_cast< ::TeamInfo*>(&::TeamInfo::default_instance());
-}
-
-WGRpcInformCreateTeamAsk::WGRpcInformCreateTeamAsk(const WGRpcInformCreateTeamAsk& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void WGRpcInformCreateTeamAsk::SharedCtor() {
-  _cached_size_ = 0;
-  team_ = NULL;
-  result_ = -9999;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-WGRpcInformCreateTeamAsk::~WGRpcInformCreateTeamAsk() {
-  SharedDtor();
-}
-
-void WGRpcInformCreateTeamAsk::SharedDtor() {
-  if (this != default_instance_) {
-    delete team_;
-  }
-}
-
-void WGRpcInformCreateTeamAsk::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* WGRpcInformCreateTeamAsk::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return WGRpcInformCreateTeamAsk_descriptor_;
-}
-
-const WGRpcInformCreateTeamAsk& WGRpcInformCreateTeamAsk::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_WGRpc_2eproto();
-  return *default_instance_;
-}
-
-WGRpcInformCreateTeamAsk* WGRpcInformCreateTeamAsk::default_instance_ = NULL;
-
-WGRpcInformCreateTeamAsk* WGRpcInformCreateTeamAsk::New() const {
-  return new WGRpcInformCreateTeamAsk;
-}
-
-void WGRpcInformCreateTeamAsk::Clear() {
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (has_team()) {
-      if (team_ != NULL) team_->::TeamInfo::Clear();
-    }
-    result_ = -9999;
-  }
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool WGRpcInformCreateTeamAsk::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional .TeamInfo Team = 1;
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_team()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(16)) goto parse_Result;
-        break;
-      }
-
-      // optional sint32 Result = 2 [default = -9999];
-      case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_Result:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
-                 input, &result_)));
-          set_has_result();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void WGRpcInformCreateTeamAsk::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional .TeamInfo Team = 1;
-  if (has_team()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->team(), output);
-  }
-
-  // optional sint32 Result = 2 [default = -9999];
-  if (has_result()) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(2, this->result(), output);
-  }
-
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* WGRpcInformCreateTeamAsk::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // optional .TeamInfo Team = 1;
-  if (has_team()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        1, this->team(), target);
-  }
-
-  // optional sint32 Result = 2 [default = -9999];
-  if (has_result()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(2, this->result(), target);
-  }
-
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int WGRpcInformCreateTeamAsk::ByteSize() const {
-  int total_size = 0;
-
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional .TeamInfo Team = 1;
-    if (has_team()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->team());
-    }
-
-    // optional sint32 Result = 2 [default = -9999];
-    if (has_result()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::SInt32Size(
-          this->result());
-    }
-
-  }
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void WGRpcInformCreateTeamAsk::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const WGRpcInformCreateTeamAsk* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const WGRpcInformCreateTeamAsk*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void WGRpcInformCreateTeamAsk::MergeFrom(const WGRpcInformCreateTeamAsk& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_team()) {
-      mutable_team()->::TeamInfo::MergeFrom(from.team());
-    }
-    if (from.has_result()) {
-      set_result(from.result());
-    }
-  }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void WGRpcInformCreateTeamAsk::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void WGRpcInformCreateTeamAsk::CopyFrom(const WGRpcInformCreateTeamAsk& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool WGRpcInformCreateTeamAsk::IsInitialized() const {
-
-  return true;
-}
-
-void WGRpcInformCreateTeamAsk::Swap(WGRpcInformCreateTeamAsk* other) {
-  if (other != this) {
-    std::swap(team_, other->team_);
-    std::swap(result_, other->result_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata WGRpcInformCreateTeamAsk::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = WGRpcInformCreateTeamAsk_descriptor_;
-  metadata.reflection = WGRpcInformCreateTeamAsk_reflection_;
-  return metadata;
-}
-
-
-// ===================================================================
-
-#ifndef _MSC_VER
-const int WGRpcInformCreateTeamReply::kResultFieldNumber;
-#endif  // !_MSC_VER
-
-WGRpcInformCreateTeamReply::WGRpcInformCreateTeamReply()
-  : ::google::protobuf::Message() {
-  SharedCtor();
-}
-
-void WGRpcInformCreateTeamReply::InitAsDefaultInstance() {
-}
-
-WGRpcInformCreateTeamReply::WGRpcInformCreateTeamReply(const WGRpcInformCreateTeamReply& from)
-  : ::google::protobuf::Message() {
-  SharedCtor();
-  MergeFrom(from);
-}
-
-void WGRpcInformCreateTeamReply::SharedCtor() {
-  _cached_size_ = 0;
-  result_ = -9999;
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-}
-
-WGRpcInformCreateTeamReply::~WGRpcInformCreateTeamReply() {
-  SharedDtor();
-}
-
-void WGRpcInformCreateTeamReply::SharedDtor() {
-  if (this != default_instance_) {
-  }
-}
-
-void WGRpcInformCreateTeamReply::SetCachedSize(int size) const {
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-}
-const ::google::protobuf::Descriptor* WGRpcInformCreateTeamReply::descriptor() {
-  protobuf_AssignDescriptorsOnce();
-  return WGRpcInformCreateTeamReply_descriptor_;
-}
-
-const WGRpcInformCreateTeamReply& WGRpcInformCreateTeamReply::default_instance() {
-  if (default_instance_ == NULL) protobuf_AddDesc_WGRpc_2eproto();
-  return *default_instance_;
-}
-
-WGRpcInformCreateTeamReply* WGRpcInformCreateTeamReply::default_instance_ = NULL;
-
-WGRpcInformCreateTeamReply* WGRpcInformCreateTeamReply::New() const {
-  return new WGRpcInformCreateTeamReply;
-}
-
-void WGRpcInformCreateTeamReply::Clear() {
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    result_ = -9999;
-  }
-  ::memset(_has_bits_, 0, sizeof(_has_bits_));
-  mutable_unknown_fields()->Clear();
-}
-
-bool WGRpcInformCreateTeamReply::MergePartialFromCodedStream(
-    ::google::protobuf::io::CodedInputStream* input) {
-#define DO_(EXPRESSION) if (!(EXPRESSION)) return false
-  ::google::protobuf::uint32 tag;
-  while ((tag = input->ReadTag()) != 0) {
-    switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional sint32 Result = 1 [default = -9999];
-      case 1: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
-                 input, &result_)));
-          set_has_result();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectAtEnd()) return true;
-        break;
-      }
-
-      default: {
-      handle_uninterpreted:
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_END_GROUP) {
-          return true;
-        }
-        DO_(::google::protobuf::internal::WireFormat::SkipField(
-              input, tag, mutable_unknown_fields()));
-        break;
-      }
-    }
-  }
-  return true;
-#undef DO_
-}
-
-void WGRpcInformCreateTeamReply::SerializeWithCachedSizes(
-    ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional sint32 Result = 1 [default = -9999];
-  if (has_result()) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(1, this->result(), output);
-  }
-
-  if (!unknown_fields().empty()) {
-    ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
-        unknown_fields(), output);
-  }
-}
-
-::google::protobuf::uint8* WGRpcInformCreateTeamReply::SerializeWithCachedSizesToArray(
-    ::google::protobuf::uint8* target) const {
-  // optional sint32 Result = 1 [default = -9999];
-  if (has_result()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(1, this->result(), target);
-  }
-
-  if (!unknown_fields().empty()) {
-    target = ::google::protobuf::internal::WireFormat::SerializeUnknownFieldsToArray(
-        unknown_fields(), target);
-  }
-  return target;
-}
-
-int WGRpcInformCreateTeamReply::ByteSize() const {
-  int total_size = 0;
-
-  if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional sint32 Result = 1 [default = -9999];
-    if (has_result()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::SInt32Size(
-          this->result());
-    }
-
-  }
-  if (!unknown_fields().empty()) {
-    total_size +=
-      ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
-        unknown_fields());
-  }
-  GOOGLE_SAFE_CONCURRENT_WRITES_BEGIN();
-  _cached_size_ = total_size;
-  GOOGLE_SAFE_CONCURRENT_WRITES_END();
-  return total_size;
-}
-
-void WGRpcInformCreateTeamReply::MergeFrom(const ::google::protobuf::Message& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  const WGRpcInformCreateTeamReply* source =
-    ::google::protobuf::internal::dynamic_cast_if_available<const WGRpcInformCreateTeamReply*>(
-      &from);
-  if (source == NULL) {
-    ::google::protobuf::internal::ReflectionOps::Merge(from, this);
-  } else {
-    MergeFrom(*source);
-  }
-}
-
-void WGRpcInformCreateTeamReply::MergeFrom(const WGRpcInformCreateTeamReply& from) {
-  GOOGLE_CHECK_NE(&from, this);
-  if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    if (from.has_result()) {
-      set_result(from.result());
-    }
-  }
-  mutable_unknown_fields()->MergeFrom(from.unknown_fields());
-}
-
-void WGRpcInformCreateTeamReply::CopyFrom(const ::google::protobuf::Message& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-void WGRpcInformCreateTeamReply::CopyFrom(const WGRpcInformCreateTeamReply& from) {
-  if (&from == this) return;
-  Clear();
-  MergeFrom(from);
-}
-
-bool WGRpcInformCreateTeamReply::IsInitialized() const {
-
-  return true;
-}
-
-void WGRpcInformCreateTeamReply::Swap(WGRpcInformCreateTeamReply* other) {
-  if (other != this) {
-    std::swap(result_, other->result_);
-    std::swap(_has_bits_[0], other->_has_bits_[0]);
-    _unknown_fields_.Swap(&other->_unknown_fields_);
-    std::swap(_cached_size_, other->_cached_size_);
-  }
-}
-
-::google::protobuf::Metadata WGRpcInformCreateTeamReply::GetMetadata() const {
-  protobuf_AssignDescriptorsOnce();
-  ::google::protobuf::Metadata metadata;
-  metadata.descriptor = WGRpcInformCreateTeamReply_descriptor_;
-  metadata.reflection = WGRpcInformCreateTeamReply_reflection_;
-  return metadata;
-}
-
 
 // ===================================================================
 
@@ -1331,12 +818,12 @@ bool WGRpcInformJoinTeamReply::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional sint32 Result = 1 [default = -9999];
+      // optional int32 Result = 1 [default = -9999];
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &result_)));
           set_has_result();
         } else {
@@ -1364,9 +851,9 @@ bool WGRpcInformJoinTeamReply::MergePartialFromCodedStream(
 
 void WGRpcInformJoinTeamReply::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   if (has_result()) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(1, this->result(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->result(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -1377,9 +864,9 @@ void WGRpcInformJoinTeamReply::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* WGRpcInformJoinTeamReply::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   if (has_result()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(1, this->result(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->result(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -1393,10 +880,10 @@ int WGRpcInformJoinTeamReply::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional sint32 Result = 1 [default = -9999];
+    // optional int32 Result = 1 [default = -9999];
     if (has_result()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->result());
     }
 
@@ -1576,13 +1063,13 @@ bool WGRpcInformLeaveAsk::MergePartialFromCodedStream(
         break;
       }
 
-      // optional sint32 Result = 3 [default = -9999];
+      // optional int32 Result = 3 [default = -9999];
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_Result:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &result_)));
           set_has_result();
         } else {
@@ -1620,9 +1107,9 @@ void WGRpcInformLeaveAsk::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteUInt64(2, this->newleaderroleid(), output);
   }
 
-  // optional sint32 Result = 3 [default = -9999];
+  // optional int32 Result = 3 [default = -9999];
   if (has_result()) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(3, this->result(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->result(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -1643,9 +1130,9 @@ void WGRpcInformLeaveAsk::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(2, this->newleaderroleid(), target);
   }
 
-  // optional sint32 Result = 3 [default = -9999];
+  // optional int32 Result = 3 [default = -9999];
   if (has_result()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(3, this->result(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->result(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -1673,10 +1160,10 @@ int WGRpcInformLeaveAsk::ByteSize() const {
           this->newleaderroleid());
     }
 
-    // optional sint32 Result = 3 [default = -9999];
+    // optional int32 Result = 3 [default = -9999];
     if (has_result()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->result());
     }
 
@@ -1827,12 +1314,12 @@ bool WGRpcInformLeaveReply::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional sint32 Result = 1 [default = -9999];
+      // optional int32 Result = 1 [default = -9999];
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &result_)));
           set_has_result();
         } else {
@@ -1860,9 +1347,9 @@ bool WGRpcInformLeaveReply::MergePartialFromCodedStream(
 
 void WGRpcInformLeaveReply::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   if (has_result()) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(1, this->result(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->result(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -1873,9 +1360,9 @@ void WGRpcInformLeaveReply::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* WGRpcInformLeaveReply::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   if (has_result()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(1, this->result(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->result(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -1889,10 +1376,10 @@ int WGRpcInformLeaveReply::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional sint32 Result = 1 [default = -9999];
+    // optional int32 Result = 1 [default = -9999];
     if (has_result()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->result());
     }
 
@@ -2041,12 +1528,12 @@ bool WGRpcInformAppointTeamLeaderAsk::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional sint32 Result = 1 [default = -9999];
+      // optional int32 Result = 1 [default = -9999];
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &result_)));
           set_has_result();
         } else {
@@ -2106,9 +1593,9 @@ bool WGRpcInformAppointTeamLeaderAsk::MergePartialFromCodedStream(
 
 void WGRpcInformAppointTeamLeaderAsk::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   if (has_result()) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(1, this->result(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->result(), output);
   }
 
   // optional uint64 NewLeaderRoleId = 2 [default = 0];
@@ -2129,9 +1616,9 @@ void WGRpcInformAppointTeamLeaderAsk::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* WGRpcInformAppointTeamLeaderAsk::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   if (has_result()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(1, this->result(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->result(), target);
   }
 
   // optional uint64 NewLeaderRoleId = 2 [default = 0];
@@ -2155,10 +1642,10 @@ int WGRpcInformAppointTeamLeaderAsk::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional sint32 Result = 1 [default = -9999];
+    // optional int32 Result = 1 [default = -9999];
     if (has_result()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->result());
     }
 
@@ -2323,12 +1810,12 @@ bool WGRpcInformAppointTeamLeaderReply::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional sint32 Result = 1 [default = -9999];
+      // optional int32 Result = 1 [default = -9999];
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &result_)));
           set_has_result();
         } else {
@@ -2356,9 +1843,9 @@ bool WGRpcInformAppointTeamLeaderReply::MergePartialFromCodedStream(
 
 void WGRpcInformAppointTeamLeaderReply::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   if (has_result()) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(1, this->result(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->result(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -2369,9 +1856,9 @@ void WGRpcInformAppointTeamLeaderReply::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* WGRpcInformAppointTeamLeaderReply::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   if (has_result()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(1, this->result(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->result(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -2385,10 +1872,10 @@ int WGRpcInformAppointTeamLeaderReply::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional sint32 Result = 1 [default = -9999];
+    // optional int32 Result = 1 [default = -9999];
     if (has_result()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->result());
     }
 
@@ -2537,12 +2024,12 @@ bool WGRpcInformKickTeamMemberAsk::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional sint32 Result = 1 [default = -9999];
+      // optional int32 Result = 1 [default = -9999];
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &result_)));
           set_has_result();
         } else {
@@ -2602,9 +2089,9 @@ bool WGRpcInformKickTeamMemberAsk::MergePartialFromCodedStream(
 
 void WGRpcInformKickTeamMemberAsk::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   if (has_result()) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(1, this->result(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->result(), output);
   }
 
   // optional uint64 KickedMemberRoleId = 2 [default = 0];
@@ -2625,9 +2112,9 @@ void WGRpcInformKickTeamMemberAsk::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* WGRpcInformKickTeamMemberAsk::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   if (has_result()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(1, this->result(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->result(), target);
   }
 
   // optional uint64 KickedMemberRoleId = 2 [default = 0];
@@ -2651,10 +2138,10 @@ int WGRpcInformKickTeamMemberAsk::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional sint32 Result = 1 [default = -9999];
+    // optional int32 Result = 1 [default = -9999];
     if (has_result()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->result());
     }
 
@@ -2819,12 +2306,12 @@ bool WGRpcInformKickTeamMemberReply::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional sint32 Result = 1 [default = -9999];
+      // optional int32 Result = 1 [default = -9999];
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &result_)));
           set_has_result();
         } else {
@@ -2852,9 +2339,9 @@ bool WGRpcInformKickTeamMemberReply::MergePartialFromCodedStream(
 
 void WGRpcInformKickTeamMemberReply::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   if (has_result()) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(1, this->result(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->result(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -2865,9 +2352,9 @@ void WGRpcInformKickTeamMemberReply::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* WGRpcInformKickTeamMemberReply::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   if (has_result()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(1, this->result(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->result(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -2881,10 +2368,10 @@ int WGRpcInformKickTeamMemberReply::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional sint32 Result = 1 [default = -9999];
+    // optional int32 Result = 1 [default = -9999];
     if (has_result()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->result());
     }
 
@@ -3030,12 +2517,12 @@ bool WGRpcInformDissmissTeamAsk::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional sint32 Result = 1 [default = -9999];
+      // optional int32 Result = 1 [default = -9999];
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &result_)));
           set_has_result();
         } else {
@@ -3079,9 +2566,9 @@ bool WGRpcInformDissmissTeamAsk::MergePartialFromCodedStream(
 
 void WGRpcInformDissmissTeamAsk::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   if (has_result()) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(1, this->result(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->result(), output);
   }
 
   // optional uint64 LeaderRoleId = 2 [default = 0];
@@ -3097,9 +2584,9 @@ void WGRpcInformDissmissTeamAsk::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* WGRpcInformDissmissTeamAsk::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   if (has_result()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(1, this->result(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->result(), target);
   }
 
   // optional uint64 LeaderRoleId = 2 [default = 0];
@@ -3118,10 +2605,10 @@ int WGRpcInformDissmissTeamAsk::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional sint32 Result = 1 [default = -9999];
+    // optional int32 Result = 1 [default = -9999];
     if (has_result()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->result());
     }
 
@@ -3275,12 +2762,12 @@ bool WGRpcInformDissmissTeamReply::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional sint32 Result = 1 [default = -9999];
+      // optional int32 Result = 1 [default = -9999];
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &result_)));
           set_has_result();
         } else {
@@ -3308,9 +2795,9 @@ bool WGRpcInformDissmissTeamReply::MergePartialFromCodedStream(
 
 void WGRpcInformDissmissTeamReply::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   if (has_result()) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(1, this->result(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->result(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -3321,9 +2808,9 @@ void WGRpcInformDissmissTeamReply::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* WGRpcInformDissmissTeamReply::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   if (has_result()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(1, this->result(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->result(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -3337,10 +2824,10 @@ int WGRpcInformDissmissTeamReply::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional sint32 Result = 1 [default = -9999];
+    // optional int32 Result = 1 [default = -9999];
     if (has_result()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->result());
     }
 
@@ -3440,7 +2927,7 @@ void WGRpcInformApplyTeamAsk::SharedCtor() {
   _cached_size_ = 0;
   teammember_ = NULL;
   result_ = -9999;
-  teamid_ = -1;
+  teamid_ = GOOGLE_ULONGLONG(0);
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -3481,7 +2968,7 @@ void WGRpcInformApplyTeamAsk::Clear() {
       if (teammember_ != NULL) teammember_->::TeamMemberInfo::Clear();
     }
     result_ = -9999;
-    teamid_ = -1;
+    teamid_ = GOOGLE_ULONGLONG(0);
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -3506,13 +2993,13 @@ bool WGRpcInformApplyTeamAsk::MergePartialFromCodedStream(
         break;
       }
 
-      // optional sint32 Result = 2 [default = -9999];
+      // optional int32 Result = 2 [default = -9999];
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_Result:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &result_)));
           set_has_result();
         } else {
@@ -3522,13 +3009,13 @@ bool WGRpcInformApplyTeamAsk::MergePartialFromCodedStream(
         break;
       }
 
-      // optional sint32 TeamId = 3 [default = -1];
+      // optional uint64 TeamId = 3 [default = 0];
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_TeamId:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                   ::google::protobuf::uint64, ::google::protobuf::internal::WireFormatLite::TYPE_UINT64>(
                  input, &teamid_)));
           set_has_teamid();
         } else {
@@ -3562,14 +3049,14 @@ void WGRpcInformApplyTeamAsk::SerializeWithCachedSizes(
       1, this->teammember(), output);
   }
 
-  // optional sint32 Result = 2 [default = -9999];
+  // optional int32 Result = 2 [default = -9999];
   if (has_result()) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(2, this->result(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->result(), output);
   }
 
-  // optional sint32 TeamId = 3 [default = -1];
+  // optional uint64 TeamId = 3 [default = 0];
   if (has_teamid()) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(3, this->teamid(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteUInt64(3, this->teamid(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -3587,14 +3074,14 @@ void WGRpcInformApplyTeamAsk::SerializeWithCachedSizes(
         1, this->teammember(), target);
   }
 
-  // optional sint32 Result = 2 [default = -9999];
+  // optional int32 Result = 2 [default = -9999];
   if (has_result()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(2, this->result(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->result(), target);
   }
 
-  // optional sint32 TeamId = 3 [default = -1];
+  // optional uint64 TeamId = 3 [default = 0];
   if (has_teamid()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(3, this->teamid(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteUInt64ToArray(3, this->teamid(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -3615,17 +3102,17 @@ int WGRpcInformApplyTeamAsk::ByteSize() const {
           this->teammember());
     }
 
-    // optional sint32 Result = 2 [default = -9999];
+    // optional int32 Result = 2 [default = -9999];
     if (has_result()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->result());
     }
 
-    // optional sint32 TeamId = 3 [default = -1];
+    // optional uint64 TeamId = 3 [default = 0];
     if (has_teamid()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+        ::google::protobuf::internal::WireFormatLite::UInt64Size(
           this->teamid());
     }
 
@@ -3776,12 +3263,12 @@ bool WGRpcInformApplyTeamReply::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional sint32 Result = 1 [default = -9999];
+      // optional int32 Result = 1 [default = -9999];
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &result_)));
           set_has_result();
         } else {
@@ -3809,9 +3296,9 @@ bool WGRpcInformApplyTeamReply::MergePartialFromCodedStream(
 
 void WGRpcInformApplyTeamReply::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   if (has_result()) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(1, this->result(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->result(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -3822,9 +3309,9 @@ void WGRpcInformApplyTeamReply::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* WGRpcInformApplyTeamReply::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   if (has_result()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(1, this->result(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->result(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -3838,10 +3325,10 @@ int WGRpcInformApplyTeamReply::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional sint32 Result = 1 [default = -9999];
+    // optional int32 Result = 1 [default = -9999];
     if (has_result()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->result());
     }
 
@@ -4197,12 +3684,12 @@ bool WGRpcAgreeTeamApplicantReply::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional sint32 Result = 1 [default = -9999];
+      // optional int32 Result = 1 [default = -9999];
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &result_)));
           set_has_result();
         } else {
@@ -4230,9 +3717,9 @@ bool WGRpcAgreeTeamApplicantReply::MergePartialFromCodedStream(
 
 void WGRpcAgreeTeamApplicantReply::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   if (has_result()) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(1, this->result(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->result(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -4243,9 +3730,9 @@ void WGRpcAgreeTeamApplicantReply::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* WGRpcAgreeTeamApplicantReply::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   if (has_result()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(1, this->result(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->result(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -4259,10 +3746,10 @@ int WGRpcAgreeTeamApplicantReply::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional sint32 Result = 1 [default = -9999];
+    // optional int32 Result = 1 [default = -9999];
     if (has_result()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->result());
     }
 
@@ -4618,12 +4105,12 @@ bool WGRpcInformLoginReply::MergePartialFromCodedStream(
   ::google::protobuf::uint32 tag;
   while ((tag = input->ReadTag()) != 0) {
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // optional sint32 Result = 1 [default = -9999];
+      // optional int32 Result = 1 [default = -9999];
       case 1: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_SINT32>(
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &result_)));
           set_has_result();
         } else {
@@ -4651,9 +4138,9 @@ bool WGRpcInformLoginReply::MergePartialFromCodedStream(
 
 void WGRpcInformLoginReply::SerializeWithCachedSizes(
     ::google::protobuf::io::CodedOutputStream* output) const {
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   if (has_result()) {
-    ::google::protobuf::internal::WireFormatLite::WriteSInt32(1, this->result(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->result(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -4664,9 +4151,9 @@ void WGRpcInformLoginReply::SerializeWithCachedSizes(
 
 ::google::protobuf::uint8* WGRpcInformLoginReply::SerializeWithCachedSizesToArray(
     ::google::protobuf::uint8* target) const {
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   if (has_result()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteSInt32ToArray(1, this->result(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->result(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -4680,10 +4167,10 @@ int WGRpcInformLoginReply::ByteSize() const {
   int total_size = 0;
 
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
-    // optional sint32 Result = 1 [default = -9999];
+    // optional int32 Result = 1 [default = -9999];
     if (has_result()) {
       total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::SInt32Size(
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->result());
     }
 

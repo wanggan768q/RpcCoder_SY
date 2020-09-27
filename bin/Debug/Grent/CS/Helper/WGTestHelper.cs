@@ -9,12 +9,6 @@ using System.Collections.Generic;
 
 
 [System.Serializable]
-public class WGRpcInformCreateTeamAskWraperHelper
-{
-	public TeamInfoWraper Team;
-	public int Result;
-}
-[System.Serializable]
 public class WGRpcInformJoinTeamAskWraperHelper
 {
 	public TeamMemberInfoWraper Member;
@@ -52,7 +46,7 @@ public class WGRpcInformApplyTeamAskWraperHelper
 {
 	public TeamMemberInfoWraper TeamMember;
 	public int Result;
-	public int TeamId;
+	public UInt64 TeamId;
 }
 [System.Serializable]
 public class WGRpcAgreeTeamApplicantAskWraperHelper
@@ -69,7 +63,6 @@ public class WGRpcInformLoginAskWraperHelper
 
 public class WGTestHelper : MonoBehaviour
 {
-	public WGRpcInformCreateTeamAskWraperHelper WGRpcInformCreateTeamAskWraperVar;
 	public WGRpcInformJoinTeamAskWraperHelper WGRpcInformJoinTeamAskWraperVar;
 	public WGRpcInformLeaveAskWraperHelper WGRpcInformLeaveAskWraperVar;
 	public WGRpcInformAppointTeamLeaderAskWraperHelper WGRpcInformAppointTeamLeaderAskWraperVar;
@@ -80,10 +73,6 @@ public class WGTestHelper : MonoBehaviour
 	public WGRpcInformLoginAskWraperHelper WGRpcInformLoginAskWraperVar;
 
 
-	public void TestInformCreateTeam()
-	{
-		WGRPC.Instance.InformCreateTeam(WGRpcInformCreateTeamAskWraperVar.Team,WGRpcInformCreateTeamAskWraperVar.Result,delegate(object obj){});
-	}
 	public void TestInformJoinTeam()
 	{
 		WGRPC.Instance.InformJoinTeam(WGRpcInformJoinTeamAskWraperVar.Member,WGRpcInformJoinTeamAskWraperVar.Team,delegate(object obj){});
@@ -128,11 +117,6 @@ public class WGTester : Editor
     {
         base.OnInspectorGUI();
         
-		if (GUILayout.Button("InformCreateTeam"))
-		{
-			WGTestHelper rpc = target as WGTestHelper;
-			if( rpc ) rpc.TestInformCreateTeam();
-		}
 		if (GUILayout.Button("InformJoinTeam"))
 		{
 			WGTestHelper rpc = target as WGTestHelper;

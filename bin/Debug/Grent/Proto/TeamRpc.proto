@@ -3,29 +3,14 @@ import "PublicStruct.proto";
 
 message  TeamRpcCreateTeamAsk
 {
-	optional sint32 TeamType = 2[default=-1];
+	optional int32 TeamType = 2;
+	optional TeamTarget TTarget = 6;
 
 }
 
 message  TeamRpcCreateTeamReply
 {
-	optional sint32 Result = 1[default=-9999];
-	optional TeamInfo Team = 2;
-
-}
-
-message  TeamRpcJoinTeamAsk
-{
-	optional sint32 TeamId = 1[default=-1];
-	optional sint32 TeamType = 2[default=-1];
-	optional TeamInfo Team = 3;
-	optional TeamMemberInfo TeamMember = 4;
-
-}
-
-message  TeamRpcJoinTeamReply
-{
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 	optional TeamInfo Team = 2;
 
 }
@@ -37,7 +22,7 @@ message  TeamRpcLeaveTeamAsk
 
 message  TeamRpcLeaveTeamReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 
 }
 
@@ -49,7 +34,7 @@ message  TeamRpcAppointTeamLeaderAsk
 
 message  TeamRpcAppointTeamLeaderReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 	optional uint64 NewLeaderId = 2[default=0];
 
 }
@@ -68,7 +53,7 @@ message  TeamRpcKickMemberAsk
 
 message  TeamRpcKickMemberReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 
 }
 
@@ -79,7 +64,7 @@ message  TeamRpcDissmissTeamAsk
 
 message  TeamRpcDissmissTeamReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 
 }
 
@@ -104,6 +89,7 @@ message  TeamRpcLeaveTeamNotifyNotify
 message  TeamRpcJoinTeamNotifyNotify
 {
 	optional TeamMemberInfo TeamMember = 1;
+	optional TeamInfo Team = 2;
 
 }
 
@@ -114,26 +100,30 @@ message  TeamRpcDissmissTeamNotifyNotify
 
 message  TeamRpcSurroundingTeamAsk
 {
+	optional int32 TargetGroupId = 2;
+	optional int32 TargetGroup = 3;
 
 }
 
 message  TeamRpcSurroundingTeamReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 	repeated TeamInfo TeamsInfo = 2;
+	optional int32 TargetGroupId = 5;
+	optional int32 TargetGroup = 6;
 
 }
 
 message  TeamRpcApplyTeamAsk
 {
-	optional sint32 TeamId = 1[default=-1];
+	optional uint64 TeamId = 1[default=0];
 
 }
 
 message  TeamRpcApplyTeamReply
 {
-	optional sint32 Result = 1[default=-9999];
-	optional sint32 TeamId = 2[default=-1];
+	optional int32 Result = 1;
+	optional uint64 TeamId = 2[default=0];
 
 }
 
@@ -151,7 +141,7 @@ message  TeamRpcAgreeApplicantAsk
 
 message  TeamRpcAgreeApplicantReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 
 }
 
@@ -164,12 +154,262 @@ message  TeamRpcAgreeApplicantNotifyNotify
 message  TeamRpcTeamInfoNotify
 {
 	optional TeamInfo Team = 1;
+	optional int32 FollowTeamLeader = 2;
 
 }
 
 message  TeamRpcUpdateTeamMemInfoNotify
 {
 	optional TeamMemberInfo TeamMember = 1;
+
+}
+
+message  TeamRpcFollowTeamLeaderAsk
+{
+	optional int32 FollowTeamLeader = 1;
+
+}
+
+message  TeamRpcFollowTeamLeaderReply
+{
+	optional int32 Result = 1;
+	optional int32 FollowTeamLeader = 2;
+
+}
+
+message  TeamRpcSummonMemberAsk
+{
+
+}
+
+message  TeamRpcSummonMemberReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  TeamRpcSummonMemberNotifyNotify
+{
+	optional int32 StringNoticeId = 1;
+
+}
+
+message  TeamRpcChangeTeamTargetReply
+{
+	optional int32 Result = 1;
+	optional TeamTarget TeamTarget = 2;
+
+}
+
+message  TeamRpcChangeTeamTargetAsk
+{
+	optional TeamTarget Target = 6;
+
+}
+
+message  TeamRpcChangeTeamTargetNotifyNotify
+{
+	optional TeamTarget TeamTarget = 1;
+
+}
+
+message  TeamRpcChangTeamTypeAsk
+{
+	optional int32 TeamType = 1;
+
+}
+
+message  TeamRpcChangTeamTypeReply
+{
+	optional int32 Result = 1;
+	optional int32 TeamType = 2;
+	optional TeamTarget TeamTarget = 3;
+
+}
+
+message  TeamRpcChangeTeamTypeNotifyNotify
+{
+	optional int32 TeamType = 1;
+	optional TeamTarget TeamTarget = 2;
+
+}
+
+message  TeamRpcInviteTeamMemberAsk
+{
+	repeated uint64 RoleId = 1;
+
+}
+
+message  TeamRpcInviteTeamMemberReply
+{
+	optional int32 Result = 1;
+	repeated uint64 RoleId = 2;
+
+}
+
+message  TeamRpcInviteTeamMemberNotifyNotify
+{
+	optional uint64 TeamId = 1[default=0];
+	optional int32 IsLeader = 5;
+	optional TeamMemberInfo InviteMemberInfo = 6;
+
+}
+
+message  TeamRpcApplyListNotifyNotify
+{
+	repeated TeamMemberInfo ApplyList = 1;
+
+}
+
+message  TeamRpcAgreeJoinTeamAsk
+{
+	optional uint64 TeamId = 1[default=0];
+	optional int32 IsLeader = 2;
+
+}
+
+message  TeamRpcAgreeJoinTeamReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  TeamRpcRefuseMemberAsk
+{
+	optional uint64 RoleId = 1[default=0];
+
+}
+
+message  TeamRpcRefuseMemberReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  TeamRpcClearApplyListReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  TeamRpcClearApplyListAsk
+{
+
+}
+
+message  TeamRpcNoTeamInviteAsk
+{
+	optional int32 TeamType = 1;
+	optional TeamTarget TTarget = 2;
+	optional uint64 InviteRoleId = 3[default=0];
+
+}
+
+message  TeamRpcNoTeamInviteReply
+{
+	optional int32 Result = 1;
+	optional TeamInfo Team = 2;
+
+}
+
+message  TeamRpcRejectInviteAsk
+{
+	optional uint64 RoleId = 3[default=0];
+	optional string Name = 4;
+
+}
+
+message  TeamRpcRejectInviteReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  TeamRpcEnterAutoCombatNotify
+{
+
+}
+
+message  TeamRpcHangUpAutoCombatNotify
+{
+
+}
+
+message  TeamRpcUpdateTeamHpInfoNotify
+{
+	optional TeamMemberHpInfo Member = 1;
+
+}
+
+message  TeamRpcUpdateTeamPosInfoNotify
+{
+	optional TeamMemberPos Member = 1;
+
+}
+
+message  TeamRpcUpdateTeamBuffInfoNotify
+{
+	optional TeanMemberBuff Member = 1;
+
+}
+
+message  TeamRpcHangeUpFollowAsk
+{
+
+}
+
+message  TeamRpcHangeUpFollowReply
+{
+	optional int32 Result = 1;
+	optional int32 FollowStatus = 2;
+
+}
+
+message  TeamRpcGoOnFollowAsk
+{
+
+}
+
+message  TeamRpcGoOnFollowReply
+{
+	optional int32 Result = 1;
+	optional int32 FollowStatus = 2;
+
+}
+
+message  TeamRpcUpdateFollowStatusNotify
+{
+	optional int32 FollowStatus = 1;
+
+}
+
+message  TeamRpcRequestNoTeamMemberListAsk
+{
+	optional int32 RequestType = 1;
+
+}
+
+message  TeamRpcRequestNoTeamMemberListReply
+{
+	optional int32 Result = 1;
+	optional int32 RequestType = 2;
+	repeated TeamMemberInfo MemberList = 3;
+
+}
+
+message  TeamRpcEnterTeamFollowNotify
+{
+
+}
+
+message  TeamRpcEnterLeaderSceneAsk
+{
+
+}
+
+message  TeamRpcEnterLeaderSceneReply
+{
+	optional int32 Result = 1;
 
 }
 

@@ -15,7 +15,7 @@
 ********************************************************************************************/
 
 #include "TeamModule.h"
-#
+
 
 
 //初始化
@@ -23,6 +23,11 @@ bool ModuleTeam::Initialize()
 {
 
 	
+	return OnLoad();
+}
 
-	return true;
+bool ModuleTeam::Reinitialize()
+{
+	
+	return OnLoad();
 }

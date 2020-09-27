@@ -17,7 +17,7 @@ namespace GenPB
     public BaseAttrUserDataV1() {}
     
     private int _Exp = (int)0;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Exp", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Exp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)0)]
     public int Exp
     {
@@ -25,25 +25,25 @@ namespace GenPB
       set { _Exp = value; }
     }
     private int _Level = (int)0;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"Level", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"Level", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)0)]
     public int Level
     {
       get { return _Level; }
       set { _Level = value; }
     }
-    private long _ServerTime = (long)-1;
+    private int _ServerTime = (int)-1;
     [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"ServerTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue((long)-1)]
-    public long ServerTime
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int ServerTime
     {
       get { return _ServerTime; }
       set { _ServerTime = value; }
     }
-    private long _RoleId = (long)-1;
+    private ulong _RoleId = (ulong)0;
     [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"RoleId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue((long)-1)]
-    public long RoleId
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong RoleId
     {
       get { return _RoleId; }
       set { _RoleId = value; }
@@ -79,14 +79,6 @@ namespace GenPB
     {
       get { return _Endurance; }
       set { _Endurance = value; }
-    }
-    private int _Spirit = (int)0;
-    [global::ProtoBuf.ProtoMember(11, IsRequired = false, Name=@"Spirit", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue((int)0)]
-    public int Spirit
-    {
-      get { return _Spirit; }
-      set { _Spirit = value; }
     }
     private int _Hp = (int)0;
     [global::ProtoBuf.ProtoMember(12, IsRequired = false, Name=@"Hp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
@@ -296,10 +288,10 @@ namespace GenPB
       get { return _MoveSpeed; }
       set { _MoveSpeed = value; }
     }
-    private bool _DizzyState = (bool)false;
-    [global::ProtoBuf.ProtoMember(41, IsRequired = false, Name=@"DizzyState", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue((bool)false)]
-    public bool DizzyState
+    private int _DizzyState = (int)0;
+    [global::ProtoBuf.ProtoMember(41, IsRequired = false, Name=@"DizzyState", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int DizzyState
     {
       get { return _DizzyState; }
       set { _DizzyState = value; }
@@ -312,10 +304,10 @@ namespace GenPB
       get { return _GodState; }
       set { _GodState = value; }
     }
-    private bool _CantMoveState = (bool)false;
-    [global::ProtoBuf.ProtoMember(43, IsRequired = false, Name=@"CantMoveState", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue((bool)false)]
-    public bool CantMoveState
+    private int _CantMoveState = (int)0;
+    [global::ProtoBuf.ProtoMember(43, IsRequired = false, Name=@"CantMoveState", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int CantMoveState
     {
       get { return _CantMoveState; }
       set { _CantMoveState = value; }
@@ -351,6 +343,981 @@ namespace GenPB
     {
       get { return _MagicOppose; }
       set { _MagicOppose = value; }
+    }
+    private float _AccumulateSkiEnergy = (float)0;
+    [global::ProtoBuf.ProtoMember(50, IsRequired = false, Name=@"AccumulateSkiEnergy", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float AccumulateSkiEnergy
+    {
+      get { return _AccumulateSkiEnergy; }
+      set { _AccumulateSkiEnergy = value; }
+    }
+    private string _NickName = "";
+    [global::ProtoBuf.ProtoMember(51, IsRequired = false, Name=@"NickName", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string NickName
+    {
+      get { return _NickName; }
+      set { _NickName = value; }
+    }
+    private int _ConfigId = (int)-1;
+    [global::ProtoBuf.ProtoMember(52, IsRequired = false, Name=@"ConfigId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int ConfigId
+    {
+      get { return _ConfigId; }
+      set { _ConfigId = value; }
+    }
+    private int _ObjType = (int)-1;
+    [global::ProtoBuf.ProtoMember(53, IsRequired = false, Name=@"ObjType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int ObjType
+    {
+      get { return _ObjType; }
+      set { _ObjType = value; }
+    }
+    private int _State = (int)-1;
+    [global::ProtoBuf.ProtoMember(54, IsRequired = false, Name=@"State", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int State
+    {
+      get { return _State; }
+      set { _State = value; }
+    }
+    private ulong _OwnerObjId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(55, IsRequired = false, Name=@"OwnerObjId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong OwnerObjId
+    {
+      get { return _OwnerObjId; }
+      set { _OwnerObjId = value; }
+    }
+    private int _Camp = (int)-1;
+    [global::ProtoBuf.ProtoMember(56, IsRequired = false, Name=@"Camp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Camp
+    {
+      get { return _Camp; }
+      set { _Camp = value; }
+    }
+    private long _SilverMoney = (long)0;
+    [global::ProtoBuf.ProtoMember(57, IsRequired = false, Name=@"SilverMoney", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((long)0)]
+    public long SilverMoney
+    {
+      get { return _SilverMoney; }
+      set { _SilverMoney = value; }
+    }
+    private long _GoldMoney = (long)0;
+    [global::ProtoBuf.ProtoMember(58, IsRequired = false, Name=@"GoldMoney", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((long)0)]
+    public long GoldMoney
+    {
+      get { return _GoldMoney; }
+      set { _GoldMoney = value; }
+    }
+    private long _DiamondMoney = (long)0;
+    [global::ProtoBuf.ProtoMember(59, IsRequired = false, Name=@"DiamondMoney", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((long)0)]
+    public long DiamondMoney
+    {
+      get { return _DiamondMoney; }
+      set { _DiamondMoney = value; }
+    }
+    private long _BindingDiamondMoney = (long)0;
+    [global::ProtoBuf.ProtoMember(60, IsRequired = false, Name=@"BindingDiamondMoney", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((long)0)]
+    public long BindingDiamondMoney
+    {
+      get { return _BindingDiamondMoney; }
+      set { _BindingDiamondMoney = value; }
+    }
+    private int _BattleScore = (int)-1;
+    [global::ProtoBuf.ProtoMember(61, IsRequired = false, Name=@"BattleScore", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int BattleScore
+    {
+      get { return _BattleScore; }
+      set { _BattleScore = value; }
+    }
+    private long _Energy = (long)-1;
+    [global::ProtoBuf.ProtoMember(62, IsRequired = false, Name=@"Energy", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((long)-1)]
+    public long Energy
+    {
+      get { return _Energy; }
+      set { _Energy = value; }
+    }
+    private long _GuildMoney = (long)-1;
+    [global::ProtoBuf.ProtoMember(63, IsRequired = false, Name=@"GuildMoney", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((long)-1)]
+    public long GuildMoney
+    {
+      get { return _GuildMoney; }
+      set { _GuildMoney = value; }
+    }
+    private readonly global::System.Collections.Generic.List<int> _SkillList = new global::System.Collections.Generic.List<int>();
+    [global::ProtoBuf.ProtoMember(64, Name=@"SkillList", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<int> SkillList
+    {
+      get { return _SkillList; }
+    }
+  
+    private long _HonorMoney = (long)-1;
+    [global::ProtoBuf.ProtoMember(65, IsRequired = false, Name=@"HonorMoney", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((long)-1)]
+    public long HonorMoney
+    {
+      get { return _HonorMoney; }
+      set { _HonorMoney = value; }
+    }
+    private long _ResourcePoolHp = (long)-1;
+    [global::ProtoBuf.ProtoMember(66, IsRequired = false, Name=@"ResourcePoolHp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((long)-1)]
+    public long ResourcePoolHp
+    {
+      get { return _ResourcePoolHp; }
+      set { _ResourcePoolHp = value; }
+    }
+    private int _AttackAdd = (int)0;
+    [global::ProtoBuf.ProtoMember(67, IsRequired = false, Name=@"AttackAdd", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int AttackAdd
+    {
+      get { return _AttackAdd; }
+      set { _AttackAdd = value; }
+    }
+    private int _InjuryAdd = (int)0;
+    [global::ProtoBuf.ProtoMember(68, IsRequired = false, Name=@"InjuryAdd", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int InjuryAdd
+    {
+      get { return _InjuryAdd; }
+      set { _InjuryAdd = value; }
+    }
+    private int _FrozenState = (int)-1;
+    [global::ProtoBuf.ProtoMember(69, IsRequired = false, Name=@"FrozenState", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int FrozenState
+    {
+      get { return _FrozenState; }
+      set { _FrozenState = value; }
+    }
+    private int _SilentState = (int)-1;
+    [global::ProtoBuf.ProtoMember(70, IsRequired = false, Name=@"SilentState", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int SilentState
+    {
+      get { return _SilentState; }
+      set { _SilentState = value; }
+    }
+    private long _GuildContributeHistoryMax = (long)-1;
+    [global::ProtoBuf.ProtoMember(72, IsRequired = false, Name=@"GuildContributeHistoryMax", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((long)-1)]
+    public long GuildContributeHistoryMax
+    {
+      get { return _GuildContributeHistoryMax; }
+      set { _GuildContributeHistoryMax = value; }
+    }
+    private ulong _TeamId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(74, IsRequired = false, Name=@"TeamId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong TeamId
+    {
+      get { return _TeamId; }
+      set { _TeamId = value; }
+    }
+    private int _TreasureHair = (int)-1;
+    [global::ProtoBuf.ProtoMember(75, IsRequired = false, Name=@"TreasureHair", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int TreasureHair
+    {
+      get { return _TreasureHair; }
+      set { _TreasureHair = value; }
+    }
+    private int _TreasureHead = (int)-1;
+    [global::ProtoBuf.ProtoMember(76, IsRequired = false, Name=@"TreasureHead", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int TreasureHead
+    {
+      get { return _TreasureHead; }
+      set { _TreasureHead = value; }
+    }
+    private int _TreasureBody = (int)-1;
+    [global::ProtoBuf.ProtoMember(77, IsRequired = false, Name=@"TreasureBody", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int TreasureBody
+    {
+      get { return _TreasureBody; }
+      set { _TreasureBody = value; }
+    }
+    private int _TreasureWeapon = (int)-1;
+    [global::ProtoBuf.ProtoMember(78, IsRequired = false, Name=@"TreasureWeapon", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int TreasureWeapon
+    {
+      get { return _TreasureWeapon; }
+      set { _TreasureWeapon = value; }
+    }
+    private int _TreasureWing = (int)-1;
+    [global::ProtoBuf.ProtoMember(79, IsRequired = false, Name=@"TreasureWing", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int TreasureWing
+    {
+      get { return _TreasureWing; }
+      set { _TreasureWing = value; }
+    }
+    private ulong _GuildGuid = (ulong)0;
+    [global::ProtoBuf.ProtoMember(80, IsRequired = false, Name=@"GuildGuid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong GuildGuid
+    {
+      get { return _GuildGuid; }
+      set { _GuildGuid = value; }
+    }
+    private int _TreasureRiding = (int)-1;
+    [global::ProtoBuf.ProtoMember(81, IsRequired = false, Name=@"TreasureRiding", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int TreasureRiding
+    {
+      get { return _TreasureRiding; }
+      set { _TreasureRiding = value; }
+    }
+    private int _VechicleId = (int)-1;
+    [global::ProtoBuf.ProtoMember(82, IsRequired = false, Name=@"VechicleId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int VechicleId
+    {
+      get { return _VechicleId; }
+      set { _VechicleId = value; }
+    }
+    private bool _AnimationState = (bool)false;
+    [global::ProtoBuf.ProtoMember(83, IsRequired = false, Name=@"AnimationState", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool AnimationState
+    {
+      get { return _AnimationState; }
+      set { _AnimationState = value; }
+    }
+    private float _RefixDmgRate = (float)0;
+    [global::ProtoBuf.ProtoMember(84, IsRequired = false, Name=@"RefixDmgRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float RefixDmgRate
+    {
+      get { return _RefixDmgRate; }
+      set { _RefixDmgRate = value; }
+    }
+    private int _RefixDmgValue = (int)0;
+    [global::ProtoBuf.ProtoMember(85, IsRequired = false, Name=@"RefixDmgValue", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int RefixDmgValue
+    {
+      get { return _RefixDmgValue; }
+      set { _RefixDmgValue = value; }
+    }
+    private float _RefixHurtRate = (float)0;
+    [global::ProtoBuf.ProtoMember(86, IsRequired = false, Name=@"RefixHurtRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float RefixHurtRate
+    {
+      get { return _RefixHurtRate; }
+      set { _RefixHurtRate = value; }
+    }
+    private int _RefixHurtValue = (int)0;
+    [global::ProtoBuf.ProtoMember(87, IsRequired = false, Name=@"RefixHurtValue", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int RefixHurtValue
+    {
+      get { return _RefixHurtValue; }
+      set { _RefixHurtValue = value; }
+    }
+    private float _RefixHealRate = (float)0;
+    [global::ProtoBuf.ProtoMember(88, IsRequired = false, Name=@"RefixHealRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float RefixHealRate
+    {
+      get { return _RefixHealRate; }
+      set { _RefixHealRate = value; }
+    }
+    private int _RefixHealValue = (int)0;
+    [global::ProtoBuf.ProtoMember(89, IsRequired = false, Name=@"RefixHealValue", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int RefixHealValue
+    {
+      get { return _RefixHealValue; }
+      set { _RefixHealValue = value; }
+    }
+    private float _RefixCuredRate = (float)0;
+    [global::ProtoBuf.ProtoMember(90, IsRequired = false, Name=@"RefixCuredRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float RefixCuredRate
+    {
+      get { return _RefixCuredRate; }
+      set { _RefixCuredRate = value; }
+    }
+    private int _RefixCuredValue = (int)0;
+    [global::ProtoBuf.ProtoMember(91, IsRequired = false, Name=@"RefixCuredValue", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int RefixCuredValue
+    {
+      get { return _RefixCuredValue; }
+      set { _RefixCuredValue = value; }
+    }
+    private long _GuildContribute = (long)-1;
+    [global::ProtoBuf.ProtoMember(92, IsRequired = false, Name=@"GuildContribute", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((long)-1)]
+    public long GuildContribute
+    {
+      get { return _GuildContribute; }
+      set { _GuildContribute = value; }
+    }
+    private long _PvpMoney = (long)-1;
+    [global::ProtoBuf.ProtoMember(93, IsRequired = false, Name=@"PvpMoney", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((long)-1)]
+    public long PvpMoney
+    {
+      get { return _PvpMoney; }
+      set { _PvpMoney = value; }
+    }
+    private long _GuildResource = (long)-1;
+    [global::ProtoBuf.ProtoMember(94, IsRequired = false, Name=@"GuildResource", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((long)-1)]
+    public long GuildResource
+    {
+      get { return _GuildResource; }
+      set { _GuildResource = value; }
+    }
+    private int _CreateRoleTime = (int)0;
+    [global::ProtoBuf.ProtoMember(95, IsRequired = false, Name=@"CreateRoleTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int CreateRoleTime
+    {
+      get { return _CreateRoleTime; }
+      set { _CreateRoleTime = value; }
+    }
+    private int _UpdateRoleTime = (int)0;
+    [global::ProtoBuf.ProtoMember(96, IsRequired = false, Name=@"UpdateRoleTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int UpdateRoleTime
+    {
+      get { return _UpdateRoleTime; }
+      set { _UpdateRoleTime = value; }
+    }
+    private bool _FightState = (bool)false;
+    [global::ProtoBuf.ProtoMember(97, IsRequired = false, Name=@"FightState", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool FightState
+    {
+      get { return _FightState; }
+      set { _FightState = value; }
+    }
+    private readonly global::System.Collections.Generic.List<int> _AttackSkillList = new global::System.Collections.Generic.List<int>();
+    [global::ProtoBuf.ProtoMember(98, Name=@"AttackSkillList", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<int> AttackSkillList
+    {
+      get { return _AttackSkillList; }
+    }
+  
+    private string _GuildName = "";
+    [global::ProtoBuf.ProtoMember(99, IsRequired = false, Name=@"GuildName", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string GuildName
+    {
+      get { return _GuildName; }
+      set { _GuildName = value; }
+    }
+    private bool _IsAllowSelect = (bool)true;
+    [global::ProtoBuf.ProtoMember(100, IsRequired = false, Name=@"IsAllowSelect", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)true)]
+    public bool IsAllowSelect
+    {
+      get { return _IsAllowSelect; }
+      set { _IsAllowSelect = value; }
+    }
+    private bool _GoHomeState = (bool)false;
+    [global::ProtoBuf.ProtoMember(101, IsRequired = false, Name=@"GoHomeState", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool GoHomeState
+    {
+      get { return _GoHomeState; }
+      set { _GoHomeState = value; }
+    }
+    private bool _CanFight = (bool)true;
+    [global::ProtoBuf.ProtoMember(102, IsRequired = false, Name=@"CanFight", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)true)]
+    public bool CanFight
+    {
+      get { return _CanFight; }
+      set { _CanFight = value; }
+    }
+    private long _DoubleExp = (long)-1;
+    [global::ProtoBuf.ProtoMember(103, IsRequired = false, Name=@"DoubleExp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((long)-1)]
+    public long DoubleExp
+    {
+      get { return _DoubleExp; }
+      set { _DoubleExp = value; }
+    }
+    private long _FriendPoint = (long)-1;
+    [global::ProtoBuf.ProtoMember(104, IsRequired = false, Name=@"FriendPoint", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((long)-1)]
+    public long FriendPoint
+    {
+      get { return _FriendPoint; }
+      set { _FriendPoint = value; }
+    }
+    private long _HisMaxHonor = (long)-1;
+    [global::ProtoBuf.ProtoMember(105, IsRequired = false, Name=@"HisMaxHonor", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((long)-1)]
+    public long HisMaxHonor
+    {
+      get { return _HisMaxHonor; }
+      set { _HisMaxHonor = value; }
+    }
+    private bool _HurtState = (bool)false;
+    [global::ProtoBuf.ProtoMember(106, IsRequired = false, Name=@"HurtState", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool HurtState
+    {
+      get { return _HurtState; }
+      set { _HurtState = value; }
+    }
+    private bool _HurtFlyState = (bool)false;
+    [global::ProtoBuf.ProtoMember(107, IsRequired = false, Name=@"HurtFlyState", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool HurtFlyState
+    {
+      get { return _HurtFlyState; }
+      set { _HurtFlyState = value; }
+    }
+    private bool _HurtDownState = (bool)false;
+    [global::ProtoBuf.ProtoMember(108, IsRequired = false, Name=@"HurtDownState", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool HurtDownState
+    {
+      get { return _HurtDownState; }
+      set { _HurtDownState = value; }
+    }
+    private bool _HurtRepelState = (bool)false;
+    [global::ProtoBuf.ProtoMember(109, IsRequired = false, Name=@"HurtRepelState", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool HurtRepelState
+    {
+      get { return _HurtRepelState; }
+      set { _HurtRepelState = value; }
+    }
+    private long _TodayHornor = (long)-1;
+    [global::ProtoBuf.ProtoMember(111, IsRequired = false, Name=@"TodayHornor", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((long)-1)]
+    public long TodayHornor
+    {
+      get { return _TodayHornor; }
+      set { _TodayHornor = value; }
+    }
+    private int _CurProfession = (int)-1;
+    [global::ProtoBuf.ProtoMember(113, IsRequired = false, Name=@"CurProfession", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int CurProfession
+    {
+      get { return _CurProfession; }
+      set { _CurProfession = value; }
+    }
+    private int _PetCreateDelCond = (int)-1;
+    [global::ProtoBuf.ProtoMember(114, IsRequired = false, Name=@"PetCreateDelCond", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int PetCreateDelCond
+    {
+      get { return _PetCreateDelCond; }
+      set { _PetCreateDelCond = value; }
+    }
+    private int _PetDisplay = (int)0;
+    [global::ProtoBuf.ProtoMember(115, IsRequired = false, Name=@"PetDisplay", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int PetDisplay
+    {
+      get { return _PetDisplay; }
+      set { _PetDisplay = value; }
+    }
+    private long _PetMoney = (long)-1;
+    [global::ProtoBuf.ProtoMember(116, IsRequired = false, Name=@"PetMoney", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((long)-1)]
+    public long PetMoney
+    {
+      get { return _PetMoney; }
+      set { _PetMoney = value; }
+    }
+    private int _DuelStatus = (int)0;
+    [global::ProtoBuf.ProtoMember(117, IsRequired = false, Name=@"DuelStatus", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int DuelStatus
+    {
+      get { return _DuelStatus; }
+      set { _DuelStatus = value; }
+    }
+    private long _ExpPool = (long)-1;
+    [global::ProtoBuf.ProtoMember(118, IsRequired = false, Name=@"ExpPool", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((long)-1)]
+    public long ExpPool
+    {
+      get { return _ExpPool; }
+      set { _ExpPool = value; }
+    }
+    private bool _RushState = (bool)false;
+    [global::ProtoBuf.ProtoMember(119, IsRequired = false, Name=@"RushState", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool RushState
+    {
+      get { return _RushState; }
+      set { _RushState = value; }
+    }
+    private ulong _StareState = (ulong)0;
+    [global::ProtoBuf.ProtoMember(120, IsRequired = false, Name=@"StareState", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong StareState
+    {
+      get { return _StareState; }
+      set { _StareState = value; }
+    }
+    private int _WorldLevel = (int)0;
+    [global::ProtoBuf.ProtoMember(121, IsRequired = false, Name=@"WorldLevel", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int WorldLevel
+    {
+      get { return _WorldLevel; }
+      set { _WorldLevel = value; }
+    }
+    private float _DizzyHitRate = (float)0;
+    [global::ProtoBuf.ProtoMember(122, IsRequired = false, Name=@"DizzyHitRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float DizzyHitRate
+    {
+      get { return _DizzyHitRate; }
+      set { _DizzyHitRate = value; }
+    }
+    private float _DizzyResistRate = (float)0;
+    [global::ProtoBuf.ProtoMember(123, IsRequired = false, Name=@"DizzyResistRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float DizzyResistRate
+    {
+      get { return _DizzyResistRate; }
+      set { _DizzyResistRate = value; }
+    }
+    private float _ImmovableHitRate = (float)0;
+    [global::ProtoBuf.ProtoMember(124, IsRequired = false, Name=@"ImmovableHitRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float ImmovableHitRate
+    {
+      get { return _ImmovableHitRate; }
+      set { _ImmovableHitRate = value; }
+    }
+    private float _ImmovableResistRate = (float)0;
+    [global::ProtoBuf.ProtoMember(125, IsRequired = false, Name=@"ImmovableResistRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float ImmovableResistRate
+    {
+      get { return _ImmovableResistRate; }
+      set { _ImmovableResistRate = value; }
+    }
+    private float _HurtFlyHitRate = (float)0;
+    [global::ProtoBuf.ProtoMember(126, IsRequired = false, Name=@"HurtFlyHitRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float HurtFlyHitRate
+    {
+      get { return _HurtFlyHitRate; }
+      set { _HurtFlyHitRate = value; }
+    }
+    private float _HurtFlyResistRate = (float)0;
+    [global::ProtoBuf.ProtoMember(127, IsRequired = false, Name=@"HurtFlyResistRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float HurtFlyResistRate
+    {
+      get { return _HurtFlyResistRate; }
+      set { _HurtFlyResistRate = value; }
+    }
+    private float _FrozenHitRate = (float)0;
+    [global::ProtoBuf.ProtoMember(128, IsRequired = false, Name=@"FrozenHitRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float FrozenHitRate
+    {
+      get { return _FrozenHitRate; }
+      set { _FrozenHitRate = value; }
+    }
+    private float _FrozenResistRate = (float)0;
+    [global::ProtoBuf.ProtoMember(129, IsRequired = false, Name=@"FrozenResistRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float FrozenResistRate
+    {
+      get { return _FrozenResistRate; }
+      set { _FrozenResistRate = value; }
+    }
+    private float _CleanHitRate = (float)0;
+    [global::ProtoBuf.ProtoMember(130, IsRequired = false, Name=@"CleanHitRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float CleanHitRate
+    {
+      get { return _CleanHitRate; }
+      set { _CleanHitRate = value; }
+    }
+    private float _CleanResistRate = (float)0;
+    [global::ProtoBuf.ProtoMember(131, IsRequired = false, Name=@"CleanResistRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float CleanResistRate
+    {
+      get { return _CleanResistRate; }
+      set { _CleanResistRate = value; }
+    }
+    private float _DispelHitRate = (float)0;
+    [global::ProtoBuf.ProtoMember(132, IsRequired = false, Name=@"DispelHitRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float DispelHitRate
+    {
+      get { return _DispelHitRate; }
+      set { _DispelHitRate = value; }
+    }
+    private float _DispelResistRate = (float)0;
+    [global::ProtoBuf.ProtoMember(133, IsRequired = false, Name=@"DispelResistRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float DispelResistRate
+    {
+      get { return _DispelResistRate; }
+      set { _DispelResistRate = value; }
+    }
+    private float _SilenceHitRate = (float)0;
+    [global::ProtoBuf.ProtoMember(134, IsRequired = false, Name=@"SilenceHitRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float SilenceHitRate
+    {
+      get { return _SilenceHitRate; }
+      set { _SilenceHitRate = value; }
+    }
+    private float _SilenceResistRate = (float)0;
+    [global::ProtoBuf.ProtoMember(135, IsRequired = false, Name=@"SilenceResistRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float SilenceResistRate
+    {
+      get { return _SilenceResistRate; }
+      set { _SilenceResistRate = value; }
+    }
+    private float _InterruptHitRate = (float)0;
+    [global::ProtoBuf.ProtoMember(136, IsRequired = false, Name=@"InterruptHitRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float InterruptHitRate
+    {
+      get { return _InterruptHitRate; }
+      set { _InterruptHitRate = value; }
+    }
+    private float _InterruptResistRate = (float)0;
+    [global::ProtoBuf.ProtoMember(137, IsRequired = false, Name=@"InterruptResistRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float InterruptResistRate
+    {
+      get { return _InterruptResistRate; }
+      set { _InterruptResistRate = value; }
+    }
+    private float _UncurableHitRate = (float)0;
+    [global::ProtoBuf.ProtoMember(138, IsRequired = false, Name=@"UncurableHitRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float UncurableHitRate
+    {
+      get { return _UncurableHitRate; }
+      set { _UncurableHitRate = value; }
+    }
+    private float _UncurableResistRate = (float)0;
+    [global::ProtoBuf.ProtoMember(139, IsRequired = false, Name=@"UncurableResistRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float UncurableResistRate
+    {
+      get { return _UncurableResistRate; }
+      set { _UncurableResistRate = value; }
+    }
+    private int _Transform = (int)-1;
+    [global::ProtoBuf.ProtoMember(140, IsRequired = false, Name=@"Transform", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Transform
+    {
+      get { return _Transform; }
+      set { _Transform = value; }
+    }
+    private float _HumanHurtRate = (float)0;
+    [global::ProtoBuf.ProtoMember(141, IsRequired = false, Name=@"HumanHurtRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float HumanHurtRate
+    {
+      get { return _HumanHurtRate; }
+      set { _HumanHurtRate = value; }
+    }
+    private float _HumanSufferRate = (float)0;
+    [global::ProtoBuf.ProtoMember(142, IsRequired = false, Name=@"HumanSufferRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float HumanSufferRate
+    {
+      get { return _HumanSufferRate; }
+      set { _HumanSufferRate = value; }
+    }
+    private float _MonsterHurtRate = (float)0;
+    [global::ProtoBuf.ProtoMember(143, IsRequired = false, Name=@"MonsterHurtRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float MonsterHurtRate
+    {
+      get { return _MonsterHurtRate; }
+      set { _MonsterHurtRate = value; }
+    }
+    private float _MonsterSufferRate = (float)0;
+    [global::ProtoBuf.ProtoMember(144, IsRequired = false, Name=@"MonsterSufferRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float MonsterSufferRate
+    {
+      get { return _MonsterSufferRate; }
+      set { _MonsterSufferRate = value; }
+    }
+    private float _BossHurtRate = (float)0;
+    [global::ProtoBuf.ProtoMember(145, IsRequired = false, Name=@"BossHurtRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float BossHurtRate
+    {
+      get { return _BossHurtRate; }
+      set { _BossHurtRate = value; }
+    }
+    private float _BossSufferRate = (float)0;
+    [global::ProtoBuf.ProtoMember(146, IsRequired = false, Name=@"BossSufferRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float BossSufferRate
+    {
+      get { return _BossSufferRate; }
+      set { _BossSufferRate = value; }
+    }
+    private int _DodgReduceValue = (int)0;
+    [global::ProtoBuf.ProtoMember(147, IsRequired = false, Name=@"DodgReduceValue", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int DodgReduceValue
+    {
+      get { return _DodgReduceValue; }
+      set { _DodgReduceValue = value; }
+    }
+    private float _DodgReduceRate = (float)0;
+    [global::ProtoBuf.ProtoMember(148, IsRequired = false, Name=@"DodgReduceRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float DodgReduceRate
+    {
+      get { return _DodgReduceRate; }
+      set { _DodgReduceRate = value; }
+    }
+    private int _DodgAddValue = (int)0;
+    [global::ProtoBuf.ProtoMember(149, IsRequired = false, Name=@"DodgAddValue", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int DodgAddValue
+    {
+      get { return _DodgAddValue; }
+      set { _DodgAddValue = value; }
+    }
+    private float _DodgAddRate = (float)0;
+    [global::ProtoBuf.ProtoMember(150, IsRequired = false, Name=@"DodgAddRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)0)]
+    public float DodgAddRate
+    {
+      get { return _DodgAddRate; }
+      set { _DodgAddRate = value; }
+    }
+    private int _TreasureFootPrint = (int)-1;
+    [global::ProtoBuf.ProtoMember(151, IsRequired = false, Name=@"TreasureFootPrint", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int TreasureFootPrint
+    {
+      get { return _TreasureFootPrint; }
+      set { _TreasureFootPrint = value; }
+    }
+    private int _EquipTitle = (int)-1;
+    [global::ProtoBuf.ProtoMember(152, IsRequired = false, Name=@"EquipTitle", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int EquipTitle
+    {
+      get { return _EquipTitle; }
+      set { _EquipTitle = value; }
+    }
+    private readonly global::System.Collections.Generic.List<int> _ObjAnimEvent = new global::System.Collections.Generic.List<int>();
+    [global::ProtoBuf.ProtoMember(153, Name=@"ObjAnimEvent", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<int> ObjAnimEvent
+    {
+      get { return _ObjAnimEvent; }
+    }
+  
+    private string _PinchData = "";
+    [global::ProtoBuf.ProtoMember(154, IsRequired = false, Name=@"PinchData", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string PinchData
+    {
+      get { return _PinchData; }
+      set { _PinchData = value; }
+    }
+    private float _SkillCDRate = (float)1;
+    [global::ProtoBuf.ProtoMember(155, IsRequired = false, Name=@"SkillCDRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)1)]
+    public float SkillCDRate
+    {
+      get { return _SkillCDRate; }
+      set { _SkillCDRate = value; }
+    }
+    private float _AspdRate = (float)1;
+    [global::ProtoBuf.ProtoMember(156, IsRequired = false, Name=@"AspdRate", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
+    [global::System.ComponentModel.DefaultValue((float)1)]
+    public float AspdRate
+    {
+      get { return _AspdRate; }
+      set { _AspdRate = value; }
+    }
+    private int _Shield = (int)0;
+    [global::ProtoBuf.ProtoMember(157, IsRequired = false, Name=@"Shield", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int Shield
+    {
+      get { return _Shield; }
+      set { _Shield = value; }
+    }
+    private int _EventLeftCount = (int)-1;
+    [global::ProtoBuf.ProtoMember(158, IsRequired = false, Name=@"EventLeftCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int EventLeftCount
+    {
+      get { return _EventLeftCount; }
+      set { _EventLeftCount = value; }
+    }
+    private int _CanNotRush = (int)0;
+    [global::ProtoBuf.ProtoMember(159, IsRequired = false, Name=@"CanNotRush", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int CanNotRush
+    {
+      get { return _CanNotRush; }
+      set { _CanNotRush = value; }
+    }
+    private int _HuntPoint = (int)0;
+    [global::ProtoBuf.ProtoMember(160, IsRequired = false, Name=@"HuntPoint", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int HuntPoint
+    {
+      get { return _HuntPoint; }
+      set { _HuntPoint = value; }
+    }
+    private int _HuntHighTimes = (int)0;
+    [global::ProtoBuf.ProtoMember(161, IsRequired = false, Name=@"HuntHighTimes", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int HuntHighTimes
+    {
+      get { return _HuntHighTimes; }
+      set { _HuntHighTimes = value; }
+    }
+    private int _HuntFirePoint = (int)0;
+    [global::ProtoBuf.ProtoMember(162, IsRequired = false, Name=@"HuntFirePoint", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int HuntFirePoint
+    {
+      get { return _HuntFirePoint; }
+      set { _HuntFirePoint = value; }
+    }
+    private int _Starbattlestate = (int)1;
+    [global::ProtoBuf.ProtoMember(163, IsRequired = false, Name=@"Starbattlestate", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)1)]
+    public int Starbattlestate
+    {
+      get { return _Starbattlestate; }
+      set { _Starbattlestate = value; }
+    }
+    private bool _IgnoreMotionBlock = (bool)false;
+    [global::ProtoBuf.ProtoMember(164, IsRequired = false, Name=@"IgnoreMotionBlock", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool IgnoreMotionBlock
+    {
+      get { return _IgnoreMotionBlock; }
+      set { _IgnoreMotionBlock = value; }
+    }
+    private bool _EnableInteract = (bool)false;
+    [global::ProtoBuf.ProtoMember(165, IsRequired = false, Name=@"EnableInteract", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool EnableInteract
+    {
+      get { return _EnableInteract; }
+      set { _EnableInteract = value; }
+    }
+    private int _WorldMedal = (int)0;
+    [global::ProtoBuf.ProtoMember(166, IsRequired = false, Name=@"WorldMedal", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int WorldMedal
+    {
+      get { return _WorldMedal; }
+      set { _WorldMedal = value; }
+    }
+    private int _CureCeiling = (int)-1;
+    [global::ProtoBuf.ProtoMember(168, IsRequired = false, Name=@"CureCeiling", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int CureCeiling
+    {
+      get { return _CureCeiling; }
+      set { _CureCeiling = value; }
+    }
+    private int _RelationUnionCurrency = (int)0;
+    [global::ProtoBuf.ProtoMember(169, IsRequired = false, Name=@"RelationUnionCurrency", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int RelationUnionCurrency
+    {
+      get { return _RelationUnionCurrency; }
+      set { _RelationUnionCurrency = value; }
+    }
+    private string _GuildShortName = "";
+    [global::ProtoBuf.ProtoMember(170, IsRequired = false, Name=@"GuildShortName", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string GuildShortName
+    {
+      get { return _GuildShortName; }
+      set { _GuildShortName = value; }
+    }
+    private int _GuildShortColorID = (int)-1;
+    [global::ProtoBuf.ProtoMember(171, IsRequired = false, Name=@"GuildShortColorID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int GuildShortColorID
+    {
+      get { return _GuildShortColorID; }
+      set { _GuildShortColorID = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"BaseAttrObjDataV1")]
+  public partial class BaseAttrObjDataV1 : global::ProtoBuf.IExtensible
+  {
+    public BaseAttrObjDataV1() {}
+    
+    private int _ObjType = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"ObjType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int ObjType
+    {
+      get { return _ObjType; }
+      set { _ObjType = value; }
+    }
+    private int _ConfigId = (int)-1;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"ConfigId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int ConfigId
+    {
+      get { return _ConfigId; }
+      set { _ConfigId = value; }
+    }
+    private int _State = (int)-1;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"State", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int State
+    {
+      get { return _State; }
+      set { _State = value; }
+    }
+    private ulong _OwnerObjId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"OwnerObjId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong OwnerObjId
+    {
+      get { return _OwnerObjId; }
+      set { _OwnerObjId = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

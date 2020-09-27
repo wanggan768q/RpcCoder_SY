@@ -15,7 +15,7 @@
 ********************************************************************************************/
 
 #include "FightModule.h"
-#
+
 
 
 //初始化
@@ -23,6 +23,11 @@ bool ModuleFight::Initialize()
 {
 
 	
+	return OnLoad();
+}
 
-	return true;
+bool ModuleFight::Reinitialize()
+{
+	
+	return OnLoad();
 }

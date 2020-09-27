@@ -25,7 +25,7 @@ namespace GenPB
       set { _RoleId = value; }
     }
     private int _DungeonConfigId = (int)-1;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"DungeonConfigId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"DungeonConfigId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int DungeonConfigId
     {
@@ -43,7 +43,7 @@ namespace GenPB
     public DungeonRpcCreateDungeonReply() {}
     
     private int _Result = (int)-9999;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-9999)]
     public int Result
     {
@@ -51,20 +51,20 @@ namespace GenPB
       set { _Result = value; }
     }
     private int _DungeonConfigId = (int)-1;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"DungeonConfigId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"DungeonConfigId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int DungeonConfigId
     {
       get { return _DungeonConfigId; }
       set { _DungeonConfigId = value; }
     }
-    private int _SceneId = (int)-1;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"SceneId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    private int _SceneConfigId = (int)-1;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"SceneConfigId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
-    public int SceneId
+    public int SceneConfigId
     {
-      get { return _SceneId; }
-      set { _SceneId = value; }
+      get { return _SceneConfigId; }
+      set { _SceneConfigId = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -85,7 +85,7 @@ namespace GenPB
       set { _RoleId = value; }
     }
     private int _SceneId = (int)-1;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"SceneId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"SceneId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int SceneId
     {
@@ -103,7 +103,7 @@ namespace GenPB
     public DungeonRpcExitDungeonReply() {}
     
     private int _Result = (int)-9999;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-9999)]
     public int Result
     {
@@ -111,7 +111,7 @@ namespace GenPB
       set { _Result = value; }
     }
     private int _SceneConfigId = (int)-1;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"SceneConfigId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"SceneConfigId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int SceneConfigId
     {
@@ -119,7 +119,7 @@ namespace GenPB
       set { _SceneConfigId = value; }
     }
     private int _SceneId = (int)-1;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"SceneId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"SceneId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int SceneId
     {
@@ -145,7 +145,7 @@ namespace GenPB
       set { _RoleId = value; }
     }
     private int _TargetSceneId = (int)-1;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"TargetSceneId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"TargetSceneId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int TargetSceneId
     {
@@ -153,7 +153,7 @@ namespace GenPB
       set { _TargetSceneId = value; }
     }
     private int _DungeonConfigId = (int)-1;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"DungeonConfigId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"DungeonConfigId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int DungeonConfigId
     {
@@ -161,7 +161,7 @@ namespace GenPB
       set { _DungeonConfigId = value; }
     }
     private int _CurSceneId = (int)-1;
-    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"CurSceneId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"CurSceneId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int CurSceneId
     {
@@ -169,7 +169,7 @@ namespace GenPB
       set { _CurSceneId = value; }
     }
     private int _Result = (int)-9999;
-    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-9999)]
     public int Result
     {
@@ -194,7 +194,7 @@ namespace GenPB
     public DungeonRpcInformCreateDungeonReply() {}
     
     private int _Result = (int)-9999;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-9999)]
     public int Result
     {
@@ -212,12 +212,83 @@ namespace GenPB
     public DungeonRpcSettlementNotify() {}
     
     private int _SettlementResult = (int)-1;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"SettlementResult", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"SettlementResult", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int SettlementResult
     {
       get { return _SettlementResult; }
       set { _SettlementResult = value; }
+    }
+    private DungeonExploits _Exploits = null;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Exploits", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public DungeonExploits Exploits
+    {
+      get { return _Exploits; }
+      set { _Exploits = value; }
+    }
+    private int _Exp = (int)-1;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"Exp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Exp
+    {
+      get { return _Exp; }
+      set { _Exp = value; }
+    }
+    private readonly global::System.Collections.Generic.List<ItemObj> _UiItemInfoList = new global::System.Collections.Generic.List<ItemObj>();
+    [global::ProtoBuf.ProtoMember(4, Name=@"UiItemInfoList", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<ItemObj> UiItemInfoList
+    {
+      get { return _UiItemInfoList; }
+    }
+  
+    private int _Gold = (int)-1;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"Gold", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Gold
+    {
+      get { return _Gold; }
+      set { _Gold = value; }
+    }
+    private int _DungeonPassTime = (int)-1;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"DungeonPassTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int DungeonPassTime
+    {
+      get { return _DungeonPassTime; }
+      set { _DungeonPassTime = value; }
+    }
+    private long _ForceRetreatSceneTime = (long)-1;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"ForceRetreatSceneTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((long)-1)]
+    public long ForceRetreatSceneTime
+    {
+      get { return _ForceRetreatSceneTime; }
+      set { _ForceRetreatSceneTime = value; }
+    }
+    private long _RemainTime = (long)-1;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"RemainTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((long)-1)]
+    public long RemainTime
+    {
+      get { return _RemainTime; }
+      set { _RemainTime = value; }
+    }
+    private int _Starbattleid = (int)-1;
+    [global::ProtoBuf.ProtoMember(9, IsRequired = false, Name=@"Starbattleid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Starbattleid
+    {
+      get { return _Starbattleid; }
+      set { _Starbattleid = value; }
+    }
+    private int _SceneType = (int)-1;
+    [global::ProtoBuf.ProtoMember(10, IsRequired = false, Name=@"SceneType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int SceneType
+    {
+      get { return _SceneType; }
+      set { _SceneType = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -230,7 +301,7 @@ namespace GenPB
     public DungeonRpcEnterDungeonAsk() {}
     
     private int _SceneId = (int)-1;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"SceneId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"SceneId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int SceneId
     {
@@ -238,7 +309,7 @@ namespace GenPB
       set { _SceneId = value; }
     }
     private int _DungeonConfigId = (int)-1;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"DungeonConfigId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"DungeonConfigId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int DungeonConfigId
     {
@@ -256,8 +327,576 @@ namespace GenPB
     public DungeonRpcEnterDungeonReply() {}
     
     private int _Result = (int)-9999;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-9999)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DungeonRpcDungeonDataNotify")]
+  public partial class DungeonRpcDungeonDataNotify : global::ProtoBuf.IExtensible
+  {
+    public DungeonRpcDungeonDataNotify() {}
+    
+    private int _BeginTime = (int)0;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"BeginTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int BeginTime
+    {
+      get { return _BeginTime; }
+      set { _BeginTime = value; }
+    }
+    private DungeonData _Data = null;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"Data", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public DungeonData Data
+    {
+      get { return _Data; }
+      set { _Data = value; }
+    }
+    private DungeonExploits _Exploits = null;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"Exploits", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public DungeonExploits Exploits
+    {
+      get { return _Exploits; }
+      set { _Exploits = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DungeonRpcDungeonSyncAsk")]
+  public partial class DungeonRpcDungeonSyncAsk : global::ProtoBuf.IExtensible
+  {
+    public DungeonRpcDungeonSyncAsk() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DungeonRpcDungeonSyncReply")]
+  public partial class DungeonRpcDungeonSyncReply : global::ProtoBuf.IExtensible
+  {
+    public DungeonRpcDungeonSyncReply() {}
+    
+    private int _Result = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
+    }
+    private DungeonData _Data = null;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Data", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public DungeonData Data
+    {
+      get { return _Data; }
+      set { _Data = value; }
+    }
+    private DungeonExploits _Exploits = null;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"Exploits", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public DungeonExploits Exploits
+    {
+      get { return _Exploits; }
+      set { _Exploits = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DungeonRpcDungeonListInfoAsk")]
+  public partial class DungeonRpcDungeonListInfoAsk : global::ProtoBuf.IExtensible
+  {
+    public DungeonRpcDungeonListInfoAsk() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DungeonRpcDungeonListInfoReply")]
+  public partial class DungeonRpcDungeonListInfoReply : global::ProtoBuf.IExtensible
+  {
+    public DungeonRpcDungeonListInfoReply() {}
+    
+    private int _Result = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
+    }
+    private readonly global::System.Collections.Generic.List<DungeonBossInfo> _DungeonBossData = new global::System.Collections.Generic.List<DungeonBossInfo>();
+    [global::ProtoBuf.ProtoMember(3, Name=@"DungeonBossData", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<DungeonBossInfo> DungeonBossData
+    {
+      get { return _DungeonBossData; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DungeonRpcCreateTutorialAsk")]
+  public partial class DungeonRpcCreateTutorialAsk : global::ProtoBuf.IExtensible
+  {
+    public DungeonRpcCreateTutorialAsk() {}
+    
+    private ulong _RoleId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"RoleId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong RoleId
+    {
+      get { return _RoleId; }
+      set { _RoleId = value; }
+    }
+    private int _DungeonConfigId = (int)-1;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"DungeonConfigId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int DungeonConfigId
+    {
+      get { return _DungeonConfigId; }
+      set { _DungeonConfigId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DungeonRpcCreateTutorialReply")]
+  public partial class DungeonRpcCreateTutorialReply : global::ProtoBuf.IExtensible
+  {
+    public DungeonRpcCreateTutorialReply() {}
+    
+    private int _Result = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
+    }
+    private int _DungeonConfigId = (int)-1;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"DungeonConfigId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int DungeonConfigId
+    {
+      get { return _DungeonConfigId; }
+      set { _DungeonConfigId = value; }
+    }
+    private int _SceneConfigId = (int)-1;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"SceneConfigId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int SceneConfigId
+    {
+      get { return _SceneConfigId; }
+      set { _SceneConfigId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DungeonRpcQuitTutorialAsk")]
+  public partial class DungeonRpcQuitTutorialAsk : global::ProtoBuf.IExtensible
+  {
+    public DungeonRpcQuitTutorialAsk() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DungeonRpcQuitTutorialReply")]
+  public partial class DungeonRpcQuitTutorialReply : global::ProtoBuf.IExtensible
+  {
+    public DungeonRpcQuitTutorialReply() {}
+    
+    private int _Result = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DungeonRpcDungeonTargetNotify")]
+  public partial class DungeonRpcDungeonTargetNotify : global::ProtoBuf.IExtensible
+  {
+    public DungeonRpcDungeonTargetNotify() {}
+    
+    private readonly global::System.Collections.Generic.List<DungeonTarget> _DungeonTarget = new global::System.Collections.Generic.List<DungeonTarget>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"DungeonTarget", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<DungeonTarget> DungeonTarget
+    {
+      get { return _DungeonTarget; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DungeonRpcTargetContentChangeNotify")]
+  public partial class DungeonRpcTargetContentChangeNotify : global::ProtoBuf.IExtensible
+  {
+    public DungeonRpcTargetContentChangeNotify() {}
+    
+    private int _Index = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Index", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Index
+    {
+      get { return _Index; }
+      set { _Index = value; }
+    }
+    private int _SubIndex = (int)-1;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"SubIndex", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int SubIndex
+    {
+      get { return _SubIndex; }
+      set { _SubIndex = value; }
+    }
+    private int _CurCount = (int)-1;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"CurCount", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int CurCount
+    {
+      get { return _CurCount; }
+      set { _CurCount = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DungeonRpcDungeon_NotifyNotify")]
+  public partial class DungeonRpcDungeon_NotifyNotify : global::ProtoBuf.IExtensible
+  {
+    public DungeonRpcDungeon_NotifyNotify() {}
+    
+    private int _TextId = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"TextId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int TextId
+    {
+      get { return _TextId; }
+      set { _TextId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DungeonRpcSceneOperator1Ask")]
+  public partial class DungeonRpcSceneOperator1Ask : global::ProtoBuf.IExtensible
+  {
+    public DungeonRpcSceneOperator1Ask() {}
+    
+    private int _OpCode = (int)0;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"OpCode", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int OpCode
+    {
+      get { return _OpCode; }
+      set { _OpCode = value; }
+    }
+    private int _OpExtraParam = (int)0;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"OpExtraParam", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int OpExtraParam
+    {
+      get { return _OpExtraParam; }
+      set { _OpExtraParam = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DungeonRpcSceneOperator1Reply")]
+  public partial class DungeonRpcSceneOperator1Reply : global::ProtoBuf.IExtensible
+  {
+    public DungeonRpcSceneOperator1Reply() {}
+    
+    private int _Result = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DungeonRpcForceEnterNextDungeonLayerNotify")]
+  public partial class DungeonRpcForceEnterNextDungeonLayerNotify : global::ProtoBuf.IExtensible
+  {
+    public DungeonRpcForceEnterNextDungeonLayerNotify() {}
+    
+    private int _NextLayer = (int)1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"NextLayer", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)1)]
+    public int NextLayer
+    {
+      get { return _NextLayer; }
+      set { _NextLayer = value; }
+    }
+    private bool _Breward = (bool)false;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"Breward", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool Breward
+    {
+      get { return _Breward; }
+      set { _Breward = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DungeonRpcDungeonRewardUpdateNotify")]
+  public partial class DungeonRpcDungeonRewardUpdateNotify : global::ProtoBuf.IExtensible
+  {
+    public DungeonRpcDungeonRewardUpdateNotify() {}
+    
+    private readonly global::System.Collections.Generic.List<ulong> _OpenRoleIdList = new global::System.Collections.Generic.List<ulong>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"OpenRoleIdList", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<ulong> OpenRoleIdList
+    {
+      get { return _OpenRoleIdList; }
+    }
+  
+    private ulong _NewRoleId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"NewRoleId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong NewRoleId
+    {
+      get { return _NewRoleId; }
+      set { _NewRoleId = value; }
+    }
+    private int _NewIndex = (int)0;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"NewIndex", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int NewIndex
+    {
+      get { return _NewIndex; }
+      set { _NewIndex = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DungeonRpcVictoryOfAllLayerNotify")]
+  public partial class DungeonRpcVictoryOfAllLayerNotify : global::ProtoBuf.IExtensible
+  {
+    public DungeonRpcVictoryOfAllLayerNotify() {}
+    
+    private int _LastLayer = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"LastLayer", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int LastLayer
+    {
+      get { return _LastLayer; }
+      set { _LastLayer = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DungeonRpcLayerBeginNotify")]
+  public partial class DungeonRpcLayerBeginNotify : global::ProtoBuf.IExtensible
+  {
+    public DungeonRpcLayerBeginNotify() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DungeonRpcLayerSettlementNotify")]
+  public partial class DungeonRpcLayerSettlementNotify : global::ProtoBuf.IExtensible
+  {
+    public DungeonRpcLayerSettlementNotify() {}
+    
+    private int _NextLayer = (int)1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"NextLayer", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)1)]
+    public int NextLayer
+    {
+      get { return _NextLayer; }
+      set { _NextLayer = value; }
+    }
+    private readonly global::System.Collections.Generic.List<PBUIRewardData> _RewardList = new global::System.Collections.Generic.List<PBUIRewardData>();
+    [global::ProtoBuf.ProtoMember(2, Name=@"RewardList", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<PBUIRewardData> RewardList
+    {
+      get { return _RewardList; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DungeonRpcSceneOperatorNNotify")]
+  public partial class DungeonRpcSceneOperatorNNotify : global::ProtoBuf.IExtensible
+  {
+    public DungeonRpcSceneOperatorNNotify() {}
+    
+    private int _OpCode = (int)0;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"OpCode", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int OpCode
+    {
+      get { return _OpCode; }
+      set { _OpCode = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DungeonRpcEnterLayerDungeonNotify")]
+  public partial class DungeonRpcEnterLayerDungeonNotify : global::ProtoBuf.IExtensible
+  {
+    public DungeonRpcEnterLayerDungeonNotify() {}
+    
+    private int _CurrentLayer = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"CurrentLayer", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int CurrentLayer
+    {
+      get { return _CurrentLayer; }
+      set { _CurrentLayer = value; }
+    }
+    private int _CurentLayerRemainTime = (int)-1;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"CurentLayerRemainTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int CurentLayerRemainTime
+    {
+      get { return _CurentLayerRemainTime; }
+      set { _CurentLayerRemainTime = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DungeonRpcDungeonExploitsNotify")]
+  public partial class DungeonRpcDungeonExploitsNotify : global::ProtoBuf.IExtensible
+  {
+    public DungeonRpcDungeonExploitsNotify() {}
+    
+    private DungeonExploits _Exploits = null;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Exploits", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public DungeonExploits Exploits
+    {
+      get { return _Exploits; }
+      set { _Exploits = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DungeonRpcCreateDungeonWithRobotAsk")]
+  public partial class DungeonRpcCreateDungeonWithRobotAsk : global::ProtoBuf.IExtensible
+  {
+    public DungeonRpcCreateDungeonWithRobotAsk() {}
+    
+    private int _DungeonConfigId = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"DungeonConfigId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int DungeonConfigId
+    {
+      get { return _DungeonConfigId; }
+      set { _DungeonConfigId = value; }
+    }
+    private ulong _RoleId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"RoleId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong RoleId
+    {
+      get { return _RoleId; }
+      set { _RoleId = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DungeonRpcCreateDungeonWithRobotReply")]
+  public partial class DungeonRpcCreateDungeonWithRobotReply : global::ProtoBuf.IExtensible
+  {
+    public DungeonRpcCreateDungeonWithRobotReply() {}
+    
+    private int _Result = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DungeonRpcUseBossNumAsk")]
+  public partial class DungeonRpcUseBossNumAsk : global::ProtoBuf.IExtensible
+  {
+    public DungeonRpcUseBossNumAsk() {}
+    
+    private bool _BUse = (bool)false;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"BUse", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue((bool)false)]
+    public bool BUse
+    {
+      get { return _BUse; }
+      set { _BUse = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"DungeonRpcUseBossNumReply")]
+  public partial class DungeonRpcUseBossNumReply : global::ProtoBuf.IExtensible
+  {
+    public DungeonRpcUseBossNumReply() {}
+    
+    private int _Result = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
     public int Result
     {
       get { return _Result; }

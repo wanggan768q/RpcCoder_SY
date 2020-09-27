@@ -21,38 +21,13 @@
 
 
 #include "PacketFactory.h"
-#include "include/PacketMgr.h"
+#include "Game/PacketMgr.h"
 #include "ConfigRpc.pb.h"
 #include <memory>
+#include <vector>
+#include <functional>
 
 
-
-#include "AttributeFormatConfigCfg.h"
-#include "BaoShiCfg.h"
-#include "BuffConflictConfigCfg.h"
-#include "BuffCfg.h"
-#include "CameraConfigCfg.h"
-#include "CharacterConfigCfg.h"
-#include "CreateRoleCfg.h"
-#include "CreatureCombatBasicCfg.h"
-#include "CreatureCombatCoeCfg.h"
-#include "CreatureDummyCfg.h"
-#include "CreatureSpawnCfg.h"
-#include "CreatureTemperConfigCfg.h"
-#include "CreatureCfg.h"
-#include "DungeonCfg.h"
-#include "GlobalCfg.h"
-#include "ItemProtoCfg.h"
-#include "RoleCfg.h"
-#include "SceneCfg.h"
-#include "ServerListCfg.h"
-#include "ServerScriptCfg.h"
-#include "SkillCfg.h"
-#include "StringCreatureCfg.h"
-#include "StringUiCfg.h"
-#include "SummonMonsterCfg.h"
-#include "ValueCfg.h"
-#include "WayPointCfg.h"
 
 
 class CPlayer;
@@ -72,6 +47,8 @@ public:
 
 	};
 
+	typedef std::function<bool()> ReloadCallback;
+	typedef std::vector<ReloadCallback> reload_vec_type;
 public:
 	//Config实现类构造函数
 	ModuleConfig()
@@ -83,16 +60,32 @@ public:
 	~ModuleConfig(){}
 
 
-	static ModuleConfig Instance()
+	static ModuleConfig & Instance()
 	{
 		static ModuleConfig sInstance;
 		return sInstance;
 	}
 	
 	bool Initialize();
+	bool Reinitialize();
 
+	void RegisterReLoadCb(const ReloadCallback &cb)
+	{
+		m_vReLoadCb.push_back(cb);
+	}
+	
+	bool OnLoad()
+	{
+		bool bRet = true;
+			for (auto it : m_vReLoadCb)
+		{
+			bRet &= it();
+		}
+		return bRet;
+	}
 public:
 
+	reload_vec_type m_vReLoadCb;
 
 };
 

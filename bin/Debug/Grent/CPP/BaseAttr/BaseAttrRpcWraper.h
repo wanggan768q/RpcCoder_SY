@@ -38,6 +38,7 @@ public:
 	BaseAttrRpcSyncNotifyWraper()
 	{
 		
+		m_ObjId = 0;
 		m_UpdateData = "";
 
 	}
@@ -49,6 +50,7 @@ public:
 	BaseAttrRpcSyncNotify ToPB() const
 	{
 		BaseAttrRpcSyncNotify v;
+		v.set_objid( m_ObjId );
 		v.set_updatedata( m_UpdateData );
 
 		return v;
@@ -104,10 +106,27 @@ private:
 	//从Protobuffer类型初始化
 	void Init(const BaseAttrRpcSyncNotify& v)
 	{
+		m_ObjId = v.objid();
 		m_UpdateData = v.updatedata();
 
 	}
 
+private:
+	//ObjId
+	uint64_t m_ObjId;
+public:
+	void SetObjId( uint64_t v)
+	{
+		m_ObjId=v;
+	}
+	uint64_t GetObjId()
+	{
+		return m_ObjId;
+	}
+	uint64_t GetObjId() const
+	{
+		return m_ObjId;
+	}
 private:
 	//更新数据
 	string m_UpdateData;

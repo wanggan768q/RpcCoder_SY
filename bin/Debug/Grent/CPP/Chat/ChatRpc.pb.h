@@ -35,6 +35,9 @@ void protobuf_ShutdownFile_ChatRpc_2eproto();
 class ChatRpcChatAsk;
 class ChatRpcChatReply;
 class ChatRpcPushChatUpdatesNotify;
+class ChatRpcPushMarqueeNotify;
+class ChatRpcSayNotify;
+class ChatRpcServerChatNotify;
 
 // ===================================================================
 
@@ -101,7 +104,7 @@ class ChatRpcChatAsk : public ::google::protobuf::Message {
   inline ::ChatMsg* release_chat_msg();
   inline void set_allocated_chat_msg(::ChatMsg* chat_msg);
 
-  // optional sint32 Chat_channel = 2 [default = -1];
+  // optional int32 Chat_channel = 2 [default = -1];
   inline bool has_chat_channel() const;
   inline void clear_chat_channel();
   static const int kChatChannelFieldNumber = 2;
@@ -186,24 +189,34 @@ class ChatRpcChatReply : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
   inline ::google::protobuf::int32 result() const;
   inline void set_result(::google::protobuf::int32 value);
 
+  // optional int32 Forbid_endtime = 2 [default = -1];
+  inline bool has_forbid_endtime() const;
+  inline void clear_forbid_endtime();
+  static const int kForbidEndtimeFieldNumber = 2;
+  inline ::google::protobuf::int32 forbid_endtime() const;
+  inline void set_forbid_endtime(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:ChatRpcChatReply)
  private:
   inline void set_has_result();
   inline void clear_has_result();
+  inline void set_has_forbid_endtime();
+  inline void clear_has_forbid_endtime();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::int32 result_;
+  ::google::protobuf::int32 forbid_endtime_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
 
   friend void  protobuf_AddDesc_ChatRpc_2eproto();
   friend void protobuf_AssignDesc_ChatRpc_2eproto();
@@ -297,6 +310,358 @@ class ChatRpcPushChatUpdatesNotify : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static ChatRpcPushChatUpdatesNotify* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class ChatRpcPushMarqueeNotify : public ::google::protobuf::Message {
+ public:
+  ChatRpcPushMarqueeNotify();
+  virtual ~ChatRpcPushMarqueeNotify();
+
+  ChatRpcPushMarqueeNotify(const ChatRpcPushMarqueeNotify& from);
+
+  inline ChatRpcPushMarqueeNotify& operator=(const ChatRpcPushMarqueeNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ChatRpcPushMarqueeNotify& default_instance();
+
+  void Swap(ChatRpcPushMarqueeNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  ChatRpcPushMarqueeNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ChatRpcPushMarqueeNotify& from);
+  void MergeFrom(const ChatRpcPushMarqueeNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .AppendString Marquee = 1;
+  inline int marquee_size() const;
+  inline void clear_marquee();
+  static const int kMarqueeFieldNumber = 1;
+  inline const ::AppendString& marquee(int index) const;
+  inline ::AppendString* mutable_marquee(int index);
+  inline ::AppendString* add_marquee();
+  inline const ::google::protobuf::RepeatedPtrField< ::AppendString >&
+      marquee() const;
+  inline ::google::protobuf::RepeatedPtrField< ::AppendString >*
+      mutable_marquee();
+
+  // optional int32 Priority = 2 [default = -1];
+  inline bool has_priority() const;
+  inline void clear_priority();
+  static const int kPriorityFieldNumber = 2;
+  inline ::google::protobuf::int32 priority() const;
+  inline void set_priority(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:ChatRpcPushMarqueeNotify)
+ private:
+  inline void set_has_priority();
+  inline void clear_has_priority();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::RepeatedPtrField< ::AppendString > marquee_;
+  ::google::protobuf::int32 priority_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
+
+  friend void  protobuf_AddDesc_ChatRpc_2eproto();
+  friend void protobuf_AssignDesc_ChatRpc_2eproto();
+  friend void protobuf_ShutdownFile_ChatRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static ChatRpcPushMarqueeNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class ChatRpcSayNotify : public ::google::protobuf::Message {
+ public:
+  ChatRpcSayNotify();
+  virtual ~ChatRpcSayNotify();
+
+  ChatRpcSayNotify(const ChatRpcSayNotify& from);
+
+  inline ChatRpcSayNotify& operator=(const ChatRpcSayNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ChatRpcSayNotify& default_instance();
+
+  void Swap(ChatRpcSayNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  ChatRpcSayNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ChatRpcSayNotify& from);
+  void MergeFrom(const ChatRpcSayNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional uint64 ObjId = 1 [default = 0];
+  inline bool has_objid() const;
+  inline void clear_objid();
+  static const int kObjIdFieldNumber = 1;
+  inline ::google::protobuf::uint64 objid() const;
+  inline void set_objid(::google::protobuf::uint64 value);
+
+  // optional int32 ChatId = 2 [default = 0];
+  inline bool has_chatid() const;
+  inline void clear_chatid();
+  static const int kChatIdFieldNumber = 2;
+  inline ::google::protobuf::int32 chatid() const;
+  inline void set_chatid(::google::protobuf::int32 value);
+
+  // optional int32 Duration = 3 [default = 0];
+  inline bool has_duration() const;
+  inline void clear_duration();
+  static const int kDurationFieldNumber = 3;
+  inline ::google::protobuf::int32 duration() const;
+  inline void set_duration(::google::protobuf::int32 value);
+
+  // optional int32 ChatType = 4 [default = 0];
+  inline bool has_chattype() const;
+  inline void clear_chattype();
+  static const int kChatTypeFieldNumber = 4;
+  inline ::google::protobuf::int32 chattype() const;
+  inline void set_chattype(::google::protobuf::int32 value);
+
+  // optional int32 Interval = 5 [default = 0];
+  inline bool has_interval() const;
+  inline void clear_interval();
+  static const int kIntervalFieldNumber = 5;
+  inline ::google::protobuf::int32 interval() const;
+  inline void set_interval(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:ChatRpcSayNotify)
+ private:
+  inline void set_has_objid();
+  inline void clear_has_objid();
+  inline void set_has_chatid();
+  inline void clear_has_chatid();
+  inline void set_has_duration();
+  inline void clear_has_duration();
+  inline void set_has_chattype();
+  inline void clear_has_chattype();
+  inline void set_has_interval();
+  inline void clear_has_interval();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::uint64 objid_;
+  ::google::protobuf::int32 chatid_;
+  ::google::protobuf::int32 duration_;
+  ::google::protobuf::int32 chattype_;
+  ::google::protobuf::int32 interval_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+
+  friend void  protobuf_AddDesc_ChatRpc_2eproto();
+  friend void protobuf_AssignDesc_ChatRpc_2eproto();
+  friend void protobuf_ShutdownFile_ChatRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static ChatRpcSayNotify* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class ChatRpcServerChatNotify : public ::google::protobuf::Message {
+ public:
+  ChatRpcServerChatNotify();
+  virtual ~ChatRpcServerChatNotify();
+
+  ChatRpcServerChatNotify(const ChatRpcServerChatNotify& from);
+
+  inline ChatRpcServerChatNotify& operator=(const ChatRpcServerChatNotify& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const ChatRpcServerChatNotify& default_instance();
+
+  void Swap(ChatRpcServerChatNotify* other);
+
+  // implements Message ----------------------------------------------
+
+  ChatRpcServerChatNotify* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const ChatRpcServerChatNotify& from);
+  void MergeFrom(const ChatRpcServerChatNotify& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 Id = 1 [default = -1];
+  inline bool has_id() const;
+  inline void clear_id();
+  static const int kIdFieldNumber = 1;
+  inline ::google::protobuf::int32 id() const;
+  inline void set_id(::google::protobuf::int32 value);
+
+  // optional int32 Channel = 2 [default = -1];
+  inline bool has_channel() const;
+  inline void clear_channel();
+  static const int kChannelFieldNumber = 2;
+  inline ::google::protobuf::int32 channel() const;
+  inline void set_channel(::google::protobuf::int32 value);
+
+  // repeated int32 IParams = 3;
+  inline int iparams_size() const;
+  inline void clear_iparams();
+  static const int kIParamsFieldNumber = 3;
+  inline ::google::protobuf::int32 iparams(int index) const;
+  inline void set_iparams(int index, ::google::protobuf::int32 value);
+  inline void add_iparams(::google::protobuf::int32 value);
+  inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+      iparams() const;
+  inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+      mutable_iparams();
+
+  // repeated string SParams = 4;
+  inline int sparams_size() const;
+  inline void clear_sparams();
+  static const int kSParamsFieldNumber = 4;
+  inline const ::std::string& sparams(int index) const;
+  inline ::std::string* mutable_sparams(int index);
+  inline void set_sparams(int index, const ::std::string& value);
+  inline void set_sparams(int index, const char* value);
+  inline void set_sparams(int index, const char* value, size_t size);
+  inline ::std::string* add_sparams();
+  inline void add_sparams(const ::std::string& value);
+  inline void add_sparams(const char* value);
+  inline void add_sparams(const char* value, size_t size);
+  inline const ::google::protobuf::RepeatedPtrField< ::std::string>& sparams() const;
+  inline ::google::protobuf::RepeatedPtrField< ::std::string>* mutable_sparams();
+
+  // repeated .ItemData Items = 5;
+  inline int items_size() const;
+  inline void clear_items();
+  static const int kItemsFieldNumber = 5;
+  inline const ::ItemData& items(int index) const;
+  inline ::ItemData* mutable_items(int index);
+  inline ::ItemData* add_items();
+  inline const ::google::protobuf::RepeatedPtrField< ::ItemData >&
+      items() const;
+  inline ::google::protobuf::RepeatedPtrField< ::ItemData >*
+      mutable_items();
+
+  // @@protoc_insertion_point(class_scope:ChatRpcServerChatNotify)
+ private:
+  inline void set_has_id();
+  inline void clear_has_id();
+  inline void set_has_channel();
+  inline void clear_has_channel();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 id_;
+  ::google::protobuf::int32 channel_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 > iparams_;
+  ::google::protobuf::RepeatedPtrField< ::std::string> sparams_;
+  ::google::protobuf::RepeatedPtrField< ::ItemData > items_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+
+  friend void  protobuf_AddDesc_ChatRpc_2eproto();
+  friend void protobuf_AssignDesc_ChatRpc_2eproto();
+  friend void protobuf_ShutdownFile_ChatRpc_2eproto();
+
+  void InitAsDefaultInstance();
+  static ChatRpcServerChatNotify* default_instance_;
+};
 // ===================================================================
 
 
@@ -342,7 +707,7 @@ inline void ChatRpcChatAsk::set_allocated_chat_msg(::ChatMsg* chat_msg) {
   }
 }
 
-// optional sint32 Chat_channel = 2 [default = -1];
+// optional int32 Chat_channel = 2 [default = -1];
 inline bool ChatRpcChatAsk::has_chat_channel() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -368,7 +733,7 @@ inline void ChatRpcChatAsk::set_chat_channel(::google::protobuf::int32 value) {
 
 // ChatRpcChatReply
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool ChatRpcChatReply::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -388,6 +753,28 @@ inline ::google::protobuf::int32 ChatRpcChatReply::result() const {
 inline void ChatRpcChatReply::set_result(::google::protobuf::int32 value) {
   set_has_result();
   result_ = value;
+}
+
+// optional int32 Forbid_endtime = 2 [default = -1];
+inline bool ChatRpcChatReply::has_forbid_endtime() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void ChatRpcChatReply::set_has_forbid_endtime() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void ChatRpcChatReply::clear_has_forbid_endtime() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void ChatRpcChatReply::clear_forbid_endtime() {
+  forbid_endtime_ = -1;
+  clear_has_forbid_endtime();
+}
+inline ::google::protobuf::int32 ChatRpcChatReply::forbid_endtime() const {
+  return forbid_endtime_;
+}
+inline void ChatRpcChatReply::set_forbid_endtime(::google::protobuf::int32 value) {
+  set_has_forbid_endtime();
+  forbid_endtime_ = value;
 }
 
 // -------------------------------------------------------------------
@@ -417,6 +804,313 @@ ChatRpcPushChatUpdatesNotify::chat_channels() const {
 inline ::google::protobuf::RepeatedPtrField< ::ChatChannelData >*
 ChatRpcPushChatUpdatesNotify::mutable_chat_channels() {
   return &chat_channels_;
+}
+
+// -------------------------------------------------------------------
+
+// ChatRpcPushMarqueeNotify
+
+// repeated .AppendString Marquee = 1;
+inline int ChatRpcPushMarqueeNotify::marquee_size() const {
+  return marquee_.size();
+}
+inline void ChatRpcPushMarqueeNotify::clear_marquee() {
+  marquee_.Clear();
+}
+inline const ::AppendString& ChatRpcPushMarqueeNotify::marquee(int index) const {
+  return marquee_.Get(index);
+}
+inline ::AppendString* ChatRpcPushMarqueeNotify::mutable_marquee(int index) {
+  return marquee_.Mutable(index);
+}
+inline ::AppendString* ChatRpcPushMarqueeNotify::add_marquee() {
+  return marquee_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::AppendString >&
+ChatRpcPushMarqueeNotify::marquee() const {
+  return marquee_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::AppendString >*
+ChatRpcPushMarqueeNotify::mutable_marquee() {
+  return &marquee_;
+}
+
+// optional int32 Priority = 2 [default = -1];
+inline bool ChatRpcPushMarqueeNotify::has_priority() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void ChatRpcPushMarqueeNotify::set_has_priority() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void ChatRpcPushMarqueeNotify::clear_has_priority() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void ChatRpcPushMarqueeNotify::clear_priority() {
+  priority_ = -1;
+  clear_has_priority();
+}
+inline ::google::protobuf::int32 ChatRpcPushMarqueeNotify::priority() const {
+  return priority_;
+}
+inline void ChatRpcPushMarqueeNotify::set_priority(::google::protobuf::int32 value) {
+  set_has_priority();
+  priority_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// ChatRpcSayNotify
+
+// optional uint64 ObjId = 1 [default = 0];
+inline bool ChatRpcSayNotify::has_objid() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void ChatRpcSayNotify::set_has_objid() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void ChatRpcSayNotify::clear_has_objid() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void ChatRpcSayNotify::clear_objid() {
+  objid_ = GOOGLE_ULONGLONG(0);
+  clear_has_objid();
+}
+inline ::google::protobuf::uint64 ChatRpcSayNotify::objid() const {
+  return objid_;
+}
+inline void ChatRpcSayNotify::set_objid(::google::protobuf::uint64 value) {
+  set_has_objid();
+  objid_ = value;
+}
+
+// optional int32 ChatId = 2 [default = 0];
+inline bool ChatRpcSayNotify::has_chatid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void ChatRpcSayNotify::set_has_chatid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void ChatRpcSayNotify::clear_has_chatid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void ChatRpcSayNotify::clear_chatid() {
+  chatid_ = 0;
+  clear_has_chatid();
+}
+inline ::google::protobuf::int32 ChatRpcSayNotify::chatid() const {
+  return chatid_;
+}
+inline void ChatRpcSayNotify::set_chatid(::google::protobuf::int32 value) {
+  set_has_chatid();
+  chatid_ = value;
+}
+
+// optional int32 Duration = 3 [default = 0];
+inline bool ChatRpcSayNotify::has_duration() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void ChatRpcSayNotify::set_has_duration() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void ChatRpcSayNotify::clear_has_duration() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void ChatRpcSayNotify::clear_duration() {
+  duration_ = 0;
+  clear_has_duration();
+}
+inline ::google::protobuf::int32 ChatRpcSayNotify::duration() const {
+  return duration_;
+}
+inline void ChatRpcSayNotify::set_duration(::google::protobuf::int32 value) {
+  set_has_duration();
+  duration_ = value;
+}
+
+// optional int32 ChatType = 4 [default = 0];
+inline bool ChatRpcSayNotify::has_chattype() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void ChatRpcSayNotify::set_has_chattype() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void ChatRpcSayNotify::clear_has_chattype() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void ChatRpcSayNotify::clear_chattype() {
+  chattype_ = 0;
+  clear_has_chattype();
+}
+inline ::google::protobuf::int32 ChatRpcSayNotify::chattype() const {
+  return chattype_;
+}
+inline void ChatRpcSayNotify::set_chattype(::google::protobuf::int32 value) {
+  set_has_chattype();
+  chattype_ = value;
+}
+
+// optional int32 Interval = 5 [default = 0];
+inline bool ChatRpcSayNotify::has_interval() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void ChatRpcSayNotify::set_has_interval() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void ChatRpcSayNotify::clear_has_interval() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void ChatRpcSayNotify::clear_interval() {
+  interval_ = 0;
+  clear_has_interval();
+}
+inline ::google::protobuf::int32 ChatRpcSayNotify::interval() const {
+  return interval_;
+}
+inline void ChatRpcSayNotify::set_interval(::google::protobuf::int32 value) {
+  set_has_interval();
+  interval_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// ChatRpcServerChatNotify
+
+// optional int32 Id = 1 [default = -1];
+inline bool ChatRpcServerChatNotify::has_id() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void ChatRpcServerChatNotify::set_has_id() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void ChatRpcServerChatNotify::clear_has_id() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void ChatRpcServerChatNotify::clear_id() {
+  id_ = -1;
+  clear_has_id();
+}
+inline ::google::protobuf::int32 ChatRpcServerChatNotify::id() const {
+  return id_;
+}
+inline void ChatRpcServerChatNotify::set_id(::google::protobuf::int32 value) {
+  set_has_id();
+  id_ = value;
+}
+
+// optional int32 Channel = 2 [default = -1];
+inline bool ChatRpcServerChatNotify::has_channel() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void ChatRpcServerChatNotify::set_has_channel() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void ChatRpcServerChatNotify::clear_has_channel() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void ChatRpcServerChatNotify::clear_channel() {
+  channel_ = -1;
+  clear_has_channel();
+}
+inline ::google::protobuf::int32 ChatRpcServerChatNotify::channel() const {
+  return channel_;
+}
+inline void ChatRpcServerChatNotify::set_channel(::google::protobuf::int32 value) {
+  set_has_channel();
+  channel_ = value;
+}
+
+// repeated int32 IParams = 3;
+inline int ChatRpcServerChatNotify::iparams_size() const {
+  return iparams_.size();
+}
+inline void ChatRpcServerChatNotify::clear_iparams() {
+  iparams_.Clear();
+}
+inline ::google::protobuf::int32 ChatRpcServerChatNotify::iparams(int index) const {
+  return iparams_.Get(index);
+}
+inline void ChatRpcServerChatNotify::set_iparams(int index, ::google::protobuf::int32 value) {
+  iparams_.Set(index, value);
+}
+inline void ChatRpcServerChatNotify::add_iparams(::google::protobuf::int32 value) {
+  iparams_.Add(value);
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+ChatRpcServerChatNotify::iparams() const {
+  return iparams_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+ChatRpcServerChatNotify::mutable_iparams() {
+  return &iparams_;
+}
+
+// repeated string SParams = 4;
+inline int ChatRpcServerChatNotify::sparams_size() const {
+  return sparams_.size();
+}
+inline void ChatRpcServerChatNotify::clear_sparams() {
+  sparams_.Clear();
+}
+inline const ::std::string& ChatRpcServerChatNotify::sparams(int index) const {
+  return sparams_.Get(index);
+}
+inline ::std::string* ChatRpcServerChatNotify::mutable_sparams(int index) {
+  return sparams_.Mutable(index);
+}
+inline void ChatRpcServerChatNotify::set_sparams(int index, const ::std::string& value) {
+  sparams_.Mutable(index)->assign(value);
+}
+inline void ChatRpcServerChatNotify::set_sparams(int index, const char* value) {
+  sparams_.Mutable(index)->assign(value);
+}
+inline void ChatRpcServerChatNotify::set_sparams(int index, const char* value, size_t size) {
+  sparams_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* ChatRpcServerChatNotify::add_sparams() {
+  return sparams_.Add();
+}
+inline void ChatRpcServerChatNotify::add_sparams(const ::std::string& value) {
+  sparams_.Add()->assign(value);
+}
+inline void ChatRpcServerChatNotify::add_sparams(const char* value) {
+  sparams_.Add()->assign(value);
+}
+inline void ChatRpcServerChatNotify::add_sparams(const char* value, size_t size) {
+  sparams_.Add()->assign(reinterpret_cast<const char*>(value), size);
+}
+inline const ::google::protobuf::RepeatedPtrField< ::std::string>&
+ChatRpcServerChatNotify::sparams() const {
+  return sparams_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::std::string>*
+ChatRpcServerChatNotify::mutable_sparams() {
+  return &sparams_;
+}
+
+// repeated .ItemData Items = 5;
+inline int ChatRpcServerChatNotify::items_size() const {
+  return items_.size();
+}
+inline void ChatRpcServerChatNotify::clear_items() {
+  items_.Clear();
+}
+inline const ::ItemData& ChatRpcServerChatNotify::items(int index) const {
+  return items_.Get(index);
+}
+inline ::ItemData* ChatRpcServerChatNotify::mutable_items(int index) {
+  return items_.Mutable(index);
+}
+inline ::ItemData* ChatRpcServerChatNotify::add_items() {
+  return items_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::ItemData >&
+ChatRpcServerChatNotify::items() const {
+  return items_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::ItemData >*
+ChatRpcServerChatNotify::mutable_items() {
+  return &items_;
 }
 
 

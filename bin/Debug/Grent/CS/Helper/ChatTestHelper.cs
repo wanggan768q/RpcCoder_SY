@@ -19,6 +19,30 @@ public class ChatRpcPushChatUpdatesNotifyWraperHelper
 {
 	public List<ChatChannelDataWraper> Chat_channels;
 }
+[System.Serializable]
+public class ChatRpcPushMarqueeNotifyWraperHelper
+{
+	public List<AppendStringWraper> Marquee;
+	public int Priority;
+}
+[System.Serializable]
+public class ChatRpcSayNotifyWraperHelper
+{
+	public UInt64 ObjId;
+	public int ChatId;
+	public int Duration;
+	public int ChatType;
+	public int Interval;
+}
+[System.Serializable]
+public class ChatRpcServerChatNotifyWraperHelper
+{
+	public int Id;
+	public int Channel;
+	public List<int> IParams;
+	public List<string> SParams;
+	public List<ItemDataWraper> Items;
+}
 
 
 
@@ -26,6 +50,9 @@ public class ChatTestHelper : MonoBehaviour
 {
 	public ChatRpcChatAskWraperHelper ChatRpcChatAskWraperVar;
 	public ChatRpcPushChatUpdatesNotifyWraperHelper ChatRpcPushChatUpdatesNotifyWraperVar;
+	public ChatRpcPushMarqueeNotifyWraperHelper ChatRpcPushMarqueeNotifyWraperVar;
+	public ChatRpcSayNotifyWraperHelper ChatRpcSayNotifyWraperVar;
+	public ChatRpcServerChatNotifyWraperHelper ChatRpcServerChatNotifyWraperVar;
 
 
 	public void TestChat()

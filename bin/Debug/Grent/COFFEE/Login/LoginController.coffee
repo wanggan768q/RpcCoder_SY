@@ -8,11 +8,17 @@ LoginController = cc.coffee.BaseControllerExtend.extend(
 
     ctor:(_model)->
         @_super(this, _model)
+        _model.SetLoginLineUpNotifyCB(@LoginLineUpCBNotify)
+        _model.SetLoginEnterGameNotifyCB(@LoginEnterGameCBNotify)
 
         return
 
 
 
+    LoginLineUpCBNotify:(ret_msg)->
+        cc.log "LoginLineUpCBNotify Respond "
+    LoginEnterGameCBNotify:(ret_msg)->
+        cc.log "LoginEnterGameCBNotify Respond "
 
 
 )

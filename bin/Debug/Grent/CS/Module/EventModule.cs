@@ -23,6 +23,12 @@ public class EventRPC
 	public const int RPC_CODE_EVENT_MOVE_NOTIFY = 551;
 	public const int RPC_CODE_EVENT_STOPMOVE_NOTIFY = 552;
 	public const int RPC_CODE_EVENT_OBJATTRCHANGE_NOTIFY = 553;
+	public const int RPC_CODE_EVENT_COINCHANGE_NOTIFY = 554;
+	public const int RPC_CODE_EVENT_MOVEPOS_NOTIFY = 555;
+	public const int RPC_CODE_EVENT_DIR_NOTIFY = 556;
+	public const int RPC_CODE_EVENT_STARTFADEOUT_NOTIFY = 557;
+	public const int RPC_CODE_EVENT_CINEMATICSTART_NOTIFY = 558;
+	public const int RPC_CODE_EVENT_CINEMATICEND_NOTIFY = 559;
 
 	
 	private static EventRPC m_Instance = null;
@@ -48,6 +54,12 @@ public class EventRPC
 		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_EVENT_MOVE_NOTIFY, MoveCB);
 		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_EVENT_STOPMOVE_NOTIFY, StopMoveCB);
 		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_EVENT_OBJATTRCHANGE_NOTIFY, ObjAttrChangeCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_EVENT_COINCHANGE_NOTIFY, CoinChangeCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_EVENT_MOVEPOS_NOTIFY, MovePosCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_EVENT_DIR_NOTIFY, DirCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_EVENT_STARTFADEOUT_NOTIFY, StartFadeoutCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_EVENT_CINEMATICSTART_NOTIFY, CinematicStartCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_EVENT_CINEMATICEND_NOTIFY, CinematicEndCB);
 
 
 		return true;
@@ -88,6 +100,72 @@ public class EventRPC
 			ObjAttrChangeCBDelegate( notifyPBWraper );
 	}
 	public static ServerNotifyCallback ObjAttrChangeCBDelegate = null;
+	/**
+	*事件模块-->货币的变化通知 服务器通知回调
+	*/
+	public static void CoinChangeCB( ModMessage notifyMsg )
+	{
+		EventRpcCoinChangeNotifyWraper notifyPBWraper = new EventRpcCoinChangeNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( CoinChangeCBDelegate != null )
+			CoinChangeCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback CoinChangeCBDelegate = null;
+	/**
+	*事件模块-->按点移动 服务器通知回调
+	*/
+	public static void MovePosCB( ModMessage notifyMsg )
+	{
+		EventRpcMovePosNotifyWraper notifyPBWraper = new EventRpcMovePosNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( MovePosCBDelegate != null )
+			MovePosCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback MovePosCBDelegate = null;
+	/**
+	*事件模块-->朝向 服务器通知回调
+	*/
+	public static void DirCB( ModMessage notifyMsg )
+	{
+		EventRpcDirNotifyWraper notifyPBWraper = new EventRpcDirNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( DirCBDelegate != null )
+			DirCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback DirCBDelegate = null;
+	/**
+	*事件模块-->开始淡出效果 服务器通知回调
+	*/
+	public static void StartFadeoutCB( ModMessage notifyMsg )
+	{
+		EventRpcStartFadeoutNotifyWraper notifyPBWraper = new EventRpcStartFadeoutNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( StartFadeoutCBDelegate != null )
+			StartFadeoutCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback StartFadeoutCBDelegate = null;
+	/**
+	*事件模块-->通知表演开始 服务器通知回调
+	*/
+	public static void CinematicStartCB( ModMessage notifyMsg )
+	{
+		EventRpcCinematicStartNotifyWraper notifyPBWraper = new EventRpcCinematicStartNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( CinematicStartCBDelegate != null )
+			CinematicStartCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback CinematicStartCBDelegate = null;
+	/**
+	*事件模块-->通知表演结束 服务器通知回调
+	*/
+	public static void CinematicEndCB( ModMessage notifyMsg )
+	{
+		EventRpcCinematicEndNotifyWraper notifyPBWraper = new EventRpcCinematicEndNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( CinematicEndCBDelegate != null )
+			CinematicEndCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback CinematicEndCBDelegate = null;
 
 
 

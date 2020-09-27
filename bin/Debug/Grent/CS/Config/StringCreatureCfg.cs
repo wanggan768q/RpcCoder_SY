@@ -10,7 +10,6 @@ using System.Collections.Generic;
 public class StringCreatureElement
 {
 	public int id;               	//序号	序号
-	public string comment;       	//	
 	public string sc;            	//简体中文	简体中文
 
 	public bool IsValidate = false;
@@ -104,20 +103,18 @@ public class StringCreatureTable
             vecLine.Add(tmpStr);
             vecHeadType.Add(tmpInt);
 		}
-		if(vecLine.Count != 3)
+		if(vecLine.Count != 2)
 		{
 			Ex.Logger.Log("StringCreature.csv中列数量与生成的代码不匹配!");
 			return false;
 		}
 		if(vecLine[0]!="id"){Ex.Logger.Log("StringCreature.csv中字段[id]位置不对应"); return false; }
-		if(vecLine[1]!="comment"){Ex.Logger.Log("StringCreature.csv中字段[comment]位置不对应"); return false; }
-		if(vecLine[2]!="sc"){Ex.Logger.Log("StringCreature.csv中字段[sc]位置不对应"); return false; }
+		if(vecLine[1]!="sc"){Ex.Logger.Log("StringCreature.csv中字段[sc]位置不对应"); return false; }
 
 		for(int i=0; i<nRow; i++)
 		{
 			StringCreatureElement member = new StringCreatureElement();
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.id );
-			readPos += GameAssist.ReadString( binContent, readPos, out member.comment);
 			readPos += GameAssist.ReadString( binContent, readPos, out member.sc);
 
 			member.IsValidate = true;
@@ -135,28 +132,26 @@ public class StringCreatureTable
 		int contentOffset = 0;
 		List<string> vecLine;
 		vecLine = GameAssist.readCsvLine( strContent, ref contentOffset );
-		if(vecLine.Count != 3)
+		if(vecLine.Count != 2)
 		{
 			Ex.Logger.Log("StringCreature.csv中列数量与生成的代码不匹配!");
 			return false;
 		}
 		if(vecLine[0]!="id"){Ex.Logger.Log("StringCreature.csv中字段[id]位置不对应"); return false; }
-		if(vecLine[1]!="comment"){Ex.Logger.Log("StringCreature.csv中字段[comment]位置不对应"); return false; }
-		if(vecLine[2]!="sc"){Ex.Logger.Log("StringCreature.csv中字段[sc]位置不对应"); return false; }
+		if(vecLine[1]!="sc"){Ex.Logger.Log("StringCreature.csv中字段[sc]位置不对应"); return false; }
 
 		while(true)
 		{
 			vecLine = GameAssist.readCsvLine( strContent, ref contentOffset );
 			if((int)vecLine.Count == 0 )
 				break;
-			if((int)vecLine.Count != (int)3)
+			if((int)vecLine.Count != (int)2)
 			{
 				return false;
 			}
 			StringCreatureElement member = new StringCreatureElement();
 			member.id=Convert.ToInt32(vecLine[0]);
-			member.comment=vecLine[1];
-			member.sc=vecLine[2];
+			member.sc=vecLine[1];
 
 			member.IsValidate = true;
 			m_vecAllElements.Add(member);

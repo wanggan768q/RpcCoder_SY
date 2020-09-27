@@ -23,200 +23,44 @@
 enum ConstWorldServerE
 {
 	MODULE_ID_WORLDSERVER                        = 8,	//世界服务器模块模块ID
-	RPC_CODE_WORLDSERVER_CHANGESCENE_REQUEST     = 851,	//世界服务器模块-->通知世界服务器切换场景-->请求
-	RPC_CODE_WORLDSERVER_ENTERSCENE_REQUEST      = 852,	//世界服务器模块-->进入场景-->请求
-	RPC_CODE_WORLDSERVER_CREATEDUNGEON_REQUEST   = 853,	//世界服务器模块-->创建副本通知-->请求
-	RPC_CODE_WORLDSERVER_CREATETEAM_REQUEST      = 854,	//世界服务器模块-->CreateTeam-->请求
-	RPC_CODE_WORLDSERVER_JOINTEAM_REQUEST        = 855,	//世界服务器模块-->JoinTeam-->请求
-	RPC_CODE_WORLDSERVER_LEAVETEAM_REQUEST       = 856,	//世界服务器模块-->LeaveTeam-->请求
-	RPC_CODE_WORLDSERVER_APPOINTTEAMLEADER_REQUEST= 857,	//世界服务器模块-->AppointTeamLeader-->请求
-	RPC_CODE_WORLDSERVER_DISMISSTEAM_REQUEST     = 858,	//世界服务器模块-->DismissTeam-->请求
-	RPC_CODE_WORLDSERVER_KICKMEMBER_REQUEST      = 859,	//世界服务器模块-->KickMember-->请求
-	RPC_CODE_WORLDSERVER_APPLYTEAM_REQUEST       = 860,	//世界服务器模块-->ApplyTeam-->请求
-	RPC_CODE_WORLDSERVER_AGREETEAMAPPLICANT_REQUEST= 861,	//世界服务器模块-->AgreeTeamApplicant-->请求
-	RPC_CODE_WORLDSERVER_LOGIN_REQUEST           = 862,	//世界服务器模块-->Login-->请求
-	RPC_CODE_WORLDSERVER_UPDATEROLEINFO_REQUEST  = 863,	//世界服务器模块-->UpdateRoleInfo-->请求
-	RPC_CODE_WORLDSERVER_LOGOUT_REQUEST          = 864,	//世界服务器模块-->Logout-->请求
-	RPC_CODE_WORLDSERVER_CREATEDUNGEONNOTIFY_REQUEST= 865,	//世界服务器模块-->CreateDungeonNotify-->请求
-	RPC_CODE_WORLDSERVER_EXITDUNGEON_REQUEST     = 866,	//世界服务器模块-->ExitDungeon-->请求
-	RPC_CODE_WORLDSERVER_RELEASEDUNGEON_REQUEST  = 867,	//世界服务器模块-->ReleaseDungeon-->请求
+	RPC_CODE_WORLDSERVER_CREATEDUNGEONNOTIFY_REQUEST= 851,	//世界服务器模块-->CreateDungeonNotify-->请求
+	RPC_CODE_WORLDSERVER_EXITDUNGEON_REQUEST     = 852,	//世界服务器模块-->ExitDungeon-->请求
+	RPC_CODE_WORLDSERVER_UPDATETEAMINFO_REQUEST  = 853,	//世界服务器模块-->UpdateTeamInfo-->请求
+	RPC_CODE_WORLDSERVER_SENDMAIL_REQUEST        = 854,	//世界服务器模块-->发送邮件-->请求
+	RPC_CODE_WORLDSERVER_CHANGETEAMTYPE_REQUEST  = 855,	//世界服务器模块-->改变队伍类型-->请求
+	RPC_CODE_WORLDSERVER_AUTOMATCH_REQUEST       = 856,	//世界服务器模块-->自动匹配-->请求
+	RPC_CODE_WORLDSERVER_CANCELMATCH_REQUEST     = 857,	//世界服务器模块-->取消匹配-->请求
+	RPC_CODE_WORLDSERVER_LOGINGAMESERVER_REQUEST = 858,	//世界服务器模块-->登录服务器-->请求
+	RPC_CODE_WORLDSERVER_LOGOUTGAMESERVER_REQUEST= 859,	//世界服务器模块-->LoginGameServer-->请求
+	RPC_CODE_WORLDSERVER_GETPLAYERINFO_REQUEST   = 860,	//世界服务器模块-->获取玩家信息-->请求
 
 
 };
 
 
-//Login请求封装类
-class WorldServerRpcLoginAskWraper
+//自动匹配请求封装类
+class WorldServerRpcAutoMatchAskWraper
 {
 public:
 	//构造函数
-	WorldServerRpcLoginAskWraper()
+	WorldServerRpcAutoMatchAskWraper()
 	{
 		
-		m_Team = TeamInfoWraper();
-		m_MemId = -1;
-		m_SceneId = -1;
-		m_RoleInfo = OnlineUserInfoWraper();
+		m_MemberInfo = TeamMemberInfoWraper();
+		m_MatchInfo = PlayerMatchDataWraper();
+		m_Result = -1;
 
 	}
 	//赋值构造函数
-	WorldServerRpcLoginAskWraper(const WorldServerRpcLoginAsk& v){ Init(v); }
+	WorldServerRpcAutoMatchAskWraper(const WorldServerRpcAutoMatchAsk& v){ Init(v); }
 	//等号重载函数
-	void operator = (const WorldServerRpcLoginAsk& v){ Init(v); }
+	void operator = (const WorldServerRpcAutoMatchAsk& v){ Init(v); }
  	//转化成Protobuffer类型函数
-	WorldServerRpcLoginAsk ToPB() const
+	WorldServerRpcAutoMatchAsk ToPB() const
 	{
-		WorldServerRpcLoginAsk v;
-		*v.mutable_team()= m_Team.ToPB();
-		v.set_memid( m_MemId );
-		v.set_sceneid( m_SceneId );
-		*v.mutable_roleinfo()= m_RoleInfo.ToPB();
-
-		return v;
-	}
-	//获取Protobuffer序列化后大小函数
-	int ByteSize() const { return ToPB().ByteSize();}
-	//Protobuffer序列化到缓冲区
-	bool SerializeToArray( void* data, int size ) const
-	{
-		return ToPB().SerializeToArray(data,size);
-	}
-	//Protobuffer序列化到字符串
-	string SerializeAsString() const
-	{
-		return ToPB().SerializeAsString();
-	}
-	//Protobuffer从字符串进行反序列化
-	bool ParseFromString(const string& v)
-	{
-		return ParseFromArray(v.data(),v.size());
-	}
-	//Protobuffer从缓冲区进行反序列化
-	bool ParseFromArray(const void* data, int size)
-	{
-		WorldServerRpcLoginAsk pb;
-		if(!pb.ParseFromArray(data,size)){return false;}
-		Init(pb);
-		return true;
-	}
-	/*
-	string HtmlDescHeader()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-	*/
-	/*
-	string ToHtml()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-		TStr tmpLine;
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}*/
-
-
-private:
-	//从Protobuffer类型初始化
-	void Init(const WorldServerRpcLoginAsk& v)
-	{
-		m_Team = v.team();
-		m_MemId = v.memid();
-		m_SceneId = v.sceneid();
-		m_RoleInfo = v.roleinfo();
-
-	}
-
-private:
-	//Team
-	TeamInfoWraper m_Team;
-public:
-	void SetTeam( const TeamInfoWraper& v)
-	{
-		m_Team=v;
-	}
-	TeamInfoWraper GetTeam()
-	{
-		return m_Team;
-	}
-	TeamInfoWraper GetTeam() const
-	{
-		return m_Team;
-	}
-private:
-	//MemId
-	INT32 m_MemId;
-public:
-	void SetMemId( INT32 v)
-	{
-		m_MemId=v;
-	}
-	INT32 GetMemId()
-	{
-		return m_MemId;
-	}
-	INT32 GetMemId() const
-	{
-		return m_MemId;
-	}
-private:
-	//SceneId
-	INT32 m_SceneId;
-public:
-	void SetSceneId( INT32 v)
-	{
-		m_SceneId=v;
-	}
-	INT32 GetSceneId()
-	{
-		return m_SceneId;
-	}
-	INT32 GetSceneId() const
-	{
-		return m_SceneId;
-	}
-private:
-	//RoleInfo
-	OnlineUserInfoWraper m_RoleInfo;
-public:
-	void SetRoleInfo( const OnlineUserInfoWraper& v)
-	{
-		m_RoleInfo=v;
-	}
-	OnlineUserInfoWraper GetRoleInfo()
-	{
-		return m_RoleInfo;
-	}
-	OnlineUserInfoWraper GetRoleInfo() const
-	{
-		return m_RoleInfo;
-	}
-
-};
-//AgreeTeamApplicant回应封装类
-class WorldServerRpcAgreeTeamApplicantReplyWraper
-{
-public:
-	//构造函数
-	WorldServerRpcAgreeTeamApplicantReplyWraper()
-	{
-		
-		m_Result = -9999;
-
-	}
-	//赋值构造函数
-	WorldServerRpcAgreeTeamApplicantReplyWraper(const WorldServerRpcAgreeTeamApplicantReply& v){ Init(v); }
-	//等号重载函数
-	void operator = (const WorldServerRpcAgreeTeamApplicantReply& v){ Init(v); }
- 	//转化成Protobuffer类型函数
-	WorldServerRpcAgreeTeamApplicantReply ToPB() const
-	{
-		WorldServerRpcAgreeTeamApplicantReply v;
+		WorldServerRpcAutoMatchAsk v;
+		*v.mutable_memberinfo()= m_MemberInfo.ToPB();
+		*v.mutable_matchinfo()= m_MatchInfo.ToPB();
 		v.set_result( m_Result );
 
 		return v;
@@ -241,7 +85,7 @@ public:
 	//Protobuffer从缓冲区进行反序列化
 	bool ParseFromArray(const void* data, int size)
 	{
-		WorldServerRpcAgreeTeamApplicantReply pb;
+		WorldServerRpcAutoMatchAsk pb;
 		if(!pb.ParseFromArray(data,size)){return false;}
 		Init(pb);
 		return true;
@@ -270,12 +114,46 @@ public:
 
 private:
 	//从Protobuffer类型初始化
-	void Init(const WorldServerRpcAgreeTeamApplicantReply& v)
+	void Init(const WorldServerRpcAutoMatchAsk& v)
 	{
+		m_MemberInfo = v.memberinfo();
+		m_MatchInfo = v.matchinfo();
 		m_Result = v.result();
 
 	}
 
+private:
+	//玩家队伍信息
+	TeamMemberInfoWraper m_MemberInfo;
+public:
+	void SetMemberInfo( const TeamMemberInfoWraper& v)
+	{
+		m_MemberInfo=v;
+	}
+	TeamMemberInfoWraper GetMemberInfo()
+	{
+		return m_MemberInfo;
+	}
+	TeamMemberInfoWraper GetMemberInfo() const
+	{
+		return m_MemberInfo;
+	}
+private:
+	//匹配信息
+	PlayerMatchDataWraper m_MatchInfo;
+public:
+	void SetMatchInfo( const PlayerMatchDataWraper& v)
+	{
+		m_MatchInfo=v;
+	}
+	PlayerMatchDataWraper GetMatchInfo()
+	{
+		return m_MatchInfo;
+	}
+	PlayerMatchDataWraper GetMatchInfo() const
+	{
+		return m_MatchInfo;
+	}
 private:
 	//返回结果
 	INT32 m_Result;
@@ -294,26 +172,26 @@ public:
 	}
 
 };
-//UpdateRoleInfo请求封装类
-class WorldServerRpcUpdateRoleInfoAskWraper
+//自动匹配回应封装类
+class WorldServerRpcAutoMatchReplyWraper
 {
 public:
 	//构造函数
-	WorldServerRpcUpdateRoleInfoAskWraper()
+	WorldServerRpcAutoMatchReplyWraper()
 	{
 		
-		m_RoleInfo = OnlineUserInfoWraper();
+		m_Result = -1;
 
 	}
 	//赋值构造函数
-	WorldServerRpcUpdateRoleInfoAskWraper(const WorldServerRpcUpdateRoleInfoAsk& v){ Init(v); }
+	WorldServerRpcAutoMatchReplyWraper(const WorldServerRpcAutoMatchReply& v){ Init(v); }
 	//等号重载函数
-	void operator = (const WorldServerRpcUpdateRoleInfoAsk& v){ Init(v); }
+	void operator = (const WorldServerRpcAutoMatchReply& v){ Init(v); }
  	//转化成Protobuffer类型函数
-	WorldServerRpcUpdateRoleInfoAsk ToPB() const
+	WorldServerRpcAutoMatchReply ToPB() const
 	{
-		WorldServerRpcUpdateRoleInfoAsk v;
-		*v.mutable_roleinfo()= m_RoleInfo.ToPB();
+		WorldServerRpcAutoMatchReply v;
+		v.set_result( m_Result );
 
 		return v;
 	}
@@ -337,7 +215,7 @@ public:
 	//Protobuffer从缓冲区进行反序列化
 	bool ParseFromArray(const void* data, int size)
 	{
-		WorldServerRpcUpdateRoleInfoAsk pb;
+		WorldServerRpcAutoMatchReply pb;
 		if(!pb.ParseFromArray(data,size)){return false;}
 		Init(pb);
 		return true;
@@ -366,12 +244,1660 @@ public:
 
 private:
 	//从Protobuffer类型初始化
-	void Init(const WorldServerRpcUpdateRoleInfoAsk& v)
+	void Init(const WorldServerRpcAutoMatchReply& v)
 	{
-		m_RoleInfo = v.roleinfo();
+		m_Result = v.result();
 
 	}
 
+private:
+	//返回结果
+	INT32 m_Result;
+public:
+	void SetResult( INT32 v)
+	{
+		m_Result=v;
+	}
+	INT32 GetResult()
+	{
+		return m_Result;
+	}
+	INT32 GetResult() const
+	{
+		return m_Result;
+	}
+
+};
+//改变队伍类型回应封装类
+class WorldServerRpcChangeTeamTypeReplyWraper
+{
+public:
+	//构造函数
+	WorldServerRpcChangeTeamTypeReplyWraper()
+	{
+		
+		m_Result = -1;
+
+	}
+	//赋值构造函数
+	WorldServerRpcChangeTeamTypeReplyWraper(const WorldServerRpcChangeTeamTypeReply& v){ Init(v); }
+	//等号重载函数
+	void operator = (const WorldServerRpcChangeTeamTypeReply& v){ Init(v); }
+ 	//转化成Protobuffer类型函数
+	WorldServerRpcChangeTeamTypeReply ToPB() const
+	{
+		WorldServerRpcChangeTeamTypeReply v;
+		v.set_result( m_Result );
+
+		return v;
+	}
+	//获取Protobuffer序列化后大小函数
+	int ByteSize() const { return ToPB().ByteSize();}
+	//Protobuffer序列化到缓冲区
+	bool SerializeToArray( void* data, int size ) const
+	{
+		return ToPB().SerializeToArray(data,size);
+	}
+	//Protobuffer序列化到字符串
+	string SerializeAsString() const
+	{
+		return ToPB().SerializeAsString();
+	}
+	//Protobuffer从字符串进行反序列化
+	bool ParseFromString(const string& v)
+	{
+		return ParseFromArray(v.data(),v.size());
+	}
+	//Protobuffer从缓冲区进行反序列化
+	bool ParseFromArray(const void* data, int size)
+	{
+		WorldServerRpcChangeTeamTypeReply pb;
+		if(!pb.ParseFromArray(data,size)){return false;}
+		Init(pb);
+		return true;
+	}
+	/*
+	string HtmlDescHeader()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}
+	*/
+	/*
+	string ToHtml()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+		TStr tmpLine;
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}*/
+
+
+private:
+	//从Protobuffer类型初始化
+	void Init(const WorldServerRpcChangeTeamTypeReply& v)
+	{
+		m_Result = v.result();
+
+	}
+
+private:
+	//返回结果
+	INT32 m_Result;
+public:
+	void SetResult( INT32 v)
+	{
+		m_Result=v;
+	}
+	INT32 GetResult()
+	{
+		return m_Result;
+	}
+	INT32 GetResult() const
+	{
+		return m_Result;
+	}
+
+};
+//发送邮件回应封装类
+class WorldServerRpcSendMailReplyWraper
+{
+public:
+	//构造函数
+	WorldServerRpcSendMailReplyWraper()
+	{
+		
+		m_Result = -1;
+
+	}
+	//赋值构造函数
+	WorldServerRpcSendMailReplyWraper(const WorldServerRpcSendMailReply& v){ Init(v); }
+	//等号重载函数
+	void operator = (const WorldServerRpcSendMailReply& v){ Init(v); }
+ 	//转化成Protobuffer类型函数
+	WorldServerRpcSendMailReply ToPB() const
+	{
+		WorldServerRpcSendMailReply v;
+		v.set_result( m_Result );
+
+		return v;
+	}
+	//获取Protobuffer序列化后大小函数
+	int ByteSize() const { return ToPB().ByteSize();}
+	//Protobuffer序列化到缓冲区
+	bool SerializeToArray( void* data, int size ) const
+	{
+		return ToPB().SerializeToArray(data,size);
+	}
+	//Protobuffer序列化到字符串
+	string SerializeAsString() const
+	{
+		return ToPB().SerializeAsString();
+	}
+	//Protobuffer从字符串进行反序列化
+	bool ParseFromString(const string& v)
+	{
+		return ParseFromArray(v.data(),v.size());
+	}
+	//Protobuffer从缓冲区进行反序列化
+	bool ParseFromArray(const void* data, int size)
+	{
+		WorldServerRpcSendMailReply pb;
+		if(!pb.ParseFromArray(data,size)){return false;}
+		Init(pb);
+		return true;
+	}
+	/*
+	string HtmlDescHeader()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}
+	*/
+	/*
+	string ToHtml()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+		TStr tmpLine;
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}*/
+
+
+private:
+	//从Protobuffer类型初始化
+	void Init(const WorldServerRpcSendMailReply& v)
+	{
+		m_Result = v.result();
+
+	}
+
+private:
+	//返回结果
+	INT32 m_Result;
+public:
+	void SetResult( INT32 v)
+	{
+		m_Result=v;
+	}
+	INT32 GetResult()
+	{
+		return m_Result;
+	}
+	INT32 GetResult() const
+	{
+		return m_Result;
+	}
+
+};
+//改变队伍类型请求封装类
+class WorldServerRpcChangeTeamTypeAskWraper
+{
+public:
+	//构造函数
+	WorldServerRpcChangeTeamTypeAskWraper()
+	{
+		
+		m_TeamId = 0;
+		m_RoleId = 0;
+		m_Result = -1;
+		m_TeamType = -1;
+		m_Target = TeamTargetWraper();
+
+	}
+	//赋值构造函数
+	WorldServerRpcChangeTeamTypeAskWraper(const WorldServerRpcChangeTeamTypeAsk& v){ Init(v); }
+	//等号重载函数
+	void operator = (const WorldServerRpcChangeTeamTypeAsk& v){ Init(v); }
+ 	//转化成Protobuffer类型函数
+	WorldServerRpcChangeTeamTypeAsk ToPB() const
+	{
+		WorldServerRpcChangeTeamTypeAsk v;
+		v.set_teamid( m_TeamId );
+		v.set_roleid( m_RoleId );
+		v.set_result( m_Result );
+		v.set_teamtype( m_TeamType );
+		*v.mutable_target()= m_Target.ToPB();
+
+		return v;
+	}
+	//获取Protobuffer序列化后大小函数
+	int ByteSize() const { return ToPB().ByteSize();}
+	//Protobuffer序列化到缓冲区
+	bool SerializeToArray( void* data, int size ) const
+	{
+		return ToPB().SerializeToArray(data,size);
+	}
+	//Protobuffer序列化到字符串
+	string SerializeAsString() const
+	{
+		return ToPB().SerializeAsString();
+	}
+	//Protobuffer从字符串进行反序列化
+	bool ParseFromString(const string& v)
+	{
+		return ParseFromArray(v.data(),v.size());
+	}
+	//Protobuffer从缓冲区进行反序列化
+	bool ParseFromArray(const void* data, int size)
+	{
+		WorldServerRpcChangeTeamTypeAsk pb;
+		if(!pb.ParseFromArray(data,size)){return false;}
+		Init(pb);
+		return true;
+	}
+	/*
+	string HtmlDescHeader()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}
+	*/
+	/*
+	string ToHtml()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+		TStr tmpLine;
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}*/
+
+
+private:
+	//从Protobuffer类型初始化
+	void Init(const WorldServerRpcChangeTeamTypeAsk& v)
+	{
+		m_TeamId = v.teamid();
+		m_RoleId = v.roleid();
+		m_Result = v.result();
+		m_TeamType = v.teamtype();
+		m_Target = v.target();
+
+	}
+
+private:
+	//队伍id
+	uint64_t m_TeamId;
+public:
+	void SetTeamId( uint64_t v)
+	{
+		m_TeamId=v;
+	}
+	uint64_t GetTeamId()
+	{
+		return m_TeamId;
+	}
+	uint64_t GetTeamId() const
+	{
+		return m_TeamId;
+	}
+private:
+	//玩家id
+	uint64_t m_RoleId;
+public:
+	void SetRoleId( uint64_t v)
+	{
+		m_RoleId=v;
+	}
+	uint64_t GetRoleId()
+	{
+		return m_RoleId;
+	}
+	uint64_t GetRoleId() const
+	{
+		return m_RoleId;
+	}
+private:
+	//返回结果
+	INT32 m_Result;
+public:
+	void SetResult( INT32 v)
+	{
+		m_Result=v;
+	}
+	INT32 GetResult()
+	{
+		return m_Result;
+	}
+	INT32 GetResult() const
+	{
+		return m_Result;
+	}
+private:
+	//队伍类型
+	INT32 m_TeamType;
+public:
+	void SetTeamType( INT32 v)
+	{
+		m_TeamType=v;
+	}
+	INT32 GetTeamType()
+	{
+		return m_TeamType;
+	}
+	INT32 GetTeamType() const
+	{
+		return m_TeamType;
+	}
+private:
+	//目标
+	TeamTargetWraper m_Target;
+public:
+	void SetTarget( const TeamTargetWraper& v)
+	{
+		m_Target=v;
+	}
+	TeamTargetWraper GetTarget()
+	{
+		return m_Target;
+	}
+	TeamTargetWraper GetTarget() const
+	{
+		return m_Target;
+	}
+
+};
+//取消匹配请求封装类
+class WorldServerRpcCancelMatchAskWraper
+{
+public:
+	//构造函数
+	WorldServerRpcCancelMatchAskWraper()
+	{
+		
+		m_RoleId = 0;
+		m_Result = -1;
+		m_IsNotify = 0;
+
+	}
+	//赋值构造函数
+	WorldServerRpcCancelMatchAskWraper(const WorldServerRpcCancelMatchAsk& v){ Init(v); }
+	//等号重载函数
+	void operator = (const WorldServerRpcCancelMatchAsk& v){ Init(v); }
+ 	//转化成Protobuffer类型函数
+	WorldServerRpcCancelMatchAsk ToPB() const
+	{
+		WorldServerRpcCancelMatchAsk v;
+		v.set_roleid( m_RoleId );
+		v.set_result( m_Result );
+		v.set_isnotify( m_IsNotify );
+
+		return v;
+	}
+	//获取Protobuffer序列化后大小函数
+	int ByteSize() const { return ToPB().ByteSize();}
+	//Protobuffer序列化到缓冲区
+	bool SerializeToArray( void* data, int size ) const
+	{
+		return ToPB().SerializeToArray(data,size);
+	}
+	//Protobuffer序列化到字符串
+	string SerializeAsString() const
+	{
+		return ToPB().SerializeAsString();
+	}
+	//Protobuffer从字符串进行反序列化
+	bool ParseFromString(const string& v)
+	{
+		return ParseFromArray(v.data(),v.size());
+	}
+	//Protobuffer从缓冲区进行反序列化
+	bool ParseFromArray(const void* data, int size)
+	{
+		WorldServerRpcCancelMatchAsk pb;
+		if(!pb.ParseFromArray(data,size)){return false;}
+		Init(pb);
+		return true;
+	}
+	/*
+	string HtmlDescHeader()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}
+	*/
+	/*
+	string ToHtml()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+		TStr tmpLine;
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}*/
+
+
+private:
+	//从Protobuffer类型初始化
+	void Init(const WorldServerRpcCancelMatchAsk& v)
+	{
+		m_RoleId = v.roleid();
+		m_Result = v.result();
+		m_IsNotify = v.isnotify();
+
+	}
+
+private:
+	//被拒绝RoleId
+	uint64_t m_RoleId;
+public:
+	void SetRoleId( uint64_t v)
+	{
+		m_RoleId=v;
+	}
+	uint64_t GetRoleId()
+	{
+		return m_RoleId;
+	}
+	uint64_t GetRoleId() const
+	{
+		return m_RoleId;
+	}
+private:
+	//返回结果
+	INT32 m_Result;
+public:
+	void SetResult( INT32 v)
+	{
+		m_Result=v;
+	}
+	INT32 GetResult()
+	{
+		return m_Result;
+	}
+	INT32 GetResult() const
+	{
+		return m_Result;
+	}
+private:
+	//是否是通知
+	INT32 m_IsNotify;
+public:
+	void SetIsNotify( INT32 v)
+	{
+		m_IsNotify=v;
+	}
+	INT32 GetIsNotify()
+	{
+		return m_IsNotify;
+	}
+	INT32 GetIsNotify() const
+	{
+		return m_IsNotify;
+	}
+
+};
+//获取玩家信息请求封装类
+class WorldServerRpcGetPlayerInfoAskWraper
+{
+public:
+	//构造函数
+	WorldServerRpcGetPlayerInfoAskWraper()
+	{
+		
+		m_Player_guid = 0;
+
+	}
+	//赋值构造函数
+	WorldServerRpcGetPlayerInfoAskWraper(const WorldServerRpcGetPlayerInfoAsk& v){ Init(v); }
+	//等号重载函数
+	void operator = (const WorldServerRpcGetPlayerInfoAsk& v){ Init(v); }
+ 	//转化成Protobuffer类型函数
+	WorldServerRpcGetPlayerInfoAsk ToPB() const
+	{
+		WorldServerRpcGetPlayerInfoAsk v;
+		v.set_player_guid( m_Player_guid );
+
+		return v;
+	}
+	//获取Protobuffer序列化后大小函数
+	int ByteSize() const { return ToPB().ByteSize();}
+	//Protobuffer序列化到缓冲区
+	bool SerializeToArray( void* data, int size ) const
+	{
+		return ToPB().SerializeToArray(data,size);
+	}
+	//Protobuffer序列化到字符串
+	string SerializeAsString() const
+	{
+		return ToPB().SerializeAsString();
+	}
+	//Protobuffer从字符串进行反序列化
+	bool ParseFromString(const string& v)
+	{
+		return ParseFromArray(v.data(),v.size());
+	}
+	//Protobuffer从缓冲区进行反序列化
+	bool ParseFromArray(const void* data, int size)
+	{
+		WorldServerRpcGetPlayerInfoAsk pb;
+		if(!pb.ParseFromArray(data,size)){return false;}
+		Init(pb);
+		return true;
+	}
+	/*
+	string HtmlDescHeader()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}
+	*/
+	/*
+	string ToHtml()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+		TStr tmpLine;
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}*/
+
+
+private:
+	//从Protobuffer类型初始化
+	void Init(const WorldServerRpcGetPlayerInfoAsk& v)
+	{
+		m_Player_guid = v.player_guid();
+
+	}
+
+private:
+	//玩家guid
+	uint64_t m_Player_guid;
+public:
+	void SetPlayer_guid( uint64_t v)
+	{
+		m_Player_guid=v;
+	}
+	uint64_t GetPlayer_guid()
+	{
+		return m_Player_guid;
+	}
+	uint64_t GetPlayer_guid() const
+	{
+		return m_Player_guid;
+	}
+
+};
+//获取玩家信息回应封装类
+class WorldServerRpcGetPlayerInfoReplyWraper
+{
+public:
+	//构造函数
+	WorldServerRpcGetPlayerInfoReplyWraper()
+	{
+		
+		m_Result = -1;
+		m_Player_name = "";
+		m_Player_guid = 0;
+		m_Avatar_id = -1;
+		m_Player_level = -1;
+		m_Avatar_frame_id = -1;
+		m_Config_id = -1;
+		m_Guild_id = 0;
+		m_Guild_name = "";
+		m_BattleScore = -1;
+		m_TreasureHair = -1;
+		m_TreasureHead = -1;
+		m_TreasureBody = -1;
+		m_TreasureWeapon = -1;
+		m_TreasureWing = -1;
+		m_TeamId = 0;
+		m_Pet_Use_Index = -1;
+		m_PinchData = PinchFaceDataWraper();
+
+	}
+	//赋值构造函数
+	WorldServerRpcGetPlayerInfoReplyWraper(const WorldServerRpcGetPlayerInfoReply& v){ Init(v); }
+	//等号重载函数
+	void operator = (const WorldServerRpcGetPlayerInfoReply& v){ Init(v); }
+ 	//转化成Protobuffer类型函数
+	WorldServerRpcGetPlayerInfoReply ToPB() const
+	{
+		WorldServerRpcGetPlayerInfoReply v;
+		v.set_result( m_Result );
+		v.set_player_name( m_Player_name );
+		v.set_player_guid( m_Player_guid );
+		v.set_avatar_id( m_Avatar_id );
+		v.set_player_level( m_Player_level );
+		v.set_avatar_frame_id( m_Avatar_frame_id );
+		v.set_config_id( m_Config_id );
+		v.set_guild_id( m_Guild_id );
+		v.set_guild_name( m_Guild_name );
+		v.mutable_equip_data()->Reserve(m_Equip_data.size());
+		for (int i=0; i<(int)m_Equip_data.size(); i++)
+		{
+			*v.add_equip_data() = m_Equip_data[i].ToPB();
+		}
+		v.mutable_suit_infos()->Reserve(m_Suit_infos.size());
+		for (int i=0; i<(int)m_Suit_infos.size(); i++)
+		{
+			*v.add_suit_infos() = m_Suit_infos[i].ToPB();
+		}
+		v.mutable_equipslotdata()->Reserve(m_EquipSlotData.size());
+		for (int i=0; i<(int)m_EquipSlotData.size(); i++)
+		{
+			*v.add_equipslotdata() = m_EquipSlotData[i].ToPB();
+		}
+		v.mutable_equipslotstarlist()->Reserve(m_EquipSlotStarList.size());
+		for (int i=0; i<(int)m_EquipSlotStarList.size(); i++)
+		{
+			*v.add_equipslotstarlist() = m_EquipSlotStarList[i].ToPB();
+		}
+		v.mutable_jewelinfos()->Reserve(m_JewelInfos.size());
+		for (int i=0; i<(int)m_JewelInfos.size(); i++)
+		{
+			*v.add_jewelinfos() = m_JewelInfos[i].ToPB();
+		}
+		v.set_battlescore( m_BattleScore );
+		v.mutable_pet_item_data()->Reserve(m_Pet_item_data.size());
+		for (int i=0; i<(int)m_Pet_item_data.size(); i++)
+		{
+			*v.add_pet_item_data() = m_Pet_item_data[i].ToPB();
+		}
+		v.set_treasurehair( m_TreasureHair );
+		v.set_treasurehead( m_TreasureHead );
+		v.set_treasurebody( m_TreasureBody );
+		v.set_treasureweapon( m_TreasureWeapon );
+		v.set_treasurewing( m_TreasureWing );
+		v.set_teamid( m_TeamId );
+		v.set_pet_use_index( m_Pet_Use_Index );
+		*v.mutable_pinchdata()= m_PinchData.ToPB();
+
+		return v;
+	}
+	//获取Protobuffer序列化后大小函数
+	int ByteSize() const { return ToPB().ByteSize();}
+	//Protobuffer序列化到缓冲区
+	bool SerializeToArray( void* data, int size ) const
+	{
+		return ToPB().SerializeToArray(data,size);
+	}
+	//Protobuffer序列化到字符串
+	string SerializeAsString() const
+	{
+		return ToPB().SerializeAsString();
+	}
+	//Protobuffer从字符串进行反序列化
+	bool ParseFromString(const string& v)
+	{
+		return ParseFromArray(v.data(),v.size());
+	}
+	//Protobuffer从缓冲区进行反序列化
+	bool ParseFromArray(const void* data, int size)
+	{
+		WorldServerRpcGetPlayerInfoReply pb;
+		if(!pb.ParseFromArray(data,size)){return false;}
+		Init(pb);
+		return true;
+	}
+	/*
+	string HtmlDescHeader()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}
+	*/
+	/*
+	string ToHtml()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+		TStr tmpLine;
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}*/
+
+
+private:
+	//从Protobuffer类型初始化
+	void Init(const WorldServerRpcGetPlayerInfoReply& v)
+	{
+		m_Result = v.result();
+		m_Player_name = v.player_name();
+		m_Player_guid = v.player_guid();
+		m_Avatar_id = v.avatar_id();
+		m_Player_level = v.player_level();
+		m_Avatar_frame_id = v.avatar_frame_id();
+		m_Config_id = v.config_id();
+		m_Guild_id = v.guild_id();
+		m_Guild_name = v.guild_name();
+		m_Equip_data.clear();
+		m_Equip_data.reserve(v.equip_data_size());
+		for( int i=0; i<v.equip_data_size(); i++)
+			m_Equip_data.push_back(v.equip_data(i));
+		m_Suit_infos.clear();
+		m_Suit_infos.reserve(v.suit_infos_size());
+		for( int i=0; i<v.suit_infos_size(); i++)
+			m_Suit_infos.push_back(v.suit_infos(i));
+		m_EquipSlotData.clear();
+		m_EquipSlotData.reserve(v.equipslotdata_size());
+		for( int i=0; i<v.equipslotdata_size(); i++)
+			m_EquipSlotData.push_back(v.equipslotdata(i));
+		m_EquipSlotStarList.clear();
+		m_EquipSlotStarList.reserve(v.equipslotstarlist_size());
+		for( int i=0; i<v.equipslotstarlist_size(); i++)
+			m_EquipSlotStarList.push_back(v.equipslotstarlist(i));
+		m_JewelInfos.clear();
+		m_JewelInfos.reserve(v.jewelinfos_size());
+		for( int i=0; i<v.jewelinfos_size(); i++)
+			m_JewelInfos.push_back(v.jewelinfos(i));
+		m_BattleScore = v.battlescore();
+		m_Pet_item_data.clear();
+		m_Pet_item_data.reserve(v.pet_item_data_size());
+		for( int i=0; i<v.pet_item_data_size(); i++)
+			m_Pet_item_data.push_back(v.pet_item_data(i));
+		m_TreasureHair = v.treasurehair();
+		m_TreasureHead = v.treasurehead();
+		m_TreasureBody = v.treasurebody();
+		m_TreasureWeapon = v.treasureweapon();
+		m_TreasureWing = v.treasurewing();
+		m_TeamId = v.teamid();
+		m_Pet_Use_Index = v.pet_use_index();
+		m_PinchData = v.pinchdata();
+
+	}
+
+private:
+	//返回结果
+	INT32 m_Result;
+public:
+	void SetResult( INT32 v)
+	{
+		m_Result=v;
+	}
+	INT32 GetResult()
+	{
+		return m_Result;
+	}
+	INT32 GetResult() const
+	{
+		return m_Result;
+	}
+private:
+	//玩家名字
+	string m_Player_name;
+public:
+	void SetPlayer_name( const string& v)
+	{
+		m_Player_name=v;
+	}
+	string GetPlayer_name()
+	{
+		return m_Player_name;
+	}
+	string GetPlayer_name() const
+	{
+		return m_Player_name;
+	}
+private:
+	//玩家GUID
+	uint64_t m_Player_guid;
+public:
+	void SetPlayer_guid( uint64_t v)
+	{
+		m_Player_guid=v;
+	}
+	uint64_t GetPlayer_guid()
+	{
+		return m_Player_guid;
+	}
+	uint64_t GetPlayer_guid() const
+	{
+		return m_Player_guid;
+	}
+private:
+	//头像ID
+	INT32 m_Avatar_id;
+public:
+	void SetAvatar_id( INT32 v)
+	{
+		m_Avatar_id=v;
+	}
+	INT32 GetAvatar_id()
+	{
+		return m_Avatar_id;
+	}
+	INT32 GetAvatar_id() const
+	{
+		return m_Avatar_id;
+	}
+private:
+	//等级
+	INT32 m_Player_level;
+public:
+	void SetPlayer_level( INT32 v)
+	{
+		m_Player_level=v;
+	}
+	INT32 GetPlayer_level()
+	{
+		return m_Player_level;
+	}
+	INT32 GetPlayer_level() const
+	{
+		return m_Player_level;
+	}
+private:
+	//头像框ID
+	INT32 m_Avatar_frame_id;
+public:
+	void SetAvatar_frame_id( INT32 v)
+	{
+		m_Avatar_frame_id=v;
+	}
+	INT32 GetAvatar_frame_id()
+	{
+		return m_Avatar_frame_id;
+	}
+	INT32 GetAvatar_frame_id() const
+	{
+		return m_Avatar_frame_id;
+	}
+private:
+	//角色配置ID
+	INT32 m_Config_id;
+public:
+	void SetConfig_id( INT32 v)
+	{
+		m_Config_id=v;
+	}
+	INT32 GetConfig_id()
+	{
+		return m_Config_id;
+	}
+	INT32 GetConfig_id() const
+	{
+		return m_Config_id;
+	}
+private:
+	//公会id
+	uint64_t m_Guild_id;
+public:
+	void SetGuild_id( uint64_t v)
+	{
+		m_Guild_id=v;
+	}
+	uint64_t GetGuild_id()
+	{
+		return m_Guild_id;
+	}
+	uint64_t GetGuild_id() const
+	{
+		return m_Guild_id;
+	}
+private:
+	//公会名字
+	string m_Guild_name;
+public:
+	void SetGuild_name( const string& v)
+	{
+		m_Guild_name=v;
+	}
+	string GetGuild_name()
+	{
+		return m_Guild_name;
+	}
+	string GetGuild_name() const
+	{
+		return m_Guild_name;
+	}
+private:
+	//装备信息
+	vector<ItemDataWraper> m_Equip_data;
+public:
+	int SizeEquip_data()
+	{
+		return m_Equip_data.size();
+	}
+	const vector<ItemDataWraper>& GetEquip_data() const
+	{
+		return m_Equip_data;
+	}
+	ItemDataWraper GetEquip_data(int Index) const
+	{
+		if(Index<0 || Index>=(int)m_Equip_data.size())
+		{
+			assert(false);
+			return ItemDataWraper();
+		}
+		return m_Equip_data[Index];
+	}
+	void SetEquip_data( const vector<ItemDataWraper>& v )
+	{
+		m_Equip_data=v;
+	}
+	void ClearEquip_data( )
+	{
+		m_Equip_data.clear();
+	}
+	void SetEquip_data( int Index, const ItemDataWraper& v )
+	{
+		if(Index<0 || Index>=(int)m_Equip_data.size())
+		{
+			assert(false);
+			return;
+		}
+		m_Equip_data[Index] = v;
+	}
+	void AddEquip_data( const ItemDataWraper& v )
+	{
+		m_Equip_data.push_back(v);
+	}
+private:
+	//Suit_infos
+	vector<SuitInfoWraper> m_Suit_infos;
+public:
+	int SizeSuit_infos()
+	{
+		return m_Suit_infos.size();
+	}
+	const vector<SuitInfoWraper>& GetSuit_infos() const
+	{
+		return m_Suit_infos;
+	}
+	SuitInfoWraper GetSuit_infos(int Index) const
+	{
+		if(Index<0 || Index>=(int)m_Suit_infos.size())
+		{
+			assert(false);
+			return SuitInfoWraper();
+		}
+		return m_Suit_infos[Index];
+	}
+	void SetSuit_infos( const vector<SuitInfoWraper>& v )
+	{
+		m_Suit_infos=v;
+	}
+	void ClearSuit_infos( )
+	{
+		m_Suit_infos.clear();
+	}
+	void SetSuit_infos( int Index, const SuitInfoWraper& v )
+	{
+		if(Index<0 || Index>=(int)m_Suit_infos.size())
+		{
+			assert(false);
+			return;
+		}
+		m_Suit_infos[Index] = v;
+	}
+	void AddSuit_infos( const SuitInfoWraper& v )
+	{
+		m_Suit_infos.push_back(v);
+	}
+private:
+	//装备槽信息
+	vector<EquipSlotInfoWraper> m_EquipSlotData;
+public:
+	int SizeEquipSlotData()
+	{
+		return m_EquipSlotData.size();
+	}
+	const vector<EquipSlotInfoWraper>& GetEquipSlotData() const
+	{
+		return m_EquipSlotData;
+	}
+	EquipSlotInfoWraper GetEquipSlotData(int Index) const
+	{
+		if(Index<0 || Index>=(int)m_EquipSlotData.size())
+		{
+			assert(false);
+			return EquipSlotInfoWraper();
+		}
+		return m_EquipSlotData[Index];
+	}
+	void SetEquipSlotData( const vector<EquipSlotInfoWraper>& v )
+	{
+		m_EquipSlotData=v;
+	}
+	void ClearEquipSlotData( )
+	{
+		m_EquipSlotData.clear();
+	}
+	void SetEquipSlotData( int Index, const EquipSlotInfoWraper& v )
+	{
+		if(Index<0 || Index>=(int)m_EquipSlotData.size())
+		{
+			assert(false);
+			return;
+		}
+		m_EquipSlotData[Index] = v;
+	}
+	void AddEquipSlotData( const EquipSlotInfoWraper& v )
+	{
+		m_EquipSlotData.push_back(v);
+	}
+private:
+	//装备槽星级列表
+	vector<EquipSlotStarInfoWraper> m_EquipSlotStarList;
+public:
+	int SizeEquipSlotStarList()
+	{
+		return m_EquipSlotStarList.size();
+	}
+	const vector<EquipSlotStarInfoWraper>& GetEquipSlotStarList() const
+	{
+		return m_EquipSlotStarList;
+	}
+	EquipSlotStarInfoWraper GetEquipSlotStarList(int Index) const
+	{
+		if(Index<0 || Index>=(int)m_EquipSlotStarList.size())
+		{
+			assert(false);
+			return EquipSlotStarInfoWraper();
+		}
+		return m_EquipSlotStarList[Index];
+	}
+	void SetEquipSlotStarList( const vector<EquipSlotStarInfoWraper>& v )
+	{
+		m_EquipSlotStarList=v;
+	}
+	void ClearEquipSlotStarList( )
+	{
+		m_EquipSlotStarList.clear();
+	}
+	void SetEquipSlotStarList( int Index, const EquipSlotStarInfoWraper& v )
+	{
+		if(Index<0 || Index>=(int)m_EquipSlotStarList.size())
+		{
+			assert(false);
+			return;
+		}
+		m_EquipSlotStarList[Index] = v;
+	}
+	void AddEquipSlotStarList( const EquipSlotStarInfoWraper& v )
+	{
+		m_EquipSlotStarList.push_back(v);
+	}
+private:
+	//宝石信息
+	vector<JewelInfoWraper> m_JewelInfos;
+public:
+	int SizeJewelInfos()
+	{
+		return m_JewelInfos.size();
+	}
+	const vector<JewelInfoWraper>& GetJewelInfos() const
+	{
+		return m_JewelInfos;
+	}
+	JewelInfoWraper GetJewelInfos(int Index) const
+	{
+		if(Index<0 || Index>=(int)m_JewelInfos.size())
+		{
+			assert(false);
+			return JewelInfoWraper();
+		}
+		return m_JewelInfos[Index];
+	}
+	void SetJewelInfos( const vector<JewelInfoWraper>& v )
+	{
+		m_JewelInfos=v;
+	}
+	void ClearJewelInfos( )
+	{
+		m_JewelInfos.clear();
+	}
+	void SetJewelInfos( int Index, const JewelInfoWraper& v )
+	{
+		if(Index<0 || Index>=(int)m_JewelInfos.size())
+		{
+			assert(false);
+			return;
+		}
+		m_JewelInfos[Index] = v;
+	}
+	void AddJewelInfos( const JewelInfoWraper& v )
+	{
+		m_JewelInfos.push_back(v);
+	}
+private:
+	//战斗力
+	INT32 m_BattleScore;
+public:
+	void SetBattleScore( INT32 v)
+	{
+		m_BattleScore=v;
+	}
+	INT32 GetBattleScore()
+	{
+		return m_BattleScore;
+	}
+	INT32 GetBattleScore() const
+	{
+		return m_BattleScore;
+	}
+private:
+	//宠物数据
+	vector<ItemDataWraper> m_Pet_item_data;
+public:
+	int SizePet_item_data()
+	{
+		return m_Pet_item_data.size();
+	}
+	const vector<ItemDataWraper>& GetPet_item_data() const
+	{
+		return m_Pet_item_data;
+	}
+	ItemDataWraper GetPet_item_data(int Index) const
+	{
+		if(Index<0 || Index>=(int)m_Pet_item_data.size())
+		{
+			assert(false);
+			return ItemDataWraper();
+		}
+		return m_Pet_item_data[Index];
+	}
+	void SetPet_item_data( const vector<ItemDataWraper>& v )
+	{
+		m_Pet_item_data=v;
+	}
+	void ClearPet_item_data( )
+	{
+		m_Pet_item_data.clear();
+	}
+	void SetPet_item_data( int Index, const ItemDataWraper& v )
+	{
+		if(Index<0 || Index>=(int)m_Pet_item_data.size())
+		{
+			assert(false);
+			return;
+		}
+		m_Pet_item_data[Index] = v;
+	}
+	void AddPet_item_data( const ItemDataWraper& v )
+	{
+		m_Pet_item_data.push_back(v);
+	}
+private:
+	//头发时装ID
+	INT32 m_TreasureHair;
+public:
+	void SetTreasureHair( INT32 v)
+	{
+		m_TreasureHair=v;
+	}
+	INT32 GetTreasureHair()
+	{
+		return m_TreasureHair;
+	}
+	INT32 GetTreasureHair() const
+	{
+		return m_TreasureHair;
+	}
+private:
+	//头部时装ID
+	INT32 m_TreasureHead;
+public:
+	void SetTreasureHead( INT32 v)
+	{
+		m_TreasureHead=v;
+	}
+	INT32 GetTreasureHead()
+	{
+		return m_TreasureHead;
+	}
+	INT32 GetTreasureHead() const
+	{
+		return m_TreasureHead;
+	}
+private:
+	//身体时装
+	INT32 m_TreasureBody;
+public:
+	void SetTreasureBody( INT32 v)
+	{
+		m_TreasureBody=v;
+	}
+	INT32 GetTreasureBody()
+	{
+		return m_TreasureBody;
+	}
+	INT32 GetTreasureBody() const
+	{
+		return m_TreasureBody;
+	}
+private:
+	//武器时装
+	INT32 m_TreasureWeapon;
+public:
+	void SetTreasureWeapon( INT32 v)
+	{
+		m_TreasureWeapon=v;
+	}
+	INT32 GetTreasureWeapon()
+	{
+		return m_TreasureWeapon;
+	}
+	INT32 GetTreasureWeapon() const
+	{
+		return m_TreasureWeapon;
+	}
+private:
+	//翅膀时装
+	INT32 m_TreasureWing;
+public:
+	void SetTreasureWing( INT32 v)
+	{
+		m_TreasureWing=v;
+	}
+	INT32 GetTreasureWing()
+	{
+		return m_TreasureWing;
+	}
+	INT32 GetTreasureWing() const
+	{
+		return m_TreasureWing;
+	}
+private:
+	//队伍id
+	uint64_t m_TeamId;
+public:
+	void SetTeamId( uint64_t v)
+	{
+		m_TeamId=v;
+	}
+	uint64_t GetTeamId()
+	{
+		return m_TeamId;
+	}
+	uint64_t GetTeamId() const
+	{
+		return m_TeamId;
+	}
+private:
+	//使用宠物的索引
+	INT32 m_Pet_Use_Index;
+public:
+	void SetPet_Use_Index( INT32 v)
+	{
+		m_Pet_Use_Index=v;
+	}
+	INT32 GetPet_Use_Index()
+	{
+		return m_Pet_Use_Index;
+	}
+	INT32 GetPet_Use_Index() const
+	{
+		return m_Pet_Use_Index;
+	}
+private:
+	//捏脸
+	PinchFaceDataWraper m_PinchData;
+public:
+	void SetPinchData( const PinchFaceDataWraper& v)
+	{
+		m_PinchData=v;
+	}
+	PinchFaceDataWraper GetPinchData()
+	{
+		return m_PinchData;
+	}
+	PinchFaceDataWraper GetPinchData() const
+	{
+		return m_PinchData;
+	}
+
+};
+//LoginGameServer回应封装类
+class WorldServerRpcLogoutGameServerReplyWraper
+{
+public:
+	//构造函数
+	WorldServerRpcLogoutGameServerReplyWraper()
+	{
+		
+		m_Result = -1;
+
+	}
+	//赋值构造函数
+	WorldServerRpcLogoutGameServerReplyWraper(const WorldServerRpcLogoutGameServerReply& v){ Init(v); }
+	//等号重载函数
+	void operator = (const WorldServerRpcLogoutGameServerReply& v){ Init(v); }
+ 	//转化成Protobuffer类型函数
+	WorldServerRpcLogoutGameServerReply ToPB() const
+	{
+		WorldServerRpcLogoutGameServerReply v;
+		v.set_result( m_Result );
+
+		return v;
+	}
+	//获取Protobuffer序列化后大小函数
+	int ByteSize() const { return ToPB().ByteSize();}
+	//Protobuffer序列化到缓冲区
+	bool SerializeToArray( void* data, int size ) const
+	{
+		return ToPB().SerializeToArray(data,size);
+	}
+	//Protobuffer序列化到字符串
+	string SerializeAsString() const
+	{
+		return ToPB().SerializeAsString();
+	}
+	//Protobuffer从字符串进行反序列化
+	bool ParseFromString(const string& v)
+	{
+		return ParseFromArray(v.data(),v.size());
+	}
+	//Protobuffer从缓冲区进行反序列化
+	bool ParseFromArray(const void* data, int size)
+	{
+		WorldServerRpcLogoutGameServerReply pb;
+		if(!pb.ParseFromArray(data,size)){return false;}
+		Init(pb);
+		return true;
+	}
+	/*
+	string HtmlDescHeader()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}
+	*/
+	/*
+	string ToHtml()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+		TStr tmpLine;
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}*/
+
+
+private:
+	//从Protobuffer类型初始化
+	void Init(const WorldServerRpcLogoutGameServerReply& v)
+	{
+		m_Result = v.result();
+
+	}
+
+private:
+	//返回结果
+	INT32 m_Result;
+public:
+	void SetResult( INT32 v)
+	{
+		m_Result=v;
+	}
+	INT32 GetResult()
+	{
+		return m_Result;
+	}
+	INT32 GetResult() const
+	{
+		return m_Result;
+	}
+
+};
+//取消匹配回应封装类
+class WorldServerRpcCancelMatchReplyWraper
+{
+public:
+	//构造函数
+	WorldServerRpcCancelMatchReplyWraper()
+	{
+		
+		m_Result = -1;
+
+	}
+	//赋值构造函数
+	WorldServerRpcCancelMatchReplyWraper(const WorldServerRpcCancelMatchReply& v){ Init(v); }
+	//等号重载函数
+	void operator = (const WorldServerRpcCancelMatchReply& v){ Init(v); }
+ 	//转化成Protobuffer类型函数
+	WorldServerRpcCancelMatchReply ToPB() const
+	{
+		WorldServerRpcCancelMatchReply v;
+		v.set_result( m_Result );
+
+		return v;
+	}
+	//获取Protobuffer序列化后大小函数
+	int ByteSize() const { return ToPB().ByteSize();}
+	//Protobuffer序列化到缓冲区
+	bool SerializeToArray( void* data, int size ) const
+	{
+		return ToPB().SerializeToArray(data,size);
+	}
+	//Protobuffer序列化到字符串
+	string SerializeAsString() const
+	{
+		return ToPB().SerializeAsString();
+	}
+	//Protobuffer从字符串进行反序列化
+	bool ParseFromString(const string& v)
+	{
+		return ParseFromArray(v.data(),v.size());
+	}
+	//Protobuffer从缓冲区进行反序列化
+	bool ParseFromArray(const void* data, int size)
+	{
+		WorldServerRpcCancelMatchReply pb;
+		if(!pb.ParseFromArray(data,size)){return false;}
+		Init(pb);
+		return true;
+	}
+	/*
+	string HtmlDescHeader()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}
+	*/
+	/*
+	string ToHtml()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+		TStr tmpLine;
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}*/
+
+
+private:
+	//从Protobuffer类型初始化
+	void Init(const WorldServerRpcCancelMatchReply& v)
+	{
+		m_Result = v.result();
+
+	}
+
+private:
+	//返回结果
+	INT32 m_Result;
+public:
+	void SetResult( INT32 v)
+	{
+		m_Result=v;
+	}
+	INT32 GetResult()
+	{
+		return m_Result;
+	}
+	INT32 GetResult() const
+	{
+		return m_Result;
+	}
+
+};
+//登录服务器回应封装类
+class WorldServerRpcLoginGameServerReplyWraper
+{
+public:
+	//构造函数
+	WorldServerRpcLoginGameServerReplyWraper()
+	{
+		
+		m_Result = -1;
+		m_Team = TeamInfoWraper();
+		m_RoleInfo = OnlineUserInfoWraper();
+		m_Location = CharacterLocationWraper();
+
+	}
+	//赋值构造函数
+	WorldServerRpcLoginGameServerReplyWraper(const WorldServerRpcLoginGameServerReply& v){ Init(v); }
+	//等号重载函数
+	void operator = (const WorldServerRpcLoginGameServerReply& v){ Init(v); }
+ 	//转化成Protobuffer类型函数
+	WorldServerRpcLoginGameServerReply ToPB() const
+	{
+		WorldServerRpcLoginGameServerReply v;
+		v.set_result( m_Result );
+		*v.mutable_team()= m_Team.ToPB();
+		*v.mutable_roleinfo()= m_RoleInfo.ToPB();
+		*v.mutable_location()= m_Location.ToPB();
+
+		return v;
+	}
+	//获取Protobuffer序列化后大小函数
+	int ByteSize() const { return ToPB().ByteSize();}
+	//Protobuffer序列化到缓冲区
+	bool SerializeToArray( void* data, int size ) const
+	{
+		return ToPB().SerializeToArray(data,size);
+	}
+	//Protobuffer序列化到字符串
+	string SerializeAsString() const
+	{
+		return ToPB().SerializeAsString();
+	}
+	//Protobuffer从字符串进行反序列化
+	bool ParseFromString(const string& v)
+	{
+		return ParseFromArray(v.data(),v.size());
+	}
+	//Protobuffer从缓冲区进行反序列化
+	bool ParseFromArray(const void* data, int size)
+	{
+		WorldServerRpcLoginGameServerReply pb;
+		if(!pb.ParseFromArray(data,size)){return false;}
+		Init(pb);
+		return true;
+	}
+	/*
+	string HtmlDescHeader()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}
+	*/
+	/*
+	string ToHtml()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+		TStr tmpLine;
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}*/
+
+
+private:
+	//从Protobuffer类型初始化
+	void Init(const WorldServerRpcLoginGameServerReply& v)
+	{
+		m_Result = v.result();
+		m_Team = v.team();
+		m_RoleInfo = v.roleinfo();
+		m_Location = v.location();
+
+	}
+
+private:
+	//返回结果
+	INT32 m_Result;
+public:
+	void SetResult( INT32 v)
+	{
+		m_Result=v;
+	}
+	INT32 GetResult()
+	{
+		return m_Result;
+	}
+	INT32 GetResult() const
+	{
+		return m_Result;
+	}
+private:
+	//Team
+	TeamInfoWraper m_Team;
+public:
+	void SetTeam( const TeamInfoWraper& v)
+	{
+		m_Team=v;
+	}
+	TeamInfoWraper GetTeam()
+	{
+		return m_Team;
+	}
+	TeamInfoWraper GetTeam() const
+	{
+		return m_Team;
+	}
 private:
 	//RoleInfo
 	OnlineUserInfoWraper m_RoleInfo;
@@ -387,1236 +1913,46 @@ public:
 	OnlineUserInfoWraper GetRoleInfo() const
 	{
 		return m_RoleInfo;
+	}
+private:
+	//玩家位置信息
+	CharacterLocationWraper m_Location;
+public:
+	void SetLocation( const CharacterLocationWraper& v)
+	{
+		m_Location=v;
+	}
+	CharacterLocationWraper GetLocation()
+	{
+		return m_Location;
+	}
+	CharacterLocationWraper GetLocation() const
+	{
+		return m_Location;
 	}
 
 };
 //Login回应封装类
-class WorldServerRpcLoginReplyWraper
+class WorldServerRpcLogoutGameServerAskWraper
 {
 public:
 	//构造函数
-	WorldServerRpcLoginReplyWraper()
+	WorldServerRpcLogoutGameServerAskWraper()
 	{
 		
 		m_Result = -9999;
-
-	}
-	//赋值构造函数
-	WorldServerRpcLoginReplyWraper(const WorldServerRpcLoginReply& v){ Init(v); }
-	//等号重载函数
-	void operator = (const WorldServerRpcLoginReply& v){ Init(v); }
- 	//转化成Protobuffer类型函数
-	WorldServerRpcLoginReply ToPB() const
-	{
-		WorldServerRpcLoginReply v;
-		v.set_result( m_Result );
-
-		return v;
-	}
-	//获取Protobuffer序列化后大小函数
-	int ByteSize() const { return ToPB().ByteSize();}
-	//Protobuffer序列化到缓冲区
-	bool SerializeToArray( void* data, int size ) const
-	{
-		return ToPB().SerializeToArray(data,size);
-	}
-	//Protobuffer序列化到字符串
-	string SerializeAsString() const
-	{
-		return ToPB().SerializeAsString();
-	}
-	//Protobuffer从字符串进行反序列化
-	bool ParseFromString(const string& v)
-	{
-		return ParseFromArray(v.data(),v.size());
-	}
-	//Protobuffer从缓冲区进行反序列化
-	bool ParseFromArray(const void* data, int size)
-	{
-		WorldServerRpcLoginReply pb;
-		if(!pb.ParseFromArray(data,size)){return false;}
-		Init(pb);
-		return true;
-	}
-	/*
-	string HtmlDescHeader()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-	*/
-	/*
-	string ToHtml()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-		TStr tmpLine;
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}*/
-
-
-private:
-	//从Protobuffer类型初始化
-	void Init(const WorldServerRpcLoginReply& v)
-	{
-		m_Result = v.result();
-
-	}
-
-private:
-	//返回结果
-	INT32 m_Result;
-public:
-	void SetResult( INT32 v)
-	{
-		m_Result=v;
-	}
-	INT32 GetResult()
-	{
-		return m_Result;
-	}
-	INT32 GetResult() const
-	{
-		return m_Result;
-	}
-
-};
-//ApplyTeam请求封装类
-class WorldServerRpcApplyTeamAskWraper
-{
-public:
-	//构造函数
-	WorldServerRpcApplyTeamAskWraper()
-	{
-		
-		m_TeamId = -1;
-		m_Result = -9999;
-		m_TeamMember = TeamMemberInfoWraper();
-		m_MemId = -1;
-		m_SceneId = -1;
-
-	}
-	//赋值构造函数
-	WorldServerRpcApplyTeamAskWraper(const WorldServerRpcApplyTeamAsk& v){ Init(v); }
-	//等号重载函数
-	void operator = (const WorldServerRpcApplyTeamAsk& v){ Init(v); }
- 	//转化成Protobuffer类型函数
-	WorldServerRpcApplyTeamAsk ToPB() const
-	{
-		WorldServerRpcApplyTeamAsk v;
-		v.set_teamid( m_TeamId );
-		v.set_result( m_Result );
-		*v.mutable_teammember()= m_TeamMember.ToPB();
-		v.set_memid( m_MemId );
-		v.set_sceneid( m_SceneId );
-
-		return v;
-	}
-	//获取Protobuffer序列化后大小函数
-	int ByteSize() const { return ToPB().ByteSize();}
-	//Protobuffer序列化到缓冲区
-	bool SerializeToArray( void* data, int size ) const
-	{
-		return ToPB().SerializeToArray(data,size);
-	}
-	//Protobuffer序列化到字符串
-	string SerializeAsString() const
-	{
-		return ToPB().SerializeAsString();
-	}
-	//Protobuffer从字符串进行反序列化
-	bool ParseFromString(const string& v)
-	{
-		return ParseFromArray(v.data(),v.size());
-	}
-	//Protobuffer从缓冲区进行反序列化
-	bool ParseFromArray(const void* data, int size)
-	{
-		WorldServerRpcApplyTeamAsk pb;
-		if(!pb.ParseFromArray(data,size)){return false;}
-		Init(pb);
-		return true;
-	}
-	/*
-	string HtmlDescHeader()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-	*/
-	/*
-	string ToHtml()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-		TStr tmpLine;
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}*/
-
-
-private:
-	//从Protobuffer类型初始化
-	void Init(const WorldServerRpcApplyTeamAsk& v)
-	{
-		m_TeamId = v.teamid();
-		m_Result = v.result();
-		m_TeamMember = v.teammember();
-		m_MemId = v.memid();
-		m_SceneId = v.sceneid();
-
-	}
-
-private:
-	//TeamId
-	INT32 m_TeamId;
-public:
-	void SetTeamId( INT32 v)
-	{
-		m_TeamId=v;
-	}
-	INT32 GetTeamId()
-	{
-		return m_TeamId;
-	}
-	INT32 GetTeamId() const
-	{
-		return m_TeamId;
-	}
-private:
-	//返回结果
-	INT32 m_Result;
-public:
-	void SetResult( INT32 v)
-	{
-		m_Result=v;
-	}
-	INT32 GetResult()
-	{
-		return m_Result;
-	}
-	INT32 GetResult() const
-	{
-		return m_Result;
-	}
-private:
-	//TeamMember
-	TeamMemberInfoWraper m_TeamMember;
-public:
-	void SetTeamMember( const TeamMemberInfoWraper& v)
-	{
-		m_TeamMember=v;
-	}
-	TeamMemberInfoWraper GetTeamMember()
-	{
-		return m_TeamMember;
-	}
-	TeamMemberInfoWraper GetTeamMember() const
-	{
-		return m_TeamMember;
-	}
-private:
-	//MemId
-	INT32 m_MemId;
-public:
-	void SetMemId( INT32 v)
-	{
-		m_MemId=v;
-	}
-	INT32 GetMemId()
-	{
-		return m_MemId;
-	}
-	INT32 GetMemId() const
-	{
-		return m_MemId;
-	}
-private:
-	//SceneId
-	INT32 m_SceneId;
-public:
-	void SetSceneId( INT32 v)
-	{
-		m_SceneId=v;
-	}
-	INT32 GetSceneId()
-	{
-		return m_SceneId;
-	}
-	INT32 GetSceneId() const
-	{
-		return m_SceneId;
-	}
-
-};
-//KickMember回应封装类
-class WorldServerRpcKickMemberReplyWraper
-{
-public:
-	//构造函数
-	WorldServerRpcKickMemberReplyWraper()
-	{
-		
-		m_Result = -9999;
-
-	}
-	//赋值构造函数
-	WorldServerRpcKickMemberReplyWraper(const WorldServerRpcKickMemberReply& v){ Init(v); }
-	//等号重载函数
-	void operator = (const WorldServerRpcKickMemberReply& v){ Init(v); }
- 	//转化成Protobuffer类型函数
-	WorldServerRpcKickMemberReply ToPB() const
-	{
-		WorldServerRpcKickMemberReply v;
-		v.set_result( m_Result );
-
-		return v;
-	}
-	//获取Protobuffer序列化后大小函数
-	int ByteSize() const { return ToPB().ByteSize();}
-	//Protobuffer序列化到缓冲区
-	bool SerializeToArray( void* data, int size ) const
-	{
-		return ToPB().SerializeToArray(data,size);
-	}
-	//Protobuffer序列化到字符串
-	string SerializeAsString() const
-	{
-		return ToPB().SerializeAsString();
-	}
-	//Protobuffer从字符串进行反序列化
-	bool ParseFromString(const string& v)
-	{
-		return ParseFromArray(v.data(),v.size());
-	}
-	//Protobuffer从缓冲区进行反序列化
-	bool ParseFromArray(const void* data, int size)
-	{
-		WorldServerRpcKickMemberReply pb;
-		if(!pb.ParseFromArray(data,size)){return false;}
-		Init(pb);
-		return true;
-	}
-	/*
-	string HtmlDescHeader()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-	*/
-	/*
-	string ToHtml()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-		TStr tmpLine;
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}*/
-
-
-private:
-	//从Protobuffer类型初始化
-	void Init(const WorldServerRpcKickMemberReply& v)
-	{
-		m_Result = v.result();
-
-	}
-
-private:
-	//返回结果
-	INT32 m_Result;
-public:
-	void SetResult( INT32 v)
-	{
-		m_Result=v;
-	}
-	INT32 GetResult()
-	{
-		return m_Result;
-	}
-	INT32 GetResult() const
-	{
-		return m_Result;
-	}
-
-};
-//AgreeTeamApplicant请求封装类
-class WorldServerRpcAgreeTeamApplicantAskWraper
-{
-public:
-	//构造函数
-	WorldServerRpcAgreeTeamApplicantAskWraper()
-	{
-		
-		m_RoleId = 0;
-		m_LeaderRoleId = 0;
-		m_Result = -9999;
-		m_MemId = -1;
-		m_SceneId = -1;
-		m_Team = TeamInfoWraper();
-
-	}
-	//赋值构造函数
-	WorldServerRpcAgreeTeamApplicantAskWraper(const WorldServerRpcAgreeTeamApplicantAsk& v){ Init(v); }
-	//等号重载函数
-	void operator = (const WorldServerRpcAgreeTeamApplicantAsk& v){ Init(v); }
- 	//转化成Protobuffer类型函数
-	WorldServerRpcAgreeTeamApplicantAsk ToPB() const
-	{
-		WorldServerRpcAgreeTeamApplicantAsk v;
-		v.set_roleid( m_RoleId );
-		v.set_leaderroleid( m_LeaderRoleId );
-		v.set_result( m_Result );
-		v.set_memid( m_MemId );
-		v.set_sceneid( m_SceneId );
-		*v.mutable_team()= m_Team.ToPB();
-
-		return v;
-	}
-	//获取Protobuffer序列化后大小函数
-	int ByteSize() const { return ToPB().ByteSize();}
-	//Protobuffer序列化到缓冲区
-	bool SerializeToArray( void* data, int size ) const
-	{
-		return ToPB().SerializeToArray(data,size);
-	}
-	//Protobuffer序列化到字符串
-	string SerializeAsString() const
-	{
-		return ToPB().SerializeAsString();
-	}
-	//Protobuffer从字符串进行反序列化
-	bool ParseFromString(const string& v)
-	{
-		return ParseFromArray(v.data(),v.size());
-	}
-	//Protobuffer从缓冲区进行反序列化
-	bool ParseFromArray(const void* data, int size)
-	{
-		WorldServerRpcAgreeTeamApplicantAsk pb;
-		if(!pb.ParseFromArray(data,size)){return false;}
-		Init(pb);
-		return true;
-	}
-	/*
-	string HtmlDescHeader()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-	*/
-	/*
-	string ToHtml()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-		TStr tmpLine;
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}*/
-
-
-private:
-	//从Protobuffer类型初始化
-	void Init(const WorldServerRpcAgreeTeamApplicantAsk& v)
-	{
-		m_RoleId = v.roleid();
-		m_LeaderRoleId = v.leaderroleid();
-		m_Result = v.result();
-		m_MemId = v.memid();
-		m_SceneId = v.sceneid();
-		m_Team = v.team();
-
-	}
-
-private:
-	//RoleId
-	uint64_t m_RoleId;
-public:
-	void SetRoleId( uint64_t v)
-	{
-		m_RoleId=v;
-	}
-	uint64_t GetRoleId()
-	{
-		return m_RoleId;
-	}
-	uint64_t GetRoleId() const
-	{
-		return m_RoleId;
-	}
-private:
-	//RoleId
-	uint64_t m_LeaderRoleId;
-public:
-	void SetLeaderRoleId( uint64_t v)
-	{
-		m_LeaderRoleId=v;
-	}
-	uint64_t GetLeaderRoleId()
-	{
-		return m_LeaderRoleId;
-	}
-	uint64_t GetLeaderRoleId() const
-	{
-		return m_LeaderRoleId;
-	}
-private:
-	//返回结果
-	INT32 m_Result;
-public:
-	void SetResult( INT32 v)
-	{
-		m_Result=v;
-	}
-	INT32 GetResult()
-	{
-		return m_Result;
-	}
-	INT32 GetResult() const
-	{
-		return m_Result;
-	}
-private:
-	//MemId
-	INT32 m_MemId;
-public:
-	void SetMemId( INT32 v)
-	{
-		m_MemId=v;
-	}
-	INT32 GetMemId()
-	{
-		return m_MemId;
-	}
-	INT32 GetMemId() const
-	{
-		return m_MemId;
-	}
-private:
-	//SceneId
-	INT32 m_SceneId;
-public:
-	void SetSceneId( INT32 v)
-	{
-		m_SceneId=v;
-	}
-	INT32 GetSceneId()
-	{
-		return m_SceneId;
-	}
-	INT32 GetSceneId() const
-	{
-		return m_SceneId;
-	}
-private:
-	//Team
-	TeamInfoWraper m_Team;
-public:
-	void SetTeam( const TeamInfoWraper& v)
-	{
-		m_Team=v;
-	}
-	TeamInfoWraper GetTeam()
-	{
-		return m_Team;
-	}
-	TeamInfoWraper GetTeam() const
-	{
-		return m_Team;
-	}
-
-};
-//ApplyTeam回应封装类
-class WorldServerRpcApplyTeamReplyWraper
-{
-public:
-	//构造函数
-	WorldServerRpcApplyTeamReplyWraper()
-	{
-		
-		m_Result = -9999;
-
-	}
-	//赋值构造函数
-	WorldServerRpcApplyTeamReplyWraper(const WorldServerRpcApplyTeamReply& v){ Init(v); }
-	//等号重载函数
-	void operator = (const WorldServerRpcApplyTeamReply& v){ Init(v); }
- 	//转化成Protobuffer类型函数
-	WorldServerRpcApplyTeamReply ToPB() const
-	{
-		WorldServerRpcApplyTeamReply v;
-		v.set_result( m_Result );
-
-		return v;
-	}
-	//获取Protobuffer序列化后大小函数
-	int ByteSize() const { return ToPB().ByteSize();}
-	//Protobuffer序列化到缓冲区
-	bool SerializeToArray( void* data, int size ) const
-	{
-		return ToPB().SerializeToArray(data,size);
-	}
-	//Protobuffer序列化到字符串
-	string SerializeAsString() const
-	{
-		return ToPB().SerializeAsString();
-	}
-	//Protobuffer从字符串进行反序列化
-	bool ParseFromString(const string& v)
-	{
-		return ParseFromArray(v.data(),v.size());
-	}
-	//Protobuffer从缓冲区进行反序列化
-	bool ParseFromArray(const void* data, int size)
-	{
-		WorldServerRpcApplyTeamReply pb;
-		if(!pb.ParseFromArray(data,size)){return false;}
-		Init(pb);
-		return true;
-	}
-	/*
-	string HtmlDescHeader()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-	*/
-	/*
-	string ToHtml()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-		TStr tmpLine;
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}*/
-
-
-private:
-	//从Protobuffer类型初始化
-	void Init(const WorldServerRpcApplyTeamReply& v)
-	{
-		m_Result = v.result();
-
-	}
-
-private:
-	//返回结果
-	INT32 m_Result;
-public:
-	void SetResult( INT32 v)
-	{
-		m_Result=v;
-	}
-	INT32 GetResult()
-	{
-		return m_Result;
-	}
-	INT32 GetResult() const
-	{
-		return m_Result;
-	}
-
-};
-//UpdateRoleInfo回应封装类
-class WorldServerRpcUpdateRoleInfoReplyWraper
-{
-public:
-	//构造函数
-	WorldServerRpcUpdateRoleInfoReplyWraper()
-	{
-		
-		m_Result = -9999;
-
-	}
-	//赋值构造函数
-	WorldServerRpcUpdateRoleInfoReplyWraper(const WorldServerRpcUpdateRoleInfoReply& v){ Init(v); }
-	//等号重载函数
-	void operator = (const WorldServerRpcUpdateRoleInfoReply& v){ Init(v); }
- 	//转化成Protobuffer类型函数
-	WorldServerRpcUpdateRoleInfoReply ToPB() const
-	{
-		WorldServerRpcUpdateRoleInfoReply v;
-		v.set_result( m_Result );
-
-		return v;
-	}
-	//获取Protobuffer序列化后大小函数
-	int ByteSize() const { return ToPB().ByteSize();}
-	//Protobuffer序列化到缓冲区
-	bool SerializeToArray( void* data, int size ) const
-	{
-		return ToPB().SerializeToArray(data,size);
-	}
-	//Protobuffer序列化到字符串
-	string SerializeAsString() const
-	{
-		return ToPB().SerializeAsString();
-	}
-	//Protobuffer从字符串进行反序列化
-	bool ParseFromString(const string& v)
-	{
-		return ParseFromArray(v.data(),v.size());
-	}
-	//Protobuffer从缓冲区进行反序列化
-	bool ParseFromArray(const void* data, int size)
-	{
-		WorldServerRpcUpdateRoleInfoReply pb;
-		if(!pb.ParseFromArray(data,size)){return false;}
-		Init(pb);
-		return true;
-	}
-	/*
-	string HtmlDescHeader()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-	*/
-	/*
-	string ToHtml()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-		TStr tmpLine;
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}*/
-
-
-private:
-	//从Protobuffer类型初始化
-	void Init(const WorldServerRpcUpdateRoleInfoReply& v)
-	{
-		m_Result = v.result();
-
-	}
-
-private:
-	//返回结果
-	INT32 m_Result;
-public:
-	void SetResult( INT32 v)
-	{
-		m_Result=v;
-	}
-	INT32 GetResult()
-	{
-		return m_Result;
-	}
-	INT32 GetResult() const
-	{
-		return m_Result;
-	}
-
-};
-//ExitDungeon回应封装类
-class WorldServerRpcExitDungeonReplyWraper
-{
-public:
-	//构造函数
-	WorldServerRpcExitDungeonReplyWraper()
-	{
-		
-		m_Result = -9999;
-
-	}
-	//赋值构造函数
-	WorldServerRpcExitDungeonReplyWraper(const WorldServerRpcExitDungeonReply& v){ Init(v); }
-	//等号重载函数
-	void operator = (const WorldServerRpcExitDungeonReply& v){ Init(v); }
- 	//转化成Protobuffer类型函数
-	WorldServerRpcExitDungeonReply ToPB() const
-	{
-		WorldServerRpcExitDungeonReply v;
-		v.set_result( m_Result );
-
-		return v;
-	}
-	//获取Protobuffer序列化后大小函数
-	int ByteSize() const { return ToPB().ByteSize();}
-	//Protobuffer序列化到缓冲区
-	bool SerializeToArray( void* data, int size ) const
-	{
-		return ToPB().SerializeToArray(data,size);
-	}
-	//Protobuffer序列化到字符串
-	string SerializeAsString() const
-	{
-		return ToPB().SerializeAsString();
-	}
-	//Protobuffer从字符串进行反序列化
-	bool ParseFromString(const string& v)
-	{
-		return ParseFromArray(v.data(),v.size());
-	}
-	//Protobuffer从缓冲区进行反序列化
-	bool ParseFromArray(const void* data, int size)
-	{
-		WorldServerRpcExitDungeonReply pb;
-		if(!pb.ParseFromArray(data,size)){return false;}
-		Init(pb);
-		return true;
-	}
-	/*
-	string HtmlDescHeader()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-	*/
-	/*
-	string ToHtml()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-		TStr tmpLine;
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}*/
-
-
-private:
-	//从Protobuffer类型初始化
-	void Init(const WorldServerRpcExitDungeonReply& v)
-	{
-		m_Result = v.result();
-
-	}
-
-private:
-	//返回结果
-	INT32 m_Result;
-public:
-	void SetResult( INT32 v)
-	{
-		m_Result=v;
-	}
-	INT32 GetResult()
-	{
-		return m_Result;
-	}
-	INT32 GetResult() const
-	{
-		return m_Result;
-	}
-
-};
-//ExitDungeon请求封装类
-class WorldServerRpcExitDungeonAskWraper
-{
-public:
-	//构造函数
-	WorldServerRpcExitDungeonAskWraper()
-	{
-		
-		m_RoleId = 0;
-
-	}
-	//赋值构造函数
-	WorldServerRpcExitDungeonAskWraper(const WorldServerRpcExitDungeonAsk& v){ Init(v); }
-	//等号重载函数
-	void operator = (const WorldServerRpcExitDungeonAsk& v){ Init(v); }
- 	//转化成Protobuffer类型函数
-	WorldServerRpcExitDungeonAsk ToPB() const
-	{
-		WorldServerRpcExitDungeonAsk v;
-		v.set_roleid( m_RoleId );
-
-		return v;
-	}
-	//获取Protobuffer序列化后大小函数
-	int ByteSize() const { return ToPB().ByteSize();}
-	//Protobuffer序列化到缓冲区
-	bool SerializeToArray( void* data, int size ) const
-	{
-		return ToPB().SerializeToArray(data,size);
-	}
-	//Protobuffer序列化到字符串
-	string SerializeAsString() const
-	{
-		return ToPB().SerializeAsString();
-	}
-	//Protobuffer从字符串进行反序列化
-	bool ParseFromString(const string& v)
-	{
-		return ParseFromArray(v.data(),v.size());
-	}
-	//Protobuffer从缓冲区进行反序列化
-	bool ParseFromArray(const void* data, int size)
-	{
-		WorldServerRpcExitDungeonAsk pb;
-		if(!pb.ParseFromArray(data,size)){return false;}
-		Init(pb);
-		return true;
-	}
-	/*
-	string HtmlDescHeader()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-	*/
-	/*
-	string ToHtml()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-		TStr tmpLine;
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}*/
-
-
-private:
-	//从Protobuffer类型初始化
-	void Init(const WorldServerRpcExitDungeonAsk& v)
-	{
-		m_RoleId = v.roleid();
-
-	}
-
-private:
-	//玩家的唯一id
-	uint64_t m_RoleId;
-public:
-	void SetRoleId( uint64_t v)
-	{
-		m_RoleId=v;
-	}
-	uint64_t GetRoleId()
-	{
-		return m_RoleId;
-	}
-	uint64_t GetRoleId() const
-	{
-		return m_RoleId;
-	}
-
-};
-//ReleaseDungeon回应封装类
-class WorldServerRpcReleaseDungeonReplyWraper
-{
-public:
-	//构造函数
-	WorldServerRpcReleaseDungeonReplyWraper()
-	{
-		
-		m_Result = -9999;
-
-	}
-	//赋值构造函数
-	WorldServerRpcReleaseDungeonReplyWraper(const WorldServerRpcReleaseDungeonReply& v){ Init(v); }
-	//等号重载函数
-	void operator = (const WorldServerRpcReleaseDungeonReply& v){ Init(v); }
- 	//转化成Protobuffer类型函数
-	WorldServerRpcReleaseDungeonReply ToPB() const
-	{
-		WorldServerRpcReleaseDungeonReply v;
-		v.set_result( m_Result );
-
-		return v;
-	}
-	//获取Protobuffer序列化后大小函数
-	int ByteSize() const { return ToPB().ByteSize();}
-	//Protobuffer序列化到缓冲区
-	bool SerializeToArray( void* data, int size ) const
-	{
-		return ToPB().SerializeToArray(data,size);
-	}
-	//Protobuffer序列化到字符串
-	string SerializeAsString() const
-	{
-		return ToPB().SerializeAsString();
-	}
-	//Protobuffer从字符串进行反序列化
-	bool ParseFromString(const string& v)
-	{
-		return ParseFromArray(v.data(),v.size());
-	}
-	//Protobuffer从缓冲区进行反序列化
-	bool ParseFromArray(const void* data, int size)
-	{
-		WorldServerRpcReleaseDungeonReply pb;
-		if(!pb.ParseFromArray(data,size)){return false;}
-		Init(pb);
-		return true;
-	}
-	/*
-	string HtmlDescHeader()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-	*/
-	/*
-	string ToHtml()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-		TStr tmpLine;
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}*/
-
-
-private:
-	//从Protobuffer类型初始化
-	void Init(const WorldServerRpcReleaseDungeonReply& v)
-	{
-		m_Result = v.result();
-
-	}
-
-private:
-	//返回结果
-	INT32 m_Result;
-public:
-	void SetResult( INT32 v)
-	{
-		m_Result=v;
-	}
-	INT32 GetResult()
-	{
-		return m_Result;
-	}
-	INT32 GetResult() const
-	{
-		return m_Result;
-	}
-
-};
-//ReleaseDungeon请求封装类
-class WorldServerRpcReleaseDungeonAskWraper
-{
-public:
-	//构造函数
-	WorldServerRpcReleaseDungeonAskWraper()
-	{
-		
-
-	}
-	//赋值构造函数
-	WorldServerRpcReleaseDungeonAskWraper(const WorldServerRpcReleaseDungeonAsk& v){ Init(v); }
-	//等号重载函数
-	void operator = (const WorldServerRpcReleaseDungeonAsk& v){ Init(v); }
- 	//转化成Protobuffer类型函数
-	WorldServerRpcReleaseDungeonAsk ToPB() const
-	{
-		WorldServerRpcReleaseDungeonAsk v;
-
-		return v;
-	}
-	//获取Protobuffer序列化后大小函数
-	int ByteSize() const { return ToPB().ByteSize();}
-	//Protobuffer序列化到缓冲区
-	bool SerializeToArray( void* data, int size ) const
-	{
-		return ToPB().SerializeToArray(data,size);
-	}
-	//Protobuffer序列化到字符串
-	string SerializeAsString() const
-	{
-		return ToPB().SerializeAsString();
-	}
-	//Protobuffer从字符串进行反序列化
-	bool ParseFromString(const string& v)
-	{
-		return ParseFromArray(v.data(),v.size());
-	}
-	//Protobuffer从缓冲区进行反序列化
-	bool ParseFromArray(const void* data, int size)
-	{
-		WorldServerRpcReleaseDungeonAsk pb;
-		if(!pb.ParseFromArray(data,size)){return false;}
-		Init(pb);
-		return true;
-	}
-	/*
-	string HtmlDescHeader()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-	*/
-	/*
-	string ToHtml()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-		TStr tmpLine;
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}*/
-
-
-private:
-	//从Protobuffer类型初始化
-	void Init(const WorldServerRpcReleaseDungeonAsk& v)
-	{
-
-	}
-
-
-};
-//Logout回应封装类
-class WorldServerRpcLogoutReplyWraper
-{
-public:
-	//构造函数
-	WorldServerRpcLogoutReplyWraper()
-	{
-		
-		m_Result = -9999;
-
-	}
-	//赋值构造函数
-	WorldServerRpcLogoutReplyWraper(const WorldServerRpcLogoutReply& v){ Init(v); }
-	//等号重载函数
-	void operator = (const WorldServerRpcLogoutReply& v){ Init(v); }
- 	//转化成Protobuffer类型函数
-	WorldServerRpcLogoutReply ToPB() const
-	{
-		WorldServerRpcLogoutReply v;
-		v.set_result( m_Result );
-
-		return v;
-	}
-	//获取Protobuffer序列化后大小函数
-	int ByteSize() const { return ToPB().ByteSize();}
-	//Protobuffer序列化到缓冲区
-	bool SerializeToArray( void* data, int size ) const
-	{
-		return ToPB().SerializeToArray(data,size);
-	}
-	//Protobuffer序列化到字符串
-	string SerializeAsString() const
-	{
-		return ToPB().SerializeAsString();
-	}
-	//Protobuffer从字符串进行反序列化
-	bool ParseFromString(const string& v)
-	{
-		return ParseFromArray(v.data(),v.size());
-	}
-	//Protobuffer从缓冲区进行反序列化
-	bool ParseFromArray(const void* data, int size)
-	{
-		WorldServerRpcLogoutReply pb;
-		if(!pb.ParseFromArray(data,size)){return false;}
-		Init(pb);
-		return true;
-	}
-	/*
-	string HtmlDescHeader()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-	*/
-	/*
-	string ToHtml()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-		TStr tmpLine;
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}*/
-
-
-private:
-	//从Protobuffer类型初始化
-	void Init(const WorldServerRpcLogoutReply& v)
-	{
-		m_Result = v.result();
-
-	}
-
-private:
-	//返回结果
-	INT32 m_Result;
-public:
-	void SetResult( INT32 v)
-	{
-		m_Result=v;
-	}
-	INT32 GetResult()
-	{
-		return m_Result;
-	}
-	INT32 GetResult() const
-	{
-		return m_Result;
-	}
-
-};
-//Logout请求封装类
-class WorldServerRpcLogoutAskWraper
-{
-public:
-	//构造函数
-	WorldServerRpcLogoutAskWraper()
-	{
-		
 		m_RoleInfo = OnlineUserInfoWraper();
 
 	}
 	//赋值构造函数
-	WorldServerRpcLogoutAskWraper(const WorldServerRpcLogoutAsk& v){ Init(v); }
+	WorldServerRpcLogoutGameServerAskWraper(const WorldServerRpcLogoutGameServerAsk& v){ Init(v); }
 	//等号重载函数
-	void operator = (const WorldServerRpcLogoutAsk& v){ Init(v); }
+	void operator = (const WorldServerRpcLogoutGameServerAsk& v){ Init(v); }
  	//转化成Protobuffer类型函数
-	WorldServerRpcLogoutAsk ToPB() const
+	WorldServerRpcLogoutGameServerAsk ToPB() const
 	{
-		WorldServerRpcLogoutAsk v;
+		WorldServerRpcLogoutGameServerAsk v;
+		v.set_result( m_Result );
 		*v.mutable_roleinfo()= m_RoleInfo.ToPB();
 
 		return v;
@@ -1641,7 +1977,7 @@ public:
 	//Protobuffer从缓冲区进行反序列化
 	bool ParseFromArray(const void* data, int size)
 	{
-		WorldServerRpcLogoutAsk pb;
+		WorldServerRpcLogoutGameServerAsk pb;
 		if(!pb.ParseFromArray(data,size)){return false;}
 		Init(pb);
 		return true;
@@ -1670,105 +2006,10 @@ public:
 
 private:
 	//从Protobuffer类型初始化
-	void Init(const WorldServerRpcLogoutAsk& v)
-	{
-		m_RoleInfo = v.roleinfo();
-
-	}
-
-private:
-	//RoleInfo
-	OnlineUserInfoWraper m_RoleInfo;
-public:
-	void SetRoleInfo( const OnlineUserInfoWraper& v)
-	{
-		m_RoleInfo=v;
-	}
-	OnlineUserInfoWraper GetRoleInfo()
-	{
-		return m_RoleInfo;
-	}
-	OnlineUserInfoWraper GetRoleInfo() const
-	{
-		return m_RoleInfo;
-	}
-
-};
-//CreateDungeonNotify回应封装类
-class WorldServerRpcCreateDungeonNotifyReplyWraper
-{
-public:
-	//构造函数
-	WorldServerRpcCreateDungeonNotifyReplyWraper()
-	{
-		
-		m_Result = -9999;
-
-	}
-	//赋值构造函数
-	WorldServerRpcCreateDungeonNotifyReplyWraper(const WorldServerRpcCreateDungeonNotifyReply& v){ Init(v); }
-	//等号重载函数
-	void operator = (const WorldServerRpcCreateDungeonNotifyReply& v){ Init(v); }
- 	//转化成Protobuffer类型函数
-	WorldServerRpcCreateDungeonNotifyReply ToPB() const
-	{
-		WorldServerRpcCreateDungeonNotifyReply v;
-		v.set_result( m_Result );
-
-		return v;
-	}
-	//获取Protobuffer序列化后大小函数
-	int ByteSize() const { return ToPB().ByteSize();}
-	//Protobuffer序列化到缓冲区
-	bool SerializeToArray( void* data, int size ) const
-	{
-		return ToPB().SerializeToArray(data,size);
-	}
-	//Protobuffer序列化到字符串
-	string SerializeAsString() const
-	{
-		return ToPB().SerializeAsString();
-	}
-	//Protobuffer从字符串进行反序列化
-	bool ParseFromString(const string& v)
-	{
-		return ParseFromArray(v.data(),v.size());
-	}
-	//Protobuffer从缓冲区进行反序列化
-	bool ParseFromArray(const void* data, int size)
-	{
-		WorldServerRpcCreateDungeonNotifyReply pb;
-		if(!pb.ParseFromArray(data,size)){return false;}
-		Init(pb);
-		return true;
-	}
-	/*
-	string HtmlDescHeader()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-	*/
-	/*
-	string ToHtml()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-		TStr tmpLine;
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}*/
-
-
-private:
-	//从Protobuffer类型初始化
-	void Init(const WorldServerRpcCreateDungeonNotifyReply& v)
+	void Init(const WorldServerRpcLogoutGameServerAsk& v)
 	{
 		m_Result = v.result();
+		m_RoleInfo = v.roleinfo();
 
 	}
 
@@ -1787,6 +2028,22 @@ public:
 	INT32 GetResult() const
 	{
 		return m_Result;
+	}
+private:
+	//RoleInfo
+	OnlineUserInfoWraper m_RoleInfo;
+public:
+	void SetRoleInfo( const OnlineUserInfoWraper& v)
+	{
+		m_RoleInfo=v;
+	}
+	OnlineUserInfoWraper GetRoleInfo()
+	{
+		return m_RoleInfo;
+	}
+	OnlineUserInfoWraper GetRoleInfo() const
+	{
+		return m_RoleInfo;
 	}
 
 };
@@ -1800,7 +2057,6 @@ public:
 		
 		m_CurSceneId = -1;
 		m_RoleId = 0;
-		m_MemId = -1;
 		m_TargetSceneId = -1;
 
 	}
@@ -1814,7 +2070,6 @@ public:
 		WorldServerRpcCreateDungeonNotifyAsk v;
 		v.set_cursceneid( m_CurSceneId );
 		v.set_roleid( m_RoleId );
-		v.set_memid( m_MemId );
 		v.set_targetsceneid( m_TargetSceneId );
 
 		return v;
@@ -1872,7 +2127,6 @@ private:
 	{
 		m_CurSceneId = v.cursceneid();
 		m_RoleId = v.roleid();
-		m_MemId = v.memid();
 		m_TargetSceneId = v.targetsceneid();
 
 	}
@@ -1910,22 +2164,6 @@ public:
 		return m_RoleId;
 	}
 private:
-	//MemId
-	INT32 m_MemId;
-public:
-	void SetMemId( INT32 v)
-	{
-		m_MemId=v;
-	}
-	INT32 GetMemId()
-	{
-		return m_MemId;
-	}
-	INT32 GetMemId() const
-	{
-		return m_MemId;
-	}
-private:
 	//场景id
 	INT32 m_TargetSceneId;
 public:
@@ -1943,447 +2181,32 @@ public:
 	}
 
 };
-//创建副本通知回应封装类
-class WorldServerRpcCreateDungeonReplyWraper
+//Login请求封装类
+class WorldServerRpcLoginGameServerAskWraper
 {
 public:
 	//构造函数
-	WorldServerRpcCreateDungeonReplyWraper()
+	WorldServerRpcLoginGameServerAskWraper()
 	{
 		
-
-	}
-	//赋值构造函数
-	WorldServerRpcCreateDungeonReplyWraper(const WorldServerRpcCreateDungeonReply& v){ Init(v); }
-	//等号重载函数
-	void operator = (const WorldServerRpcCreateDungeonReply& v){ Init(v); }
- 	//转化成Protobuffer类型函数
-	WorldServerRpcCreateDungeonReply ToPB() const
-	{
-		WorldServerRpcCreateDungeonReply v;
-
-		return v;
-	}
-	//获取Protobuffer序列化后大小函数
-	int ByteSize() const { return ToPB().ByteSize();}
-	//Protobuffer序列化到缓冲区
-	bool SerializeToArray( void* data, int size ) const
-	{
-		return ToPB().SerializeToArray(data,size);
-	}
-	//Protobuffer序列化到字符串
-	string SerializeAsString() const
-	{
-		return ToPB().SerializeAsString();
-	}
-	//Protobuffer从字符串进行反序列化
-	bool ParseFromString(const string& v)
-	{
-		return ParseFromArray(v.data(),v.size());
-	}
-	//Protobuffer从缓冲区进行反序列化
-	bool ParseFromArray(const void* data, int size)
-	{
-		WorldServerRpcCreateDungeonReply pb;
-		if(!pb.ParseFromArray(data,size)){return false;}
-		Init(pb);
-		return true;
-	}
-	/*
-	string HtmlDescHeader()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-	*/
-	/*
-	string ToHtml()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-		TStr tmpLine;
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}*/
-
-
-private:
-	//从Protobuffer类型初始化
-	void Init(const WorldServerRpcCreateDungeonReply& v)
-	{
-
-	}
-
-
-};
-//创建副本通知请求封装类
-class WorldServerRpcCreateDungeonAskWraper
-{
-public:
-	//构造函数
-	WorldServerRpcCreateDungeonAskWraper()
-	{
-		
-		m_RoleId = 0;
-		m_TargetSceneId = -1;
-		m_MemId = -1;
-		m_DungeonConfigId = -1;
-		m_CurSceneId = -1;
-		m_Result = -9999;
-
-	}
-	//赋值构造函数
-	WorldServerRpcCreateDungeonAskWraper(const WorldServerRpcCreateDungeonAsk& v){ Init(v); }
-	//等号重载函数
-	void operator = (const WorldServerRpcCreateDungeonAsk& v){ Init(v); }
- 	//转化成Protobuffer类型函数
-	WorldServerRpcCreateDungeonAsk ToPB() const
-	{
-		WorldServerRpcCreateDungeonAsk v;
-		v.set_roleid( m_RoleId );
-		v.set_targetsceneid( m_TargetSceneId );
-		v.set_memid( m_MemId );
-		v.set_dungeonconfigid( m_DungeonConfigId );
-		v.set_cursceneid( m_CurSceneId );
-		v.set_result( m_Result );
-		v.mutable_roleids()->Reserve(m_RoleIds.size());
-		for (int i=0; i<(int)m_RoleIds.size(); i++)
-		{
-			v.add_roleids(m_RoleIds[i]);
-		}
-
-		return v;
-	}
-	//获取Protobuffer序列化后大小函数
-	int ByteSize() const { return ToPB().ByteSize();}
-	//Protobuffer序列化到缓冲区
-	bool SerializeToArray( void* data, int size ) const
-	{
-		return ToPB().SerializeToArray(data,size);
-	}
-	//Protobuffer序列化到字符串
-	string SerializeAsString() const
-	{
-		return ToPB().SerializeAsString();
-	}
-	//Protobuffer从字符串进行反序列化
-	bool ParseFromString(const string& v)
-	{
-		return ParseFromArray(v.data(),v.size());
-	}
-	//Protobuffer从缓冲区进行反序列化
-	bool ParseFromArray(const void* data, int size)
-	{
-		WorldServerRpcCreateDungeonAsk pb;
-		if(!pb.ParseFromArray(data,size)){return false;}
-		Init(pb);
-		return true;
-	}
-	/*
-	string HtmlDescHeader()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-	*/
-	/*
-	string ToHtml()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-		TStr tmpLine;
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}*/
-
-
-private:
-	//从Protobuffer类型初始化
-	void Init(const WorldServerRpcCreateDungeonAsk& v)
-	{
-		m_RoleId = v.roleid();
-		m_TargetSceneId = v.targetsceneid();
-		m_MemId = v.memid();
-		m_DungeonConfigId = v.dungeonconfigid();
-		m_CurSceneId = v.cursceneid();
-		m_Result = v.result();
-		m_RoleIds.clear();
-		m_RoleIds.reserve(v.roleids_size());
-		for( int i=0; i<v.roleids_size(); i++)
-			m_RoleIds.push_back(v.roleids(i));
-
-	}
-
-private:
-	//玩家的唯一id
-	uint64_t m_RoleId;
-public:
-	void SetRoleId( uint64_t v)
-	{
-		m_RoleId=v;
-	}
-	uint64_t GetRoleId()
-	{
-		return m_RoleId;
-	}
-	uint64_t GetRoleId() const
-	{
-		return m_RoleId;
-	}
-private:
-	//目标场景id
-	INT32 m_TargetSceneId;
-public:
-	void SetTargetSceneId( INT32 v)
-	{
-		m_TargetSceneId=v;
-	}
-	INT32 GetTargetSceneId()
-	{
-		return m_TargetSceneId;
-	}
-	INT32 GetTargetSceneId() const
-	{
-		return m_TargetSceneId;
-	}
-private:
-	//玩家的内存id
-	INT32 m_MemId;
-public:
-	void SetMemId( INT32 v)
-	{
-		m_MemId=v;
-	}
-	INT32 GetMemId()
-	{
-		return m_MemId;
-	}
-	INT32 GetMemId() const
-	{
-		return m_MemId;
-	}
-private:
-	//副本配置id
-	INT32 m_DungeonConfigId;
-public:
-	void SetDungeonConfigId( INT32 v)
-	{
-		m_DungeonConfigId=v;
-	}
-	INT32 GetDungeonConfigId()
-	{
-		return m_DungeonConfigId;
-	}
-	INT32 GetDungeonConfigId() const
-	{
-		return m_DungeonConfigId;
-	}
-private:
-	//队员当前场景
-	INT32 m_CurSceneId;
-public:
-	void SetCurSceneId( INT32 v)
-	{
-		m_CurSceneId=v;
-	}
-	INT32 GetCurSceneId()
-	{
-		return m_CurSceneId;
-	}
-	INT32 GetCurSceneId() const
-	{
-		return m_CurSceneId;
-	}
-private:
-	//返回结果
-	INT32 m_Result;
-public:
-	void SetResult( INT32 v)
-	{
-		m_Result=v;
-	}
-	INT32 GetResult()
-	{
-		return m_Result;
-	}
-	INT32 GetResult() const
-	{
-		return m_Result;
-	}
-private:
-	//玩家的唯一id
-	vector<uint64_t> m_RoleIds;
-public:
-	int SizeRoleIds()
-	{
-		return m_RoleIds.size();
-	}
-	const vector<uint64_t>& GetRoleIds() const
-	{
-		return m_RoleIds;
-	}
-	uint64_t GetRoleIds(int Index) const
-	{
-		if(Index<0 || Index>=(int)m_RoleIds.size())
-		{
-			assert(false);
-			return uint64_t();
-		}
-		return m_RoleIds[Index];
-	}
-	void SetRoleIds( const vector<uint64_t>& v )
-	{
-		m_RoleIds=v;
-	}
-	void ClearRoleIds( )
-	{
-		m_RoleIds.clear();
-	}
-	void SetRoleIds( int Index, uint64_t v )
-	{
-		if(Index<0 || Index>=(int)m_RoleIds.size())
-		{
-			assert(false);
-			return;
-		}
-		m_RoleIds[Index] = v;
-	}
-	void AddRoleIds( uint64_t v = 0 )
-	{
-		m_RoleIds.push_back(v);
-	}
-
-};
-//CreateTeam回应封装类
-class WorldServerRpcCreateTeamReplyWraper
-{
-public:
-	//构造函数
-	WorldServerRpcCreateTeamReplyWraper()
-	{
-		
-		m_Result = -9999;
-
-	}
-	//赋值构造函数
-	WorldServerRpcCreateTeamReplyWraper(const WorldServerRpcCreateTeamReply& v){ Init(v); }
-	//等号重载函数
-	void operator = (const WorldServerRpcCreateTeamReply& v){ Init(v); }
- 	//转化成Protobuffer类型函数
-	WorldServerRpcCreateTeamReply ToPB() const
-	{
-		WorldServerRpcCreateTeamReply v;
-		v.set_result( m_Result );
-
-		return v;
-	}
-	//获取Protobuffer序列化后大小函数
-	int ByteSize() const { return ToPB().ByteSize();}
-	//Protobuffer序列化到缓冲区
-	bool SerializeToArray( void* data, int size ) const
-	{
-		return ToPB().SerializeToArray(data,size);
-	}
-	//Protobuffer序列化到字符串
-	string SerializeAsString() const
-	{
-		return ToPB().SerializeAsString();
-	}
-	//Protobuffer从字符串进行反序列化
-	bool ParseFromString(const string& v)
-	{
-		return ParseFromArray(v.data(),v.size());
-	}
-	//Protobuffer从缓冲区进行反序列化
-	bool ParseFromArray(const void* data, int size)
-	{
-		WorldServerRpcCreateTeamReply pb;
-		if(!pb.ParseFromArray(data,size)){return false;}
-		Init(pb);
-		return true;
-	}
-	/*
-	string HtmlDescHeader()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-	*/
-	/*
-	string ToHtml()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-		TStr tmpLine;
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}*/
-
-
-private:
-	//从Protobuffer类型初始化
-	void Init(const WorldServerRpcCreateTeamReply& v)
-	{
-		m_Result = v.result();
-
-	}
-
-private:
-	//返回结果
-	INT32 m_Result;
-public:
-	void SetResult( INT32 v)
-	{
-		m_Result=v;
-	}
-	INT32 GetResult()
-	{
-		return m_Result;
-	}
-	INT32 GetResult() const
-	{
-		return m_Result;
-	}
-
-};
-//CreateTeam请求封装类
-class WorldServerRpcCreateTeamAskWraper
-{
-public:
-	//构造函数
-	WorldServerRpcCreateTeamAskWraper()
-	{
-		
-		m_TeamType = -1;
-		m_TeamMember = TeamMemberInfoWraper();
-		m_Result = -9999;
 		m_Team = TeamInfoWraper();
+		m_RoleInfo = OnlineUserInfoWraper();
+		m_Location = CharacterLocationWraper();
+		m_GateId = -1;
 
 	}
 	//赋值构造函数
-	WorldServerRpcCreateTeamAskWraper(const WorldServerRpcCreateTeamAsk& v){ Init(v); }
+	WorldServerRpcLoginGameServerAskWraper(const WorldServerRpcLoginGameServerAsk& v){ Init(v); }
 	//等号重载函数
-	void operator = (const WorldServerRpcCreateTeamAsk& v){ Init(v); }
+	void operator = (const WorldServerRpcLoginGameServerAsk& v){ Init(v); }
  	//转化成Protobuffer类型函数
-	WorldServerRpcCreateTeamAsk ToPB() const
+	WorldServerRpcLoginGameServerAsk ToPB() const
 	{
-		WorldServerRpcCreateTeamAsk v;
-		v.set_teamtype( m_TeamType );
-		*v.mutable_teammember()= m_TeamMember.ToPB();
-		v.set_result( m_Result );
+		WorldServerRpcLoginGameServerAsk v;
 		*v.mutable_team()= m_Team.ToPB();
+		*v.mutable_roleinfo()= m_RoleInfo.ToPB();
+		*v.mutable_location()= m_Location.ToPB();
+		v.set_gateid( m_GateId );
 
 		return v;
 	}
@@ -2407,7 +2230,7 @@ public:
 	//Protobuffer从缓冲区进行反序列化
 	bool ParseFromArray(const void* data, int size)
 	{
-		WorldServerRpcCreateTeamAsk pb;
+		WorldServerRpcLoginGameServerAsk pb;
 		if(!pb.ParseFromArray(data,size)){return false;}
 		Init(pb);
 		return true;
@@ -2436,65 +2259,17 @@ public:
 
 private:
 	//从Protobuffer类型初始化
-	void Init(const WorldServerRpcCreateTeamAsk& v)
+	void Init(const WorldServerRpcLoginGameServerAsk& v)
 	{
-		m_TeamType = v.teamtype();
-		m_TeamMember = v.teammember();
-		m_Result = v.result();
 		m_Team = v.team();
+		m_RoleInfo = v.roleinfo();
+		m_Location = v.location();
+		m_GateId = v.gateid();
 
 	}
 
 private:
-	//TeamType
-	INT32 m_TeamType;
-public:
-	void SetTeamType( INT32 v)
-	{
-		m_TeamType=v;
-	}
-	INT32 GetTeamType()
-	{
-		return m_TeamType;
-	}
-	INT32 GetTeamType() const
-	{
-		return m_TeamType;
-	}
-private:
-	//TeamMember
-	TeamMemberInfoWraper m_TeamMember;
-public:
-	void SetTeamMember( const TeamMemberInfoWraper& v)
-	{
-		m_TeamMember=v;
-	}
-	TeamMemberInfoWraper GetTeamMember()
-	{
-		return m_TeamMember;
-	}
-	TeamMemberInfoWraper GetTeamMember() const
-	{
-		return m_TeamMember;
-	}
-private:
-	//返回结果
-	INT32 m_Result;
-public:
-	void SetResult( INT32 v)
-	{
-		m_Result=v;
-	}
-	INT32 GetResult()
-	{
-		return m_Result;
-	}
-	INT32 GetResult() const
-	{
-		return m_Result;
-	}
-private:
-	//PbTeam
+	//Team
 	TeamInfoWraper m_Team;
 public:
 	void SetTeam( const TeamInfoWraper& v)
@@ -2509,36 +2284,78 @@ public:
 	{
 		return m_Team;
 	}
+private:
+	//RoleInfo
+	OnlineUserInfoWraper m_RoleInfo;
+public:
+	void SetRoleInfo( const OnlineUserInfoWraper& v)
+	{
+		m_RoleInfo=v;
+	}
+	OnlineUserInfoWraper GetRoleInfo()
+	{
+		return m_RoleInfo;
+	}
+	OnlineUserInfoWraper GetRoleInfo() const
+	{
+		return m_RoleInfo;
+	}
+private:
+	//玩家位置信息
+	CharacterLocationWraper m_Location;
+public:
+	void SetLocation( const CharacterLocationWraper& v)
+	{
+		m_Location=v;
+	}
+	CharacterLocationWraper GetLocation()
+	{
+		return m_Location;
+	}
+	CharacterLocationWraper GetLocation() const
+	{
+		return m_Location;
+	}
+private:
+	//网关id
+	INT32 m_GateId;
+public:
+	void SetGateId( INT32 v)
+	{
+		m_GateId=v;
+	}
+	INT32 GetGateId()
+	{
+		return m_GateId;
+	}
+	INT32 GetGateId() const
+	{
+		return m_GateId;
+	}
 
 };
-//通知世界服务器切换场景回应封装类
-class WorldServerRpcChangeSceneReplyWraper
+//进入场景请求封装类
+class WorldServerRpcEnterSceneAskWraper
 {
 public:
 	//构造函数
-	WorldServerRpcChangeSceneReplyWraper()
+	WorldServerRpcEnterSceneAskWraper()
 	{
 		
-		m_Result = -9999;
 		m_RoleId = 0;
-		m_CurSceneId = -1;
-		m_TargetSceneId = -1;
-		m_MemId = -1;
+		m_Location = CharacterLocationWraper();
 
 	}
 	//赋值构造函数
-	WorldServerRpcChangeSceneReplyWraper(const WorldServerRpcChangeSceneReply& v){ Init(v); }
+	WorldServerRpcEnterSceneAskWraper(const WorldServerRpcEnterSceneAsk& v){ Init(v); }
 	//等号重载函数
-	void operator = (const WorldServerRpcChangeSceneReply& v){ Init(v); }
+	void operator = (const WorldServerRpcEnterSceneAsk& v){ Init(v); }
  	//转化成Protobuffer类型函数
-	WorldServerRpcChangeSceneReply ToPB() const
+	WorldServerRpcEnterSceneAsk ToPB() const
 	{
-		WorldServerRpcChangeSceneReply v;
-		v.set_result( m_Result );
+		WorldServerRpcEnterSceneAsk v;
 		v.set_roleid( m_RoleId );
-		v.set_cursceneid( m_CurSceneId );
-		v.set_targetsceneid( m_TargetSceneId );
-		v.set_memid( m_MemId );
+		*v.mutable_location()= m_Location.ToPB();
 
 		return v;
 	}
@@ -2562,7 +2379,7 @@ public:
 	//Protobuffer从缓冲区进行反序列化
 	bool ParseFromArray(const void* data, int size)
 	{
-		WorldServerRpcChangeSceneReply pb;
+		WorldServerRpcEnterSceneAsk pb;
 		if(!pb.ParseFromArray(data,size)){return false;}
 		Init(pb);
 		return true;
@@ -2591,34 +2408,15 @@ public:
 
 private:
 	//从Protobuffer类型初始化
-	void Init(const WorldServerRpcChangeSceneReply& v)
+	void Init(const WorldServerRpcEnterSceneAsk& v)
 	{
-		m_Result = v.result();
 		m_RoleId = v.roleid();
-		m_CurSceneId = v.cursceneid();
-		m_TargetSceneId = v.targetsceneid();
-		m_MemId = v.memid();
+		m_Location = v.location();
 
 	}
 
 private:
-	//返回结果
-	INT32 m_Result;
-public:
-	void SetResult( INT32 v)
-	{
-		m_Result=v;
-	}
-	INT32 GetResult()
-	{
-		return m_Result;
-	}
-	INT32 GetResult() const
-	{
-		return m_Result;
-	}
-private:
-	//玩家的唯一id
+	//角色id
 	uint64_t m_RoleId;
 public:
 	void SetRoleId( uint64_t v)
@@ -2634,224 +2432,20 @@ public:
 		return m_RoleId;
 	}
 private:
-	//场景id
-	INT32 m_CurSceneId;
+	//玩家位置信息
+	CharacterLocationWraper m_Location;
 public:
-	void SetCurSceneId( INT32 v)
+	void SetLocation( const CharacterLocationWraper& v)
 	{
-		m_CurSceneId=v;
+		m_Location=v;
 	}
-	INT32 GetCurSceneId()
+	CharacterLocationWraper GetLocation()
 	{
-		return m_CurSceneId;
+		return m_Location;
 	}
-	INT32 GetCurSceneId() const
+	CharacterLocationWraper GetLocation() const
 	{
-		return m_CurSceneId;
-	}
-private:
-	//目标场景id
-	INT32 m_TargetSceneId;
-public:
-	void SetTargetSceneId( INT32 v)
-	{
-		m_TargetSceneId=v;
-	}
-	INT32 GetTargetSceneId()
-	{
-		return m_TargetSceneId;
-	}
-	INT32 GetTargetSceneId() const
-	{
-		return m_TargetSceneId;
-	}
-private:
-	//玩家的内存id
-	INT32 m_MemId;
-public:
-	void SetMemId( INT32 v)
-	{
-		m_MemId=v;
-	}
-	INT32 GetMemId()
-	{
-		return m_MemId;
-	}
-	INT32 GetMemId() const
-	{
-		return m_MemId;
-	}
-
-};
-//通知世界服务器切换场景请求封装类
-class WorldServerRpcChangeSceneAskWraper
-{
-public:
-	//构造函数
-	WorldServerRpcChangeSceneAskWraper()
-	{
-		
-		m_RoleId = 0;
-		m_CurSceneId = -1;
-		m_TargetSceneId = -1;
-		m_MemId = -1;
-		m_SceneId = -1;
-
-	}
-	//赋值构造函数
-	WorldServerRpcChangeSceneAskWraper(const WorldServerRpcChangeSceneAsk& v){ Init(v); }
-	//等号重载函数
-	void operator = (const WorldServerRpcChangeSceneAsk& v){ Init(v); }
- 	//转化成Protobuffer类型函数
-	WorldServerRpcChangeSceneAsk ToPB() const
-	{
-		WorldServerRpcChangeSceneAsk v;
-		v.set_roleid( m_RoleId );
-		v.set_cursceneid( m_CurSceneId );
-		v.set_targetsceneid( m_TargetSceneId );
-		v.set_memid( m_MemId );
-		v.set_sceneid( m_SceneId );
-
-		return v;
-	}
-	//获取Protobuffer序列化后大小函数
-	int ByteSize() const { return ToPB().ByteSize();}
-	//Protobuffer序列化到缓冲区
-	bool SerializeToArray( void* data, int size ) const
-	{
-		return ToPB().SerializeToArray(data,size);
-	}
-	//Protobuffer序列化到字符串
-	string SerializeAsString() const
-	{
-		return ToPB().SerializeAsString();
-	}
-	//Protobuffer从字符串进行反序列化
-	bool ParseFromString(const string& v)
-	{
-		return ParseFromArray(v.data(),v.size());
-	}
-	//Protobuffer从缓冲区进行反序列化
-	bool ParseFromArray(const void* data, int size)
-	{
-		WorldServerRpcChangeSceneAsk pb;
-		if(!pb.ParseFromArray(data,size)){return false;}
-		Init(pb);
-		return true;
-	}
-	/*
-	string HtmlDescHeader()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-	*/
-	/*
-	string ToHtml()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-		TStr tmpLine;
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}*/
-
-
-private:
-	//从Protobuffer类型初始化
-	void Init(const WorldServerRpcChangeSceneAsk& v)
-	{
-		m_RoleId = v.roleid();
-		m_CurSceneId = v.cursceneid();
-		m_TargetSceneId = v.targetsceneid();
-		m_MemId = v.memid();
-		m_SceneId = v.sceneid();
-
-	}
-
-private:
-	//玩家的唯一id
-	uint64_t m_RoleId;
-public:
-	void SetRoleId( uint64_t v)
-	{
-		m_RoleId=v;
-	}
-	uint64_t GetRoleId()
-	{
-		return m_RoleId;
-	}
-	uint64_t GetRoleId() const
-	{
-		return m_RoleId;
-	}
-private:
-	//场景id
-	INT32 m_CurSceneId;
-public:
-	void SetCurSceneId( INT32 v)
-	{
-		m_CurSceneId=v;
-	}
-	INT32 GetCurSceneId()
-	{
-		return m_CurSceneId;
-	}
-	INT32 GetCurSceneId() const
-	{
-		return m_CurSceneId;
-	}
-private:
-	//目标场景id
-	INT32 m_TargetSceneId;
-public:
-	void SetTargetSceneId( INT32 v)
-	{
-		m_TargetSceneId=v;
-	}
-	INT32 GetTargetSceneId()
-	{
-		return m_TargetSceneId;
-	}
-	INT32 GetTargetSceneId() const
-	{
-		return m_TargetSceneId;
-	}
-private:
-	//玩家的内存id
-	INT32 m_MemId;
-public:
-	void SetMemId( INT32 v)
-	{
-		m_MemId=v;
-	}
-	INT32 GetMemId()
-	{
-		return m_MemId;
-	}
-	INT32 GetMemId() const
-	{
-		return m_MemId;
-	}
-private:
-	//场景id
-	INT32 m_SceneId;
-public:
-	void SetSceneId( INT32 v)
-	{
-		m_SceneId=v;
-	}
-	INT32 GetSceneId()
-	{
-		return m_SceneId;
-	}
-	INT32 GetSceneId() const
-	{
-		return m_SceneId;
+		return m_Location;
 	}
 
 };
@@ -2951,172 +2545,26 @@ public:
 	}
 
 };
-//进入场景请求封装类
-class WorldServerRpcEnterSceneAskWraper
+//CreateDungeonNotify回应封装类
+class WorldServerRpcCreateDungeonNotifyReplyWraper
 {
 public:
 	//构造函数
-	WorldServerRpcEnterSceneAskWraper()
+	WorldServerRpcCreateDungeonNotifyReplyWraper()
 	{
 		
-		m_RoleId = 0;
-		m_SceneId = -1;
-		m_MemId = -1;
-
-	}
-	//赋值构造函数
-	WorldServerRpcEnterSceneAskWraper(const WorldServerRpcEnterSceneAsk& v){ Init(v); }
-	//等号重载函数
-	void operator = (const WorldServerRpcEnterSceneAsk& v){ Init(v); }
- 	//转化成Protobuffer类型函数
-	WorldServerRpcEnterSceneAsk ToPB() const
-	{
-		WorldServerRpcEnterSceneAsk v;
-		v.set_roleid( m_RoleId );
-		v.set_sceneid( m_SceneId );
-		v.set_memid( m_MemId );
-
-		return v;
-	}
-	//获取Protobuffer序列化后大小函数
-	int ByteSize() const { return ToPB().ByteSize();}
-	//Protobuffer序列化到缓冲区
-	bool SerializeToArray( void* data, int size ) const
-	{
-		return ToPB().SerializeToArray(data,size);
-	}
-	//Protobuffer序列化到字符串
-	string SerializeAsString() const
-	{
-		return ToPB().SerializeAsString();
-	}
-	//Protobuffer从字符串进行反序列化
-	bool ParseFromString(const string& v)
-	{
-		return ParseFromArray(v.data(),v.size());
-	}
-	//Protobuffer从缓冲区进行反序列化
-	bool ParseFromArray(const void* data, int size)
-	{
-		WorldServerRpcEnterSceneAsk pb;
-		if(!pb.ParseFromArray(data,size)){return false;}
-		Init(pb);
-		return true;
-	}
-	/*
-	string HtmlDescHeader()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-	*/
-	/*
-	string ToHtml()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-		TStr tmpLine;
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}*/
-
-
-private:
-	//从Protobuffer类型初始化
-	void Init(const WorldServerRpcEnterSceneAsk& v)
-	{
-		m_RoleId = v.roleid();
-		m_SceneId = v.sceneid();
-		m_MemId = v.memid();
-
-	}
-
-private:
-	//角色id
-	uint64_t m_RoleId;
-public:
-	void SetRoleId( uint64_t v)
-	{
-		m_RoleId=v;
-	}
-	uint64_t GetRoleId()
-	{
-		return m_RoleId;
-	}
-	uint64_t GetRoleId() const
-	{
-		return m_RoleId;
-	}
-private:
-	//场景id
-	INT32 m_SceneId;
-public:
-	void SetSceneId( INT32 v)
-	{
-		m_SceneId=v;
-	}
-	INT32 GetSceneId()
-	{
-		return m_SceneId;
-	}
-	INT32 GetSceneId() const
-	{
-		return m_SceneId;
-	}
-private:
-	//MemId
-	INT32 m_MemId;
-public:
-	void SetMemId( INT32 v)
-	{
-		m_MemId=v;
-	}
-	INT32 GetMemId()
-	{
-		return m_MemId;
-	}
-	INT32 GetMemId() const
-	{
-		return m_MemId;
-	}
-
-};
-//JoinTeam请求封装类
-class WorldServerRpcJoinTeamAskWraper
-{
-public:
-	//构造函数
-	WorldServerRpcJoinTeamAskWraper()
-	{
-		
-		m_TeamId = -1;
 		m_Result = -9999;
-		m_TeamMember = TeamMemberInfoWraper();
-		m_Team = TeamInfoWraper();
-		m_TeamType = -1;
-		m_MemId = -1;
-		m_SceneId = -1;
 
 	}
 	//赋值构造函数
-	WorldServerRpcJoinTeamAskWraper(const WorldServerRpcJoinTeamAsk& v){ Init(v); }
+	WorldServerRpcCreateDungeonNotifyReplyWraper(const WorldServerRpcCreateDungeonNotifyReply& v){ Init(v); }
 	//等号重载函数
-	void operator = (const WorldServerRpcJoinTeamAsk& v){ Init(v); }
+	void operator = (const WorldServerRpcCreateDungeonNotifyReply& v){ Init(v); }
  	//转化成Protobuffer类型函数
-	WorldServerRpcJoinTeamAsk ToPB() const
+	WorldServerRpcCreateDungeonNotifyReply ToPB() const
 	{
-		WorldServerRpcJoinTeamAsk v;
-		v.set_teamid( m_TeamId );
+		WorldServerRpcCreateDungeonNotifyReply v;
 		v.set_result( m_Result );
-		*v.mutable_teammember()= m_TeamMember.ToPB();
-		*v.mutable_team()= m_Team.ToPB();
-		v.set_teamtype( m_TeamType );
-		v.set_memid( m_MemId );
-		v.set_sceneid( m_SceneId );
 
 		return v;
 	}
@@ -3140,7 +2588,7 @@ public:
 	//Protobuffer从缓冲区进行反序列化
 	bool ParseFromArray(const void* data, int size)
 	{
-		WorldServerRpcJoinTeamAsk pb;
+		WorldServerRpcCreateDungeonNotifyReply pb;
 		if(!pb.ParseFromArray(data,size)){return false;}
 		Init(pb);
 		return true;
@@ -3169,34 +2617,12 @@ public:
 
 private:
 	//从Protobuffer类型初始化
-	void Init(const WorldServerRpcJoinTeamAsk& v)
+	void Init(const WorldServerRpcCreateDungeonNotifyReply& v)
 	{
-		m_TeamId = v.teamid();
 		m_Result = v.result();
-		m_TeamMember = v.teammember();
-		m_Team = v.team();
-		m_TeamType = v.teamtype();
-		m_MemId = v.memid();
-		m_SceneId = v.sceneid();
 
 	}
 
-private:
-	//TeamId
-	INT32 m_TeamId;
-public:
-	void SetTeamId( INT32 v)
-	{
-		m_TeamId=v;
-	}
-	INT32 GetTeamId()
-	{
-		return m_TeamId;
-	}
-	INT32 GetTeamId() const
-	{
-		return m_TeamId;
-	}
 private:
 	//返回结果
 	INT32 m_Result;
@@ -3213,8 +2639,308 @@ public:
 	{
 		return m_Result;
 	}
+
+};
+//UpdateTeamInfo回应封装类
+class WorldServerRpcUpdateTeamInfoReplyWraper
+{
+public:
+	//构造函数
+	WorldServerRpcUpdateTeamInfoReplyWraper()
+	{
+		
+		m_Result = -9999;
+
+	}
+	//赋值构造函数
+	WorldServerRpcUpdateTeamInfoReplyWraper(const WorldServerRpcUpdateTeamInfoReply& v){ Init(v); }
+	//等号重载函数
+	void operator = (const WorldServerRpcUpdateTeamInfoReply& v){ Init(v); }
+ 	//转化成Protobuffer类型函数
+	WorldServerRpcUpdateTeamInfoReply ToPB() const
+	{
+		WorldServerRpcUpdateTeamInfoReply v;
+		v.set_result( m_Result );
+
+		return v;
+	}
+	//获取Protobuffer序列化后大小函数
+	int ByteSize() const { return ToPB().ByteSize();}
+	//Protobuffer序列化到缓冲区
+	bool SerializeToArray( void* data, int size ) const
+	{
+		return ToPB().SerializeToArray(data,size);
+	}
+	//Protobuffer序列化到字符串
+	string SerializeAsString() const
+	{
+		return ToPB().SerializeAsString();
+	}
+	//Protobuffer从字符串进行反序列化
+	bool ParseFromString(const string& v)
+	{
+		return ParseFromArray(v.data(),v.size());
+	}
+	//Protobuffer从缓冲区进行反序列化
+	bool ParseFromArray(const void* data, int size)
+	{
+		WorldServerRpcUpdateTeamInfoReply pb;
+		if(!pb.ParseFromArray(data,size)){return false;}
+		Init(pb);
+		return true;
+	}
+	/*
+	string HtmlDescHeader()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}
+	*/
+	/*
+	string ToHtml()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+		TStr tmpLine;
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}*/
+
+
 private:
-	//Member
+	//从Protobuffer类型初始化
+	void Init(const WorldServerRpcUpdateTeamInfoReply& v)
+	{
+		m_Result = v.result();
+
+	}
+
+private:
+	//返回结果
+	INT32 m_Result;
+public:
+	void SetResult( INT32 v)
+	{
+		m_Result=v;
+	}
+	INT32 GetResult()
+	{
+		return m_Result;
+	}
+	INT32 GetResult() const
+	{
+		return m_Result;
+	}
+
+};
+//发送邮件请求封装类
+class WorldServerRpcSendMailAskWraper
+{
+public:
+	//构造函数
+	WorldServerRpcSendMailAskWraper()
+	{
+		
+		m_Mail = MailInfoWraper();
+		m_GlobalMailID = 0;
+
+	}
+	//赋值构造函数
+	WorldServerRpcSendMailAskWraper(const WorldServerRpcSendMailAsk& v){ Init(v); }
+	//等号重载函数
+	void operator = (const WorldServerRpcSendMailAsk& v){ Init(v); }
+ 	//转化成Protobuffer类型函数
+	WorldServerRpcSendMailAsk ToPB() const
+	{
+		WorldServerRpcSendMailAsk v;
+		*v.mutable_mail()= m_Mail.ToPB();
+		v.set_globalmailid( m_GlobalMailID );
+
+		return v;
+	}
+	//获取Protobuffer序列化后大小函数
+	int ByteSize() const { return ToPB().ByteSize();}
+	//Protobuffer序列化到缓冲区
+	bool SerializeToArray( void* data, int size ) const
+	{
+		return ToPB().SerializeToArray(data,size);
+	}
+	//Protobuffer序列化到字符串
+	string SerializeAsString() const
+	{
+		return ToPB().SerializeAsString();
+	}
+	//Protobuffer从字符串进行反序列化
+	bool ParseFromString(const string& v)
+	{
+		return ParseFromArray(v.data(),v.size());
+	}
+	//Protobuffer从缓冲区进行反序列化
+	bool ParseFromArray(const void* data, int size)
+	{
+		WorldServerRpcSendMailAsk pb;
+		if(!pb.ParseFromArray(data,size)){return false;}
+		Init(pb);
+		return true;
+	}
+	/*
+	string HtmlDescHeader()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}
+	*/
+	/*
+	string ToHtml()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+		TStr tmpLine;
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}*/
+
+
+private:
+	//从Protobuffer类型初始化
+	void Init(const WorldServerRpcSendMailAsk& v)
+	{
+		m_Mail = v.mail();
+		m_GlobalMailID = v.globalmailid();
+
+	}
+
+private:
+	//邮件列表
+	MailInfoWraper m_Mail;
+public:
+	void SetMail( const MailInfoWraper& v)
+	{
+		m_Mail=v;
+	}
+	MailInfoWraper GetMail()
+	{
+		return m_Mail;
+	}
+	MailInfoWraper GetMail() const
+	{
+		return m_Mail;
+	}
+private:
+	//全服邮件ID
+	uint64_t m_GlobalMailID;
+public:
+	void SetGlobalMailID( uint64_t v)
+	{
+		m_GlobalMailID=v;
+	}
+	uint64_t GetGlobalMailID()
+	{
+		return m_GlobalMailID;
+	}
+	uint64_t GetGlobalMailID() const
+	{
+		return m_GlobalMailID;
+	}
+
+};
+//UpdateTeamInfo请求封装类
+class WorldServerRpcUpdateTeamInfoAskWraper
+{
+public:
+	//构造函数
+	WorldServerRpcUpdateTeamInfoAskWraper()
+	{
+		
+		m_TeamMember = TeamMemberInfoWraper();
+		m_RoleId = 0;
+		m_Team = TeamInfoWraper();
+		m_TeamType = -1;
+
+	}
+	//赋值构造函数
+	WorldServerRpcUpdateTeamInfoAskWraper(const WorldServerRpcUpdateTeamInfoAsk& v){ Init(v); }
+	//等号重载函数
+	void operator = (const WorldServerRpcUpdateTeamInfoAsk& v){ Init(v); }
+ 	//转化成Protobuffer类型函数
+	WorldServerRpcUpdateTeamInfoAsk ToPB() const
+	{
+		WorldServerRpcUpdateTeamInfoAsk v;
+		*v.mutable_teammember()= m_TeamMember.ToPB();
+		v.set_roleid( m_RoleId );
+		*v.mutable_team()= m_Team.ToPB();
+		v.set_teamtype( m_TeamType );
+
+		return v;
+	}
+	//获取Protobuffer序列化后大小函数
+	int ByteSize() const { return ToPB().ByteSize();}
+	//Protobuffer序列化到缓冲区
+	bool SerializeToArray( void* data, int size ) const
+	{
+		return ToPB().SerializeToArray(data,size);
+	}
+	//Protobuffer序列化到字符串
+	string SerializeAsString() const
+	{
+		return ToPB().SerializeAsString();
+	}
+	//Protobuffer从字符串进行反序列化
+	bool ParseFromString(const string& v)
+	{
+		return ParseFromArray(v.data(),v.size());
+	}
+	//Protobuffer从缓冲区进行反序列化
+	bool ParseFromArray(const void* data, int size)
+	{
+		WorldServerRpcUpdateTeamInfoAsk pb;
+		if(!pb.ParseFromArray(data,size)){return false;}
+		Init(pb);
+		return true;
+	}
+	/*
+	string HtmlDescHeader()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}
+	*/
+	/*
+	string ToHtml()
+	{
+		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
+		TStr tmpLine;
+
+		
+		htmlBuff += "</div>\r\n";
+		return htmlBuff;
+	}*/
+
+
+private:
+	//从Protobuffer类型初始化
+	void Init(const WorldServerRpcUpdateTeamInfoAsk& v)
+	{
+		m_TeamMember = v.teammember();
+		m_RoleId = v.roleid();
+		m_Team = v.team();
+		m_TeamType = v.teamtype();
+
+	}
+
+private:
+	//TeamMember
 	TeamMemberInfoWraper m_TeamMember;
 public:
 	void SetTeamMember( const TeamMemberInfoWraper& v)
@@ -3230,7 +2956,23 @@ public:
 		return m_TeamMember;
 	}
 private:
-	//Team
+	//MemId
+	uint64_t m_RoleId;
+public:
+	void SetRoleId( uint64_t v)
+	{
+		m_RoleId=v;
+	}
+	uint64_t GetRoleId()
+	{
+		return m_RoleId;
+	}
+	uint64_t GetRoleId() const
+	{
+		return m_RoleId;
+	}
+private:
+	//队伍信息
 	TeamInfoWraper m_Team;
 public:
 	void SetTeam( const TeamInfoWraper& v)
@@ -3246,7 +2988,7 @@ public:
 		return m_Team;
 	}
 private:
-	//TeamType
+	//队伍类型
 	INT32 m_TeamType;
 public:
 	void SetTeamType( INT32 v)
@@ -3261,68 +3003,28 @@ public:
 	{
 		return m_TeamType;
 	}
-private:
-	//MemId
-	INT32 m_MemId;
-public:
-	void SetMemId( INT32 v)
-	{
-		m_MemId=v;
-	}
-	INT32 GetMemId()
-	{
-		return m_MemId;
-	}
-	INT32 GetMemId() const
-	{
-		return m_MemId;
-	}
-private:
-	//SceneId
-	INT32 m_SceneId;
-public:
-	void SetSceneId( INT32 v)
-	{
-		m_SceneId=v;
-	}
-	INT32 GetSceneId()
-	{
-		return m_SceneId;
-	}
-	INT32 GetSceneId() const
-	{
-		return m_SceneId;
-	}
 
 };
-//DismissTeam请求封装类
-class WorldServerRpcDismissTeamAskWraper
+//ExitDungeon请求封装类
+class WorldServerRpcExitDungeonAskWraper
 {
 public:
 	//构造函数
-	WorldServerRpcDismissTeamAskWraper()
+	WorldServerRpcExitDungeonAskWraper()
 	{
 		
-		m_SceneId = -1;
-		m_MemId = -1;
 		m_RoleId = 0;
-		m_TeamId = -1;
-		m_Result = -9999;
 
 	}
 	//赋值构造函数
-	WorldServerRpcDismissTeamAskWraper(const WorldServerRpcDismissTeamAsk& v){ Init(v); }
+	WorldServerRpcExitDungeonAskWraper(const WorldServerRpcExitDungeonAsk& v){ Init(v); }
 	//等号重载函数
-	void operator = (const WorldServerRpcDismissTeamAsk& v){ Init(v); }
+	void operator = (const WorldServerRpcExitDungeonAsk& v){ Init(v); }
  	//转化成Protobuffer类型函数
-	WorldServerRpcDismissTeamAsk ToPB() const
+	WorldServerRpcExitDungeonAsk ToPB() const
 	{
-		WorldServerRpcDismissTeamAsk v;
-		v.set_sceneid( m_SceneId );
-		v.set_memid( m_MemId );
+		WorldServerRpcExitDungeonAsk v;
 		v.set_roleid( m_RoleId );
-		v.set_teamid( m_TeamId );
-		v.set_result( m_Result );
 
 		return v;
 	}
@@ -3346,7 +3048,7 @@ public:
 	//Protobuffer从缓冲区进行反序列化
 	bool ParseFromArray(const void* data, int size)
 	{
-		WorldServerRpcDismissTeamAsk pb;
+		WorldServerRpcExitDungeonAsk pb;
 		if(!pb.ParseFromArray(data,size)){return false;}
 		Init(pb);
 		return true;
@@ -3375,50 +3077,14 @@ public:
 
 private:
 	//从Protobuffer类型初始化
-	void Init(const WorldServerRpcDismissTeamAsk& v)
+	void Init(const WorldServerRpcExitDungeonAsk& v)
 	{
-		m_SceneId = v.sceneid();
-		m_MemId = v.memid();
 		m_RoleId = v.roleid();
-		m_TeamId = v.teamid();
-		m_Result = v.result();
 
 	}
 
 private:
-	//SceneId
-	INT32 m_SceneId;
-public:
-	void SetSceneId( INT32 v)
-	{
-		m_SceneId=v;
-	}
-	INT32 GetSceneId()
-	{
-		return m_SceneId;
-	}
-	INT32 GetSceneId() const
-	{
-		return m_SceneId;
-	}
-private:
-	//MemId
-	INT32 m_MemId;
-public:
-	void SetMemId( INT32 v)
-	{
-		m_MemId=v;
-	}
-	INT32 GetMemId()
-	{
-		return m_MemId;
-	}
-	INT32 GetMemId() const
-	{
-		return m_MemId;
-	}
-private:
-	//RoleId
+	//玩家的唯一id
 	uint64_t m_RoleId;
 public:
 	void SetRoleId( uint64_t v)
@@ -3433,59 +3099,27 @@ public:
 	{
 		return m_RoleId;
 	}
-private:
-	//TeamId
-	INT32 m_TeamId;
-public:
-	void SetTeamId( INT32 v)
-	{
-		m_TeamId=v;
-	}
-	INT32 GetTeamId()
-	{
-		return m_TeamId;
-	}
-	INT32 GetTeamId() const
-	{
-		return m_TeamId;
-	}
-private:
-	//返回结果
-	INT32 m_Result;
-public:
-	void SetResult( INT32 v)
-	{
-		m_Result=v;
-	}
-	INT32 GetResult()
-	{
-		return m_Result;
-	}
-	INT32 GetResult() const
-	{
-		return m_Result;
-	}
 
 };
-//AppointTeamLeader回应封装类
-class WorldServerRpcAppointTeamLeaderReplyWraper
+//ExitDungeon回应封装类
+class WorldServerRpcExitDungeonReplyWraper
 {
 public:
 	//构造函数
-	WorldServerRpcAppointTeamLeaderReplyWraper()
+	WorldServerRpcExitDungeonReplyWraper()
 	{
 		
 		m_Result = -9999;
 
 	}
 	//赋值构造函数
-	WorldServerRpcAppointTeamLeaderReplyWraper(const WorldServerRpcAppointTeamLeaderReply& v){ Init(v); }
+	WorldServerRpcExitDungeonReplyWraper(const WorldServerRpcExitDungeonReply& v){ Init(v); }
 	//等号重载函数
-	void operator = (const WorldServerRpcAppointTeamLeaderReply& v){ Init(v); }
+	void operator = (const WorldServerRpcExitDungeonReply& v){ Init(v); }
  	//转化成Protobuffer类型函数
-	WorldServerRpcAppointTeamLeaderReply ToPB() const
+	WorldServerRpcExitDungeonReply ToPB() const
 	{
-		WorldServerRpcAppointTeamLeaderReply v;
+		WorldServerRpcExitDungeonReply v;
 		v.set_result( m_Result );
 
 		return v;
@@ -3510,7 +3144,7 @@ public:
 	//Protobuffer从缓冲区进行反序列化
 	bool ParseFromArray(const void* data, int size)
 	{
-		WorldServerRpcAppointTeamLeaderReply pb;
+		WorldServerRpcExitDungeonReply pb;
 		if(!pb.ParseFromArray(data,size)){return false;}
 		Init(pb);
 		return true;
@@ -3539,868 +3173,7 @@ public:
 
 private:
 	//从Protobuffer类型初始化
-	void Init(const WorldServerRpcAppointTeamLeaderReply& v)
-	{
-		m_Result = v.result();
-
-	}
-
-private:
-	//返回结果
-	INT32 m_Result;
-public:
-	void SetResult( INT32 v)
-	{
-		m_Result=v;
-	}
-	INT32 GetResult()
-	{
-		return m_Result;
-	}
-	INT32 GetResult() const
-	{
-		return m_Result;
-	}
-
-};
-//KickMember请求封装类
-class WorldServerRpcKickMemberAskWraper
-{
-public:
-	//构造函数
-	WorldServerRpcKickMemberAskWraper()
-	{
-		
-		m_KickMemberRoleId = 0;
-		m_MemId = -1;
-		m_SceneId = -1;
-		m_TeamId = -1;
-		m_LeaderRoleId = 0;
-		m_Result = -9999;
-
-	}
-	//赋值构造函数
-	WorldServerRpcKickMemberAskWraper(const WorldServerRpcKickMemberAsk& v){ Init(v); }
-	//等号重载函数
-	void operator = (const WorldServerRpcKickMemberAsk& v){ Init(v); }
- 	//转化成Protobuffer类型函数
-	WorldServerRpcKickMemberAsk ToPB() const
-	{
-		WorldServerRpcKickMemberAsk v;
-		v.set_kickmemberroleid( m_KickMemberRoleId );
-		v.set_memid( m_MemId );
-		v.set_sceneid( m_SceneId );
-		v.set_teamid( m_TeamId );
-		v.set_leaderroleid( m_LeaderRoleId );
-		v.set_result( m_Result );
-
-		return v;
-	}
-	//获取Protobuffer序列化后大小函数
-	int ByteSize() const { return ToPB().ByteSize();}
-	//Protobuffer序列化到缓冲区
-	bool SerializeToArray( void* data, int size ) const
-	{
-		return ToPB().SerializeToArray(data,size);
-	}
-	//Protobuffer序列化到字符串
-	string SerializeAsString() const
-	{
-		return ToPB().SerializeAsString();
-	}
-	//Protobuffer从字符串进行反序列化
-	bool ParseFromString(const string& v)
-	{
-		return ParseFromArray(v.data(),v.size());
-	}
-	//Protobuffer从缓冲区进行反序列化
-	bool ParseFromArray(const void* data, int size)
-	{
-		WorldServerRpcKickMemberAsk pb;
-		if(!pb.ParseFromArray(data,size)){return false;}
-		Init(pb);
-		return true;
-	}
-	/*
-	string HtmlDescHeader()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-	*/
-	/*
-	string ToHtml()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-		TStr tmpLine;
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}*/
-
-
-private:
-	//从Protobuffer类型初始化
-	void Init(const WorldServerRpcKickMemberAsk& v)
-	{
-		m_KickMemberRoleId = v.kickmemberroleid();
-		m_MemId = v.memid();
-		m_SceneId = v.sceneid();
-		m_TeamId = v.teamid();
-		m_LeaderRoleId = v.leaderroleid();
-		m_Result = v.result();
-
-	}
-
-private:
-	//KickMemberRoleId
-	uint64_t m_KickMemberRoleId;
-public:
-	void SetKickMemberRoleId( uint64_t v)
-	{
-		m_KickMemberRoleId=v;
-	}
-	uint64_t GetKickMemberRoleId()
-	{
-		return m_KickMemberRoleId;
-	}
-	uint64_t GetKickMemberRoleId() const
-	{
-		return m_KickMemberRoleId;
-	}
-private:
-	//MemId
-	INT32 m_MemId;
-public:
-	void SetMemId( INT32 v)
-	{
-		m_MemId=v;
-	}
-	INT32 GetMemId()
-	{
-		return m_MemId;
-	}
-	INT32 GetMemId() const
-	{
-		return m_MemId;
-	}
-private:
-	//SceneId
-	INT32 m_SceneId;
-public:
-	void SetSceneId( INT32 v)
-	{
-		m_SceneId=v;
-	}
-	INT32 GetSceneId()
-	{
-		return m_SceneId;
-	}
-	INT32 GetSceneId() const
-	{
-		return m_SceneId;
-	}
-private:
-	//TeamId
-	INT32 m_TeamId;
-public:
-	void SetTeamId( INT32 v)
-	{
-		m_TeamId=v;
-	}
-	INT32 GetTeamId()
-	{
-		return m_TeamId;
-	}
-	INT32 GetTeamId() const
-	{
-		return m_TeamId;
-	}
-private:
-	//RoleId
-	uint64_t m_LeaderRoleId;
-public:
-	void SetLeaderRoleId( uint64_t v)
-	{
-		m_LeaderRoleId=v;
-	}
-	uint64_t GetLeaderRoleId()
-	{
-		return m_LeaderRoleId;
-	}
-	uint64_t GetLeaderRoleId() const
-	{
-		return m_LeaderRoleId;
-	}
-private:
-	//返回结果
-	INT32 m_Result;
-public:
-	void SetResult( INT32 v)
-	{
-		m_Result=v;
-	}
-	INT32 GetResult()
-	{
-		return m_Result;
-	}
-	INT32 GetResult() const
-	{
-		return m_Result;
-	}
-
-};
-//DismissTeam回应封装类
-class WorldServerRpcDismissTeamReplyWraper
-{
-public:
-	//构造函数
-	WorldServerRpcDismissTeamReplyWraper()
-	{
-		
-		m_Result = -9999;
-
-	}
-	//赋值构造函数
-	WorldServerRpcDismissTeamReplyWraper(const WorldServerRpcDismissTeamReply& v){ Init(v); }
-	//等号重载函数
-	void operator = (const WorldServerRpcDismissTeamReply& v){ Init(v); }
- 	//转化成Protobuffer类型函数
-	WorldServerRpcDismissTeamReply ToPB() const
-	{
-		WorldServerRpcDismissTeamReply v;
-		v.set_result( m_Result );
-
-		return v;
-	}
-	//获取Protobuffer序列化后大小函数
-	int ByteSize() const { return ToPB().ByteSize();}
-	//Protobuffer序列化到缓冲区
-	bool SerializeToArray( void* data, int size ) const
-	{
-		return ToPB().SerializeToArray(data,size);
-	}
-	//Protobuffer序列化到字符串
-	string SerializeAsString() const
-	{
-		return ToPB().SerializeAsString();
-	}
-	//Protobuffer从字符串进行反序列化
-	bool ParseFromString(const string& v)
-	{
-		return ParseFromArray(v.data(),v.size());
-	}
-	//Protobuffer从缓冲区进行反序列化
-	bool ParseFromArray(const void* data, int size)
-	{
-		WorldServerRpcDismissTeamReply pb;
-		if(!pb.ParseFromArray(data,size)){return false;}
-		Init(pb);
-		return true;
-	}
-	/*
-	string HtmlDescHeader()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-	*/
-	/*
-	string ToHtml()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-		TStr tmpLine;
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}*/
-
-
-private:
-	//从Protobuffer类型初始化
-	void Init(const WorldServerRpcDismissTeamReply& v)
-	{
-		m_Result = v.result();
-
-	}
-
-private:
-	//返回结果
-	INT32 m_Result;
-public:
-	void SetResult( INT32 v)
-	{
-		m_Result=v;
-	}
-	INT32 GetResult()
-	{
-		return m_Result;
-	}
-	INT32 GetResult() const
-	{
-		return m_Result;
-	}
-
-};
-//LeaveTeam请求封装类
-class WorldServerRpcLeaveTeamAskWraper
-{
-public:
-	//构造函数
-	WorldServerRpcLeaveTeamAskWraper()
-	{
-		
-		m_TeamId = -1;
-		m_RoleId = 0;
-		m_MemId = -1;
-		m_SceneId = -1;
-		m_NewLeaderRoleId = 0;
-		m_Result = -9999;
-
-	}
-	//赋值构造函数
-	WorldServerRpcLeaveTeamAskWraper(const WorldServerRpcLeaveTeamAsk& v){ Init(v); }
-	//等号重载函数
-	void operator = (const WorldServerRpcLeaveTeamAsk& v){ Init(v); }
- 	//转化成Protobuffer类型函数
-	WorldServerRpcLeaveTeamAsk ToPB() const
-	{
-		WorldServerRpcLeaveTeamAsk v;
-		v.set_teamid( m_TeamId );
-		v.set_roleid( m_RoleId );
-		v.set_memid( m_MemId );
-		v.set_sceneid( m_SceneId );
-		v.set_newleaderroleid( m_NewLeaderRoleId );
-		v.set_result( m_Result );
-
-		return v;
-	}
-	//获取Protobuffer序列化后大小函数
-	int ByteSize() const { return ToPB().ByteSize();}
-	//Protobuffer序列化到缓冲区
-	bool SerializeToArray( void* data, int size ) const
-	{
-		return ToPB().SerializeToArray(data,size);
-	}
-	//Protobuffer序列化到字符串
-	string SerializeAsString() const
-	{
-		return ToPB().SerializeAsString();
-	}
-	//Protobuffer从字符串进行反序列化
-	bool ParseFromString(const string& v)
-	{
-		return ParseFromArray(v.data(),v.size());
-	}
-	//Protobuffer从缓冲区进行反序列化
-	bool ParseFromArray(const void* data, int size)
-	{
-		WorldServerRpcLeaveTeamAsk pb;
-		if(!pb.ParseFromArray(data,size)){return false;}
-		Init(pb);
-		return true;
-	}
-	/*
-	string HtmlDescHeader()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-	*/
-	/*
-	string ToHtml()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-		TStr tmpLine;
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}*/
-
-
-private:
-	//从Protobuffer类型初始化
-	void Init(const WorldServerRpcLeaveTeamAsk& v)
-	{
-		m_TeamId = v.teamid();
-		m_RoleId = v.roleid();
-		m_MemId = v.memid();
-		m_SceneId = v.sceneid();
-		m_NewLeaderRoleId = v.newleaderroleid();
-		m_Result = v.result();
-
-	}
-
-private:
-	//TeamId
-	INT32 m_TeamId;
-public:
-	void SetTeamId( INT32 v)
-	{
-		m_TeamId=v;
-	}
-	INT32 GetTeamId()
-	{
-		return m_TeamId;
-	}
-	INT32 GetTeamId() const
-	{
-		return m_TeamId;
-	}
-private:
-	//RoleId
-	uint64_t m_RoleId;
-public:
-	void SetRoleId( uint64_t v)
-	{
-		m_RoleId=v;
-	}
-	uint64_t GetRoleId()
-	{
-		return m_RoleId;
-	}
-	uint64_t GetRoleId() const
-	{
-		return m_RoleId;
-	}
-private:
-	//MemId
-	INT32 m_MemId;
-public:
-	void SetMemId( INT32 v)
-	{
-		m_MemId=v;
-	}
-	INT32 GetMemId()
-	{
-		return m_MemId;
-	}
-	INT32 GetMemId() const
-	{
-		return m_MemId;
-	}
-private:
-	//SceneId
-	INT32 m_SceneId;
-public:
-	void SetSceneId( INT32 v)
-	{
-		m_SceneId=v;
-	}
-	INT32 GetSceneId()
-	{
-		return m_SceneId;
-	}
-	INT32 GetSceneId() const
-	{
-		return m_SceneId;
-	}
-private:
-	//NewLeader
-	uint64_t m_NewLeaderRoleId;
-public:
-	void SetNewLeaderRoleId( uint64_t v)
-	{
-		m_NewLeaderRoleId=v;
-	}
-	uint64_t GetNewLeaderRoleId()
-	{
-		return m_NewLeaderRoleId;
-	}
-	uint64_t GetNewLeaderRoleId() const
-	{
-		return m_NewLeaderRoleId;
-	}
-private:
-	//返回结果
-	INT32 m_Result;
-public:
-	void SetResult( INT32 v)
-	{
-		m_Result=v;
-	}
-	INT32 GetResult()
-	{
-		return m_Result;
-	}
-	INT32 GetResult() const
-	{
-		return m_Result;
-	}
-
-};
-//JoinTeam回应封装类
-class WorldServerRpcJoinTeamReplyWraper
-{
-public:
-	//构造函数
-	WorldServerRpcJoinTeamReplyWraper()
-	{
-		
-		m_Result = -9999;
-
-	}
-	//赋值构造函数
-	WorldServerRpcJoinTeamReplyWraper(const WorldServerRpcJoinTeamReply& v){ Init(v); }
-	//等号重载函数
-	void operator = (const WorldServerRpcJoinTeamReply& v){ Init(v); }
- 	//转化成Protobuffer类型函数
-	WorldServerRpcJoinTeamReply ToPB() const
-	{
-		WorldServerRpcJoinTeamReply v;
-		v.set_result( m_Result );
-
-		return v;
-	}
-	//获取Protobuffer序列化后大小函数
-	int ByteSize() const { return ToPB().ByteSize();}
-	//Protobuffer序列化到缓冲区
-	bool SerializeToArray( void* data, int size ) const
-	{
-		return ToPB().SerializeToArray(data,size);
-	}
-	//Protobuffer序列化到字符串
-	string SerializeAsString() const
-	{
-		return ToPB().SerializeAsString();
-	}
-	//Protobuffer从字符串进行反序列化
-	bool ParseFromString(const string& v)
-	{
-		return ParseFromArray(v.data(),v.size());
-	}
-	//Protobuffer从缓冲区进行反序列化
-	bool ParseFromArray(const void* data, int size)
-	{
-		WorldServerRpcJoinTeamReply pb;
-		if(!pb.ParseFromArray(data,size)){return false;}
-		Init(pb);
-		return true;
-	}
-	/*
-	string HtmlDescHeader()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-	*/
-	/*
-	string ToHtml()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-		TStr tmpLine;
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}*/
-
-
-private:
-	//从Protobuffer类型初始化
-	void Init(const WorldServerRpcJoinTeamReply& v)
-	{
-		m_Result = v.result();
-
-	}
-
-private:
-	//返回结果
-	INT32 m_Result;
-public:
-	void SetResult( INT32 v)
-	{
-		m_Result=v;
-	}
-	INT32 GetResult()
-	{
-		return m_Result;
-	}
-	INT32 GetResult() const
-	{
-		return m_Result;
-	}
-
-};
-//AppointTeamLeader请求封装类
-class WorldServerRpcAppointTeamLeaderAskWraper
-{
-public:
-	//构造函数
-	WorldServerRpcAppointTeamLeaderAskWraper()
-	{
-		
-		m_NewLeaderRoleId = 0;
-		m_MemId = -1;
-		m_SceneId = -1;
-		m_CurLeaderRoleId = 0;
-		m_TeamId = -1;
-		m_Result = -9999;
-
-	}
-	//赋值构造函数
-	WorldServerRpcAppointTeamLeaderAskWraper(const WorldServerRpcAppointTeamLeaderAsk& v){ Init(v); }
-	//等号重载函数
-	void operator = (const WorldServerRpcAppointTeamLeaderAsk& v){ Init(v); }
- 	//转化成Protobuffer类型函数
-	WorldServerRpcAppointTeamLeaderAsk ToPB() const
-	{
-		WorldServerRpcAppointTeamLeaderAsk v;
-		v.set_newleaderroleid( m_NewLeaderRoleId );
-		v.set_memid( m_MemId );
-		v.set_sceneid( m_SceneId );
-		v.set_curleaderroleid( m_CurLeaderRoleId );
-		v.set_teamid( m_TeamId );
-		v.set_result( m_Result );
-
-		return v;
-	}
-	//获取Protobuffer序列化后大小函数
-	int ByteSize() const { return ToPB().ByteSize();}
-	//Protobuffer序列化到缓冲区
-	bool SerializeToArray( void* data, int size ) const
-	{
-		return ToPB().SerializeToArray(data,size);
-	}
-	//Protobuffer序列化到字符串
-	string SerializeAsString() const
-	{
-		return ToPB().SerializeAsString();
-	}
-	//Protobuffer从字符串进行反序列化
-	bool ParseFromString(const string& v)
-	{
-		return ParseFromArray(v.data(),v.size());
-	}
-	//Protobuffer从缓冲区进行反序列化
-	bool ParseFromArray(const void* data, int size)
-	{
-		WorldServerRpcAppointTeamLeaderAsk pb;
-		if(!pb.ParseFromArray(data,size)){return false;}
-		Init(pb);
-		return true;
-	}
-	/*
-	string HtmlDescHeader()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-	*/
-	/*
-	string ToHtml()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-		TStr tmpLine;
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}*/
-
-
-private:
-	//从Protobuffer类型初始化
-	void Init(const WorldServerRpcAppointTeamLeaderAsk& v)
-	{
-		m_NewLeaderRoleId = v.newleaderroleid();
-		m_MemId = v.memid();
-		m_SceneId = v.sceneid();
-		m_CurLeaderRoleId = v.curleaderroleid();
-		m_TeamId = v.teamid();
-		m_Result = v.result();
-
-	}
-
-private:
-	//RoleId
-	uint64_t m_NewLeaderRoleId;
-public:
-	void SetNewLeaderRoleId( uint64_t v)
-	{
-		m_NewLeaderRoleId=v;
-	}
-	uint64_t GetNewLeaderRoleId()
-	{
-		return m_NewLeaderRoleId;
-	}
-	uint64_t GetNewLeaderRoleId() const
-	{
-		return m_NewLeaderRoleId;
-	}
-private:
-	//MemId
-	INT32 m_MemId;
-public:
-	void SetMemId( INT32 v)
-	{
-		m_MemId=v;
-	}
-	INT32 GetMemId()
-	{
-		return m_MemId;
-	}
-	INT32 GetMemId() const
-	{
-		return m_MemId;
-	}
-private:
-	//SceneId
-	INT32 m_SceneId;
-public:
-	void SetSceneId( INT32 v)
-	{
-		m_SceneId=v;
-	}
-	INT32 GetSceneId()
-	{
-		return m_SceneId;
-	}
-	INT32 GetSceneId() const
-	{
-		return m_SceneId;
-	}
-private:
-	//CurLeaderRoleId
-	uint64_t m_CurLeaderRoleId;
-public:
-	void SetCurLeaderRoleId( uint64_t v)
-	{
-		m_CurLeaderRoleId=v;
-	}
-	uint64_t GetCurLeaderRoleId()
-	{
-		return m_CurLeaderRoleId;
-	}
-	uint64_t GetCurLeaderRoleId() const
-	{
-		return m_CurLeaderRoleId;
-	}
-private:
-	//TeamId
-	INT32 m_TeamId;
-public:
-	void SetTeamId( INT32 v)
-	{
-		m_TeamId=v;
-	}
-	INT32 GetTeamId()
-	{
-		return m_TeamId;
-	}
-	INT32 GetTeamId() const
-	{
-		return m_TeamId;
-	}
-private:
-	//返回结果
-	INT32 m_Result;
-public:
-	void SetResult( INT32 v)
-	{
-		m_Result=v;
-	}
-	INT32 GetResult()
-	{
-		return m_Result;
-	}
-	INT32 GetResult() const
-	{
-		return m_Result;
-	}
-
-};
-//LeaveTeam回应封装类
-class WorldServerRpcLeaveTeamReplyWraper
-{
-public:
-	//构造函数
-	WorldServerRpcLeaveTeamReplyWraper()
-	{
-		
-		m_Result = -9999;
-
-	}
-	//赋值构造函数
-	WorldServerRpcLeaveTeamReplyWraper(const WorldServerRpcLeaveTeamReply& v){ Init(v); }
-	//等号重载函数
-	void operator = (const WorldServerRpcLeaveTeamReply& v){ Init(v); }
- 	//转化成Protobuffer类型函数
-	WorldServerRpcLeaveTeamReply ToPB() const
-	{
-		WorldServerRpcLeaveTeamReply v;
-		v.set_result( m_Result );
-
-		return v;
-	}
-	//获取Protobuffer序列化后大小函数
-	int ByteSize() const { return ToPB().ByteSize();}
-	//Protobuffer序列化到缓冲区
-	bool SerializeToArray( void* data, int size ) const
-	{
-		return ToPB().SerializeToArray(data,size);
-	}
-	//Protobuffer序列化到字符串
-	string SerializeAsString() const
-	{
-		return ToPB().SerializeAsString();
-	}
-	//Protobuffer从字符串进行反序列化
-	bool ParseFromString(const string& v)
-	{
-		return ParseFromArray(v.data(),v.size());
-	}
-	//Protobuffer从缓冲区进行反序列化
-	bool ParseFromArray(const void* data, int size)
-	{
-		WorldServerRpcLeaveTeamReply pb;
-		if(!pb.ParseFromArray(data,size)){return false;}
-		Init(pb);
-		return true;
-	}
-	/*
-	string HtmlDescHeader()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}
-	*/
-	/*
-	string ToHtml()
-	{
-		string htmlBuff = "<div style=\"padding-left:30px\">\r\n";
-		TStr tmpLine;
-
-		
-		htmlBuff += "</div>\r\n";
-		return htmlBuff;
-	}*/
-
-
-private:
-	//从Protobuffer类型初始化
-	void Init(const WorldServerRpcLeaveTeamReply& v)
+	void Init(const WorldServerRpcExitDungeonReply& v)
 	{
 		m_Result = v.result();
 

@@ -20,15 +20,14 @@ public class WGRPC
 {
 	public const int ModuleId = 11;
 	
-	public const int RPC_CODE_WG_INFORMCREATETEAM_REQUEST = 1151;
-	public const int RPC_CODE_WG_INFORMJOINTEAM_REQUEST = 1152;
-	public const int RPC_CODE_WG_INFORMLEAVE_REQUEST = 1153;
-	public const int RPC_CODE_WG_INFORMAPPOINTTEAMLEADER_REQUEST = 1154;
-	public const int RPC_CODE_WG_INFORMKICKTEAMMEMBER_REQUEST = 1155;
-	public const int RPC_CODE_WG_INFORMDISSMISSTEAM_REQUEST = 1156;
-	public const int RPC_CODE_WG_INFORMAPPLYTEAM_REQUEST = 1157;
-	public const int RPC_CODE_WG_AGREETEAMAPPLICANT_REQUEST = 1158;
-	public const int RPC_CODE_WG_INFORMLOGIN_REQUEST = 1159;
+	public const int RPC_CODE_WG_INFORMJOINTEAM_REQUEST = 1151;
+	public const int RPC_CODE_WG_INFORMLEAVE_REQUEST = 1152;
+	public const int RPC_CODE_WG_INFORMAPPOINTTEAMLEADER_REQUEST = 1153;
+	public const int RPC_CODE_WG_INFORMKICKTEAMMEMBER_REQUEST = 1154;
+	public const int RPC_CODE_WG_INFORMDISSMISSTEAM_REQUEST = 1155;
+	public const int RPC_CODE_WG_INFORMAPPLYTEAM_REQUEST = 1156;
+	public const int RPC_CODE_WG_AGREETEAMAPPLICANT_REQUEST = 1157;
+	public const int RPC_CODE_WG_INFORMLOGIN_REQUEST = 1158;
 
 	
 	private static WGRPC m_Instance = null;
@@ -56,25 +55,6 @@ public class WGRPC
 		return true;
 	}
 
-
-	/**
-	*WG-->InformCreateTeam RPC请求
-	*/
-	public void InformCreateTeam(TeamInfoWraper Team, int Result, ReplyHandler replyCB)
-	{
-		WGRpcInformCreateTeamAskWraper askPBWraper = new WGRpcInformCreateTeamAskWraper();
-		askPBWraper.Team = Team;
-		askPBWraper.Result = Result;
-		ModMessage askMsg = new ModMessage();
-		askMsg.MsgNum = RPC_CODE_WG_INFORMCREATETEAM_REQUEST;
-		askMsg.protoMS = askPBWraper.ToMemoryStream();
-
-		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
-			WGRpcInformCreateTeamReplyWraper replyPBWraper = new WGRpcInformCreateTeamReplyWraper();
-			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
-			replyCB(replyPBWraper);
-		});
-	}
 
 	/**
 	*WG-->InformJoinTeam RPC请求
@@ -177,7 +157,7 @@ public class WGRPC
 	/**
 	*WG-->InformApply RPC请求
 	*/
-	public void InformApplyTeam(TeamMemberInfoWraper TeamMember, int Result, int TeamId, ReplyHandler replyCB)
+	public void InformApplyTeam(TeamMemberInfoWraper TeamMember, int Result, UInt64 TeamId, ReplyHandler replyCB)
 	{
 		WGRpcInformApplyTeamAskWraper askPBWraper = new WGRpcInformApplyTeamAskWraper();
 		askPBWraper.TeamMember = TeamMember;

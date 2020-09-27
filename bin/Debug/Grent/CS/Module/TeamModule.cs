@@ -20,24 +20,49 @@ public class TeamRPC
 {
 	public const int ModuleId = 10;
 	
-	public const int RPC_CODE_TEAM_JOINTEAM_REQUEST = 1051;
-	public const int RPC_CODE_TEAM_LEAVETEAM_REQUEST = 1052;
-	public const int RPC_CODE_TEAM_APPOINTTEAMLEADER_REQUEST = 1053;
-	public const int RPC_CODE_TEAM_CREATETEAM_REQUEST = 1054;
-	public const int RPC_CODE_TEAM_DISSMISSTEAM_REQUEST = 1055;
-	public const int RPC_CODE_TEAM_NEWLEADER_NOTIFY = 1056;
-	public const int RPC_CODE_TEAM_KICKMEMBER_REQUEST = 1057;
-	public const int RPC_CODE_TEAM_DISSMISSTEAMNOTIFY_NOTIFY = 1058;
-	public const int RPC_CODE_TEAM_JOINTEAMNOTIFY_NOTIFY = 1059;
-	public const int RPC_CODE_TEAM_KICKMEMBERNOTIFY_NOTIFY = 1060;
-	public const int RPC_CODE_TEAM_LEAVETEAMNOTIFY_NOTIFY = 1061;
-	public const int RPC_CODE_TEAM_SURROUNDINGTEAM_REQUEST = 1062;
-	public const int RPC_CODE_TEAM_APPLYTEAM_REQUEST = 1063;
-	public const int RPC_CODE_TEAM_APPLYTEAMNOTIFY_NOTIFY = 1064;
-	public const int RPC_CODE_TEAM_AGREEAPPLICANT_REQUEST = 1065;
-	public const int RPC_CODE_TEAM_AGREEAPPLICANTNOTIFY_NOTIFY = 1066;
-	public const int RPC_CODE_TEAM_TEAMINFO_NOTIFY = 1067;
-	public const int RPC_CODE_TEAM_UPDATETEAMMEMINFO_NOTIFY = 1068;
+	public const int RPC_CODE_TEAM_LEAVETEAM_REQUEST = 1051;
+	public const int RPC_CODE_TEAM_APPOINTTEAMLEADER_REQUEST = 1052;
+	public const int RPC_CODE_TEAM_CREATETEAM_REQUEST = 1053;
+	public const int RPC_CODE_TEAM_DISSMISSTEAM_REQUEST = 1054;
+	public const int RPC_CODE_TEAM_NEWLEADER_NOTIFY = 1055;
+	public const int RPC_CODE_TEAM_KICKMEMBER_REQUEST = 1056;
+	public const int RPC_CODE_TEAM_DISSMISSTEAMNOTIFY_NOTIFY = 1057;
+	public const int RPC_CODE_TEAM_JOINTEAMNOTIFY_NOTIFY = 1058;
+	public const int RPC_CODE_TEAM_KICKMEMBERNOTIFY_NOTIFY = 1059;
+	public const int RPC_CODE_TEAM_LEAVETEAMNOTIFY_NOTIFY = 1060;
+	public const int RPC_CODE_TEAM_SURROUNDINGTEAM_REQUEST = 1061;
+	public const int RPC_CODE_TEAM_APPLYTEAM_REQUEST = 1062;
+	public const int RPC_CODE_TEAM_APPLYTEAMNOTIFY_NOTIFY = 1063;
+	public const int RPC_CODE_TEAM_AGREEAPPLICANT_REQUEST = 1064;
+	public const int RPC_CODE_TEAM_AGREEAPPLICANTNOTIFY_NOTIFY = 1065;
+	public const int RPC_CODE_TEAM_TEAMINFO_NOTIFY = 1066;
+	public const int RPC_CODE_TEAM_UPDATETEAMMEMINFO_NOTIFY = 1067;
+	public const int RPC_CODE_TEAM_FOLLOWTEAMLEADER_REQUEST = 1068;
+	public const int RPC_CODE_TEAM_SUMMONMEMBER_REQUEST = 1069;
+	public const int RPC_CODE_TEAM_SUMMONMEMBERNOTIFY_NOTIFY = 1070;
+	public const int RPC_CODE_TEAM_CHANGETEAMTARGET_REQUEST = 1071;
+	public const int RPC_CODE_TEAM_CHANGETEAMTARGETNOTIFY_NOTIFY = 1072;
+	public const int RPC_CODE_TEAM_CHANGTEAMTYPE_REQUEST = 1073;
+	public const int RPC_CODE_TEAM_CHANGETEAMTYPENOTIFY_NOTIFY = 1074;
+	public const int RPC_CODE_TEAM_INVITETEAMMEMBER_REQUEST = 1075;
+	public const int RPC_CODE_TEAM_INVITETEAMMEMBERNOTIFY_NOTIFY = 1076;
+	public const int RPC_CODE_TEAM_APPLYLISTNOTIFY_NOTIFY = 1077;
+	public const int RPC_CODE_TEAM_AGREEJOINTEAM_REQUEST = 1078;
+	public const int RPC_CODE_TEAM_REFUSEMEMBER_REQUEST = 1079;
+	public const int RPC_CODE_TEAM_CLEARAPPLYLIST_REQUEST = 1080;
+	public const int RPC_CODE_TEAM_NOTEAMINVITE_REQUEST = 1081;
+	public const int RPC_CODE_TEAM_REJECTINVITE_REQUEST = 1082;
+	public const int RPC_CODE_TEAM_ENTERAUTOCOMBAT_NOTIFY = 1083;
+	public const int RPC_CODE_TEAM_HANGUPAUTOCOMBAT_NOTIFY = 1084;
+	public const int RPC_CODE_TEAM_UPDATETEAMHPINFO_NOTIFY = 1085;
+	public const int RPC_CODE_TEAM_UPDATETEAMPOSINFO_NOTIFY = 1086;
+	public const int RPC_CODE_TEAM_UPDATETEAMBUFFINFO_NOTIFY = 1087;
+	public const int RPC_CODE_TEAM_HANGEUPFOLLOW_REQUEST = 1088;
+	public const int RPC_CODE_TEAM_GOONFOLLOW_REQUEST = 1089;
+	public const int RPC_CODE_TEAM_UPDATEFOLLOWSTATUS_NOTIFY = 1090;
+	public const int RPC_CODE_TEAM_REQUESTNOTEAMMEMBERLIST_REQUEST = 1091;
+	public const int RPC_CODE_TEAM_ENTERTEAMFOLLOW_NOTIFY = 1092;
+	public const int RPC_CODE_TEAM_ENTERLEADERSCENE_REQUEST = 1093;
 
 	
 	private static TeamRPC m_Instance = null;
@@ -69,32 +94,23 @@ public class TeamRPC
 		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_TEAM_AGREEAPPLICANTNOTIFY_NOTIFY, AgreeApplicantNotifyCB);
 		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_TEAM_TEAMINFO_NOTIFY, TeamInfoCB);
 		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_TEAM_UPDATETEAMMEMINFO_NOTIFY, UpdateTeamMemInfoCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_TEAM_SUMMONMEMBERNOTIFY_NOTIFY, SummonMemberNotifyCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_TEAM_CHANGETEAMTARGETNOTIFY_NOTIFY, ChangeTeamTargetNotifyCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_TEAM_CHANGETEAMTYPENOTIFY_NOTIFY, ChangeTeamTypeNotifyCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_TEAM_INVITETEAMMEMBERNOTIFY_NOTIFY, InviteTeamMemberNotifyCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_TEAM_APPLYLISTNOTIFY_NOTIFY, ApplyListNotifyCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_TEAM_ENTERAUTOCOMBAT_NOTIFY, EnterAutoCombatCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_TEAM_HANGUPAUTOCOMBAT_NOTIFY, HangUpAutoCombatCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_TEAM_UPDATETEAMHPINFO_NOTIFY, UpdateTeamHpInfoCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_TEAM_UPDATETEAMPOSINFO_NOTIFY, UpdateTeamPosInfoCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_TEAM_UPDATETEAMBUFFINFO_NOTIFY, UpdateTeamBuffInfoCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_TEAM_UPDATEFOLLOWSTATUS_NOTIFY, UpdateFollowStatusCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_TEAM_ENTERTEAMFOLLOW_NOTIFY, EnterTeamFollowCB);
 
 
 		return true;
 	}
 
-
-	/**
-	*Team-->加入队伍 RPC请求
-	*/
-	public void JoinTeam(int TeamId, int TeamType, TeamInfoWraper Team, TeamMemberInfoWraper TeamMember, ReplyHandler replyCB)
-	{
-		TeamRpcJoinTeamAskWraper askPBWraper = new TeamRpcJoinTeamAskWraper();
-		askPBWraper.TeamId = TeamId;
-		askPBWraper.TeamType = TeamType;
-		askPBWraper.Team = Team;
-		askPBWraper.TeamMember = TeamMember;
-		ModMessage askMsg = new ModMessage();
-		askMsg.MsgNum = RPC_CODE_TEAM_JOINTEAM_REQUEST;
-		askMsg.protoMS = askPBWraper.ToMemoryStream();
-
-		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
-			TeamRpcJoinTeamReplyWraper replyPBWraper = new TeamRpcJoinTeamReplyWraper();
-			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
-			replyCB(replyPBWraper);
-		});
-	}
 
 	/**
 	*Team-->LeaveTeam RPC请求
@@ -134,10 +150,11 @@ public class TeamRPC
 	/**
 	*Team-->CreateTeam RPC请求
 	*/
-	public void CreateTeam(int TeamType, ReplyHandler replyCB)
+	public void CreateTeam(int TeamType, TeamTargetWraper TTarget, ReplyHandler replyCB)
 	{
 		TeamRpcCreateTeamAskWraper askPBWraper = new TeamRpcCreateTeamAskWraper();
 		askPBWraper.TeamType = TeamType;
+		askPBWraper.TTarget = TTarget;
 		ModMessage askMsg = new ModMessage();
 		askMsg.MsgNum = RPC_CODE_TEAM_CREATETEAM_REQUEST;
 		askMsg.protoMS = askPBWraper.ToMemoryStream();
@@ -187,9 +204,11 @@ public class TeamRPC
 	/**
 	*Team-->SurroundingTeam RPC请求
 	*/
-	public void SurroundingTeam(ReplyHandler replyCB)
+	public void SurroundingTeam(int TargetGroupId, int TargetGroup, ReplyHandler replyCB)
 	{
 		TeamRpcSurroundingTeamAskWraper askPBWraper = new TeamRpcSurroundingTeamAskWraper();
+		askPBWraper.TargetGroupId = TargetGroupId;
+		askPBWraper.TargetGroup = TargetGroup;
 		ModMessage askMsg = new ModMessage();
 		askMsg.MsgNum = RPC_CODE_TEAM_SURROUNDINGTEAM_REQUEST;
 		askMsg.protoMS = askPBWraper.ToMemoryStream();
@@ -204,7 +223,7 @@ public class TeamRPC
 	/**
 	*Team-->ApplyTeam RPC请求
 	*/
-	public void ApplyTeam(int TeamId, ReplyHandler replyCB)
+	public void ApplyTeam(UInt64 TeamId, ReplyHandler replyCB)
 	{
 		TeamRpcApplyTeamAskWraper askPBWraper = new TeamRpcApplyTeamAskWraper();
 		askPBWraper.TeamId = TeamId;
@@ -232,6 +251,257 @@ public class TeamRPC
 
 		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
 			TeamRpcAgreeApplicantReplyWraper replyPBWraper = new TeamRpcAgreeApplicantReplyWraper();
+			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
+			replyCB(replyPBWraper);
+		});
+	}
+
+	/**
+	*Team-->跟随队长 RPC请求
+	*/
+	public void FollowTeamLeader(int FollowTeamLeader, ReplyHandler replyCB)
+	{
+		TeamRpcFollowTeamLeaderAskWraper askPBWraper = new TeamRpcFollowTeamLeaderAskWraper();
+		askPBWraper.FollowTeamLeader = FollowTeamLeader;
+		ModMessage askMsg = new ModMessage();
+		askMsg.MsgNum = RPC_CODE_TEAM_FOLLOWTEAMLEADER_REQUEST;
+		askMsg.protoMS = askPBWraper.ToMemoryStream();
+
+		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
+			TeamRpcFollowTeamLeaderReplyWraper replyPBWraper = new TeamRpcFollowTeamLeaderReplyWraper();
+			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
+			replyCB(replyPBWraper);
+		});
+	}
+
+	/**
+	*Team-->召唤队员 RPC请求
+	*/
+	public void SummonMember(ReplyHandler replyCB)
+	{
+		TeamRpcSummonMemberAskWraper askPBWraper = new TeamRpcSummonMemberAskWraper();
+		ModMessage askMsg = new ModMessage();
+		askMsg.MsgNum = RPC_CODE_TEAM_SUMMONMEMBER_REQUEST;
+		askMsg.protoMS = askPBWraper.ToMemoryStream();
+
+		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
+			TeamRpcSummonMemberReplyWraper replyPBWraper = new TeamRpcSummonMemberReplyWraper();
+			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
+			replyCB(replyPBWraper);
+		});
+	}
+
+	/**
+	*Team-->改变队伍目标 RPC请求
+	*/
+	public void ChangeTeamTarget(TeamTargetWraper Target, ReplyHandler replyCB)
+	{
+		TeamRpcChangeTeamTargetAskWraper askPBWraper = new TeamRpcChangeTeamTargetAskWraper();
+		askPBWraper.Target = Target;
+		ModMessage askMsg = new ModMessage();
+		askMsg.MsgNum = RPC_CODE_TEAM_CHANGETEAMTARGET_REQUEST;
+		askMsg.protoMS = askPBWraper.ToMemoryStream();
+
+		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
+			TeamRpcChangeTeamTargetReplyWraper replyPBWraper = new TeamRpcChangeTeamTargetReplyWraper();
+			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
+			replyCB(replyPBWraper);
+		});
+	}
+
+	/**
+	*Team-->转换队伍团队 RPC请求
+	*/
+	public void ChangTeamType(int TeamType, ReplyHandler replyCB)
+	{
+		TeamRpcChangTeamTypeAskWraper askPBWraper = new TeamRpcChangTeamTypeAskWraper();
+		askPBWraper.TeamType = TeamType;
+		ModMessage askMsg = new ModMessage();
+		askMsg.MsgNum = RPC_CODE_TEAM_CHANGTEAMTYPE_REQUEST;
+		askMsg.protoMS = askPBWraper.ToMemoryStream();
+
+		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
+			TeamRpcChangTeamTypeReplyWraper replyPBWraper = new TeamRpcChangTeamTypeReplyWraper();
+			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
+			replyCB(replyPBWraper);
+		});
+	}
+
+	/**
+	*Team-->邀请玩家 RPC请求
+	*/
+	public void InviteTeamMember(List<UInt64> RoleId, ReplyHandler replyCB)
+	{
+		TeamRpcInviteTeamMemberAskWraper askPBWraper = new TeamRpcInviteTeamMemberAskWraper();
+		askPBWraper.SetRoleId(RoleId);
+		ModMessage askMsg = new ModMessage();
+		askMsg.MsgNum = RPC_CODE_TEAM_INVITETEAMMEMBER_REQUEST;
+		askMsg.protoMS = askPBWraper.ToMemoryStream();
+
+		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
+			TeamRpcInviteTeamMemberReplyWraper replyPBWraper = new TeamRpcInviteTeamMemberReplyWraper();
+			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
+			replyCB(replyPBWraper);
+		});
+	}
+
+	/**
+	*Team-->AgreeJoinTeam RPC请求
+	*/
+	public void AgreeJoinTeam(UInt64 TeamId, int IsLeader, ReplyHandler replyCB)
+	{
+		TeamRpcAgreeJoinTeamAskWraper askPBWraper = new TeamRpcAgreeJoinTeamAskWraper();
+		askPBWraper.TeamId = TeamId;
+		askPBWraper.IsLeader = IsLeader;
+		ModMessage askMsg = new ModMessage();
+		askMsg.MsgNum = RPC_CODE_TEAM_AGREEJOINTEAM_REQUEST;
+		askMsg.protoMS = askPBWraper.ToMemoryStream();
+
+		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
+			TeamRpcAgreeJoinTeamReplyWraper replyPBWraper = new TeamRpcAgreeJoinTeamReplyWraper();
+			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
+			replyCB(replyPBWraper);
+		});
+	}
+
+	/**
+	*Team-->拒绝申请 RPC请求
+	*/
+	public void RefuseMember(UInt64 RoleId, ReplyHandler replyCB)
+	{
+		TeamRpcRefuseMemberAskWraper askPBWraper = new TeamRpcRefuseMemberAskWraper();
+		askPBWraper.RoleId = RoleId;
+		ModMessage askMsg = new ModMessage();
+		askMsg.MsgNum = RPC_CODE_TEAM_REFUSEMEMBER_REQUEST;
+		askMsg.protoMS = askPBWraper.ToMemoryStream();
+
+		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
+			TeamRpcRefuseMemberReplyWraper replyPBWraper = new TeamRpcRefuseMemberReplyWraper();
+			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
+			replyCB(replyPBWraper);
+		});
+	}
+
+	/**
+	*Team-->清空申请列表 RPC请求
+	*/
+	public void ClearApplyList(ReplyHandler replyCB)
+	{
+		TeamRpcClearApplyListAskWraper askPBWraper = new TeamRpcClearApplyListAskWraper();
+		ModMessage askMsg = new ModMessage();
+		askMsg.MsgNum = RPC_CODE_TEAM_CLEARAPPLYLIST_REQUEST;
+		askMsg.protoMS = askPBWraper.ToMemoryStream();
+
+		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
+			TeamRpcClearApplyListReplyWraper replyPBWraper = new TeamRpcClearApplyListReplyWraper();
+			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
+			replyCB(replyPBWraper);
+		});
+	}
+
+	/**
+	*Team-->没有队伍邀请玩家 RPC请求
+	*/
+	public void NoTeamInvite(int TeamType, TeamTargetWraper TTarget, UInt64 InviteRoleId, ReplyHandler replyCB)
+	{
+		TeamRpcNoTeamInviteAskWraper askPBWraper = new TeamRpcNoTeamInviteAskWraper();
+		askPBWraper.TeamType = TeamType;
+		askPBWraper.TTarget = TTarget;
+		askPBWraper.InviteRoleId = InviteRoleId;
+		ModMessage askMsg = new ModMessage();
+		askMsg.MsgNum = RPC_CODE_TEAM_NOTEAMINVITE_REQUEST;
+		askMsg.protoMS = askPBWraper.ToMemoryStream();
+
+		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
+			TeamRpcNoTeamInviteReplyWraper replyPBWraper = new TeamRpcNoTeamInviteReplyWraper();
+			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
+			replyCB(replyPBWraper);
+		});
+	}
+
+	/**
+	*Team-->拒绝邀请 RPC请求
+	*/
+	public void RejectInvite(UInt64 RoleId, string Name, ReplyHandler replyCB)
+	{
+		TeamRpcRejectInviteAskWraper askPBWraper = new TeamRpcRejectInviteAskWraper();
+		askPBWraper.RoleId = RoleId;
+		askPBWraper.Name = Name;
+		ModMessage askMsg = new ModMessage();
+		askMsg.MsgNum = RPC_CODE_TEAM_REJECTINVITE_REQUEST;
+		askMsg.protoMS = askPBWraper.ToMemoryStream();
+
+		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
+			TeamRpcRejectInviteReplyWraper replyPBWraper = new TeamRpcRejectInviteReplyWraper();
+			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
+			replyCB(replyPBWraper);
+		});
+	}
+
+	/**
+	*Team-->暂停跟随 RPC请求
+	*/
+	public void HangeUpFollow(ReplyHandler replyCB)
+	{
+		TeamRpcHangeUpFollowAskWraper askPBWraper = new TeamRpcHangeUpFollowAskWraper();
+		ModMessage askMsg = new ModMessage();
+		askMsg.MsgNum = RPC_CODE_TEAM_HANGEUPFOLLOW_REQUEST;
+		askMsg.protoMS = askPBWraper.ToMemoryStream();
+
+		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
+			TeamRpcHangeUpFollowReplyWraper replyPBWraper = new TeamRpcHangeUpFollowReplyWraper();
+			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
+			replyCB(replyPBWraper);
+		});
+	}
+
+	/**
+	*Team-->继续跟随 RPC请求
+	*/
+	public void GoOnFollow(ReplyHandler replyCB)
+	{
+		TeamRpcGoOnFollowAskWraper askPBWraper = new TeamRpcGoOnFollowAskWraper();
+		ModMessage askMsg = new ModMessage();
+		askMsg.MsgNum = RPC_CODE_TEAM_GOONFOLLOW_REQUEST;
+		askMsg.protoMS = askPBWraper.ToMemoryStream();
+
+		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
+			TeamRpcGoOnFollowReplyWraper replyPBWraper = new TeamRpcGoOnFollowReplyWraper();
+			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
+			replyCB(replyPBWraper);
+		});
+	}
+
+	/**
+	*Team-->请求玩家列表 RPC请求
+	*/
+	public void RequestNoTeamMemberList(int RequestType, ReplyHandler replyCB)
+	{
+		TeamRpcRequestNoTeamMemberListAskWraper askPBWraper = new TeamRpcRequestNoTeamMemberListAskWraper();
+		askPBWraper.RequestType = RequestType;
+		ModMessage askMsg = new ModMessage();
+		askMsg.MsgNum = RPC_CODE_TEAM_REQUESTNOTEAMMEMBERLIST_REQUEST;
+		askMsg.protoMS = askPBWraper.ToMemoryStream();
+
+		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
+			TeamRpcRequestNoTeamMemberListReplyWraper replyPBWraper = new TeamRpcRequestNoTeamMemberListReplyWraper();
+			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
+			replyCB(replyPBWraper);
+		});
+	}
+
+	/**
+	*Team-->进入队长场景 RPC请求
+	*/
+	public void EnterLeaderScene(ReplyHandler replyCB)
+	{
+		TeamRpcEnterLeaderSceneAskWraper askPBWraper = new TeamRpcEnterLeaderSceneAskWraper();
+		ModMessage askMsg = new ModMessage();
+		askMsg.MsgNum = RPC_CODE_TEAM_ENTERLEADERSCENE_REQUEST;
+		askMsg.protoMS = askPBWraper.ToMemoryStream();
+
+		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
+			TeamRpcEnterLeaderSceneReplyWraper replyPBWraper = new TeamRpcEnterLeaderSceneReplyWraper();
 			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
 			replyCB(replyPBWraper);
 		});
@@ -337,6 +607,138 @@ public class TeamRPC
 			UpdateTeamMemInfoCBDelegate( notifyPBWraper );
 	}
 	public static ServerNotifyCallback UpdateTeamMemInfoCBDelegate = null;
+	/**
+	*Team-->召唤队员 服务器通知回调
+	*/
+	public static void SummonMemberNotifyCB( ModMessage notifyMsg )
+	{
+		TeamRpcSummonMemberNotifyNotifyWraper notifyPBWraper = new TeamRpcSummonMemberNotifyNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( SummonMemberNotifyCBDelegate != null )
+			SummonMemberNotifyCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback SummonMemberNotifyCBDelegate = null;
+	/**
+	*Team-->设置服务器目标 服务器通知回调
+	*/
+	public static void ChangeTeamTargetNotifyCB( ModMessage notifyMsg )
+	{
+		TeamRpcChangeTeamTargetNotifyNotifyWraper notifyPBWraper = new TeamRpcChangeTeamTargetNotifyNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( ChangeTeamTargetNotifyCBDelegate != null )
+			ChangeTeamTargetNotifyCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback ChangeTeamTargetNotifyCBDelegate = null;
+	/**
+	*Team-->转换队伍团队协议 服务器通知回调
+	*/
+	public static void ChangeTeamTypeNotifyCB( ModMessage notifyMsg )
+	{
+		TeamRpcChangeTeamTypeNotifyNotifyWraper notifyPBWraper = new TeamRpcChangeTeamTypeNotifyNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( ChangeTeamTypeNotifyCBDelegate != null )
+			ChangeTeamTypeNotifyCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback ChangeTeamTypeNotifyCBDelegate = null;
+	/**
+	*Team-->邀请玩家广播 服务器通知回调
+	*/
+	public static void InviteTeamMemberNotifyCB( ModMessage notifyMsg )
+	{
+		TeamRpcInviteTeamMemberNotifyNotifyWraper notifyPBWraper = new TeamRpcInviteTeamMemberNotifyNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( InviteTeamMemberNotifyCBDelegate != null )
+			InviteTeamMemberNotifyCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback InviteTeamMemberNotifyCBDelegate = null;
+	/**
+	*Team-->列表通知 服务器通知回调
+	*/
+	public static void ApplyListNotifyCB( ModMessage notifyMsg )
+	{
+		TeamRpcApplyListNotifyNotifyWraper notifyPBWraper = new TeamRpcApplyListNotifyNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( ApplyListNotifyCBDelegate != null )
+			ApplyListNotifyCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback ApplyListNotifyCBDelegate = null;
+	/**
+	*Team-->进入自动战斗状态 服务器通知回调
+	*/
+	public static void EnterAutoCombatCB( ModMessage notifyMsg )
+	{
+		TeamRpcEnterAutoCombatNotifyWraper notifyPBWraper = new TeamRpcEnterAutoCombatNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( EnterAutoCombatCBDelegate != null )
+			EnterAutoCombatCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback EnterAutoCombatCBDelegate = null;
+	/**
+	*Team-->挂起自动战斗 服务器通知回调
+	*/
+	public static void HangUpAutoCombatCB( ModMessage notifyMsg )
+	{
+		TeamRpcHangUpAutoCombatNotifyWraper notifyPBWraper = new TeamRpcHangUpAutoCombatNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( HangUpAutoCombatCBDelegate != null )
+			HangUpAutoCombatCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback HangUpAutoCombatCBDelegate = null;
+	/**
+	*Team-->更新队伍快速刷新Hp 服务器通知回调
+	*/
+	public static void UpdateTeamHpInfoCB( ModMessage notifyMsg )
+	{
+		TeamRpcUpdateTeamHpInfoNotifyWraper notifyPBWraper = new TeamRpcUpdateTeamHpInfoNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( UpdateTeamHpInfoCBDelegate != null )
+			UpdateTeamHpInfoCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback UpdateTeamHpInfoCBDelegate = null;
+	/**
+	*Team-->更新队伍成员信息 服务器通知回调
+	*/
+	public static void UpdateTeamPosInfoCB( ModMessage notifyMsg )
+	{
+		TeamRpcUpdateTeamPosInfoNotifyWraper notifyPBWraper = new TeamRpcUpdateTeamPosInfoNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( UpdateTeamPosInfoCBDelegate != null )
+			UpdateTeamPosInfoCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback UpdateTeamPosInfoCBDelegate = null;
+	/**
+	*Team-->更新队伍bufflist 服务器通知回调
+	*/
+	public static void UpdateTeamBuffInfoCB( ModMessage notifyMsg )
+	{
+		TeamRpcUpdateTeamBuffInfoNotifyWraper notifyPBWraper = new TeamRpcUpdateTeamBuffInfoNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( UpdateTeamBuffInfoCBDelegate != null )
+			UpdateTeamBuffInfoCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback UpdateTeamBuffInfoCBDelegate = null;
+	/**
+	*Team-->更新跟随状态 服务器通知回调
+	*/
+	public static void UpdateFollowStatusCB( ModMessage notifyMsg )
+	{
+		TeamRpcUpdateFollowStatusNotifyWraper notifyPBWraper = new TeamRpcUpdateFollowStatusNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( UpdateFollowStatusCBDelegate != null )
+			UpdateFollowStatusCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback UpdateFollowStatusCBDelegate = null;
+	/**
+	*Team-->你加入了一支副本队伍，是否开启组队跟随功能，自动传送入队长所在副本 服务器通知回调
+	*/
+	public static void EnterTeamFollowCB( ModMessage notifyMsg )
+	{
+		TeamRpcEnterTeamFollowNotifyWraper notifyPBWraper = new TeamRpcEnterTeamFollowNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( EnterTeamFollowCBDelegate != null )
+			EnterTeamFollowCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback EnterTeamFollowCBDelegate = null;
 
 
 

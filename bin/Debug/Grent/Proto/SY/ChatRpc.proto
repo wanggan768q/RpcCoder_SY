@@ -1,19 +1,168 @@
 message  ChatRpcChatAsk
 {
 	optional ChatMsg Chat_msg = 1;
-	optional sint32 Chat_channel = 2[default=-1];
+	optional int32 Chat_channel = 2;
 
 }
 
 message  ChatRpcChatReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
+	optional int32 Forbid_endtime = 2;
 
 }
 
 message  ChatRpcPushChatUpdatesNotify
 {
 	repeated ChatChannelData Chat_channels = 1;
+
+}
+
+message  ChatRpcPushMarqueeNotify
+{
+	repeated AppendString Marquee = 1;
+	optional int32 Priority = 2;
+
+}
+
+message  ChatRpcSayNotify
+{
+	optional uint64 ObjId = 1[default=0];
+	optional int32 ChatId = 2;
+	optional int32 Duration = 3;
+	optional int32 ChatType = 4;
+	optional int32 Interval = 5;
+
+}
+
+message  ChatRpcServerChatNotify
+{
+	optional int32 Id = 1;
+	optional int32 Channel = 2;
+	repeated int32 IParams = 3;
+	repeated string SParams = 4;
+	repeated ItemData Items = 5;
+
+}
+
+message  ChatMsg
+{
+	optional string Chat_content = 1;
+	optional string Chat_voice_url = 2;
+	optional int32 Chat_voice_secs = 3[default=-1];
+	repeated ItemData Items = 4;
+	optional int32 StringUIConfigId = 8[default=-1];
+	repeated string Params = 9;
+
+}
+
+message  ChatChannelData
+{
+	optional int32 Chat_channel = 1[default=-1];
+	repeated ChatInfo Chat_infos = 2;
+
+}
+
+message  AppendString
+{
+	optional int32 TransID = 1[default=-1];
+	optional int32 Key = 2[default=-1];
+	repeated string StringList = 3;
+
+}
+
+message  ItemData
+{
+	optional bool IsLock = 2[default=false];
+	optional int32 OverlayCount = 3[default=-1];
+	optional int32 ConfigId = 4[default=-1];
+	optional EquipAttr EquipAttr = 5;
+	optional bool IsBind = 12[default=true];
+	optional uint64 Guid = 13[default=0];
+	optional PetData PetData = 14;
+	optional int32 BindRule = 15[default=1];
+	optional int32 SaleCD = 16[default=0];
+	optional SoulStoneData SoulStone = 19;
+	optional RefineData RefineData = 20;
+	optional EquipAttr CacheAttr = 21;
+	optional int32 WaysOfObtaining = 22[default=-1];
+
+}
+
+message  EquipAttr
+{
+	repeated AttrKeyValue BaseAttr = 1;
+	repeated AttrKeyValue ExtraAttr = 2;
+	optional int32 BattleScore = 3[default=-1];
+
+}
+
+message  AttrKeyValue
+{
+	optional int32 Key = 1[default=-1];
+	optional int64 Value = 2[default=-1];
+	optional int32 Quality = 3[default=-1];
+	optional int32 Key2 = 4[default=-1];
+
+}
+
+message  PetData
+{
+	optional int32 Exp = 1[default=-1];
+	optional int32 Level = 2[default=-1];
+	optional string Name = 3;
+	repeated AttrKeyValue Attrs = 5;
+	optional int32 BattleScore = 6[default=-1];
+	repeated AttrKeyValue Talent = 7;
+	repeated PetSkill SkillList = 8;
+	optional int32 TalentScore = 10[default=-1];
+	optional bool Wild = 15[default=false];
+	optional PetFeedData FeedData = 16;
+
+}
+
+message  PetSkill
+{
+	optional int32 SkillId = 3[default=-1];
+	optional int32 Lock = 4[default=-1];
+
+}
+
+message  PetFeedData
+{
+	optional int32 Level = 1[default=0];
+	optional int32 Exp = 2[default=0];
+	optional int32 FeedCount = 3[default=0];
+
+}
+
+message  SoulStoneData
+{
+	repeated AttrKeyValue Attr = 1;
+	optional int32 SuitId = 2[default=-1];
+	optional int32 BattleScore = 3[default=0];
+
+}
+
+message  RefineData
+{
+	optional int32 Level = 1[default=0];
+	optional int32 Extend = 2[default=0];
+
+}
+
+message  ChatInfo
+{
+	optional string Player_name = 1;
+	optional uint64 Player_guid = 2[default=0];
+	optional int32 Avatar_id = 3[default=-1];
+	optional int32 Player_level = 4[default=-1];
+	optional int32 Avatar_frame_id = 5[default=-1];
+	optional int32 Config_id = 6[default=-1];
+	optional uint64 Timestamp = 7[default=0];
+	optional ChatMsg Chat_msg = 8;
+	optional uint64 Team_id = 9[default=0];
+	optional uint64 Guild_guid = 10[default=0];
 
 }
 

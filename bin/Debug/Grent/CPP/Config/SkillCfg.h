@@ -1,368 +1,152 @@
 #ifndef __SKILL_CONFIG_H
 #define __SKILL_CONFIG_H
 
-#include "CommonDefine.h"
-#include "DK_Assertx.h"
+#include "BaseDef.h"
 
-#include <boost/property_tree/ptree.hpp>
-#include <boost/property_tree/json_parser.hpp>
-#include <boost/foreach.hpp>
-#include <boost/typeof/typeof.hpp>
 
-#include <vector>
-#include <string>
-#include <unordered_map>
+
 using namespace std;
-
 
 //技能配置数据结构
 struct SkillElement
 {
 	friend class SkillTable;
-	int id;                      	//技能ID	1000=战士 2000=盗贼 3000=骑士 4000=猎人 5000=法师 6000=神秘使
+	int id;                      	//技能ID	1100000~2999999为主角技能预留ID段 1=战士 2=盗贼 3=骑士 4=猎人 5=法师 6=神秘使 7 ~ 71 = 马鬃草原世界
 	int name_id;                 	//技能名称ID	关联语言表
-	string name;                 	//技能名称	仅策划用
-	int type;                    	//技能类型	1=普通攻击 2=普通技能 3=多段技能 4=事件技能
-	int caster_type;             	//技能释放者对象	释放技能的对象类型： 0 = 主角 1 = 怪物
-	int is_scene_event;          	//是否是放置类	0：不是 1：是
-	int effect_target;           	//技能生效目标 	1=自己 2=敌方单位 4=友方单位 5=自己+友方
-	int cast_target;             	//技能施法目标	0=对自己释放 1=对敌人施放 2=对自己&友方释放 3=对目标点释放 4=对面向释放
-	int ligic_id;                	//释放的逻辑	0=暂时无效 1=释放Buff 2=召唤小怪
-	vector<int> pars;            	//buff参数	buffID 释放逻辑-1，无效 释放逻辑1，伤害 释放逻辑2，延迟伤害 释放逻辑3，治疗 其他ID查看buff表
+	int desc_id;                 	//技能描述ID	
+	string comment;              	//技能名称	仅策划用
+	int type;                    	//技能类型	1=普通攻击 2=普通技能 3=多段技能 4=原应激技能，已废弃，勿填 5=连击技能 6=宠物技能 7=多层技能 8=表情技能 9=死亡技能 10=交互技能
+	int buff_count_type;         	//技能类型	用来给专门的buff使用。buff参数填的值，和这里配的值一致，且该技能释放，那么该buff计数1次 1、普通攻击 2、恶意技能 3、善意技能 4、翻滚技能
+	int is_prepare;              	//是否是蓄力技能	技能是否是蓄力技能，0不是，1是 是否蓄力
+	vector<int> is_prepare_par;  	//蓄力技能参数	蓄力技能参数： 最大蓄力时间|延迟时间|蓄力表中的ID
+	string prepare_show;         	//蓄力阶段的展示动作	展示动作，不是蓄力的话填了也没用
+	int class_restriction;       	//技能等级限制	需要角色或者怪物超过配置的等级后才能释放这个技能
+	int max_stack;               	//最大技能层数	技能层数，若不是多层技能，则填1；若是，则填写最大技能层数
+	int max_target_count;        	//最大生效目标数	单体攻击填1，AOE填写区域内最大作用目标人数
+	int caster_type;             	//技能释放者对象	技能释放者类型： 0 = 主角 1 = 怪物 2 = 坐骑
+	int cast_target;             	//技能施法目标	影响技能释放目标和caster之间的阵营关系判断 0=不需要目标 1=自己 2=敌方单位 3=友方单位 4=敌方+友方 5=友方+自己 6=敌方+友方+自己
+	int target_alive_status;     	//技能目标存活类型	0：技能只能对死亡目标生效 1：技能只能对活着的目标生效 2：会对死亡、存活的目标同时生效
+	int can_interrupt;           	//能否被打断	0：不能被打断 1：能被打断 （只有NPC技能可被打断，玩家职业技能都无法被打断,默认无法被打断）
 	int attack_empty;            	//是否允许空放	对目标释放的技能，当没有目标时是否允许空放 0=不允许空放 1=允许空放
-	int charge_or_interval;      	//伤害段数	在一段时间之内， 释放多少次伤害（BUFF）
+	vector<int> former_skill_buff;	//技能释放前施加的buff	表示在attack生效前给caster添加的buff，多个buff用连接符“|”连接，没有触发的buff时，保持空值
+	int extra_former_condition_id;	//额外附加技能前效果条件ID	满足ID对应条件时，给自身额外施加buff 当前只支持主角天赋方向ID，后续待扩展
+	vector<int> extra_former_buff;	//额外附加技能前buff	技能刚开始释放时给自身额外施加的附加buff效果ID，多个ID用“|”连接
+	vector<int> latter_skill_buff;	//技能释放后施加的buff	表示在技能所有的attack生效后给caster添加的buff，多个buff用连接符“|”连接，没有触发的buff时，保持空值
+	int extra_latter_condition_id;	//额外附加技能后效果条件ID	满足ID对应条件时，给自身额外施加buff 当前只支持主角天赋方向ID，后续待扩展
+	vector<int> extra_latter_buff;	//额外附加技能后buff	技能释放结束时给自身额外施加的附加buff效果ID，多个ID用“|”连接
 	int cooldown_id;             	//冷却ID组ID	"-1"=表示没有冷却组，最大组ID位32767
-	int cooldown_time;           	//冷却的时间	单位：毫秒
-	int common_cd_time;          	//公共CD时间	单位：毫秒
-	int charge_time;             	//引唱的时间	单位：毫秒
-	int channel_time;            	//引导的时间	单位：毫秒
-	int attack_type;             	//攻击的类型	0:物理攻击, 1:法术攻击, 2:物理&法术攻击
-	float attack_rate;           	//技能伤害系数	0=不计算伤害 1=100
-	int attack_value;            	//技能伤害附加	技能伤害附加
-	float attack_range;          	//技能释放距离	技能释放距离
+	int cooldown_time;           	//冷却的时间	当技能类型为多层时，该字段表示恢复一层所需时间，其他类型表示正常的技能CD 单位：毫秒
+	int common_cd_time;          	//公共CD时间	技能释放后，同冷却ID组的技能会共同按照该技能的公共CD事件进入冷却 单位：毫秒
 	int continuity;              	//是否连续技能	0=非连续技能 1=连续技能
 	int next_id;                 	//下一段技能ID	"-1"=没有下一段
-	int move_limit;              	//是否能够位移	0=不移动 1=走编辑器的距离配置值 2=玩家手动规定移动距离
-	int rang_type;               	//攻击范围类型	0=目标 1=圆形 2=扇形 3=矩形 4=环形
-	float rang_par1;             	//范围参数1	类型=0，无效 类型=1，半径 类型=2，半径 类型=3，长
-	float rang_par2;             	//范围参数2	类型=0，无效 类型=1，无效 类型=2，角度 类型=3，宽
-	int release_type;            	//释放类型	0=选择目标 1=扇形范围 2=直线范围 3=圆形范围 4=目标点圆形 5=目标点矩形
-	string resources_release;    	//释放资源	0=-1 1=SkillRangeSector 2=SkillRangeStrip 3=SkillRange 4=SkillRangeCircular 5=SkillRangeLine
+	vector<int> atk_id_list;     	//普攻技能id随机列	普攻下一段可以播放的普攻id列表，多个技能id用连接符：”|“连结，没有填“-1”
+	vector<float> atk_prob_list; 	//普攻技能id随机概率	atk_id_list中对应技能释放的概率，填写小数，多个概率值用连结符：“|”连结，多个概率总和需要等于1。没有填“-1”
+	vector<int> skill_normal_all;	//普攻技能ID汇总	
+	float attack_range;          	//技能释放距离	技能最大释放距离，显示为技能释放圆形范围
+	int show_release;            	//显示技能最大范围提示	只有主角技能有效，是否显示技能范围 0=隐藏 1=显示
+	int is_translate;            	//是否位移技能	判断这个技能，被定身后，是否还可以释放，根据类型判断 0：不包含位移，可以放，无影响 1：有translate位移，不能放 2：有translate位移，但是可以放，不能移动而已，战士和骑士的普攻用
+	int loop_skill;              	//是否循环	默认为-1，不生效 1为循环技能   目前仅用于处理表情动作
+	int rang_type;               	//攻击范围类型	0=目标 1=圆形 2=扇形 3=矩形 4=环形 5=反弹技能专用圆形 6=连环圆
+	float rang_par1;             	//范围参数1	类型=0，无效 类型=1，半径 类型=2，半径 类型=3，长 类型=4，里圈半径 类型=5，半径 类型=6，半径
+	float rang_par2;             	//范围参数2	类型=0，无效 类型=1，无效 类型=2，角度 类型=3，宽 类型=4，外圈半径 类型=5，无效 类型=6，无效
+	int release_type;            	//释放类型	0=选择目标 1=扇形范围 2=直线范围 3=圆形范围 4=目标点圆形 5=目标点矩形 6=固定距离圆形 7=固定距离矩形 8=目标点连环圆
+	string resources_release;    	//释放资源	打目标，无资源，空值 身前直线:SkillRangeStrip 基准点在中心位置的矩形:SkillRangeSquare_001 普通身前矩形:SkillRangeSquare_002 两边带角身前矩形:SkillRangeSquare_003 基准点在圆心位置的圆:SkillRangeCircular 基准点在切边位置的圆:SkillRangeCircular_001 基准点在两圆连接处:SkillRangeCircular_002 身前60度扇形:SkillRangeSector60 身前90度扇形:SkillRangeSector90 身前120度扇形:SkillRangeSector120 身前180度扇形:SkillRangeSector180 基准点在圆心的圆边:SkillRange
 	string Resources;            	//动作资源	动作文件
+	vector<int> attack_ID;       	//技能编辑器的attackID	仅策划查看用，修改需要在技能编辑器
 	string resources_name;       	//对应资源	仅策划用
 	string icon;                 	//图标资源	图标资源文件
-	int summon_monster_amount;   	//召唤的小怪数量	
-	vector<int> summon_monster_list1;	//召唤的小怪组1	
-	vector<int> summon_monster_list2;	//召唤的小怪组2	
-	vector<int> summon_monster_list3;	//召唤的小怪组3	
 	int can_break;               	//连击次数	1为是 0为否
-	vector<int> repeatedly_skil_list;	//多段技能列表	多段技能列表
-	float interval_time;         	//多段技能每次间隔时间	多段技能每次间隔时间
-	int max_accumulate;          	//最大积攒	
-	int min_accumulate_use;      	//最低积攒使用	最低几个积攒能触发此技能
-	int event;                   	//事件	1=格挡 2=暴击 3=命中
+	vector<int> repeatedly_skil_list;	//多段技能列表	多段技能列表 默认为空
+	vector<float> interval_time; 	//多段技能每次反应的等待时间	多段技能每次等待的反应间隔时间,单位：ms
+	int can_be_accelerate;       	//反应时间是否受急速影响	反应时间是否受急速影响，若受影响，则反应时间会受急速属性影响变快或变慢 1：受 0：不受 无需求默认填0
+	int max_accumulate;          	//最大积攒能量上限	应激技能能量积攒上限
+	int min_accumulate_use;      	//发动应激技能最低能量要求	发动应激技能最低能量数量
+	int skill_trigger_type;      	//应激技能触发类型	（空=没有事件，不积攒能量） 1=格挡 2=暴击 3=命中
+	float event_addEP;           	//事件增加能量数量	1=1点能量 不足1点用小数
+	int skill_expend_point;      	//技能增强点数消耗	用于主角技能 技能可消耗增强点数 具体消耗的点数数值
+	string expend_effect_resource;	//增强点特效资源	用于主角技能 技能达到增强点数消耗时 对应该技能位的特效资源
+	vector<int> reduce_cd_ski_list;	//减少哪个技能cd	例（3.3.1 灼烧）
 	int reduce_cd_type;          	//减少cd类型	1=固定值 2=百分比
 	float reduce_cd_parameter;   	//减少cd参数	
+	int notice_step_type;        	//提示时机	-1=没有提示 0=施法开始时 1=施法结束时
+	int notice_id;               	//文本提示ID	关联文本提示表，没有则填-1
+	int continuance;             	//提示消息持续时间	消息持续时间，单位ms，没有则填-1
+	string script;               	//脚本名称	script不填的话则没有脚本
+	int automation_priority;     	//自动战斗释放优先级	值越高，优先级越高
+	vector<int> automation_type; 	//自动战斗技能类型	0：普通技能 1：治疗技能 2：复活技能
+	int waiting_message;         	//等待服务器消息	主角技能生效，释放技能是否需要等待服务器消息返回后再开始， 1：需要等待服务器消息 0：客户端自行判断是否可放，不等待服务器消息返回
+	vector<int> replace;         	//能否替代	替代技 第一个表示能否替代其他技能，0表示不可以，1表示可以；第二个数值表示能否被其他技能替代，0表示不可以，1表示可以
+	int can_insert;              	//	后续技能 1：表示可以加入后续技能 -1：表示不可以加入
+	int share_skillcd;           	//翻滚技能共用cd	翻滚技能共用cd，后翻滚技能，在这列，填对应的前翻滚技能ID
+	int channel_time;            	//引导的时间(已无效）	已无效 单位：毫秒
+	int charge_time;             	//吟唱的时间（已废弃）	单位：毫秒
+	int charge_or_interval;      	//伤害段数（已废弃）	在一段时间之内， 释放多少次伤害（BUFF）
+	string server_script_id;     	//技能脚本（已废弃）	该技能配置脚本的名称（无用字段）
+	int move_limit;              	//是否能够位移	0=不移动 1=走编辑器的距离配置值 2=玩家手动规定移动距离
+	int pet_cast_position;       	//宠物释放位置	只有宠物技能使用 宠物在释放技能时的初始位置  0.当前位置 1.瞬间移动至玩家位置 2.瞬间移动至目标位置
+	float pet_cast_position_offset;	//宠物释放位置偏移	当宠物释放技能时，该宠物延释放方向的偏移距离 单位米 不填代表无偏移
+	int rune_name;               	//铭文名称	该技能对应的铭文名称备份 从stringSkill表中读取 如果不填表示没有铭文
+	string rune_icon;            	//铭文图标	该铭文被选中时调用的图标资源
+	string rune_icon_normal;     	//铭文默认图标	该铭文未被选中时所调用的图标资源
 
 private:
-	bool m_bIsValidate;
-	void SetIsValidate(bool isValid)
-	{
-		m_bIsValidate=isValid;
-	}
+
 public:
-	bool IsValidate()
-	{
-		return m_bIsValidate;
-	}
+
 	SkillElement()
 	{
 		id = -1;
-		m_bIsValidate=false;
+
 	}
 };
 
 //技能配置封装类
 class SkillTable
 {
-	friend class TableData;
+	public:
+	typedef std::unique_ptr<SkillElement> ele_ptr_type;
+	typedef std::unordered_map<int, ele_ptr_type> MapElementMap;
+	typedef vector<int> vec_type;
+	//typedef std::set<int> set_type;
+	typedef std::function<void()> ReloadCallback;
+	typedef std::vector<ReloadCallback> reload_vec_type;
 private:
-	SkillTable(){}
-	~SkillTable(){}
-	typedef unordered_map<int, SkillElement> MapElementMap;
+	SkillTable();
+	~SkillTable();
+
+	vec_type m_vElementID;
 	MapElementMap	m_mapElements;
-	vector<SkillElement>	m_vecAllElements;
-	SkillElement m_emptyItem;
+	reload_vec_type m_vReLoadCb;
+
 public:
-	static SkillTable& Instance()
-	{
-		static SkillTable sInstance;
-		return sInstance;
-	}
+	static SkillTable& Instance();
 
-	const SkillElement* GetElement(int key)
-	{
-		MapElementMap::iterator it = m_mapElements.find(key);
-		if (it == m_mapElements.end())
-		{
-			AssertEx(false, std::string(std::string("SkillTable: ") + std::to_string(key)).c_str());
-			return NULL;
-		}
-		return &it->second;
-	}
+	void RegisterReLoadCb(const ReloadCallback &cb);
 
-	bool HasElement(int key)
-	{
-		return m_mapElements.find(key) != m_mapElements.end();
-	}
+	const SkillElement* GetElement(int key);
 
-	vector<SkillElement>&	GetAllElement()
-	{
-		if(!m_vecAllElements.empty()) 
-			return m_vecAllElements;
-		m_vecAllElements.reserve(m_mapElements.size());
-		for(auto iter=m_mapElements.begin(); iter != m_mapElements.end(); ++iter)
-		{
-			if(iter->second.IsValidate()) 
-				m_vecAllElements.push_back(iter->second);
-		}
-		return m_vecAllElements;
-	}
-	bool Load()
-	{
-		#ifdef CONFIG_JSON
-		return LoadJson("Skill.json");
-		#else
-		string strTableContent;
-		if( LoadConfigContent("Skill.csv", strTableContent ) )
-			return LoadCsv( strTableContent );
-		if( !LoadConfigContent("Skill.bin", strTableContent ) )
-		{
-			printf_message("配置文件[Skill.bin]未找到");
-			assert(false);
-			return false;
-		}
-		return LoadBin(strTableContent);
-		#endif
+	bool HasElement(int key);
 
-		
-	}
+	const vec_type& GetAllID() const;
 
-	bool LoadJson(const std::string& jsonFile)
-	{
-		boost::property_tree::ptree sms_array;
-		boost::property_tree::json_parser::read_json(std::string(CONFIG_PATH) + jsonFile, sms_array);
-		//boost::property_tree::ptree sms_array = parse.get_child("data");
+	const MapElementMap& GetAllElement() const;
+	bool Load();
 
-		vector<string> vecLine;
+	void NotifyCb();
 
-		
-
-		BOOST_FOREACH(boost::property_tree::ptree::value_type& v, sms_array)
-		{
-			boost::property_tree::ptree p = v.second;
-
-			SkillElement	member;
-
-						member.id=p.get<int>("id");
-			member.name_id=p.get<int>("name_id");
-			member.name=p.get<string>("name");
-			member.type=p.get<int>("type");
-			member.caster_type=p.get<int>("caster_type");
-			member.is_scene_event=p.get<int>("is_scene_event");
-			member.effect_target=p.get<int>("effect_target");
-			member.cast_target=p.get<int>("cast_target");
-			member.ligic_id=p.get<int>("ligic_id");
-			boost::property_tree::ptree sms_array_childpars = p.get_child("pars");
-			for (BOOST_AUTO(pos, sms_array_childpars.begin()); pos != sms_array_childpars.end(); ++pos)
-			{
-				int n = pos->second.get_value<int>(); 
-				member.pars.push_back(n);
-			}
-			member.attack_empty=p.get<int>("attack_empty");
-			member.charge_or_interval=p.get<int>("charge_or_interval");
-			member.cooldown_id=p.get<int>("cooldown_id");
-			member.cooldown_time=p.get<int>("cooldown_time");
-			member.common_cd_time=p.get<int>("common_cd_time");
-			member.charge_time=p.get<int>("charge_time");
-			member.channel_time=p.get<int>("channel_time");
-			member.attack_type=p.get<int>("attack_type");
-			member.attack_rate=p.get<float>("attack_rate");
-			member.attack_value=p.get<int>("attack_value");
-			member.attack_range=p.get<float>("attack_range");
-			member.continuity=p.get<int>("continuity");
-			member.next_id=p.get<int>("next_id");
-			member.move_limit=p.get<int>("move_limit");
-			member.rang_type=p.get<int>("rang_type");
-			member.rang_par1=p.get<float>("rang_par1");
-			member.rang_par2=p.get<float>("rang_par2");
-			member.release_type=p.get<int>("release_type");
-			member.resources_release=p.get<string>("resources_release");
-			member.Resources=p.get<string>("Resources");
-			member.resources_name=p.get<string>("resources_name");
-			member.icon=p.get<string>("icon");
-			member.summon_monster_amount=p.get<int>("summon_monster_amount");
-			boost::property_tree::ptree sms_array_childsummon_monster_list1 = p.get_child("summon_monster_list1");
-			for (BOOST_AUTO(pos, sms_array_childsummon_monster_list1.begin()); pos != sms_array_childsummon_monster_list1.end(); ++pos)
-			{
-				int n = pos->second.get_value<int>(); 
-				member.summon_monster_list1.push_back(n);
-			}
-			boost::property_tree::ptree sms_array_childsummon_monster_list2 = p.get_child("summon_monster_list2");
-			for (BOOST_AUTO(pos, sms_array_childsummon_monster_list2.begin()); pos != sms_array_childsummon_monster_list2.end(); ++pos)
-			{
-				int n = pos->second.get_value<int>(); 
-				member.summon_monster_list2.push_back(n);
-			}
-			boost::property_tree::ptree sms_array_childsummon_monster_list3 = p.get_child("summon_monster_list3");
-			for (BOOST_AUTO(pos, sms_array_childsummon_monster_list3.begin()); pos != sms_array_childsummon_monster_list3.end(); ++pos)
-			{
-				int n = pos->second.get_value<int>(); 
-				member.summon_monster_list3.push_back(n);
-			}
-			member.can_break=p.get<int>("can_break");
-			boost::property_tree::ptree sms_array_childrepeatedly_skil_list = p.get_child("repeatedly_skil_list");
-			for (BOOST_AUTO(pos, sms_array_childrepeatedly_skil_list.begin()); pos != sms_array_childrepeatedly_skil_list.end(); ++pos)
-			{
-				int n = pos->second.get_value<int>(); 
-				member.repeatedly_skil_list.push_back(n);
-			}
-			member.interval_time=p.get<float>("interval_time");
-			member.max_accumulate=p.get<int>("max_accumulate");
-			member.min_accumulate_use=p.get<int>("min_accumulate_use");
-			member.event=p.get<int>("event");
-			member.reduce_cd_type=p.get<int>("reduce_cd_type");
-			member.reduce_cd_parameter=p.get<float>("reduce_cd_parameter");
+	bool LoadJson(const std::string& jsonFile);
 
 
-			member.SetIsValidate(true);
-			m_mapElements[member.id] = member;
-		}
+	bool ReLoad();
+	
 
-		return true;
-	}
+  int32_t min_table_id()const;
+  int32_t max_table_id()const;
+ private:
+   int32_t min_table_id_{INT32_MAX};
+   int32_t max_table_id_{INT32_MIN};
+   bool m_bLoad{false};
 
-	bool LoadCsv(string strContent)
-	{
-		m_vecAllElements.clear();
-		m_mapElements.clear();
-		int contentOffset = 0;
-		vector<string> vecLine;
-		vecLine = ReadCsvLine( strContent, contentOffset );
-		if(vecLine.size() != 44)
-		{
-			printf_message("Skill.csv中列数量与生成的代码不匹配!");
-			assert(false);
-			return false;
-		}
-		if(vecLine[0]!="id"){printf_message("Skill.csv中字段[id]位置不对应 ");assert(false); return false; }
-		if(vecLine[1]!="name_id"){printf_message("Skill.csv中字段[name_id]位置不对应 ");assert(false); return false; }
-		if(vecLine[2]!="name"){printf_message("Skill.csv中字段[name]位置不对应 ");assert(false); return false; }
-		if(vecLine[3]!="type"){printf_message("Skill.csv中字段[type]位置不对应 ");assert(false); return false; }
-		if(vecLine[4]!="caster_type"){printf_message("Skill.csv中字段[caster_type]位置不对应 ");assert(false); return false; }
-		if(vecLine[5]!="is_scene_event"){printf_message("Skill.csv中字段[is_scene_event]位置不对应 ");assert(false); return false; }
-		if(vecLine[6]!="effect_target"){printf_message("Skill.csv中字段[effect_target]位置不对应 ");assert(false); return false; }
-		if(vecLine[7]!="cast_target"){printf_message("Skill.csv中字段[cast_target]位置不对应 ");assert(false); return false; }
-		if(vecLine[8]!="ligic_id"){printf_message("Skill.csv中字段[ligic_id]位置不对应 ");assert(false); return false; }
-		if(vecLine[9]!="pars"){printf_message("Skill.csv中字段[pars]位置不对应 ");assert(false); return false; }
-		if(vecLine[10]!="attack_empty"){printf_message("Skill.csv中字段[attack_empty]位置不对应 ");assert(false); return false; }
-		if(vecLine[11]!="charge_or_interval"){printf_message("Skill.csv中字段[charge_or_interval]位置不对应 ");assert(false); return false; }
-		if(vecLine[12]!="cooldown_id"){printf_message("Skill.csv中字段[cooldown_id]位置不对应 ");assert(false); return false; }
-		if(vecLine[13]!="cooldown_time"){printf_message("Skill.csv中字段[cooldown_time]位置不对应 ");assert(false); return false; }
-		if(vecLine[14]!="common_cd_time"){printf_message("Skill.csv中字段[common_cd_time]位置不对应 ");assert(false); return false; }
-		if(vecLine[15]!="charge_time"){printf_message("Skill.csv中字段[charge_time]位置不对应 ");assert(false); return false; }
-		if(vecLine[16]!="channel_time"){printf_message("Skill.csv中字段[channel_time]位置不对应 ");assert(false); return false; }
-		if(vecLine[17]!="attack_type"){printf_message("Skill.csv中字段[attack_type]位置不对应 ");assert(false); return false; }
-		if(vecLine[18]!="attack_rate"){printf_message("Skill.csv中字段[attack_rate]位置不对应 ");assert(false); return false; }
-		if(vecLine[19]!="attack_value"){printf_message("Skill.csv中字段[attack_value]位置不对应 ");assert(false); return false; }
-		if(vecLine[20]!="attack_range"){printf_message("Skill.csv中字段[attack_range]位置不对应 ");assert(false); return false; }
-		if(vecLine[21]!="continuity"){printf_message("Skill.csv中字段[continuity]位置不对应 ");assert(false); return false; }
-		if(vecLine[22]!="next_id"){printf_message("Skill.csv中字段[next_id]位置不对应 ");assert(false); return false; }
-		if(vecLine[23]!="move_limit"){printf_message("Skill.csv中字段[move_limit]位置不对应 ");assert(false); return false; }
-		if(vecLine[24]!="rang_type"){printf_message("Skill.csv中字段[rang_type]位置不对应 ");assert(false); return false; }
-		if(vecLine[25]!="rang_par1"){printf_message("Skill.csv中字段[rang_par1]位置不对应 ");assert(false); return false; }
-		if(vecLine[26]!="rang_par2"){printf_message("Skill.csv中字段[rang_par2]位置不对应 ");assert(false); return false; }
-		if(vecLine[27]!="release_type"){printf_message("Skill.csv中字段[release_type]位置不对应 ");assert(false); return false; }
-		if(vecLine[28]!="resources_release"){printf_message("Skill.csv中字段[resources_release]位置不对应 ");assert(false); return false; }
-		if(vecLine[29]!="Resources"){printf_message("Skill.csv中字段[Resources]位置不对应 ");assert(false); return false; }
-		if(vecLine[30]!="resources_name"){printf_message("Skill.csv中字段[resources_name]位置不对应 ");assert(false); return false; }
-		if(vecLine[31]!="icon"){printf_message("Skill.csv中字段[icon]位置不对应 ");assert(false); return false; }
-		if(vecLine[32]!="summon_monster_amount"){printf_message("Skill.csv中字段[summon_monster_amount]位置不对应 ");assert(false); return false; }
-		if(vecLine[33]!="summon_monster_list1"){printf_message("Skill.csv中字段[summon_monster_list1]位置不对应 ");assert(false); return false; }
-		if(vecLine[34]!="summon_monster_list2"){printf_message("Skill.csv中字段[summon_monster_list2]位置不对应 ");assert(false); return false; }
-		if(vecLine[35]!="summon_monster_list3"){printf_message("Skill.csv中字段[summon_monster_list3]位置不对应 ");assert(false); return false; }
-		if(vecLine[36]!="can_break"){printf_message("Skill.csv中字段[can_break]位置不对应 ");assert(false); return false; }
-		if(vecLine[37]!="repeatedly_skil_list"){printf_message("Skill.csv中字段[repeatedly_skil_list]位置不对应 ");assert(false); return false; }
-		if(vecLine[38]!="interval_time"){printf_message("Skill.csv中字段[interval_time]位置不对应 ");assert(false); return false; }
-		if(vecLine[39]!="max_accumulate"){printf_message("Skill.csv中字段[max_accumulate]位置不对应 ");assert(false); return false; }
-		if(vecLine[40]!="min_accumulate_use"){printf_message("Skill.csv中字段[min_accumulate_use]位置不对应 ");assert(false); return false; }
-		if(vecLine[41]!="event"){printf_message("Skill.csv中字段[event]位置不对应 ");assert(false); return false; }
-		if(vecLine[42]!="reduce_cd_type"){printf_message("Skill.csv中字段[reduce_cd_type]位置不对应 ");assert(false); return false; }
-		if(vecLine[43]!="reduce_cd_parameter"){printf_message("Skill.csv中字段[reduce_cd_parameter]位置不对应 ");assert(false); return false; }
-
-		while(true)
-		{
-			vecLine = ReadCsvLine( strContent, contentOffset );
-			if((int)vecLine.size() == 0 )
-				break;
-			if((int)vecLine.size() != (int)44)
-			{
-				assert(false);
-				return false;
-			}
-			SkillElement	member;
-			member.id=(int)atoi(vecLine[0].c_str());
-			member.name_id=(int)atoi(vecLine[1].c_str());
-			member.name=vecLine[2];
-			member.type=(int)atoi(vecLine[3].c_str());
-			member.caster_type=(int)atoi(vecLine[4].c_str());
-			member.is_scene_event=(int)atoi(vecLine[5].c_str());
-			member.effect_target=(int)atoi(vecLine[6].c_str());
-			member.cast_target=(int)atoi(vecLine[7].c_str());
-			member.ligic_id=(int)atoi(vecLine[8].c_str());
-			member.attack_empty=(int)atoi(vecLine[10].c_str());
-			member.charge_or_interval=(int)atoi(vecLine[11].c_str());
-			member.cooldown_id=(int)atoi(vecLine[12].c_str());
-			member.cooldown_time=(int)atoi(vecLine[13].c_str());
-			member.common_cd_time=(int)atoi(vecLine[14].c_str());
-			member.charge_time=(int)atoi(vecLine[15].c_str());
-			member.channel_time=(int)atoi(vecLine[16].c_str());
-			member.attack_type=(int)atoi(vecLine[17].c_str());
-			member.attack_rate=(float)atof(vecLine[18].c_str());
-			member.attack_value=(int)atoi(vecLine[19].c_str());
-			member.attack_range=(float)atof(vecLine[20].c_str());
-			member.continuity=(int)atoi(vecLine[21].c_str());
-			member.next_id=(int)atoi(vecLine[22].c_str());
-			member.move_limit=(int)atoi(vecLine[23].c_str());
-			member.rang_type=(int)atoi(vecLine[24].c_str());
-			member.rang_par1=(float)atof(vecLine[25].c_str());
-			member.rang_par2=(float)atof(vecLine[26].c_str());
-			member.release_type=(int)atoi(vecLine[27].c_str());
-			member.resources_release=vecLine[28];
-			member.Resources=vecLine[29];
-			member.resources_name=vecLine[30];
-			member.icon=vecLine[31];
-			member.summon_monster_amount=(int)atoi(vecLine[32].c_str());
-			member.can_break=(int)atoi(vecLine[36].c_str());
-			member.interval_time=(float)atof(vecLine[38].c_str());
-			member.max_accumulate=(int)atoi(vecLine[39].c_str());
-			member.min_accumulate_use=(int)atoi(vecLine[40].c_str());
-			member.event=(int)atoi(vecLine[41].c_str());
-			member.reduce_cd_type=(int)atoi(vecLine[42].c_str());
-			member.reduce_cd_parameter=(float)atof(vecLine[43].c_str());
-
-			member.SetIsValidate(true);
-			m_mapElements[member.id] = member;
-		}
-		return true;
-	}
-
-	vector<string> ReadCsvLine(string strContent,int contentOffset)
-	{
-		vector<string> temp;
-		return temp;
-
-	}
 };
 
 #endif

@@ -17,7 +17,7 @@ namespace GenPB
     public BagRpcUseItemAsk() {}
     
     private int _Count = (int)-1;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Count", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Count", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int Count
     {
@@ -25,12 +25,36 @@ namespace GenPB
       set { _Count = value; }
     }
     private int _Pos = (int)-1;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Pos", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Pos", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int Pos
     {
       get { return _Pos; }
       set { _Pos = value; }
+    }
+    private int _BagType = (int)-1;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"BagType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int BagType
+    {
+      get { return _BagType; }
+      set { _BagType = value; }
+    }
+    private ulong _TargetId = (ulong)0;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"TargetId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong TargetId
+    {
+      get { return _TargetId; }
+      set { _TargetId = value; }
+    }
+    private int _OptionIdx = (int)0;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"OptionIdx", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int OptionIdx
+    {
+      get { return _OptionIdx; }
+      set { _OptionIdx = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -43,7 +67,7 @@ namespace GenPB
     public BagRpcUseItemReply() {}
     
     private int _Result = (int)-9999;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-9999)]
     public int Result
     {
@@ -58,41 +82,14 @@ namespace GenPB
       get { return _Item; }
       set { _Item = value; }
     }
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"BagRpcSyncAsk")]
-  public partial class BagRpcSyncAsk : global::ProtoBuf.IExtensible
-  {
-    public BagRpcSyncAsk() {}
-    
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"BagRpcSyncReply")]
-  public partial class BagRpcSyncReply : global::ProtoBuf.IExtensible
-  {
-    public BagRpcSyncReply() {}
-    
-    private int _Result = (int)-9999;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-9999)]
-    public int Result
+    private ItemObj _NowItem = null;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"NowItem", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public ItemObj NowItem
     {
-      get { return _Result; }
-      set { _Result = value; }
+      get { return _NowItem; }
+      set { _NowItem = value; }
     }
-    private readonly global::System.Collections.Generic.List<BagData> _Bags = new global::System.Collections.Generic.List<BagData>();
-    [global::ProtoBuf.ProtoMember(2, Name=@"Bags", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<BagData> Bags
-    {
-      get { return _Bags; }
-    }
-  
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -104,7 +101,7 @@ namespace GenPB
     public BagRpcSaleItemAsk() {}
     
     private int _Pos = (int)-1;
-    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"Pos", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"Pos", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int Pos
     {
@@ -112,12 +109,20 @@ namespace GenPB
       set { _Pos = value; }
     }
     private int _Count = (int)-1;
-    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"Count", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"Count", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int Count
     {
       get { return _Count; }
       set { _Count = value; }
+    }
+    private int _BagType = (int)-1;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"BagType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int BagType
+    {
+      get { return _BagType; }
+      set { _BagType = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -130,7 +135,7 @@ namespace GenPB
     public BagRpcSaleItemReply() {}
     
     private int _Result = (int)-9999;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-9999)]
     public int Result
     {
@@ -156,7 +161,7 @@ namespace GenPB
     public BagRpcLockItemAsk() {}
     
     private int _Pos = (int)-1;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Pos", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Pos", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int Pos
     {
@@ -171,6 +176,14 @@ namespace GenPB
       get { return _IsLock; }
       set { _IsLock = value; }
     }
+    private int _BagType = (int)-1;
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"BagType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int BagType
+    {
+      get { return _BagType; }
+      set { _BagType = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -182,7 +195,7 @@ namespace GenPB
     public BagRpcLockItemReply() {}
     
     private int _Result = (int)-9999;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-9999)]
     public int Result
     {
@@ -208,7 +221,7 @@ namespace GenPB
     public BagRpcDeblockingAsk() {}
     
     private int _BagType = (int)-1;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"BagType", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"BagType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int BagType
     {
@@ -226,7 +239,7 @@ namespace GenPB
     public BagRpcDeblockingReply() {}
     
     private int _Result = (int)-9999;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-9999)]
     public int Result
     {
@@ -234,7 +247,7 @@ namespace GenPB
       set { _Result = value; }
     }
     private int _BagType = (int)-1;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"BagType", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"BagType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int BagType
     {
@@ -242,7 +255,7 @@ namespace GenPB
       set { _BagType = value; }
     }
     private int _CurCapacity = (int)-1;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"CurCapacity", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"CurCapacity", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int CurCapacity
     {
@@ -260,7 +273,7 @@ namespace GenPB
     public BagRpcTakeItemAsk() {}
     
     private int _FromBagType = (int)-1;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"FromBagType", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"FromBagType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int FromBagType
     {
@@ -268,7 +281,7 @@ namespace GenPB
       set { _FromBagType = value; }
     }
     private int _ToBagType = (int)-1;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"ToBagType", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"ToBagType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int ToBagType
     {
@@ -276,7 +289,7 @@ namespace GenPB
       set { _ToBagType = value; }
     }
     private int _FromPos = (int)-1;
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"FromPos", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"FromPos", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int FromPos
     {
@@ -294,7 +307,7 @@ namespace GenPB
     public BagRpcTakeItemReply() {}
     
     private int _Result = (int)-9999;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-9999)]
     public int Result
     {
@@ -318,7 +331,7 @@ namespace GenPB
       set { _FromItemObj = value; }
     }
     private int _FromBagType = (int)-1;
-    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"FromBagType", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"FromBagType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int FromBagType
     {
@@ -326,7 +339,7 @@ namespace GenPB
       set { _FromBagType = value; }
     }
     private int _ToBagType = (int)-1;
-    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"ToBagType", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"ToBagType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int ToBagType
     {
@@ -344,7 +357,7 @@ namespace GenPB
     public BagRpcTidyAsk() {}
     
     private int _BagType = (int)-1;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"BagType", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"BagType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int BagType
     {
@@ -362,27 +375,20 @@ namespace GenPB
     public BagRpcTidyReply() {}
     
     private int _Result = (int)-9999;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-9999)]
     public int Result
     {
       get { return _Result; }
       set { _Result = value; }
     }
-    private readonly global::System.Collections.Generic.List<BagData> _Bags = new global::System.Collections.Generic.List<BagData>();
-    [global::ProtoBuf.ProtoMember(3, Name=@"Bags", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public global::System.Collections.Generic.List<BagData> Bags
+    private BagData _Bags = null;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"Bags", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public BagData Bags
     {
       get { return _Bags; }
-    }
-  
-    private int _BagType = (int)-1;
-    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"BagType", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-1)]
-    public int BagType
-    {
-      get { return _BagType; }
-      set { _BagType = value; }
+      set { _Bags = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -405,7 +411,7 @@ namespace GenPB
     public BagRpcTakeAllBackBagsReply() {}
     
     private int _Result = (int)-9999;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-9999)]
     public int Result
     {
@@ -430,7 +436,7 @@ namespace GenPB
     public BagRpcBagChangeNotify() {}
     
     private int _Result = (int)-9999;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-9999)]
     public int Result
     {
@@ -444,6 +450,292 @@ namespace GenPB
     {
       get { return _Bags; }
       set { _Bags = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"BagRpcMergeItemAsk")]
+  public partial class BagRpcMergeItemAsk : global::ProtoBuf.IExtensible
+  {
+    public BagRpcMergeItemAsk() {}
+    
+    private int _Pos = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Pos", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Pos
+    {
+      get { return _Pos; }
+      set { _Pos = value; }
+    }
+    private int _BagType = (int)-1;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"BagType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int BagType
+    {
+      get { return _BagType; }
+      set { _BagType = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"BagRpcMergeItemReply")]
+  public partial class BagRpcMergeItemReply : global::ProtoBuf.IExtensible
+  {
+    public BagRpcMergeItemReply() {}
+    
+    private int _Result = (int)-9999;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-9999)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
+    }
+    private BagData _Bags = null;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Bags", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public BagData Bags
+    {
+      get { return _Bags; }
+      set { _Bags = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"BagRpcBagSyncAsk")]
+  public partial class BagRpcBagSyncAsk : global::ProtoBuf.IExtensible
+  {
+    public BagRpcBagSyncAsk() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"BagRpcBagSyncReply")]
+  public partial class BagRpcBagSyncReply : global::ProtoBuf.IExtensible
+  {
+    public BagRpcBagSyncReply() {}
+    
+    private int _Result = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
+    }
+    private readonly global::System.Collections.Generic.List<BagData> _Bags = new global::System.Collections.Generic.List<BagData>();
+    [global::ProtoBuf.ProtoMember(2, Name=@"Bags", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<BagData> Bags
+    {
+      get { return _Bags; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"BagRpcAddItemNotify")]
+  public partial class BagRpcAddItemNotify : global::ProtoBuf.IExtensible
+  {
+    public BagRpcAddItemNotify() {}
+    
+    private readonly global::System.Collections.Generic.List<ItemObj> _Item = new global::System.Collections.Generic.List<ItemObj>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"Item", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<ItemObj> Item
+    {
+      get { return _Item; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"BagRpcConsumeItemAsk")]
+  public partial class BagRpcConsumeItemAsk : global::ProtoBuf.IExtensible
+  {
+    public BagRpcConsumeItemAsk() {}
+    
+    private readonly global::System.Collections.Generic.List<ItemSimpleData> _ItemData = new global::System.Collections.Generic.List<ItemSimpleData>();
+    [global::ProtoBuf.ProtoMember(3, Name=@"ItemData", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<ItemSimpleData> ItemData
+    {
+      get { return _ItemData; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"BagRpcConsumeItemReply")]
+  public partial class BagRpcConsumeItemReply : global::ProtoBuf.IExtensible
+  {
+    public BagRpcConsumeItemReply() {}
+    
+    private int _Result = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"BagRpcItemChangeNotify")]
+  public partial class BagRpcItemChangeNotify : global::ProtoBuf.IExtensible
+  {
+    public BagRpcItemChangeNotify() {}
+    
+    private readonly global::System.Collections.Generic.List<ItemObj> _ItemList = new global::System.Collections.Generic.List<ItemObj>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"ItemList", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<ItemObj> ItemList
+    {
+      get { return _ItemList; }
+    }
+  
+    private int _BagType = (int)-1;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"BagType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int BagType
+    {
+      get { return _BagType; }
+      set { _BagType = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"BagRpcClickItemAsk")]
+  public partial class BagRpcClickItemAsk : global::ProtoBuf.IExtensible
+  {
+    public BagRpcClickItemAsk() {}
+    
+    private ulong _Guid = (ulong)0;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Guid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong Guid
+    {
+      get { return _Guid; }
+      set { _Guid = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"BagRpcClickItemReply")]
+  public partial class BagRpcClickItemReply : global::ProtoBuf.IExtensible
+  {
+    public BagRpcClickItemReply() {}
+    
+    private int _Result = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
+    }
+    private ItemObj _Item = null;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Item", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public ItemObj Item
+    {
+      get { return _Item; }
+      set { _Item = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"BagRpcRemoveItemByPosAsk")]
+  public partial class BagRpcRemoveItemByPosAsk : global::ProtoBuf.IExtensible
+  {
+    public BagRpcRemoveItemByPosAsk() {}
+    
+    private readonly global::System.Collections.Generic.List<int> _PosList = new global::System.Collections.Generic.List<int>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"PosList", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<int> PosList
+    {
+      get { return _PosList; }
+    }
+  
+    private int _BagType = (int)-1;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"BagType", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int BagType
+    {
+      get { return _BagType; }
+      set { _BagType = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"BagRpcRemoveItemByPosReply")]
+  public partial class BagRpcRemoveItemByPosReply : global::ProtoBuf.IExtensible
+  {
+    public BagRpcRemoveItemByPosReply() {}
+    
+    private int _Result = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
+    }
+    private readonly global::System.Collections.Generic.List<ItemObj> _ItemList = new global::System.Collections.Generic.List<ItemObj>();
+    [global::ProtoBuf.ProtoMember(2, Name=@"ItemList", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public global::System.Collections.Generic.List<ItemObj> ItemList
+    {
+      get { return _ItemList; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"BagRpcClearBagRedPointAsk")]
+  public partial class BagRpcClearBagRedPointAsk : global::ProtoBuf.IExtensible
+  {
+    public BagRpcClearBagRedPointAsk() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"BagRpcClearBagRedPointReply")]
+  public partial class BagRpcClearBagRedPointReply : global::ProtoBuf.IExtensible
+  {
+    public BagRpcClearBagRedPointReply() {}
+    
+    private int _Result = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

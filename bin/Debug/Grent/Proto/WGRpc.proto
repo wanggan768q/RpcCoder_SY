@@ -1,19 +1,6 @@
 
 import "PublicStruct.proto";
 
-message  WGRpcInformCreateTeamAsk
-{
-	optional TeamInfo Team = 1;
-	optional sint32 Result = 2[default=-9999];
-
-}
-
-message  WGRpcInformCreateTeamReply
-{
-	optional sint32 Result = 1[default=-9999];
-
-}
-
 message  WGRpcInformJoinTeamAsk
 {
 	optional TeamMemberInfo Member = 5;
@@ -23,7 +10,7 @@ message  WGRpcInformJoinTeamAsk
 
 message  WGRpcInformJoinTeamReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 
 }
 
@@ -31,19 +18,19 @@ message  WGRpcInformLeaveAsk
 {
 	optional uint64 RoleId = 1[default=0];
 	optional uint64 NewLeaderRoleId = 2[default=0];
-	optional sint32 Result = 3[default=-9999];
+	optional int32 Result = 3;
 
 }
 
 message  WGRpcInformLeaveReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 
 }
 
 message  WGRpcInformAppointTeamLeaderAsk
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 	optional uint64 NewLeaderRoleId = 2[default=0];
 	optional uint64 OldLeaderRoleId = 3[default=0];
 
@@ -51,13 +38,13 @@ message  WGRpcInformAppointTeamLeaderAsk
 
 message  WGRpcInformAppointTeamLeaderReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 
 }
 
 message  WGRpcInformKickTeamMemberAsk
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 	optional uint64 KickedMemberRoleId = 2[default=0];
 	optional uint64 LeaderRoleId = 3[default=0];
 
@@ -65,34 +52,34 @@ message  WGRpcInformKickTeamMemberAsk
 
 message  WGRpcInformKickTeamMemberReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 
 }
 
 message  WGRpcInformDissmissTeamAsk
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 	optional uint64 LeaderRoleId = 2[default=0];
 
 }
 
 message  WGRpcInformDissmissTeamReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 
 }
 
 message  WGRpcInformApplyTeamAsk
 {
 	optional TeamMemberInfo TeamMember = 1;
-	optional sint32 Result = 2[default=-9999];
-	optional sint32 TeamId = 3[default=-1];
+	optional int32 Result = 2;
+	optional uint64 TeamId = 3[default=0];
 
 }
 
 message  WGRpcInformApplyTeamReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 
 }
 
@@ -104,7 +91,7 @@ message  WGRpcAgreeTeamApplicantAsk
 
 message  WGRpcAgreeTeamApplicantReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 
 }
 
@@ -116,7 +103,7 @@ message  WGRpcInformLoginAsk
 
 message  WGRpcInformLoginReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 
 }
 

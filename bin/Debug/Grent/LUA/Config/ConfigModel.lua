@@ -1,3 +1,8 @@
+-- ConfigModel.lua
+--Author:郭晓波
+--Email:ambitiongxb@foxmail.com
+--2018年10月8日11:05:21
+
 --将变量写入下方
 local ModuleId = 1;
 
@@ -10,6 +15,13 @@ local MLayerMgr = HS_MLayerMgr
 local typeof = typeof
 local ipairs = ipairs
 local print = print
+local error = error
+local Event = Event
+local removeTableData = removeTableData
+local copyTableData = copyTableData
+local NetE = EventDefine.NetE
+require("Common/EventDefine")
+local CommonE = EventDefine.CommonE
 require("3rd/pblua/ConfigRpc_pb")
 local  ConfigRpc_pb = ConfigRpc_pb
 module("ConfigModel")
@@ -32,12 +44,12 @@ local function dataCallback(self,Id,Index)
 	end
 end
 
-local function showNetTip(self)
-
+local function showNetTip(self,...)
+	Event.Brocast(NetE.Ask,...)
 end
 
-local function hideNetTip(self)
-
+local function hideNetTip(self,...)
+	Event.Brocast(NetE.Reply,...)
 end
 
 -- 初始化 向MLayerMgr注册 更新数据 和 消息通知的 回调
@@ -52,7 +64,7 @@ function Initialize(self)
 end
 
 -- 更新数据
-function UpdateField(self,uf)
+function UpdateField(self,uf,oldData,isNotify,isForceUpdate,main)
 
 end
 

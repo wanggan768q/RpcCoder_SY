@@ -15,7 +15,7 @@
 ********************************************************************************************/
 
 #include "BagModule.h"
-#
+
 
 
 //初始化
@@ -23,6 +23,11 @@ bool ModuleBag::Initialize()
 {
 
 	
+	return OnLoad();
+}
 
-	return true;
+bool ModuleBag::Reinitialize()
+{
+	
+	return OnLoad();
 }

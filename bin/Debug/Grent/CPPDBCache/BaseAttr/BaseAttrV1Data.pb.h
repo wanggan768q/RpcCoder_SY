@@ -33,6 +33,7 @@ void protobuf_AssignDesc_BaseAttrV1Data_2eproto();
 void protobuf_ShutdownFile_BaseAttrV1Data_2eproto();
 
 class BaseAttrUserDataV1;
+class BaseAttrObjDataV1;
 
 // ===================================================================
 
@@ -90,33 +91,33 @@ class BaseAttrUserDataV1 : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Exp = 1 [default = 0];
+  // optional int32 Exp = 1 [default = 0];
   inline bool has_exp() const;
   inline void clear_exp();
   static const int kExpFieldNumber = 1;
   inline ::google::protobuf::int32 exp() const;
   inline void set_exp(::google::protobuf::int32 value);
 
-  // optional sint32 Level = 3 [default = 0];
+  // optional int32 Level = 3 [default = 0];
   inline bool has_level() const;
   inline void clear_level();
   static const int kLevelFieldNumber = 3;
   inline ::google::protobuf::int32 level() const;
   inline void set_level(::google::protobuf::int32 value);
 
-  // optional int64 ServerTime = 4 [default = -1];
+  // optional int32 ServerTime = 4 [default = -1];
   inline bool has_servertime() const;
   inline void clear_servertime();
   static const int kServerTimeFieldNumber = 4;
-  inline ::google::protobuf::int64 servertime() const;
-  inline void set_servertime(::google::protobuf::int64 value);
+  inline ::google::protobuf::int32 servertime() const;
+  inline void set_servertime(::google::protobuf::int32 value);
 
-  // optional int64 RoleId = 5 [default = -1];
+  // optional uint64 RoleId = 5 [default = 0];
   inline bool has_roleid() const;
   inline void clear_roleid();
   static const int kRoleIdFieldNumber = 5;
-  inline ::google::protobuf::int64 roleid() const;
-  inline void set_roleid(::google::protobuf::int64 value);
+  inline ::google::protobuf::uint64 roleid() const;
+  inline void set_roleid(::google::protobuf::uint64 value);
 
   // optional int32 Strength = 7 [default = 0];
   inline bool has_strength() const;
@@ -145,13 +146,6 @@ class BaseAttrUserDataV1 : public ::google::protobuf::Message {
   static const int kEnduranceFieldNumber = 10;
   inline ::google::protobuf::int32 endurance() const;
   inline void set_endurance(::google::protobuf::int32 value);
-
-  // optional int32 Spirit = 11 [default = 0];
-  inline bool has_spirit() const;
-  inline void clear_spirit();
-  static const int kSpiritFieldNumber = 11;
-  inline ::google::protobuf::int32 spirit() const;
-  inline void set_spirit(::google::protobuf::int32 value);
 
   // optional int32 Hp = 12 [default = 0];
   inline bool has_hp() const;
@@ -335,12 +329,12 @@ class BaseAttrUserDataV1 : public ::google::protobuf::Message {
   inline float movespeed() const;
   inline void set_movespeed(float value);
 
-  // optional bool DizzyState = 41 [default = false];
+  // optional int32 DizzyState = 41 [default = 0];
   inline bool has_dizzystate() const;
   inline void clear_dizzystate();
   static const int kDizzyStateFieldNumber = 41;
-  inline bool dizzystate() const;
-  inline void set_dizzystate(bool value);
+  inline ::google::protobuf::int32 dizzystate() const;
+  inline void set_dizzystate(::google::protobuf::int32 value);
 
   // optional bool GodState = 42 [default = false];
   inline bool has_godstate() const;
@@ -349,12 +343,12 @@ class BaseAttrUserDataV1 : public ::google::protobuf::Message {
   inline bool godstate() const;
   inline void set_godstate(bool value);
 
-  // optional bool CantMoveState = 43 [default = false];
+  // optional int32 CantMoveState = 43 [default = 0];
   inline bool has_cantmovestate() const;
   inline void clear_cantmovestate();
   static const int kCantMoveStateFieldNumber = 43;
-  inline bool cantmovestate() const;
-  inline void set_cantmovestate(bool value);
+  inline ::google::protobuf::int32 cantmovestate() const;
+  inline void set_cantmovestate(::google::protobuf::int32 value);
 
   // optional float PhysicAddition = 45 [default = 0];
   inline bool has_physicaddition() const;
@@ -384,6 +378,860 @@ class BaseAttrUserDataV1 : public ::google::protobuf::Message {
   inline float magicoppose() const;
   inline void set_magicoppose(float value);
 
+  // optional float AccumulateSkiEnergy = 50 [default = 0];
+  inline bool has_accumulateskienergy() const;
+  inline void clear_accumulateskienergy();
+  static const int kAccumulateSkiEnergyFieldNumber = 50;
+  inline float accumulateskienergy() const;
+  inline void set_accumulateskienergy(float value);
+
+  // optional string NickName = 51;
+  inline bool has_nickname() const;
+  inline void clear_nickname();
+  static const int kNickNameFieldNumber = 51;
+  inline const ::std::string& nickname() const;
+  inline void set_nickname(const ::std::string& value);
+  inline void set_nickname(const char* value);
+  inline void set_nickname(const char* value, size_t size);
+  inline ::std::string* mutable_nickname();
+  inline ::std::string* release_nickname();
+  inline void set_allocated_nickname(::std::string* nickname);
+
+  // optional int32 ConfigId = 52 [default = -1];
+  inline bool has_configid() const;
+  inline void clear_configid();
+  static const int kConfigIdFieldNumber = 52;
+  inline ::google::protobuf::int32 configid() const;
+  inline void set_configid(::google::protobuf::int32 value);
+
+  // optional int32 ObjType = 53 [default = -1];
+  inline bool has_objtype() const;
+  inline void clear_objtype();
+  static const int kObjTypeFieldNumber = 53;
+  inline ::google::protobuf::int32 objtype() const;
+  inline void set_objtype(::google::protobuf::int32 value);
+
+  // optional int32 State = 54 [default = -1];
+  inline bool has_state() const;
+  inline void clear_state();
+  static const int kStateFieldNumber = 54;
+  inline ::google::protobuf::int32 state() const;
+  inline void set_state(::google::protobuf::int32 value);
+
+  // optional uint64 OwnerObjId = 55 [default = 0];
+  inline bool has_ownerobjid() const;
+  inline void clear_ownerobjid();
+  static const int kOwnerObjIdFieldNumber = 55;
+  inline ::google::protobuf::uint64 ownerobjid() const;
+  inline void set_ownerobjid(::google::protobuf::uint64 value);
+
+  // optional int32 Camp = 56 [default = -1];
+  inline bool has_camp() const;
+  inline void clear_camp();
+  static const int kCampFieldNumber = 56;
+  inline ::google::protobuf::int32 camp() const;
+  inline void set_camp(::google::protobuf::int32 value);
+
+  // optional int64 SilverMoney = 57 [default = 0];
+  inline bool has_silvermoney() const;
+  inline void clear_silvermoney();
+  static const int kSilverMoneyFieldNumber = 57;
+  inline ::google::protobuf::int64 silvermoney() const;
+  inline void set_silvermoney(::google::protobuf::int64 value);
+
+  // optional int64 GoldMoney = 58 [default = 0];
+  inline bool has_goldmoney() const;
+  inline void clear_goldmoney();
+  static const int kGoldMoneyFieldNumber = 58;
+  inline ::google::protobuf::int64 goldmoney() const;
+  inline void set_goldmoney(::google::protobuf::int64 value);
+
+  // optional int64 DiamondMoney = 59 [default = 0];
+  inline bool has_diamondmoney() const;
+  inline void clear_diamondmoney();
+  static const int kDiamondMoneyFieldNumber = 59;
+  inline ::google::protobuf::int64 diamondmoney() const;
+  inline void set_diamondmoney(::google::protobuf::int64 value);
+
+  // optional int64 BindingDiamondMoney = 60 [default = 0];
+  inline bool has_bindingdiamondmoney() const;
+  inline void clear_bindingdiamondmoney();
+  static const int kBindingDiamondMoneyFieldNumber = 60;
+  inline ::google::protobuf::int64 bindingdiamondmoney() const;
+  inline void set_bindingdiamondmoney(::google::protobuf::int64 value);
+
+  // optional int32 BattleScore = 61 [default = -1];
+  inline bool has_battlescore() const;
+  inline void clear_battlescore();
+  static const int kBattleScoreFieldNumber = 61;
+  inline ::google::protobuf::int32 battlescore() const;
+  inline void set_battlescore(::google::protobuf::int32 value);
+
+  // optional int64 Energy = 62 [default = -1];
+  inline bool has_energy() const;
+  inline void clear_energy();
+  static const int kEnergyFieldNumber = 62;
+  inline ::google::protobuf::int64 energy() const;
+  inline void set_energy(::google::protobuf::int64 value);
+
+  // optional int64 GuildMoney = 63 [default = -1];
+  inline bool has_guildmoney() const;
+  inline void clear_guildmoney();
+  static const int kGuildMoneyFieldNumber = 63;
+  inline ::google::protobuf::int64 guildmoney() const;
+  inline void set_guildmoney(::google::protobuf::int64 value);
+
+  // repeated int32 SkillList = 64;
+  inline int skilllist_size() const;
+  inline void clear_skilllist();
+  static const int kSkillListFieldNumber = 64;
+  inline ::google::protobuf::int32 skilllist(int index) const;
+  inline void set_skilllist(int index, ::google::protobuf::int32 value);
+  inline void add_skilllist(::google::protobuf::int32 value);
+  inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+      skilllist() const;
+  inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+      mutable_skilllist();
+
+  // optional int64 HonorMoney = 65 [default = -1];
+  inline bool has_honormoney() const;
+  inline void clear_honormoney();
+  static const int kHonorMoneyFieldNumber = 65;
+  inline ::google::protobuf::int64 honormoney() const;
+  inline void set_honormoney(::google::protobuf::int64 value);
+
+  // optional int64 ResourcePoolHp = 66 [default = -1];
+  inline bool has_resourcepoolhp() const;
+  inline void clear_resourcepoolhp();
+  static const int kResourcePoolHpFieldNumber = 66;
+  inline ::google::protobuf::int64 resourcepoolhp() const;
+  inline void set_resourcepoolhp(::google::protobuf::int64 value);
+
+  // optional int32 AttackAdd = 67 [default = 0];
+  inline bool has_attackadd() const;
+  inline void clear_attackadd();
+  static const int kAttackAddFieldNumber = 67;
+  inline ::google::protobuf::int32 attackadd() const;
+  inline void set_attackadd(::google::protobuf::int32 value);
+
+  // optional int32 InjuryAdd = 68 [default = 0];
+  inline bool has_injuryadd() const;
+  inline void clear_injuryadd();
+  static const int kInjuryAddFieldNumber = 68;
+  inline ::google::protobuf::int32 injuryadd() const;
+  inline void set_injuryadd(::google::protobuf::int32 value);
+
+  // optional int32 FrozenState = 69 [default = -1];
+  inline bool has_frozenstate() const;
+  inline void clear_frozenstate();
+  static const int kFrozenStateFieldNumber = 69;
+  inline ::google::protobuf::int32 frozenstate() const;
+  inline void set_frozenstate(::google::protobuf::int32 value);
+
+  // optional int32 SilentState = 70 [default = -1];
+  inline bool has_silentstate() const;
+  inline void clear_silentstate();
+  static const int kSilentStateFieldNumber = 70;
+  inline ::google::protobuf::int32 silentstate() const;
+  inline void set_silentstate(::google::protobuf::int32 value);
+
+  // optional int64 GuildContributeHistoryMax = 72 [default = -1];
+  inline bool has_guildcontributehistorymax() const;
+  inline void clear_guildcontributehistorymax();
+  static const int kGuildContributeHistoryMaxFieldNumber = 72;
+  inline ::google::protobuf::int64 guildcontributehistorymax() const;
+  inline void set_guildcontributehistorymax(::google::protobuf::int64 value);
+
+  // optional uint64 TeamId = 74 [default = 0];
+  inline bool has_teamid() const;
+  inline void clear_teamid();
+  static const int kTeamIdFieldNumber = 74;
+  inline ::google::protobuf::uint64 teamid() const;
+  inline void set_teamid(::google::protobuf::uint64 value);
+
+  // optional int32 TreasureHair = 75 [default = -1];
+  inline bool has_treasurehair() const;
+  inline void clear_treasurehair();
+  static const int kTreasureHairFieldNumber = 75;
+  inline ::google::protobuf::int32 treasurehair() const;
+  inline void set_treasurehair(::google::protobuf::int32 value);
+
+  // optional int32 TreasureHead = 76 [default = -1];
+  inline bool has_treasurehead() const;
+  inline void clear_treasurehead();
+  static const int kTreasureHeadFieldNumber = 76;
+  inline ::google::protobuf::int32 treasurehead() const;
+  inline void set_treasurehead(::google::protobuf::int32 value);
+
+  // optional int32 TreasureBody = 77 [default = -1];
+  inline bool has_treasurebody() const;
+  inline void clear_treasurebody();
+  static const int kTreasureBodyFieldNumber = 77;
+  inline ::google::protobuf::int32 treasurebody() const;
+  inline void set_treasurebody(::google::protobuf::int32 value);
+
+  // optional int32 TreasureWeapon = 78 [default = -1];
+  inline bool has_treasureweapon() const;
+  inline void clear_treasureweapon();
+  static const int kTreasureWeaponFieldNumber = 78;
+  inline ::google::protobuf::int32 treasureweapon() const;
+  inline void set_treasureweapon(::google::protobuf::int32 value);
+
+  // optional int32 TreasureWing = 79 [default = -1];
+  inline bool has_treasurewing() const;
+  inline void clear_treasurewing();
+  static const int kTreasureWingFieldNumber = 79;
+  inline ::google::protobuf::int32 treasurewing() const;
+  inline void set_treasurewing(::google::protobuf::int32 value);
+
+  // optional uint64 GuildGuid = 80 [default = 0];
+  inline bool has_guildguid() const;
+  inline void clear_guildguid();
+  static const int kGuildGuidFieldNumber = 80;
+  inline ::google::protobuf::uint64 guildguid() const;
+  inline void set_guildguid(::google::protobuf::uint64 value);
+
+  // optional int32 TreasureRiding = 81 [default = -1];
+  inline bool has_treasureriding() const;
+  inline void clear_treasureriding();
+  static const int kTreasureRidingFieldNumber = 81;
+  inline ::google::protobuf::int32 treasureriding() const;
+  inline void set_treasureriding(::google::protobuf::int32 value);
+
+  // optional int32 VechicleId = 82 [default = -1];
+  inline bool has_vechicleid() const;
+  inline void clear_vechicleid();
+  static const int kVechicleIdFieldNumber = 82;
+  inline ::google::protobuf::int32 vechicleid() const;
+  inline void set_vechicleid(::google::protobuf::int32 value);
+
+  // optional bool AnimationState = 83 [default = false];
+  inline bool has_animationstate() const;
+  inline void clear_animationstate();
+  static const int kAnimationStateFieldNumber = 83;
+  inline bool animationstate() const;
+  inline void set_animationstate(bool value);
+
+  // optional float RefixDmgRate = 84 [default = 0];
+  inline bool has_refixdmgrate() const;
+  inline void clear_refixdmgrate();
+  static const int kRefixDmgRateFieldNumber = 84;
+  inline float refixdmgrate() const;
+  inline void set_refixdmgrate(float value);
+
+  // optional int32 RefixDmgValue = 85 [default = 0];
+  inline bool has_refixdmgvalue() const;
+  inline void clear_refixdmgvalue();
+  static const int kRefixDmgValueFieldNumber = 85;
+  inline ::google::protobuf::int32 refixdmgvalue() const;
+  inline void set_refixdmgvalue(::google::protobuf::int32 value);
+
+  // optional float RefixHurtRate = 86 [default = 0];
+  inline bool has_refixhurtrate() const;
+  inline void clear_refixhurtrate();
+  static const int kRefixHurtRateFieldNumber = 86;
+  inline float refixhurtrate() const;
+  inline void set_refixhurtrate(float value);
+
+  // optional int32 RefixHurtValue = 87 [default = 0];
+  inline bool has_refixhurtvalue() const;
+  inline void clear_refixhurtvalue();
+  static const int kRefixHurtValueFieldNumber = 87;
+  inline ::google::protobuf::int32 refixhurtvalue() const;
+  inline void set_refixhurtvalue(::google::protobuf::int32 value);
+
+  // optional float RefixHealRate = 88 [default = 0];
+  inline bool has_refixhealrate() const;
+  inline void clear_refixhealrate();
+  static const int kRefixHealRateFieldNumber = 88;
+  inline float refixhealrate() const;
+  inline void set_refixhealrate(float value);
+
+  // optional int32 RefixHealValue = 89 [default = 0];
+  inline bool has_refixhealvalue() const;
+  inline void clear_refixhealvalue();
+  static const int kRefixHealValueFieldNumber = 89;
+  inline ::google::protobuf::int32 refixhealvalue() const;
+  inline void set_refixhealvalue(::google::protobuf::int32 value);
+
+  // optional float RefixCuredRate = 90 [default = 0];
+  inline bool has_refixcuredrate() const;
+  inline void clear_refixcuredrate();
+  static const int kRefixCuredRateFieldNumber = 90;
+  inline float refixcuredrate() const;
+  inline void set_refixcuredrate(float value);
+
+  // optional int32 RefixCuredValue = 91 [default = 0];
+  inline bool has_refixcuredvalue() const;
+  inline void clear_refixcuredvalue();
+  static const int kRefixCuredValueFieldNumber = 91;
+  inline ::google::protobuf::int32 refixcuredvalue() const;
+  inline void set_refixcuredvalue(::google::protobuf::int32 value);
+
+  // optional int64 GuildContribute = 92 [default = -1];
+  inline bool has_guildcontribute() const;
+  inline void clear_guildcontribute();
+  static const int kGuildContributeFieldNumber = 92;
+  inline ::google::protobuf::int64 guildcontribute() const;
+  inline void set_guildcontribute(::google::protobuf::int64 value);
+
+  // optional int64 PvpMoney = 93 [default = -1];
+  inline bool has_pvpmoney() const;
+  inline void clear_pvpmoney();
+  static const int kPvpMoneyFieldNumber = 93;
+  inline ::google::protobuf::int64 pvpmoney() const;
+  inline void set_pvpmoney(::google::protobuf::int64 value);
+
+  // optional int64 GuildResource = 94 [default = -1];
+  inline bool has_guildresource() const;
+  inline void clear_guildresource();
+  static const int kGuildResourceFieldNumber = 94;
+  inline ::google::protobuf::int64 guildresource() const;
+  inline void set_guildresource(::google::protobuf::int64 value);
+
+  // optional int32 CreateRoleTime = 95 [default = 0];
+  inline bool has_createroletime() const;
+  inline void clear_createroletime();
+  static const int kCreateRoleTimeFieldNumber = 95;
+  inline ::google::protobuf::int32 createroletime() const;
+  inline void set_createroletime(::google::protobuf::int32 value);
+
+  // optional int32 UpdateRoleTime = 96 [default = 0];
+  inline bool has_updateroletime() const;
+  inline void clear_updateroletime();
+  static const int kUpdateRoleTimeFieldNumber = 96;
+  inline ::google::protobuf::int32 updateroletime() const;
+  inline void set_updateroletime(::google::protobuf::int32 value);
+
+  // optional bool FightState = 97 [default = false];
+  inline bool has_fightstate() const;
+  inline void clear_fightstate();
+  static const int kFightStateFieldNumber = 97;
+  inline bool fightstate() const;
+  inline void set_fightstate(bool value);
+
+  // repeated int32 AttackSkillList = 98;
+  inline int attackskilllist_size() const;
+  inline void clear_attackskilllist();
+  static const int kAttackSkillListFieldNumber = 98;
+  inline ::google::protobuf::int32 attackskilllist(int index) const;
+  inline void set_attackskilllist(int index, ::google::protobuf::int32 value);
+  inline void add_attackskilllist(::google::protobuf::int32 value);
+  inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+      attackskilllist() const;
+  inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+      mutable_attackskilllist();
+
+  // optional string GuildName = 99;
+  inline bool has_guildname() const;
+  inline void clear_guildname();
+  static const int kGuildNameFieldNumber = 99;
+  inline const ::std::string& guildname() const;
+  inline void set_guildname(const ::std::string& value);
+  inline void set_guildname(const char* value);
+  inline void set_guildname(const char* value, size_t size);
+  inline ::std::string* mutable_guildname();
+  inline ::std::string* release_guildname();
+  inline void set_allocated_guildname(::std::string* guildname);
+
+  // optional bool IsAllowSelect = 100 [default = true];
+  inline bool has_isallowselect() const;
+  inline void clear_isallowselect();
+  static const int kIsAllowSelectFieldNumber = 100;
+  inline bool isallowselect() const;
+  inline void set_isallowselect(bool value);
+
+  // optional bool GoHomeState = 101 [default = false];
+  inline bool has_gohomestate() const;
+  inline void clear_gohomestate();
+  static const int kGoHomeStateFieldNumber = 101;
+  inline bool gohomestate() const;
+  inline void set_gohomestate(bool value);
+
+  // optional bool CanFight = 102 [default = true];
+  inline bool has_canfight() const;
+  inline void clear_canfight();
+  static const int kCanFightFieldNumber = 102;
+  inline bool canfight() const;
+  inline void set_canfight(bool value);
+
+  // optional int64 DoubleExp = 103 [default = -1];
+  inline bool has_doubleexp() const;
+  inline void clear_doubleexp();
+  static const int kDoubleExpFieldNumber = 103;
+  inline ::google::protobuf::int64 doubleexp() const;
+  inline void set_doubleexp(::google::protobuf::int64 value);
+
+  // optional int64 FriendPoint = 104 [default = -1];
+  inline bool has_friendpoint() const;
+  inline void clear_friendpoint();
+  static const int kFriendPointFieldNumber = 104;
+  inline ::google::protobuf::int64 friendpoint() const;
+  inline void set_friendpoint(::google::protobuf::int64 value);
+
+  // optional int64 HisMaxHonor = 105 [default = -1];
+  inline bool has_hismaxhonor() const;
+  inline void clear_hismaxhonor();
+  static const int kHisMaxHonorFieldNumber = 105;
+  inline ::google::protobuf::int64 hismaxhonor() const;
+  inline void set_hismaxhonor(::google::protobuf::int64 value);
+
+  // optional bool HurtState = 106 [default = false];
+  inline bool has_hurtstate() const;
+  inline void clear_hurtstate();
+  static const int kHurtStateFieldNumber = 106;
+  inline bool hurtstate() const;
+  inline void set_hurtstate(bool value);
+
+  // optional bool HurtFlyState = 107 [default = false];
+  inline bool has_hurtflystate() const;
+  inline void clear_hurtflystate();
+  static const int kHurtFlyStateFieldNumber = 107;
+  inline bool hurtflystate() const;
+  inline void set_hurtflystate(bool value);
+
+  // optional bool HurtDownState = 108 [default = false];
+  inline bool has_hurtdownstate() const;
+  inline void clear_hurtdownstate();
+  static const int kHurtDownStateFieldNumber = 108;
+  inline bool hurtdownstate() const;
+  inline void set_hurtdownstate(bool value);
+
+  // optional bool HurtRepelState = 109 [default = false];
+  inline bool has_hurtrepelstate() const;
+  inline void clear_hurtrepelstate();
+  static const int kHurtRepelStateFieldNumber = 109;
+  inline bool hurtrepelstate() const;
+  inline void set_hurtrepelstate(bool value);
+
+  // optional int64 TodayHornor = 111 [default = -1];
+  inline bool has_todayhornor() const;
+  inline void clear_todayhornor();
+  static const int kTodayHornorFieldNumber = 111;
+  inline ::google::protobuf::int64 todayhornor() const;
+  inline void set_todayhornor(::google::protobuf::int64 value);
+
+  // optional int32 CurProfession = 113 [default = -1];
+  inline bool has_curprofession() const;
+  inline void clear_curprofession();
+  static const int kCurProfessionFieldNumber = 113;
+  inline ::google::protobuf::int32 curprofession() const;
+  inline void set_curprofession(::google::protobuf::int32 value);
+
+  // optional int32 PetCreateDelCond = 114 [default = -1];
+  inline bool has_petcreatedelcond() const;
+  inline void clear_petcreatedelcond();
+  static const int kPetCreateDelCondFieldNumber = 114;
+  inline ::google::protobuf::int32 petcreatedelcond() const;
+  inline void set_petcreatedelcond(::google::protobuf::int32 value);
+
+  // optional int32 PetDisplay = 115 [default = 0];
+  inline bool has_petdisplay() const;
+  inline void clear_petdisplay();
+  static const int kPetDisplayFieldNumber = 115;
+  inline ::google::protobuf::int32 petdisplay() const;
+  inline void set_petdisplay(::google::protobuf::int32 value);
+
+  // optional int64 PetMoney = 116 [default = -1];
+  inline bool has_petmoney() const;
+  inline void clear_petmoney();
+  static const int kPetMoneyFieldNumber = 116;
+  inline ::google::protobuf::int64 petmoney() const;
+  inline void set_petmoney(::google::protobuf::int64 value);
+
+  // optional int32 DuelStatus = 117 [default = 0];
+  inline bool has_duelstatus() const;
+  inline void clear_duelstatus();
+  static const int kDuelStatusFieldNumber = 117;
+  inline ::google::protobuf::int32 duelstatus() const;
+  inline void set_duelstatus(::google::protobuf::int32 value);
+
+  // optional int64 ExpPool = 118 [default = -1];
+  inline bool has_exppool() const;
+  inline void clear_exppool();
+  static const int kExpPoolFieldNumber = 118;
+  inline ::google::protobuf::int64 exppool() const;
+  inline void set_exppool(::google::protobuf::int64 value);
+
+  // optional bool RushState = 119 [default = false];
+  inline bool has_rushstate() const;
+  inline void clear_rushstate();
+  static const int kRushStateFieldNumber = 119;
+  inline bool rushstate() const;
+  inline void set_rushstate(bool value);
+
+  // optional uint64 StareState = 120 [default = 0];
+  inline bool has_starestate() const;
+  inline void clear_starestate();
+  static const int kStareStateFieldNumber = 120;
+  inline ::google::protobuf::uint64 starestate() const;
+  inline void set_starestate(::google::protobuf::uint64 value);
+
+  // optional int32 WorldLevel = 121 [default = 0];
+  inline bool has_worldlevel() const;
+  inline void clear_worldlevel();
+  static const int kWorldLevelFieldNumber = 121;
+  inline ::google::protobuf::int32 worldlevel() const;
+  inline void set_worldlevel(::google::protobuf::int32 value);
+
+  // optional float DizzyHitRate = 122 [default = 0];
+  inline bool has_dizzyhitrate() const;
+  inline void clear_dizzyhitrate();
+  static const int kDizzyHitRateFieldNumber = 122;
+  inline float dizzyhitrate() const;
+  inline void set_dizzyhitrate(float value);
+
+  // optional float DizzyResistRate = 123 [default = 0];
+  inline bool has_dizzyresistrate() const;
+  inline void clear_dizzyresistrate();
+  static const int kDizzyResistRateFieldNumber = 123;
+  inline float dizzyresistrate() const;
+  inline void set_dizzyresistrate(float value);
+
+  // optional float ImmovableHitRate = 124 [default = 0];
+  inline bool has_immovablehitrate() const;
+  inline void clear_immovablehitrate();
+  static const int kImmovableHitRateFieldNumber = 124;
+  inline float immovablehitrate() const;
+  inline void set_immovablehitrate(float value);
+
+  // optional float ImmovableResistRate = 125 [default = 0];
+  inline bool has_immovableresistrate() const;
+  inline void clear_immovableresistrate();
+  static const int kImmovableResistRateFieldNumber = 125;
+  inline float immovableresistrate() const;
+  inline void set_immovableresistrate(float value);
+
+  // optional float HurtFlyHitRate = 126 [default = 0];
+  inline bool has_hurtflyhitrate() const;
+  inline void clear_hurtflyhitrate();
+  static const int kHurtFlyHitRateFieldNumber = 126;
+  inline float hurtflyhitrate() const;
+  inline void set_hurtflyhitrate(float value);
+
+  // optional float HurtFlyResistRate = 127 [default = 0];
+  inline bool has_hurtflyresistrate() const;
+  inline void clear_hurtflyresistrate();
+  static const int kHurtFlyResistRateFieldNumber = 127;
+  inline float hurtflyresistrate() const;
+  inline void set_hurtflyresistrate(float value);
+
+  // optional float FrozenHitRate = 128 [default = 0];
+  inline bool has_frozenhitrate() const;
+  inline void clear_frozenhitrate();
+  static const int kFrozenHitRateFieldNumber = 128;
+  inline float frozenhitrate() const;
+  inline void set_frozenhitrate(float value);
+
+  // optional float FrozenResistRate = 129 [default = 0];
+  inline bool has_frozenresistrate() const;
+  inline void clear_frozenresistrate();
+  static const int kFrozenResistRateFieldNumber = 129;
+  inline float frozenresistrate() const;
+  inline void set_frozenresistrate(float value);
+
+  // optional float CleanHitRate = 130 [default = 0];
+  inline bool has_cleanhitrate() const;
+  inline void clear_cleanhitrate();
+  static const int kCleanHitRateFieldNumber = 130;
+  inline float cleanhitrate() const;
+  inline void set_cleanhitrate(float value);
+
+  // optional float CleanResistRate = 131 [default = 0];
+  inline bool has_cleanresistrate() const;
+  inline void clear_cleanresistrate();
+  static const int kCleanResistRateFieldNumber = 131;
+  inline float cleanresistrate() const;
+  inline void set_cleanresistrate(float value);
+
+  // optional float DispelHitRate = 132 [default = 0];
+  inline bool has_dispelhitrate() const;
+  inline void clear_dispelhitrate();
+  static const int kDispelHitRateFieldNumber = 132;
+  inline float dispelhitrate() const;
+  inline void set_dispelhitrate(float value);
+
+  // optional float DispelResistRate = 133 [default = 0];
+  inline bool has_dispelresistrate() const;
+  inline void clear_dispelresistrate();
+  static const int kDispelResistRateFieldNumber = 133;
+  inline float dispelresistrate() const;
+  inline void set_dispelresistrate(float value);
+
+  // optional float SilenceHitRate = 134 [default = 0];
+  inline bool has_silencehitrate() const;
+  inline void clear_silencehitrate();
+  static const int kSilenceHitRateFieldNumber = 134;
+  inline float silencehitrate() const;
+  inline void set_silencehitrate(float value);
+
+  // optional float SilenceResistRate = 135 [default = 0];
+  inline bool has_silenceresistrate() const;
+  inline void clear_silenceresistrate();
+  static const int kSilenceResistRateFieldNumber = 135;
+  inline float silenceresistrate() const;
+  inline void set_silenceresistrate(float value);
+
+  // optional float InterruptHitRate = 136 [default = 0];
+  inline bool has_interrupthitrate() const;
+  inline void clear_interrupthitrate();
+  static const int kInterruptHitRateFieldNumber = 136;
+  inline float interrupthitrate() const;
+  inline void set_interrupthitrate(float value);
+
+  // optional float InterruptResistRate = 137 [default = 0];
+  inline bool has_interruptresistrate() const;
+  inline void clear_interruptresistrate();
+  static const int kInterruptResistRateFieldNumber = 137;
+  inline float interruptresistrate() const;
+  inline void set_interruptresistrate(float value);
+
+  // optional float UncurableHitRate = 138 [default = 0];
+  inline bool has_uncurablehitrate() const;
+  inline void clear_uncurablehitrate();
+  static const int kUncurableHitRateFieldNumber = 138;
+  inline float uncurablehitrate() const;
+  inline void set_uncurablehitrate(float value);
+
+  // optional float UncurableResistRate = 139 [default = 0];
+  inline bool has_uncurableresistrate() const;
+  inline void clear_uncurableresistrate();
+  static const int kUncurableResistRateFieldNumber = 139;
+  inline float uncurableresistrate() const;
+  inline void set_uncurableresistrate(float value);
+
+  // optional int32 Transform = 140 [default = -1];
+  inline bool has_transform() const;
+  inline void clear_transform();
+  static const int kTransformFieldNumber = 140;
+  inline ::google::protobuf::int32 transform() const;
+  inline void set_transform(::google::protobuf::int32 value);
+
+  // optional float HumanHurtRate = 141 [default = 0];
+  inline bool has_humanhurtrate() const;
+  inline void clear_humanhurtrate();
+  static const int kHumanHurtRateFieldNumber = 141;
+  inline float humanhurtrate() const;
+  inline void set_humanhurtrate(float value);
+
+  // optional float HumanSufferRate = 142 [default = 0];
+  inline bool has_humansufferrate() const;
+  inline void clear_humansufferrate();
+  static const int kHumanSufferRateFieldNumber = 142;
+  inline float humansufferrate() const;
+  inline void set_humansufferrate(float value);
+
+  // optional float MonsterHurtRate = 143 [default = 0];
+  inline bool has_monsterhurtrate() const;
+  inline void clear_monsterhurtrate();
+  static const int kMonsterHurtRateFieldNumber = 143;
+  inline float monsterhurtrate() const;
+  inline void set_monsterhurtrate(float value);
+
+  // optional float MonsterSufferRate = 144 [default = 0];
+  inline bool has_monstersufferrate() const;
+  inline void clear_monstersufferrate();
+  static const int kMonsterSufferRateFieldNumber = 144;
+  inline float monstersufferrate() const;
+  inline void set_monstersufferrate(float value);
+
+  // optional float BossHurtRate = 145 [default = 0];
+  inline bool has_bosshurtrate() const;
+  inline void clear_bosshurtrate();
+  static const int kBossHurtRateFieldNumber = 145;
+  inline float bosshurtrate() const;
+  inline void set_bosshurtrate(float value);
+
+  // optional float BossSufferRate = 146 [default = 0];
+  inline bool has_bosssufferrate() const;
+  inline void clear_bosssufferrate();
+  static const int kBossSufferRateFieldNumber = 146;
+  inline float bosssufferrate() const;
+  inline void set_bosssufferrate(float value);
+
+  // optional int32 DodgReduceValue = 147 [default = 0];
+  inline bool has_dodgreducevalue() const;
+  inline void clear_dodgreducevalue();
+  static const int kDodgReduceValueFieldNumber = 147;
+  inline ::google::protobuf::int32 dodgreducevalue() const;
+  inline void set_dodgreducevalue(::google::protobuf::int32 value);
+
+  // optional float DodgReduceRate = 148 [default = 0];
+  inline bool has_dodgreducerate() const;
+  inline void clear_dodgreducerate();
+  static const int kDodgReduceRateFieldNumber = 148;
+  inline float dodgreducerate() const;
+  inline void set_dodgreducerate(float value);
+
+  // optional int32 DodgAddValue = 149 [default = 0];
+  inline bool has_dodgaddvalue() const;
+  inline void clear_dodgaddvalue();
+  static const int kDodgAddValueFieldNumber = 149;
+  inline ::google::protobuf::int32 dodgaddvalue() const;
+  inline void set_dodgaddvalue(::google::protobuf::int32 value);
+
+  // optional float DodgAddRate = 150 [default = 0];
+  inline bool has_dodgaddrate() const;
+  inline void clear_dodgaddrate();
+  static const int kDodgAddRateFieldNumber = 150;
+  inline float dodgaddrate() const;
+  inline void set_dodgaddrate(float value);
+
+  // optional int32 TreasureFootPrint = 151 [default = -1];
+  inline bool has_treasurefootprint() const;
+  inline void clear_treasurefootprint();
+  static const int kTreasureFootPrintFieldNumber = 151;
+  inline ::google::protobuf::int32 treasurefootprint() const;
+  inline void set_treasurefootprint(::google::protobuf::int32 value);
+
+  // optional int32 EquipTitle = 152 [default = -1];
+  inline bool has_equiptitle() const;
+  inline void clear_equiptitle();
+  static const int kEquipTitleFieldNumber = 152;
+  inline ::google::protobuf::int32 equiptitle() const;
+  inline void set_equiptitle(::google::protobuf::int32 value);
+
+  // repeated int32 ObjAnimEvent = 153;
+  inline int objanimevent_size() const;
+  inline void clear_objanimevent();
+  static const int kObjAnimEventFieldNumber = 153;
+  inline ::google::protobuf::int32 objanimevent(int index) const;
+  inline void set_objanimevent(int index, ::google::protobuf::int32 value);
+  inline void add_objanimevent(::google::protobuf::int32 value);
+  inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+      objanimevent() const;
+  inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+      mutable_objanimevent();
+
+  // optional string PinchData = 154;
+  inline bool has_pinchdata() const;
+  inline void clear_pinchdata();
+  static const int kPinchDataFieldNumber = 154;
+  inline const ::std::string& pinchdata() const;
+  inline void set_pinchdata(const ::std::string& value);
+  inline void set_pinchdata(const char* value);
+  inline void set_pinchdata(const char* value, size_t size);
+  inline ::std::string* mutable_pinchdata();
+  inline ::std::string* release_pinchdata();
+  inline void set_allocated_pinchdata(::std::string* pinchdata);
+
+  // optional float SkillCDRate = 155 [default = 1];
+  inline bool has_skillcdrate() const;
+  inline void clear_skillcdrate();
+  static const int kSkillCDRateFieldNumber = 155;
+  inline float skillcdrate() const;
+  inline void set_skillcdrate(float value);
+
+  // optional float AspdRate = 156 [default = 1];
+  inline bool has_aspdrate() const;
+  inline void clear_aspdrate();
+  static const int kAspdRateFieldNumber = 156;
+  inline float aspdrate() const;
+  inline void set_aspdrate(float value);
+
+  // optional int32 Shield = 157 [default = 0];
+  inline bool has_shield() const;
+  inline void clear_shield();
+  static const int kShieldFieldNumber = 157;
+  inline ::google::protobuf::int32 shield() const;
+  inline void set_shield(::google::protobuf::int32 value);
+
+  // optional int32 EventLeftCount = 158 [default = -1];
+  inline bool has_eventleftcount() const;
+  inline void clear_eventleftcount();
+  static const int kEventLeftCountFieldNumber = 158;
+  inline ::google::protobuf::int32 eventleftcount() const;
+  inline void set_eventleftcount(::google::protobuf::int32 value);
+
+  // optional int32 CanNotRush = 159 [default = 0];
+  inline bool has_cannotrush() const;
+  inline void clear_cannotrush();
+  static const int kCanNotRushFieldNumber = 159;
+  inline ::google::protobuf::int32 cannotrush() const;
+  inline void set_cannotrush(::google::protobuf::int32 value);
+
+  // optional int32 HuntPoint = 160 [default = 0];
+  inline bool has_huntpoint() const;
+  inline void clear_huntpoint();
+  static const int kHuntPointFieldNumber = 160;
+  inline ::google::protobuf::int32 huntpoint() const;
+  inline void set_huntpoint(::google::protobuf::int32 value);
+
+  // optional int32 HuntHighTimes = 161 [default = 0];
+  inline bool has_hunthightimes() const;
+  inline void clear_hunthightimes();
+  static const int kHuntHighTimesFieldNumber = 161;
+  inline ::google::protobuf::int32 hunthightimes() const;
+  inline void set_hunthightimes(::google::protobuf::int32 value);
+
+  // optional int32 HuntFirePoint = 162 [default = 0];
+  inline bool has_huntfirepoint() const;
+  inline void clear_huntfirepoint();
+  static const int kHuntFirePointFieldNumber = 162;
+  inline ::google::protobuf::int32 huntfirepoint() const;
+  inline void set_huntfirepoint(::google::protobuf::int32 value);
+
+  // optional int32 Starbattlestate = 163 [default = 1];
+  inline bool has_starbattlestate() const;
+  inline void clear_starbattlestate();
+  static const int kStarbattlestateFieldNumber = 163;
+  inline ::google::protobuf::int32 starbattlestate() const;
+  inline void set_starbattlestate(::google::protobuf::int32 value);
+
+  // optional bool IgnoreMotionBlock = 164 [default = false];
+  inline bool has_ignoremotionblock() const;
+  inline void clear_ignoremotionblock();
+  static const int kIgnoreMotionBlockFieldNumber = 164;
+  inline bool ignoremotionblock() const;
+  inline void set_ignoremotionblock(bool value);
+
+  // optional bool EnableInteract = 165 [default = false];
+  inline bool has_enableinteract() const;
+  inline void clear_enableinteract();
+  static const int kEnableInteractFieldNumber = 165;
+  inline bool enableinteract() const;
+  inline void set_enableinteract(bool value);
+
+  // optional int32 WorldMedal = 166 [default = 0];
+  inline bool has_worldmedal() const;
+  inline void clear_worldmedal();
+  static const int kWorldMedalFieldNumber = 166;
+  inline ::google::protobuf::int32 worldmedal() const;
+  inline void set_worldmedal(::google::protobuf::int32 value);
+
+  // optional int32 CureCeiling = 168 [default = -1];
+  inline bool has_cureceiling() const;
+  inline void clear_cureceiling();
+  static const int kCureCeilingFieldNumber = 168;
+  inline ::google::protobuf::int32 cureceiling() const;
+  inline void set_cureceiling(::google::protobuf::int32 value);
+
+  // optional int32 RelationUnionCurrency = 169 [default = 0];
+  inline bool has_relationunioncurrency() const;
+  inline void clear_relationunioncurrency();
+  static const int kRelationUnionCurrencyFieldNumber = 169;
+  inline ::google::protobuf::int32 relationunioncurrency() const;
+  inline void set_relationunioncurrency(::google::protobuf::int32 value);
+
+  // optional string GuildShortName = 170;
+  inline bool has_guildshortname() const;
+  inline void clear_guildshortname();
+  static const int kGuildShortNameFieldNumber = 170;
+  inline const ::std::string& guildshortname() const;
+  inline void set_guildshortname(const ::std::string& value);
+  inline void set_guildshortname(const char* value);
+  inline void set_guildshortname(const char* value, size_t size);
+  inline ::std::string* mutable_guildshortname();
+  inline ::std::string* release_guildshortname();
+  inline void set_allocated_guildshortname(::std::string* guildshortname);
+
+  // optional int32 GuildShortColorID = 171 [default = -1];
+  inline bool has_guildshortcolorid() const;
+  inline void clear_guildshortcolorid();
+  static const int kGuildShortColorIDFieldNumber = 171;
+  inline ::google::protobuf::int32 guildshortcolorid() const;
+  inline void set_guildshortcolorid(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:BaseAttrUserDataV1)
  private:
   inline void set_has_exp();
@@ -402,8 +1250,6 @@ class BaseAttrUserDataV1 : public ::google::protobuf::Message {
   inline void clear_has_intellectual();
   inline void set_has_endurance();
   inline void clear_has_endurance();
-  inline void set_has_spirit();
-  inline void clear_has_spirit();
   inline void set_has_hp();
   inline void clear_has_hp();
   inline void set_has_maxhp();
@@ -470,18 +1316,245 @@ class BaseAttrUserDataV1 : public ::google::protobuf::Message {
   inline void clear_has_physicoppose();
   inline void set_has_magicoppose();
   inline void clear_has_magicoppose();
+  inline void set_has_accumulateskienergy();
+  inline void clear_has_accumulateskienergy();
+  inline void set_has_nickname();
+  inline void clear_has_nickname();
+  inline void set_has_configid();
+  inline void clear_has_configid();
+  inline void set_has_objtype();
+  inline void clear_has_objtype();
+  inline void set_has_state();
+  inline void clear_has_state();
+  inline void set_has_ownerobjid();
+  inline void clear_has_ownerobjid();
+  inline void set_has_camp();
+  inline void clear_has_camp();
+  inline void set_has_silvermoney();
+  inline void clear_has_silvermoney();
+  inline void set_has_goldmoney();
+  inline void clear_has_goldmoney();
+  inline void set_has_diamondmoney();
+  inline void clear_has_diamondmoney();
+  inline void set_has_bindingdiamondmoney();
+  inline void clear_has_bindingdiamondmoney();
+  inline void set_has_battlescore();
+  inline void clear_has_battlescore();
+  inline void set_has_energy();
+  inline void clear_has_energy();
+  inline void set_has_guildmoney();
+  inline void clear_has_guildmoney();
+  inline void set_has_honormoney();
+  inline void clear_has_honormoney();
+  inline void set_has_resourcepoolhp();
+  inline void clear_has_resourcepoolhp();
+  inline void set_has_attackadd();
+  inline void clear_has_attackadd();
+  inline void set_has_injuryadd();
+  inline void clear_has_injuryadd();
+  inline void set_has_frozenstate();
+  inline void clear_has_frozenstate();
+  inline void set_has_silentstate();
+  inline void clear_has_silentstate();
+  inline void set_has_guildcontributehistorymax();
+  inline void clear_has_guildcontributehistorymax();
+  inline void set_has_teamid();
+  inline void clear_has_teamid();
+  inline void set_has_treasurehair();
+  inline void clear_has_treasurehair();
+  inline void set_has_treasurehead();
+  inline void clear_has_treasurehead();
+  inline void set_has_treasurebody();
+  inline void clear_has_treasurebody();
+  inline void set_has_treasureweapon();
+  inline void clear_has_treasureweapon();
+  inline void set_has_treasurewing();
+  inline void clear_has_treasurewing();
+  inline void set_has_guildguid();
+  inline void clear_has_guildguid();
+  inline void set_has_treasureriding();
+  inline void clear_has_treasureriding();
+  inline void set_has_vechicleid();
+  inline void clear_has_vechicleid();
+  inline void set_has_animationstate();
+  inline void clear_has_animationstate();
+  inline void set_has_refixdmgrate();
+  inline void clear_has_refixdmgrate();
+  inline void set_has_refixdmgvalue();
+  inline void clear_has_refixdmgvalue();
+  inline void set_has_refixhurtrate();
+  inline void clear_has_refixhurtrate();
+  inline void set_has_refixhurtvalue();
+  inline void clear_has_refixhurtvalue();
+  inline void set_has_refixhealrate();
+  inline void clear_has_refixhealrate();
+  inline void set_has_refixhealvalue();
+  inline void clear_has_refixhealvalue();
+  inline void set_has_refixcuredrate();
+  inline void clear_has_refixcuredrate();
+  inline void set_has_refixcuredvalue();
+  inline void clear_has_refixcuredvalue();
+  inline void set_has_guildcontribute();
+  inline void clear_has_guildcontribute();
+  inline void set_has_pvpmoney();
+  inline void clear_has_pvpmoney();
+  inline void set_has_guildresource();
+  inline void clear_has_guildresource();
+  inline void set_has_createroletime();
+  inline void clear_has_createroletime();
+  inline void set_has_updateroletime();
+  inline void clear_has_updateroletime();
+  inline void set_has_fightstate();
+  inline void clear_has_fightstate();
+  inline void set_has_guildname();
+  inline void clear_has_guildname();
+  inline void set_has_isallowselect();
+  inline void clear_has_isallowselect();
+  inline void set_has_gohomestate();
+  inline void clear_has_gohomestate();
+  inline void set_has_canfight();
+  inline void clear_has_canfight();
+  inline void set_has_doubleexp();
+  inline void clear_has_doubleexp();
+  inline void set_has_friendpoint();
+  inline void clear_has_friendpoint();
+  inline void set_has_hismaxhonor();
+  inline void clear_has_hismaxhonor();
+  inline void set_has_hurtstate();
+  inline void clear_has_hurtstate();
+  inline void set_has_hurtflystate();
+  inline void clear_has_hurtflystate();
+  inline void set_has_hurtdownstate();
+  inline void clear_has_hurtdownstate();
+  inline void set_has_hurtrepelstate();
+  inline void clear_has_hurtrepelstate();
+  inline void set_has_todayhornor();
+  inline void clear_has_todayhornor();
+  inline void set_has_curprofession();
+  inline void clear_has_curprofession();
+  inline void set_has_petcreatedelcond();
+  inline void clear_has_petcreatedelcond();
+  inline void set_has_petdisplay();
+  inline void clear_has_petdisplay();
+  inline void set_has_petmoney();
+  inline void clear_has_petmoney();
+  inline void set_has_duelstatus();
+  inline void clear_has_duelstatus();
+  inline void set_has_exppool();
+  inline void clear_has_exppool();
+  inline void set_has_rushstate();
+  inline void clear_has_rushstate();
+  inline void set_has_starestate();
+  inline void clear_has_starestate();
+  inline void set_has_worldlevel();
+  inline void clear_has_worldlevel();
+  inline void set_has_dizzyhitrate();
+  inline void clear_has_dizzyhitrate();
+  inline void set_has_dizzyresistrate();
+  inline void clear_has_dizzyresistrate();
+  inline void set_has_immovablehitrate();
+  inline void clear_has_immovablehitrate();
+  inline void set_has_immovableresistrate();
+  inline void clear_has_immovableresistrate();
+  inline void set_has_hurtflyhitrate();
+  inline void clear_has_hurtflyhitrate();
+  inline void set_has_hurtflyresistrate();
+  inline void clear_has_hurtflyresistrate();
+  inline void set_has_frozenhitrate();
+  inline void clear_has_frozenhitrate();
+  inline void set_has_frozenresistrate();
+  inline void clear_has_frozenresistrate();
+  inline void set_has_cleanhitrate();
+  inline void clear_has_cleanhitrate();
+  inline void set_has_cleanresistrate();
+  inline void clear_has_cleanresistrate();
+  inline void set_has_dispelhitrate();
+  inline void clear_has_dispelhitrate();
+  inline void set_has_dispelresistrate();
+  inline void clear_has_dispelresistrate();
+  inline void set_has_silencehitrate();
+  inline void clear_has_silencehitrate();
+  inline void set_has_silenceresistrate();
+  inline void clear_has_silenceresistrate();
+  inline void set_has_interrupthitrate();
+  inline void clear_has_interrupthitrate();
+  inline void set_has_interruptresistrate();
+  inline void clear_has_interruptresistrate();
+  inline void set_has_uncurablehitrate();
+  inline void clear_has_uncurablehitrate();
+  inline void set_has_uncurableresistrate();
+  inline void clear_has_uncurableresistrate();
+  inline void set_has_transform();
+  inline void clear_has_transform();
+  inline void set_has_humanhurtrate();
+  inline void clear_has_humanhurtrate();
+  inline void set_has_humansufferrate();
+  inline void clear_has_humansufferrate();
+  inline void set_has_monsterhurtrate();
+  inline void clear_has_monsterhurtrate();
+  inline void set_has_monstersufferrate();
+  inline void clear_has_monstersufferrate();
+  inline void set_has_bosshurtrate();
+  inline void clear_has_bosshurtrate();
+  inline void set_has_bosssufferrate();
+  inline void clear_has_bosssufferrate();
+  inline void set_has_dodgreducevalue();
+  inline void clear_has_dodgreducevalue();
+  inline void set_has_dodgreducerate();
+  inline void clear_has_dodgreducerate();
+  inline void set_has_dodgaddvalue();
+  inline void clear_has_dodgaddvalue();
+  inline void set_has_dodgaddrate();
+  inline void clear_has_dodgaddrate();
+  inline void set_has_treasurefootprint();
+  inline void clear_has_treasurefootprint();
+  inline void set_has_equiptitle();
+  inline void clear_has_equiptitle();
+  inline void set_has_pinchdata();
+  inline void clear_has_pinchdata();
+  inline void set_has_skillcdrate();
+  inline void clear_has_skillcdrate();
+  inline void set_has_aspdrate();
+  inline void clear_has_aspdrate();
+  inline void set_has_shield();
+  inline void clear_has_shield();
+  inline void set_has_eventleftcount();
+  inline void clear_has_eventleftcount();
+  inline void set_has_cannotrush();
+  inline void clear_has_cannotrush();
+  inline void set_has_huntpoint();
+  inline void clear_has_huntpoint();
+  inline void set_has_hunthightimes();
+  inline void clear_has_hunthightimes();
+  inline void set_has_huntfirepoint();
+  inline void clear_has_huntfirepoint();
+  inline void set_has_starbattlestate();
+  inline void clear_has_starbattlestate();
+  inline void set_has_ignoremotionblock();
+  inline void clear_has_ignoremotionblock();
+  inline void set_has_enableinteract();
+  inline void clear_has_enableinteract();
+  inline void set_has_worldmedal();
+  inline void clear_has_worldmedal();
+  inline void set_has_cureceiling();
+  inline void clear_has_cureceiling();
+  inline void set_has_relationunioncurrency();
+  inline void clear_has_relationunioncurrency();
+  inline void set_has_guildshortname();
+  inline void clear_has_guildshortname();
+  inline void set_has_guildshortcolorid();
+  inline void clear_has_guildshortcolorid();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::int32 exp_;
   ::google::protobuf::int32 level_;
-  ::google::protobuf::int64 servertime_;
-  ::google::protobuf::int64 roleid_;
+  ::google::protobuf::uint64 roleid_;
+  ::google::protobuf::int32 servertime_;
   ::google::protobuf::int32 strength_;
   ::google::protobuf::int32 agility_;
   ::google::protobuf::int32 intellectual_;
   ::google::protobuf::int32 endurance_;
-  ::google::protobuf::int32 spirit_;
   ::google::protobuf::int32 hp_;
   ::google::protobuf::int32 maxhp_;
   ::google::protobuf::int32 physicattack_;
@@ -508,16 +1581,133 @@ class BaseAttrUserDataV1 : public ::google::protobuf::Message {
   ::google::protobuf::int32 criticallevel_;
   ::google::protobuf::int32 dodglevel_;
   float movespeed_;
-  bool dizzystate_;
-  bool godstate_;
-  bool cantmovestate_;
+  ::google::protobuf::int32 dizzystate_;
+  ::google::protobuf::int32 cantmovestate_;
   float physicaddition_;
   float magicaddition_;
   float physicoppose_;
   float magicoppose_;
+  float accumulateskienergy_;
+  ::std::string* nickname_;
+  ::google::protobuf::int32 configid_;
+  ::google::protobuf::int32 objtype_;
+  ::google::protobuf::uint64 ownerobjid_;
+  ::google::protobuf::int32 state_;
+  ::google::protobuf::int32 camp_;
+  ::google::protobuf::int64 silvermoney_;
+  ::google::protobuf::int64 goldmoney_;
+  ::google::protobuf::int64 diamondmoney_;
+  ::google::protobuf::int64 bindingdiamondmoney_;
+  ::google::protobuf::int64 energy_;
+  ::google::protobuf::int64 guildmoney_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 > skilllist_;
+  ::google::protobuf::int32 battlescore_;
+  ::google::protobuf::int32 attackadd_;
+  ::google::protobuf::int64 honormoney_;
+  ::google::protobuf::int64 resourcepoolhp_;
+  ::google::protobuf::int32 injuryadd_;
+  ::google::protobuf::int32 frozenstate_;
+  ::google::protobuf::int64 guildcontributehistorymax_;
+  ::google::protobuf::int32 silentstate_;
+  ::google::protobuf::int32 treasurehair_;
+  ::google::protobuf::uint64 teamid_;
+  ::google::protobuf::int32 treasurehead_;
+  ::google::protobuf::int32 treasurebody_;
+  ::google::protobuf::int32 treasureweapon_;
+  ::google::protobuf::int32 treasurewing_;
+  ::google::protobuf::uint64 guildguid_;
+  ::google::protobuf::int32 treasureriding_;
+  bool godstate_;
+  bool animationstate_;
+  bool fightstate_;
+  bool isallowselect_;
+  ::google::protobuf::int32 vechicleid_;
+  float refixdmgrate_;
+  ::google::protobuf::int32 refixdmgvalue_;
+  float refixhurtrate_;
+  ::google::protobuf::int32 refixhurtvalue_;
+  float refixhealrate_;
+  ::google::protobuf::int32 refixhealvalue_;
+  float refixcuredrate_;
+  ::google::protobuf::int64 guildcontribute_;
+  ::google::protobuf::int64 pvpmoney_;
+  ::google::protobuf::int32 refixcuredvalue_;
+  ::google::protobuf::int32 createroletime_;
+  ::google::protobuf::int64 guildresource_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 > attackskilllist_;
+  ::std::string* guildname_;
+  ::google::protobuf::int32 updateroletime_;
+  bool gohomestate_;
+  bool canfight_;
+  bool hurtstate_;
+  bool hurtflystate_;
+  ::google::protobuf::int64 doubleexp_;
+  ::google::protobuf::int64 friendpoint_;
+  ::google::protobuf::int64 hismaxhonor_;
+  ::google::protobuf::int64 todayhornor_;
+  ::google::protobuf::int32 curprofession_;
+  ::google::protobuf::int32 petcreatedelcond_;
+  ::google::protobuf::int64 petmoney_;
+  ::google::protobuf::int32 petdisplay_;
+  ::google::protobuf::int32 duelstatus_;
+  ::google::protobuf::int64 exppool_;
+  ::google::protobuf::uint64 starestate_;
+  ::google::protobuf::int32 worldlevel_;
+  float dizzyhitrate_;
+  float dizzyresistrate_;
+  float immovablehitrate_;
+  float immovableresistrate_;
+  float hurtflyhitrate_;
+  bool hurtdownstate_;
+  bool hurtrepelstate_;
+  bool rushstate_;
+  bool ignoremotionblock_;
+  float hurtflyresistrate_;
+  float frozenhitrate_;
+  float frozenresistrate_;
+  float cleanhitrate_;
+  float cleanresistrate_;
+  float dispelhitrate_;
+  float dispelresistrate_;
+  float silencehitrate_;
+  float silenceresistrate_;
+  float interrupthitrate_;
+  float interruptresistrate_;
+  float uncurablehitrate_;
+  float uncurableresistrate_;
+  ::google::protobuf::int32 transform_;
+  float humanhurtrate_;
+  float humansufferrate_;
+  float monsterhurtrate_;
+  float monstersufferrate_;
+  float bosshurtrate_;
+  float bosssufferrate_;
+  ::google::protobuf::int32 dodgreducevalue_;
+  float dodgreducerate_;
+  ::google::protobuf::int32 dodgaddvalue_;
+  float dodgaddrate_;
+  ::google::protobuf::int32 treasurefootprint_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 > objanimevent_;
+  ::google::protobuf::int32 equiptitle_;
+  float skillcdrate_;
+  ::std::string* pinchdata_;
+  float aspdrate_;
+  ::google::protobuf::int32 shield_;
+  ::google::protobuf::int32 eventleftcount_;
+  ::google::protobuf::int32 cannotrush_;
+  ::google::protobuf::int32 huntpoint_;
+  ::google::protobuf::int32 hunthightimes_;
+  ::google::protobuf::int32 huntfirepoint_;
+  ::google::protobuf::int32 starbattlestate_;
+  bool enableinteract_;
+  ::google::protobuf::int32 worldmedal_;
+  ::google::protobuf::int32 cureceiling_;
+  ::google::protobuf::int32 relationunioncurrency_;
+  ::std::string* guildshortname_;
+  ::google::protobuf::int32 guildshortcolorid_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(42 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(158 + 31) / 32];
 
   friend void  protobuf_AddDesc_BaseAttrV1Data_2eproto();
   friend void protobuf_AssignDesc_BaseAttrV1Data_2eproto();
@@ -526,6 +1716,118 @@ class BaseAttrUserDataV1 : public ::google::protobuf::Message {
   void InitAsDefaultInstance();
   static BaseAttrUserDataV1* default_instance_;
 };
+// -------------------------------------------------------------------
+
+class BaseAttrObjDataV1 : public ::google::protobuf::Message {
+ public:
+  BaseAttrObjDataV1();
+  virtual ~BaseAttrObjDataV1();
+
+  BaseAttrObjDataV1(const BaseAttrObjDataV1& from);
+
+  inline BaseAttrObjDataV1& operator=(const BaseAttrObjDataV1& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const BaseAttrObjDataV1& default_instance();
+
+  void Swap(BaseAttrObjDataV1* other);
+
+  // implements Message ----------------------------------------------
+
+  BaseAttrObjDataV1* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const BaseAttrObjDataV1& from);
+  void MergeFrom(const BaseAttrObjDataV1& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // optional int32 ObjType = 1 [default = -1];
+  inline bool has_objtype() const;
+  inline void clear_objtype();
+  static const int kObjTypeFieldNumber = 1;
+  inline ::google::protobuf::int32 objtype() const;
+  inline void set_objtype(::google::protobuf::int32 value);
+
+  // optional int32 ConfigId = 2 [default = -1];
+  inline bool has_configid() const;
+  inline void clear_configid();
+  static const int kConfigIdFieldNumber = 2;
+  inline ::google::protobuf::int32 configid() const;
+  inline void set_configid(::google::protobuf::int32 value);
+
+  // optional int32 State = 3 [default = -1];
+  inline bool has_state() const;
+  inline void clear_state();
+  static const int kStateFieldNumber = 3;
+  inline ::google::protobuf::int32 state() const;
+  inline void set_state(::google::protobuf::int32 value);
+
+  // optional uint64 OwnerObjId = 4 [default = 0];
+  inline bool has_ownerobjid() const;
+  inline void clear_ownerobjid();
+  static const int kOwnerObjIdFieldNumber = 4;
+  inline ::google::protobuf::uint64 ownerobjid() const;
+  inline void set_ownerobjid(::google::protobuf::uint64 value);
+
+  // @@protoc_insertion_point(class_scope:BaseAttrObjDataV1)
+ private:
+  inline void set_has_objtype();
+  inline void clear_has_objtype();
+  inline void set_has_configid();
+  inline void clear_has_configid();
+  inline void set_has_state();
+  inline void clear_has_state();
+  inline void set_has_ownerobjid();
+  inline void clear_has_ownerobjid();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 objtype_;
+  ::google::protobuf::int32 configid_;
+  ::google::protobuf::uint64 ownerobjid_;
+  ::google::protobuf::int32 state_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(4 + 31) / 32];
+
+  friend void  protobuf_AddDesc_BaseAttrV1Data_2eproto();
+  friend void protobuf_AssignDesc_BaseAttrV1Data_2eproto();
+  friend void protobuf_ShutdownFile_BaseAttrV1Data_2eproto();
+
+  void InitAsDefaultInstance();
+  static BaseAttrObjDataV1* default_instance_;
+};
 // ===================================================================
 
 
@@ -533,7 +1835,7 @@ class BaseAttrUserDataV1 : public ::google::protobuf::Message {
 
 // BaseAttrUserDataV1
 
-// optional sint32 Exp = 1 [default = 0];
+// optional int32 Exp = 1 [default = 0];
 inline bool BaseAttrUserDataV1::has_exp() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -555,7 +1857,7 @@ inline void BaseAttrUserDataV1::set_exp(::google::protobuf::int32 value) {
   exp_ = value;
 }
 
-// optional sint32 Level = 3 [default = 0];
+// optional int32 Level = 3 [default = 0];
 inline bool BaseAttrUserDataV1::has_level() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -577,7 +1879,7 @@ inline void BaseAttrUserDataV1::set_level(::google::protobuf::int32 value) {
   level_ = value;
 }
 
-// optional int64 ServerTime = 4 [default = -1];
+// optional int32 ServerTime = 4 [default = -1];
 inline bool BaseAttrUserDataV1::has_servertime() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -588,18 +1890,18 @@ inline void BaseAttrUserDataV1::clear_has_servertime() {
   _has_bits_[0] &= ~0x00000004u;
 }
 inline void BaseAttrUserDataV1::clear_servertime() {
-  servertime_ = GOOGLE_LONGLONG(-1);
+  servertime_ = -1;
   clear_has_servertime();
 }
-inline ::google::protobuf::int64 BaseAttrUserDataV1::servertime() const {
+inline ::google::protobuf::int32 BaseAttrUserDataV1::servertime() const {
   return servertime_;
 }
-inline void BaseAttrUserDataV1::set_servertime(::google::protobuf::int64 value) {
+inline void BaseAttrUserDataV1::set_servertime(::google::protobuf::int32 value) {
   set_has_servertime();
   servertime_ = value;
 }
 
-// optional int64 RoleId = 5 [default = -1];
+// optional uint64 RoleId = 5 [default = 0];
 inline bool BaseAttrUserDataV1::has_roleid() const {
   return (_has_bits_[0] & 0x00000008u) != 0;
 }
@@ -610,13 +1912,13 @@ inline void BaseAttrUserDataV1::clear_has_roleid() {
   _has_bits_[0] &= ~0x00000008u;
 }
 inline void BaseAttrUserDataV1::clear_roleid() {
-  roleid_ = GOOGLE_LONGLONG(-1);
+  roleid_ = GOOGLE_ULONGLONG(0);
   clear_has_roleid();
 }
-inline ::google::protobuf::int64 BaseAttrUserDataV1::roleid() const {
+inline ::google::protobuf::uint64 BaseAttrUserDataV1::roleid() const {
   return roleid_;
 }
-inline void BaseAttrUserDataV1::set_roleid(::google::protobuf::int64 value) {
+inline void BaseAttrUserDataV1::set_roleid(::google::protobuf::uint64 value) {
   set_has_roleid();
   roleid_ = value;
 }
@@ -709,37 +2011,15 @@ inline void BaseAttrUserDataV1::set_endurance(::google::protobuf::int32 value) {
   endurance_ = value;
 }
 
-// optional int32 Spirit = 11 [default = 0];
-inline bool BaseAttrUserDataV1::has_spirit() const {
-  return (_has_bits_[0] & 0x00000100u) != 0;
-}
-inline void BaseAttrUserDataV1::set_has_spirit() {
-  _has_bits_[0] |= 0x00000100u;
-}
-inline void BaseAttrUserDataV1::clear_has_spirit() {
-  _has_bits_[0] &= ~0x00000100u;
-}
-inline void BaseAttrUserDataV1::clear_spirit() {
-  spirit_ = 0;
-  clear_has_spirit();
-}
-inline ::google::protobuf::int32 BaseAttrUserDataV1::spirit() const {
-  return spirit_;
-}
-inline void BaseAttrUserDataV1::set_spirit(::google::protobuf::int32 value) {
-  set_has_spirit();
-  spirit_ = value;
-}
-
 // optional int32 Hp = 12 [default = 0];
 inline bool BaseAttrUserDataV1::has_hp() const {
-  return (_has_bits_[0] & 0x00000200u) != 0;
+  return (_has_bits_[0] & 0x00000100u) != 0;
 }
 inline void BaseAttrUserDataV1::set_has_hp() {
-  _has_bits_[0] |= 0x00000200u;
+  _has_bits_[0] |= 0x00000100u;
 }
 inline void BaseAttrUserDataV1::clear_has_hp() {
-  _has_bits_[0] &= ~0x00000200u;
+  _has_bits_[0] &= ~0x00000100u;
 }
 inline void BaseAttrUserDataV1::clear_hp() {
   hp_ = 0;
@@ -755,13 +2035,13 @@ inline void BaseAttrUserDataV1::set_hp(::google::protobuf::int32 value) {
 
 // optional int32 MaxHp = 14 [default = 0];
 inline bool BaseAttrUserDataV1::has_maxhp() const {
-  return (_has_bits_[0] & 0x00000400u) != 0;
+  return (_has_bits_[0] & 0x00000200u) != 0;
 }
 inline void BaseAttrUserDataV1::set_has_maxhp() {
-  _has_bits_[0] |= 0x00000400u;
+  _has_bits_[0] |= 0x00000200u;
 }
 inline void BaseAttrUserDataV1::clear_has_maxhp() {
-  _has_bits_[0] &= ~0x00000400u;
+  _has_bits_[0] &= ~0x00000200u;
 }
 inline void BaseAttrUserDataV1::clear_maxhp() {
   maxhp_ = 0;
@@ -777,13 +2057,13 @@ inline void BaseAttrUserDataV1::set_maxhp(::google::protobuf::int32 value) {
 
 // optional int32 PhysicAttack = 15 [default = 0];
 inline bool BaseAttrUserDataV1::has_physicattack() const {
-  return (_has_bits_[0] & 0x00000800u) != 0;
+  return (_has_bits_[0] & 0x00000400u) != 0;
 }
 inline void BaseAttrUserDataV1::set_has_physicattack() {
-  _has_bits_[0] |= 0x00000800u;
+  _has_bits_[0] |= 0x00000400u;
 }
 inline void BaseAttrUserDataV1::clear_has_physicattack() {
-  _has_bits_[0] &= ~0x00000800u;
+  _has_bits_[0] &= ~0x00000400u;
 }
 inline void BaseAttrUserDataV1::clear_physicattack() {
   physicattack_ = 0;
@@ -799,13 +2079,13 @@ inline void BaseAttrUserDataV1::set_physicattack(::google::protobuf::int32 value
 
 // optional int32 PhysicDefense = 16 [default = 0];
 inline bool BaseAttrUserDataV1::has_physicdefense() const {
-  return (_has_bits_[0] & 0x00001000u) != 0;
+  return (_has_bits_[0] & 0x00000800u) != 0;
 }
 inline void BaseAttrUserDataV1::set_has_physicdefense() {
-  _has_bits_[0] |= 0x00001000u;
+  _has_bits_[0] |= 0x00000800u;
 }
 inline void BaseAttrUserDataV1::clear_has_physicdefense() {
-  _has_bits_[0] &= ~0x00001000u;
+  _has_bits_[0] &= ~0x00000800u;
 }
 inline void BaseAttrUserDataV1::clear_physicdefense() {
   physicdefense_ = 0;
@@ -821,13 +2101,13 @@ inline void BaseAttrUserDataV1::set_physicdefense(::google::protobuf::int32 valu
 
 // optional int32 MagicAttack = 19 [default = 0];
 inline bool BaseAttrUserDataV1::has_magicattack() const {
-  return (_has_bits_[0] & 0x00002000u) != 0;
+  return (_has_bits_[0] & 0x00001000u) != 0;
 }
 inline void BaseAttrUserDataV1::set_has_magicattack() {
-  _has_bits_[0] |= 0x00002000u;
+  _has_bits_[0] |= 0x00001000u;
 }
 inline void BaseAttrUserDataV1::clear_has_magicattack() {
-  _has_bits_[0] &= ~0x00002000u;
+  _has_bits_[0] &= ~0x00001000u;
 }
 inline void BaseAttrUserDataV1::clear_magicattack() {
   magicattack_ = 0;
@@ -843,13 +2123,13 @@ inline void BaseAttrUserDataV1::set_magicattack(::google::protobuf::int32 value)
 
 // optional int32 MagicDefense = 20 [default = 0];
 inline bool BaseAttrUserDataV1::has_magicdefense() const {
-  return (_has_bits_[0] & 0x00004000u) != 0;
+  return (_has_bits_[0] & 0x00002000u) != 0;
 }
 inline void BaseAttrUserDataV1::set_has_magicdefense() {
-  _has_bits_[0] |= 0x00004000u;
+  _has_bits_[0] |= 0x00002000u;
 }
 inline void BaseAttrUserDataV1::clear_has_magicdefense() {
-  _has_bits_[0] &= ~0x00004000u;
+  _has_bits_[0] &= ~0x00002000u;
 }
 inline void BaseAttrUserDataV1::clear_magicdefense() {
   magicdefense_ = 0;
@@ -865,13 +2145,13 @@ inline void BaseAttrUserDataV1::set_magicdefense(::google::protobuf::int32 value
 
 // optional int32 Hit = 21 [default = 0];
 inline bool BaseAttrUserDataV1::has_hit() const {
-  return (_has_bits_[0] & 0x00008000u) != 0;
+  return (_has_bits_[0] & 0x00004000u) != 0;
 }
 inline void BaseAttrUserDataV1::set_has_hit() {
-  _has_bits_[0] |= 0x00008000u;
+  _has_bits_[0] |= 0x00004000u;
 }
 inline void BaseAttrUserDataV1::clear_has_hit() {
-  _has_bits_[0] &= ~0x00008000u;
+  _has_bits_[0] &= ~0x00004000u;
 }
 inline void BaseAttrUserDataV1::clear_hit() {
   hit_ = 0;
@@ -887,13 +2167,13 @@ inline void BaseAttrUserDataV1::set_hit(::google::protobuf::int32 value) {
 
 // optional float HitRate = 22 [default = 0];
 inline bool BaseAttrUserDataV1::has_hitrate() const {
-  return (_has_bits_[0] & 0x00010000u) != 0;
+  return (_has_bits_[0] & 0x00008000u) != 0;
 }
 inline void BaseAttrUserDataV1::set_has_hitrate() {
-  _has_bits_[0] |= 0x00010000u;
+  _has_bits_[0] |= 0x00008000u;
 }
 inline void BaseAttrUserDataV1::clear_has_hitrate() {
-  _has_bits_[0] &= ~0x00010000u;
+  _has_bits_[0] &= ~0x00008000u;
 }
 inline void BaseAttrUserDataV1::clear_hitrate() {
   hitrate_ = 0;
@@ -909,13 +2189,13 @@ inline void BaseAttrUserDataV1::set_hitrate(float value) {
 
 // optional int32 Miss = 23 [default = 0];
 inline bool BaseAttrUserDataV1::has_miss() const {
-  return (_has_bits_[0] & 0x00020000u) != 0;
+  return (_has_bits_[0] & 0x00010000u) != 0;
 }
 inline void BaseAttrUserDataV1::set_has_miss() {
-  _has_bits_[0] |= 0x00020000u;
+  _has_bits_[0] |= 0x00010000u;
 }
 inline void BaseAttrUserDataV1::clear_has_miss() {
-  _has_bits_[0] &= ~0x00020000u;
+  _has_bits_[0] &= ~0x00010000u;
 }
 inline void BaseAttrUserDataV1::clear_miss() {
   miss_ = 0;
@@ -931,13 +2211,13 @@ inline void BaseAttrUserDataV1::set_miss(::google::protobuf::int32 value) {
 
 // optional float MissRate = 24 [default = 0];
 inline bool BaseAttrUserDataV1::has_missrate() const {
-  return (_has_bits_[0] & 0x00040000u) != 0;
+  return (_has_bits_[0] & 0x00020000u) != 0;
 }
 inline void BaseAttrUserDataV1::set_has_missrate() {
-  _has_bits_[0] |= 0x00040000u;
+  _has_bits_[0] |= 0x00020000u;
 }
 inline void BaseAttrUserDataV1::clear_has_missrate() {
-  _has_bits_[0] &= ~0x00040000u;
+  _has_bits_[0] &= ~0x00020000u;
 }
 inline void BaseAttrUserDataV1::clear_missrate() {
   missrate_ = 0;
@@ -953,13 +2233,13 @@ inline void BaseAttrUserDataV1::set_missrate(float value) {
 
 // optional int32 Critical = 25 [default = 0];
 inline bool BaseAttrUserDataV1::has_critical() const {
-  return (_has_bits_[0] & 0x00080000u) != 0;
+  return (_has_bits_[0] & 0x00040000u) != 0;
 }
 inline void BaseAttrUserDataV1::set_has_critical() {
-  _has_bits_[0] |= 0x00080000u;
+  _has_bits_[0] |= 0x00040000u;
 }
 inline void BaseAttrUserDataV1::clear_has_critical() {
-  _has_bits_[0] &= ~0x00080000u;
+  _has_bits_[0] &= ~0x00040000u;
 }
 inline void BaseAttrUserDataV1::clear_critical() {
   critical_ = 0;
@@ -975,13 +2255,13 @@ inline void BaseAttrUserDataV1::set_critical(::google::protobuf::int32 value) {
 
 // optional float CriticalRate = 26 [default = 0];
 inline bool BaseAttrUserDataV1::has_criticalrate() const {
-  return (_has_bits_[0] & 0x00100000u) != 0;
+  return (_has_bits_[0] & 0x00080000u) != 0;
 }
 inline void BaseAttrUserDataV1::set_has_criticalrate() {
-  _has_bits_[0] |= 0x00100000u;
+  _has_bits_[0] |= 0x00080000u;
 }
 inline void BaseAttrUserDataV1::clear_has_criticalrate() {
-  _has_bits_[0] &= ~0x00100000u;
+  _has_bits_[0] &= ~0x00080000u;
 }
 inline void BaseAttrUserDataV1::clear_criticalrate() {
   criticalrate_ = 0;
@@ -997,13 +2277,13 @@ inline void BaseAttrUserDataV1::set_criticalrate(float value) {
 
 // optional int32 Tenacity = 27 [default = 0];
 inline bool BaseAttrUserDataV1::has_tenacity() const {
-  return (_has_bits_[0] & 0x00200000u) != 0;
+  return (_has_bits_[0] & 0x00100000u) != 0;
 }
 inline void BaseAttrUserDataV1::set_has_tenacity() {
-  _has_bits_[0] |= 0x00200000u;
+  _has_bits_[0] |= 0x00100000u;
 }
 inline void BaseAttrUserDataV1::clear_has_tenacity() {
-  _has_bits_[0] &= ~0x00200000u;
+  _has_bits_[0] &= ~0x00100000u;
 }
 inline void BaseAttrUserDataV1::clear_tenacity() {
   tenacity_ = 0;
@@ -1019,13 +2299,13 @@ inline void BaseAttrUserDataV1::set_tenacity(::google::protobuf::int32 value) {
 
 // optional float TenacityRate = 28 [default = 0];
 inline bool BaseAttrUserDataV1::has_tenacityrate() const {
-  return (_has_bits_[0] & 0x00400000u) != 0;
+  return (_has_bits_[0] & 0x00200000u) != 0;
 }
 inline void BaseAttrUserDataV1::set_has_tenacityrate() {
-  _has_bits_[0] |= 0x00400000u;
+  _has_bits_[0] |= 0x00200000u;
 }
 inline void BaseAttrUserDataV1::clear_has_tenacityrate() {
-  _has_bits_[0] &= ~0x00400000u;
+  _has_bits_[0] &= ~0x00200000u;
 }
 inline void BaseAttrUserDataV1::clear_tenacityrate() {
   tenacityrate_ = 0;
@@ -1041,13 +2321,13 @@ inline void BaseAttrUserDataV1::set_tenacityrate(float value) {
 
 // optional int32 Penet = 29 [default = 0];
 inline bool BaseAttrUserDataV1::has_penet() const {
-  return (_has_bits_[0] & 0x00800000u) != 0;
+  return (_has_bits_[0] & 0x00400000u) != 0;
 }
 inline void BaseAttrUserDataV1::set_has_penet() {
-  _has_bits_[0] |= 0x00800000u;
+  _has_bits_[0] |= 0x00400000u;
 }
 inline void BaseAttrUserDataV1::clear_has_penet() {
-  _has_bits_[0] &= ~0x00800000u;
+  _has_bits_[0] &= ~0x00400000u;
 }
 inline void BaseAttrUserDataV1::clear_penet() {
   penet_ = 0;
@@ -1063,13 +2343,13 @@ inline void BaseAttrUserDataV1::set_penet(::google::protobuf::int32 value) {
 
 // optional float PenetRate = 30 [default = 0];
 inline bool BaseAttrUserDataV1::has_penetrate() const {
-  return (_has_bits_[0] & 0x01000000u) != 0;
+  return (_has_bits_[0] & 0x00800000u) != 0;
 }
 inline void BaseAttrUserDataV1::set_has_penetrate() {
-  _has_bits_[0] |= 0x01000000u;
+  _has_bits_[0] |= 0x00800000u;
 }
 inline void BaseAttrUserDataV1::clear_has_penetrate() {
-  _has_bits_[0] &= ~0x01000000u;
+  _has_bits_[0] &= ~0x00800000u;
 }
 inline void BaseAttrUserDataV1::clear_penetrate() {
   penetrate_ = 0;
@@ -1085,13 +2365,13 @@ inline void BaseAttrUserDataV1::set_penetrate(float value) {
 
 // optional int32 Dodg = 31 [default = 0];
 inline bool BaseAttrUserDataV1::has_dodg() const {
-  return (_has_bits_[0] & 0x02000000u) != 0;
+  return (_has_bits_[0] & 0x01000000u) != 0;
 }
 inline void BaseAttrUserDataV1::set_has_dodg() {
-  _has_bits_[0] |= 0x02000000u;
+  _has_bits_[0] |= 0x01000000u;
 }
 inline void BaseAttrUserDataV1::clear_has_dodg() {
-  _has_bits_[0] &= ~0x02000000u;
+  _has_bits_[0] &= ~0x01000000u;
 }
 inline void BaseAttrUserDataV1::clear_dodg() {
   dodg_ = 0;
@@ -1107,13 +2387,13 @@ inline void BaseAttrUserDataV1::set_dodg(::google::protobuf::int32 value) {
 
 // optional float DodgRate = 32 [default = 0];
 inline bool BaseAttrUserDataV1::has_dodgrate() const {
-  return (_has_bits_[0] & 0x04000000u) != 0;
+  return (_has_bits_[0] & 0x02000000u) != 0;
 }
 inline void BaseAttrUserDataV1::set_has_dodgrate() {
-  _has_bits_[0] |= 0x04000000u;
+  _has_bits_[0] |= 0x02000000u;
 }
 inline void BaseAttrUserDataV1::clear_has_dodgrate() {
-  _has_bits_[0] &= ~0x04000000u;
+  _has_bits_[0] &= ~0x02000000u;
 }
 inline void BaseAttrUserDataV1::clear_dodgrate() {
   dodgrate_ = 0;
@@ -1129,13 +2409,13 @@ inline void BaseAttrUserDataV1::set_dodgrate(float value) {
 
 // optional int32 CriticalAddition = 33 [default = 0];
 inline bool BaseAttrUserDataV1::has_criticaladdition() const {
-  return (_has_bits_[0] & 0x08000000u) != 0;
+  return (_has_bits_[0] & 0x04000000u) != 0;
 }
 inline void BaseAttrUserDataV1::set_has_criticaladdition() {
-  _has_bits_[0] |= 0x08000000u;
+  _has_bits_[0] |= 0x04000000u;
 }
 inline void BaseAttrUserDataV1::clear_has_criticaladdition() {
-  _has_bits_[0] &= ~0x08000000u;
+  _has_bits_[0] &= ~0x04000000u;
 }
 inline void BaseAttrUserDataV1::clear_criticaladdition() {
   criticaladdition_ = 0;
@@ -1151,13 +2431,13 @@ inline void BaseAttrUserDataV1::set_criticaladdition(::google::protobuf::int32 v
 
 // optional float CriticalAdditionRate = 34 [default = 0];
 inline bool BaseAttrUserDataV1::has_criticaladditionrate() const {
-  return (_has_bits_[0] & 0x10000000u) != 0;
+  return (_has_bits_[0] & 0x08000000u) != 0;
 }
 inline void BaseAttrUserDataV1::set_has_criticaladditionrate() {
-  _has_bits_[0] |= 0x10000000u;
+  _has_bits_[0] |= 0x08000000u;
 }
 inline void BaseAttrUserDataV1::clear_has_criticaladditionrate() {
-  _has_bits_[0] &= ~0x10000000u;
+  _has_bits_[0] &= ~0x08000000u;
 }
 inline void BaseAttrUserDataV1::clear_criticaladditionrate() {
   criticaladditionrate_ = 0;
@@ -1173,13 +2453,13 @@ inline void BaseAttrUserDataV1::set_criticaladditionrate(float value) {
 
 // optional int32 CriticalImmune = 35 [default = 0];
 inline bool BaseAttrUserDataV1::has_criticalimmune() const {
-  return (_has_bits_[0] & 0x20000000u) != 0;
+  return (_has_bits_[0] & 0x10000000u) != 0;
 }
 inline void BaseAttrUserDataV1::set_has_criticalimmune() {
-  _has_bits_[0] |= 0x20000000u;
+  _has_bits_[0] |= 0x10000000u;
 }
 inline void BaseAttrUserDataV1::clear_has_criticalimmune() {
-  _has_bits_[0] &= ~0x20000000u;
+  _has_bits_[0] &= ~0x10000000u;
 }
 inline void BaseAttrUserDataV1::clear_criticalimmune() {
   criticalimmune_ = 0;
@@ -1195,13 +2475,13 @@ inline void BaseAttrUserDataV1::set_criticalimmune(::google::protobuf::int32 val
 
 // optional float CriticalImmuneRate = 36 [default = 0];
 inline bool BaseAttrUserDataV1::has_criticalimmunerate() const {
-  return (_has_bits_[0] & 0x40000000u) != 0;
+  return (_has_bits_[0] & 0x20000000u) != 0;
 }
 inline void BaseAttrUserDataV1::set_has_criticalimmunerate() {
-  _has_bits_[0] |= 0x40000000u;
+  _has_bits_[0] |= 0x20000000u;
 }
 inline void BaseAttrUserDataV1::clear_has_criticalimmunerate() {
-  _has_bits_[0] &= ~0x40000000u;
+  _has_bits_[0] &= ~0x20000000u;
 }
 inline void BaseAttrUserDataV1::clear_criticalimmunerate() {
   criticalimmunerate_ = 0;
@@ -1217,13 +2497,13 @@ inline void BaseAttrUserDataV1::set_criticalimmunerate(float value) {
 
 // optional int32 MissLevel = 37 [default = 0];
 inline bool BaseAttrUserDataV1::has_misslevel() const {
-  return (_has_bits_[0] & 0x80000000u) != 0;
+  return (_has_bits_[0] & 0x40000000u) != 0;
 }
 inline void BaseAttrUserDataV1::set_has_misslevel() {
-  _has_bits_[0] |= 0x80000000u;
+  _has_bits_[0] |= 0x40000000u;
 }
 inline void BaseAttrUserDataV1::clear_has_misslevel() {
-  _has_bits_[0] &= ~0x80000000u;
+  _has_bits_[0] &= ~0x40000000u;
 }
 inline void BaseAttrUserDataV1::clear_misslevel() {
   misslevel_ = 0;
@@ -1239,13 +2519,13 @@ inline void BaseAttrUserDataV1::set_misslevel(::google::protobuf::int32 value) {
 
 // optional int32 CriticalLevel = 38 [default = 0];
 inline bool BaseAttrUserDataV1::has_criticallevel() const {
-  return (_has_bits_[1] & 0x00000001u) != 0;
+  return (_has_bits_[0] & 0x80000000u) != 0;
 }
 inline void BaseAttrUserDataV1::set_has_criticallevel() {
-  _has_bits_[1] |= 0x00000001u;
+  _has_bits_[0] |= 0x80000000u;
 }
 inline void BaseAttrUserDataV1::clear_has_criticallevel() {
-  _has_bits_[1] &= ~0x00000001u;
+  _has_bits_[0] &= ~0x80000000u;
 }
 inline void BaseAttrUserDataV1::clear_criticallevel() {
   criticallevel_ = 0;
@@ -1261,13 +2541,13 @@ inline void BaseAttrUserDataV1::set_criticallevel(::google::protobuf::int32 valu
 
 // optional int32 DodgLevel = 39 [default = 0];
 inline bool BaseAttrUserDataV1::has_dodglevel() const {
-  return (_has_bits_[1] & 0x00000002u) != 0;
+  return (_has_bits_[1] & 0x00000001u) != 0;
 }
 inline void BaseAttrUserDataV1::set_has_dodglevel() {
-  _has_bits_[1] |= 0x00000002u;
+  _has_bits_[1] |= 0x00000001u;
 }
 inline void BaseAttrUserDataV1::clear_has_dodglevel() {
-  _has_bits_[1] &= ~0x00000002u;
+  _has_bits_[1] &= ~0x00000001u;
 }
 inline void BaseAttrUserDataV1::clear_dodglevel() {
   dodglevel_ = 0;
@@ -1283,13 +2563,13 @@ inline void BaseAttrUserDataV1::set_dodglevel(::google::protobuf::int32 value) {
 
 // optional float MoveSpeed = 40 [default = 0];
 inline bool BaseAttrUserDataV1::has_movespeed() const {
-  return (_has_bits_[1] & 0x00000004u) != 0;
+  return (_has_bits_[1] & 0x00000002u) != 0;
 }
 inline void BaseAttrUserDataV1::set_has_movespeed() {
-  _has_bits_[1] |= 0x00000004u;
+  _has_bits_[1] |= 0x00000002u;
 }
 inline void BaseAttrUserDataV1::clear_has_movespeed() {
-  _has_bits_[1] &= ~0x00000004u;
+  _has_bits_[1] &= ~0x00000002u;
 }
 inline void BaseAttrUserDataV1::clear_movespeed() {
   movespeed_ = 0;
@@ -1303,37 +2583,37 @@ inline void BaseAttrUserDataV1::set_movespeed(float value) {
   movespeed_ = value;
 }
 
-// optional bool DizzyState = 41 [default = false];
+// optional int32 DizzyState = 41 [default = 0];
 inline bool BaseAttrUserDataV1::has_dizzystate() const {
-  return (_has_bits_[1] & 0x00000008u) != 0;
+  return (_has_bits_[1] & 0x00000004u) != 0;
 }
 inline void BaseAttrUserDataV1::set_has_dizzystate() {
-  _has_bits_[1] |= 0x00000008u;
+  _has_bits_[1] |= 0x00000004u;
 }
 inline void BaseAttrUserDataV1::clear_has_dizzystate() {
-  _has_bits_[1] &= ~0x00000008u;
+  _has_bits_[1] &= ~0x00000004u;
 }
 inline void BaseAttrUserDataV1::clear_dizzystate() {
-  dizzystate_ = false;
+  dizzystate_ = 0;
   clear_has_dizzystate();
 }
-inline bool BaseAttrUserDataV1::dizzystate() const {
+inline ::google::protobuf::int32 BaseAttrUserDataV1::dizzystate() const {
   return dizzystate_;
 }
-inline void BaseAttrUserDataV1::set_dizzystate(bool value) {
+inline void BaseAttrUserDataV1::set_dizzystate(::google::protobuf::int32 value) {
   set_has_dizzystate();
   dizzystate_ = value;
 }
 
 // optional bool GodState = 42 [default = false];
 inline bool BaseAttrUserDataV1::has_godstate() const {
-  return (_has_bits_[1] & 0x00000010u) != 0;
+  return (_has_bits_[1] & 0x00000008u) != 0;
 }
 inline void BaseAttrUserDataV1::set_has_godstate() {
-  _has_bits_[1] |= 0x00000010u;
+  _has_bits_[1] |= 0x00000008u;
 }
 inline void BaseAttrUserDataV1::clear_has_godstate() {
-  _has_bits_[1] &= ~0x00000010u;
+  _has_bits_[1] &= ~0x00000008u;
 }
 inline void BaseAttrUserDataV1::clear_godstate() {
   godstate_ = false;
@@ -1347,37 +2627,37 @@ inline void BaseAttrUserDataV1::set_godstate(bool value) {
   godstate_ = value;
 }
 
-// optional bool CantMoveState = 43 [default = false];
+// optional int32 CantMoveState = 43 [default = 0];
 inline bool BaseAttrUserDataV1::has_cantmovestate() const {
-  return (_has_bits_[1] & 0x00000020u) != 0;
+  return (_has_bits_[1] & 0x00000010u) != 0;
 }
 inline void BaseAttrUserDataV1::set_has_cantmovestate() {
-  _has_bits_[1] |= 0x00000020u;
+  _has_bits_[1] |= 0x00000010u;
 }
 inline void BaseAttrUserDataV1::clear_has_cantmovestate() {
-  _has_bits_[1] &= ~0x00000020u;
+  _has_bits_[1] &= ~0x00000010u;
 }
 inline void BaseAttrUserDataV1::clear_cantmovestate() {
-  cantmovestate_ = false;
+  cantmovestate_ = 0;
   clear_has_cantmovestate();
 }
-inline bool BaseAttrUserDataV1::cantmovestate() const {
+inline ::google::protobuf::int32 BaseAttrUserDataV1::cantmovestate() const {
   return cantmovestate_;
 }
-inline void BaseAttrUserDataV1::set_cantmovestate(bool value) {
+inline void BaseAttrUserDataV1::set_cantmovestate(::google::protobuf::int32 value) {
   set_has_cantmovestate();
   cantmovestate_ = value;
 }
 
 // optional float PhysicAddition = 45 [default = 0];
 inline bool BaseAttrUserDataV1::has_physicaddition() const {
-  return (_has_bits_[1] & 0x00000040u) != 0;
+  return (_has_bits_[1] & 0x00000020u) != 0;
 }
 inline void BaseAttrUserDataV1::set_has_physicaddition() {
-  _has_bits_[1] |= 0x00000040u;
+  _has_bits_[1] |= 0x00000020u;
 }
 inline void BaseAttrUserDataV1::clear_has_physicaddition() {
-  _has_bits_[1] &= ~0x00000040u;
+  _has_bits_[1] &= ~0x00000020u;
 }
 inline void BaseAttrUserDataV1::clear_physicaddition() {
   physicaddition_ = 0;
@@ -1393,13 +2673,13 @@ inline void BaseAttrUserDataV1::set_physicaddition(float value) {
 
 // optional float MagicAddition = 46 [default = 0];
 inline bool BaseAttrUserDataV1::has_magicaddition() const {
-  return (_has_bits_[1] & 0x00000080u) != 0;
+  return (_has_bits_[1] & 0x00000040u) != 0;
 }
 inline void BaseAttrUserDataV1::set_has_magicaddition() {
-  _has_bits_[1] |= 0x00000080u;
+  _has_bits_[1] |= 0x00000040u;
 }
 inline void BaseAttrUserDataV1::clear_has_magicaddition() {
-  _has_bits_[1] &= ~0x00000080u;
+  _has_bits_[1] &= ~0x00000040u;
 }
 inline void BaseAttrUserDataV1::clear_magicaddition() {
   magicaddition_ = 0;
@@ -1415,13 +2695,13 @@ inline void BaseAttrUserDataV1::set_magicaddition(float value) {
 
 // optional float PhysicOppose = 47 [default = 0];
 inline bool BaseAttrUserDataV1::has_physicoppose() const {
-  return (_has_bits_[1] & 0x00000100u) != 0;
+  return (_has_bits_[1] & 0x00000080u) != 0;
 }
 inline void BaseAttrUserDataV1::set_has_physicoppose() {
-  _has_bits_[1] |= 0x00000100u;
+  _has_bits_[1] |= 0x00000080u;
 }
 inline void BaseAttrUserDataV1::clear_has_physicoppose() {
-  _has_bits_[1] &= ~0x00000100u;
+  _has_bits_[1] &= ~0x00000080u;
 }
 inline void BaseAttrUserDataV1::clear_physicoppose() {
   physicoppose_ = 0;
@@ -1437,13 +2717,13 @@ inline void BaseAttrUserDataV1::set_physicoppose(float value) {
 
 // optional float MagicOppose = 48 [default = 0];
 inline bool BaseAttrUserDataV1::has_magicoppose() const {
-  return (_has_bits_[1] & 0x00000200u) != 0;
+  return (_has_bits_[1] & 0x00000100u) != 0;
 }
 inline void BaseAttrUserDataV1::set_has_magicoppose() {
-  _has_bits_[1] |= 0x00000200u;
+  _has_bits_[1] |= 0x00000100u;
 }
 inline void BaseAttrUserDataV1::clear_has_magicoppose() {
-  _has_bits_[1] &= ~0x00000200u;
+  _has_bits_[1] &= ~0x00000100u;
 }
 inline void BaseAttrUserDataV1::clear_magicoppose() {
   magicoppose_ = 0;
@@ -1455,6 +2735,2873 @@ inline float BaseAttrUserDataV1::magicoppose() const {
 inline void BaseAttrUserDataV1::set_magicoppose(float value) {
   set_has_magicoppose();
   magicoppose_ = value;
+}
+
+// optional float AccumulateSkiEnergy = 50 [default = 0];
+inline bool BaseAttrUserDataV1::has_accumulateskienergy() const {
+  return (_has_bits_[1] & 0x00000200u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_accumulateskienergy() {
+  _has_bits_[1] |= 0x00000200u;
+}
+inline void BaseAttrUserDataV1::clear_has_accumulateskienergy() {
+  _has_bits_[1] &= ~0x00000200u;
+}
+inline void BaseAttrUserDataV1::clear_accumulateskienergy() {
+  accumulateskienergy_ = 0;
+  clear_has_accumulateskienergy();
+}
+inline float BaseAttrUserDataV1::accumulateskienergy() const {
+  return accumulateskienergy_;
+}
+inline void BaseAttrUserDataV1::set_accumulateskienergy(float value) {
+  set_has_accumulateskienergy();
+  accumulateskienergy_ = value;
+}
+
+// optional string NickName = 51;
+inline bool BaseAttrUserDataV1::has_nickname() const {
+  return (_has_bits_[1] & 0x00000400u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_nickname() {
+  _has_bits_[1] |= 0x00000400u;
+}
+inline void BaseAttrUserDataV1::clear_has_nickname() {
+  _has_bits_[1] &= ~0x00000400u;
+}
+inline void BaseAttrUserDataV1::clear_nickname() {
+  if (nickname_ != &::google::protobuf::internal::kEmptyString) {
+    nickname_->clear();
+  }
+  clear_has_nickname();
+}
+inline const ::std::string& BaseAttrUserDataV1::nickname() const {
+  return *nickname_;
+}
+inline void BaseAttrUserDataV1::set_nickname(const ::std::string& value) {
+  set_has_nickname();
+  if (nickname_ == &::google::protobuf::internal::kEmptyString) {
+    nickname_ = new ::std::string;
+  }
+  nickname_->assign(value);
+}
+inline void BaseAttrUserDataV1::set_nickname(const char* value) {
+  set_has_nickname();
+  if (nickname_ == &::google::protobuf::internal::kEmptyString) {
+    nickname_ = new ::std::string;
+  }
+  nickname_->assign(value);
+}
+inline void BaseAttrUserDataV1::set_nickname(const char* value, size_t size) {
+  set_has_nickname();
+  if (nickname_ == &::google::protobuf::internal::kEmptyString) {
+    nickname_ = new ::std::string;
+  }
+  nickname_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* BaseAttrUserDataV1::mutable_nickname() {
+  set_has_nickname();
+  if (nickname_ == &::google::protobuf::internal::kEmptyString) {
+    nickname_ = new ::std::string;
+  }
+  return nickname_;
+}
+inline ::std::string* BaseAttrUserDataV1::release_nickname() {
+  clear_has_nickname();
+  if (nickname_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = nickname_;
+    nickname_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void BaseAttrUserDataV1::set_allocated_nickname(::std::string* nickname) {
+  if (nickname_ != &::google::protobuf::internal::kEmptyString) {
+    delete nickname_;
+  }
+  if (nickname) {
+    set_has_nickname();
+    nickname_ = nickname;
+  } else {
+    clear_has_nickname();
+    nickname_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional int32 ConfigId = 52 [default = -1];
+inline bool BaseAttrUserDataV1::has_configid() const {
+  return (_has_bits_[1] & 0x00000800u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_configid() {
+  _has_bits_[1] |= 0x00000800u;
+}
+inline void BaseAttrUserDataV1::clear_has_configid() {
+  _has_bits_[1] &= ~0x00000800u;
+}
+inline void BaseAttrUserDataV1::clear_configid() {
+  configid_ = -1;
+  clear_has_configid();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::configid() const {
+  return configid_;
+}
+inline void BaseAttrUserDataV1::set_configid(::google::protobuf::int32 value) {
+  set_has_configid();
+  configid_ = value;
+}
+
+// optional int32 ObjType = 53 [default = -1];
+inline bool BaseAttrUserDataV1::has_objtype() const {
+  return (_has_bits_[1] & 0x00001000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_objtype() {
+  _has_bits_[1] |= 0x00001000u;
+}
+inline void BaseAttrUserDataV1::clear_has_objtype() {
+  _has_bits_[1] &= ~0x00001000u;
+}
+inline void BaseAttrUserDataV1::clear_objtype() {
+  objtype_ = -1;
+  clear_has_objtype();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::objtype() const {
+  return objtype_;
+}
+inline void BaseAttrUserDataV1::set_objtype(::google::protobuf::int32 value) {
+  set_has_objtype();
+  objtype_ = value;
+}
+
+// optional int32 State = 54 [default = -1];
+inline bool BaseAttrUserDataV1::has_state() const {
+  return (_has_bits_[1] & 0x00002000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_state() {
+  _has_bits_[1] |= 0x00002000u;
+}
+inline void BaseAttrUserDataV1::clear_has_state() {
+  _has_bits_[1] &= ~0x00002000u;
+}
+inline void BaseAttrUserDataV1::clear_state() {
+  state_ = -1;
+  clear_has_state();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::state() const {
+  return state_;
+}
+inline void BaseAttrUserDataV1::set_state(::google::protobuf::int32 value) {
+  set_has_state();
+  state_ = value;
+}
+
+// optional uint64 OwnerObjId = 55 [default = 0];
+inline bool BaseAttrUserDataV1::has_ownerobjid() const {
+  return (_has_bits_[1] & 0x00004000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_ownerobjid() {
+  _has_bits_[1] |= 0x00004000u;
+}
+inline void BaseAttrUserDataV1::clear_has_ownerobjid() {
+  _has_bits_[1] &= ~0x00004000u;
+}
+inline void BaseAttrUserDataV1::clear_ownerobjid() {
+  ownerobjid_ = GOOGLE_ULONGLONG(0);
+  clear_has_ownerobjid();
+}
+inline ::google::protobuf::uint64 BaseAttrUserDataV1::ownerobjid() const {
+  return ownerobjid_;
+}
+inline void BaseAttrUserDataV1::set_ownerobjid(::google::protobuf::uint64 value) {
+  set_has_ownerobjid();
+  ownerobjid_ = value;
+}
+
+// optional int32 Camp = 56 [default = -1];
+inline bool BaseAttrUserDataV1::has_camp() const {
+  return (_has_bits_[1] & 0x00008000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_camp() {
+  _has_bits_[1] |= 0x00008000u;
+}
+inline void BaseAttrUserDataV1::clear_has_camp() {
+  _has_bits_[1] &= ~0x00008000u;
+}
+inline void BaseAttrUserDataV1::clear_camp() {
+  camp_ = -1;
+  clear_has_camp();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::camp() const {
+  return camp_;
+}
+inline void BaseAttrUserDataV1::set_camp(::google::protobuf::int32 value) {
+  set_has_camp();
+  camp_ = value;
+}
+
+// optional int64 SilverMoney = 57 [default = 0];
+inline bool BaseAttrUserDataV1::has_silvermoney() const {
+  return (_has_bits_[1] & 0x00010000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_silvermoney() {
+  _has_bits_[1] |= 0x00010000u;
+}
+inline void BaseAttrUserDataV1::clear_has_silvermoney() {
+  _has_bits_[1] &= ~0x00010000u;
+}
+inline void BaseAttrUserDataV1::clear_silvermoney() {
+  silvermoney_ = GOOGLE_LONGLONG(0);
+  clear_has_silvermoney();
+}
+inline ::google::protobuf::int64 BaseAttrUserDataV1::silvermoney() const {
+  return silvermoney_;
+}
+inline void BaseAttrUserDataV1::set_silvermoney(::google::protobuf::int64 value) {
+  set_has_silvermoney();
+  silvermoney_ = value;
+}
+
+// optional int64 GoldMoney = 58 [default = 0];
+inline bool BaseAttrUserDataV1::has_goldmoney() const {
+  return (_has_bits_[1] & 0x00020000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_goldmoney() {
+  _has_bits_[1] |= 0x00020000u;
+}
+inline void BaseAttrUserDataV1::clear_has_goldmoney() {
+  _has_bits_[1] &= ~0x00020000u;
+}
+inline void BaseAttrUserDataV1::clear_goldmoney() {
+  goldmoney_ = GOOGLE_LONGLONG(0);
+  clear_has_goldmoney();
+}
+inline ::google::protobuf::int64 BaseAttrUserDataV1::goldmoney() const {
+  return goldmoney_;
+}
+inline void BaseAttrUserDataV1::set_goldmoney(::google::protobuf::int64 value) {
+  set_has_goldmoney();
+  goldmoney_ = value;
+}
+
+// optional int64 DiamondMoney = 59 [default = 0];
+inline bool BaseAttrUserDataV1::has_diamondmoney() const {
+  return (_has_bits_[1] & 0x00040000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_diamondmoney() {
+  _has_bits_[1] |= 0x00040000u;
+}
+inline void BaseAttrUserDataV1::clear_has_diamondmoney() {
+  _has_bits_[1] &= ~0x00040000u;
+}
+inline void BaseAttrUserDataV1::clear_diamondmoney() {
+  diamondmoney_ = GOOGLE_LONGLONG(0);
+  clear_has_diamondmoney();
+}
+inline ::google::protobuf::int64 BaseAttrUserDataV1::diamondmoney() const {
+  return diamondmoney_;
+}
+inline void BaseAttrUserDataV1::set_diamondmoney(::google::protobuf::int64 value) {
+  set_has_diamondmoney();
+  diamondmoney_ = value;
+}
+
+// optional int64 BindingDiamondMoney = 60 [default = 0];
+inline bool BaseAttrUserDataV1::has_bindingdiamondmoney() const {
+  return (_has_bits_[1] & 0x00080000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_bindingdiamondmoney() {
+  _has_bits_[1] |= 0x00080000u;
+}
+inline void BaseAttrUserDataV1::clear_has_bindingdiamondmoney() {
+  _has_bits_[1] &= ~0x00080000u;
+}
+inline void BaseAttrUserDataV1::clear_bindingdiamondmoney() {
+  bindingdiamondmoney_ = GOOGLE_LONGLONG(0);
+  clear_has_bindingdiamondmoney();
+}
+inline ::google::protobuf::int64 BaseAttrUserDataV1::bindingdiamondmoney() const {
+  return bindingdiamondmoney_;
+}
+inline void BaseAttrUserDataV1::set_bindingdiamondmoney(::google::protobuf::int64 value) {
+  set_has_bindingdiamondmoney();
+  bindingdiamondmoney_ = value;
+}
+
+// optional int32 BattleScore = 61 [default = -1];
+inline bool BaseAttrUserDataV1::has_battlescore() const {
+  return (_has_bits_[1] & 0x00100000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_battlescore() {
+  _has_bits_[1] |= 0x00100000u;
+}
+inline void BaseAttrUserDataV1::clear_has_battlescore() {
+  _has_bits_[1] &= ~0x00100000u;
+}
+inline void BaseAttrUserDataV1::clear_battlescore() {
+  battlescore_ = -1;
+  clear_has_battlescore();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::battlescore() const {
+  return battlescore_;
+}
+inline void BaseAttrUserDataV1::set_battlescore(::google::protobuf::int32 value) {
+  set_has_battlescore();
+  battlescore_ = value;
+}
+
+// optional int64 Energy = 62 [default = -1];
+inline bool BaseAttrUserDataV1::has_energy() const {
+  return (_has_bits_[1] & 0x00200000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_energy() {
+  _has_bits_[1] |= 0x00200000u;
+}
+inline void BaseAttrUserDataV1::clear_has_energy() {
+  _has_bits_[1] &= ~0x00200000u;
+}
+inline void BaseAttrUserDataV1::clear_energy() {
+  energy_ = GOOGLE_LONGLONG(-1);
+  clear_has_energy();
+}
+inline ::google::protobuf::int64 BaseAttrUserDataV1::energy() const {
+  return energy_;
+}
+inline void BaseAttrUserDataV1::set_energy(::google::protobuf::int64 value) {
+  set_has_energy();
+  energy_ = value;
+}
+
+// optional int64 GuildMoney = 63 [default = -1];
+inline bool BaseAttrUserDataV1::has_guildmoney() const {
+  return (_has_bits_[1] & 0x00400000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_guildmoney() {
+  _has_bits_[1] |= 0x00400000u;
+}
+inline void BaseAttrUserDataV1::clear_has_guildmoney() {
+  _has_bits_[1] &= ~0x00400000u;
+}
+inline void BaseAttrUserDataV1::clear_guildmoney() {
+  guildmoney_ = GOOGLE_LONGLONG(-1);
+  clear_has_guildmoney();
+}
+inline ::google::protobuf::int64 BaseAttrUserDataV1::guildmoney() const {
+  return guildmoney_;
+}
+inline void BaseAttrUserDataV1::set_guildmoney(::google::protobuf::int64 value) {
+  set_has_guildmoney();
+  guildmoney_ = value;
+}
+
+// repeated int32 SkillList = 64;
+inline int BaseAttrUserDataV1::skilllist_size() const {
+  return skilllist_.size();
+}
+inline void BaseAttrUserDataV1::clear_skilllist() {
+  skilllist_.Clear();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::skilllist(int index) const {
+  return skilllist_.Get(index);
+}
+inline void BaseAttrUserDataV1::set_skilllist(int index, ::google::protobuf::int32 value) {
+  skilllist_.Set(index, value);
+}
+inline void BaseAttrUserDataV1::add_skilllist(::google::protobuf::int32 value) {
+  skilllist_.Add(value);
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+BaseAttrUserDataV1::skilllist() const {
+  return skilllist_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+BaseAttrUserDataV1::mutable_skilllist() {
+  return &skilllist_;
+}
+
+// optional int64 HonorMoney = 65 [default = -1];
+inline bool BaseAttrUserDataV1::has_honormoney() const {
+  return (_has_bits_[1] & 0x01000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_honormoney() {
+  _has_bits_[1] |= 0x01000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_honormoney() {
+  _has_bits_[1] &= ~0x01000000u;
+}
+inline void BaseAttrUserDataV1::clear_honormoney() {
+  honormoney_ = GOOGLE_LONGLONG(-1);
+  clear_has_honormoney();
+}
+inline ::google::protobuf::int64 BaseAttrUserDataV1::honormoney() const {
+  return honormoney_;
+}
+inline void BaseAttrUserDataV1::set_honormoney(::google::protobuf::int64 value) {
+  set_has_honormoney();
+  honormoney_ = value;
+}
+
+// optional int64 ResourcePoolHp = 66 [default = -1];
+inline bool BaseAttrUserDataV1::has_resourcepoolhp() const {
+  return (_has_bits_[1] & 0x02000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_resourcepoolhp() {
+  _has_bits_[1] |= 0x02000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_resourcepoolhp() {
+  _has_bits_[1] &= ~0x02000000u;
+}
+inline void BaseAttrUserDataV1::clear_resourcepoolhp() {
+  resourcepoolhp_ = GOOGLE_LONGLONG(-1);
+  clear_has_resourcepoolhp();
+}
+inline ::google::protobuf::int64 BaseAttrUserDataV1::resourcepoolhp() const {
+  return resourcepoolhp_;
+}
+inline void BaseAttrUserDataV1::set_resourcepoolhp(::google::protobuf::int64 value) {
+  set_has_resourcepoolhp();
+  resourcepoolhp_ = value;
+}
+
+// optional int32 AttackAdd = 67 [default = 0];
+inline bool BaseAttrUserDataV1::has_attackadd() const {
+  return (_has_bits_[1] & 0x04000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_attackadd() {
+  _has_bits_[1] |= 0x04000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_attackadd() {
+  _has_bits_[1] &= ~0x04000000u;
+}
+inline void BaseAttrUserDataV1::clear_attackadd() {
+  attackadd_ = 0;
+  clear_has_attackadd();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::attackadd() const {
+  return attackadd_;
+}
+inline void BaseAttrUserDataV1::set_attackadd(::google::protobuf::int32 value) {
+  set_has_attackadd();
+  attackadd_ = value;
+}
+
+// optional int32 InjuryAdd = 68 [default = 0];
+inline bool BaseAttrUserDataV1::has_injuryadd() const {
+  return (_has_bits_[1] & 0x08000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_injuryadd() {
+  _has_bits_[1] |= 0x08000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_injuryadd() {
+  _has_bits_[1] &= ~0x08000000u;
+}
+inline void BaseAttrUserDataV1::clear_injuryadd() {
+  injuryadd_ = 0;
+  clear_has_injuryadd();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::injuryadd() const {
+  return injuryadd_;
+}
+inline void BaseAttrUserDataV1::set_injuryadd(::google::protobuf::int32 value) {
+  set_has_injuryadd();
+  injuryadd_ = value;
+}
+
+// optional int32 FrozenState = 69 [default = -1];
+inline bool BaseAttrUserDataV1::has_frozenstate() const {
+  return (_has_bits_[1] & 0x10000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_frozenstate() {
+  _has_bits_[1] |= 0x10000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_frozenstate() {
+  _has_bits_[1] &= ~0x10000000u;
+}
+inline void BaseAttrUserDataV1::clear_frozenstate() {
+  frozenstate_ = -1;
+  clear_has_frozenstate();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::frozenstate() const {
+  return frozenstate_;
+}
+inline void BaseAttrUserDataV1::set_frozenstate(::google::protobuf::int32 value) {
+  set_has_frozenstate();
+  frozenstate_ = value;
+}
+
+// optional int32 SilentState = 70 [default = -1];
+inline bool BaseAttrUserDataV1::has_silentstate() const {
+  return (_has_bits_[1] & 0x20000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_silentstate() {
+  _has_bits_[1] |= 0x20000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_silentstate() {
+  _has_bits_[1] &= ~0x20000000u;
+}
+inline void BaseAttrUserDataV1::clear_silentstate() {
+  silentstate_ = -1;
+  clear_has_silentstate();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::silentstate() const {
+  return silentstate_;
+}
+inline void BaseAttrUserDataV1::set_silentstate(::google::protobuf::int32 value) {
+  set_has_silentstate();
+  silentstate_ = value;
+}
+
+// optional int64 GuildContributeHistoryMax = 72 [default = -1];
+inline bool BaseAttrUserDataV1::has_guildcontributehistorymax() const {
+  return (_has_bits_[1] & 0x40000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_guildcontributehistorymax() {
+  _has_bits_[1] |= 0x40000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_guildcontributehistorymax() {
+  _has_bits_[1] &= ~0x40000000u;
+}
+inline void BaseAttrUserDataV1::clear_guildcontributehistorymax() {
+  guildcontributehistorymax_ = GOOGLE_LONGLONG(-1);
+  clear_has_guildcontributehistorymax();
+}
+inline ::google::protobuf::int64 BaseAttrUserDataV1::guildcontributehistorymax() const {
+  return guildcontributehistorymax_;
+}
+inline void BaseAttrUserDataV1::set_guildcontributehistorymax(::google::protobuf::int64 value) {
+  set_has_guildcontributehistorymax();
+  guildcontributehistorymax_ = value;
+}
+
+// optional uint64 TeamId = 74 [default = 0];
+inline bool BaseAttrUserDataV1::has_teamid() const {
+  return (_has_bits_[1] & 0x80000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_teamid() {
+  _has_bits_[1] |= 0x80000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_teamid() {
+  _has_bits_[1] &= ~0x80000000u;
+}
+inline void BaseAttrUserDataV1::clear_teamid() {
+  teamid_ = GOOGLE_ULONGLONG(0);
+  clear_has_teamid();
+}
+inline ::google::protobuf::uint64 BaseAttrUserDataV1::teamid() const {
+  return teamid_;
+}
+inline void BaseAttrUserDataV1::set_teamid(::google::protobuf::uint64 value) {
+  set_has_teamid();
+  teamid_ = value;
+}
+
+// optional int32 TreasureHair = 75 [default = -1];
+inline bool BaseAttrUserDataV1::has_treasurehair() const {
+  return (_has_bits_[2] & 0x00000001u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_treasurehair() {
+  _has_bits_[2] |= 0x00000001u;
+}
+inline void BaseAttrUserDataV1::clear_has_treasurehair() {
+  _has_bits_[2] &= ~0x00000001u;
+}
+inline void BaseAttrUserDataV1::clear_treasurehair() {
+  treasurehair_ = -1;
+  clear_has_treasurehair();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::treasurehair() const {
+  return treasurehair_;
+}
+inline void BaseAttrUserDataV1::set_treasurehair(::google::protobuf::int32 value) {
+  set_has_treasurehair();
+  treasurehair_ = value;
+}
+
+// optional int32 TreasureHead = 76 [default = -1];
+inline bool BaseAttrUserDataV1::has_treasurehead() const {
+  return (_has_bits_[2] & 0x00000002u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_treasurehead() {
+  _has_bits_[2] |= 0x00000002u;
+}
+inline void BaseAttrUserDataV1::clear_has_treasurehead() {
+  _has_bits_[2] &= ~0x00000002u;
+}
+inline void BaseAttrUserDataV1::clear_treasurehead() {
+  treasurehead_ = -1;
+  clear_has_treasurehead();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::treasurehead() const {
+  return treasurehead_;
+}
+inline void BaseAttrUserDataV1::set_treasurehead(::google::protobuf::int32 value) {
+  set_has_treasurehead();
+  treasurehead_ = value;
+}
+
+// optional int32 TreasureBody = 77 [default = -1];
+inline bool BaseAttrUserDataV1::has_treasurebody() const {
+  return (_has_bits_[2] & 0x00000004u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_treasurebody() {
+  _has_bits_[2] |= 0x00000004u;
+}
+inline void BaseAttrUserDataV1::clear_has_treasurebody() {
+  _has_bits_[2] &= ~0x00000004u;
+}
+inline void BaseAttrUserDataV1::clear_treasurebody() {
+  treasurebody_ = -1;
+  clear_has_treasurebody();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::treasurebody() const {
+  return treasurebody_;
+}
+inline void BaseAttrUserDataV1::set_treasurebody(::google::protobuf::int32 value) {
+  set_has_treasurebody();
+  treasurebody_ = value;
+}
+
+// optional int32 TreasureWeapon = 78 [default = -1];
+inline bool BaseAttrUserDataV1::has_treasureweapon() const {
+  return (_has_bits_[2] & 0x00000008u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_treasureweapon() {
+  _has_bits_[2] |= 0x00000008u;
+}
+inline void BaseAttrUserDataV1::clear_has_treasureweapon() {
+  _has_bits_[2] &= ~0x00000008u;
+}
+inline void BaseAttrUserDataV1::clear_treasureweapon() {
+  treasureweapon_ = -1;
+  clear_has_treasureweapon();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::treasureweapon() const {
+  return treasureweapon_;
+}
+inline void BaseAttrUserDataV1::set_treasureweapon(::google::protobuf::int32 value) {
+  set_has_treasureweapon();
+  treasureweapon_ = value;
+}
+
+// optional int32 TreasureWing = 79 [default = -1];
+inline bool BaseAttrUserDataV1::has_treasurewing() const {
+  return (_has_bits_[2] & 0x00000010u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_treasurewing() {
+  _has_bits_[2] |= 0x00000010u;
+}
+inline void BaseAttrUserDataV1::clear_has_treasurewing() {
+  _has_bits_[2] &= ~0x00000010u;
+}
+inline void BaseAttrUserDataV1::clear_treasurewing() {
+  treasurewing_ = -1;
+  clear_has_treasurewing();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::treasurewing() const {
+  return treasurewing_;
+}
+inline void BaseAttrUserDataV1::set_treasurewing(::google::protobuf::int32 value) {
+  set_has_treasurewing();
+  treasurewing_ = value;
+}
+
+// optional uint64 GuildGuid = 80 [default = 0];
+inline bool BaseAttrUserDataV1::has_guildguid() const {
+  return (_has_bits_[2] & 0x00000020u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_guildguid() {
+  _has_bits_[2] |= 0x00000020u;
+}
+inline void BaseAttrUserDataV1::clear_has_guildguid() {
+  _has_bits_[2] &= ~0x00000020u;
+}
+inline void BaseAttrUserDataV1::clear_guildguid() {
+  guildguid_ = GOOGLE_ULONGLONG(0);
+  clear_has_guildguid();
+}
+inline ::google::protobuf::uint64 BaseAttrUserDataV1::guildguid() const {
+  return guildguid_;
+}
+inline void BaseAttrUserDataV1::set_guildguid(::google::protobuf::uint64 value) {
+  set_has_guildguid();
+  guildguid_ = value;
+}
+
+// optional int32 TreasureRiding = 81 [default = -1];
+inline bool BaseAttrUserDataV1::has_treasureriding() const {
+  return (_has_bits_[2] & 0x00000040u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_treasureriding() {
+  _has_bits_[2] |= 0x00000040u;
+}
+inline void BaseAttrUserDataV1::clear_has_treasureriding() {
+  _has_bits_[2] &= ~0x00000040u;
+}
+inline void BaseAttrUserDataV1::clear_treasureriding() {
+  treasureriding_ = -1;
+  clear_has_treasureriding();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::treasureriding() const {
+  return treasureriding_;
+}
+inline void BaseAttrUserDataV1::set_treasureriding(::google::protobuf::int32 value) {
+  set_has_treasureriding();
+  treasureriding_ = value;
+}
+
+// optional int32 VechicleId = 82 [default = -1];
+inline bool BaseAttrUserDataV1::has_vechicleid() const {
+  return (_has_bits_[2] & 0x00000080u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_vechicleid() {
+  _has_bits_[2] |= 0x00000080u;
+}
+inline void BaseAttrUserDataV1::clear_has_vechicleid() {
+  _has_bits_[2] &= ~0x00000080u;
+}
+inline void BaseAttrUserDataV1::clear_vechicleid() {
+  vechicleid_ = -1;
+  clear_has_vechicleid();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::vechicleid() const {
+  return vechicleid_;
+}
+inline void BaseAttrUserDataV1::set_vechicleid(::google::protobuf::int32 value) {
+  set_has_vechicleid();
+  vechicleid_ = value;
+}
+
+// optional bool AnimationState = 83 [default = false];
+inline bool BaseAttrUserDataV1::has_animationstate() const {
+  return (_has_bits_[2] & 0x00000100u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_animationstate() {
+  _has_bits_[2] |= 0x00000100u;
+}
+inline void BaseAttrUserDataV1::clear_has_animationstate() {
+  _has_bits_[2] &= ~0x00000100u;
+}
+inline void BaseAttrUserDataV1::clear_animationstate() {
+  animationstate_ = false;
+  clear_has_animationstate();
+}
+inline bool BaseAttrUserDataV1::animationstate() const {
+  return animationstate_;
+}
+inline void BaseAttrUserDataV1::set_animationstate(bool value) {
+  set_has_animationstate();
+  animationstate_ = value;
+}
+
+// optional float RefixDmgRate = 84 [default = 0];
+inline bool BaseAttrUserDataV1::has_refixdmgrate() const {
+  return (_has_bits_[2] & 0x00000200u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_refixdmgrate() {
+  _has_bits_[2] |= 0x00000200u;
+}
+inline void BaseAttrUserDataV1::clear_has_refixdmgrate() {
+  _has_bits_[2] &= ~0x00000200u;
+}
+inline void BaseAttrUserDataV1::clear_refixdmgrate() {
+  refixdmgrate_ = 0;
+  clear_has_refixdmgrate();
+}
+inline float BaseAttrUserDataV1::refixdmgrate() const {
+  return refixdmgrate_;
+}
+inline void BaseAttrUserDataV1::set_refixdmgrate(float value) {
+  set_has_refixdmgrate();
+  refixdmgrate_ = value;
+}
+
+// optional int32 RefixDmgValue = 85 [default = 0];
+inline bool BaseAttrUserDataV1::has_refixdmgvalue() const {
+  return (_has_bits_[2] & 0x00000400u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_refixdmgvalue() {
+  _has_bits_[2] |= 0x00000400u;
+}
+inline void BaseAttrUserDataV1::clear_has_refixdmgvalue() {
+  _has_bits_[2] &= ~0x00000400u;
+}
+inline void BaseAttrUserDataV1::clear_refixdmgvalue() {
+  refixdmgvalue_ = 0;
+  clear_has_refixdmgvalue();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::refixdmgvalue() const {
+  return refixdmgvalue_;
+}
+inline void BaseAttrUserDataV1::set_refixdmgvalue(::google::protobuf::int32 value) {
+  set_has_refixdmgvalue();
+  refixdmgvalue_ = value;
+}
+
+// optional float RefixHurtRate = 86 [default = 0];
+inline bool BaseAttrUserDataV1::has_refixhurtrate() const {
+  return (_has_bits_[2] & 0x00000800u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_refixhurtrate() {
+  _has_bits_[2] |= 0x00000800u;
+}
+inline void BaseAttrUserDataV1::clear_has_refixhurtrate() {
+  _has_bits_[2] &= ~0x00000800u;
+}
+inline void BaseAttrUserDataV1::clear_refixhurtrate() {
+  refixhurtrate_ = 0;
+  clear_has_refixhurtrate();
+}
+inline float BaseAttrUserDataV1::refixhurtrate() const {
+  return refixhurtrate_;
+}
+inline void BaseAttrUserDataV1::set_refixhurtrate(float value) {
+  set_has_refixhurtrate();
+  refixhurtrate_ = value;
+}
+
+// optional int32 RefixHurtValue = 87 [default = 0];
+inline bool BaseAttrUserDataV1::has_refixhurtvalue() const {
+  return (_has_bits_[2] & 0x00001000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_refixhurtvalue() {
+  _has_bits_[2] |= 0x00001000u;
+}
+inline void BaseAttrUserDataV1::clear_has_refixhurtvalue() {
+  _has_bits_[2] &= ~0x00001000u;
+}
+inline void BaseAttrUserDataV1::clear_refixhurtvalue() {
+  refixhurtvalue_ = 0;
+  clear_has_refixhurtvalue();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::refixhurtvalue() const {
+  return refixhurtvalue_;
+}
+inline void BaseAttrUserDataV1::set_refixhurtvalue(::google::protobuf::int32 value) {
+  set_has_refixhurtvalue();
+  refixhurtvalue_ = value;
+}
+
+// optional float RefixHealRate = 88 [default = 0];
+inline bool BaseAttrUserDataV1::has_refixhealrate() const {
+  return (_has_bits_[2] & 0x00002000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_refixhealrate() {
+  _has_bits_[2] |= 0x00002000u;
+}
+inline void BaseAttrUserDataV1::clear_has_refixhealrate() {
+  _has_bits_[2] &= ~0x00002000u;
+}
+inline void BaseAttrUserDataV1::clear_refixhealrate() {
+  refixhealrate_ = 0;
+  clear_has_refixhealrate();
+}
+inline float BaseAttrUserDataV1::refixhealrate() const {
+  return refixhealrate_;
+}
+inline void BaseAttrUserDataV1::set_refixhealrate(float value) {
+  set_has_refixhealrate();
+  refixhealrate_ = value;
+}
+
+// optional int32 RefixHealValue = 89 [default = 0];
+inline bool BaseAttrUserDataV1::has_refixhealvalue() const {
+  return (_has_bits_[2] & 0x00004000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_refixhealvalue() {
+  _has_bits_[2] |= 0x00004000u;
+}
+inline void BaseAttrUserDataV1::clear_has_refixhealvalue() {
+  _has_bits_[2] &= ~0x00004000u;
+}
+inline void BaseAttrUserDataV1::clear_refixhealvalue() {
+  refixhealvalue_ = 0;
+  clear_has_refixhealvalue();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::refixhealvalue() const {
+  return refixhealvalue_;
+}
+inline void BaseAttrUserDataV1::set_refixhealvalue(::google::protobuf::int32 value) {
+  set_has_refixhealvalue();
+  refixhealvalue_ = value;
+}
+
+// optional float RefixCuredRate = 90 [default = 0];
+inline bool BaseAttrUserDataV1::has_refixcuredrate() const {
+  return (_has_bits_[2] & 0x00008000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_refixcuredrate() {
+  _has_bits_[2] |= 0x00008000u;
+}
+inline void BaseAttrUserDataV1::clear_has_refixcuredrate() {
+  _has_bits_[2] &= ~0x00008000u;
+}
+inline void BaseAttrUserDataV1::clear_refixcuredrate() {
+  refixcuredrate_ = 0;
+  clear_has_refixcuredrate();
+}
+inline float BaseAttrUserDataV1::refixcuredrate() const {
+  return refixcuredrate_;
+}
+inline void BaseAttrUserDataV1::set_refixcuredrate(float value) {
+  set_has_refixcuredrate();
+  refixcuredrate_ = value;
+}
+
+// optional int32 RefixCuredValue = 91 [default = 0];
+inline bool BaseAttrUserDataV1::has_refixcuredvalue() const {
+  return (_has_bits_[2] & 0x00010000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_refixcuredvalue() {
+  _has_bits_[2] |= 0x00010000u;
+}
+inline void BaseAttrUserDataV1::clear_has_refixcuredvalue() {
+  _has_bits_[2] &= ~0x00010000u;
+}
+inline void BaseAttrUserDataV1::clear_refixcuredvalue() {
+  refixcuredvalue_ = 0;
+  clear_has_refixcuredvalue();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::refixcuredvalue() const {
+  return refixcuredvalue_;
+}
+inline void BaseAttrUserDataV1::set_refixcuredvalue(::google::protobuf::int32 value) {
+  set_has_refixcuredvalue();
+  refixcuredvalue_ = value;
+}
+
+// optional int64 GuildContribute = 92 [default = -1];
+inline bool BaseAttrUserDataV1::has_guildcontribute() const {
+  return (_has_bits_[2] & 0x00020000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_guildcontribute() {
+  _has_bits_[2] |= 0x00020000u;
+}
+inline void BaseAttrUserDataV1::clear_has_guildcontribute() {
+  _has_bits_[2] &= ~0x00020000u;
+}
+inline void BaseAttrUserDataV1::clear_guildcontribute() {
+  guildcontribute_ = GOOGLE_LONGLONG(-1);
+  clear_has_guildcontribute();
+}
+inline ::google::protobuf::int64 BaseAttrUserDataV1::guildcontribute() const {
+  return guildcontribute_;
+}
+inline void BaseAttrUserDataV1::set_guildcontribute(::google::protobuf::int64 value) {
+  set_has_guildcontribute();
+  guildcontribute_ = value;
+}
+
+// optional int64 PvpMoney = 93 [default = -1];
+inline bool BaseAttrUserDataV1::has_pvpmoney() const {
+  return (_has_bits_[2] & 0x00040000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_pvpmoney() {
+  _has_bits_[2] |= 0x00040000u;
+}
+inline void BaseAttrUserDataV1::clear_has_pvpmoney() {
+  _has_bits_[2] &= ~0x00040000u;
+}
+inline void BaseAttrUserDataV1::clear_pvpmoney() {
+  pvpmoney_ = GOOGLE_LONGLONG(-1);
+  clear_has_pvpmoney();
+}
+inline ::google::protobuf::int64 BaseAttrUserDataV1::pvpmoney() const {
+  return pvpmoney_;
+}
+inline void BaseAttrUserDataV1::set_pvpmoney(::google::protobuf::int64 value) {
+  set_has_pvpmoney();
+  pvpmoney_ = value;
+}
+
+// optional int64 GuildResource = 94 [default = -1];
+inline bool BaseAttrUserDataV1::has_guildresource() const {
+  return (_has_bits_[2] & 0x00080000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_guildresource() {
+  _has_bits_[2] |= 0x00080000u;
+}
+inline void BaseAttrUserDataV1::clear_has_guildresource() {
+  _has_bits_[2] &= ~0x00080000u;
+}
+inline void BaseAttrUserDataV1::clear_guildresource() {
+  guildresource_ = GOOGLE_LONGLONG(-1);
+  clear_has_guildresource();
+}
+inline ::google::protobuf::int64 BaseAttrUserDataV1::guildresource() const {
+  return guildresource_;
+}
+inline void BaseAttrUserDataV1::set_guildresource(::google::protobuf::int64 value) {
+  set_has_guildresource();
+  guildresource_ = value;
+}
+
+// optional int32 CreateRoleTime = 95 [default = 0];
+inline bool BaseAttrUserDataV1::has_createroletime() const {
+  return (_has_bits_[2] & 0x00100000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_createroletime() {
+  _has_bits_[2] |= 0x00100000u;
+}
+inline void BaseAttrUserDataV1::clear_has_createroletime() {
+  _has_bits_[2] &= ~0x00100000u;
+}
+inline void BaseAttrUserDataV1::clear_createroletime() {
+  createroletime_ = 0;
+  clear_has_createroletime();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::createroletime() const {
+  return createroletime_;
+}
+inline void BaseAttrUserDataV1::set_createroletime(::google::protobuf::int32 value) {
+  set_has_createroletime();
+  createroletime_ = value;
+}
+
+// optional int32 UpdateRoleTime = 96 [default = 0];
+inline bool BaseAttrUserDataV1::has_updateroletime() const {
+  return (_has_bits_[2] & 0x00200000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_updateroletime() {
+  _has_bits_[2] |= 0x00200000u;
+}
+inline void BaseAttrUserDataV1::clear_has_updateroletime() {
+  _has_bits_[2] &= ~0x00200000u;
+}
+inline void BaseAttrUserDataV1::clear_updateroletime() {
+  updateroletime_ = 0;
+  clear_has_updateroletime();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::updateroletime() const {
+  return updateroletime_;
+}
+inline void BaseAttrUserDataV1::set_updateroletime(::google::protobuf::int32 value) {
+  set_has_updateroletime();
+  updateroletime_ = value;
+}
+
+// optional bool FightState = 97 [default = false];
+inline bool BaseAttrUserDataV1::has_fightstate() const {
+  return (_has_bits_[2] & 0x00400000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_fightstate() {
+  _has_bits_[2] |= 0x00400000u;
+}
+inline void BaseAttrUserDataV1::clear_has_fightstate() {
+  _has_bits_[2] &= ~0x00400000u;
+}
+inline void BaseAttrUserDataV1::clear_fightstate() {
+  fightstate_ = false;
+  clear_has_fightstate();
+}
+inline bool BaseAttrUserDataV1::fightstate() const {
+  return fightstate_;
+}
+inline void BaseAttrUserDataV1::set_fightstate(bool value) {
+  set_has_fightstate();
+  fightstate_ = value;
+}
+
+// repeated int32 AttackSkillList = 98;
+inline int BaseAttrUserDataV1::attackskilllist_size() const {
+  return attackskilllist_.size();
+}
+inline void BaseAttrUserDataV1::clear_attackskilllist() {
+  attackskilllist_.Clear();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::attackskilllist(int index) const {
+  return attackskilllist_.Get(index);
+}
+inline void BaseAttrUserDataV1::set_attackskilllist(int index, ::google::protobuf::int32 value) {
+  attackskilllist_.Set(index, value);
+}
+inline void BaseAttrUserDataV1::add_attackskilllist(::google::protobuf::int32 value) {
+  attackskilllist_.Add(value);
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+BaseAttrUserDataV1::attackskilllist() const {
+  return attackskilllist_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+BaseAttrUserDataV1::mutable_attackskilllist() {
+  return &attackskilllist_;
+}
+
+// optional string GuildName = 99;
+inline bool BaseAttrUserDataV1::has_guildname() const {
+  return (_has_bits_[2] & 0x01000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_guildname() {
+  _has_bits_[2] |= 0x01000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_guildname() {
+  _has_bits_[2] &= ~0x01000000u;
+}
+inline void BaseAttrUserDataV1::clear_guildname() {
+  if (guildname_ != &::google::protobuf::internal::kEmptyString) {
+    guildname_->clear();
+  }
+  clear_has_guildname();
+}
+inline const ::std::string& BaseAttrUserDataV1::guildname() const {
+  return *guildname_;
+}
+inline void BaseAttrUserDataV1::set_guildname(const ::std::string& value) {
+  set_has_guildname();
+  if (guildname_ == &::google::protobuf::internal::kEmptyString) {
+    guildname_ = new ::std::string;
+  }
+  guildname_->assign(value);
+}
+inline void BaseAttrUserDataV1::set_guildname(const char* value) {
+  set_has_guildname();
+  if (guildname_ == &::google::protobuf::internal::kEmptyString) {
+    guildname_ = new ::std::string;
+  }
+  guildname_->assign(value);
+}
+inline void BaseAttrUserDataV1::set_guildname(const char* value, size_t size) {
+  set_has_guildname();
+  if (guildname_ == &::google::protobuf::internal::kEmptyString) {
+    guildname_ = new ::std::string;
+  }
+  guildname_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* BaseAttrUserDataV1::mutable_guildname() {
+  set_has_guildname();
+  if (guildname_ == &::google::protobuf::internal::kEmptyString) {
+    guildname_ = new ::std::string;
+  }
+  return guildname_;
+}
+inline ::std::string* BaseAttrUserDataV1::release_guildname() {
+  clear_has_guildname();
+  if (guildname_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = guildname_;
+    guildname_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void BaseAttrUserDataV1::set_allocated_guildname(::std::string* guildname) {
+  if (guildname_ != &::google::protobuf::internal::kEmptyString) {
+    delete guildname_;
+  }
+  if (guildname) {
+    set_has_guildname();
+    guildname_ = guildname;
+  } else {
+    clear_has_guildname();
+    guildname_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional bool IsAllowSelect = 100 [default = true];
+inline bool BaseAttrUserDataV1::has_isallowselect() const {
+  return (_has_bits_[2] & 0x02000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_isallowselect() {
+  _has_bits_[2] |= 0x02000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_isallowselect() {
+  _has_bits_[2] &= ~0x02000000u;
+}
+inline void BaseAttrUserDataV1::clear_isallowselect() {
+  isallowselect_ = true;
+  clear_has_isallowselect();
+}
+inline bool BaseAttrUserDataV1::isallowselect() const {
+  return isallowselect_;
+}
+inline void BaseAttrUserDataV1::set_isallowselect(bool value) {
+  set_has_isallowselect();
+  isallowselect_ = value;
+}
+
+// optional bool GoHomeState = 101 [default = false];
+inline bool BaseAttrUserDataV1::has_gohomestate() const {
+  return (_has_bits_[2] & 0x04000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_gohomestate() {
+  _has_bits_[2] |= 0x04000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_gohomestate() {
+  _has_bits_[2] &= ~0x04000000u;
+}
+inline void BaseAttrUserDataV1::clear_gohomestate() {
+  gohomestate_ = false;
+  clear_has_gohomestate();
+}
+inline bool BaseAttrUserDataV1::gohomestate() const {
+  return gohomestate_;
+}
+inline void BaseAttrUserDataV1::set_gohomestate(bool value) {
+  set_has_gohomestate();
+  gohomestate_ = value;
+}
+
+// optional bool CanFight = 102 [default = true];
+inline bool BaseAttrUserDataV1::has_canfight() const {
+  return (_has_bits_[2] & 0x08000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_canfight() {
+  _has_bits_[2] |= 0x08000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_canfight() {
+  _has_bits_[2] &= ~0x08000000u;
+}
+inline void BaseAttrUserDataV1::clear_canfight() {
+  canfight_ = true;
+  clear_has_canfight();
+}
+inline bool BaseAttrUserDataV1::canfight() const {
+  return canfight_;
+}
+inline void BaseAttrUserDataV1::set_canfight(bool value) {
+  set_has_canfight();
+  canfight_ = value;
+}
+
+// optional int64 DoubleExp = 103 [default = -1];
+inline bool BaseAttrUserDataV1::has_doubleexp() const {
+  return (_has_bits_[2] & 0x10000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_doubleexp() {
+  _has_bits_[2] |= 0x10000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_doubleexp() {
+  _has_bits_[2] &= ~0x10000000u;
+}
+inline void BaseAttrUserDataV1::clear_doubleexp() {
+  doubleexp_ = GOOGLE_LONGLONG(-1);
+  clear_has_doubleexp();
+}
+inline ::google::protobuf::int64 BaseAttrUserDataV1::doubleexp() const {
+  return doubleexp_;
+}
+inline void BaseAttrUserDataV1::set_doubleexp(::google::protobuf::int64 value) {
+  set_has_doubleexp();
+  doubleexp_ = value;
+}
+
+// optional int64 FriendPoint = 104 [default = -1];
+inline bool BaseAttrUserDataV1::has_friendpoint() const {
+  return (_has_bits_[2] & 0x20000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_friendpoint() {
+  _has_bits_[2] |= 0x20000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_friendpoint() {
+  _has_bits_[2] &= ~0x20000000u;
+}
+inline void BaseAttrUserDataV1::clear_friendpoint() {
+  friendpoint_ = GOOGLE_LONGLONG(-1);
+  clear_has_friendpoint();
+}
+inline ::google::protobuf::int64 BaseAttrUserDataV1::friendpoint() const {
+  return friendpoint_;
+}
+inline void BaseAttrUserDataV1::set_friendpoint(::google::protobuf::int64 value) {
+  set_has_friendpoint();
+  friendpoint_ = value;
+}
+
+// optional int64 HisMaxHonor = 105 [default = -1];
+inline bool BaseAttrUserDataV1::has_hismaxhonor() const {
+  return (_has_bits_[2] & 0x40000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_hismaxhonor() {
+  _has_bits_[2] |= 0x40000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_hismaxhonor() {
+  _has_bits_[2] &= ~0x40000000u;
+}
+inline void BaseAttrUserDataV1::clear_hismaxhonor() {
+  hismaxhonor_ = GOOGLE_LONGLONG(-1);
+  clear_has_hismaxhonor();
+}
+inline ::google::protobuf::int64 BaseAttrUserDataV1::hismaxhonor() const {
+  return hismaxhonor_;
+}
+inline void BaseAttrUserDataV1::set_hismaxhonor(::google::protobuf::int64 value) {
+  set_has_hismaxhonor();
+  hismaxhonor_ = value;
+}
+
+// optional bool HurtState = 106 [default = false];
+inline bool BaseAttrUserDataV1::has_hurtstate() const {
+  return (_has_bits_[2] & 0x80000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_hurtstate() {
+  _has_bits_[2] |= 0x80000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_hurtstate() {
+  _has_bits_[2] &= ~0x80000000u;
+}
+inline void BaseAttrUserDataV1::clear_hurtstate() {
+  hurtstate_ = false;
+  clear_has_hurtstate();
+}
+inline bool BaseAttrUserDataV1::hurtstate() const {
+  return hurtstate_;
+}
+inline void BaseAttrUserDataV1::set_hurtstate(bool value) {
+  set_has_hurtstate();
+  hurtstate_ = value;
+}
+
+// optional bool HurtFlyState = 107 [default = false];
+inline bool BaseAttrUserDataV1::has_hurtflystate() const {
+  return (_has_bits_[3] & 0x00000001u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_hurtflystate() {
+  _has_bits_[3] |= 0x00000001u;
+}
+inline void BaseAttrUserDataV1::clear_has_hurtflystate() {
+  _has_bits_[3] &= ~0x00000001u;
+}
+inline void BaseAttrUserDataV1::clear_hurtflystate() {
+  hurtflystate_ = false;
+  clear_has_hurtflystate();
+}
+inline bool BaseAttrUserDataV1::hurtflystate() const {
+  return hurtflystate_;
+}
+inline void BaseAttrUserDataV1::set_hurtflystate(bool value) {
+  set_has_hurtflystate();
+  hurtflystate_ = value;
+}
+
+// optional bool HurtDownState = 108 [default = false];
+inline bool BaseAttrUserDataV1::has_hurtdownstate() const {
+  return (_has_bits_[3] & 0x00000002u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_hurtdownstate() {
+  _has_bits_[3] |= 0x00000002u;
+}
+inline void BaseAttrUserDataV1::clear_has_hurtdownstate() {
+  _has_bits_[3] &= ~0x00000002u;
+}
+inline void BaseAttrUserDataV1::clear_hurtdownstate() {
+  hurtdownstate_ = false;
+  clear_has_hurtdownstate();
+}
+inline bool BaseAttrUserDataV1::hurtdownstate() const {
+  return hurtdownstate_;
+}
+inline void BaseAttrUserDataV1::set_hurtdownstate(bool value) {
+  set_has_hurtdownstate();
+  hurtdownstate_ = value;
+}
+
+// optional bool HurtRepelState = 109 [default = false];
+inline bool BaseAttrUserDataV1::has_hurtrepelstate() const {
+  return (_has_bits_[3] & 0x00000004u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_hurtrepelstate() {
+  _has_bits_[3] |= 0x00000004u;
+}
+inline void BaseAttrUserDataV1::clear_has_hurtrepelstate() {
+  _has_bits_[3] &= ~0x00000004u;
+}
+inline void BaseAttrUserDataV1::clear_hurtrepelstate() {
+  hurtrepelstate_ = false;
+  clear_has_hurtrepelstate();
+}
+inline bool BaseAttrUserDataV1::hurtrepelstate() const {
+  return hurtrepelstate_;
+}
+inline void BaseAttrUserDataV1::set_hurtrepelstate(bool value) {
+  set_has_hurtrepelstate();
+  hurtrepelstate_ = value;
+}
+
+// optional int64 TodayHornor = 111 [default = -1];
+inline bool BaseAttrUserDataV1::has_todayhornor() const {
+  return (_has_bits_[3] & 0x00000008u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_todayhornor() {
+  _has_bits_[3] |= 0x00000008u;
+}
+inline void BaseAttrUserDataV1::clear_has_todayhornor() {
+  _has_bits_[3] &= ~0x00000008u;
+}
+inline void BaseAttrUserDataV1::clear_todayhornor() {
+  todayhornor_ = GOOGLE_LONGLONG(-1);
+  clear_has_todayhornor();
+}
+inline ::google::protobuf::int64 BaseAttrUserDataV1::todayhornor() const {
+  return todayhornor_;
+}
+inline void BaseAttrUserDataV1::set_todayhornor(::google::protobuf::int64 value) {
+  set_has_todayhornor();
+  todayhornor_ = value;
+}
+
+// optional int32 CurProfession = 113 [default = -1];
+inline bool BaseAttrUserDataV1::has_curprofession() const {
+  return (_has_bits_[3] & 0x00000010u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_curprofession() {
+  _has_bits_[3] |= 0x00000010u;
+}
+inline void BaseAttrUserDataV1::clear_has_curprofession() {
+  _has_bits_[3] &= ~0x00000010u;
+}
+inline void BaseAttrUserDataV1::clear_curprofession() {
+  curprofession_ = -1;
+  clear_has_curprofession();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::curprofession() const {
+  return curprofession_;
+}
+inline void BaseAttrUserDataV1::set_curprofession(::google::protobuf::int32 value) {
+  set_has_curprofession();
+  curprofession_ = value;
+}
+
+// optional int32 PetCreateDelCond = 114 [default = -1];
+inline bool BaseAttrUserDataV1::has_petcreatedelcond() const {
+  return (_has_bits_[3] & 0x00000020u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_petcreatedelcond() {
+  _has_bits_[3] |= 0x00000020u;
+}
+inline void BaseAttrUserDataV1::clear_has_petcreatedelcond() {
+  _has_bits_[3] &= ~0x00000020u;
+}
+inline void BaseAttrUserDataV1::clear_petcreatedelcond() {
+  petcreatedelcond_ = -1;
+  clear_has_petcreatedelcond();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::petcreatedelcond() const {
+  return petcreatedelcond_;
+}
+inline void BaseAttrUserDataV1::set_petcreatedelcond(::google::protobuf::int32 value) {
+  set_has_petcreatedelcond();
+  petcreatedelcond_ = value;
+}
+
+// optional int32 PetDisplay = 115 [default = 0];
+inline bool BaseAttrUserDataV1::has_petdisplay() const {
+  return (_has_bits_[3] & 0x00000040u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_petdisplay() {
+  _has_bits_[3] |= 0x00000040u;
+}
+inline void BaseAttrUserDataV1::clear_has_petdisplay() {
+  _has_bits_[3] &= ~0x00000040u;
+}
+inline void BaseAttrUserDataV1::clear_petdisplay() {
+  petdisplay_ = 0;
+  clear_has_petdisplay();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::petdisplay() const {
+  return petdisplay_;
+}
+inline void BaseAttrUserDataV1::set_petdisplay(::google::protobuf::int32 value) {
+  set_has_petdisplay();
+  petdisplay_ = value;
+}
+
+// optional int64 PetMoney = 116 [default = -1];
+inline bool BaseAttrUserDataV1::has_petmoney() const {
+  return (_has_bits_[3] & 0x00000080u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_petmoney() {
+  _has_bits_[3] |= 0x00000080u;
+}
+inline void BaseAttrUserDataV1::clear_has_petmoney() {
+  _has_bits_[3] &= ~0x00000080u;
+}
+inline void BaseAttrUserDataV1::clear_petmoney() {
+  petmoney_ = GOOGLE_LONGLONG(-1);
+  clear_has_petmoney();
+}
+inline ::google::protobuf::int64 BaseAttrUserDataV1::petmoney() const {
+  return petmoney_;
+}
+inline void BaseAttrUserDataV1::set_petmoney(::google::protobuf::int64 value) {
+  set_has_petmoney();
+  petmoney_ = value;
+}
+
+// optional int32 DuelStatus = 117 [default = 0];
+inline bool BaseAttrUserDataV1::has_duelstatus() const {
+  return (_has_bits_[3] & 0x00000100u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_duelstatus() {
+  _has_bits_[3] |= 0x00000100u;
+}
+inline void BaseAttrUserDataV1::clear_has_duelstatus() {
+  _has_bits_[3] &= ~0x00000100u;
+}
+inline void BaseAttrUserDataV1::clear_duelstatus() {
+  duelstatus_ = 0;
+  clear_has_duelstatus();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::duelstatus() const {
+  return duelstatus_;
+}
+inline void BaseAttrUserDataV1::set_duelstatus(::google::protobuf::int32 value) {
+  set_has_duelstatus();
+  duelstatus_ = value;
+}
+
+// optional int64 ExpPool = 118 [default = -1];
+inline bool BaseAttrUserDataV1::has_exppool() const {
+  return (_has_bits_[3] & 0x00000200u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_exppool() {
+  _has_bits_[3] |= 0x00000200u;
+}
+inline void BaseAttrUserDataV1::clear_has_exppool() {
+  _has_bits_[3] &= ~0x00000200u;
+}
+inline void BaseAttrUserDataV1::clear_exppool() {
+  exppool_ = GOOGLE_LONGLONG(-1);
+  clear_has_exppool();
+}
+inline ::google::protobuf::int64 BaseAttrUserDataV1::exppool() const {
+  return exppool_;
+}
+inline void BaseAttrUserDataV1::set_exppool(::google::protobuf::int64 value) {
+  set_has_exppool();
+  exppool_ = value;
+}
+
+// optional bool RushState = 119 [default = false];
+inline bool BaseAttrUserDataV1::has_rushstate() const {
+  return (_has_bits_[3] & 0x00000400u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_rushstate() {
+  _has_bits_[3] |= 0x00000400u;
+}
+inline void BaseAttrUserDataV1::clear_has_rushstate() {
+  _has_bits_[3] &= ~0x00000400u;
+}
+inline void BaseAttrUserDataV1::clear_rushstate() {
+  rushstate_ = false;
+  clear_has_rushstate();
+}
+inline bool BaseAttrUserDataV1::rushstate() const {
+  return rushstate_;
+}
+inline void BaseAttrUserDataV1::set_rushstate(bool value) {
+  set_has_rushstate();
+  rushstate_ = value;
+}
+
+// optional uint64 StareState = 120 [default = 0];
+inline bool BaseAttrUserDataV1::has_starestate() const {
+  return (_has_bits_[3] & 0x00000800u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_starestate() {
+  _has_bits_[3] |= 0x00000800u;
+}
+inline void BaseAttrUserDataV1::clear_has_starestate() {
+  _has_bits_[3] &= ~0x00000800u;
+}
+inline void BaseAttrUserDataV1::clear_starestate() {
+  starestate_ = GOOGLE_ULONGLONG(0);
+  clear_has_starestate();
+}
+inline ::google::protobuf::uint64 BaseAttrUserDataV1::starestate() const {
+  return starestate_;
+}
+inline void BaseAttrUserDataV1::set_starestate(::google::protobuf::uint64 value) {
+  set_has_starestate();
+  starestate_ = value;
+}
+
+// optional int32 WorldLevel = 121 [default = 0];
+inline bool BaseAttrUserDataV1::has_worldlevel() const {
+  return (_has_bits_[3] & 0x00001000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_worldlevel() {
+  _has_bits_[3] |= 0x00001000u;
+}
+inline void BaseAttrUserDataV1::clear_has_worldlevel() {
+  _has_bits_[3] &= ~0x00001000u;
+}
+inline void BaseAttrUserDataV1::clear_worldlevel() {
+  worldlevel_ = 0;
+  clear_has_worldlevel();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::worldlevel() const {
+  return worldlevel_;
+}
+inline void BaseAttrUserDataV1::set_worldlevel(::google::protobuf::int32 value) {
+  set_has_worldlevel();
+  worldlevel_ = value;
+}
+
+// optional float DizzyHitRate = 122 [default = 0];
+inline bool BaseAttrUserDataV1::has_dizzyhitrate() const {
+  return (_has_bits_[3] & 0x00002000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_dizzyhitrate() {
+  _has_bits_[3] |= 0x00002000u;
+}
+inline void BaseAttrUserDataV1::clear_has_dizzyhitrate() {
+  _has_bits_[3] &= ~0x00002000u;
+}
+inline void BaseAttrUserDataV1::clear_dizzyhitrate() {
+  dizzyhitrate_ = 0;
+  clear_has_dizzyhitrate();
+}
+inline float BaseAttrUserDataV1::dizzyhitrate() const {
+  return dizzyhitrate_;
+}
+inline void BaseAttrUserDataV1::set_dizzyhitrate(float value) {
+  set_has_dizzyhitrate();
+  dizzyhitrate_ = value;
+}
+
+// optional float DizzyResistRate = 123 [default = 0];
+inline bool BaseAttrUserDataV1::has_dizzyresistrate() const {
+  return (_has_bits_[3] & 0x00004000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_dizzyresistrate() {
+  _has_bits_[3] |= 0x00004000u;
+}
+inline void BaseAttrUserDataV1::clear_has_dizzyresistrate() {
+  _has_bits_[3] &= ~0x00004000u;
+}
+inline void BaseAttrUserDataV1::clear_dizzyresistrate() {
+  dizzyresistrate_ = 0;
+  clear_has_dizzyresistrate();
+}
+inline float BaseAttrUserDataV1::dizzyresistrate() const {
+  return dizzyresistrate_;
+}
+inline void BaseAttrUserDataV1::set_dizzyresistrate(float value) {
+  set_has_dizzyresistrate();
+  dizzyresistrate_ = value;
+}
+
+// optional float ImmovableHitRate = 124 [default = 0];
+inline bool BaseAttrUserDataV1::has_immovablehitrate() const {
+  return (_has_bits_[3] & 0x00008000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_immovablehitrate() {
+  _has_bits_[3] |= 0x00008000u;
+}
+inline void BaseAttrUserDataV1::clear_has_immovablehitrate() {
+  _has_bits_[3] &= ~0x00008000u;
+}
+inline void BaseAttrUserDataV1::clear_immovablehitrate() {
+  immovablehitrate_ = 0;
+  clear_has_immovablehitrate();
+}
+inline float BaseAttrUserDataV1::immovablehitrate() const {
+  return immovablehitrate_;
+}
+inline void BaseAttrUserDataV1::set_immovablehitrate(float value) {
+  set_has_immovablehitrate();
+  immovablehitrate_ = value;
+}
+
+// optional float ImmovableResistRate = 125 [default = 0];
+inline bool BaseAttrUserDataV1::has_immovableresistrate() const {
+  return (_has_bits_[3] & 0x00010000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_immovableresistrate() {
+  _has_bits_[3] |= 0x00010000u;
+}
+inline void BaseAttrUserDataV1::clear_has_immovableresistrate() {
+  _has_bits_[3] &= ~0x00010000u;
+}
+inline void BaseAttrUserDataV1::clear_immovableresistrate() {
+  immovableresistrate_ = 0;
+  clear_has_immovableresistrate();
+}
+inline float BaseAttrUserDataV1::immovableresistrate() const {
+  return immovableresistrate_;
+}
+inline void BaseAttrUserDataV1::set_immovableresistrate(float value) {
+  set_has_immovableresistrate();
+  immovableresistrate_ = value;
+}
+
+// optional float HurtFlyHitRate = 126 [default = 0];
+inline bool BaseAttrUserDataV1::has_hurtflyhitrate() const {
+  return (_has_bits_[3] & 0x00020000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_hurtflyhitrate() {
+  _has_bits_[3] |= 0x00020000u;
+}
+inline void BaseAttrUserDataV1::clear_has_hurtflyhitrate() {
+  _has_bits_[3] &= ~0x00020000u;
+}
+inline void BaseAttrUserDataV1::clear_hurtflyhitrate() {
+  hurtflyhitrate_ = 0;
+  clear_has_hurtflyhitrate();
+}
+inline float BaseAttrUserDataV1::hurtflyhitrate() const {
+  return hurtflyhitrate_;
+}
+inline void BaseAttrUserDataV1::set_hurtflyhitrate(float value) {
+  set_has_hurtflyhitrate();
+  hurtflyhitrate_ = value;
+}
+
+// optional float HurtFlyResistRate = 127 [default = 0];
+inline bool BaseAttrUserDataV1::has_hurtflyresistrate() const {
+  return (_has_bits_[3] & 0x00040000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_hurtflyresistrate() {
+  _has_bits_[3] |= 0x00040000u;
+}
+inline void BaseAttrUserDataV1::clear_has_hurtflyresistrate() {
+  _has_bits_[3] &= ~0x00040000u;
+}
+inline void BaseAttrUserDataV1::clear_hurtflyresistrate() {
+  hurtflyresistrate_ = 0;
+  clear_has_hurtflyresistrate();
+}
+inline float BaseAttrUserDataV1::hurtflyresistrate() const {
+  return hurtflyresistrate_;
+}
+inline void BaseAttrUserDataV1::set_hurtflyresistrate(float value) {
+  set_has_hurtflyresistrate();
+  hurtflyresistrate_ = value;
+}
+
+// optional float FrozenHitRate = 128 [default = 0];
+inline bool BaseAttrUserDataV1::has_frozenhitrate() const {
+  return (_has_bits_[3] & 0x00080000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_frozenhitrate() {
+  _has_bits_[3] |= 0x00080000u;
+}
+inline void BaseAttrUserDataV1::clear_has_frozenhitrate() {
+  _has_bits_[3] &= ~0x00080000u;
+}
+inline void BaseAttrUserDataV1::clear_frozenhitrate() {
+  frozenhitrate_ = 0;
+  clear_has_frozenhitrate();
+}
+inline float BaseAttrUserDataV1::frozenhitrate() const {
+  return frozenhitrate_;
+}
+inline void BaseAttrUserDataV1::set_frozenhitrate(float value) {
+  set_has_frozenhitrate();
+  frozenhitrate_ = value;
+}
+
+// optional float FrozenResistRate = 129 [default = 0];
+inline bool BaseAttrUserDataV1::has_frozenresistrate() const {
+  return (_has_bits_[3] & 0x00100000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_frozenresistrate() {
+  _has_bits_[3] |= 0x00100000u;
+}
+inline void BaseAttrUserDataV1::clear_has_frozenresistrate() {
+  _has_bits_[3] &= ~0x00100000u;
+}
+inline void BaseAttrUserDataV1::clear_frozenresistrate() {
+  frozenresistrate_ = 0;
+  clear_has_frozenresistrate();
+}
+inline float BaseAttrUserDataV1::frozenresistrate() const {
+  return frozenresistrate_;
+}
+inline void BaseAttrUserDataV1::set_frozenresistrate(float value) {
+  set_has_frozenresistrate();
+  frozenresistrate_ = value;
+}
+
+// optional float CleanHitRate = 130 [default = 0];
+inline bool BaseAttrUserDataV1::has_cleanhitrate() const {
+  return (_has_bits_[3] & 0x00200000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_cleanhitrate() {
+  _has_bits_[3] |= 0x00200000u;
+}
+inline void BaseAttrUserDataV1::clear_has_cleanhitrate() {
+  _has_bits_[3] &= ~0x00200000u;
+}
+inline void BaseAttrUserDataV1::clear_cleanhitrate() {
+  cleanhitrate_ = 0;
+  clear_has_cleanhitrate();
+}
+inline float BaseAttrUserDataV1::cleanhitrate() const {
+  return cleanhitrate_;
+}
+inline void BaseAttrUserDataV1::set_cleanhitrate(float value) {
+  set_has_cleanhitrate();
+  cleanhitrate_ = value;
+}
+
+// optional float CleanResistRate = 131 [default = 0];
+inline bool BaseAttrUserDataV1::has_cleanresistrate() const {
+  return (_has_bits_[3] & 0x00400000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_cleanresistrate() {
+  _has_bits_[3] |= 0x00400000u;
+}
+inline void BaseAttrUserDataV1::clear_has_cleanresistrate() {
+  _has_bits_[3] &= ~0x00400000u;
+}
+inline void BaseAttrUserDataV1::clear_cleanresistrate() {
+  cleanresistrate_ = 0;
+  clear_has_cleanresistrate();
+}
+inline float BaseAttrUserDataV1::cleanresistrate() const {
+  return cleanresistrate_;
+}
+inline void BaseAttrUserDataV1::set_cleanresistrate(float value) {
+  set_has_cleanresistrate();
+  cleanresistrate_ = value;
+}
+
+// optional float DispelHitRate = 132 [default = 0];
+inline bool BaseAttrUserDataV1::has_dispelhitrate() const {
+  return (_has_bits_[3] & 0x00800000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_dispelhitrate() {
+  _has_bits_[3] |= 0x00800000u;
+}
+inline void BaseAttrUserDataV1::clear_has_dispelhitrate() {
+  _has_bits_[3] &= ~0x00800000u;
+}
+inline void BaseAttrUserDataV1::clear_dispelhitrate() {
+  dispelhitrate_ = 0;
+  clear_has_dispelhitrate();
+}
+inline float BaseAttrUserDataV1::dispelhitrate() const {
+  return dispelhitrate_;
+}
+inline void BaseAttrUserDataV1::set_dispelhitrate(float value) {
+  set_has_dispelhitrate();
+  dispelhitrate_ = value;
+}
+
+// optional float DispelResistRate = 133 [default = 0];
+inline bool BaseAttrUserDataV1::has_dispelresistrate() const {
+  return (_has_bits_[3] & 0x01000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_dispelresistrate() {
+  _has_bits_[3] |= 0x01000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_dispelresistrate() {
+  _has_bits_[3] &= ~0x01000000u;
+}
+inline void BaseAttrUserDataV1::clear_dispelresistrate() {
+  dispelresistrate_ = 0;
+  clear_has_dispelresistrate();
+}
+inline float BaseAttrUserDataV1::dispelresistrate() const {
+  return dispelresistrate_;
+}
+inline void BaseAttrUserDataV1::set_dispelresistrate(float value) {
+  set_has_dispelresistrate();
+  dispelresistrate_ = value;
+}
+
+// optional float SilenceHitRate = 134 [default = 0];
+inline bool BaseAttrUserDataV1::has_silencehitrate() const {
+  return (_has_bits_[3] & 0x02000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_silencehitrate() {
+  _has_bits_[3] |= 0x02000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_silencehitrate() {
+  _has_bits_[3] &= ~0x02000000u;
+}
+inline void BaseAttrUserDataV1::clear_silencehitrate() {
+  silencehitrate_ = 0;
+  clear_has_silencehitrate();
+}
+inline float BaseAttrUserDataV1::silencehitrate() const {
+  return silencehitrate_;
+}
+inline void BaseAttrUserDataV1::set_silencehitrate(float value) {
+  set_has_silencehitrate();
+  silencehitrate_ = value;
+}
+
+// optional float SilenceResistRate = 135 [default = 0];
+inline bool BaseAttrUserDataV1::has_silenceresistrate() const {
+  return (_has_bits_[3] & 0x04000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_silenceresistrate() {
+  _has_bits_[3] |= 0x04000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_silenceresistrate() {
+  _has_bits_[3] &= ~0x04000000u;
+}
+inline void BaseAttrUserDataV1::clear_silenceresistrate() {
+  silenceresistrate_ = 0;
+  clear_has_silenceresistrate();
+}
+inline float BaseAttrUserDataV1::silenceresistrate() const {
+  return silenceresistrate_;
+}
+inline void BaseAttrUserDataV1::set_silenceresistrate(float value) {
+  set_has_silenceresistrate();
+  silenceresistrate_ = value;
+}
+
+// optional float InterruptHitRate = 136 [default = 0];
+inline bool BaseAttrUserDataV1::has_interrupthitrate() const {
+  return (_has_bits_[3] & 0x08000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_interrupthitrate() {
+  _has_bits_[3] |= 0x08000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_interrupthitrate() {
+  _has_bits_[3] &= ~0x08000000u;
+}
+inline void BaseAttrUserDataV1::clear_interrupthitrate() {
+  interrupthitrate_ = 0;
+  clear_has_interrupthitrate();
+}
+inline float BaseAttrUserDataV1::interrupthitrate() const {
+  return interrupthitrate_;
+}
+inline void BaseAttrUserDataV1::set_interrupthitrate(float value) {
+  set_has_interrupthitrate();
+  interrupthitrate_ = value;
+}
+
+// optional float InterruptResistRate = 137 [default = 0];
+inline bool BaseAttrUserDataV1::has_interruptresistrate() const {
+  return (_has_bits_[3] & 0x10000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_interruptresistrate() {
+  _has_bits_[3] |= 0x10000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_interruptresistrate() {
+  _has_bits_[3] &= ~0x10000000u;
+}
+inline void BaseAttrUserDataV1::clear_interruptresistrate() {
+  interruptresistrate_ = 0;
+  clear_has_interruptresistrate();
+}
+inline float BaseAttrUserDataV1::interruptresistrate() const {
+  return interruptresistrate_;
+}
+inline void BaseAttrUserDataV1::set_interruptresistrate(float value) {
+  set_has_interruptresistrate();
+  interruptresistrate_ = value;
+}
+
+// optional float UncurableHitRate = 138 [default = 0];
+inline bool BaseAttrUserDataV1::has_uncurablehitrate() const {
+  return (_has_bits_[3] & 0x20000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_uncurablehitrate() {
+  _has_bits_[3] |= 0x20000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_uncurablehitrate() {
+  _has_bits_[3] &= ~0x20000000u;
+}
+inline void BaseAttrUserDataV1::clear_uncurablehitrate() {
+  uncurablehitrate_ = 0;
+  clear_has_uncurablehitrate();
+}
+inline float BaseAttrUserDataV1::uncurablehitrate() const {
+  return uncurablehitrate_;
+}
+inline void BaseAttrUserDataV1::set_uncurablehitrate(float value) {
+  set_has_uncurablehitrate();
+  uncurablehitrate_ = value;
+}
+
+// optional float UncurableResistRate = 139 [default = 0];
+inline bool BaseAttrUserDataV1::has_uncurableresistrate() const {
+  return (_has_bits_[3] & 0x40000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_uncurableresistrate() {
+  _has_bits_[3] |= 0x40000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_uncurableresistrate() {
+  _has_bits_[3] &= ~0x40000000u;
+}
+inline void BaseAttrUserDataV1::clear_uncurableresistrate() {
+  uncurableresistrate_ = 0;
+  clear_has_uncurableresistrate();
+}
+inline float BaseAttrUserDataV1::uncurableresistrate() const {
+  return uncurableresistrate_;
+}
+inline void BaseAttrUserDataV1::set_uncurableresistrate(float value) {
+  set_has_uncurableresistrate();
+  uncurableresistrate_ = value;
+}
+
+// optional int32 Transform = 140 [default = -1];
+inline bool BaseAttrUserDataV1::has_transform() const {
+  return (_has_bits_[3] & 0x80000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_transform() {
+  _has_bits_[3] |= 0x80000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_transform() {
+  _has_bits_[3] &= ~0x80000000u;
+}
+inline void BaseAttrUserDataV1::clear_transform() {
+  transform_ = -1;
+  clear_has_transform();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::transform() const {
+  return transform_;
+}
+inline void BaseAttrUserDataV1::set_transform(::google::protobuf::int32 value) {
+  set_has_transform();
+  transform_ = value;
+}
+
+// optional float HumanHurtRate = 141 [default = 0];
+inline bool BaseAttrUserDataV1::has_humanhurtrate() const {
+  return (_has_bits_[4] & 0x00000001u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_humanhurtrate() {
+  _has_bits_[4] |= 0x00000001u;
+}
+inline void BaseAttrUserDataV1::clear_has_humanhurtrate() {
+  _has_bits_[4] &= ~0x00000001u;
+}
+inline void BaseAttrUserDataV1::clear_humanhurtrate() {
+  humanhurtrate_ = 0;
+  clear_has_humanhurtrate();
+}
+inline float BaseAttrUserDataV1::humanhurtrate() const {
+  return humanhurtrate_;
+}
+inline void BaseAttrUserDataV1::set_humanhurtrate(float value) {
+  set_has_humanhurtrate();
+  humanhurtrate_ = value;
+}
+
+// optional float HumanSufferRate = 142 [default = 0];
+inline bool BaseAttrUserDataV1::has_humansufferrate() const {
+  return (_has_bits_[4] & 0x00000002u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_humansufferrate() {
+  _has_bits_[4] |= 0x00000002u;
+}
+inline void BaseAttrUserDataV1::clear_has_humansufferrate() {
+  _has_bits_[4] &= ~0x00000002u;
+}
+inline void BaseAttrUserDataV1::clear_humansufferrate() {
+  humansufferrate_ = 0;
+  clear_has_humansufferrate();
+}
+inline float BaseAttrUserDataV1::humansufferrate() const {
+  return humansufferrate_;
+}
+inline void BaseAttrUserDataV1::set_humansufferrate(float value) {
+  set_has_humansufferrate();
+  humansufferrate_ = value;
+}
+
+// optional float MonsterHurtRate = 143 [default = 0];
+inline bool BaseAttrUserDataV1::has_monsterhurtrate() const {
+  return (_has_bits_[4] & 0x00000004u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_monsterhurtrate() {
+  _has_bits_[4] |= 0x00000004u;
+}
+inline void BaseAttrUserDataV1::clear_has_monsterhurtrate() {
+  _has_bits_[4] &= ~0x00000004u;
+}
+inline void BaseAttrUserDataV1::clear_monsterhurtrate() {
+  monsterhurtrate_ = 0;
+  clear_has_monsterhurtrate();
+}
+inline float BaseAttrUserDataV1::monsterhurtrate() const {
+  return monsterhurtrate_;
+}
+inline void BaseAttrUserDataV1::set_monsterhurtrate(float value) {
+  set_has_monsterhurtrate();
+  monsterhurtrate_ = value;
+}
+
+// optional float MonsterSufferRate = 144 [default = 0];
+inline bool BaseAttrUserDataV1::has_monstersufferrate() const {
+  return (_has_bits_[4] & 0x00000008u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_monstersufferrate() {
+  _has_bits_[4] |= 0x00000008u;
+}
+inline void BaseAttrUserDataV1::clear_has_monstersufferrate() {
+  _has_bits_[4] &= ~0x00000008u;
+}
+inline void BaseAttrUserDataV1::clear_monstersufferrate() {
+  monstersufferrate_ = 0;
+  clear_has_monstersufferrate();
+}
+inline float BaseAttrUserDataV1::monstersufferrate() const {
+  return monstersufferrate_;
+}
+inline void BaseAttrUserDataV1::set_monstersufferrate(float value) {
+  set_has_monstersufferrate();
+  monstersufferrate_ = value;
+}
+
+// optional float BossHurtRate = 145 [default = 0];
+inline bool BaseAttrUserDataV1::has_bosshurtrate() const {
+  return (_has_bits_[4] & 0x00000010u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_bosshurtrate() {
+  _has_bits_[4] |= 0x00000010u;
+}
+inline void BaseAttrUserDataV1::clear_has_bosshurtrate() {
+  _has_bits_[4] &= ~0x00000010u;
+}
+inline void BaseAttrUserDataV1::clear_bosshurtrate() {
+  bosshurtrate_ = 0;
+  clear_has_bosshurtrate();
+}
+inline float BaseAttrUserDataV1::bosshurtrate() const {
+  return bosshurtrate_;
+}
+inline void BaseAttrUserDataV1::set_bosshurtrate(float value) {
+  set_has_bosshurtrate();
+  bosshurtrate_ = value;
+}
+
+// optional float BossSufferRate = 146 [default = 0];
+inline bool BaseAttrUserDataV1::has_bosssufferrate() const {
+  return (_has_bits_[4] & 0x00000020u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_bosssufferrate() {
+  _has_bits_[4] |= 0x00000020u;
+}
+inline void BaseAttrUserDataV1::clear_has_bosssufferrate() {
+  _has_bits_[4] &= ~0x00000020u;
+}
+inline void BaseAttrUserDataV1::clear_bosssufferrate() {
+  bosssufferrate_ = 0;
+  clear_has_bosssufferrate();
+}
+inline float BaseAttrUserDataV1::bosssufferrate() const {
+  return bosssufferrate_;
+}
+inline void BaseAttrUserDataV1::set_bosssufferrate(float value) {
+  set_has_bosssufferrate();
+  bosssufferrate_ = value;
+}
+
+// optional int32 DodgReduceValue = 147 [default = 0];
+inline bool BaseAttrUserDataV1::has_dodgreducevalue() const {
+  return (_has_bits_[4] & 0x00000040u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_dodgreducevalue() {
+  _has_bits_[4] |= 0x00000040u;
+}
+inline void BaseAttrUserDataV1::clear_has_dodgreducevalue() {
+  _has_bits_[4] &= ~0x00000040u;
+}
+inline void BaseAttrUserDataV1::clear_dodgreducevalue() {
+  dodgreducevalue_ = 0;
+  clear_has_dodgreducevalue();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::dodgreducevalue() const {
+  return dodgreducevalue_;
+}
+inline void BaseAttrUserDataV1::set_dodgreducevalue(::google::protobuf::int32 value) {
+  set_has_dodgreducevalue();
+  dodgreducevalue_ = value;
+}
+
+// optional float DodgReduceRate = 148 [default = 0];
+inline bool BaseAttrUserDataV1::has_dodgreducerate() const {
+  return (_has_bits_[4] & 0x00000080u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_dodgreducerate() {
+  _has_bits_[4] |= 0x00000080u;
+}
+inline void BaseAttrUserDataV1::clear_has_dodgreducerate() {
+  _has_bits_[4] &= ~0x00000080u;
+}
+inline void BaseAttrUserDataV1::clear_dodgreducerate() {
+  dodgreducerate_ = 0;
+  clear_has_dodgreducerate();
+}
+inline float BaseAttrUserDataV1::dodgreducerate() const {
+  return dodgreducerate_;
+}
+inline void BaseAttrUserDataV1::set_dodgreducerate(float value) {
+  set_has_dodgreducerate();
+  dodgreducerate_ = value;
+}
+
+// optional int32 DodgAddValue = 149 [default = 0];
+inline bool BaseAttrUserDataV1::has_dodgaddvalue() const {
+  return (_has_bits_[4] & 0x00000100u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_dodgaddvalue() {
+  _has_bits_[4] |= 0x00000100u;
+}
+inline void BaseAttrUserDataV1::clear_has_dodgaddvalue() {
+  _has_bits_[4] &= ~0x00000100u;
+}
+inline void BaseAttrUserDataV1::clear_dodgaddvalue() {
+  dodgaddvalue_ = 0;
+  clear_has_dodgaddvalue();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::dodgaddvalue() const {
+  return dodgaddvalue_;
+}
+inline void BaseAttrUserDataV1::set_dodgaddvalue(::google::protobuf::int32 value) {
+  set_has_dodgaddvalue();
+  dodgaddvalue_ = value;
+}
+
+// optional float DodgAddRate = 150 [default = 0];
+inline bool BaseAttrUserDataV1::has_dodgaddrate() const {
+  return (_has_bits_[4] & 0x00000200u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_dodgaddrate() {
+  _has_bits_[4] |= 0x00000200u;
+}
+inline void BaseAttrUserDataV1::clear_has_dodgaddrate() {
+  _has_bits_[4] &= ~0x00000200u;
+}
+inline void BaseAttrUserDataV1::clear_dodgaddrate() {
+  dodgaddrate_ = 0;
+  clear_has_dodgaddrate();
+}
+inline float BaseAttrUserDataV1::dodgaddrate() const {
+  return dodgaddrate_;
+}
+inline void BaseAttrUserDataV1::set_dodgaddrate(float value) {
+  set_has_dodgaddrate();
+  dodgaddrate_ = value;
+}
+
+// optional int32 TreasureFootPrint = 151 [default = -1];
+inline bool BaseAttrUserDataV1::has_treasurefootprint() const {
+  return (_has_bits_[4] & 0x00000400u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_treasurefootprint() {
+  _has_bits_[4] |= 0x00000400u;
+}
+inline void BaseAttrUserDataV1::clear_has_treasurefootprint() {
+  _has_bits_[4] &= ~0x00000400u;
+}
+inline void BaseAttrUserDataV1::clear_treasurefootprint() {
+  treasurefootprint_ = -1;
+  clear_has_treasurefootprint();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::treasurefootprint() const {
+  return treasurefootprint_;
+}
+inline void BaseAttrUserDataV1::set_treasurefootprint(::google::protobuf::int32 value) {
+  set_has_treasurefootprint();
+  treasurefootprint_ = value;
+}
+
+// optional int32 EquipTitle = 152 [default = -1];
+inline bool BaseAttrUserDataV1::has_equiptitle() const {
+  return (_has_bits_[4] & 0x00000800u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_equiptitle() {
+  _has_bits_[4] |= 0x00000800u;
+}
+inline void BaseAttrUserDataV1::clear_has_equiptitle() {
+  _has_bits_[4] &= ~0x00000800u;
+}
+inline void BaseAttrUserDataV1::clear_equiptitle() {
+  equiptitle_ = -1;
+  clear_has_equiptitle();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::equiptitle() const {
+  return equiptitle_;
+}
+inline void BaseAttrUserDataV1::set_equiptitle(::google::protobuf::int32 value) {
+  set_has_equiptitle();
+  equiptitle_ = value;
+}
+
+// repeated int32 ObjAnimEvent = 153;
+inline int BaseAttrUserDataV1::objanimevent_size() const {
+  return objanimevent_.size();
+}
+inline void BaseAttrUserDataV1::clear_objanimevent() {
+  objanimevent_.Clear();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::objanimevent(int index) const {
+  return objanimevent_.Get(index);
+}
+inline void BaseAttrUserDataV1::set_objanimevent(int index, ::google::protobuf::int32 value) {
+  objanimevent_.Set(index, value);
+}
+inline void BaseAttrUserDataV1::add_objanimevent(::google::protobuf::int32 value) {
+  objanimevent_.Add(value);
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+BaseAttrUserDataV1::objanimevent() const {
+  return objanimevent_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+BaseAttrUserDataV1::mutable_objanimevent() {
+  return &objanimevent_;
+}
+
+// optional string PinchData = 154;
+inline bool BaseAttrUserDataV1::has_pinchdata() const {
+  return (_has_bits_[4] & 0x00002000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_pinchdata() {
+  _has_bits_[4] |= 0x00002000u;
+}
+inline void BaseAttrUserDataV1::clear_has_pinchdata() {
+  _has_bits_[4] &= ~0x00002000u;
+}
+inline void BaseAttrUserDataV1::clear_pinchdata() {
+  if (pinchdata_ != &::google::protobuf::internal::kEmptyString) {
+    pinchdata_->clear();
+  }
+  clear_has_pinchdata();
+}
+inline const ::std::string& BaseAttrUserDataV1::pinchdata() const {
+  return *pinchdata_;
+}
+inline void BaseAttrUserDataV1::set_pinchdata(const ::std::string& value) {
+  set_has_pinchdata();
+  if (pinchdata_ == &::google::protobuf::internal::kEmptyString) {
+    pinchdata_ = new ::std::string;
+  }
+  pinchdata_->assign(value);
+}
+inline void BaseAttrUserDataV1::set_pinchdata(const char* value) {
+  set_has_pinchdata();
+  if (pinchdata_ == &::google::protobuf::internal::kEmptyString) {
+    pinchdata_ = new ::std::string;
+  }
+  pinchdata_->assign(value);
+}
+inline void BaseAttrUserDataV1::set_pinchdata(const char* value, size_t size) {
+  set_has_pinchdata();
+  if (pinchdata_ == &::google::protobuf::internal::kEmptyString) {
+    pinchdata_ = new ::std::string;
+  }
+  pinchdata_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* BaseAttrUserDataV1::mutable_pinchdata() {
+  set_has_pinchdata();
+  if (pinchdata_ == &::google::protobuf::internal::kEmptyString) {
+    pinchdata_ = new ::std::string;
+  }
+  return pinchdata_;
+}
+inline ::std::string* BaseAttrUserDataV1::release_pinchdata() {
+  clear_has_pinchdata();
+  if (pinchdata_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = pinchdata_;
+    pinchdata_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void BaseAttrUserDataV1::set_allocated_pinchdata(::std::string* pinchdata) {
+  if (pinchdata_ != &::google::protobuf::internal::kEmptyString) {
+    delete pinchdata_;
+  }
+  if (pinchdata) {
+    set_has_pinchdata();
+    pinchdata_ = pinchdata;
+  } else {
+    clear_has_pinchdata();
+    pinchdata_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional float SkillCDRate = 155 [default = 1];
+inline bool BaseAttrUserDataV1::has_skillcdrate() const {
+  return (_has_bits_[4] & 0x00004000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_skillcdrate() {
+  _has_bits_[4] |= 0x00004000u;
+}
+inline void BaseAttrUserDataV1::clear_has_skillcdrate() {
+  _has_bits_[4] &= ~0x00004000u;
+}
+inline void BaseAttrUserDataV1::clear_skillcdrate() {
+  skillcdrate_ = 1;
+  clear_has_skillcdrate();
+}
+inline float BaseAttrUserDataV1::skillcdrate() const {
+  return skillcdrate_;
+}
+inline void BaseAttrUserDataV1::set_skillcdrate(float value) {
+  set_has_skillcdrate();
+  skillcdrate_ = value;
+}
+
+// optional float AspdRate = 156 [default = 1];
+inline bool BaseAttrUserDataV1::has_aspdrate() const {
+  return (_has_bits_[4] & 0x00008000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_aspdrate() {
+  _has_bits_[4] |= 0x00008000u;
+}
+inline void BaseAttrUserDataV1::clear_has_aspdrate() {
+  _has_bits_[4] &= ~0x00008000u;
+}
+inline void BaseAttrUserDataV1::clear_aspdrate() {
+  aspdrate_ = 1;
+  clear_has_aspdrate();
+}
+inline float BaseAttrUserDataV1::aspdrate() const {
+  return aspdrate_;
+}
+inline void BaseAttrUserDataV1::set_aspdrate(float value) {
+  set_has_aspdrate();
+  aspdrate_ = value;
+}
+
+// optional int32 Shield = 157 [default = 0];
+inline bool BaseAttrUserDataV1::has_shield() const {
+  return (_has_bits_[4] & 0x00010000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_shield() {
+  _has_bits_[4] |= 0x00010000u;
+}
+inline void BaseAttrUserDataV1::clear_has_shield() {
+  _has_bits_[4] &= ~0x00010000u;
+}
+inline void BaseAttrUserDataV1::clear_shield() {
+  shield_ = 0;
+  clear_has_shield();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::shield() const {
+  return shield_;
+}
+inline void BaseAttrUserDataV1::set_shield(::google::protobuf::int32 value) {
+  set_has_shield();
+  shield_ = value;
+}
+
+// optional int32 EventLeftCount = 158 [default = -1];
+inline bool BaseAttrUserDataV1::has_eventleftcount() const {
+  return (_has_bits_[4] & 0x00020000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_eventleftcount() {
+  _has_bits_[4] |= 0x00020000u;
+}
+inline void BaseAttrUserDataV1::clear_has_eventleftcount() {
+  _has_bits_[4] &= ~0x00020000u;
+}
+inline void BaseAttrUserDataV1::clear_eventleftcount() {
+  eventleftcount_ = -1;
+  clear_has_eventleftcount();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::eventleftcount() const {
+  return eventleftcount_;
+}
+inline void BaseAttrUserDataV1::set_eventleftcount(::google::protobuf::int32 value) {
+  set_has_eventleftcount();
+  eventleftcount_ = value;
+}
+
+// optional int32 CanNotRush = 159 [default = 0];
+inline bool BaseAttrUserDataV1::has_cannotrush() const {
+  return (_has_bits_[4] & 0x00040000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_cannotrush() {
+  _has_bits_[4] |= 0x00040000u;
+}
+inline void BaseAttrUserDataV1::clear_has_cannotrush() {
+  _has_bits_[4] &= ~0x00040000u;
+}
+inline void BaseAttrUserDataV1::clear_cannotrush() {
+  cannotrush_ = 0;
+  clear_has_cannotrush();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::cannotrush() const {
+  return cannotrush_;
+}
+inline void BaseAttrUserDataV1::set_cannotrush(::google::protobuf::int32 value) {
+  set_has_cannotrush();
+  cannotrush_ = value;
+}
+
+// optional int32 HuntPoint = 160 [default = 0];
+inline bool BaseAttrUserDataV1::has_huntpoint() const {
+  return (_has_bits_[4] & 0x00080000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_huntpoint() {
+  _has_bits_[4] |= 0x00080000u;
+}
+inline void BaseAttrUserDataV1::clear_has_huntpoint() {
+  _has_bits_[4] &= ~0x00080000u;
+}
+inline void BaseAttrUserDataV1::clear_huntpoint() {
+  huntpoint_ = 0;
+  clear_has_huntpoint();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::huntpoint() const {
+  return huntpoint_;
+}
+inline void BaseAttrUserDataV1::set_huntpoint(::google::protobuf::int32 value) {
+  set_has_huntpoint();
+  huntpoint_ = value;
+}
+
+// optional int32 HuntHighTimes = 161 [default = 0];
+inline bool BaseAttrUserDataV1::has_hunthightimes() const {
+  return (_has_bits_[4] & 0x00100000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_hunthightimes() {
+  _has_bits_[4] |= 0x00100000u;
+}
+inline void BaseAttrUserDataV1::clear_has_hunthightimes() {
+  _has_bits_[4] &= ~0x00100000u;
+}
+inline void BaseAttrUserDataV1::clear_hunthightimes() {
+  hunthightimes_ = 0;
+  clear_has_hunthightimes();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::hunthightimes() const {
+  return hunthightimes_;
+}
+inline void BaseAttrUserDataV1::set_hunthightimes(::google::protobuf::int32 value) {
+  set_has_hunthightimes();
+  hunthightimes_ = value;
+}
+
+// optional int32 HuntFirePoint = 162 [default = 0];
+inline bool BaseAttrUserDataV1::has_huntfirepoint() const {
+  return (_has_bits_[4] & 0x00200000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_huntfirepoint() {
+  _has_bits_[4] |= 0x00200000u;
+}
+inline void BaseAttrUserDataV1::clear_has_huntfirepoint() {
+  _has_bits_[4] &= ~0x00200000u;
+}
+inline void BaseAttrUserDataV1::clear_huntfirepoint() {
+  huntfirepoint_ = 0;
+  clear_has_huntfirepoint();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::huntfirepoint() const {
+  return huntfirepoint_;
+}
+inline void BaseAttrUserDataV1::set_huntfirepoint(::google::protobuf::int32 value) {
+  set_has_huntfirepoint();
+  huntfirepoint_ = value;
+}
+
+// optional int32 Starbattlestate = 163 [default = 1];
+inline bool BaseAttrUserDataV1::has_starbattlestate() const {
+  return (_has_bits_[4] & 0x00400000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_starbattlestate() {
+  _has_bits_[4] |= 0x00400000u;
+}
+inline void BaseAttrUserDataV1::clear_has_starbattlestate() {
+  _has_bits_[4] &= ~0x00400000u;
+}
+inline void BaseAttrUserDataV1::clear_starbattlestate() {
+  starbattlestate_ = 1;
+  clear_has_starbattlestate();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::starbattlestate() const {
+  return starbattlestate_;
+}
+inline void BaseAttrUserDataV1::set_starbattlestate(::google::protobuf::int32 value) {
+  set_has_starbattlestate();
+  starbattlestate_ = value;
+}
+
+// optional bool IgnoreMotionBlock = 164 [default = false];
+inline bool BaseAttrUserDataV1::has_ignoremotionblock() const {
+  return (_has_bits_[4] & 0x00800000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_ignoremotionblock() {
+  _has_bits_[4] |= 0x00800000u;
+}
+inline void BaseAttrUserDataV1::clear_has_ignoremotionblock() {
+  _has_bits_[4] &= ~0x00800000u;
+}
+inline void BaseAttrUserDataV1::clear_ignoremotionblock() {
+  ignoremotionblock_ = false;
+  clear_has_ignoremotionblock();
+}
+inline bool BaseAttrUserDataV1::ignoremotionblock() const {
+  return ignoremotionblock_;
+}
+inline void BaseAttrUserDataV1::set_ignoremotionblock(bool value) {
+  set_has_ignoremotionblock();
+  ignoremotionblock_ = value;
+}
+
+// optional bool EnableInteract = 165 [default = false];
+inline bool BaseAttrUserDataV1::has_enableinteract() const {
+  return (_has_bits_[4] & 0x01000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_enableinteract() {
+  _has_bits_[4] |= 0x01000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_enableinteract() {
+  _has_bits_[4] &= ~0x01000000u;
+}
+inline void BaseAttrUserDataV1::clear_enableinteract() {
+  enableinteract_ = false;
+  clear_has_enableinteract();
+}
+inline bool BaseAttrUserDataV1::enableinteract() const {
+  return enableinteract_;
+}
+inline void BaseAttrUserDataV1::set_enableinteract(bool value) {
+  set_has_enableinteract();
+  enableinteract_ = value;
+}
+
+// optional int32 WorldMedal = 166 [default = 0];
+inline bool BaseAttrUserDataV1::has_worldmedal() const {
+  return (_has_bits_[4] & 0x02000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_worldmedal() {
+  _has_bits_[4] |= 0x02000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_worldmedal() {
+  _has_bits_[4] &= ~0x02000000u;
+}
+inline void BaseAttrUserDataV1::clear_worldmedal() {
+  worldmedal_ = 0;
+  clear_has_worldmedal();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::worldmedal() const {
+  return worldmedal_;
+}
+inline void BaseAttrUserDataV1::set_worldmedal(::google::protobuf::int32 value) {
+  set_has_worldmedal();
+  worldmedal_ = value;
+}
+
+// optional int32 CureCeiling = 168 [default = -1];
+inline bool BaseAttrUserDataV1::has_cureceiling() const {
+  return (_has_bits_[4] & 0x04000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_cureceiling() {
+  _has_bits_[4] |= 0x04000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_cureceiling() {
+  _has_bits_[4] &= ~0x04000000u;
+}
+inline void BaseAttrUserDataV1::clear_cureceiling() {
+  cureceiling_ = -1;
+  clear_has_cureceiling();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::cureceiling() const {
+  return cureceiling_;
+}
+inline void BaseAttrUserDataV1::set_cureceiling(::google::protobuf::int32 value) {
+  set_has_cureceiling();
+  cureceiling_ = value;
+}
+
+// optional int32 RelationUnionCurrency = 169 [default = 0];
+inline bool BaseAttrUserDataV1::has_relationunioncurrency() const {
+  return (_has_bits_[4] & 0x08000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_relationunioncurrency() {
+  _has_bits_[4] |= 0x08000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_relationunioncurrency() {
+  _has_bits_[4] &= ~0x08000000u;
+}
+inline void BaseAttrUserDataV1::clear_relationunioncurrency() {
+  relationunioncurrency_ = 0;
+  clear_has_relationunioncurrency();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::relationunioncurrency() const {
+  return relationunioncurrency_;
+}
+inline void BaseAttrUserDataV1::set_relationunioncurrency(::google::protobuf::int32 value) {
+  set_has_relationunioncurrency();
+  relationunioncurrency_ = value;
+}
+
+// optional string GuildShortName = 170;
+inline bool BaseAttrUserDataV1::has_guildshortname() const {
+  return (_has_bits_[4] & 0x10000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_guildshortname() {
+  _has_bits_[4] |= 0x10000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_guildshortname() {
+  _has_bits_[4] &= ~0x10000000u;
+}
+inline void BaseAttrUserDataV1::clear_guildshortname() {
+  if (guildshortname_ != &::google::protobuf::internal::kEmptyString) {
+    guildshortname_->clear();
+  }
+  clear_has_guildshortname();
+}
+inline const ::std::string& BaseAttrUserDataV1::guildshortname() const {
+  return *guildshortname_;
+}
+inline void BaseAttrUserDataV1::set_guildshortname(const ::std::string& value) {
+  set_has_guildshortname();
+  if (guildshortname_ == &::google::protobuf::internal::kEmptyString) {
+    guildshortname_ = new ::std::string;
+  }
+  guildshortname_->assign(value);
+}
+inline void BaseAttrUserDataV1::set_guildshortname(const char* value) {
+  set_has_guildshortname();
+  if (guildshortname_ == &::google::protobuf::internal::kEmptyString) {
+    guildshortname_ = new ::std::string;
+  }
+  guildshortname_->assign(value);
+}
+inline void BaseAttrUserDataV1::set_guildshortname(const char* value, size_t size) {
+  set_has_guildshortname();
+  if (guildshortname_ == &::google::protobuf::internal::kEmptyString) {
+    guildshortname_ = new ::std::string;
+  }
+  guildshortname_->assign(reinterpret_cast<const char*>(value), size);
+}
+inline ::std::string* BaseAttrUserDataV1::mutable_guildshortname() {
+  set_has_guildshortname();
+  if (guildshortname_ == &::google::protobuf::internal::kEmptyString) {
+    guildshortname_ = new ::std::string;
+  }
+  return guildshortname_;
+}
+inline ::std::string* BaseAttrUserDataV1::release_guildshortname() {
+  clear_has_guildshortname();
+  if (guildshortname_ == &::google::protobuf::internal::kEmptyString) {
+    return NULL;
+  } else {
+    ::std::string* temp = guildshortname_;
+    guildshortname_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+    return temp;
+  }
+}
+inline void BaseAttrUserDataV1::set_allocated_guildshortname(::std::string* guildshortname) {
+  if (guildshortname_ != &::google::protobuf::internal::kEmptyString) {
+    delete guildshortname_;
+  }
+  if (guildshortname) {
+    set_has_guildshortname();
+    guildshortname_ = guildshortname;
+  } else {
+    clear_has_guildshortname();
+    guildshortname_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
+  }
+}
+
+// optional int32 GuildShortColorID = 171 [default = -1];
+inline bool BaseAttrUserDataV1::has_guildshortcolorid() const {
+  return (_has_bits_[4] & 0x20000000u) != 0;
+}
+inline void BaseAttrUserDataV1::set_has_guildshortcolorid() {
+  _has_bits_[4] |= 0x20000000u;
+}
+inline void BaseAttrUserDataV1::clear_has_guildshortcolorid() {
+  _has_bits_[4] &= ~0x20000000u;
+}
+inline void BaseAttrUserDataV1::clear_guildshortcolorid() {
+  guildshortcolorid_ = -1;
+  clear_has_guildshortcolorid();
+}
+inline ::google::protobuf::int32 BaseAttrUserDataV1::guildshortcolorid() const {
+  return guildshortcolorid_;
+}
+inline void BaseAttrUserDataV1::set_guildshortcolorid(::google::protobuf::int32 value) {
+  set_has_guildshortcolorid();
+  guildshortcolorid_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// BaseAttrObjDataV1
+
+// optional int32 ObjType = 1 [default = -1];
+inline bool BaseAttrObjDataV1::has_objtype() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void BaseAttrObjDataV1::set_has_objtype() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void BaseAttrObjDataV1::clear_has_objtype() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void BaseAttrObjDataV1::clear_objtype() {
+  objtype_ = -1;
+  clear_has_objtype();
+}
+inline ::google::protobuf::int32 BaseAttrObjDataV1::objtype() const {
+  return objtype_;
+}
+inline void BaseAttrObjDataV1::set_objtype(::google::protobuf::int32 value) {
+  set_has_objtype();
+  objtype_ = value;
+}
+
+// optional int32 ConfigId = 2 [default = -1];
+inline bool BaseAttrObjDataV1::has_configid() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void BaseAttrObjDataV1::set_has_configid() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void BaseAttrObjDataV1::clear_has_configid() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void BaseAttrObjDataV1::clear_configid() {
+  configid_ = -1;
+  clear_has_configid();
+}
+inline ::google::protobuf::int32 BaseAttrObjDataV1::configid() const {
+  return configid_;
+}
+inline void BaseAttrObjDataV1::set_configid(::google::protobuf::int32 value) {
+  set_has_configid();
+  configid_ = value;
+}
+
+// optional int32 State = 3 [default = -1];
+inline bool BaseAttrObjDataV1::has_state() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void BaseAttrObjDataV1::set_has_state() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void BaseAttrObjDataV1::clear_has_state() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void BaseAttrObjDataV1::clear_state() {
+  state_ = -1;
+  clear_has_state();
+}
+inline ::google::protobuf::int32 BaseAttrObjDataV1::state() const {
+  return state_;
+}
+inline void BaseAttrObjDataV1::set_state(::google::protobuf::int32 value) {
+  set_has_state();
+  state_ = value;
+}
+
+// optional uint64 OwnerObjId = 4 [default = 0];
+inline bool BaseAttrObjDataV1::has_ownerobjid() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void BaseAttrObjDataV1::set_has_ownerobjid() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void BaseAttrObjDataV1::clear_has_ownerobjid() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void BaseAttrObjDataV1::clear_ownerobjid() {
+  ownerobjid_ = GOOGLE_ULONGLONG(0);
+  clear_has_ownerobjid();
+}
+inline ::google::protobuf::uint64 BaseAttrObjDataV1::ownerobjid() const {
+  return ownerobjid_;
+}
+inline void BaseAttrObjDataV1::set_ownerobjid(::google::protobuf::uint64 value) {
+  set_has_ownerobjid();
+  ownerobjid_ = value;
 }
 
 

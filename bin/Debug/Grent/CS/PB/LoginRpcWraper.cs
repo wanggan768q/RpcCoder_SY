@@ -17,143 +17,6 @@ using System.Collections;
 using System.Collections.Generic;
 
 
-//连接验证请求封装类
-[System.Serializable]
-public class LoginRpcConnectAskWraper
-{
-
-	//构造函数
-	public LoginRpcConnectAskWraper()
-	{
-		 m_Type = -1;
-
-	}
-
-	//重置函数
-	public void ResetWraper()
-	{
-		 m_Type = -1;
-
-	}
-
- 	//转化成Protobuffer类型函数
-	public LoginRpcConnectAsk ToPB()
-	{
-		LoginRpcConnectAsk v = new LoginRpcConnectAsk();
-		v.Type = m_Type;
-
-		return v;
-	}
-	
-	//从Protobuffer类型初始化
-	public void FromPB(LoginRpcConnectAsk v)
-	{
-        if (v == null)
-            return;
-		m_Type = v.Type;
-
-	}
-	
-	//Protobuffer序列化到MemoryStream
-	public MemoryStream ToMemoryStream()
-	{
-		MemoryStream protoMS = new MemoryStream();
-		ProtoBuf.Serializer.Serialize<LoginRpcConnectAsk>(protoMS, ToPB());
-		return protoMS;
-	}
-	
-	//Protobuffer从MemoryStream进行反序列化
-	public bool FromMemoryStream(MemoryStream protoMS)
-	{
-		LoginRpcConnectAsk pb = ProtoBuf.Serializer.Deserialize<LoginRpcConnectAsk>(protoMS);
-		FromPB(pb);
-		return true;
-	}
-
-	//连接类型
-	public int m_Type;
-	public int Type
-	{
-		get { return m_Type;}
-		set { m_Type = value; }
-	}
-
-
-};
-//连接验证回应封装类
-[System.Serializable]
-public class LoginRpcConnectReplyWraper
-{
-
-	//构造函数
-	public LoginRpcConnectReplyWraper()
-	{
-		 m_Result = -9999;
-		 m_Type = 0;
-
-	}
-
-	//重置函数
-	public void ResetWraper()
-	{
-		 m_Result = -9999;
-		 m_Type = 0;
-
-	}
-
- 	//转化成Protobuffer类型函数
-	public LoginRpcConnectReply ToPB()
-	{
-		LoginRpcConnectReply v = new LoginRpcConnectReply();
-		v.Result = m_Result;
-		v.Type = m_Type;
-
-		return v;
-	}
-	
-	//从Protobuffer类型初始化
-	public void FromPB(LoginRpcConnectReply v)
-	{
-        if (v == null)
-            return;
-		m_Result = v.Result;
-		m_Type = v.Type;
-
-	}
-	
-	//Protobuffer序列化到MemoryStream
-	public MemoryStream ToMemoryStream()
-	{
-		MemoryStream protoMS = new MemoryStream();
-		ProtoBuf.Serializer.Serialize<LoginRpcConnectReply>(protoMS, ToPB());
-		return protoMS;
-	}
-	
-	//Protobuffer从MemoryStream进行反序列化
-	public bool FromMemoryStream(MemoryStream protoMS)
-	{
-		LoginRpcConnectReply pb = ProtoBuf.Serializer.Deserialize<LoginRpcConnectReply>(protoMS);
-		FromPB(pb);
-		return true;
-	}
-
-	//返回结果
-	public int m_Result;
-	public int Result
-	{
-		get { return m_Result;}
-		set { m_Result = value; }
-	}
-	//类型
-	public int m_Type;
-	public int Type
-	{
-		get { return m_Type;}
-		set { m_Type = value; }
-	}
-
-
-};
 //登录请求封装类
 [System.Serializable]
 public class LoginRpcLoginAskWraper
@@ -164,6 +27,11 @@ public class LoginRpcLoginAskWraper
 	{
 		 m_Username = "";
 		 m_Passwd = "";
+		 m_SnId = "";
+		 m_GameId = "";
+		 m_Mac = "";
+		 m_Token = "";
+		 m_Version = "";
 
 	}
 
@@ -172,6 +40,11 @@ public class LoginRpcLoginAskWraper
 	{
 		 m_Username = "";
 		 m_Passwd = "";
+		 m_SnId = "";
+		 m_GameId = "";
+		 m_Mac = "";
+		 m_Token = "";
+		 m_Version = "";
 
 	}
 
@@ -181,6 +54,11 @@ public class LoginRpcLoginAskWraper
 		LoginRpcLoginAsk v = new LoginRpcLoginAsk();
 		v.Username = m_Username;
 		v.Passwd = m_Passwd;
+		v.SnId = m_SnId;
+		v.GameId = m_GameId;
+		v.Mac = m_Mac;
+		v.Token = m_Token;
+		v.Version = m_Version;
 
 		return v;
 	}
@@ -192,6 +70,11 @@ public class LoginRpcLoginAskWraper
             return;
 		m_Username = v.Username;
 		m_Passwd = v.Passwd;
+		m_SnId = v.SnId;
+		m_GameId = v.GameId;
+		m_Mac = v.Mac;
+		m_Token = v.Token;
+		m_Version = v.Version;
 
 	}
 	
@@ -225,6 +108,41 @@ public class LoginRpcLoginAskWraper
 		get { return m_Passwd;}
 		set { m_Passwd = value; }
 	}
+	//渠道号
+	public string m_SnId;
+	public string SnId
+	{
+		get { return m_SnId;}
+		set { m_SnId = value; }
+	}
+	//GameId
+	public string m_GameId;
+	public string GameId
+	{
+		get { return m_GameId;}
+		set { m_GameId = value; }
+	}
+	//mac地址
+	public string m_Mac;
+	public string Mac
+	{
+		get { return m_Mac;}
+		set { m_Mac = value; }
+	}
+	//Token
+	public string m_Token;
+	public string Token
+	{
+		get { return m_Token;}
+		set { m_Token = value; }
+	}
+	//版本号
+	public string m_Version;
+	public string Version
+	{
+		get { return m_Version;}
+		set { m_Version = value; }
+	}
 
 
 };
@@ -238,6 +156,10 @@ public class LoginRpcLoginReplyWraper
 	{
 		 m_Result = -9999;
 		 m_RoleId = 0;
+		 m_Pos = new Vector3Wraper();
+		m_CharacterList = new List<CharacterInfoWraper>();
+		 m_LastSelectRoleId = 0;
+		 m_ServerTime = -1;
 
 	}
 
@@ -246,6 +168,10 @@ public class LoginRpcLoginReplyWraper
 	{
 		 m_Result = -9999;
 		 m_RoleId = 0;
+		 m_Pos = new Vector3Wraper();
+		m_CharacterList = new List<CharacterInfoWraper>();
+		 m_LastSelectRoleId = 0;
+		 m_ServerTime = -1;
 
 	}
 
@@ -255,6 +181,11 @@ public class LoginRpcLoginReplyWraper
 		LoginRpcLoginReply v = new LoginRpcLoginReply();
 		v.Result = m_Result;
 		v.RoleId = m_RoleId;
+		v.Pos = m_Pos.ToPB();
+		for (int i=0; i<(int)m_CharacterList.Count; i++)
+			v.CharacterList.Add( m_CharacterList[i].ToPB());
+		v.LastSelectRoleId = m_LastSelectRoleId;
+		v.ServerTime = m_ServerTime;
 
 		return v;
 	}
@@ -266,6 +197,14 @@ public class LoginRpcLoginReplyWraper
             return;
 		m_Result = v.Result;
 		m_RoleId = v.RoleId;
+		m_Pos.FromPB(v.Pos);
+		m_CharacterList.Clear();
+		for( int i=0; i<v.CharacterList.Count; i++)
+			m_CharacterList.Add( new CharacterInfoWraper());
+		for( int i=0; i<v.CharacterList.Count; i++)
+			m_CharacterList[i].FromPB(v.CharacterList[i]);
+		m_LastSelectRoleId = v.LastSelectRoleId;
+		m_ServerTime = v.ServerTime;
 
 	}
 	
@@ -299,144 +238,12 @@ public class LoginRpcLoginReplyWraper
 		get { return m_RoleId;}
 		set { m_RoleId = value; }
 	}
-
-
-};
-//角色列表请求封装类
-[System.Serializable]
-public class LoginRpcCharacterListAskWraper
-{
-
-	//构造函数
-	public LoginRpcCharacterListAskWraper()
+	//测试引用
+	public Vector3Wraper m_Pos;
+	public Vector3Wraper Pos
 	{
-		 m_Accountname  = "";
-
-	}
-
-	//重置函数
-	public void ResetWraper()
-	{
-		 m_Accountname  = "";
-
-	}
-
- 	//转化成Protobuffer类型函数
-	public LoginRpcCharacterListAsk ToPB()
-	{
-		LoginRpcCharacterListAsk v = new LoginRpcCharacterListAsk();
-		v.Accountname  = m_Accountname ;
-
-		return v;
-	}
-	
-	//从Protobuffer类型初始化
-	public void FromPB(LoginRpcCharacterListAsk v)
-	{
-        if (v == null)
-            return;
-		m_Accountname  = v.Accountname ;
-
-	}
-	
-	//Protobuffer序列化到MemoryStream
-	public MemoryStream ToMemoryStream()
-	{
-		MemoryStream protoMS = new MemoryStream();
-		ProtoBuf.Serializer.Serialize<LoginRpcCharacterListAsk>(protoMS, ToPB());
-		return protoMS;
-	}
-	
-	//Protobuffer从MemoryStream进行反序列化
-	public bool FromMemoryStream(MemoryStream protoMS)
-	{
-		LoginRpcCharacterListAsk pb = ProtoBuf.Serializer.Deserialize<LoginRpcCharacterListAsk>(protoMS);
-		FromPB(pb);
-		return true;
-	}
-
-	//账号
-	public string m_Accountname ;
-	public string Accountname 
-	{
-		get { return m_Accountname ;}
-		set { m_Accountname  = value; }
-	}
-
-
-};
-//角色列表回应封装类
-[System.Serializable]
-public class LoginRpcCharacterListReplyWraper
-{
-
-	//构造函数
-	public LoginRpcCharacterListReplyWraper()
-	{
-		 m_Result = -9999;
-		m_CharacterList = new List<CharacterInfoWraper>();
-		 m_LastSelectRoleId = 0;
-
-	}
-
-	//重置函数
-	public void ResetWraper()
-	{
-		 m_Result = -9999;
-		m_CharacterList = new List<CharacterInfoWraper>();
-		 m_LastSelectRoleId = 0;
-
-	}
-
- 	//转化成Protobuffer类型函数
-	public LoginRpcCharacterListReply ToPB()
-	{
-		LoginRpcCharacterListReply v = new LoginRpcCharacterListReply();
-		v.Result = m_Result;
-		for (int i=0; i<(int)m_CharacterList.Count; i++)
-			v.CharacterList.Add( m_CharacterList[i].ToPB());
-		v.LastSelectRoleId = m_LastSelectRoleId;
-
-		return v;
-	}
-	
-	//从Protobuffer类型初始化
-	public void FromPB(LoginRpcCharacterListReply v)
-	{
-        if (v == null)
-            return;
-		m_Result = v.Result;
-		m_CharacterList.Clear();
-		for( int i=0; i<v.CharacterList.Count; i++)
-			m_CharacterList.Add( new CharacterInfoWraper());
-		for( int i=0; i<v.CharacterList.Count; i++)
-			m_CharacterList[i].FromPB(v.CharacterList[i]);
-		m_LastSelectRoleId = v.LastSelectRoleId;
-
-	}
-	
-	//Protobuffer序列化到MemoryStream
-	public MemoryStream ToMemoryStream()
-	{
-		MemoryStream protoMS = new MemoryStream();
-		ProtoBuf.Serializer.Serialize<LoginRpcCharacterListReply>(protoMS, ToPB());
-		return protoMS;
-	}
-	
-	//Protobuffer从MemoryStream进行反序列化
-	public bool FromMemoryStream(MemoryStream protoMS)
-	{
-		LoginRpcCharacterListReply pb = ProtoBuf.Serializer.Deserialize<LoginRpcCharacterListReply>(protoMS);
-		FromPB(pb);
-		return true;
-	}
-
-	//返回结果
-	public int m_Result;
-	public int Result
-	{
-		get { return m_Result;}
-		set { m_Result = value; }
+		get { return m_Pos;}
+		set { m_Pos = value; }
 	}
 	//所有角色信息
 	public List<CharacterInfoWraper> m_CharacterList;
@@ -478,6 +285,13 @@ public class LoginRpcCharacterListReplyWraper
 	{
 		get { return m_LastSelectRoleId;}
 		set { m_LastSelectRoleId = value; }
+	}
+	//服务器时间
+	public int m_ServerTime;
+	public int ServerTime
+	{
+		get { return m_ServerTime;}
+		set { m_ServerTime = value; }
 	}
 
 
@@ -555,8 +369,10 @@ public class LoginRpcSelectCharacterReplyWraper
 	{
 		 m_Result = -9999;
 		 m_RoleId = 0;
-		 m_Ip = "";
-		 m_Port = 0;
+		 m_LastSceneID = -1;
+		 m_Ban_Reason = "";
+		 m_LineId = -1;
+		 m_Ban_EndTime = -1;
 
 	}
 
@@ -565,8 +381,10 @@ public class LoginRpcSelectCharacterReplyWraper
 	{
 		 m_Result = -9999;
 		 m_RoleId = 0;
-		 m_Ip = "";
-		 m_Port = 0;
+		 m_LastSceneID = -1;
+		 m_Ban_Reason = "";
+		 m_LineId = -1;
+		 m_Ban_EndTime = -1;
 
 	}
 
@@ -576,8 +394,10 @@ public class LoginRpcSelectCharacterReplyWraper
 		LoginRpcSelectCharacterReply v = new LoginRpcSelectCharacterReply();
 		v.Result = m_Result;
 		v.RoleId = m_RoleId;
-		v.Ip = m_Ip;
-		v.Port = m_Port;
+		v.LastSceneID = m_LastSceneID;
+		v.Ban_Reason = m_Ban_Reason;
+		v.LineId = m_LineId;
+		v.Ban_EndTime = m_Ban_EndTime;
 
 		return v;
 	}
@@ -589,8 +409,10 @@ public class LoginRpcSelectCharacterReplyWraper
             return;
 		m_Result = v.Result;
 		m_RoleId = v.RoleId;
-		m_Ip = v.Ip;
-		m_Port = v.Port;
+		m_LastSceneID = v.LastSceneID;
+		m_Ban_Reason = v.Ban_Reason;
+		m_LineId = v.LineId;
+		m_Ban_EndTime = v.Ban_EndTime;
 
 	}
 	
@@ -624,19 +446,33 @@ public class LoginRpcSelectCharacterReplyWraper
 		get { return m_RoleId;}
 		set { m_RoleId = value; }
 	}
-	//ip
-	public string m_Ip;
-	public string Ip
+	//LastSceneID
+	public int m_LastSceneID;
+	public int LastSceneID
 	{
-		get { return m_Ip;}
-		set { m_Ip = value; }
+		get { return m_LastSceneID;}
+		set { m_LastSceneID = value; }
 	}
-	//端口
-	public int m_Port;
-	public int Port
+	//禁止理由
+	public string m_Ban_Reason;
+	public string Ban_Reason
 	{
-		get { return m_Port;}
-		set { m_Port = value; }
+		get { return m_Ban_Reason;}
+		set { m_Ban_Reason = value; }
+	}
+	//线id
+	public int m_LineId;
+	public int LineId
+	{
+		get { return m_LineId;}
+		set { m_LineId = value; }
+	}
+	//解封时间戳
+	public int m_Ban_EndTime;
+	public int Ban_EndTime
+	{
+		get { return m_Ban_EndTime;}
+		set { m_Ban_EndTime = value; }
 	}
 
 
@@ -651,6 +487,8 @@ public class LoginRpcCreateCharacterAskWraper
 	{
 		 m_Nickname = "";
 		 m_ConfigId = -1;
+		 m_PinchData = new PinchFaceDataWraper();
+		 m_PushRegId = "";
 
 	}
 
@@ -659,6 +497,8 @@ public class LoginRpcCreateCharacterAskWraper
 	{
 		 m_Nickname = "";
 		 m_ConfigId = -1;
+		 m_PinchData = new PinchFaceDataWraper();
+		 m_PushRegId = "";
 
 	}
 
@@ -668,6 +508,8 @@ public class LoginRpcCreateCharacterAskWraper
 		LoginRpcCreateCharacterAsk v = new LoginRpcCreateCharacterAsk();
 		v.Nickname = m_Nickname;
 		v.ConfigId = m_ConfigId;
+		v.PinchData = m_PinchData.ToPB();
+		v.PushRegId = m_PushRegId;
 
 		return v;
 	}
@@ -679,6 +521,8 @@ public class LoginRpcCreateCharacterAskWraper
             return;
 		m_Nickname = v.Nickname;
 		m_ConfigId = v.ConfigId;
+		m_PinchData.FromPB(v.PinchData);
+		m_PushRegId = v.PushRegId;
 
 	}
 	
@@ -712,6 +556,20 @@ public class LoginRpcCreateCharacterAskWraper
 		get { return m_ConfigId;}
 		set { m_ConfigId = value; }
 	}
+	//捏脸数据
+	public PinchFaceDataWraper m_PinchData;
+	public PinchFaceDataWraper PinchData
+	{
+		get { return m_PinchData;}
+		set { m_PinchData = value; }
+	}
+	//推送RegsterId
+	public string m_PushRegId;
+	public string PushRegId
+	{
+		get { return m_PushRegId;}
+		set { m_PushRegId = value; }
+	}
 
 
 };
@@ -725,6 +583,7 @@ public class LoginRpcCreateCharacterReplyWraper
 	{
 		 m_Result = -9999;
 		 m_RoleId = 0;
+		 m_TimeStamp = 0;
 
 	}
 
@@ -733,6 +592,7 @@ public class LoginRpcCreateCharacterReplyWraper
 	{
 		 m_Result = -9999;
 		 m_RoleId = 0;
+		 m_TimeStamp = 0;
 
 	}
 
@@ -742,6 +602,7 @@ public class LoginRpcCreateCharacterReplyWraper
 		LoginRpcCreateCharacterReply v = new LoginRpcCreateCharacterReply();
 		v.Result = m_Result;
 		v.RoleId = m_RoleId;
+		v.TimeStamp = m_TimeStamp;
 
 		return v;
 	}
@@ -753,6 +614,7 @@ public class LoginRpcCreateCharacterReplyWraper
             return;
 		m_Result = v.Result;
 		m_RoleId = v.RoleId;
+		m_TimeStamp = v.TimeStamp;
 
 	}
 	
@@ -786,131 +648,12 @@ public class LoginRpcCreateCharacterReplyWraper
 		get { return m_RoleId;}
 		set { m_RoleId = value; }
 	}
-
-
-};
-//选择角色存储redis请求封装类
-[System.Serializable]
-public class LoginRpcSelectSaveUserAskWraper
-{
-
-	//构造函数
-	public LoginRpcSelectSaveUserAskWraper()
+	//创建角色时间
+	public int m_TimeStamp;
+	public int TimeStamp
 	{
-		 m_RoleId = 0;
-
-	}
-
-	//重置函数
-	public void ResetWraper()
-	{
-		 m_RoleId = 0;
-
-	}
-
- 	//转化成Protobuffer类型函数
-	public LoginRpcSelectSaveUserAsk ToPB()
-	{
-		LoginRpcSelectSaveUserAsk v = new LoginRpcSelectSaveUserAsk();
-		v.RoleId = m_RoleId;
-
-		return v;
-	}
-	
-	//从Protobuffer类型初始化
-	public void FromPB(LoginRpcSelectSaveUserAsk v)
-	{
-        if (v == null)
-            return;
-		m_RoleId = v.RoleId;
-
-	}
-	
-	//Protobuffer序列化到MemoryStream
-	public MemoryStream ToMemoryStream()
-	{
-		MemoryStream protoMS = new MemoryStream();
-		ProtoBuf.Serializer.Serialize<LoginRpcSelectSaveUserAsk>(protoMS, ToPB());
-		return protoMS;
-	}
-	
-	//Protobuffer从MemoryStream进行反序列化
-	public bool FromMemoryStream(MemoryStream protoMS)
-	{
-		LoginRpcSelectSaveUserAsk pb = ProtoBuf.Serializer.Deserialize<LoginRpcSelectSaveUserAsk>(protoMS);
-		FromPB(pb);
-		return true;
-	}
-
-	//转发角色ID
-	public UInt64 m_RoleId;
-	public UInt64 RoleId
-	{
-		get { return m_RoleId;}
-		set { m_RoleId = value; }
-	}
-
-
-};
-//选择角色存储redis回应封装类
-[System.Serializable]
-public class LoginRpcSelectSaveUserReplyWraper
-{
-
-	//构造函数
-	public LoginRpcSelectSaveUserReplyWraper()
-	{
-		 m_Result = -9999;
-
-	}
-
-	//重置函数
-	public void ResetWraper()
-	{
-		 m_Result = -9999;
-
-	}
-
- 	//转化成Protobuffer类型函数
-	public LoginRpcSelectSaveUserReply ToPB()
-	{
-		LoginRpcSelectSaveUserReply v = new LoginRpcSelectSaveUserReply();
-		v.Result = m_Result;
-
-		return v;
-	}
-	
-	//从Protobuffer类型初始化
-	public void FromPB(LoginRpcSelectSaveUserReply v)
-	{
-        if (v == null)
-            return;
-		m_Result = v.Result;
-
-	}
-	
-	//Protobuffer序列化到MemoryStream
-	public MemoryStream ToMemoryStream()
-	{
-		MemoryStream protoMS = new MemoryStream();
-		ProtoBuf.Serializer.Serialize<LoginRpcSelectSaveUserReply>(protoMS, ToPB());
-		return protoMS;
-	}
-	
-	//Protobuffer从MemoryStream进行反序列化
-	public bool FromMemoryStream(MemoryStream protoMS)
-	{
-		LoginRpcSelectSaveUserReply pb = ProtoBuf.Serializer.Deserialize<LoginRpcSelectSaveUserReply>(protoMS);
-		FromPB(pb);
-		return true;
-	}
-
-	//返回结果
-	public int m_Result;
-	public int Result
-	{
-		get { return m_Result;}
-		set { m_Result = value; }
+		get { return m_TimeStamp;}
+		set { m_TimeStamp = value; }
 	}
 
 
@@ -1027,6 +770,852 @@ public class LoginRpcDeleteCharacterReplyWraper
 	public bool FromMemoryStream(MemoryStream protoMS)
 	{
 		LoginRpcDeleteCharacterReply pb = ProtoBuf.Serializer.Deserialize<LoginRpcDeleteCharacterReply>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//返回结果
+	public int m_Result;
+	public int Result
+	{
+		get { return m_Result;}
+		set { m_Result = value; }
+	}
+
+
+};
+//Test请求封装类
+[System.Serializable]
+public class LoginRpcTestAskWraper
+{
+
+	//构造函数
+	public LoginRpcTestAskWraper()
+	{
+		m_A = new List<Int64>();
+		m_B = new List<UInt64>();
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		m_A = new List<Int64>();
+		m_B = new List<UInt64>();
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public LoginRpcTestAsk ToPB()
+	{
+		LoginRpcTestAsk v = new LoginRpcTestAsk();
+		for (int i=0; i<(int)m_A.Count; i++)
+			v.A.Add( m_A[i]);
+		for (int i=0; i<(int)m_B.Count; i++)
+			v.B.Add( m_B[i]);
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(LoginRpcTestAsk v)
+	{
+        if (v == null)
+            return;
+		m_A.Clear();
+		for( int i=0; i<v.A.Count; i++)
+			m_A.Add(v.A[i]);
+		m_B.Clear();
+		for( int i=0; i<v.B.Count; i++)
+			m_B.Add(v.B[i]);
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<LoginRpcTestAsk>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		LoginRpcTestAsk pb = ProtoBuf.Serializer.Deserialize<LoginRpcTestAsk>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//A
+	public List<Int64> m_A;
+	public int SizeA()
+	{
+		return m_A.Count;
+	}
+	public List<Int64> GetA()
+	{
+		return m_A;
+	}
+	public Int64 GetA(int Index)
+	{
+		if(Index<0 || Index>=(int)m_A.Count)
+			return -1;
+		return m_A[Index];
+	}
+	public void SetA( List<Int64> v )
+	{
+		m_A=v;
+	}
+	public void SetA( int Index, Int64 v )
+	{
+		if(Index<0 || Index>=(int)m_A.Count)
+			return;
+		m_A[Index] = v;
+	}
+	public void AddA( Int64 v=-1 )
+	{
+		m_A.Add(v);
+	}
+	public void ClearA( )
+	{
+		m_A.Clear();
+	}
+	//B
+	public List<UInt64> m_B;
+	public int SizeB()
+	{
+		return m_B.Count;
+	}
+	public List<UInt64> GetB()
+	{
+		return m_B;
+	}
+	public UInt64 GetB(int Index)
+	{
+		if(Index<0 || Index>=(int)m_B.Count)
+			return 0;
+		return m_B[Index];
+	}
+	public void SetB( List<UInt64> v )
+	{
+		m_B=v;
+	}
+	public void SetB( int Index, UInt64 v )
+	{
+		if(Index<0 || Index>=(int)m_B.Count)
+			return;
+		m_B[Index] = v;
+	}
+	public void AddB( UInt64 v=0 )
+	{
+		m_B.Add(v);
+	}
+	public void ClearB( )
+	{
+		m_B.Clear();
+	}
+
+
+};
+//Test回应封装类
+[System.Serializable]
+public class LoginRpcTestReplyWraper
+{
+
+	//构造函数
+	public LoginRpcTestReplyWraper()
+	{
+		 m_Result = -1;
+		m_A = new List<Int64>();
+		m_B = new List<UInt64>();
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_Result = -1;
+		m_A = new List<Int64>();
+		m_B = new List<UInt64>();
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public LoginRpcTestReply ToPB()
+	{
+		LoginRpcTestReply v = new LoginRpcTestReply();
+		v.Result = m_Result;
+		for (int i=0; i<(int)m_A.Count; i++)
+			v.A.Add( m_A[i]);
+		for (int i=0; i<(int)m_B.Count; i++)
+			v.B.Add( m_B[i]);
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(LoginRpcTestReply v)
+	{
+        if (v == null)
+            return;
+		m_Result = v.Result;
+		m_A.Clear();
+		for( int i=0; i<v.A.Count; i++)
+			m_A.Add(v.A[i]);
+		m_B.Clear();
+		for( int i=0; i<v.B.Count; i++)
+			m_B.Add(v.B[i]);
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<LoginRpcTestReply>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		LoginRpcTestReply pb = ProtoBuf.Serializer.Deserialize<LoginRpcTestReply>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//返回结果
+	public int m_Result;
+	public int Result
+	{
+		get { return m_Result;}
+		set { m_Result = value; }
+	}
+	//A
+	public List<Int64> m_A;
+	public int SizeA()
+	{
+		return m_A.Count;
+	}
+	public List<Int64> GetA()
+	{
+		return m_A;
+	}
+	public Int64 GetA(int Index)
+	{
+		if(Index<0 || Index>=(int)m_A.Count)
+			return -1;
+		return m_A[Index];
+	}
+	public void SetA( List<Int64> v )
+	{
+		m_A=v;
+	}
+	public void SetA( int Index, Int64 v )
+	{
+		if(Index<0 || Index>=(int)m_A.Count)
+			return;
+		m_A[Index] = v;
+	}
+	public void AddA( Int64 v=-1 )
+	{
+		m_A.Add(v);
+	}
+	public void ClearA( )
+	{
+		m_A.Clear();
+	}
+	//B
+	public List<UInt64> m_B;
+	public int SizeB()
+	{
+		return m_B.Count;
+	}
+	public List<UInt64> GetB()
+	{
+		return m_B;
+	}
+	public UInt64 GetB(int Index)
+	{
+		if(Index<0 || Index>=(int)m_B.Count)
+			return 0;
+		return m_B[Index];
+	}
+	public void SetB( List<UInt64> v )
+	{
+		m_B=v;
+	}
+	public void SetB( int Index, UInt64 v )
+	{
+		if(Index<0 || Index>=(int)m_B.Count)
+			return;
+		m_B[Index] = v;
+	}
+	public void AddB( UInt64 v=0 )
+	{
+		m_B.Add(v);
+	}
+	public void ClearB( )
+	{
+		m_B.Clear();
+	}
+
+
+};
+//Test1请求封装类
+[System.Serializable]
+public class LoginRpcTest1AskWraper
+{
+
+	//构造函数
+	public LoginRpcTest1AskWraper()
+	{
+		m_B = new List<UInt64>();
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		m_B = new List<UInt64>();
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public LoginRpcTest1Ask ToPB()
+	{
+		LoginRpcTest1Ask v = new LoginRpcTest1Ask();
+		for (int i=0; i<(int)m_B.Count; i++)
+			v.B.Add( m_B[i]);
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(LoginRpcTest1Ask v)
+	{
+        if (v == null)
+            return;
+		m_B.Clear();
+		for( int i=0; i<v.B.Count; i++)
+			m_B.Add(v.B[i]);
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<LoginRpcTest1Ask>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		LoginRpcTest1Ask pb = ProtoBuf.Serializer.Deserialize<LoginRpcTest1Ask>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//B
+	public List<UInt64> m_B;
+	public int SizeB()
+	{
+		return m_B.Count;
+	}
+	public List<UInt64> GetB()
+	{
+		return m_B;
+	}
+	public UInt64 GetB(int Index)
+	{
+		if(Index<0 || Index>=(int)m_B.Count)
+			return 0;
+		return m_B[Index];
+	}
+	public void SetB( List<UInt64> v )
+	{
+		m_B=v;
+	}
+	public void SetB( int Index, UInt64 v )
+	{
+		if(Index<0 || Index>=(int)m_B.Count)
+			return;
+		m_B[Index] = v;
+	}
+	public void AddB( UInt64 v=0 )
+	{
+		m_B.Add(v);
+	}
+	public void ClearB( )
+	{
+		m_B.Clear();
+	}
+
+
+};
+//Test1回应封装类
+[System.Serializable]
+public class LoginRpcTest1ReplyWraper
+{
+
+	//构造函数
+	public LoginRpcTest1ReplyWraper()
+	{
+		 m_Result = -1;
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_Result = -1;
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public LoginRpcTest1Reply ToPB()
+	{
+		LoginRpcTest1Reply v = new LoginRpcTest1Reply();
+		v.Result = m_Result;
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(LoginRpcTest1Reply v)
+	{
+        if (v == null)
+            return;
+		m_Result = v.Result;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<LoginRpcTest1Reply>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		LoginRpcTest1Reply pb = ProtoBuf.Serializer.Deserialize<LoginRpcTest1Reply>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//返回结果
+	public int m_Result;
+	public int Result
+	{
+		get { return m_Result;}
+		set { m_Result = value; }
+	}
+
+
+};
+//登录 排队通知通知封装类
+[System.Serializable]
+public class LoginRpcLoginLineUpNotifyWraper
+{
+
+	//构造函数
+	public LoginRpcLoginLineUpNotifyWraper()
+	{
+		 m_LineUpIndex = -1;
+		 m_LineUpRole = -1;
+		 m_LineUpTime = -1;
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_LineUpIndex = -1;
+		 m_LineUpRole = -1;
+		 m_LineUpTime = -1;
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public LoginRpcLoginLineUpNotify ToPB()
+	{
+		LoginRpcLoginLineUpNotify v = new LoginRpcLoginLineUpNotify();
+		v.LineUpIndex = m_LineUpIndex;
+		v.LineUpRole = m_LineUpRole;
+		v.LineUpTime = m_LineUpTime;
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(LoginRpcLoginLineUpNotify v)
+	{
+        if (v == null)
+            return;
+		m_LineUpIndex = v.LineUpIndex;
+		m_LineUpRole = v.LineUpRole;
+		m_LineUpTime = v.LineUpTime;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<LoginRpcLoginLineUpNotify>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		LoginRpcLoginLineUpNotify pb = ProtoBuf.Serializer.Deserialize<LoginRpcLoginLineUpNotify>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//排队索引
+	public int m_LineUpIndex;
+	public int LineUpIndex
+	{
+		get { return m_LineUpIndex;}
+		set { m_LineUpIndex = value; }
+	}
+	//排队人数
+	public int m_LineUpRole;
+	public int LineUpRole
+	{
+		get { return m_LineUpRole;}
+		set { m_LineUpRole = value; }
+	}
+	//排队时间
+	public int m_LineUpTime;
+	public int LineUpTime
+	{
+		get { return m_LineUpTime;}
+		set { m_LineUpTime = value; }
+	}
+
+
+};
+//可以登录服务器的通知通知封装类
+[System.Serializable]
+public class LoginRpcLoginEnterGameNotifyWraper
+{
+
+	//构造函数
+	public LoginRpcLoginEnterGameNotifyWraper()
+	{
+		 m_RoleID = 0;
+		 m_LastSceneID = -1;
+		 m_LineID = -1;
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_RoleID = 0;
+		 m_LastSceneID = -1;
+		 m_LineID = -1;
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public LoginRpcLoginEnterGameNotify ToPB()
+	{
+		LoginRpcLoginEnterGameNotify v = new LoginRpcLoginEnterGameNotify();
+		v.RoleID = m_RoleID;
+		v.LastSceneID = m_LastSceneID;
+		v.LineID = m_LineID;
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(LoginRpcLoginEnterGameNotify v)
+	{
+        if (v == null)
+            return;
+		m_RoleID = v.RoleID;
+		m_LastSceneID = v.LastSceneID;
+		m_LineID = v.LineID;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<LoginRpcLoginEnterGameNotify>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		LoginRpcLoginEnterGameNotify pb = ProtoBuf.Serializer.Deserialize<LoginRpcLoginEnterGameNotify>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//角色ID
+	public UInt64 m_RoleID;
+	public UInt64 RoleID
+	{
+		get { return m_RoleID;}
+		set { m_RoleID = value; }
+	}
+	//最后场景
+	public int m_LastSceneID;
+	public int LastSceneID
+	{
+		get { return m_LastSceneID;}
+		set { m_LastSceneID = value; }
+	}
+	//线
+	public int m_LineID;
+	public int LineID
+	{
+		get { return m_LineID;}
+		set { m_LineID = value; }
+	}
+
+
+};
+//退出排队请求封装类
+[System.Serializable]
+public class LoginRpcLoginQuitLineUpAskWraper
+{
+
+	//构造函数
+	public LoginRpcLoginQuitLineUpAskWraper()
+	{
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public LoginRpcLoginQuitLineUpAsk ToPB()
+	{
+		LoginRpcLoginQuitLineUpAsk v = new LoginRpcLoginQuitLineUpAsk();
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(LoginRpcLoginQuitLineUpAsk v)
+	{
+        if (v == null)
+            return;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<LoginRpcLoginQuitLineUpAsk>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		LoginRpcLoginQuitLineUpAsk pb = ProtoBuf.Serializer.Deserialize<LoginRpcLoginQuitLineUpAsk>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+
+
+};
+//退出排队回应封装类
+[System.Serializable]
+public class LoginRpcLoginQuitLineUpReplyWraper
+{
+
+	//构造函数
+	public LoginRpcLoginQuitLineUpReplyWraper()
+	{
+		 m_Result = -1;
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_Result = -1;
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public LoginRpcLoginQuitLineUpReply ToPB()
+	{
+		LoginRpcLoginQuitLineUpReply v = new LoginRpcLoginQuitLineUpReply();
+		v.Result = m_Result;
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(LoginRpcLoginQuitLineUpReply v)
+	{
+        if (v == null)
+            return;
+		m_Result = v.Result;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<LoginRpcLoginQuitLineUpReply>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		LoginRpcLoginQuitLineUpReply pb = ProtoBuf.Serializer.Deserialize<LoginRpcLoginQuitLineUpReply>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//返回结果
+	public int m_Result;
+	public int Result
+	{
+		get { return m_Result;}
+		set { m_Result = value; }
+	}
+
+
+};
+//login请求封装类
+[System.Serializable]
+public class LoginRpcRemoteLoginAskWraper
+{
+
+	//构造函数
+	public LoginRpcRemoteLoginAskWraper()
+	{
+		 m_Roleid = 0;
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_Roleid = 0;
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public LoginRpcRemoteLoginAsk ToPB()
+	{
+		LoginRpcRemoteLoginAsk v = new LoginRpcRemoteLoginAsk();
+		v.Roleid = m_Roleid;
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(LoginRpcRemoteLoginAsk v)
+	{
+        if (v == null)
+            return;
+		m_Roleid = v.Roleid;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<LoginRpcRemoteLoginAsk>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		LoginRpcRemoteLoginAsk pb = ProtoBuf.Serializer.Deserialize<LoginRpcRemoteLoginAsk>(protoMS);
+		FromPB(pb);
+		return true;
+	}
+
+	//跨服登陆请求
+	public UInt64 m_Roleid;
+	public UInt64 Roleid
+	{
+		get { return m_Roleid;}
+		set { m_Roleid = value; }
+	}
+
+
+};
+//login回应封装类
+[System.Serializable]
+public class LoginRpcRemoteLoginReplyWraper
+{
+
+	//构造函数
+	public LoginRpcRemoteLoginReplyWraper()
+	{
+		 m_Result = -1;
+
+	}
+
+	//重置函数
+	public void ResetWraper()
+	{
+		 m_Result = -1;
+
+	}
+
+ 	//转化成Protobuffer类型函数
+	public LoginRpcRemoteLoginReply ToPB()
+	{
+		LoginRpcRemoteLoginReply v = new LoginRpcRemoteLoginReply();
+		v.Result = m_Result;
+
+		return v;
+	}
+	
+	//从Protobuffer类型初始化
+	public void FromPB(LoginRpcRemoteLoginReply v)
+	{
+        if (v == null)
+            return;
+		m_Result = v.Result;
+
+	}
+	
+	//Protobuffer序列化到MemoryStream
+	public MemoryStream ToMemoryStream()
+	{
+		MemoryStream protoMS = new MemoryStream();
+		ProtoBuf.Serializer.Serialize<LoginRpcRemoteLoginReply>(protoMS, ToPB());
+		return protoMS;
+	}
+	
+	//Protobuffer从MemoryStream进行反序列化
+	public bool FromMemoryStream(MemoryStream protoMS)
+	{
+		LoginRpcRemoteLoginReply pb = ProtoBuf.Serializer.Deserialize<LoginRpcRemoteLoginReply>(protoMS);
 		FromPB(pb);
 		return true;
 	}

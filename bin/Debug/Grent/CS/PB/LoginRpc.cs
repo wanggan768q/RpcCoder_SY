@@ -11,50 +11,6 @@
 // Note: requires additional types generated from: PublicStruct.proto
 namespace GenPB
 {
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"LoginRpcConnectAsk")]
-  public partial class LoginRpcConnectAsk : global::ProtoBuf.IExtensible
-  {
-    public LoginRpcConnectAsk() {}
-    
-    private int _Type = (int)-1;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Type", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-1)]
-    public int Type
-    {
-      get { return _Type; }
-      set { _Type = value; }
-    }
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"LoginRpcConnectReply")]
-  public partial class LoginRpcConnectReply : global::ProtoBuf.IExtensible
-  {
-    public LoginRpcConnectReply() {}
-    
-    private int _Result = (int)-9999;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-9999)]
-    public int Result
-    {
-      get { return _Result; }
-      set { _Result = value; }
-    }
-    private int _Type = (int)0;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"Type", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)0)]
-    public int Type
-    {
-      get { return _Type; }
-      set { _Type = value; }
-    }
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
   [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"LoginRpcLoginAsk")]
   public partial class LoginRpcLoginAsk : global::ProtoBuf.IExtensible
   {
@@ -76,6 +32,46 @@ namespace GenPB
       get { return _Passwd; }
       set { _Passwd = value; }
     }
+    private string _SnId = "";
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"SnId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string SnId
+    {
+      get { return _SnId; }
+      set { _SnId = value; }
+    }
+    private string _GameId = "";
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"GameId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string GameId
+    {
+      get { return _GameId; }
+      set { _GameId = value; }
+    }
+    private string _Mac = "";
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"Mac", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Mac
+    {
+      get { return _Mac; }
+      set { _Mac = value; }
+    }
+    private string _Token = "";
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"Token", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Token
+    {
+      get { return _Token; }
+      set { _Token = value; }
+    }
+    private string _Version = "";
+    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"Version", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Version
+    {
+      get { return _Version; }
+      set { _Version = value; }
+    }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
       { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
@@ -87,7 +83,7 @@ namespace GenPB
     public LoginRpcLoginReply() {}
     
     private int _Result = (int)-9999;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-9999)]
     public int Result
     {
@@ -102,56 +98,36 @@ namespace GenPB
       get { return _RoleId; }
       set { _RoleId = value; }
     }
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"LoginRpcCharacterListAsk")]
-  public partial class LoginRpcCharacterListAsk : global::ProtoBuf.IExtensible
-  {
-    public LoginRpcCharacterListAsk() {}
-    
-    private string _Accountname = "";
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Accountname", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue("")]
-    public string Accountname
+    private Vector3 _Pos = null;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"Pos", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public Vector3 Pos
     {
-      get { return _Accountname; }
-      set { _Accountname = value; }
-    }
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"LoginRpcCharacterListReply")]
-  public partial class LoginRpcCharacterListReply : global::ProtoBuf.IExtensible
-  {
-    public LoginRpcCharacterListReply() {}
-    
-    private int _Result = (int)-9999;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-9999)]
-    public int Result
-    {
-      get { return _Result; }
-      set { _Result = value; }
+      get { return _Pos; }
+      set { _Pos = value; }
     }
     private readonly global::System.Collections.Generic.List<CharacterInfo> _CharacterList = new global::System.Collections.Generic.List<CharacterInfo>();
-    [global::ProtoBuf.ProtoMember(2, Name=@"CharacterList", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::ProtoBuf.ProtoMember(4, Name=@"CharacterList", DataFormat = global::ProtoBuf.DataFormat.Default)]
     public global::System.Collections.Generic.List<CharacterInfo> CharacterList
     {
       get { return _CharacterList; }
     }
   
     private ulong _LastSelectRoleId = (ulong)0;
-    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"LastSelectRoleId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"LastSelectRoleId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((ulong)0)]
     public ulong LastSelectRoleId
     {
       get { return _LastSelectRoleId; }
       set { _LastSelectRoleId = value; }
+    }
+    private int _ServerTime = (int)-1;
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"ServerTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int ServerTime
+    {
+      get { return _ServerTime; }
+      set { _ServerTime = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -182,7 +158,7 @@ namespace GenPB
     public LoginRpcSelectCharacterReply() {}
     
     private int _Result = (int)-9999;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-9999)]
     public int Result
     {
@@ -197,21 +173,37 @@ namespace GenPB
       get { return _RoleId; }
       set { _RoleId = value; }
     }
-    private string _Ip = "";
-    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"Ip", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    [global::System.ComponentModel.DefaultValue("")]
-    public string Ip
+    private int _LastSceneID = (int)-1;
+    [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name=@"LastSceneID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int LastSceneID
     {
-      get { return _Ip; }
-      set { _Ip = value; }
+      get { return _LastSceneID; }
+      set { _LastSceneID = value; }
     }
-    private int _Port = (int)0;
-    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"Port", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)0)]
-    public int Port
+    private string _Ban_Reason = "";
+    [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name=@"Ban_Reason", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string Ban_Reason
     {
-      get { return _Port; }
-      set { _Port = value; }
+      get { return _Ban_Reason; }
+      set { _Ban_Reason = value; }
+    }
+    private int _LineId = (int)-1;
+    [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name=@"LineId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int LineId
+    {
+      get { return _LineId; }
+      set { _LineId = value; }
+    }
+    private int _Ban_EndTime = (int)-1;
+    [global::ProtoBuf.ProtoMember(8, IsRequired = false, Name=@"Ban_EndTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Ban_EndTime
+    {
+      get { return _Ban_EndTime; }
+      set { _Ban_EndTime = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -232,12 +224,28 @@ namespace GenPB
       set { _Nickname = value; }
     }
     private int _ConfigId = (int)-1;
-    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"ConfigId", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"ConfigId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-1)]
     public int ConfigId
     {
       get { return _ConfigId; }
       set { _ConfigId = value; }
+    }
+    private PinchFaceData _PinchData = null;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"PinchData", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue(null)]
+    public PinchFaceData PinchData
+    {
+      get { return _PinchData; }
+      set { _PinchData = value; }
+    }
+    private string _PushRegId = "";
+    [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name=@"PushRegId", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    [global::System.ComponentModel.DefaultValue("")]
+    public string PushRegId
+    {
+      get { return _PushRegId; }
+      set { _PushRegId = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -250,7 +258,7 @@ namespace GenPB
     public LoginRpcCreateCharacterReply() {}
     
     private int _Result = (int)-9999;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-9999)]
     public int Result
     {
@@ -265,41 +273,13 @@ namespace GenPB
       get { return _RoleId; }
       set { _RoleId = value; }
     }
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"LoginRpcSelectSaveUserAsk")]
-  public partial class LoginRpcSelectSaveUserAsk : global::ProtoBuf.IExtensible
-  {
-    public LoginRpcSelectSaveUserAsk() {}
-    
-    private ulong _RoleId = (ulong)0;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"RoleId", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
-    [global::System.ComponentModel.DefaultValue((ulong)0)]
-    public ulong RoleId
+    private int _TimeStamp = (int)0;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"TimeStamp", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)0)]
+    public int TimeStamp
     {
-      get { return _RoleId; }
-      set { _RoleId = value; }
-    }
-    private global::ProtoBuf.IExtension extensionObject;
-    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
-      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
-  }
-  
-  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"LoginRpcSelectSaveUserReply")]
-  public partial class LoginRpcSelectSaveUserReply : global::ProtoBuf.IExtensible
-  {
-    public LoginRpcSelectSaveUserReply() {}
-    
-    private int _Result = (int)-9999;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
-    [global::System.ComponentModel.DefaultValue((int)-9999)]
-    public int Result
-    {
-      get { return _Result; }
-      set { _Result = value; }
+      get { return _TimeStamp; }
+      set { _TimeStamp = value; }
     }
     private global::ProtoBuf.IExtension extensionObject;
     global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
@@ -330,8 +310,231 @@ namespace GenPB
     public LoginRpcDeleteCharacterReply() {}
     
     private int _Result = (int)-9999;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
     [global::System.ComponentModel.DefaultValue((int)-9999)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"LoginRpcTestAsk")]
+  public partial class LoginRpcTestAsk : global::ProtoBuf.IExtensible
+  {
+    public LoginRpcTestAsk() {}
+    
+    private readonly global::System.Collections.Generic.List<long> _A = new global::System.Collections.Generic.List<long>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"A", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<long> A
+    {
+      get { return _A; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<ulong> _B = new global::System.Collections.Generic.List<ulong>();
+    [global::ProtoBuf.ProtoMember(3, Name=@"B", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<ulong> B
+    {
+      get { return _B; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"LoginRpcTestReply")]
+  public partial class LoginRpcTestReply : global::ProtoBuf.IExtensible
+  {
+    public LoginRpcTestReply() {}
+    
+    private int _Result = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
+    }
+    private readonly global::System.Collections.Generic.List<long> _A = new global::System.Collections.Generic.List<long>();
+    [global::ProtoBuf.ProtoMember(2, Name=@"A", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<long> A
+    {
+      get { return _A; }
+    }
+  
+    private readonly global::System.Collections.Generic.List<ulong> _B = new global::System.Collections.Generic.List<ulong>();
+    [global::ProtoBuf.ProtoMember(3, Name=@"B", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<ulong> B
+    {
+      get { return _B; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"LoginRpcTest1Ask")]
+  public partial class LoginRpcTest1Ask : global::ProtoBuf.IExtensible
+  {
+    public LoginRpcTest1Ask() {}
+    
+    private readonly global::System.Collections.Generic.List<ulong> _B = new global::System.Collections.Generic.List<ulong>();
+    [global::ProtoBuf.ProtoMember(1, Name=@"B", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    public global::System.Collections.Generic.List<ulong> B
+    {
+      get { return _B; }
+    }
+  
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"LoginRpcTest1Reply")]
+  public partial class LoginRpcTest1Reply : global::ProtoBuf.IExtensible
+  {
+    public LoginRpcTest1Reply() {}
+    
+    private int _Result = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"LoginRpcLoginLineUpNotify")]
+  public partial class LoginRpcLoginLineUpNotify : global::ProtoBuf.IExtensible
+  {
+    public LoginRpcLoginLineUpNotify() {}
+    
+    private int _LineUpIndex = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"LineUpIndex", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int LineUpIndex
+    {
+      get { return _LineUpIndex; }
+      set { _LineUpIndex = value; }
+    }
+    private int _LineUpRole = (int)-1;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"LineUpRole", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int LineUpRole
+    {
+      get { return _LineUpRole; }
+      set { _LineUpRole = value; }
+    }
+    private int _LineUpTime = (int)-1;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"LineUpTime", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int LineUpTime
+    {
+      get { return _LineUpTime; }
+      set { _LineUpTime = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"LoginRpcLoginEnterGameNotify")]
+  public partial class LoginRpcLoginEnterGameNotify : global::ProtoBuf.IExtensible
+  {
+    public LoginRpcLoginEnterGameNotify() {}
+    
+    private ulong _RoleID = (ulong)0;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"RoleID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong RoleID
+    {
+      get { return _RoleID; }
+      set { _RoleID = value; }
+    }
+    private int _LastSceneID = (int)-1;
+    [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name=@"LastSceneID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int LastSceneID
+    {
+      get { return _LastSceneID; }
+      set { _LastSceneID = value; }
+    }
+    private int _LineID = (int)-1;
+    [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name=@"LineID", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int LineID
+    {
+      get { return _LineID; }
+      set { _LineID = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"LoginRpcLoginQuitLineUpAsk")]
+  public partial class LoginRpcLoginQuitLineUpAsk : global::ProtoBuf.IExtensible
+  {
+    public LoginRpcLoginQuitLineUpAsk() {}
+    
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"LoginRpcLoginQuitLineUpReply")]
+  public partial class LoginRpcLoginQuitLineUpReply : global::ProtoBuf.IExtensible
+  {
+    public LoginRpcLoginQuitLineUpReply() {}
+    
+    private int _Result = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
+    public int Result
+    {
+      get { return _Result; }
+      set { _Result = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"LoginRpcRemoteLoginAsk")]
+  public partial class LoginRpcRemoteLoginAsk : global::ProtoBuf.IExtensible
+  {
+    public LoginRpcRemoteLoginAsk() {}
+    
+    private ulong _Roleid = (ulong)0;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Roleid", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((ulong)0)]
+    public ulong Roleid
+    {
+      get { return _Roleid; }
+      set { _Roleid = value; }
+    }
+    private global::ProtoBuf.IExtension extensionObject;
+    global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
+      { return global::ProtoBuf.Extensible.GetExtensionObject(ref extensionObject, createIfMissing); }
+  }
+  
+  [global::System.Serializable, global::ProtoBuf.ProtoContract(Name=@"LoginRpcRemoteLoginReply")]
+  public partial class LoginRpcRemoteLoginReply : global::ProtoBuf.IExtensible
+  {
+    public LoginRpcRemoteLoginReply() {}
+    
+    private int _Result = (int)-1;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name=@"Result", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
+    [global::System.ComponentModel.DefaultValue((int)-1)]
     public int Result
     {
       get { return _Result; }

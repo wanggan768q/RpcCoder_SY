@@ -1,56 +1,52 @@
 message  FightRpcUseSkillActionNotify
 {
-	optional sint32 ObjId = 8[default=-1];
-	optional sint32 ObjTargetId = 9[default=-1];
-	optional sint32 SkillId = 10[default=-1];
+	optional uint64 ObjId = 8[default=0];
+	optional uint64 ObjTargetId = 9[default=0];
+	optional int32 SkillId = 10;
 	optional float CastingDir = 11[default=-1];
 	optional float X = 12[default=-1];
 	optional float Y = 13[default=-1];
 	optional float Z = 14[default=-1];
-	optional sint32 MomentIndex = 15[default=-1];
+	optional int32 MomentIndex = 15;
+	optional CustomSkiData CustomSkiData = 16;
 
 }
 
 message  FightRpcShowExpActionNotify
 {
-	optional sint32 ObjId = 1[default=-1];
-	optional sint32 Value = 2[default=-1];
+	optional uint64 ObjId = 1[default=0];
+	optional int32 Value = 2;
 
 }
 
 message  FightRpcBuffActionNotify
 {
-	optional sint32 ObjId = 1[default=-1];
-	optional sint32 TargetId = 2[default=-1];
-	optional sint32 OpType = 3[default=-1];
-	optional sint32 BufId = 4[default=-1];
-	optional sint32 RemainTime = 5[default=-1];
-	optional sint32 BuffLv = 6[default=-1];
-	optional sint32 Sn = 7[default=-1];
+	optional BuffInfo Info = 8;
 
 }
 
 message  FightRpcStateActionNotify
 {
-	optional sint32 ObjId = 1[default=-1];
-	optional sint32 Type = 2[default=-1];
-	optional V3 Pos = 3;
-	optional sint32 TargetPos = 4[default=-1];
+	optional uint64 ObjId = 1[default=0];
+	optional int32 Type = 2;
+	optional Vector3 Pos = 3;
+	optional int32 TargetPos = 4;
+	optional int32 State = 5;
 
 }
 
 message  FightRpcReviveActionNotify
 {
-	optional sint32 ObjId = 1[default=-1];
-	optional V3 Pos = 2;
-	optional sint32 CurHp = 3[default=-1];
+	optional uint64 ObjId = 1[default=0];
+	optional Vector3 Pos = 2;
+	optional int32 CurHp = 3;
 
 }
 
 message  FightRpcComboSkillActionNotify
 {
-	optional sint32 ObjId = 1[default=-1];
-	optional sint32 SkillId = 2[default=-1];
+	optional uint64 ObjId = 1[default=0];
+	optional int32 SkillId = 2;
 
 }
 
@@ -66,39 +62,295 @@ message  FightRpcUseItemActionNotify
 
 message  FightRpcHpChangeActionNotify
 {
-	optional sint32 ObjId = 1[default=-1];
-	optional sint32 CurHp = 2[default=-1];
-	optional sint32 MaxHp = 3[default=-1];
+	optional uint64 ObjId = 1[default=0];
+	optional int32 IncrementHp = 2;
+	optional uint64 CasterId = 6[default=0];
 
 }
 
 message  FightRpcUseSkillAsk
 {
-	optional sint32 ObjTargetId = 1[default=-1];
-	optional sint32 SkillId = 2[default=-1];
+	repeated uint64 ObjTargetId = 1;
+	optional int32 SkillId = 2;
 	optional float CastingDir = 3[default=-1];
 	optional float X = 4[default=-1];
 	optional float Y = 5[default=-1];
 	optional float Z = 6[default=-1];
-	optional sint32 MomentIndex = 7[default=-1];
+	optional int32 MomentIndex = 7;
+	optional CustomSkiData CustomSkiData = 9;
+	optional Vector3Int CurrentPos = 10;
 
 }
 
 message  FightRpcUseSkillReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 
 }
 
 message  FightRpcHurtActionNotify
 {
-	optional sint32 ObjId = 1[default=-1];
-	optional sint32 SegmentIndex = 2[default=-1];
-	optional sint32 SkillId = 3[default=-1];
-	optional sint32 TargetObjId = 4[default=-1];
-	optional sint32 HurtValue = 5[default=0];
+	optional uint64 ObjId = 1[default=0];
+	optional int32 SegmentIndex = 2;
+	optional int32 SkillId = 3;
+	optional uint64 TargetObjId = 4[default=0];
+	optional int32 HurtValue = 5;
 	optional bool IsCritical = 6[default=false];
-	optional sint32 Energy = 7[default=-1];
+	optional bool IsDodge = 8[default=false];
+	optional bool IsMiss = 9[default=false];
+	optional bool IsHurtState = 10[default=false];
+	optional int32 AttackId = 11;
+	optional bool IsDead = 12[default=false];
+
+}
+
+message  FightRpcRepelActionNotify
+{
+	optional uint64 ObjId = 5[default=0];
+	optional int32 SegmentIndex = 6;
+	optional int32 SkillId = 8;
+	optional uint64 TargetObjId = 9[default=0];
+	optional Vector3 SkiTargetPos = 10;
+	optional bool IsPlayerDiaup = 11[default=true];
+	optional float Speed = 12[default=0];
+
+}
+
+message  FightRpcObjDeadActionNotify
+{
+	optional uint64 ObjId = 1[default=0];
+
+}
+
+message  FightRpcFightTipsNotify
+{
+	optional int32 TipsID = 1;
+	optional int32 Durtion = 2;
+	optional int32 TypeID = 3;
+
+}
+
+message  FightRpcBuffListNotify
+{
+	repeated BuffInfo BuffList = 1;
+
+}
+
+message  FightRpcReduceCDNotify
+{
+	optional int32 SkillId = 1;
+	optional int32 ModTime = 2;
+
+}
+
+message  FightRpcReliveNotifyNotify
+{
+	optional uint64 ObjId = 2[default=0];
+
+}
+
+message  FightRpcSkillCDNotify
+{
+	repeated SkillCDInfo SkillCDInfo = 1;
+
+}
+
+message  FightRpcAutoCombatMonsterNotify
+{
+	optional uint64 MonsterGuid = 1[default=0];
+
+}
+
+message  FightRpcTranslateActionNotify
+{
+	optional uint64 ObjId = 1[default=0];
+	optional Vector3 TargetPos = 2;
+	optional float Dir = 3[default=-1];
+	optional int32 SkillId = 4;
+	optional int32 CommandIndex = 5;
+	optional bool IsEnd = 6[default=false];
+	optional float Speed = 7[default=0];
+
+}
+
+message  FightRpcCantAddBuffTipNotify
+{
+	optional int32 BuffId = 1;
+	optional uint64 CasterId = 2[default=0];
+	optional uint64 ObjId = 3[default=0];
+	optional int32 Sn = 4;
+
+}
+
+message  FightRpcAttackWarningNotify
+{
+	optional int32 AttackId = 1;
+	optional uint64 Caster = 2[default=0];
+	repeated uint64 TargetList = 3;
+	optional Vector3 TargetPos = 4;
+	optional int32 SkillId = 5;
+
+}
+
+message  FightRpcInterruptActionNotify
+{
+	optional uint64 Caster = 1[default=0];
+	optional uint64 Interrupter = 2[default=0];
+	repeated int32 Skill = 3;
+
+}
+
+message  FightRpcSkillPrepareAsk
+{
+	optional int32 SkillId = 1;
+	optional int32 Type = 2;
+
+}
+
+message  FightRpcSkillPrepareReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  FightRpcSkillPrepareActionNotify
+{
+	optional int64 ObjId = 1[default=-1];
+	optional int32 SkillId = 2;
+	optional int32 Type = 3;
+
+}
+
+message  FightRpcChainMagicJumpNotify
+{
+	optional int64 ObjId = 1[default=-1];
+	optional int32 SkillId = 2;
+	optional int64 JumpFromObjId = 3[default=-1];
+	optional int64 JumpToObjId = 4[default=-1];
+	optional int32 AttackId = 5;
+
+}
+
+message  FightRpcBlackHoleActionNotify
+{
+	optional int64 ObjId = 1[default=-1];
+	optional float ToX = 2[default=-1];
+	optional float ToZ = 3[default=-1];
+	optional float Speed = 4[default=-1];
+	optional bool Apply = 7[default=false];
+	optional int32 Type = 8;
+	optional uint64 TargetObjId = 9[default=0];
+
+}
+
+message  FightRpcLoopActionCancelAsk
+{
+	optional int32 SkillId = 1;
+
+}
+
+message  FightRpcLoopActionCancelOtherNotify
+{
+	optional uint64 ObjId = 1[default=0];
+	optional int32 SkillId = 2;
+
+}
+
+message  FightRpcLoopActionCancelReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  FightRpcSkillListNotify
+{
+	repeated int32 SkillList = 1;
+
+}
+
+message  FightRpcUsePetSkillAsk
+{
+	repeated uint64 ObjTargetId = 1;
+	optional int32 SkillId = 2;
+	optional float CastingDir = 3[default=-1];
+	optional Vector3Int CurrentPos = 8;
+	optional Vector3Int TargetPos = 9;
+
+}
+
+message  FightRpcUsePetSkillReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  FightRpcRemoveModifySkillNotify
+{
+
+}
+
+message  FightRpcLinkMagicActionNotify
+{
+	optional uint64 ObjId = 1[default=0];
+	optional uint64 LinkerId = 2[default=0];
+	optional int32 AttackId = 3;
+
+}
+
+message  FightRpcMonsterInteractAsk
+{
+	optional uint64 TargetId = 1[default=0];
+
+}
+
+message  FightRpcMonsterInteractReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  CustomSkiData
+{
+	optional string Key = 2;
+	optional int32 KeyType = 3[default=-1];
+	optional int32 IntV = 4[default=0];
+	optional bool BoolV = 5[default=false];
+
+}
+
+message  BuffInfo
+{
+	optional uint64 ObjId = 5[default=0];
+	optional uint64 CasterId = 6[default=0];
+	optional int32 OpType = 7[default=-1];
+	optional int32 BufId = 8[default=-1];
+	optional int32 RemainTime = 9[default=-1];
+	optional int32 BuffLv = 10[default=-1];
+	optional int32 Sn = 11[default=-1];
+	optional int32 LayerCount = 12[default=0];
+
+}
+
+message  Vector3
+{
+	optional float X = 1[default=-1];
+	optional float Y = 2[default=-1];
+	optional float Z = 3[default=-1];
+
+}
+
+message  Vector3Int
+{
+	optional int32 X = 1[default=-1];
+	optional int32 Z = 2[default=-1];
+
+}
+
+message  SkillCDInfo
+{
+	optional int32 SkillId = 1[default=-1];
+	optional int32 SurplusTime = 2[default=-1];
+	optional int32 CommonSurplusTime = 3[default=-1];
 
 }
 

@@ -1,8 +1,19 @@
+-- EventModel.lua
+--Author:郭晓波
+--Email:ambitiongxb@foxmail.com
+--2018年10月8日11:05:21
+
 --将变量写入下方
 local ModuleId = 5;
 local RPC_CODE_EVENT_MOVE_NOTIFY = 551;
 local RPC_CODE_EVENT_STOPMOVE_NOTIFY = 552;
 local RPC_CODE_EVENT_OBJATTRCHANGE_NOTIFY = 553;
+local RPC_CODE_EVENT_COINCHANGE_NOTIFY = 554;
+local RPC_CODE_EVENT_MOVEPOS_NOTIFY = 555;
+local RPC_CODE_EVENT_DIR_NOTIFY = 556;
+local RPC_CODE_EVENT_STARTFADEOUT_NOTIFY = 557;
+local RPC_CODE_EVENT_CINEMATICSTART_NOTIFY = 558;
+local RPC_CODE_EVENT_CINEMATICEND_NOTIFY = 559;
 
 
 
@@ -13,6 +24,13 @@ local MLayerMgr = HS_MLayerMgr
 local typeof = typeof
 local ipairs = ipairs
 local print = print
+local error = error
+local Event = Event
+local removeTableData = removeTableData
+local copyTableData = copyTableData
+local NetE = EventDefine.NetE
+require("Common/EventDefine")
+local CommonE = EventDefine.CommonE
 require("3rd/pblua/EventRpc_pb")
 local  EventRpc_pb = EventRpc_pb
 module("EventModel")
@@ -35,12 +53,12 @@ local function dataCallback(self,Id,Index)
 	end
 end
 
-local function showNetTip(self)
-
+local function showNetTip(self,...)
+	Event.Brocast(NetE.Ask,...)
 end
 
-local function hideNetTip(self)
-
+local function hideNetTip(self,...)
+	Event.Brocast(NetE.Reply,...)
 end
 
 -- 初始化 向MLayerMgr注册 更新数据 和 消息通知的 回调
@@ -51,6 +69,12 @@ function Initialize(self)
 	MLayerMgr.RegNotifyHd(RPC_CODE_EVENT_MOVE_NOTIFY,handler(self,self.MoveCB))
 	MLayerMgr.RegNotifyHd(RPC_CODE_EVENT_STOPMOVE_NOTIFY,handler(self,self.StopMoveCB))
 	MLayerMgr.RegNotifyHd(RPC_CODE_EVENT_OBJATTRCHANGE_NOTIFY,handler(self,self.ObjAttrChangeCB))
+	MLayerMgr.RegNotifyHd(RPC_CODE_EVENT_COINCHANGE_NOTIFY,handler(self,self.CoinChangeCB))
+	MLayerMgr.RegNotifyHd(RPC_CODE_EVENT_MOVEPOS_NOTIFY,handler(self,self.MovePosCB))
+	MLayerMgr.RegNotifyHd(RPC_CODE_EVENT_DIR_NOTIFY,handler(self,self.DirCB))
+	MLayerMgr.RegNotifyHd(RPC_CODE_EVENT_STARTFADEOUT_NOTIFY,handler(self,self.StartFadeoutCB))
+	MLayerMgr.RegNotifyHd(RPC_CODE_EVENT_CINEMATICSTART_NOTIFY,handler(self,self.CinematicStartCB))
+	MLayerMgr.RegNotifyHd(RPC_CODE_EVENT_CINEMATICEND_NOTIFY,handler(self,self.CinematicEndCB))
 
   
 
@@ -58,7 +82,7 @@ function Initialize(self)
 end
 
 -- 更新数据
-function UpdateField(self,uf)
+function UpdateField(self,uf,oldData,isNotify,isForceUpdate,main)
 
 end
 
@@ -141,6 +165,162 @@ function unregisterObjAttrChangeCBNotify(self,_hanlder)
 		for i,callback in ipairs(self.ObjAttrChangeCBNotifyCallBack ) do
 			if callback == _hanlder then
 				table.remove(self.ObjAttrChangeCBNotifyCallBack, i )
+			end
+		end
+	end
+end
+-- 给c层 注册服务器通知回调
+function registerCoinChangeCBNotify(self,_hanlder)
+	if not self.CoinChangeCBNotifyCallBack then
+		self.CoinChangeCBNotifyCallBack = {}
+	end
+	table.insert(self.CoinChangeCBNotifyCallBack,_hanlder)
+end
+-- 收到服务器的通知，广播给c层注册的模块
+function CoinChangeCB(self,notifyMsg)
+	if self.CoinChangeCBNotifyCallBack then
+		local ret_msg = self.rpc_pb.EventRpcCoinChangeNotify() 
+		 ret_msg:ParseFromString(notifyMsg)
+		 for i,callback in ipairs(self.CoinChangeCBNotifyCallBack) do
+			callback(ret_msg)
+		end
+	end
+end
+function unregisterCoinChangeCBNotify(self,_hanlder)
+	if nil ~= self.CoinChangeCBNotifyCallBack then
+		for i,callback in ipairs(self.CoinChangeCBNotifyCallBack ) do
+			if callback == _hanlder then
+				table.remove(self.CoinChangeCBNotifyCallBack, i )
+			end
+		end
+	end
+end
+-- 给c层 注册服务器通知回调
+function registerMovePosCBNotify(self,_hanlder)
+	if not self.MovePosCBNotifyCallBack then
+		self.MovePosCBNotifyCallBack = {}
+	end
+	table.insert(self.MovePosCBNotifyCallBack,_hanlder)
+end
+-- 收到服务器的通知，广播给c层注册的模块
+function MovePosCB(self,notifyMsg)
+	if self.MovePosCBNotifyCallBack then
+		local ret_msg = self.rpc_pb.EventRpcMovePosNotify() 
+		 ret_msg:ParseFromString(notifyMsg)
+		 for i,callback in ipairs(self.MovePosCBNotifyCallBack) do
+			callback(ret_msg)
+		end
+	end
+end
+function unregisterMovePosCBNotify(self,_hanlder)
+	if nil ~= self.MovePosCBNotifyCallBack then
+		for i,callback in ipairs(self.MovePosCBNotifyCallBack ) do
+			if callback == _hanlder then
+				table.remove(self.MovePosCBNotifyCallBack, i )
+			end
+		end
+	end
+end
+-- 给c层 注册服务器通知回调
+function registerDirCBNotify(self,_hanlder)
+	if not self.DirCBNotifyCallBack then
+		self.DirCBNotifyCallBack = {}
+	end
+	table.insert(self.DirCBNotifyCallBack,_hanlder)
+end
+-- 收到服务器的通知，广播给c层注册的模块
+function DirCB(self,notifyMsg)
+	if self.DirCBNotifyCallBack then
+		local ret_msg = self.rpc_pb.EventRpcDirNotify() 
+		 ret_msg:ParseFromString(notifyMsg)
+		 for i,callback in ipairs(self.DirCBNotifyCallBack) do
+			callback(ret_msg)
+		end
+	end
+end
+function unregisterDirCBNotify(self,_hanlder)
+	if nil ~= self.DirCBNotifyCallBack then
+		for i,callback in ipairs(self.DirCBNotifyCallBack ) do
+			if callback == _hanlder then
+				table.remove(self.DirCBNotifyCallBack, i )
+			end
+		end
+	end
+end
+-- 给c层 注册服务器通知回调
+function registerStartFadeoutCBNotify(self,_hanlder)
+	if not self.StartFadeoutCBNotifyCallBack then
+		self.StartFadeoutCBNotifyCallBack = {}
+	end
+	table.insert(self.StartFadeoutCBNotifyCallBack,_hanlder)
+end
+-- 收到服务器的通知，广播给c层注册的模块
+function StartFadeoutCB(self,notifyMsg)
+	if self.StartFadeoutCBNotifyCallBack then
+		local ret_msg = self.rpc_pb.EventRpcStartFadeoutNotify() 
+		 ret_msg:ParseFromString(notifyMsg)
+		 for i,callback in ipairs(self.StartFadeoutCBNotifyCallBack) do
+			callback(ret_msg)
+		end
+	end
+end
+function unregisterStartFadeoutCBNotify(self,_hanlder)
+	if nil ~= self.StartFadeoutCBNotifyCallBack then
+		for i,callback in ipairs(self.StartFadeoutCBNotifyCallBack ) do
+			if callback == _hanlder then
+				table.remove(self.StartFadeoutCBNotifyCallBack, i )
+			end
+		end
+	end
+end
+-- 给c层 注册服务器通知回调
+function registerCinematicStartCBNotify(self,_hanlder)
+	if not self.CinematicStartCBNotifyCallBack then
+		self.CinematicStartCBNotifyCallBack = {}
+	end
+	table.insert(self.CinematicStartCBNotifyCallBack,_hanlder)
+end
+-- 收到服务器的通知，广播给c层注册的模块
+function CinematicStartCB(self,notifyMsg)
+	if self.CinematicStartCBNotifyCallBack then
+		local ret_msg = self.rpc_pb.EventRpcCinematicStartNotify() 
+		 ret_msg:ParseFromString(notifyMsg)
+		 for i,callback in ipairs(self.CinematicStartCBNotifyCallBack) do
+			callback(ret_msg)
+		end
+	end
+end
+function unregisterCinematicStartCBNotify(self,_hanlder)
+	if nil ~= self.CinematicStartCBNotifyCallBack then
+		for i,callback in ipairs(self.CinematicStartCBNotifyCallBack ) do
+			if callback == _hanlder then
+				table.remove(self.CinematicStartCBNotifyCallBack, i )
+			end
+		end
+	end
+end
+-- 给c层 注册服务器通知回调
+function registerCinematicEndCBNotify(self,_hanlder)
+	if not self.CinematicEndCBNotifyCallBack then
+		self.CinematicEndCBNotifyCallBack = {}
+	end
+	table.insert(self.CinematicEndCBNotifyCallBack,_hanlder)
+end
+-- 收到服务器的通知，广播给c层注册的模块
+function CinematicEndCB(self,notifyMsg)
+	if self.CinematicEndCBNotifyCallBack then
+		local ret_msg = self.rpc_pb.EventRpcCinematicEndNotify() 
+		 ret_msg:ParseFromString(notifyMsg)
+		 for i,callback in ipairs(self.CinematicEndCBNotifyCallBack) do
+			callback(ret_msg)
+		end
+	end
+end
+function unregisterCinematicEndCBNotify(self,_hanlder)
+	if nil ~= self.CinematicEndCBNotifyCallBack then
+		for i,callback in ipairs(self.CinematicEndCBNotifyCallBack ) do
+			if callback == _hanlder then
+				table.remove(self.CinematicEndCBNotifyCallBack, i )
 			end
 		end
 	end

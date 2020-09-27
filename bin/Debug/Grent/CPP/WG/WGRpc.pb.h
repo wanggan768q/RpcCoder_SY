@@ -32,8 +32,6 @@ void  protobuf_AddDesc_WGRpc_2eproto();
 void protobuf_AssignDesc_WGRpc_2eproto();
 void protobuf_ShutdownFile_WGRpc_2eproto();
 
-class WGRpcInformCreateTeamAsk;
-class WGRpcInformCreateTeamReply;
 class WGRpcInformJoinTeamAsk;
 class WGRpcInformJoinTeamReply;
 class WGRpcInformLeaveAsk;
@@ -52,182 +50,6 @@ class WGRpcInformLoginAsk;
 class WGRpcInformLoginReply;
 
 // ===================================================================
-
-class WGRpcInformCreateTeamAsk : public ::google::protobuf::Message {
- public:
-  WGRpcInformCreateTeamAsk();
-  virtual ~WGRpcInformCreateTeamAsk();
-
-  WGRpcInformCreateTeamAsk(const WGRpcInformCreateTeamAsk& from);
-
-  inline WGRpcInformCreateTeamAsk& operator=(const WGRpcInformCreateTeamAsk& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const WGRpcInformCreateTeamAsk& default_instance();
-
-  void Swap(WGRpcInformCreateTeamAsk* other);
-
-  // implements Message ----------------------------------------------
-
-  WGRpcInformCreateTeamAsk* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const WGRpcInformCreateTeamAsk& from);
-  void MergeFrom(const WGRpcInformCreateTeamAsk& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // optional .TeamInfo Team = 1;
-  inline bool has_team() const;
-  inline void clear_team();
-  static const int kTeamFieldNumber = 1;
-  inline const ::TeamInfo& team() const;
-  inline ::TeamInfo* mutable_team();
-  inline ::TeamInfo* release_team();
-  inline void set_allocated_team(::TeamInfo* team);
-
-  // optional sint32 Result = 2 [default = -9999];
-  inline bool has_result() const;
-  inline void clear_result();
-  static const int kResultFieldNumber = 2;
-  inline ::google::protobuf::int32 result() const;
-  inline void set_result(::google::protobuf::int32 value);
-
-  // @@protoc_insertion_point(class_scope:WGRpcInformCreateTeamAsk)
- private:
-  inline void set_has_team();
-  inline void clear_has_team();
-  inline void set_has_result();
-  inline void clear_has_result();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::TeamInfo* team_;
-  ::google::protobuf::int32 result_;
-
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(2 + 31) / 32];
-
-  friend void  protobuf_AddDesc_WGRpc_2eproto();
-  friend void protobuf_AssignDesc_WGRpc_2eproto();
-  friend void protobuf_ShutdownFile_WGRpc_2eproto();
-
-  void InitAsDefaultInstance();
-  static WGRpcInformCreateTeamAsk* default_instance_;
-};
-// -------------------------------------------------------------------
-
-class WGRpcInformCreateTeamReply : public ::google::protobuf::Message {
- public:
-  WGRpcInformCreateTeamReply();
-  virtual ~WGRpcInformCreateTeamReply();
-
-  WGRpcInformCreateTeamReply(const WGRpcInformCreateTeamReply& from);
-
-  inline WGRpcInformCreateTeamReply& operator=(const WGRpcInformCreateTeamReply& from) {
-    CopyFrom(from);
-    return *this;
-  }
-
-  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
-    return _unknown_fields_;
-  }
-
-  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
-    return &_unknown_fields_;
-  }
-
-  static const ::google::protobuf::Descriptor* descriptor();
-  static const WGRpcInformCreateTeamReply& default_instance();
-
-  void Swap(WGRpcInformCreateTeamReply* other);
-
-  // implements Message ----------------------------------------------
-
-  WGRpcInformCreateTeamReply* New() const;
-  void CopyFrom(const ::google::protobuf::Message& from);
-  void MergeFrom(const ::google::protobuf::Message& from);
-  void CopyFrom(const WGRpcInformCreateTeamReply& from);
-  void MergeFrom(const WGRpcInformCreateTeamReply& from);
-  void Clear();
-  bool IsInitialized() const;
-
-  int ByteSize() const;
-  bool MergePartialFromCodedStream(
-      ::google::protobuf::io::CodedInputStream* input);
-  void SerializeWithCachedSizes(
-      ::google::protobuf::io::CodedOutputStream* output) const;
-  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
-  int GetCachedSize() const { return _cached_size_; }
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const;
-  public:
-
-  ::google::protobuf::Metadata GetMetadata() const;
-
-  // nested types ----------------------------------------------------
-
-  // accessors -------------------------------------------------------
-
-  // optional sint32 Result = 1 [default = -9999];
-  inline bool has_result() const;
-  inline void clear_result();
-  static const int kResultFieldNumber = 1;
-  inline ::google::protobuf::int32 result() const;
-  inline void set_result(::google::protobuf::int32 value);
-
-  // @@protoc_insertion_point(class_scope:WGRpcInformCreateTeamReply)
- private:
-  inline void set_has_result();
-  inline void clear_has_result();
-
-  ::google::protobuf::UnknownFieldSet _unknown_fields_;
-
-  ::google::protobuf::int32 result_;
-
-  mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
-
-  friend void  protobuf_AddDesc_WGRpc_2eproto();
-  friend void protobuf_AssignDesc_WGRpc_2eproto();
-  friend void protobuf_ShutdownFile_WGRpc_2eproto();
-
-  void InitAsDefaultInstance();
-  static WGRpcInformCreateTeamReply* default_instance_;
-};
-// -------------------------------------------------------------------
 
 class WGRpcInformJoinTeamAsk : public ::google::protobuf::Message {
  public:
@@ -379,7 +201,7 @@ class WGRpcInformJoinTeamReply : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
@@ -475,7 +297,7 @@ class WGRpcInformLeaveAsk : public ::google::protobuf::Message {
   inline ::google::protobuf::uint64 newleaderroleid() const;
   inline void set_newleaderroleid(::google::protobuf::uint64 value);
 
-  // optional sint32 Result = 3 [default = -9999];
+  // optional int32 Result = 3 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 3;
@@ -563,7 +385,7 @@ class WGRpcInformLeaveReply : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
@@ -645,7 +467,7 @@ class WGRpcInformAppointTeamLeaderAsk : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
@@ -747,7 +569,7 @@ class WGRpcInformAppointTeamLeaderReply : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
@@ -829,7 +651,7 @@ class WGRpcInformKickTeamMemberAsk : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
@@ -931,7 +753,7 @@ class WGRpcInformKickTeamMemberReply : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
@@ -1013,7 +835,7 @@ class WGRpcInformDissmissTeamAsk : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
@@ -1105,7 +927,7 @@ class WGRpcInformDissmissTeamReply : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
@@ -1196,19 +1018,19 @@ class WGRpcInformApplyTeamAsk : public ::google::protobuf::Message {
   inline ::TeamMemberInfo* release_teammember();
   inline void set_allocated_teammember(::TeamMemberInfo* teammember);
 
-  // optional sint32 Result = 2 [default = -9999];
+  // optional int32 Result = 2 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 2;
   inline ::google::protobuf::int32 result() const;
   inline void set_result(::google::protobuf::int32 value);
 
-  // optional sint32 TeamId = 3 [default = -1];
+  // optional uint64 TeamId = 3 [default = 0];
   inline bool has_teamid() const;
   inline void clear_teamid();
   static const int kTeamIdFieldNumber = 3;
-  inline ::google::protobuf::int32 teamid() const;
-  inline void set_teamid(::google::protobuf::int32 value);
+  inline ::google::protobuf::uint64 teamid() const;
+  inline void set_teamid(::google::protobuf::uint64 value);
 
   // @@protoc_insertion_point(class_scope:WGRpcInformApplyTeamAsk)
  private:
@@ -1222,8 +1044,8 @@ class WGRpcInformApplyTeamAsk : public ::google::protobuf::Message {
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::TeamMemberInfo* teammember_;
+  ::google::protobuf::uint64 teamid_;
   ::google::protobuf::int32 result_;
-  ::google::protobuf::int32 teamid_;
 
   mutable int _cached_size_;
   ::google::protobuf::uint32 _has_bits_[(3 + 31) / 32];
@@ -1291,7 +1113,7 @@ class WGRpcInformApplyTeamReply : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
@@ -1457,7 +1279,7 @@ class WGRpcAgreeTeamApplicantReply : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
@@ -1623,7 +1445,7 @@ class WGRpcInformLoginReply : public ::google::protobuf::Message {
 
   // accessors -------------------------------------------------------
 
-  // optional sint32 Result = 1 [default = -9999];
+  // optional int32 Result = 1 [default = -9999];
   inline bool has_result() const;
   inline void clear_result();
   static const int kResultFieldNumber = 1;
@@ -1653,96 +1475,6 @@ class WGRpcInformLoginReply : public ::google::protobuf::Message {
 
 
 // ===================================================================
-
-// WGRpcInformCreateTeamAsk
-
-// optional .TeamInfo Team = 1;
-inline bool WGRpcInformCreateTeamAsk::has_team() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void WGRpcInformCreateTeamAsk::set_has_team() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void WGRpcInformCreateTeamAsk::clear_has_team() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void WGRpcInformCreateTeamAsk::clear_team() {
-  if (team_ != NULL) team_->::TeamInfo::Clear();
-  clear_has_team();
-}
-inline const ::TeamInfo& WGRpcInformCreateTeamAsk::team() const {
-  return team_ != NULL ? *team_ : *default_instance_->team_;
-}
-inline ::TeamInfo* WGRpcInformCreateTeamAsk::mutable_team() {
-  set_has_team();
-  if (team_ == NULL) team_ = new ::TeamInfo;
-  return team_;
-}
-inline ::TeamInfo* WGRpcInformCreateTeamAsk::release_team() {
-  clear_has_team();
-  ::TeamInfo* temp = team_;
-  team_ = NULL;
-  return temp;
-}
-inline void WGRpcInformCreateTeamAsk::set_allocated_team(::TeamInfo* team) {
-  delete team_;
-  team_ = team;
-  if (team) {
-    set_has_team();
-  } else {
-    clear_has_team();
-  }
-}
-
-// optional sint32 Result = 2 [default = -9999];
-inline bool WGRpcInformCreateTeamAsk::has_result() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void WGRpcInformCreateTeamAsk::set_has_result() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void WGRpcInformCreateTeamAsk::clear_has_result() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void WGRpcInformCreateTeamAsk::clear_result() {
-  result_ = -9999;
-  clear_has_result();
-}
-inline ::google::protobuf::int32 WGRpcInformCreateTeamAsk::result() const {
-  return result_;
-}
-inline void WGRpcInformCreateTeamAsk::set_result(::google::protobuf::int32 value) {
-  set_has_result();
-  result_ = value;
-}
-
-// -------------------------------------------------------------------
-
-// WGRpcInformCreateTeamReply
-
-// optional sint32 Result = 1 [default = -9999];
-inline bool WGRpcInformCreateTeamReply::has_result() const {
-  return (_has_bits_[0] & 0x00000001u) != 0;
-}
-inline void WGRpcInformCreateTeamReply::set_has_result() {
-  _has_bits_[0] |= 0x00000001u;
-}
-inline void WGRpcInformCreateTeamReply::clear_has_result() {
-  _has_bits_[0] &= ~0x00000001u;
-}
-inline void WGRpcInformCreateTeamReply::clear_result() {
-  result_ = -9999;
-  clear_has_result();
-}
-inline ::google::protobuf::int32 WGRpcInformCreateTeamReply::result() const {
-  return result_;
-}
-inline void WGRpcInformCreateTeamReply::set_result(::google::protobuf::int32 value) {
-  set_has_result();
-  result_ = value;
-}
-
-// -------------------------------------------------------------------
 
 // WGRpcInformJoinTeamAsk
 
@@ -1826,7 +1558,7 @@ inline void WGRpcInformJoinTeamAsk::set_allocated_team(::TeamInfo* team) {
 
 // WGRpcInformJoinTeamReply
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool WGRpcInformJoinTeamReply::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -1896,7 +1628,7 @@ inline void WGRpcInformLeaveAsk::set_newleaderroleid(::google::protobuf::uint64 
   newleaderroleid_ = value;
 }
 
-// optional sint32 Result = 3 [default = -9999];
+// optional int32 Result = 3 [default = -9999];
 inline bool WGRpcInformLeaveAsk::has_result() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -1922,7 +1654,7 @@ inline void WGRpcInformLeaveAsk::set_result(::google::protobuf::int32 value) {
 
 // WGRpcInformLeaveReply
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool WGRpcInformLeaveReply::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -1948,7 +1680,7 @@ inline void WGRpcInformLeaveReply::set_result(::google::protobuf::int32 value) {
 
 // WGRpcInformAppointTeamLeaderAsk
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool WGRpcInformAppointTeamLeaderAsk::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -2018,7 +1750,7 @@ inline void WGRpcInformAppointTeamLeaderAsk::set_oldleaderroleid(::google::proto
 
 // WGRpcInformAppointTeamLeaderReply
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool WGRpcInformAppointTeamLeaderReply::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -2044,7 +1776,7 @@ inline void WGRpcInformAppointTeamLeaderReply::set_result(::google::protobuf::in
 
 // WGRpcInformKickTeamMemberAsk
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool WGRpcInformKickTeamMemberAsk::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -2114,7 +1846,7 @@ inline void WGRpcInformKickTeamMemberAsk::set_leaderroleid(::google::protobuf::u
 
 // WGRpcInformKickTeamMemberReply
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool WGRpcInformKickTeamMemberReply::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -2140,7 +1872,7 @@ inline void WGRpcInformKickTeamMemberReply::set_result(::google::protobuf::int32
 
 // WGRpcInformDissmissTeamAsk
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool WGRpcInformDissmissTeamAsk::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -2188,7 +1920,7 @@ inline void WGRpcInformDissmissTeamAsk::set_leaderroleid(::google::protobuf::uin
 
 // WGRpcInformDissmissTeamReply
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool WGRpcInformDissmissTeamReply::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -2252,7 +1984,7 @@ inline void WGRpcInformApplyTeamAsk::set_allocated_teammember(::TeamMemberInfo* 
   }
 }
 
-// optional sint32 Result = 2 [default = -9999];
+// optional int32 Result = 2 [default = -9999];
 inline bool WGRpcInformApplyTeamAsk::has_result() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -2274,7 +2006,7 @@ inline void WGRpcInformApplyTeamAsk::set_result(::google::protobuf::int32 value)
   result_ = value;
 }
 
-// optional sint32 TeamId = 3 [default = -1];
+// optional uint64 TeamId = 3 [default = 0];
 inline bool WGRpcInformApplyTeamAsk::has_teamid() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
@@ -2285,13 +2017,13 @@ inline void WGRpcInformApplyTeamAsk::clear_has_teamid() {
   _has_bits_[0] &= ~0x00000004u;
 }
 inline void WGRpcInformApplyTeamAsk::clear_teamid() {
-  teamid_ = -1;
+  teamid_ = GOOGLE_ULONGLONG(0);
   clear_has_teamid();
 }
-inline ::google::protobuf::int32 WGRpcInformApplyTeamAsk::teamid() const {
+inline ::google::protobuf::uint64 WGRpcInformApplyTeamAsk::teamid() const {
   return teamid_;
 }
-inline void WGRpcInformApplyTeamAsk::set_teamid(::google::protobuf::int32 value) {
+inline void WGRpcInformApplyTeamAsk::set_teamid(::google::protobuf::uint64 value) {
   set_has_teamid();
   teamid_ = value;
 }
@@ -2300,7 +2032,7 @@ inline void WGRpcInformApplyTeamAsk::set_teamid(::google::protobuf::int32 value)
 
 // WGRpcInformApplyTeamReply
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool WGRpcInformApplyTeamReply::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -2368,7 +2100,7 @@ inline void WGRpcAgreeTeamApplicantAsk::set_allocated_team(::TeamInfo* team) {
 
 // WGRpcAgreeTeamApplicantReply
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool WGRpcAgreeTeamApplicantReply::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
@@ -2436,7 +2168,7 @@ inline void WGRpcInformLoginAsk::set_allocated_team(::TeamInfo* team) {
 
 // WGRpcInformLoginReply
 
-// optional sint32 Result = 1 [default = -9999];
+// optional int32 Result = 1 [default = -9999];
 inline bool WGRpcInformLoginReply::has_result() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }

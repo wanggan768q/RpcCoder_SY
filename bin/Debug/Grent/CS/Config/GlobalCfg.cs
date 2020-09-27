@@ -10,10 +10,9 @@ using System.Collections.Generic;
 public class GlobalElement
 {
 	public int id;               	//id	数据的id
-	public string comment;       	//注释	该数据的功能
 	public int int_value;        	//整型数据	整型数据
 	public float float_value;    	//浮点数据	浮点数据
-	public string string_value;  	//字符串数据	字符串数据
+	public string string_value;  	//字符串数据	特效：资源名称
 	public li list_int_value;    	//数组整型数据	数组整型数据
 	public lf list_float_value;  	//数组浮点数据	数组浮点数据
 	public ls list_string_value; 	//数组字符串数据	数组字符串数据
@@ -109,25 +108,23 @@ public class GlobalTable
             vecLine.Add(tmpStr);
             vecHeadType.Add(tmpInt);
 		}
-		if(vecLine.Count != 8)
+		if(vecLine.Count != 7)
 		{
 			Ex.Logger.Log("Global.csv中列数量与生成的代码不匹配!");
 			return false;
 		}
 		if(vecLine[0]!="id"){Ex.Logger.Log("Global.csv中字段[id]位置不对应"); return false; }
-		if(vecLine[1]!="comment"){Ex.Logger.Log("Global.csv中字段[comment]位置不对应"); return false; }
-		if(vecLine[2]!="int_value"){Ex.Logger.Log("Global.csv中字段[int_value]位置不对应"); return false; }
-		if(vecLine[3]!="float_value"){Ex.Logger.Log("Global.csv中字段[float_value]位置不对应"); return false; }
-		if(vecLine[4]!="string_value"){Ex.Logger.Log("Global.csv中字段[string_value]位置不对应"); return false; }
-		if(vecLine[5]!="list_int_value"){Ex.Logger.Log("Global.csv中字段[list_int_value]位置不对应"); return false; }
-		if(vecLine[6]!="list_float_value"){Ex.Logger.Log("Global.csv中字段[list_float_value]位置不对应"); return false; }
-		if(vecLine[7]!="list_string_value"){Ex.Logger.Log("Global.csv中字段[list_string_value]位置不对应"); return false; }
+		if(vecLine[1]!="int_value"){Ex.Logger.Log("Global.csv中字段[int_value]位置不对应"); return false; }
+		if(vecLine[2]!="float_value"){Ex.Logger.Log("Global.csv中字段[float_value]位置不对应"); return false; }
+		if(vecLine[3]!="string_value"){Ex.Logger.Log("Global.csv中字段[string_value]位置不对应"); return false; }
+		if(vecLine[4]!="list_int_value"){Ex.Logger.Log("Global.csv中字段[list_int_value]位置不对应"); return false; }
+		if(vecLine[5]!="list_float_value"){Ex.Logger.Log("Global.csv中字段[list_float_value]位置不对应"); return false; }
+		if(vecLine[6]!="list_string_value"){Ex.Logger.Log("Global.csv中字段[list_string_value]位置不对应"); return false; }
 
 		for(int i=0; i<nRow; i++)
 		{
 			GlobalElement member = new GlobalElement();
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.id );
-			readPos += GameAssist.ReadString( binContent, readPos, out member.comment);
 			readPos += GameAssist.ReadInt32Variant(binContent, readPos, out member.int_value );
 			readPos += GameAssist.ReadFloat( binContent, readPos, out member.float_value);
 			readPos += GameAssist.ReadString( binContent, readPos, out member.string_value);
@@ -150,38 +147,36 @@ public class GlobalTable
 		int contentOffset = 0;
 		List<string> vecLine;
 		vecLine = GameAssist.readCsvLine( strContent, ref contentOffset );
-		if(vecLine.Count != 8)
+		if(vecLine.Count != 7)
 		{
 			Ex.Logger.Log("Global.csv中列数量与生成的代码不匹配!");
 			return false;
 		}
 		if(vecLine[0]!="id"){Ex.Logger.Log("Global.csv中字段[id]位置不对应"); return false; }
-		if(vecLine[1]!="comment"){Ex.Logger.Log("Global.csv中字段[comment]位置不对应"); return false; }
-		if(vecLine[2]!="int_value"){Ex.Logger.Log("Global.csv中字段[int_value]位置不对应"); return false; }
-		if(vecLine[3]!="float_value"){Ex.Logger.Log("Global.csv中字段[float_value]位置不对应"); return false; }
-		if(vecLine[4]!="string_value"){Ex.Logger.Log("Global.csv中字段[string_value]位置不对应"); return false; }
-		if(vecLine[5]!="list_int_value"){Ex.Logger.Log("Global.csv中字段[list_int_value]位置不对应"); return false; }
-		if(vecLine[6]!="list_float_value"){Ex.Logger.Log("Global.csv中字段[list_float_value]位置不对应"); return false; }
-		if(vecLine[7]!="list_string_value"){Ex.Logger.Log("Global.csv中字段[list_string_value]位置不对应"); return false; }
+		if(vecLine[1]!="int_value"){Ex.Logger.Log("Global.csv中字段[int_value]位置不对应"); return false; }
+		if(vecLine[2]!="float_value"){Ex.Logger.Log("Global.csv中字段[float_value]位置不对应"); return false; }
+		if(vecLine[3]!="string_value"){Ex.Logger.Log("Global.csv中字段[string_value]位置不对应"); return false; }
+		if(vecLine[4]!="list_int_value"){Ex.Logger.Log("Global.csv中字段[list_int_value]位置不对应"); return false; }
+		if(vecLine[5]!="list_float_value"){Ex.Logger.Log("Global.csv中字段[list_float_value]位置不对应"); return false; }
+		if(vecLine[6]!="list_string_value"){Ex.Logger.Log("Global.csv中字段[list_string_value]位置不对应"); return false; }
 
 		while(true)
 		{
 			vecLine = GameAssist.readCsvLine( strContent, ref contentOffset );
 			if((int)vecLine.Count == 0 )
 				break;
-			if((int)vecLine.Count != (int)8)
+			if((int)vecLine.Count != (int)7)
 			{
 				return false;
 			}
 			GlobalElement member = new GlobalElement();
 			member.id=Convert.ToInt32(vecLine[0]);
-			member.comment=vecLine[1];
-			member.int_value=Convert.ToInt32(vecLine[2]);
-			member.float_value=Convert.ToSingle(vecLine[3]);
-			member.string_value=vecLine[4];
-			member.list_int_value=vecLine[5];
-			member.list_float_value=vecLine[6];
-			member.list_string_value=vecLine[7];
+			member.int_value=Convert.ToInt32(vecLine[1]);
+			member.float_value=Convert.ToSingle(vecLine[2]);
+			member.string_value=vecLine[3];
+			member.list_int_value=vecLine[4];
+			member.list_float_value=vecLine[5];
+			member.list_string_value=vecLine[6];
 
 			member.IsValidate = true;
 			m_vecAllElements.Add(member);

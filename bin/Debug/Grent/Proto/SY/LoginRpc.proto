@@ -1,41 +1,23 @@
-message  LoginRpcConnectAsk
-{
-	optional sint32 Type = 1[default=-1];
-
-}
-
-message  LoginRpcConnectReply
-{
-	optional sint32 Result = 1[default=-9999];
-	optional sint32 Type = 2[default=0];
-
-}
-
 message  LoginRpcLoginAsk
 {
 	optional string Username = 1;
 	optional string Passwd = 2;
+	optional string SnId = 3;
+	optional string GameId = 4;
+	optional string Mac = 5;
+	optional string Token = 6;
+	optional string Version = 7;
 
 }
 
 message  LoginRpcLoginReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 	optional uint64 RoleId = 2[default=0];
-
-}
-
-message  LoginRpcCharacterListAsk
-{
-	optional string Accountname  = 1;
-
-}
-
-message  LoginRpcCharacterListReply
-{
-	optional sint32 Result = 1[default=-9999];
-	repeated CharacterInfo CharacterList = 2;
-	optional uint64 LastSelectRoleId = 4[default=0];
+	optional Vector3 Pos = 3;
+	repeated CharacterInfo CharacterList = 4;
+	optional uint64 LastSelectRoleId = 5[default=0];
+	optional int32 ServerTime = 6;
 
 }
 
@@ -47,36 +29,29 @@ message  LoginRpcSelectCharacterAsk
 
 message  LoginRpcSelectCharacterReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 	optional uint64 RoleId = 2[default=0];
-	optional string Ip = 3;
-	optional sint32 Port = 4[default=0];
+	optional int32 LastSceneID = 5;
+	optional string Ban_Reason = 6;
+	optional int32 LineId = 7;
+	optional int32 Ban_EndTime = 8;
 
 }
 
 message  LoginRpcCreateCharacterAsk
 {
 	optional string Nickname = 1;
-	optional sint32 ConfigId = 2[default=-1];
+	optional int32 ConfigId = 2;
+	optional PinchFaceData PinchData = 3;
+	optional string PushRegId = 4;
 
 }
 
 message  LoginRpcCreateCharacterReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
 	optional uint64 RoleId = 2[default=0];
-
-}
-
-message  LoginRpcSelectSaveUserAsk
-{
-	optional uint64 RoleId = 1[default=0];
-
-}
-
-message  LoginRpcSelectSaveUserReply
-{
-	optional sint32 Result = 1[default=-9999];
+	optional int32 TimeStamp = 3;
 
 }
 
@@ -88,7 +63,139 @@ message  LoginRpcDeleteCharacterAsk
 
 message  LoginRpcDeleteCharacterReply
 {
-	optional sint32 Result = 1[default=-9999];
+	optional int32 Result = 1;
+
+}
+
+message  LoginRpcTestAsk
+{
+	repeated int64 A = 1;
+	repeated uint64 B = 3;
+
+}
+
+message  LoginRpcTestReply
+{
+	optional int32 Result = 1;
+	repeated int64 A = 2;
+	repeated uint64 B = 3;
+
+}
+
+message  LoginRpcTest1Ask
+{
+	repeated uint64 B = 1;
+
+}
+
+message  LoginRpcTest1Reply
+{
+	optional int32 Result = 1;
+
+}
+
+message  LoginRpcLoginLineUpNotify
+{
+	optional int32 LineUpIndex = 1;
+	optional int32 LineUpRole = 2;
+	optional int32 LineUpTime = 3;
+
+}
+
+message  LoginRpcLoginEnterGameNotify
+{
+	optional uint64 RoleID = 1[default=0];
+	optional int32 LastSceneID = 2;
+	optional int32 LineID = 3;
+
+}
+
+message  LoginRpcLoginQuitLineUpAsk
+{
+
+}
+
+message  LoginRpcLoginQuitLineUpReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  LoginRpcRemoteLoginAsk
+{
+	optional uint64 Roleid = 1[default=0];
+
+}
+
+message  LoginRpcRemoteLoginReply
+{
+	optional int32 Result = 1;
+
+}
+
+message  Vector3
+{
+	optional float X = 1[default=-1];
+	optional float Y = 2[default=-1];
+	optional float Z = 3[default=-1];
+
+}
+
+message  CharacterInfo
+{
+	optional uint64 RoleId = 1[default=0];
+	optional string Nickname = 2;
+	optional int32 ConfigId = 3[default=-1];
+	optional int32 Hp = 4[default=-1];
+	optional int32 HpMax = 5[default=-1];
+	optional int32 Level = 6[default=-1];
+	optional TreasureEquipedID TreasureEquiped = 8;
+	optional PinchFaceData PinchData = 9;
+
+}
+
+message  PinchFaceData
+{
+	repeated PinchFaceBase DataInfo = 1;
+
+}
+
+message  TreasureEquipedID
+{
+	optional int32 TreasureHair = 1[default=-1];
+	optional int32 TreasureHead = 2[default=-1];
+	optional int32 TreasureBody = 3[default=-1];
+	optional int32 TreasureWeapon = 4[default=-1];
+	optional int32 TreasureWing = 5[default=-1];
+	optional int32 TreasureRiding = 6[default=-1];
+	optional int32 TreasureFootPrint = 7[default=-1];
+	optional int32 EquipHair = 8[default=-1];
+	optional int32 EquipHead = 9[default=-1];
+	optional int32 EquipBody = 10[default=-1];
+	optional int32 EquipWeapon = 11[default=-1];
+	optional bool Headdisplayswitch = 12[default=true];
+	optional bool Fashiondisplayswitch = 13[default=true];
+	optional int32 InitHair = 14[default=-1];
+	optional int32 InitHead = 15[default=-1];
+	optional int32 InitBody = 16[default=-1];
+	optional int32 InitWeapon = 17[default=-1];
+
+}
+
+message  PinchFaceBase
+{
+	optional int32 Id = 1[default=-1];
+	optional float Value = 2[default=-1];
+	optional Color Color = 4;
+
+}
+
+message  Color
+{
+	optional float R = 1[default=-1];
+	optional float G = 2[default=-1];
+	optional float B = 3[default=-1];
+	optional float A = 4[default=-1];
 
 }
 

@@ -21,10 +21,11 @@
 
 
 #include "PacketFactory.h"
-#include "include/PacketMgr.h"
+#include "Game/PacketMgr.h"
 #include "EventRpc.pb.h"
 #include <memory>
-
+#include <vector>
+#include <functional>
 
 
 
@@ -46,9 +47,17 @@ public:
 	RPC_CODE_EVENT_MOVE_NOTIFY                   = 551,	//事件模块-->ObjMove-->通知
 	RPC_CODE_EVENT_STOPMOVE_NOTIFY               = 552,	//事件模块-->ObjStopMove-->通知
 	RPC_CODE_EVENT_OBJATTRCHANGE_NOTIFY          = 553,	//事件模块-->属性改变-->通知
+	RPC_CODE_EVENT_COINCHANGE_NOTIFY             = 554,	//事件模块-->货币的变化通知-->通知
+	RPC_CODE_EVENT_MOVEPOS_NOTIFY                = 555,	//事件模块-->按点移动-->通知
+	RPC_CODE_EVENT_DIR_NOTIFY                    = 556,	//事件模块-->朝向-->通知
+	RPC_CODE_EVENT_STARTFADEOUT_NOTIFY           = 557,	//事件模块-->开始淡出效果-->通知
+	RPC_CODE_EVENT_CINEMATICSTART_NOTIFY         = 558,	//事件模块-->通知表演开始-->通知
+	RPC_CODE_EVENT_CINEMATICEND_NOTIFY           = 559,	//事件模块-->通知表演结束-->通知
 
 	};
 
+	typedef std::function<bool()> ReloadCallback;
+	typedef std::vector<ReloadCallback> reload_vec_type;
 public:
 	//事件模块实现类构造函数
 	ModuleEvent()
@@ -60,14 +69,29 @@ public:
 	~ModuleEvent(){}
 
 
-	static ModuleEvent Instance()
+	static ModuleEvent & Instance()
 	{
 		static ModuleEvent sInstance;
 		return sInstance;
 	}
 	
 	bool Initialize();
+	bool Reinitialize();
 
+	void RegisterReLoadCb(const ReloadCallback &cb)
+	{
+		m_vReLoadCb.push_back(cb);
+	}
+	
+	bool OnLoad()
+	{
+		bool bRet = true;
+			for (auto it : m_vReLoadCb)
+		{
+			bRet &= it();
+		}
+		return bRet;
+	}
 public:
 	/********************************************************************************************
 	* Function:       SendToClientMove
@@ -99,7 +123,68 @@ public:
 	********************************************************************************************/
 	//virtual void SendToClientObjAttrChange( INT64 UserId, EventRpcObjAttrChangeNotifyWraper& Notify );
 
+	/********************************************************************************************
+	* Function:       SendToClientCoinChange
+	* Description:    事件模块-->货币的变化通知异步通知操作函数
+	* Input:          EventRpcCoinChangeNotifyWraper& Notify 货币的变化通知通知
+	* Input:          INT64 UserId 需要通知到的用户ID
+	* Output:         无
+	* Return:         无
+	********************************************************************************************/
+	//virtual void SendToClientCoinChange( INT64 UserId, EventRpcCoinChangeNotifyWraper& Notify );
 
+	/********************************************************************************************
+	* Function:       SendToClientMovePos
+	* Description:    事件模块-->按点移动异步通知操作函数
+	* Input:          EventRpcMovePosNotifyWraper& Notify 按点移动通知
+	* Input:          INT64 UserId 需要通知到的用户ID
+	* Output:         无
+	* Return:         无
+	********************************************************************************************/
+	//virtual void SendToClientMovePos( INT64 UserId, EventRpcMovePosNotifyWraper& Notify );
+
+	/********************************************************************************************
+	* Function:       SendToClientDir
+	* Description:    事件模块-->朝向异步通知操作函数
+	* Input:          EventRpcDirNotifyWraper& Notify 朝向通知
+	* Input:          INT64 UserId 需要通知到的用户ID
+	* Output:         无
+	* Return:         无
+	********************************************************************************************/
+	//virtual void SendToClientDir( INT64 UserId, EventRpcDirNotifyWraper& Notify );
+
+	/********************************************************************************************
+	* Function:       SendToClientStartFadeout
+	* Description:    事件模块-->开始淡出效果异步通知操作函数
+	* Input:          EventRpcStartFadeoutNotifyWraper& Notify 开始淡出效果通知
+	* Input:          INT64 UserId 需要通知到的用户ID
+	* Output:         无
+	* Return:         无
+	********************************************************************************************/
+	//virtual void SendToClientStartFadeout( INT64 UserId, EventRpcStartFadeoutNotifyWraper& Notify );
+
+	/********************************************************************************************
+	* Function:       SendToClientCinematicStart
+	* Description:    事件模块-->通知表演开始异步通知操作函数
+	* Input:          EventRpcCinematicStartNotifyWraper& Notify 通知表演开始通知
+	* Input:          INT64 UserId 需要通知到的用户ID
+	* Output:         无
+	* Return:         无
+	********************************************************************************************/
+	//virtual void SendToClientCinematicStart( INT64 UserId, EventRpcCinematicStartNotifyWraper& Notify );
+
+	/********************************************************************************************
+	* Function:       SendToClientCinematicEnd
+	* Description:    事件模块-->通知表演结束异步通知操作函数
+	* Input:          EventRpcCinematicEndNotifyWraper& Notify 通知表演结束通知
+	* Input:          INT64 UserId 需要通知到的用户ID
+	* Output:         无
+	* Return:         无
+	********************************************************************************************/
+	//virtual void SendToClientCinematicEnd( INT64 UserId, EventRpcCinematicEndNotifyWraper& Notify );
+
+
+	reload_vec_type m_vReLoadCb;
 
 };
 

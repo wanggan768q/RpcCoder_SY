@@ -20,13 +20,16 @@ public class LoginRPC
 {
 	public const int ModuleId = 2;
 	
-	public const int RPC_CODE_LOGIN_CONNECT_REQUEST = 251;
-	public const int RPC_CODE_LOGIN_LOGIN_REQUEST = 252;
-	public const int RPC_CODE_LOGIN_CHARACTERLIST_REQUEST = 253;
-	public const int RPC_CODE_LOGIN_SELECTCHARACTER_REQUEST = 254;
-	public const int RPC_CODE_LOGIN_CREATECHARACTER_REQUEST = 255;
-	public const int RPC_CODE_LOGIN_SELECTSAVEUSER_REQUEST = 256;
-	public const int RPC_CODE_LOGIN_DELETECHARACTER_REQUEST = 257;
+	public const int RPC_CODE_LOGIN_LOGIN_REQUEST = 251;
+	public const int RPC_CODE_LOGIN_SELECTCHARACTER_REQUEST = 252;
+	public const int RPC_CODE_LOGIN_CREATECHARACTER_REQUEST = 253;
+	public const int RPC_CODE_LOGIN_DELETECHARACTER_REQUEST = 254;
+	public const int RPC_CODE_LOGIN_TEST_REQUEST = 255;
+	public const int RPC_CODE_LOGIN_TEST1_REQUEST = 256;
+	public const int RPC_CODE_LOGIN_LOGINLINEUP_NOTIFY = 257;
+	public const int RPC_CODE_LOGIN_LOGINENTERGAME_NOTIFY = 258;
+	public const int RPC_CODE_LOGIN_LOGINQUITLINEUP_REQUEST = 259;
+	public const int RPC_CODE_LOGIN_REMOTELOGIN_REQUEST = 260;
 
 	
 	private static LoginRPC m_Instance = null;
@@ -49,6 +52,8 @@ public class LoginRPC
 	{
 		Singleton<GameSocket>.Instance.RegisterSyncUpdate( ModuleId, LoginData.Instance.UpdateField );
 		
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_LOGIN_LOGINLINEUP_NOTIFY, LoginLineUpCB);
+		Singleton<GameSocket>.Instance.RegisterNotify(RPC_CODE_LOGIN_LOGINENTERGAME_NOTIFY, LoginEnterGameCB);
 
 
 		return true;
@@ -56,55 +61,24 @@ public class LoginRPC
 
 
 	/**
-	*登录模块-->连接验证 RPC请求
-	*/
-	public void Connect(int Type, ReplyHandler replyCB)
-	{
-		LoginRpcConnectAskWraper askPBWraper = new LoginRpcConnectAskWraper();
-		askPBWraper.Type = Type;
-		ModMessage askMsg = new ModMessage();
-		askMsg.MsgNum = RPC_CODE_LOGIN_CONNECT_REQUEST;
-		askMsg.protoMS = askPBWraper.ToMemoryStream();
-
-		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
-			LoginRpcConnectReplyWraper replyPBWraper = new LoginRpcConnectReplyWraper();
-			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
-			replyCB(replyPBWraper);
-		});
-	}
-
-	/**
 	*登录模块-->登录 RPC请求
 	*/
-	public void Login(string Username, string Passwd, ReplyHandler replyCB)
+	public void Login(string Username, string Passwd, string SnId, string GameId, string Mac, string Token, string Version, ReplyHandler replyCB)
 	{
 		LoginRpcLoginAskWraper askPBWraper = new LoginRpcLoginAskWraper();
 		askPBWraper.Username = Username;
 		askPBWraper.Passwd = Passwd;
+		askPBWraper.SnId = SnId;
+		askPBWraper.GameId = GameId;
+		askPBWraper.Mac = Mac;
+		askPBWraper.Token = Token;
+		askPBWraper.Version = Version;
 		ModMessage askMsg = new ModMessage();
 		askMsg.MsgNum = RPC_CODE_LOGIN_LOGIN_REQUEST;
 		askMsg.protoMS = askPBWraper.ToMemoryStream();
 
 		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
 			LoginRpcLoginReplyWraper replyPBWraper = new LoginRpcLoginReplyWraper();
-			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
-			replyCB(replyPBWraper);
-		});
-	}
-
-	/**
-	*登录模块-->角色列表 RPC请求
-	*/
-	public void CharacterList(string Accountname , ReplyHandler replyCB)
-	{
-		LoginRpcCharacterListAskWraper askPBWraper = new LoginRpcCharacterListAskWraper();
-		askPBWraper.Accountname  = Accountname ;
-		ModMessage askMsg = new ModMessage();
-		askMsg.MsgNum = RPC_CODE_LOGIN_CHARACTERLIST_REQUEST;
-		askMsg.protoMS = askPBWraper.ToMemoryStream();
-
-		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
-			LoginRpcCharacterListReplyWraper replyPBWraper = new LoginRpcCharacterListReplyWraper();
 			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
 			replyCB(replyPBWraper);
 		});
@@ -131,35 +105,19 @@ public class LoginRPC
 	/**
 	*登录模块-->创建角色 RPC请求
 	*/
-	public void CreateCharacter(string Nickname, int ConfigId, ReplyHandler replyCB)
+	public void CreateCharacter(string Nickname, int ConfigId, PinchFaceDataWraper PinchData, string PushRegId, ReplyHandler replyCB)
 	{
 		LoginRpcCreateCharacterAskWraper askPBWraper = new LoginRpcCreateCharacterAskWraper();
 		askPBWraper.Nickname = Nickname;
 		askPBWraper.ConfigId = ConfigId;
+		askPBWraper.PinchData = PinchData;
+		askPBWraper.PushRegId = PushRegId;
 		ModMessage askMsg = new ModMessage();
 		askMsg.MsgNum = RPC_CODE_LOGIN_CREATECHARACTER_REQUEST;
 		askMsg.protoMS = askPBWraper.ToMemoryStream();
 
 		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
 			LoginRpcCreateCharacterReplyWraper replyPBWraper = new LoginRpcCreateCharacterReplyWraper();
-			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
-			replyCB(replyPBWraper);
-		});
-	}
-
-	/**
-	*登录模块-->选择角色存储redis RPC请求
-	*/
-	public void SelectSaveUser(UInt64 RoleId, ReplyHandler replyCB)
-	{
-		LoginRpcSelectSaveUserAskWraper askPBWraper = new LoginRpcSelectSaveUserAskWraper();
-		askPBWraper.RoleId = RoleId;
-		ModMessage askMsg = new ModMessage();
-		askMsg.MsgNum = RPC_CODE_LOGIN_SELECTSAVEUSER_REQUEST;
-		askMsg.protoMS = askPBWraper.ToMemoryStream();
-
-		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
-			LoginRpcSelectSaveUserReplyWraper replyPBWraper = new LoginRpcSelectSaveUserReplyWraper();
 			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
 			replyCB(replyPBWraper);
 		});
@@ -183,7 +141,101 @@ public class LoginRPC
 		});
 	}
 
+	/**
+	*登录模块-->Test RPC请求
+	*/
+	public void Test(List<Int64> A, List<UInt64> B, ReplyHandler replyCB)
+	{
+		LoginRpcTestAskWraper askPBWraper = new LoginRpcTestAskWraper();
+		askPBWraper.SetA(A);
+		askPBWraper.SetB(B);
+		ModMessage askMsg = new ModMessage();
+		askMsg.MsgNum = RPC_CODE_LOGIN_TEST_REQUEST;
+		askMsg.protoMS = askPBWraper.ToMemoryStream();
 
+		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
+			LoginRpcTestReplyWraper replyPBWraper = new LoginRpcTestReplyWraper();
+			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
+			replyCB(replyPBWraper);
+		});
+	}
+
+	/**
+	*登录模块-->Test1 RPC请求
+	*/
+	public void Test1(List<UInt64> B, ReplyHandler replyCB)
+	{
+		LoginRpcTest1AskWraper askPBWraper = new LoginRpcTest1AskWraper();
+		askPBWraper.SetB(B);
+		ModMessage askMsg = new ModMessage();
+		askMsg.MsgNum = RPC_CODE_LOGIN_TEST1_REQUEST;
+		askMsg.protoMS = askPBWraper.ToMemoryStream();
+
+		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
+			LoginRpcTest1ReplyWraper replyPBWraper = new LoginRpcTest1ReplyWraper();
+			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
+			replyCB(replyPBWraper);
+		});
+	}
+
+	/**
+	*登录模块-->退出排队 RPC请求
+	*/
+	public void LoginQuitLineUp(ReplyHandler replyCB)
+	{
+		LoginRpcLoginQuitLineUpAskWraper askPBWraper = new LoginRpcLoginQuitLineUpAskWraper();
+		ModMessage askMsg = new ModMessage();
+		askMsg.MsgNum = RPC_CODE_LOGIN_LOGINQUITLINEUP_REQUEST;
+		askMsg.protoMS = askPBWraper.ToMemoryStream();
+
+		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
+			LoginRpcLoginQuitLineUpReplyWraper replyPBWraper = new LoginRpcLoginQuitLineUpReplyWraper();
+			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
+			replyCB(replyPBWraper);
+		});
+	}
+
+	/**
+	*登录模块-->login RPC请求
+	*/
+	public void RemoteLogin(UInt64 Roleid, ReplyHandler replyCB)
+	{
+		LoginRpcRemoteLoginAskWraper askPBWraper = new LoginRpcRemoteLoginAskWraper();
+		askPBWraper.Roleid = Roleid;
+		ModMessage askMsg = new ModMessage();
+		askMsg.MsgNum = RPC_CODE_LOGIN_REMOTELOGIN_REQUEST;
+		askMsg.protoMS = askPBWraper.ToMemoryStream();
+
+		Singleton<GameSocket>.Instance.SendAsk(askMsg, delegate(ModMessage replyMsg){
+			LoginRpcRemoteLoginReplyWraper replyPBWraper = new LoginRpcRemoteLoginReplyWraper();
+			replyPBWraper.FromMemoryStream(replyMsg.protoMS);
+			replyCB(replyPBWraper);
+		});
+	}
+
+
+	/**
+	*登录模块-->登录 排队通知 服务器通知回调
+	*/
+	public static void LoginLineUpCB( ModMessage notifyMsg )
+	{
+		LoginRpcLoginLineUpNotifyWraper notifyPBWraper = new LoginRpcLoginLineUpNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( LoginLineUpCBDelegate != null )
+			LoginLineUpCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback LoginLineUpCBDelegate = null;
+	/**
+	*登录模块-->可以登录服务器的通知 服务器通知回调
+	*/
+	public static void LoginEnterGameCB( ModMessage notifyMsg )
+	{
+		LoginRpcLoginEnterGameNotifyWraper notifyPBWraper = new LoginRpcLoginEnterGameNotifyWraper();
+		notifyPBWraper.FromMemoryStream(notifyMsg.protoMS);
+		if( LoginEnterGameCBDelegate != null )
+			LoginEnterGameCBDelegate( notifyPBWraper );
+	}
+	public static ServerNotifyCallback LoginEnterGameCBDelegate = null;
 
 
 
