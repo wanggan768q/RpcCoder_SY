@@ -1293,8 +1293,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Public Struct");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Module");
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Public Struct");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Module");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -1357,13 +1357,13 @@
             this.treeView1.ImageList = this.imageList1;
             this.treeView1.Location = new System.Drawing.Point(21, 28);
             this.treeView1.Name = "treeView1";
-            treeNode3.Name = "Struct";
-            treeNode3.Text = "Public Struct";
-            treeNode4.Name = "Module";
-            treeNode4.Text = "Module";
+            treeNode1.Name = "Struct";
+            treeNode1.Text = "Public Struct";
+            treeNode2.Name = "Module";
+            treeNode2.Text = "Module";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3,
-            treeNode4});
+            treeNode1,
+            treeNode2});
             this.treeView1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.treeView1.SelectedImageIndex = 0;
             this.treeView1.Size = new System.Drawing.Size(258, 685);
@@ -1831,7 +1831,7 @@
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Game Code Generater [ 神佑版 ]";
+            this.Text = "Game Code Generater [ 余烬风暴版 ]";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.LoadArchive);
