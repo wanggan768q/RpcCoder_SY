@@ -201,11 +201,13 @@
                     if (struct2.Comment != "")
                     {
                         string str6 = str4;
-                        str4 = str6 + "/*\r\n" + ((struct2.CNName == "") ? "" : (struct2.CNName + "\r\n")) + struct2.Comment.Replace("\r\n", "\t\r\n") + "\r\n*/\r\n";
+                        //str4 = str6 + "/*\r\n" + ((struct2.CNName == "") ? "" : (struct2.CNName + "\r\n")) + struct2.Comment.Replace("\r\n", "\t\r\n") + "\r\n*/\r\n";
+                        str4 = str6 + "\r\n";
                     }
                     else if (struct2.CNName != "")
                     {
-                        str4 = str4 + "//" + struct2.CNName + "\r\n";
+                        //str4 = str4 + "//" + struct2.CNName + "\r\n";
+                        str4 = str4 + "\r\n";
                     }
                     if (protoType == DataStruct.protoTypeE.RpcProto)
                     {
@@ -237,7 +239,8 @@
                         if (descriptor.Comment != "")
                         {
                             string str7 = str4;
-                            str4 = str7 + "\t/*\r\n" + ((descriptor.CNName == "") ? "" : ("\t" + descriptor.CNName + "\r\n")) + "\t" + descriptor.Comment.Replace("\r\n", "\r\n\t") + "\r\n\t*/\r\n";
+                            //str4 = str7 + "\t/*\r\n" + ((descriptor.CNName == "") ? "" : ("\t" + descriptor.CNName + "\r\n")) + "\t" + descriptor.Comment.Replace("\r\n", "\r\n\t") + "\r\n\t*/\r\n";
+                            str4 = str7 + "\r\n";
                         }
                         if ((((descriptor.FieldType == "float") || (descriptor.FieldType == "bool")) || ((descriptor.FieldType == "sint32") || (descriptor.FieldType == "int32") || (descriptor.FieldType == "sint64" || descriptor.FieldType == "uint64" || descriptor.FieldType == "int64"))) && (descriptor.PreDefine == DataStruct.FieldDescriptor.PreDefineType.optional))
                         {
@@ -249,7 +252,8 @@
                             object obj4 = str4;
                             str4 = string.Concat(new object[] { obj4, "\t", descriptor.PreDefine , " ", fieldType, " ", descriptor.FieldName, " = ", descriptor.FieldId, ";" });
                         }
-                        str4 = str4 + (((descriptor.Comment == "") && (descriptor.CNName != "")) ? ("\t//" + descriptor.CNName) : "") + "\r\n";
+                        //str4 = str4 + (((descriptor.Comment == "") && (descriptor.CNName != "")) ? ("\t//" + descriptor.CNName) : "") + "\r\n";
+                        str4 = str4 + "\r\n";
                     }
                     str4 = str4 + "}\r\n\r\n";
                 }
@@ -283,7 +287,8 @@
                 if (struct2.Comment != "")
                 {
                     string str4 = str3;
-                    str3 = str4 + "/*\r\n" + ((struct2.CNName == "") ? "" : (struct2.CNName + "\r\n")) + struct2.Comment.Replace("\r\n", "\t\r\n") + "\r\n*/\r\n";
+                    //str3 = str4 + "/*\r\n" + ((struct2.CNName == "") ? "" : (struct2.CNName + "\r\n")) + struct2.Comment.Replace("\r\n", "\t\r\n") + "\r\n*/\r\n";
+                    str3 = str4 + "\r\n";
                 }
                 str3 = str3 + "message  " + struct2.getFullName() + "\r\n{\r\n";
                 foreach (DataStruct.FieldDescriptor descriptor in struct2.fieldItem)
@@ -348,11 +353,13 @@
                         if (struct2.Comment != "")
                         {
                             string str7 = str5;
-                            str5 = str7 + "/*\r\n" + ((struct2.CNName == "") ? "" : (struct2.CNName + "\r\n")) + struct2.Comment.Replace("\r\n", "\t\r\n") + "\r\n*/\r\n";
+                            //str5 = str7 + "/*\r\n" + ((struct2.CNName == "") ? "" : (struct2.CNName + "\r\n")) + struct2.Comment.Replace("\r\n", "\t\r\n") + "\r\n*/\r\n";
+                            str5 = str7 + "\r\n";
                         }
                         else if (struct2.CNName != "")
                         {
-                            str5 = str5 + "//" + struct2.CNName + "\r\n";
+                            //str5 = str5 + "//" + struct2.CNName + "\r\n";
+                            str5 = str5 + "\r\n";
                         }
                         if (protoType == DataStruct.protoTypeE.RpcProto)
                         {
@@ -384,7 +391,8 @@
                             if (descriptor.Comment != "")
                             {
                                 string str8 = str5;
-                                str5 = str8 + "\t/*\r\n" + ((descriptor.CNName == "") ? "" : ("\t" + descriptor.CNName + "\r\n")) + "\t" + descriptor.Comment.Replace("\r\n", "\r\n\t") + "\r\n\t*/\r\n";
+                                //str5 = str8 + "\t/*\r\n" + ((descriptor.CNName == "") ? "" : ("\t" + descriptor.CNName + "\r\n")) + "\t" + descriptor.Comment.Replace("\r\n", "\r\n\t") + "\r\n\t*/\r\n";
+                                str5 = str8 + "\r\n";
                             }
                             if ((((descriptor.FieldType == "float") || (descriptor.FieldType == "bool")) || ((descriptor.FieldType == "sint32") || (descriptor.FieldType == "int32") || (descriptor.FieldType == "sint64") || (descriptor.FieldType == "uint64") || (descriptor.FieldType == "int64"))) && (descriptor.PreDefine == DataStruct.FieldDescriptor.PreDefineType.optional))
                             {
@@ -396,7 +404,8 @@
                                 object obj4 = str5;
                                 str5 = string.Concat(new object[] { obj4, "\t", descriptor.PreDefine, " ", fieldType, " ", descriptor.FieldName, " = ", descriptor.FieldId, ";" });
                             }
-                            str5 = str5 + (((descriptor.Comment == "") && (descriptor.CNName != "")) ? ("\t//" + descriptor.CNName) : "") + "\r\n";
+                            //str5 = str5 + (((descriptor.Comment == "") && (descriptor.CNName != "")) ? ("\t//" + descriptor.CNName) : "") + "\r\n";
+                            str5 = str5 + "\r\n";
                         }
                         str5 = str5 + "}\r\n\r\n";
                     }

@@ -577,6 +577,27 @@
                 {
                     string str18 = SyncOpImp;
                     SyncOpImp = str18 + "void " + str2 + "::Set" + descriptor.FieldName + "( const " + descriptor.ToGetFieldType() + "& v )\r\n{\r\n";
+                    
+                    if (descriptor.GetTypeEnum() == 1 && descriptor.ToGetFieldType() == "float")
+                    {
+                        if (descriptor.ToGetFieldType() == "float")
+                        {
+                            SyncOpImp += "\tif(abs(v - m_syncDataUserData.Get" + descriptor.FieldName + "()) < 0.0001f)\r\n";
+                            SyncOpImp += "\t{\r\n";
+                            SyncOpImp += "\t\tNONE_CHANGED_ATTR(SYNCID_" + m.ModuleName.ToUpper() + "_" + descriptor.FieldName.ToUpper() + ")\r\n"; ;
+                            SyncOpImp += "\t\treturn;\r\n";
+                            SyncOpImp += "\t}\r\n";
+                        }
+                    }
+                    else
+                    {
+                        SyncOpImp += "\tif(v == m_syncDataUserData.Get" + descriptor.FieldName + "())\r\n";
+                        SyncOpImp += "\t{\r\n";
+                        SyncOpImp += "\t\tNONE_CHANGED_ATTR(SYNCID_" + m.ModuleName.ToUpper() + "_" + descriptor.FieldName.ToUpper()+ ")\r\n";
+                        SyncOpImp += "\t\treturn;\r\n";
+                        SyncOpImp += "\t}\r\n";
+                    }
+
                     string str19 = SyncOpImp;
                     //SyncOpImp = str19 + "\t" + str7 + ".Set" + descriptor.FieldName + "(v);\r\n\tOnDataChange();\r\n";
                     SyncOpImp = str19 + "\t" + str7 + ".Set" + descriptor.FieldName + "(v);\r\n";
