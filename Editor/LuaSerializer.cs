@@ -384,7 +384,16 @@
                             CallBack = CallBack + ((num4 == 0) ? "" : ",");
                             CallBack = CallBack + descriptor2.FieldName;
                             str3 = str2;
-                            str2 = str3 + "\tPB." + descriptor2.FieldName + " = " + descriptor2.FieldName + "\r\n";
+                            if (descriptor2.PreDefine == DataStruct.FieldDescriptor.PreDefineType.repeated)
+                            {
+                                str2 = str2 + "\tfor i,v in ipairs(" + descriptor2.FieldName + ") do\r\n";
+                                str2 = str2 + "\t\ttable.insert(PB." + descriptor2.FieldName + ",v)\r\n";
+                                str2 = str2 + "\tend\r\n";
+                            }
+                            else
+                            {
+                                str2 = str3 + "\tPB." + descriptor2.FieldName + " = " + descriptor2.FieldName + "\r\n";
+                            }
                             if (num4 == 0)
                             {
                                 num4 = struct4.fieldItem.Count;
