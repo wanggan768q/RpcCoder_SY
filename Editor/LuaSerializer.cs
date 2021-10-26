@@ -258,6 +258,10 @@
                         }
                     }
                     str = str + "\tlocal pb_data = PB:SerializeToString()\r\n";
+                    if (GenLangFlags.IS_ENCODE_MESSAGE)
+                    {
+                        str = str + "\tpb_data = EncodeMessage(pb_data)\r\n";
+                    }
                     OperationImplement = OperationImplement + ((num3 == 0) ? "" : ",") + "_hanlder)\r\n";
                     OperationImplement = OperationImplement + str;
                     OperationImplement = OperationImplement + "\tlocal function callback(_data)\r\n";
@@ -403,6 +407,10 @@
                         CallBack = CallBack + ")\r\n";
                         CallBack = CallBack + str2;
                         CallBack = CallBack + "\tlocal pb_data = PB:SerializeToString()\r\n";
+                        if (GenLangFlags.IS_ENCODE_MESSAGE)
+                        {
+                            CallBack = CallBack + "\tpb_data = EncodeMessage(pb_data)\r\n";
+                        }
                         str3 = CallBack;
                         CallBack = str3 + "\tMLayerMgr.SendNotify(RPC_CODE_" + m.ModuleName.ToUpper() + "_" + operate.Name.ToUpper() + "_NOTIFY, pb_data)\r\n";
                         CallBack = CallBack + "end\r\n";

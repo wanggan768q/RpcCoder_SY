@@ -68,6 +68,7 @@
         private ToolStripMenuItem copyConfigToolStripMenuItem;
         private ToolStripMenuItem copyConfigToolStripMenuItem1;
         private CheckBox LuaHook;
+        private CheckBox EncodeMessage;
         private TreeView treeView1;
 
         public Form1()
@@ -1342,6 +1343,7 @@
             this.CSCat = new System.Windows.Forms.CheckBox();
             this.ActEditor = new System.Windows.Forms.CheckBox();
             this.LuaHook = new System.Windows.Forms.CheckBox();
+            this.EncodeMessage = new System.Windows.Forms.CheckBox();
             this.contextMenuStrip1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -1800,12 +1802,26 @@
             this.LuaHook.UseVisualStyleBackColor = true;
             this.LuaHook.CheckedChanged += new System.EventHandler(this.LUAHOOK_CheckedChanged);
             // 
+            // EncodeMessage
+            // 
+            this.EncodeMessage.AutoSize = true;
+            this.EncodeMessage.Checked = true;
+            this.EncodeMessage.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.EncodeMessage.Location = new System.Drawing.Point(296, 558);
+            this.EncodeMessage.Name = "EncodeMessage";
+            this.EncodeMessage.Size = new System.Drawing.Size(60, 16);
+            this.EncodeMessage.TabIndex = 25;
+            this.EncodeMessage.Text = "Encode";
+            this.EncodeMessage.UseVisualStyleBackColor = true;
+            this.EncodeMessage.CheckedChanged += new System.EventHandler(this.EncodeMessage_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(639, 740);
+            this.Controls.Add(this.EncodeMessage);
             this.Controls.Add(this.LuaHook);
             this.Controls.Add(this.ActEditor);
             this.Controls.Add(this.CSCat);
@@ -2891,6 +2907,11 @@
         private void LUAHOOK_CheckedChanged(object sender, EventArgs e)
         {
             GenLangFlags.LUA_HOOK = this.LuaHook.Checked;
+        }
+
+        private void EncodeMessage_CheckedChanged(object sender, EventArgs e)
+        {
+            GenLangFlags.IS_ENCODE_MESSAGE = this.EncodeMessage.Checked;
         }
     }
 }

@@ -2,7 +2,7 @@
 <!DOCTYPE dotfuscatorMap SYSTEM "http://www.preemptive.com/dotfuscator/dtd/dotfuscatorMap_v1.2.dtd">
 <dotfuscatorMap version="1.1">
     <header>
-        <timestamp>2021-10-26T11:16:11</timestamp>
+        <timestamp>2021-01-12T14:41:23</timestamp>
         <product version="5.32.1.6167" user="XiaoBo Guo" serial="237413-391">Dotfuscator Community Edition</product>
     </header>
     <mapping>
@@ -1179,22 +1179,22 @@
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>CSCat_CheckedChanged</name>
-                        <newname>y</newname>
+                        <newname>x</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>CS_CheckedChanged</name>
-                        <newname>z</newname>
+                        <newname>y</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>C_CheckedChanged</name>
-                        <newname>ae</newname>
+                        <newname>ad</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>Coffee_CheckedChanged</name>
-                        <newname>ad</newname>
+                        <newname>ac</newname>
                     </method>
                     <method>
                         <signature>void()</signature>
@@ -1215,11 +1215,6 @@
                         <name>Dispose</name>
                     </method>
                     <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>EncodeMessage_CheckedChanged</name>
-                        <newname>a</newname>
-                    </method>
-                    <method>
                         <signature>void(object, System.Windows.Forms.FormClosingEventArgs)</signature>
                         <name>Form1_FormClosing</name>
                         <newname>a</newname>
@@ -1227,7 +1222,7 @@
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>Form1_Load</name>
-                        <newname>q</newname>
+                        <newname>p</newname>
                     </method>
                     <method>
                         <signature>string(string)</signature>
@@ -1285,12 +1280,12 @@
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>LUAHOOK_CheckedChanged</name>
-                        <newname>b</newname>
+                        <newname>a</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>LUA_CheckedChanged</name>
-                        <newname>n</newname>
+                        <newname>m</newname>
                     </method>
                     <method>
                         <signature>void()</signature>
@@ -1300,7 +1295,7 @@
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>LoadArchive</name>
-                        <newname>h</newname>
+                        <newname>g</newname>
                     </method>
                     <method>
                         <signature>void()</signature>
@@ -1320,72 +1315,72 @@
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>SkillEditor_CheckedChanged</name>
-                        <newname>i</newname>
+                        <newname>h</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>btnCsvLoad_Click</name>
-                        <newname>ap</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>btnDown_Click</name>
                         <newname>ao</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>btnUp_Click</name>
+                        <name>btnDown_Click</name>
                         <newname>an</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>buildFileToolStripMenuItem_Click</name>
+                        <name>btnUp_Click</name>
                         <newname>am</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>button1_Click</name>
+                        <name>buildFileToolStripMenuItem_Click</name>
                         <newname>al</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>button1_Click_1</name>
+                        <name>button1_Click</name>
                         <newname>ak</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>button2_Click</name>
+                        <name>button1_Click_1</name>
                         <newname>aj</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>button2_Click_1</name>
+                        <name>button2_Click</name>
                         <newname>ai</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>button3_Click</name>
+                        <name>button2_Click_1</name>
                         <newname>ah</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>buttonAddGrid_Click</name>
+                        <name>button3_Click</name>
                         <newname>ag</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>buttonDelGrid_Click</name>
+                        <name>buttonAddGrid_Click</name>
                         <newname>af</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
+                        <name>buttonDelGrid_Click</name>
+                        <newname>ae</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
                         <name>collapseAllToolStripMenuItem_Click</name>
-                        <newname>ac</newname>
+                        <newname>ab</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>collapseToolStripMenuItem_Click</name>
-                        <newname>ab</newname>
+                        <newname>aa</newname>
                     </method>
                     <method>
                         <signature>void(object, System.ComponentModel.CancelEventArgs)</signature>
@@ -1395,27 +1390,27 @@
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>copyConfigToolStripMenuItem1_Click</name>
-                        <newname>c</newname>
+                        <newname>b</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>copyConfigToolStripMenuItem_Click</name>
-                        <newname>d</newname>
+                        <newname>c</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>copyModelToolStripMenuItem_Click</name>
-                        <newname>e</newname>
+                        <newname>d</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>copyProtoAndBuildToolStripMenuItem_Click</name>
-                        <newname>g</newname>
+                        <newname>f</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>copyToolStripMenuItem_Click</name>
-                        <newname>aa</newname>
+                        <newname>z</newname>
                     </method>
                     <method>
                         <signature>void(object, System.Windows.Forms.DataGridViewCellEventArgs)</signature>
@@ -1425,17 +1420,17 @@
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>ddToolStripMenuItem_Click</name>
-                        <newname>x</newname>
+                        <newname>w</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>deleteToolStripMenuItem1_Click</name>
-                        <newname>v</newname>
+                        <newname>u</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>deleteToolStripMenuItem_Click</name>
-                        <newname>w</newname>
+                        <newname>v</newname>
                     </method>
                     <method>
                         <signature>bool()</signature>
@@ -1460,32 +1455,32 @@
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>editorToolStripMenuItem_Click</name>
-                        <newname>u</newname>
-                    </method>
-                    <method>
-                        <signature>void(object, System.EventArgs)</signature>
-                        <name>exitToolStripMenuItem_Click</name>
                         <newname>t</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>expandAllNodeToolStripMenuItem_Click</name>
+                        <name>exitToolStripMenuItem_Click</name>
                         <newname>s</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
-                        <name>expandToolStripMenuItem_Click</name>
+                        <name>expandAllNodeToolStripMenuItem_Click</name>
                         <newname>r</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
+                        <name>expandToolStripMenuItem_Click</name>
+                        <newname>q</newname>
+                    </method>
+                    <method>
+                        <signature>void(object, System.EventArgs)</signature>
                         <name>insertToolStripMenuItem1_Click</name>
-                        <newname>o</newname>
+                        <newname>n</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>insertToolStripMenuItem_Click</name>
-                        <newname>p</newname>
+                        <newname>o</newname>
                     </method>
                     <method>
                         <signature>bool()</signature>
@@ -1500,12 +1495,12 @@
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>pasteToolStripMenuItem1_Click</name>
-                        <newname>l</newname>
+                        <newname>k</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>pasteToolStripMenuItem_Click</name>
-                        <newname>m</newname>
+                        <newname>l</newname>
                     </method>
                     <method>
                         <signature>void(object, System.Windows.Forms.PropertyValueChangedEventArgs)</signature>
@@ -1515,7 +1510,7 @@
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>protoToLuaToolStripMenuItem_Click</name>
-                        <newname>f</newname>
+                        <newname>e</newname>
                     </method>
                     <method>
                         <signature>System.Collections.ArrayList(string, int32&amp;)</signature>
@@ -1530,12 +1525,12 @@
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>saveToolStripMenuItem1_Click</name>
-                        <newname>j</newname>
+                        <newname>i</newname>
                     </method>
                     <method>
                         <signature>void(object, System.EventArgs)</signature>
                         <name>saveToolStripMenuItem_Click</name>
-                        <newname>k</newname>
+                        <newname>j</newname>
                     </method>
                     <method>
                         <signature>void(System.Windows.Forms.TreeNode, System.Windows.Forms.TreeNode)</signature>
@@ -1578,11 +1573,6 @@
                         <signature>System.Windows.Forms.CheckBox</signature>
                         <name>Coffee</name>
                         <newname>l</newname>
-                    </field>
-                    <field>
-                        <signature>System.Windows.Forms.CheckBox</signature>
-                        <name>EncodeMessage</name>
-                        <newname>ax</newname>
                     </field>
                     <field>
                         <signature>System.Windows.Forms.CheckBox</signature>
@@ -1807,7 +1797,7 @@
                     <field>
                         <signature>System.Windows.Forms.TreeView</signature>
                         <name>treeView1</name>
-                        <newname>ay</newname>
+                        <newname>ax</newname>
                     </field>
                 </fieldlist>
                 <propertylist />
@@ -1845,10 +1835,6 @@
                     <field>
                         <signature>bool</signature>
                         <name>Coffee</name>
-                    </field>
-                    <field>
-                        <signature>bool</signature>
-                        <name>IS_ENCODE_MESSAGE</name>
                     </field>
                     <field>
                         <signature>bool</signature>
@@ -2836,11 +2822,11 @@
         </statisticline>
         <statisticline>
             <description>Total Methods</description>
-            <statistic>338</statistic>
+            <statistic>337</statistic>
         </statisticline>
         <statisticline>
             <description>Total Fields</description>
-            <statistic>173</statistic>
+            <statistic>171</statistic>
         </statisticline>
         <statisticline>
             <description>Total Properties</description>
@@ -2857,13 +2843,13 @@
         </statisticline>
         <statisticline>
             <description>Total Methods Renamed</description>
-            <statistic>137</statistic>
-            <statistic>40.53%</statistic>
+            <statistic>136</statistic>
+            <statistic>40.36%</statistic>
         </statisticline>
         <statisticline>
             <description>Total Fields Renamed</description>
-            <statistic>109</statistic>
-            <statistic>63.01%</statistic>
+            <statistic>108</statistic>
+            <statistic>63.16%</statistic>
         </statisticline>
         <statisticline>
             <description>Total Properties Renamed</description>
@@ -2878,17 +2864,17 @@
         <statisticline>
             <description>Methods Renamed to 'a'</description>
             <statistic>58</statistic>
-            <statistic>17.16%</statistic>
+            <statistic>17.21%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'b'</description>
             <statistic>9</statistic>
-            <statistic>2.66%</statistic>
+            <statistic>2.67%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'g'</description>
             <statistic>7</statistic>
-            <statistic>2.07%</statistic>
+            <statistic>2.08%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'h'</description>
@@ -2903,12 +2889,12 @@
         <statisticline>
             <description>Methods Renamed to 'c'</description>
             <statistic>4</statistic>
-            <statistic>1.18%</statistic>
+            <statistic>1.19%</statistic>
         </statisticline>
         <statisticline>
             <description>Methods Renamed to 'd'</description>
             <statistic>4</statistic>
-            <statistic>1.18%</statistic>
+            <statistic>1.19%</statistic>
         </statisticline>
     </statistics>
 </dotfuscatorMap>
