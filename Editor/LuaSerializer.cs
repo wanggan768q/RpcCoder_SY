@@ -494,7 +494,7 @@
             foreach (DataStruct.FieldDescriptor descriptor2 in ds.fieldItem)
             {
                 string str2;
-                if (descriptor2.FieldType == "string")
+                if (descriptor2.FieldType == "string" || descriptor2.FieldType == "bytes")
                 {
                     if ((ds.DataType == DataStruct.SyncType.UserData) || ((ds.DataType == DataStruct.SyncType.CacheData) && ds.syncToClient))
                     {
